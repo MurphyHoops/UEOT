@@ -113,10 +113,10 @@ def build_fig1():
              "Raw actuation physically blocked if $g = \\mathrm{closed}$",
              facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=8.3)
 
-    draw_arrow(ax1, (0.245, 0.68), (0.245, 0.63), color=AMBER, lw=1.1)
-    draw_arrow(ax1, (0.46, 0.755), (0.52, 0.755), color=NAVY, lw=1.1)
-    draw_arrow(ax1, (0.46, 0.555), (0.52, 0.555), color=TEAL, lw=1.1)
-    draw_arrow(ax1, (0.735, 0.68), (0.735, 0.63), color=SLATE, lw=1.1)
+    draw_arrow(ax1, (0.245, 0.675), (0.245, 0.635), color=AMBER, lw=1.1)
+    draw_arrow(ax1, (0.465, 0.755), (0.515, 0.755), color=NAVY, lw=1.1)
+    draw_arrow(ax1, (0.465, 0.555), (0.515, 0.555), color=TEAL, lw=1.1)
+    draw_arrow(ax1, (0.735, 0.675), (0.735, 0.635), color=SLATE, lw=1.1)
 
     # Bottom budget flow
     draw_box(ax1, 0.02, 0.29, 0.95, 0.10,
@@ -144,9 +144,9 @@ def build_fig1():
              "refunded, $D$ kept w.p. $1$",
              facecolor=LIGHT_GRAY, edgecolor=CRIMSON, linestyle="--", fontsize=8.0)
 
-    draw_arrow(ax1, (0.20, 0.28), (0.165, 0.23), color=TEAL, lw=1.05)
-    draw_arrow(ax1, (0.50, 0.28), (0.50, 0.23), color=TEAL, lw=1.05)
-    draw_arrow(ax1, (0.80, 0.28), (0.83, 0.23), color=CRIMSON, lw=1.05, ls="--")
+    draw_arrow(ax1, (0.20, 0.275), (0.165, 0.235), color=TEAL, lw=1.05)
+    draw_arrow(ax1, (0.50, 0.275), (0.50, 0.235), color=TEAL, lw=1.05)
+    draw_arrow(ax1, (0.80, 0.275), (0.83, 0.235), color=CRIMSON, lw=1.05, ls="--")
 
     # Panel (b): Non-Monotonic Diamond Lattice of Predictive Quotients
     ax2.text(0.01, 0.97, "(b) Non-Monotonic Lattice of Minimal Predictive Quotients (Prop. 3)",
@@ -157,31 +157,31 @@ def build_fig1():
              "$\\{\\theta_0 H,\\; \\theta_0 D,\\; \\theta_1 D\\} \\quad \\mid \\quad \\{\\theta_1 H\\}$",
              facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=8.8, fontweight="bold")
 
-    draw_box(ax2, 0.02, 0.40, 0.44, 0.20,
+    draw_box(ax2, 0.01, 0.39, 0.45, 0.22,
              "Infinite Birth Record $(B_t)_{t \\geq 1}$\n"
              "[3 Minimal Classes]\n"
              "$\\{\\theta_0 H, \\theta_0 D\\} \\mid \\{\\theta_1 D\\} \\mid \\{\\theta_1 H\\}$\n"
              "Erases repair fee $R_1 \\in \\{0,3\\}$",
-             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=8.2)
+             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=8.0)
 
-    draw_box(ax2, 0.54, 0.40, 0.44, 0.20,
+    draw_box(ax2, 0.54, 0.39, 0.45, 0.22,
              "One-Step Birth + Cost $(B_1, R_1)$\n"
              "[3 Minimal Classes]\n"
              "$\\{\\theta_0 H\\} \\mid \\{\\theta_1 H\\} \\mid \\{\\theta_0 D, \\theta_1 D\\}$\n"
              "Erases latent $\\theta_1$ ($27/64$ vs. $39/64$)",
-             facecolor=LIGHT_AMBER, edgecolor=AMBER, fontsize=8.2)
+             facecolor=LIGHT_AMBER, edgecolor=AMBER, fontsize=8.0)
 
     draw_box(ax2, 0.14, 0.07, 0.72, 0.15,
              "Joint Multi-Step Births + Initial Expenditure $(B_1, B_2, \\dots, R_1)$\n"
              "[4 Singleton Classes]:  $\\{\\theta_0 H\\} \\mid \\{\\theta_0 D\\} \\mid \\{\\theta_1 H\\} \\mid \\{\\theta_1 D\\}$\n"
              "(Still lawfully quotients causally silent physical tag $\\tau$)",
-             facecolor="white", edgecolor=NAVY, lw=1.2, fontsize=8.4)
+             facecolor="white", edgecolor=NAVY, lw=1.2, fontsize=8.3)
 
     # Refinement arrows
-    draw_arrow(ax2, (0.38, 0.74), (0.24, 0.61), color=NAVY, lw=1.15)
-    draw_arrow(ax2, (0.62, 0.74), (0.76, 0.61), color=NAVY, lw=1.15)
-    draw_arrow(ax2, (0.24, 0.39), (0.38, 0.23), color=TEAL, lw=1.15)
-    draw_arrow(ax2, (0.76, 0.39), (0.62, 0.23), color=AMBER, lw=1.15)
+    draw_arrow(ax2, (0.38, 0.735), (0.24, 0.625), color=NAVY, lw=1.15)
+    draw_arrow(ax2, (0.62, 0.735), (0.76, 0.625), color=NAVY, lw=1.15)
+    draw_arrow(ax2, (0.24, 0.375), (0.38, 0.235), color=TEAL, lw=1.15)
+    draw_arrow(ax2, (0.76, 0.375), (0.62, 0.235), color=AMBER, lw=1.15)
 
     # Incomparable middle link
     draw_arrow(ax2, (0.472, 0.485), (0.528, 0.485), color=CRIMSON, lw=1.1, style="<->", ls=":")
@@ -300,12 +300,12 @@ def build_fig2():
     )
 
     # Region labels
-    ax2.text(0.81, 0.77, "Regime I: Subcritical\nRefusal Floor $\\rho_* = 1$\n($\\lambda_0 < 1,\\; \\lambda_1 < 1$)",
-             fontsize=8.3, color=INK, ha="center", va="center", fontweight="bold")
+    ax2.text(0.855, 0.73, "Regime I: Subcritical\nRefusal Floor $\\rho_* = 1$\n($\\lambda_0 < 1,\\; \\lambda_1 < 1$)",
+             fontsize=8.2, color=INK, ha="center", va="center", fontweight="bold")
     ax2.text(1.22, 0.83, "Regime II: $\\theta_0$ Attains\n$\\rho_* = \\lambda_0 = k_c \\geq 1$\n($\\gamma \\leq \\delta$: care optimal)",
              fontsize=8.3, color=NAVY, ha="center", va="center", fontweight="bold")
-    ax2.text(1.01, 1.14, "Regime III: $\\theta_1$ Attains\n$\\rho_* = \\lambda_1 \\geq 1$ ($\\gamma \\geq \\delta$)\nLineage growth vs.\ntoken survival ($s-\\delta < s$)",
-             fontsize=8.1, color=TEAL, ha="center", va="center", fontweight="bold")
+    ax2.text(1.035, 1.185, "Regime III: $\\theta_1$ Attains\n$\\rho_* = \\lambda_1 \\geq 1$ ($\\gamma \\geq \\delta$)\nLineage growth vs.\ntoken survival ($s-\\delta < s$)",
+             fontsize=8.0, color=TEAL, ha="center", va="center", fontweight="bold")
 
     ax2.text(1.255, 1.22, "$\\gamma = \\delta$\n(tie line)", fontsize=7.8, color=TEAL, rotation=36)
     ax2.text(0.71, 1.075, "$\\lambda_1 = 1$", fontsize=8.0, color=CRIMSON, rotation=-24)
@@ -348,12 +348,12 @@ def build_fig3():
         (0.27, "Closed-Test Belief & Interventional Quotient ($U_{a,o}\\mathcal{F} \\subseteq \\mathcal{F}$)",
          "Preserves counterfactual cuts $\\mathcal{V}_{\\min}$, budget $R_1$ & finite-memory viability", LIGHT_TEAL, TEAL),
         (0.06, "Genealogical & Deliberative History (Marked Tokens + Reasons)",
-         "Separates parent retention from strict birth, QSD from Doob law & practical reasons", LIGHT_BLUE, NAVY),
+          "Separates parent retention from strict birth, $\\nu_{\\mathrm{QSD}}$ from Doob law & practical reasons", LIGHT_BLUE, NAVY),
     ]
 
     for y, title, sub, fc, ec in left_specs:
         draw_box(ax, 0.015, y, 0.365, 0.16, f"{title}\n{sub}",
-                 facecolor=fc, edgecolor=ec, fontsize=7.95)
+                 facecolor=fc, edgecolor=ec, fontsize=8.0)
 
     right_specs = [
         (0.69, "Rung 1: Systemic Causal Role (Cummins; Craver)",
@@ -372,12 +372,12 @@ def build_fig3():
 
     for y, title, sub, fc, ec in right_specs:
         draw_box(ax, 0.525, y, 0.46, 0.16, f"{title}\n{sub}",
-                 facecolor=fc, edgecolor=ec, fontsize=7.95)
+                 facecolor=fc, edgecolor=ec, fontsize=8.0)
 
     badge = dict(boxstyle="round,pad=0.16", fc="white", ec="none", alpha=0.94)
     # Preservation requirement bridges
-    draw_arrow(ax, (0.392, 0.35), (0.512, 0.55), color=TEAL, lw=1.2)
-    ax.text(0.452, 0.455, "grounds Rung 2", fontsize=7.5, color=TEAL,
+    draw_arrow(ax, (0.392, 0.35), (0.512, 0.52), color=TEAL, lw=1.2)
+    ax.text(0.452, 0.43, "grounds Rung 2", fontsize=7.5, color=TEAL,
             ha="center", va="center", fontweight="bold", bbox=badge, zorder=5)
 
     draw_arrow(ax, (0.392, 0.16), (0.512, 0.34), color=AMBER, lw=1.2)
@@ -388,9 +388,12 @@ def build_fig3():
     ax.text(0.452, 0.11, "grounds Rung 4", fontsize=7.5, color=NAVY,
             ha="center", va="center", fontweight="bold", bbox=badge, zorder=5)
 
-    # Blocked illicit transfer arrow
-    draw_arrow(ax, (0.392, 0.77), (0.512, 0.58), color=CRIMSON, lw=1.15, ls="--")
-    ax.text(0.452, 0.685, "illicit transfer", fontsize=7.5, color=CRIMSON,
+    # Blocked illicit transfer arrows (both Scalar Score fit AND Output-Stream quotient -> Rung 2)
+    draw_arrow(ax, (0.392, 0.77), (0.512, 0.61), color=CRIMSON, lw=1.15, ls="--")
+    ax.text(0.452, 0.70, "illicit transfer", fontsize=7.5, color=CRIMSON,
+            ha="center", va="center", fontweight="bold", bbox=badge, zorder=5)
+    draw_arrow(ax, (0.392, 0.56), (0.512, 0.56), color=CRIMSON, lw=1.15, ls="--")
+    ax.text(0.452, 0.575, "erases $R_1, g$", fontsize=7.4, color=CRIMSON,
             ha="center", va="center", fontweight="bold", bbox=badge, zorder=5)
 
     fig.savefig(FIG_DIR / "fig3_preservation_and_rungs.pdf", bbox_inches="tight")

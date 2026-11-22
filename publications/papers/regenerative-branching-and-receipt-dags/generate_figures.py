@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate publication-grade vector PDF and 300-DPI PNG figures for
 'Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial
-Policy DAGs in Partially Observed Regenerative Maintenance'.
+Decision Diagrams in Partially Observed Regenerative Maintenance'.
 """
 from fractions import Fraction as Q
 from pathlib import Path
@@ -289,19 +289,19 @@ def build_fig2():
 
     draw_box(ax1, 0.02, 0.62, 0.45, 0.26,
              "History $h_A$:\n"
-             "$(\\mathrm{write}_0,(1,1)),\\ (\\mathrm{idle}_0,(1,0)),$\n"
-             "$(\\mathrm{idle}_0,(0,0))$ [healthy $\\mathrm{root}_0$]\n"
+             "$((0,\\mathrm{write}_g),(1,1)),\\ ((0,\\mathrm{idle}),(1,0)),$\n"
+             "$((0,\\mathrm{idle}),(0,0))$ [healthy $\\mathrm{root}_0$]\n"
              "$(s,f)=(2,1)$,  Mass $3/32$\n"
              "Posterior $\\pi_{h_A}(1/4) = 1/4$",
-             facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=7.8)
+             facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=7.6)
 
     draw_box(ax1, 0.51, 0.62, 0.46, 0.26,
              "History $h_B$:\n"
-             "$(\\mathrm{write}_0,(1,1)),\\ (\\mathrm{idle}_0,(0,0)),$\n"
-             "$(\\mathrm{idle}_0,(0,0))$ [damaged $\\mathrm{root}_0$: $\\Delta f=0$]\n"
+             "$((0,\\mathrm{write}_g),(1,1)),\\ ((0,\\mathrm{idle}),(0,0)),$\n"
+             "$((0,\\mathrm{idle}),(0,0))$ [damaged $\\mathrm{root}_0$: $\\Delta f=0$]\n"
              "$(s,f)=(1,1)$,  Mass $3/16$\n"
              "Posterior $\\pi_{h_B}(1/4) = 1/2$",
-             facecolor=LIGHT_AMBER, edgecolor=AMBER, fontsize=7.8)
+             facecolor=LIGHT_AMBER, edgecolor=AMBER, fontsize=7.6)
 
     draw_box(ax1, 0.05, 0.34, 0.88, 0.17,
              "Identical Naive Physical Markov State at $t = 3$:\n"
@@ -312,7 +312,7 @@ def build_fig2():
     draw_arrow(ax1, (0.74, 0.61), (0.63, 0.525), color=AMBER, lw=1.15)
 
     draw_box(ax1, 0.02, 0.06, 0.95, 0.18,
-             "Divergent Future Law under Next Action $\\mathrm{idle\\ child}_1$:\n"
+             "Divergent Future Law under Next Action $(1, \\mathrm{idle})$:\n"
              "$\\mathbb{P}(\\mathrm{birth}_3 = 1 \\mid h_A) = 5/8 \\neq 1/2 = \\mathbb{P}(\\mathrm{birth}_3 = 1 \\mid h_B)$  $\\Rightarrow (t,q,B)$ insufficient!",
              facecolor=LIGHT_CRIMSON, edgecolor=CRIMSON, fontsize=8.05, fontweight="bold")
 
@@ -325,15 +325,15 @@ def build_fig2():
 
     draw_box(ax2, 0.02, 0.72, 0.45, 0.16,
              "History $m_A$:\n"
-             "$(\\mathrm{write}_0,(1,1)),\\ (\\mathrm{idle}_0,(0,0)),\\ (\\mathrm{idle}_1,(1,0))$\n"
+             "$((0,\\mathrm{write}_g),(1,1)),\\ ((0,\\mathrm{idle}),(0,0)),\\ ((1,\\mathrm{idle}),(1,0))$\n"
              "Native Store: $[\\neg g,\\ g,\\ \\mathrm{None},\\ g]$",
-             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=7.85)
+             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=7.55)
 
     draw_box(ax2, 0.51, 0.72, 0.46, 0.16,
              "History $m_B$:\n"
-             "$(\\mathrm{write}_0,(1,1)),\\ (\\mathrm{idle}_1,(1,0)),\\ (\\mathrm{idle}_0,(0,0))$\n"
+             "$((0,\\mathrm{write}_g),(1,1)),\\ ((1,\\mathrm{idle}),(1,0)),\\ ((0,\\mathrm{idle}),(0,0))$\n"
              "Native Store: $[\\neg g,\\ g,\\ g,\\ \\mathrm{None}]$",
-             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=7.85)
+             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=7.55)
 
     draw_box(ax2, 0.05, 0.44, 0.88, 0.18,
              "Shared Five-Coordinate Sufficient Summary $\\sigma = (t, q, s, f, k) = (3, q_*, 2, 1, 1)$\n"
@@ -443,7 +443,7 @@ def build_fig3():
     draw_box(ax2, 0.52, 0.09, 0.44, 0.23,
              "Omitted-Alternative Rejection\n"
              "Dropping ANY $m > 0$ edge of even an\n"
-             "unselected action ($\mathrm{stop}$) returns $\\mathrm{none}$\n"
+             "unselected action ($\\mathrm{stop}$) returns $\\mathrm{none}$\n"
              "(prevents false upper-bound certificates)",
              facecolor=LIGHT_CRIMSON, edgecolor=CRIMSON, fontsize=7.9)
 

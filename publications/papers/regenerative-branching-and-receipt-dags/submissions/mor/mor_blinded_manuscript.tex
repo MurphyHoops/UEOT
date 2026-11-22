@@ -1,5 +1,5 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[margin=25mm,headheight=14pt,headsep=8mm]{geometry}
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in,headheight=14pt,headsep=12pt]{geometry}
 \usepackage{fontspec}
 \IfFontExistsTF{Liberation Serif}{%
   \setmainfont{Liberation Serif}%
@@ -9,32 +9,36 @@
 \IfFontExistsTF{Liberation Sans}{%
   \setsansfont{Liberation Sans}%
 }{%
-  \setsansfont[Path=../../../../../tools/books/.cache/fonts/,
-    BoldFont=DejaVuSans-Bold.ttf,
-    ItalicFont=DejaVuSans-Oblique.ttf,
-    BoldItalicFont=DejaVuSans-BoldOblique.ttf]{DejaVuSans.ttf}%
+  \IfFontExistsTF{Latin Modern Sans}{%
+    \setsansfont{Latin Modern Sans}%
+  }{%
+    \setsansfont{Helvetica}%
+  }%
 }
 \IfFontExistsTF{DejaVu Sans Mono}{%
   \setmonofont[Scale=0.86]{DejaVu Sans Mono}%
 }{%
-  \setmonofont[Path=../../../../../tools/books/.cache/fonts/,
-    Scale=0.86,
-    BoldFont=DejaVuSansMono-Bold.ttf,
-    ItalicFont=DejaVuSansMono-Oblique.ttf,
-    BoldItalicFont=DejaVuSansMono-BoldOblique.ttf]{DejaVuSansMono.ttf}%
+  \IfFontExistsTF{Menlo}{%
+    \setmonofont[Scale=0.85]{Menlo}%
+  }{%
+    \setmonofont[Scale=0.86]{Courier New}%
+  }%
 }
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{microtype}
+\setlength{\emergencystretch}{2em}
 \usepackage{setspace}
-\setstretch{1.15}
+\onehalfspacing
+\usepackage{lineno}
 \usepackage{longtable,booktabs,array,calc}
 \newcounter{none}
 \usepackage{needspace}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
-\usepackage[authoryear,round]{natbib}
+\usepackage[numbers,sort&compress]{natbib}
 \usepackage{xcolor}
 \definecolor{linkblue}{HTML}{004B87}
+\renewcommand\linenumberfont{\normalfont\tiny\color{gray}}
 \PassOptionsToPackage{hyphens}{url}
 \usepackage[unicode,colorlinks=true,allcolors=linkblue,bookmarksnumbered=true]{hyperref}
 \usepackage{xurl}
@@ -44,7 +48,7 @@
 Certified Polynomial Decision Diagrams in Partially Observed
 Regenerative Maintenance},
   pdfauthor={},
-  pdfsubject={Mathematics of Operations Research Blinded Manuscript},
+  pdfsubject={Mathematics of Operations Research Blinded Submission},
   pdfkeywords={Bayesian dynamic programming; partially observable Markov
 decision processes; regenerative maintenance and standby control;
 sufficient statistics and decision diagrams; certifying algorithms}
@@ -67,51 +71,54 @@ sufficient statistics and decision diagrams; certifying algorithms}
 \fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
 \begin{document}
 \thispagestyle{plain}
+\nolinenumbers
+\vspace*{18pt}
 \begin{flushleft}
-{\fontsize{17.5}{22}\selectfont\bfseries Prepayment Thresholds,
+{\fontsize{17.5}{22.5}\selectfont\bfseries Prepayment Thresholds,
 Informative Zero Receipts, and Certified Polynomial Decision Diagrams in
 Partially Observed Regenerative Maintenance\par}
-\vspace{8pt}
-{\small\emph{Blinded manuscript prepared for double-anonymous review at Mathematics of Operations Research}\par}
+\vspace{14pt}
+{\normalsize\emph{Blinded manuscript prepared for double-anonymous peer review at Mathematics of Operations Research}\par}
 \end{flushleft}
-\vspace{6pt}
-\hrule height 0.4pt
+\vspace{16pt}
+\hrule height 0.5pt
+\vspace{14pt}
+\noindent\textbf{MSC 2020 Subject Classification:}\quad Primary: 90C40,
+93E20; Secondary: 60J85, 62C10, 68V15\par
 \vspace{8pt}
-\noindent\textbf{Abstract.}\quad Maintaining a regenerative standby
-system under partial observation and a non-replenished operational
-budget requires deciding jointly when to pay for active repair, which
-redundant unit to dispatch, and when to halt paid intervention. Unlike
-average-cost constrained models or memoryless adaptive control, we study
-a persistent unknown operating reliability drawn once from a finite
-prior, where every repair request must satisfy hard sample-path
-prepayment before its uncertain outcome is observed and the controller
-receives only coarse two-bit post-transaction receipts recording
-reproduction and actual fee deduction. Within a self-contained
-mathematical framework accompanied by a pure-kernel machine-checked
-formalization, we establish exact commutation between the complete
-genealogical population process and a compressed belief-and-wallet
-dynamic program achieving Bayes optimality over all real-randomized
-history policies. In the single-repair high-price regime, we derive a
-closed-form optimal value formula, sharp positivity thresholds, strict
-post-fault posterior threshold contraction, positive receipt-feedback
-gain, and zero post-repair value of parameter revelation. Finally, by
-separating informative fault receipts from deterministic zero receipts,
-we prove joint all-action sufficiency of a five-coordinate counting
-summary and verify an all-action certifying decision-diagram synthesizer
-satisfying an explicit quartic node bound.\par
-\vspace{6pt}
-\noindent{\small\textbf{Keywords:}\quad Bayesian dynamic programming;
-partially observable Markov decision processes; regenerative maintenance
-and standby control; sufficient statistics and decision diagrams;
-certifying algorithms}\par
-\vspace{3pt}
-\noindent{\small\textbf{MSC 2020 Subject Classification:}\quad Primary:
-90C40, 93E20; Secondary: 60J85, 62C10, 68V15}\par
-\vspace{3pt}
-\noindent{\small\textbf{OR/MS Subject Classification:}\quad Dynamic
+\noindent\textbf{OR/MS Subject Classification:}\quad Dynamic
 programming/optimal control: Markov, Bayesian; Probability: branching
-processes; Reliability: maintenance/repairs}\par
+processes; Reliability: maintenance/repairs\par
 \vspace{8pt}
+\noindent\textbf{Keywords:}\quad Bayesian dynamic programming; partially
+observable Markov decision processes; regenerative maintenance and
+standby control; sufficient statistics and decision diagrams; certifying
+algorithms\par
+\vspace{14pt}
+\hrule height 0.5pt
+\vfill
+\noindent{\small\emph{Note to Referees:} Author identity, institutional affiliation, funding, competing-interest disclosures, generative-AI assistance disclosure, and archival software DOI metadata are recorded on the separate unblinded Title Page in accordance with INFORMS double-anonymous review guidelines.\par}
+\clearpage
+
+\linenumbers
+\noindent\textbf{Abstract.}\quad Maintaining a partially observed
+regenerative standby system under an unreplenished budget requires
+deciding jointly when to purchase repair, which unit to dispatch, and
+when to halt paid intervention. We study persistent unknown reliability
+drawn once from a finite prior, where every repair request requires
+strict pathwise prepayment before its uncertain outcome is realized and
+the controller observes only two-bit receipts recording reproduction and
+fee deduction. Combining self-contained proofs with pure-kernel
+formalization, we establish exact commutation between the native
+genealogical population process and a compressed dynamic program
+achieving Bayes optimality over all randomized history policies. When a
+single repair is priced high, we derive closed-form optimal values,
+sharp positivity thresholds, a persistence variance premium, strict
+post-fault threshold contraction, positive feedback gain, and zero
+post-repair value of parameter revelation. Filtering uninformative zero
+receipts yields a five-coordinate sufficient statistic and a certified
+quartic decision-diagram synthesizer.\par
+\vspace{10pt}
 \hrule height 0.4pt
 \vspace{12pt}
 
@@ -252,10 +259,10 @@ self-contained mathematical development accompanied by an end-to-end
 pure-kernel formalization in the Lean 4 theorem prover
 \citep{mouraUllrich2021, mathlib2020} depending exclusively on Lean's
 three foundational logical axioms (\texttt{propext},
-\texttt{Classical.choice}, \texttt{Quot.sound}; \citet{carneiro2019}),
+\texttt{Classical.choice}, \texttt{Quot.sound}) \citep{carneiro2019},
 with zero incomplete proofs (\texttt{sorryAx}) and zero compiler-trust
-evaluation axioms (\texttt{native\_decide} / \texttt{Lean.ofReduceBool};
-\citet{boespflug2011}; \citet{boutin1997}). Every mathematical theorem,
+evaluation axioms (\texttt{native\_decide} / \texttt{Lean.ofReduceBool})
+\citep{boespflug2011, boutin1997}. Every mathematical theorem,
 closed-form recursion, posterior moment inequality, history-separation
 witness, and polynomial graph bound is proved in full in the
 Mathematical Appendix so that the paper can be read and refereed
@@ -305,10 +312,10 @@ main theorems establish:
   \((0,0)\) strictly contracts the remaining two-step repair threshold
   via \(\mu_1\mu_3 - \mu_2^2 = w(1-w)r_0 r_1(r_0 - r_1)^2 > 0\)
   (\(21/16 \to 5/4\), penalizing prior-freezing retries by \(3/640\) at
-  \(H=3\)); (iii) at \(H+1 = 4\), receipt-adaptive standby switching
-  beats \emph{every} open-loop request sequence by raw margin
-  \(d^3 \mathbb{E}[r_\theta^3(1 - r_\theta)]\) (\(20925/524288\) at
-  \(r \in \{3/4, 7/8\}\)); yet (iv) once initial repair succeeds and
+  total horizon \(3\)); (iii) at total horizon \(4\), receipt-adaptive
+  standby switching beats \emph{every} open-loop request sequence by raw
+  margin \(d^3 \mathbb{E}[r_\theta^3(1 - r_\theta)]\) (\(20925/524288\)
+  at \(r \in \{3/4, 7/8\}\)); yet (iv) once initial repair succeeds and
   exhausts the wallet, \texttt{freeSchedule} attains the
   \(\theta\)-omniscient upper bound simultaneously for all
   \(r \in [0,1]\), rendering post-repair \(\theta\)-revelation strictly
@@ -365,7 +372,8 @@ optimality}\label{native-population-semantics-sample-path-prepayment-and-full-hi
 pre-execution fee
 commitment}\label{genealogical-population-store-seven-action-menu-and-pre-execution-fee-commitment}
 
-Let \(g \in \{0,1\}\) denote a publicly known operational target bit
+Let \(g \in \{0,1\}\) denote a publicly known operational target bit,
+writing \(\neg x := 1 - x\) on \(\{0,1\}\) for bit complementation
 (without loss of generality, \(g = 1\) in concrete benchmarks). An
 environment parameter \(\theta\) is drawn once at initialization
 \(t = 0\) from a finite prior probability mass function
@@ -519,7 +527,8 @@ and marginal receipt probabilities
 \(q_b^a(\cdot, \cdot, o)\) forward along the compressed transition
 \(T(w,a,z)\) and dividing by \(m_b^a(o)\) defines the exact rational
 posterior \(b^{a,o}\) (with an explicit total-function default when
-\(m_b^a(o) = 0\)). Over information states \((b, B)\), finite-horizon
+\(m_b^a(o) = 0\)). Over information states \((b, B)\) and two-bit
+receipts \(o = (o_1, o_2) \in \mathcal{O} := \{0,1\}^2\), finite-horizon
 dynamic programming computes \[\begin{aligned}
 V_0(b, B) &:= 0, \\
 V_{h+1}(b, B) &:= \max_{a \in \mathrm{menu}(c, B)} \sum_{o \in \mathcal{O}} m_b^a(o)\Bigl[\bigl(\mathbf{1}_{\{o_1 = 1\}} - \lambda c \mathbf{1}_{\{o_2 = 1\}}\bigr) + d\, V_h\bigl(b^{a,o},\, \max\{0, B - c\mathbf{1}_{\{o_2 = 1\}}\}\bigr)\Bigr],
@@ -539,7 +548,7 @@ Crucially, if a policy \(\pi\) assigns probability \(0\) to some action
 \(a_0\), histories beginning with \((a_0, o_0)\) are never visited;
 requiring \(\pi\) to choose wallet-feasible actions on \emph{unreachable
 zero-probability counterfactual histories} would artificially shrink the
-competitor class (or create vacuous Pitfall constraints). We therefore
+competitor class (or create vacuous off-path constraints). We therefore
 say that \(\pi\) is \emph{supported-admissible}
 (\texttt{SupportedAdmissible}) if on every prefix \(h_t\) having
 strictly positive realization probability
@@ -751,8 +760,9 @@ information}\label{persistence-variance-premium-post-fault-posterior-contraction
 
 Writing \(\mu_k := \mathbb{E}_{\pi_0}[r_\theta^k]\) for the \(k\)-th
 prior moment of the persistent reliability \(r_\theta\), Theorem 2
-specializes at total horizons \(2\), \(3\), and \(4\) (\(B_0 = c\)) to
-the explicit moment formulas \[\begin{aligned}
+specializes at total horizons \(2\), \(3\), and \(4\) (corresponding to
+continuation lengths \(H = 1, 2, 3\) in Theorem 2 at \(B_0 = c\)) to the
+explicit moment formulas \[\begin{aligned}
 V_2^* &= \max\bigl\{0,\ \mu_1(1 - p) + d\,\mu_2\bigr\}, && p \ge 1, \\
 V_3^* &= \max\bigl\{0,\ \mu_1(1 - p) + (d + d^2)\mu_2\bigr\}, && p \ge 1 + d, \\
 V_4^* &= \max\bigl\{0,\ \mu_1(1 - p) + (d + d^2)\mu_2 + d^3(2\mu_3 - \mu_4)\bigr\}, && p \ge 1 + d + d^2.
@@ -763,7 +773,7 @@ a fault, open-loop continuation without receipt feedback, and omniscient
 adaptive maintenance
 \citep{blackwell1953, howard1966, easleyKiefer1988, aghion1991, ross2011}.
 
-\Needspace{24\baselineskip}
+\Needspace{14\baselineskip}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -804,9 +814,9 @@ Receipt feedback vs.~open-loop (\(H=4\)) & Raw continuation gap
 \(r \in \{3/4, 7/8\}\) eq., \(d=3/4, p=37/16\):
 \(\Delta = 20925/524288\) \\
 Post-repair \(\theta\)-revelation (\(\mathrm{EVPI}_{\mathrm{post}}\)) &
-\(U_2(r_\theta, d, H)\) attained uniformly by \texttt{freeSchedule} &
+\(U_2(r_\theta, d, n)\) attained uniformly by \texttt{freeSchedule} &
 \(\mathrm{EVPI}_{\mathrm{post}} = 0\) for \emph{every} prior \(\pi_0\)
-and horizon \(H \ge 0\) \\
+and remaining horizon \(n \ge 0\) \\
 \end{longtable}
 }
 
@@ -972,7 +982,7 @@ idling a damaged slot (\(x = \neg g\)) or dispatching an absent
 modes emit \((0,0)\), so \(L_r((0,0) \mid g, q, a) = r + (1 - r) = 1\)
 for \emph{every} \(r \in [0,1]\).
 
-\Needspace{24\baselineskip}
+\Needspace{14\baselineskip}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -1121,12 +1131,12 @@ permitted action menu (Figure 2).
   \end{aligned}\] \emph{have strictly positive prior probabilities
   \(3/32\) and \(3/16\), and reach the identical elapsed time \(t = 3\),
   exhausted wallet \(B_3 = 0\), and local body state
-  \(q_* = (\neg g, \mathrm{Some}(g), 0, 0)\). Yet because \(h_B\)'s
-  third step idles an already-damaged \texttt{root0} (\(\Delta f = 0\)),
-  \(\sigma(h_A)\) has \((s,f) = (2,1)\) (\(\pi_{h_A}(1/4) = 1/4\))
-  whereas \(\sigma(h_B)\) has \((s,f) = (1,1)\)
-  (\(\pi_{h_B}(1/4) = 1/2\)), yielding strictly distinct next-step birth
-  probabilities under \((1, \mathrm{idle})\):
+  \(q_* = (\neg g, g, 0, 0)\) (representing slot \(1\) occupied by bit
+  \(g\)). Yet because \(h_B\)'s third step idles an already-damaged
+  \texttt{root0} (\(\Delta f = 0\)), \(\sigma(h_A)\) has
+  \((s,f) = (2,1)\) (\(\pi_{h_A}(1/4) = 1/4\)) whereas \(\sigma(h_B)\)
+  has \((s,f) = (1,1)\) (\(\pi_{h_B}(1/4) = 1/2\)), yielding strictly
+  distinct next-step birth probabilities under \((1, \mathrm{idle})\):
   \(\mathbb{P}(\mathrm{birth}_3 = 1 \mid h_A) = 5/8 \neq 1/2 = \mathbb{P}(\mathrm{birth}_3 = 1 \mid h_B)\).}
 \item
   \textbf{Genuine genealogy-erasing history merger and menu-relative
@@ -1276,10 +1286,12 @@ output \texttt{some\ res}; otherwise it returns \texttt{none}. Why must
 inside \(G\)? Because a policy graph that stores \emph{only} the chosen
 action \(a_i^*\) at each reachable node can verify what payoff \(a_i^*\)
 achieves (\(J_H(G) = v_{\mathrm{root}}\)), \emph{but cannot certify that
-no other legal action beats \(a_i^*\)}. Indeed, in our formalized
-negative test (\texttt{OMITTED\_ALTERNATIVE\_REJECTION}), deleting a
-single positive-probability successor edge of an unselected
-\texttt{stop} action causes \texttt{certify} to reject the candidate
+no other legal action beats \(a_i^*\)}. Indeed, in our negative
+certificate-rejection probe
+(\texttt{check\_representation\_omitted\_alternative.py} /
+\texttt{OMITTED\_ALTERNATIVE\_REJECTION\_01.json}), deleting a single
+positive-probability successor edge of an unselected alternative action
+causes \texttt{certify} (\texttt{NodeValid}) to reject the candidate
 graph immediately.
 
 \subsection{Quartic node ceiling, native cursor execution, and
@@ -1345,7 +1357,7 @@ satisfies the horizon invariant \(n + t = H\), so the map
 is injective on \(G\), bounding
 \(|G| \le |\{0, \dots, H\}|^4 \cdot |Q| = 24(H+1)^4\).
 
-\Needspace{24\baselineskip}
+\Needspace{14\baselineskip}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
@@ -1424,8 +1436,10 @@ exact discounted net payoff equals
 history-tree explosion versus certified polynomial decision-diagram
 scaling and two-stage certifying architecture (Theorem 6). (a)
 Logarithmic scaling across H \textbackslash in \textbackslash\{1,
-\textbackslash dots, 8\textbackslash\} at B\_0 = 2 comparing raw
-(\textbar\textbackslash mathcal\{A\}\textbar\textbar\textbackslash
+\textbackslash dots, 8\textbackslash\} at B\_0 = 2, c = 1, d = 3/4,
+\textbackslash lambda = 13/10 (equal prior on r\_\textbackslash theta
+\textbackslash in \textbackslash\{1/4, 3/4\textbackslash\}) comparing
+raw (\textbar\textbackslash mathcal\{A\}\textbar\textbar\textbackslash
 mathcal\{O\}\textbar)\^{}H = 28\^{}H trees against the proved
 24(H+1)\^{}4 worst-case certificate ceiling, actual certified all-action
 DAG nodes (1,661 at H=8), and optimal execution subgraph nodes (151 at
@@ -1437,14 +1451,16 @@ omitted.}]{figures/fig3_dag_compression_and_scaling.pdf}
 \caption{Exponential history-tree explosion versus certified polynomial
 decision-diagram scaling and two-stage certifying architecture (Theorem
 6). (a) Logarithmic scaling across \(H \in \{1, \dots, 8\}\) at
-\(B_0 = 2\) comparing raw \((|\mathcal{A}||\mathcal{O}|)^H = 28^H\)
-trees against the proved \(24(H+1)^4\) worst-case certificate ceiling,
-actual certified all-action DAG nodes (\(1,661\) at \(H=8\)), and
-optimal execution subgraph nodes (\(151\) at \(H=8\)). (b) Separation
-between the untrusted memoized DAG generator and the executable rational
-certificate checker \protect\texttt{certify\ :\ Option\ Certified},
-showing rejection when any positive-mass branch of an unselected
-alternative action is omitted.}
+\(B_0 = 2, c = 1, d = 3/4, \lambda = 13/10\) (equal prior on
+\(r_\theta \in \{1/4, 3/4\}\)) comparing raw
+\((|\mathcal{A}||\mathcal{O}|)^H = 28^H\) trees against the proved
+\(24(H+1)^4\) worst-case certificate ceiling, actual certified
+all-action DAG nodes (\(1,661\) at \(H=8\)), and optimal execution
+subgraph nodes (\(151\) at \(H=8\)). (b) Separation between the
+untrusted memoized DAG generator and the executable rational certificate
+checker \protect\texttt{certify\ :\ Option\ Certified}, showing
+rejection when any positive-mass branch of an unselected alternative
+action is omitted.}
 \end{figure}
 
 \section{Formalization architecture, related literature, and explicit
@@ -1457,13 +1473,13 @@ checking}\label{pure-kernel-lean-4-formalization-and-exact-rational-certificate-
 
 All definitions, recursions, posterior updates, witness trajectories,
 and theorems in Sections 2--6 have been formalized in Lean 4 (v4.33.1)
-over Mathlib \citep{mouraUllrich2021, mathlib2020} across 24
+over Mathlib \citep{mouraUllrich2021, mathlib2020} across 30
 interconnected modules (\texttt{FiniteJointDecision*},
 \texttt{RegisterJointDecision*}, and \texttt{RegisterDecision*}). Across
 the entire compiled environment, an automated axiom audit confirms zero
 occurrences of \texttt{sorryAx} and zero occurrences of compiler-trusted
-evaluation (\texttt{Lean.ofReduceBool} / \texttt{native\_decide};
-\citet{boespflug2011}), leaving solely Lean's three standard logical
+evaluation (\texttt{Lean.ofReduceBool} / \texttt{native\_decide})
+\citep{boespflug2011}, leaving solely Lean's three standard logical
 axioms \texttt{\{propext,\ Classical.choice,\ Quot.sound\}}
 \citep{carneiro2019}.
 
@@ -1480,13 +1496,14 @@ as well as probabilistic model checking
 \item
   \textbf{Non-circular derivation of sufficiency
   (\texttt{initial\_relation} and \texttt{StepRefinement}).} Rather than
-  axiomatizing a reduced state space \(\Sigma\) as primitive, the
-  \texttt{RegisterDecision} modules \texttt{ObserverSource} and
-  \texttt{RepresentationModel} construct an explicit world-level
+  axiomatizing a reduced state space \(\Sigma\) as primitive, our
+  formalization constructs---in the modules
+  \texttt{RegisterDecisionObserverSource} and
+  \texttt{RegisterDecisionRepresentationModel}---an explicit world-level
   simulation relation \texttt{Rel} linking full finitely supported
   beliefs over \(\mathcal{W}(\Theta)\) to \(\sigma = (t, q, s, f, k)\),
-  prove \texttt{initial\_relation} on the damaged founder
-  \(\mathcal{S}_0\), and discharge \texttt{StepRefinement} for every
+  proves \texttt{initial\_relation} on the damaged founder
+  \(\mathcal{S}_0\), and discharges \texttt{StepRefinement} for every
   legal action and positive-mass receipt.
 \item
   \textbf{Separation between noncomputable real expectations and
@@ -1496,8 +1513,8 @@ as well as probabilistic model checking
   real-randomized competitors (\texttt{RawCausalPolicy}), whereas
   \texttt{summarize}, \texttt{countBelief}, \texttt{generate},
   \texttt{certify}, \texttt{boundCheck}, and \texttt{packedRun} execute
-  purely over computable types (\texttt{ℕ}, \texttt{ℚ}, \texttt{Bool},
-  \texttt{Option}, \texttt{Array}). Exact bridge theorems
+  purely over computable Lean types (\texttt{Nat}, \texttt{Rat},
+  \texttt{Bool}, \texttt{Option}, \texttt{Array}). Exact bridge theorems
   (\texttt{checked\_native\_value}, \texttt{checked\_native\_optimal},
   \texttt{initial\_graph\_native\_payment}) equate the two layers
   without runtime real arithmetic.
@@ -1565,7 +1582,7 @@ and operations research:
   \citep{bryant1986, bahar1997, hoey1999, bergman2016}.
 \end{itemize}
 
-At the same time, four scope boundaries must be stated explicitly:
+At the same time, three scope boundaries must be stated explicitly:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1598,12 +1615,14 @@ At the same time, four scope boundaries must be stated explicitly:
   infinite-horizon survival or asymptotic lineage growth.
 \end{enumerate}
 
+\appendix
+
 \section{Appendix: Self-contained mathematical
 proofs}\label{appendix-self-contained-mathematical-proofs}
 
-\subsection{A.1 Proof of Theorem 1 (Commutation, prepayment, and
+\subsection{Proof of Theorem 1 (Commutation, prepayment, and
 full-history Bayes
-optimality)}\label{a.1-proof-of-theorem-1-commutation-prepayment-and-full-history-bayes-optimality}
+optimality)}\label{proof-of-theorem-1-commutation-prepayment-and-full-history-bayes-optimality}
 
 \textbf{(1) Exact native-to-compressed commutation.} Proceed by
 induction on \(t \in \{0, \dots, H\}\). At \(t = 0\),
@@ -1713,9 +1732,8 @@ gives
 \(J_H^{\mathrm{native}}(\pi) \le V_H(b_0, B_0) = J_H^{\mathrm{native}}(\tau_H^*)\).
 \(\square\)
 
-\subsection{A.2 Proof of Theorem 2 (High-price closed-form optimum and
-sharp
-boundaries)}\label{a.2-proof-of-theorem-2-high-price-closed-form-optimum-and-sharp-boundaries}
+\subsection{Proof of Theorem 2 (High-price closed-form optimum and sharp
+boundaries)}\label{proof-of-theorem-2-high-price-closed-form-optimum-and-sharp-boundaries}
 
 \textbf{(1) Universal impossibility when \(B_0 < c\).} If \(B_0 < c\),
 then for every \(B \in [0, B_0]\),
@@ -1737,88 +1755,117 @@ every positive-probability trajectory under any supported-admissible
 \(\nu(s) \in \{0, 1, 2\}\) count how many of the two dispatchable slots
 \(\{0, 1\}\) currently hold \(\mathrm{Some}(g)\). Because zero-fee
 actions never write \(g\) and never fill slot \(1\) once \(t \ge 1\),
-\(\nu(s)\) is nonincreasing along every step: - If \(\nu(s) = 0\), every
-legal action yields \(\mathrm{birth} = 0\) and \(\nu(s') = 0\), so
-continuation payoff is \(0\). - By induction on remaining steps
-\(n \ge 0\), prove that any state \(s\) with \(\nu(s) \le 1\) has
-optimal zero-write continuation bounded above by \(U_1(r, d, n)\), and
-any state \(s\) with \(\nu(s) \le 2\) has continuation bounded above by
-\(U_2(r, d, n) \ge U_1(r, d, n)\) (noting
-\(U_2(r,d,n) - U_1(r,d,n) \ge 0\) easily by induction:
-\(U_2(r,d,n+1) - U_1(r,d,n+1) = r d(U_2 - U_1) + (1-r)d U_1 \ge 0\)): -
-When \(\nu(s) = 1\), because \(U_1(r, d, m)\) is nondecreasing in \(m\)
-(\(U_1(r,d,0) = 0 \le r = U_1(r,d,1)\) and
-\(U_1(m+1) - U_1(m) = d r (U_1(m) - U_1(m-1)) \ge 0\)) and
-\(d \in [0,1]\), dispatching the damaged or absent slot yields
-continuation value bounded above by
-\(0 + d\,U_1(r, d, n-1) \le U_1(r, d, n-1) \le U_1(r, d, n) = r(1 + d\,U_1(r, d, n-1))\),
-whereas idling the unique intact slot attains
-\(r(1 + d\,U_1(r, d, n-1)) + (1 - r)\cdot 0 = U_1(r, d, n)\). - When
-\(\nu(s) = 2\) (both \texttt{root0} and \texttt{child1} hold \(g\)),
-\texttt{stop} commits to \((0, \mathrm{idle})\) forever (attaining
-\(U_1(r, d, n) \le U_2(r, d, n)\)), while idling either intact slot
-yields
-\(r(1 + d\,\text{cont}_{\nu=2}) + (1-r)(0 + d\,\text{cont}_{\nu=1}) \le r(1 + d U_2(r, d, n-1)) + (1-r) d U_1(r, d, n-1) = U_2(r, d, n)\).
-Conversely, \texttt{freeSchedule}---which idles \texttt{root0} while
-receipts equal \((1,0)\) and switches permanently to
-\((1, \mathrm{idle})\) upon the first \((0,0)\) receipt---uses only
-delivered receipts and attains \(U_2(r, d, n)\) identically for every
-\(r \in [0,1]\).
+\(\nu(s)\) is nonincreasing along every step:
+
+\begin{itemize}
+\tightlist
+\item
+  If \(\nu(s) = 0\), every legal action yields \(\mathrm{birth} = 0\)
+  and \(\nu(s') = 0\), so continuation payoff is \(0\).
+\item
+  By induction on remaining steps \(n \ge 0\) (trivial at \(n = 0\)
+  where \(U_1(r,d,0) = U_2(r,d,0) = 0\)), prove that any state \(s\)
+  with \(\nu(s) \le 1\) has optimal zero-write continuation bounded
+  above by \(U_1(r, d, n)\), and any state \(s\) with \(\nu(s) \le 2\)
+  has continuation bounded above by \(U_2(r, d, n) \ge U_1(r, d, n)\)
+  (noting \(U_2(r,d,n) - U_1(r,d,n) \ge 0\) easily by induction:
+  \(U_2(r,d,n+1) - U_1(r,d,n+1) = r d(U_2 - U_1) + (1-r)d U_1 \ge 0\)):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    When \(\nu(s) = 1\), because \(U_1(r, d, m)\) is nondecreasing in
+    \(m\) (\(U_1(r,d,0) = 0 \le r = U_1(r,d,1)\) and
+    \(U_1(m+1) - U_1(m) = d r (U_1(m) - U_1(m-1)) \ge 0\)) and
+    \(d \in [0,1]\), dispatching the damaged or absent slot yields
+    continuation value bounded above by
+    \(0 + d\,U_1(r, d, n-1) \le U_1(r, d, n-1) \le U_1(r, d, n) = r(1 + d\,U_1(r, d, n-1))\),
+    whereas idling the unique intact slot attains
+    \(r(1 + d\,U_1(r, d, n-1)) + (1 - r)\cdot 0 = U_1(r, d, n)\).
+  \item
+    When \(\nu(s) = 2\) (both \texttt{root0} and \texttt{child1} hold
+    \(g\)), \texttt{stop} commits to \((0, \mathrm{idle})\) forever
+    (attaining \(U_1(r, d, n) \le U_2(r, d, n)\)), while idling either
+    intact slot yields
+    \(r(1 + d\,\text{cont}_{\nu=2}) + (1-r)(0 + d\,\text{cont}_{\nu=1}) \le r(1 + d U_2(r, d, n-1)) + (1-r) d U_1(r, d, n-1) = U_2(r, d, n)\).
+    Conversely, \texttt{freeSchedule}---which idles \texttt{root0} while
+    receipts equal \((1,0)\) and switches permanently to
+    \((1, \mathrm{idle})\) upon the first \((0,0)\) receipt---uses only
+    delivered receipts and attains \(U_2(r, d, n)\) identically for
+    every \(r \in [0,1]\) (with explicit closed form
+    \(U_2(r,d,n) = r + \sum_{k=2}^n d^{k-1}r^{k-1}(k - 1 - (k-2)r)\)
+    verified inductively via
+    \((k - 2 - (k-3)r) + (1 - r) = k - 1 - (k-2)r\)).
+  \end{itemize}
+\end{itemize}
 
 \textbf{(3) Five-step proof of the general high-price formula
 (\(B_0 = c\), \(p \ge S_H(d)\)).} Fix \(\theta \in \Theta\) with rate
-\(r = r_\theta\) and total horizon \(H + 1\). 1. \emph{Delayed-charge
-pathwise nonpositivity.} On any legal trajectory starting from
-\(\mathcal{S}_0 = [\mathrm{Some}(\neg g)]\), let
-\(\tau \in \{0, 1, \dots, H\} \cup \{\infty\}\) be the first step at
-which a paid write occurs (\(\mathrm{paid}_\tau = 1\), \(C_\tau = c\)).
-For all \(t < \tau\), either no write was requested or the write faulted
-(\(m_t = 0\)) or targeted absent slot \(1\), so all slots remain
-\(\neg g\) or \texttt{None} and \(\mathrm{birth}_t = 0\). If
-\(\tau = \infty\), pathwise payoff is \(0\). If \(1 \le \tau \le H\),
-since \(\mathrm{birth}_t \le 1\) for \(t \ge \tau\) and \(C_t \ge 0\)
-for \(t > \tau\), total pathwise discounted net payoff is bounded above
-by
-\[\sum_{t=\tau}^{H} d^t \mathrm{birth}_t - d^\tau \lambda c \le d^\tau \sum_{u=0}^{H-\tau} d^u - d^\tau p = d^\tau\bigl(S_{H-\tau+1}(d) - p\bigr) \le d^\tau\bigl(S_H(d) - p\bigr) \le 0,\]
-because
-\(\tau \ge 1 \implies H - \tau + 1 \le H \implies S_{H-\tau+1}(d) \le S_H(d) \le p\).
-2. \emph{Suboptimality of non-repair initial actions.} Any initial
-action \(a_0 \neq (0, \mathrm{write}_g)\)---namely \texttt{stop},
-\((0, \mathrm{idle})\), \((1, \mathrm{idle})\),
-\((0, \mathrm{write}_{\neg g})\), or \((1, \mathrm{write}_v)\) on absent
-slot \(1\)---produces \(\mathrm{birth}_0 = 0\), nonpositive immediate
-reward \(-\lambda C_0 \le 0\), and leaves an all-damaged store at
-\(t = 1\) with remaining horizon \(H\). Every subsequent realization
-then either never pays a write fee (0 births) or pays its first
-remaining write fee at step \(t \ge 1\), giving total pathwise payoff
-\(\le 0\) by Step 1. 3. \emph{Exact conditional decomposition of initial
-\((0, \mathrm{write}_g)\).} Submitting \(a_0 = (0, \mathrm{write}_g)\)
-faults w.p. \(1 - r\) (emitting \((0,0)\), charging \(0\), and leaving
-\(\mathcal{S}_1 = [\mathrm{Some}(\neg g), \mathrm{None}]\) with
-remaining horizon \(H\), where every legal continuation has conditional
-expected value \(\le 0\) by Step 1, and \texttt{stop} attains \(0\));
-and succeeds w.p. \(r\) (emitting \((1,1)\), earning immediate net
-reward \(1 - p\), producing intact \texttt{root0} and \texttt{child1}
-with \(\nu = 2\), and exhausting wallet \(B_1 = c - c = 0\)). 4.
-\emph{Post-repair zero-wallet upper bound.} On the \((1,1)\) branch
-(\(B_1 = 0\), \(H\) steps left), Part (2) proves that every legal
-continuation has conditional expected value at most \(U_2(r, d, H)\),
-attained uniformly by \texttt{freeSchedule}. 5. \emph{Prior expectation
-and attainment.} Averaging over \(\theta \sim \pi_0\) shows that every
-supported-admissible real-randomized policy \(\pi\) satisfies
-\(J_{H+1}(\pi) \le \max\{0,\, \mathbb{E}_{\pi_0}[r_\theta(1 - p + d\,U_2(r_\theta, d, H))]\}\),
-while choosing \((0, \mathrm{write}_g)\) followed by
-\texttt{freeSchedule} on \((1,1)\) and \texttt{stop} on \((0,0)\)
-attains
-\(\mathbb{E}_{\pi_0}[r_\theta(1 - p + d\,U_2(r_\theta, d, H))]\), and
-\texttt{stop} at \(t = 0\) attains \(0\). Finally, for
-\(\mu_1 = \mathbb{E}[r_\theta] > 0\),
-\(\mathbb{E}[r_\theta(1 - p + d U_2(r_\theta, d, H))] = \mu_1(1 - p) + d M_H > 0 \iff p < 1 + d M_H / \mu_1\).
-\(\square\)
+\(r = r_\theta\) and total horizon \(H + 1\).
 
-\subsection{A.3 Proof of Theorem 3 (Persistence, post-fault contraction,
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{Delayed-charge pathwise nonpositivity.} On any legal trajectory
+  starting from \(\mathcal{S}_0 = [\mathrm{Some}(\neg g)]\), let
+  \(\tau \in \{0, 1, \dots, H\} \cup \{\infty\}\) be the first step at
+  which a paid write occurs (\(\mathrm{paid}_\tau = 1\),
+  \(C_\tau = c\)). For all \(t < \tau\), either no write was requested
+  or the write faulted (\(m_t = 0\)) or targeted absent slot \(1\), so
+  all slots remain \(\neg g\) or \texttt{None} and
+  \(\mathrm{birth}_t = 0\). If \(\tau = \infty\), pathwise payoff is
+  \(0\). If \(1 \le \tau \le H\), since \(\mathrm{birth}_t \le 1\) for
+  \(t \ge \tau\) and \(C_t \ge 0\) for \(t > \tau\), total pathwise
+  discounted net payoff is bounded above by
+  \[\sum_{t=\tau}^{H} d^t \mathrm{birth}_t - d^\tau \lambda c \le d^\tau \sum_{u=0}^{H-\tau} d^u - d^\tau p = d^\tau\bigl(S_{H-\tau+1}(d) - p\bigr) \le d^\tau\bigl(S_H(d) - p\bigr) \le 0,\]
+  because
+  \(\tau \ge 1 \implies H - \tau + 1 \le H \implies S_{H-\tau+1}(d) \le S_H(d) \le p\).
+\item
+  \emph{Suboptimality of non-repair initial actions.} Any initial action
+  \(a_0 \neq (0, \mathrm{write}_g)\)---namely \texttt{stop},
+  \((0, \mathrm{idle})\), \((1, \mathrm{idle})\),
+  \((0, \mathrm{write}_{\neg g})\), or \((1, \mathrm{write}_v)\) on
+  absent slot \(1\)---produces \(\mathrm{birth}_0 = 0\), nonpositive
+  immediate reward \(-\lambda C_0 \le 0\), and leaves an all-damaged
+  store at \(t = 1\) with remaining horizon \(H\). Every subsequent
+  realization then either never pays a write fee (0 births) or pays its
+  first remaining write fee at step \(t \ge 1\), giving total pathwise
+  payoff \(\le 0\) by Step 1.
+\item
+  \emph{Exact conditional decomposition of initial
+  \((0, \mathrm{write}_g)\).} Submitting \(a_0 = (0, \mathrm{write}_g)\)
+  faults w.p. \(1 - r\) (emitting \((0,0)\), charging \(0\), and leaving
+  \(\mathcal{S}_1 = [\mathrm{Some}(\neg g), \mathrm{None}]\) with
+  remaining horizon \(H\), where every legal continuation has
+  conditional expected value \(\le 0\) by Step 1, and \texttt{stop}
+  attains \(0\)); and succeeds w.p. \(r\) (emitting \((1,1)\), earning
+  immediate net reward \(1 - p\), producing intact \texttt{root0} and
+  \texttt{child1} with \(\nu = 2\), and exhausting wallet
+  \(B_1 = c - c = 0\)).
+\item
+  \emph{Post-repair zero-wallet upper bound.} On the \((1,1)\) branch
+  (\(B_1 = 0\), \(H\) steps left), Part (2) proves that every legal
+  continuation has conditional expected value at most \(U_2(r, d, H)\),
+  attained uniformly by \texttt{freeSchedule}.
+\item
+  \emph{Prior expectation and attainment.} Averaging over
+  \(\theta \sim \pi_0\) shows that every supported-admissible
+  real-randomized policy \(\pi\) satisfies
+  \(J_{H+1}(\pi) \le \max\{0,\, \mathbb{E}_{\pi_0}[r_\theta(1 - p + d\,U_2(r_\theta, d, H))]\}\),
+  while choosing \((0, \mathrm{write}_g)\) followed by
+  \texttt{freeSchedule} on \((1,1)\) and \texttt{stop} on \((0,0)\)
+  attains
+  \(\mathbb{E}_{\pi_0}[r_\theta(1 - p + d\,U_2(r_\theta, d, H))]\), and
+  \texttt{stop} at \(t = 0\) attains \(0\). Finally, for
+  \(\mu_1 = \mathbb{E}[r_\theta] > 0\),
+  \(\mathbb{E}[r_\theta(1 - p + d U_2(r_\theta, d, H))] = \mu_1(1 - p) + d M_H > 0 \iff p < 1 + d M_H / \mu_1\).
+  \(\square\)
+\end{enumerate}
+
+\subsection{Proof of Theorem 3 (Persistence, post-fault contraction,
 feedback, and zero
-EVPI)}\label{a.3-proof-of-theorem-3-persistence-post-fault-contraction-feedback-and-zero-evpi}
+EVPI)}\label{proof-of-theorem-3-persistence-post-fault-contraction-feedback-and-zero-evpi}
 
 \textbf{(1) Persistence variance premium.} At \(H = 1\) (total horizon
 \(2\)), Theorem 2 gives
@@ -1854,7 +1901,10 @@ For a two-point prior \(w \delta_{r_0} + (1-w)\delta_{r_1}\) with
 = \frac{\mu_2(\mu_1 - \mu_2) - \mu_1(\mu_2 - \mu_3)}{\mu_1(\mu_1 - \mu_2)}
 = \frac{\mu_1 \mu_3 - \mu_2^2}{\mu_1(\mu_1 - \mu_2)} > 0,\] proving
 \(p_{\mathrm{fault}}^*(1) = 1 + d\frac{\mu_2 - \mu_3}{\mu_1 - \mu_2} < 1 + d\frac{\mu_2}{\mu_1} = p_{\mathrm{prior}}^*(1)\)
-whenever \(d > 0\). For \(w = 1/2, (r_0, r_1) = (1/4, 3/4), d = 1/2\):
+whenever \(d > 0\) (noting sharpness of \(r_0 > 0\): if
+\(r_0 = 0 < r_1\), then \(\mu_1\mu_3 - \mu_2^2 = 0\) and
+\(p_{\mathrm{fault}}^*(1) = p_{\mathrm{prior}}^*(1) = 1 + d r_1\)). For
+\(w = 1/2, (r_0, r_1) = (1/4, 3/4), d = 1/2\):
 \(\mu_1 = 1/2, \mu_2 = 5/16, \mu_3 = \frac{1}{2}(\frac{1}{64} + \frac{27}{64}) = \frac{7}{32}\),
 so
 \(p_{\mathrm{prior}}^*(1) = 1 + \frac{1}{2}\cdot\frac{5/16}{1/2} = \frac{21}{16}\)
@@ -1862,13 +1912,19 @@ and
 \(p_{\mathrm{fault}}^*(1) = 1 + \frac{1}{2}\cdot\frac{5/16 - 7/32}{1/2 - 5/16} = 1 + \frac{1}{2}\cdot\frac{3/32}{3/16} = \frac{5}{4}\).
 At \(p = 13/10\), the conditional post-fault two-step retry value is
 \(\mu'_1(1-p) + d\mu'_2 = \frac{3}{8}(-\frac{3}{10}) + \frac{1}{2}\cdot\frac{3}{16} = -\frac{9}{80} + \frac{3}{32} = -\frac{3}{160} < 0\).
-Hence at total horizon \(3\) (\(d = 1/2, p = 13/10\)), after
-\(a_0 = (0, \mathrm{write}_g)\): the \((1,1)\) branch contributes
+Crucially, at \(t = 1\) only \(2 = 1 + 1\) steps remain and
+\(p = 13/10 \ge 1 = S_1(1/2)\) satisfies Theorem 2(2)'s two-step
+high-price condition; hence after \(a_0 = (0, \mathrm{write}_g)\) at
+total horizon \(3\), the \((1,1)\) branch achieves optimal value
 \(\mu_1(1 - 13/10) + (1/2 + 1/4)\mu_2 = -\frac{3}{20} + \frac{3}{4}\cdot\frac{5}{16} = \frac{27}{320}\),
-and halting after \((0,0)\) contributes \(0\) (\(V_3^* = 27/320\)),
-whereas freezing the prior and retrying \((0, \mathrm{write}_g)\) after
-\((0,0)\) (branch probability \(1 - \mu_1 = 1/2\), discounted by
-\(d = 1/2\)) adds
+the \((0,0)\) branch has exact optimal continuation
+\(V_2^*(\pi_{(0,0)}, c) = \max\{0, -3/160\} = 0\) attained by halting,
+and any initial action \(a_0 \neq (0, \mathrm{write}_g)\) earns
+\(\le 0\) at \(t = 0\) plus at most
+\(d\,V_2^*(\pi_0, c) = \frac{1}{2}\cdot\frac{1}{160} = \frac{1}{320} < \frac{27}{320}\),
+establishing \(V_3^* = 27/320\). Freezing the prior and retrying
+\((0, \mathrm{write}_g)\) after \((0,0)\) (branch probability
+\(1 - \mu_1 = 1/2\), discounted by \(d = 1/2\)) adds
 \((1 - \mu_1) d \bigl(\mu'_1(1-p) + d\mu'_2\bigr) = \frac{1}{2}\cdot\frac{1}{2}\cdot\bigl(-\frac{3}{160}\bigr) = -\frac{3}{640}\),
 reducing total expected net value to
 \(\frac{27}{320} - \frac{3}{640} = \frac{51}{640}\).
@@ -1888,18 +1944,29 @@ whereas root-only
 
 At \(H+1 = 4\), after \(m_0 = 1\) creates two intact slots \(\{0, 1\}\),
 consider any predetermined three-step open-loop sequence
-\((j_1, j_2, j_3) \in \{0, 1\}^3\) of idles: - If \(j_1 = j_2 = j_3\):
-expected continuation is \(r + d r^2 + d^2 r^3 \le r + d r + d^2 r^2\).
-- If two consecutive steps use one slot and one step uses the
-other---either \((0,0,1)\) (\(r + d r^2 + d^2 r\)) or \((0,1,1)\)
-(\(r + d r + d^2 r^2\))---since
-\(d r^2 + d^2 r - (d r + d^2 r^2) = d r(1-r)(d - 1) \le 0\) for
-\(d \in [0,1]\), both are bounded above by \(r + d r + d^2 r^2\). - If
-the sequence alternates \((0, 1, 0)\) (or \((1, 0, 1)\)): step \(1\)
-earns \(r\), step \(2\) on the untouched slot earns \(d r\), and step
-\(3\) returns to the first slot (which survived step \(1\) w.p. \(r\)
-and succeeds at step \(3\) w.p. \(r\)), earning \(d^2 r^2\), totaling
-\(r + d r + d^2 r^2\). By contrast, \texttt{freeSchedule} earns
+\((j_1, j_2, j_3) \in \{0, 1\}^3\) of idles (any \texttt{stop} at step
+\(u\) simply fixes \(j_s = 0\) for all \(s \ge u\)):
+
+\begin{itemize}
+\tightlist
+\item
+  If \(j_1 = j_2 = j_3\): expected continuation is
+  \(r + d r^2 + d^2 r^3 \le r + d r + d^2 r^2\).
+\item
+  If two consecutive steps use one slot and one step uses the
+  other---either \((0,0,1)\) (\(r + d r^2 + d^2 r\)) or \((0,1,1)\)
+  (\(r + d r + d^2 r^2\))---since
+  \(d r^2 + d^2 r - (d r + d^2 r^2) = d r(1-r)(d - 1) \le 0\) for
+  \(d \in [0,1]\), both are bounded above by \(r + d r + d^2 r^2\).
+\item
+  If the sequence alternates \((0, 1, 0)\) (or \((1, 0, 1)\)): step
+  \(1\) earns \(r\), step \(2\) on the untouched slot earns \(d r\), and
+  step \(3\) returns to the first slot (which survived step \(1\) w.p.
+  \(r\) and succeeds at step \(3\) w.p. \(r\)), earning \(d^2 r^2\),
+  totaling \(r + d r + d^2 r^2\).
+\end{itemize}
+
+By contrast, \texttt{freeSchedule} earns
 \(U_2(r, d, 3) = r + d r + d^2(2r^2 - r^3)\), so multiplying by \(r d\)
 and subtracting gives
 \(r d\bigl(U_2(r,d,3) - (r + dr + d^2 r^2)\bigr) = d^3 r^3(1 - r) \ge 0\),
@@ -1920,26 +1987,31 @@ depending on \(\theta\) can exceed \(U_2(r_\theta, d, H)\), which
 \texttt{freeSchedule} already attains without knowing \(\theta\).
 \(\square\)
 
-\subsection{A.4 Proof of Theorem 4 (Informative zero receipts and
-counting
-posteriors)}\label{a.4-proof-of-theorem-4-informative-zero-receipts-and-counting-posteriors}
+\subsection{Proof of Theorem 4 (Informative zero receipts and counting
+posteriors)}\label{proof-of-theorem-4-informative-zero-receipts-and-counting-posteriors}
 
 First verify the single-step likelihood factorization
 \(L_r(o \mid g, q, a) = \mathbf{1}_{\{\mathrm{compatible}(g,q,a,o)\}} r^{\Delta s}(1-r)^{\Delta f}\)
-across all \(r \in [0,1]\) (with \(0^0 = 1\)): - If
-\(\mathrm{informative}(g, q, a)\) fails, then
-\(o_{\mathrm{norm}}(g, q, a) = (0,0)\) and \(\Delta s = \Delta f = 0\).
-If \(o = (0,0)\), compatibility holds and
-\(L_r((0,0) \mid g, q, a) = r + (1 - r) = 1 = r^0 (1 - r)^0\) (even at
-\(r = 0\) or \(r = 1\) since \(0^0 = 1\)); if \(o \neq (0,0)\),
-compatibility fails and \(L_r(o \mid g, q, a) = 0\). - If
-\(\mathrm{informative}(g, q, a)\) holds, then
-\(o_{\mathrm{norm}} \neq (0,0)\). For \(o = o_{\mathrm{norm}}\),
-\((\Delta s, \Delta f) = (1, 0)\) and \(L_r = r = r^1 (1 - r)^0\); for
-\(o = (0,0)\), \((\Delta s, \Delta f) = (0, 1)\) and
-\(L_r = 1 - r = r^0 (1 - r)^1\); for
-\(o \notin \{o_{\mathrm{norm}}, (0,0)\}\), compatibility fails and
-\(L_r = 0\).
+across all \(r \in [0,1]\) (with \(0^0 = 1\)):
+
+\begin{itemize}
+\tightlist
+\item
+  If \(\mathrm{informative}(g, q, a)\) fails, then
+  \(o_{\mathrm{norm}}(g, q, a) = (0,0)\) and
+  \(\Delta s = \Delta f = 0\). If \(o = (0,0)\), compatibility holds and
+  \(L_r((0,0) \mid g, q, a) = r + (1 - r) = 1 = r^0 (1 - r)^0\) (even at
+  \(r = 0\) or \(r = 1\) since \(0^0 = 1\)); if \(o \neq (0,0)\),
+  compatibility fails and \(L_r(o \mid g, q, a) = 0\).
+\item
+  If \(\mathrm{informative}(g, q, a)\) holds, then
+  \(o_{\mathrm{norm}} \neq (0,0)\). For \(o = o_{\mathrm{norm}}\),
+  \((\Delta s, \Delta f) = (1, 0)\) and \(L_r = r = r^1 (1 - r)^0\); for
+  \(o = (0,0)\), \((\Delta s, \Delta f) = (0, 1)\) and
+  \(L_r = 1 - r = r^0 (1 - r)^1\); for
+  \(o \notin \{o_{\mathrm{norm}}, (0,0)\}\), compatibility fails and
+  \(L_r = 0\).
+\end{itemize}
 
 Next, prove by induction along any step \(u\) from \(\mathcal{S}_0\)
 that \texttt{upd}\((g, q_u, a_u, o_u)\) equals the local projection
@@ -1977,9 +2049,9 @@ thus \(\mathbb{P}_{\pi_0, \pi}(h) > 0\) implies \(\mathrm{compat}(h)\),
 \(\mathbb{P}_{\pi_0, \pi}(\theta \mid h) = \mathbb{P}_{\pi_0, \pi}(\theta, h) / \mathbb{P}_{\pi_0, \pi}(h) = w_\theta(s(h), f(h)) / Z(s(h), f(h))\).
 \(\square\)
 
-\subsection{A.5 Proof of Theorem 5 (Joint all-action sufficiency and
+\subsection{Proof of Theorem 5 (Joint all-action sufficiency and
 sharpness
-witnesses)}\label{a.5-proof-of-theorem-5-joint-all-action-sufficiency-and-sharpness-witnesses}
+witnesses)}\label{proof-of-theorem-5-joint-all-action-sufficiency-and-sharpness-witnesses}
 
 \textbf{(1) Joint sufficiency.} Let \(h\) be any positive-mass history
 with \(\sigma(h) = (t, q, s, f, k)\). By Theorem 1(2), literal balance
@@ -2006,24 +2078,29 @@ the summary Bellman value \(V_n^{\mathrm{stat}}(\sigma)\) equals
 \textbf{(2) Physical-Markov insufficiency (\texttt{insufficientA}
 vs.~\texttt{insufficientB}).} Under
 \(a_{0:2} = [(0,\mathrm{write}_g), (0,\mathrm{idle}), (0,\mathrm{idle})]\)
-starting from \([\mathrm{Some}(\neg g)]\): - History \(h_A\) emits
-\([(1,1), (1,0), (0,0)]\), occurring iff
-\((m_0, m_1, m_2) = (1, 1, 0)\), so \(\mathbb{P}_r(h_A) = r^2(1-r)\),
-ending at \(t=3, k=1\) (\(B_3 = 0\)),
-\(q_* = (\neg g, \mathrm{Some}(g), 0, 0)\), and \((s,f) = (2,1)\). Under
-equal prior on \(\{1/4, 3/4\}\),
-\(\mathbb{P}(h_A) = \frac{1}{2}\bigl(\frac{1}{16}\cdot\frac{3}{4} + \frac{9}{16}\cdot\frac{1}{4}\bigr) = \frac{12}{128} = \frac{3}{32}\),
-\(\pi_{h_A}(1/4) = \frac{3/64}{12/64} = \frac{1}{4}\), and
-\(\mathbb{P}(\mathrm{birth}_3 = 1 \mid h_A, a_3 = (1,\mathrm{idle})) = \frac{1}{4}\cdot\frac{1}{4} + \frac{3}{4}\cdot\frac{3}{4} = \frac{10}{16} = \frac{5}{8}\).
-- History \(h_B\) emits \([(1,1), (0,0), (0,0)]\), occurring iff
-\((m_0, m_1) = (1, 0)\) \emph{for both \(m_2 = 1\) and \(m_2 = 0\)}
-(since after \(m_1 = 0\) damages \texttt{root0}, step \(2\) idles
-damaged \texttt{root0} and emits \((0,0)\) deterministically), so
-\(\mathbb{P}_r(h_B) = r(1-r)(r + 1 - r) = r(1-r)\), ending at the
-\emph{same} \(t=3, B_3=0, q_*\), but \((s,f) = (1,1)\). Thus
-\(\mathbb{P}(h_B) = \frac{1}{2}\bigl(\frac{3}{16} + \frac{3}{16}\bigr) = \frac{3}{16}\),
-\(\pi_{h_B}(1/4) = \frac{1}{2}\), and
-\(\mathbb{P}(\mathrm{birth}_3 = 1 \mid h_B, a_3 = (1,\mathrm{idle})) = \frac{1}{2}\cdot\frac{1}{4} + \frac{1}{2}\cdot\frac{3}{4} = \frac{1}{2} \neq \frac{5}{8}\).
+starting from \([\mathrm{Some}(\neg g)]\):
+
+\begin{itemize}
+\tightlist
+\item
+  History \(h_A\) emits \([(1,1), (1,0), (0,0)]\), occurring iff
+  \((m_0, m_1, m_2) = (1, 1, 0)\), so \(\mathbb{P}_r(h_A) = r^2(1-r)\),
+  ending at \(t=3, k=1\) (\(B_3 = 0\)), \(q_* = (\neg g, g, 0, 0)\), and
+  \((s,f) = (2,1)\). Under equal prior on \(\{1/4, 3/4\}\),
+  \(\mathbb{P}(h_A) = \frac{1}{2}\bigl(\frac{1}{16}\cdot\frac{3}{4} + \frac{9}{16}\cdot\frac{1}{4}\bigr) = \frac{12}{128} = \frac{3}{32}\),
+  \(\pi_{h_A}(1/4) = \frac{3/64}{12/64} = \frac{1}{4}\), and
+  \(\mathbb{P}(\mathrm{birth}_3 = 1 \mid h_A, a_3 = (1,\mathrm{idle})) = \frac{1}{4}\cdot\frac{1}{4} + \frac{3}{4}\cdot\frac{3}{4} = \frac{10}{16} = \frac{5}{8}\).
+\item
+  History \(h_B\) emits \([(1,1), (0,0), (0,0)]\), occurring iff
+  \((m_0, m_1) = (1, 0)\) \emph{for both \(m_2 = 1\) and \(m_2 = 0\)}
+  (since after \(m_1 = 0\) damages \texttt{root0}, step \(2\) idles
+  damaged \texttt{root0} and emits \((0,0)\) deterministically), so
+  \(\mathbb{P}_r(h_B) = r(1-r)(r + 1 - r) = r(1-r)\), ending at the
+  \emph{same} \(t=3, B_3=0, q_*\), but \((s,f) = (1,1)\). Thus
+  \(\mathbb{P}(h_B) = \frac{1}{2}\bigl(\frac{3}{16} + \frac{3}{16}\bigr) = \frac{3}{16}\),
+  \(\pi_{h_B}(1/4) = \frac{1}{2}\), and
+  \(\mathbb{P}(\mathrm{birth}_3 = 1 \mid h_B, a_3 = (1,\mathrm{idle})) = \frac{1}{2}\cdot\frac{1}{4} + \frac{1}{2}\cdot\frac{3}{4} = \frac{1}{2} \neq \frac{5}{8}\).
+\end{itemize}
 
 \textbf{(3) Lawful history merger and slot-2 separation (\texttt{mergeA}
 vs.~\texttt{mergeB}).} Under trajectory \(m_A\)
@@ -2049,9 +2126,9 @@ yields birth probability \(0\) on \(m_A\) (\texttt{None} at slot \(2\))
 versus \(r_\theta\) (prior mean \(5/8\)) on \(m_B\) (\texttt{Some(g)} at
 slot \(2\)). \(\square\)
 
-\subsection{\texorpdfstring{A.6 Proof of Theorem 6 (Certified shared
-DAGs and \(24(H+1)^4\)
-bound)}{A.6 Proof of Theorem 6 (Certified shared DAGs and 24(H+1)\^{}4 bound)}}\label{a.6-proof-of-theorem-6-certified-shared-dags-and-24h14-bound}
+\subsection{\texorpdfstring{Proof of Theorem 6 (Certified shared DAGs
+and \(24(H+1)^4\)
+bound)}{Proof of Theorem 6 (Certified shared DAGs and 24(H+1)\^{}4 bound)}}\label{proof-of-theorem-6-certified-shared-dags-and-24h14-bound}
 
 \textbf{(1) Exact native attainment and optimality.} Suppose
 \texttt{check}\((G, i_{\mathrm{root}}) = \mathrm{true}\). Prove by
@@ -2103,54 +2180,13 @@ then \(t_i = t_j \implies n_i = H - t_i = H - t_j = n_j\) and
 the pigeonhole principle yields \(G.\mathrm{size} \le 24(H + 1)^4\).
 \(\square\)
 
-\section*{Declarations}\label{declarations}
-\addcontentsline{toc}{section}{Declarations}
-
-\textbf{Funding.} The author received no external funding, grants, or
-financial support for the research, formalization, authorship, or
-preparation of this manuscript.
-
-\textbf{Conflicts of interest / Competing interests.} The author
-declares no financial or non-financial competing interests relevant to
-the content of this article.
-
-\textbf{Availability of data and material.} Not applicable. No empirical
-datasets were generated or analyzed; all mathematical proofs, rational
-dynamic-programming benchmarks, and counterexample trajectories are
-self-contained in the text and Mathematical Appendix.
-
-\textbf{Code availability.} All definitions, theorems, finite-table and
-decision-diagram synthesizers, rational certificate checkers, and
-counterexamples reported in this article have been formally verified in
-Lean 4 (v4.33.1) over Mathlib, passing an environment-wide axiom audit
-restricting transitive dependencies exclusively to
-\texttt{\{propext,\ Classical.choice,\ Quot.sound\}} (\texttt{0}
-\texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}). The exported
-Lean 4 formalization archive (v1.0.0) and accompanying Python
-verification scripts reproducing every exact rational value, node count,
-and vector figure are released under the Apache License, Version 2.0
-(Apache-2.0); the permanent archival DOI is recorded on the separate
-unblinded Title Page in accordance with double-anonymous review
-guidelines.
-
-\textbf{Authors' contributions.} Single-authored manuscript. The sole
-author conceived the stochastic control formulation and decision-diagram
-architecture, proved the mathematical and mechanized results, and wrote
-the manuscript; AI-assisted tools were used during bibliographic
-verification, Lean proof engineering, and editorial preparation, with
-the author bearing sole responsibility for all theorems, formal
-specifications, and scholarly attributions.
-
-\textbf{Anonymized review note.} Author identity, affiliation, and
-copyright holder metadata are provided on the separate unblinded Title
-Page in accordance with double-anonymous review guidelines.
-
 \clearpage
 \begingroup
-\setstretch{1.02}
+\nolinenumbers
+\setstretch{1.05}
 \small
 \setlength{\bibsep}{4.5pt}
-\bibliographystyle{plainnat}
+\bibliographystyle{amsplain}
 \bibliography{references}
 \endgroup
 \end{document}

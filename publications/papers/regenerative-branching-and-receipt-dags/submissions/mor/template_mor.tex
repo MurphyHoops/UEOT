@@ -1,5 +1,5 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[margin=25mm,headheight=14pt,headsep=8mm]{geometry}
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in,headheight=14pt,headsep=12pt]{geometry}
 \usepackage{fontspec}
 \IfFontExistsTF{Liberation Serif}{%
   \setmainfont{Liberation Serif}%
@@ -9,32 +9,36 @@
 \IfFontExistsTF{Liberation Sans}{%
   \setsansfont{Liberation Sans}%
 }{%
-  \setsansfont[Path=../../../../../tools/books/.cache/fonts/,
-    BoldFont=DejaVuSans-Bold.ttf,
-    ItalicFont=DejaVuSans-Oblique.ttf,
-    BoldItalicFont=DejaVuSans-BoldOblique.ttf]{DejaVuSans.ttf}%
+  \IfFontExistsTF{Latin Modern Sans}{%
+    \setsansfont{Latin Modern Sans}%
+  }{%
+    \setsansfont{Helvetica}%
+  }%
 }
 \IfFontExistsTF{DejaVu Sans Mono}{%
   \setmonofont[Scale=0.86]{DejaVu Sans Mono}%
 }{%
-  \setmonofont[Path=../../../../../tools/books/.cache/fonts/,
-    Scale=0.86,
-    BoldFont=DejaVuSansMono-Bold.ttf,
-    ItalicFont=DejaVuSansMono-Oblique.ttf,
-    BoldItalicFont=DejaVuSansMono-BoldOblique.ttf]{DejaVuSansMono.ttf}%
+  \IfFontExistsTF{Menlo}{%
+    \setmonofont[Scale=0.85]{Menlo}%
+  }{%
+    \setmonofont[Scale=0.86]{Courier New}%
+  }%
 }
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{microtype}
+\setlength{\emergencystretch}{2em}
 \usepackage{setspace}
-\setstretch{1.15}
+\onehalfspacing
+\usepackage{lineno}
 \usepackage{longtable,booktabs,array,calc}
 \newcounter{none}
 \usepackage{needspace}
 \usepackage{graphicx}
 \usepackage{fancyhdr}
-\usepackage[authoryear,round]{natbib}
+\usepackage[numbers,sort&compress]{natbib}
 \usepackage{xcolor}
 \definecolor{linkblue}{HTML}{004B87}
+\renewcommand\linenumberfont{\normalfont\tiny\color{gray}}
 \PassOptionsToPackage{hyphens}{url}
 \usepackage[unicode,colorlinks=true,allcolors=linkblue,bookmarksnumbered=true]{hyperref}
 \usepackage{xurl}
@@ -42,7 +46,7 @@
 \hypersetup{
   pdftitle={$title$},
   pdfauthor={},
-  pdfsubject={Mathematics of Operations Research Blinded Manuscript},
+  pdfsubject={Mathematics of Operations Research Blinded Submission},
   pdfkeywords={$keywords$}
 }
 \setlength{\parindent}{1.15em}
@@ -63,22 +67,30 @@
 \fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
 \begin{document}
 \thispagestyle{plain}
+\nolinenumbers
+\vspace*{18pt}
 \begin{flushleft}
-{\fontsize{17.5}{22}\selectfont\bfseries $title$\par}
-\vspace{8pt}
-{\small\emph{Blinded manuscript prepared for double-anonymous review at Mathematics of Operations Research}\par}
+{\fontsize{17.5}{22.5}\selectfont\bfseries $title$\par}
+\vspace{14pt}
+{\normalsize\emph{Blinded manuscript prepared for double-anonymous peer review at Mathematics of Operations Research}\par}
 \end{flushleft}
-\vspace{6pt}
-\hrule height 0.4pt
+\vspace{16pt}
+\hrule height 0.5pt
+\vspace{14pt}
+\noindent\textbf{MSC 2020 Subject Classification:}\quad $msc2020$\par
 \vspace{8pt}
+\noindent\textbf{OR/MS Subject Classification:}\quad $orms$\par
+\vspace{8pt}
+\noindent\textbf{Keywords:}\quad $keywords$\par
+\vspace{14pt}
+\hrule height 0.5pt
+\vfill
+\noindent{\small\emph{Note to Referees:} Author identity, institutional affiliation, funding, competing-interest disclosures, generative-AI assistance disclosure, and archival software DOI metadata are recorded on the separate unblinded Title Page in accordance with INFORMS double-anonymous review guidelines.\par}
+\clearpage
+
+\linenumbers
 \noindent\textbf{Abstract.}\quad $abstract$\par
-\vspace{6pt}
-\noindent{\small\textbf{Keywords:}\quad $keywords$}\par
-\vspace{3pt}
-\noindent{\small\textbf{MSC 2020 Subject Classification:}\quad $msc2020$}\par
-\vspace{3pt}
-\noindent{\small\textbf{OR/MS Subject Classification:}\quad $orms$}\par
-\vspace{8pt}
+\vspace{10pt}
 \hrule height 0.4pt
 \vspace{12pt}
 
@@ -86,10 +98,11 @@ $body$
 
 \clearpage
 \begingroup
-\setstretch{1.02}
+\nolinenumbers
+\setstretch{1.05}
 \small
 \setlength{\bibsep}{4.5pt}
-\bibliographystyle{plainnat}
+\bibliographystyle{amsplain}
 \bibliography{references}
 \endgroup
 \end{document}

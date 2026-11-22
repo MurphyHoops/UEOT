@@ -10,19 +10,20 @@
 \IfFontExistsTF{Liberation Sans}{%
   \setsansfont{Liberation Sans}%
 }{%
-  \setsansfont[Path=../../../tools/books/.cache/fonts/,
-    BoldFont=DejaVuSans-Bold.ttf,
-    ItalicFont=DejaVuSans-Oblique.ttf,
-    BoldItalicFont=DejaVuSans-BoldOblique.ttf]{DejaVuSans.ttf}%
+  \IfFontExistsTF{Latin Modern Sans}{%
+    \setsansfont{Latin Modern Sans}%
+  }{%
+    \setsansfont{Helvetica}%
+  }%
 }
 \IfFontExistsTF{DejaVu Sans Mono}{%
-  \setmonofont[Scale=0.86]{DejaVu Sans Mono}%
+  \setmonofont[Scale=0.84]{DejaVu Sans Mono}%
 }{%
-  \setmonofont[Path=../../../tools/books/.cache/fonts/,
-    Scale=0.86,
-    BoldFont=DejaVuSansMono-Bold.ttf,
-    ItalicFont=DejaVuSansMono-Oblique.ttf,
-    BoldItalicFont=DejaVuSansMono-BoldOblique.ttf]{DejaVuSansMono.ttf}%
+  \IfFontExistsTF{Menlo}{%
+    \setmonofont[Scale=0.82]{Menlo}%
+  }{%
+    \setmonofont[Scale=0.84]{Courier New}%
+  }%
 }
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{microtype}
@@ -45,9 +46,9 @@
 Grounds of Purpose},
   pdfauthor={Degui Qian},
   pdfsubject={Philosophy of Science, Biological Individuality, and Naturalized Teleology},
-  pdfkeywords={relational objecthood; predictive equivalence; Markov
-blankets; organizational closure; biological individuality; naturalized
-teleology; explanatory preservation}
+  pdfkeywords={Relational objecthood; Predictive equivalence; Markov
+blankets; Organizational closure; Biological individuality; Naturalized
+teleology}
 }
 \setlength{\parindent}{1.15em}
 \setlength{\parskip}{2pt}
@@ -85,36 +86,34 @@ inference, and pattern-based metaphysics, predictive compression and
 statistical boundaries are widely treated as privileged guides to what
 persists as an individual and what its activity is for. This article
 argues that observational and predictive sufficiency systematically
-underdetermines both diachronic objecthood and purposive explanation. In
-response, it develops a constrained relational realism about organized
-processes and a bearer-indexed account of purposive attribution, unified
-by a typed principle of explanatory preservation. Combining general
-measure-theoretic and control-theoretic separations with a
-self-contained stochastic model of damage, restoration, and
-reproduction, the paper establishes four non-reductions and one
-constructive compatibility result. First, minimal predictive quotients
-vary with protocol scope---yielding two, three, or four classes on the
-same four initial configurations---and can couple infinite-horizon
-output laws while erasing realized repair expenditure. Second, identical
-decoded symbolic instructions fail to determine executable agency
-without physical enabling constraints, while partially observed
-viability separates finite-memory from reactive control and resists
-fixed-sample black-box risk certification. Third, proliferative
+underdetermines both diachronic objecthood and purposive explanation.
+Underlying our formal results is a forward-marginalization asymmetry:
+predictive compression marginalizes over past causal pathways to retain
+forward output distributions, erasing the counterfactual invariance,
+restorative expenditure, and genealogical contrasts required for
+individuation and teleology. Governed by a typed principle of
+explanatory preservation, we defend a three-criterion relational realism
+and a four-rung bearer-indexed account of purpose within a
+self-contained stochastic regenerative model. First, minimal predictive
+quotients vary non-monotonically with protocol scope---yielding two,
+three, or four classes on the same four initial configurations---and
+couple infinite-horizon birth streams while erasing realized repair
+expenditure. Second, decoded symbolic instructions fail to determine
+executable agency without physical gate constraints, while partially
+observed viability separates finite-memory from reactive control and
+resists fixed-sample zero-risk certification. Third, proliferative
 investment can maximize expected lineage growth while reducing
-individual survival, splitting physiological persistence, differential
-retention, and reproductive selection. Fourth, scalar optimality and
-dual-criterion scores underdetermine functional standards. Yet
-endogenous restoration, budget-accountable execution, genealogical
-tracking, and full-policy growth attainment are jointly realizable under
-explicit structural and ecological conditions.
+individual survival. Fourth, scalar and dual-criterion scores
+underdetermine functional norms, yet paid restoration and full-policy
+growth attainment are jointly realizable.
 \end{abstract}
 \vspace{4pt}
-\noindent{\small\textbf{Keywords:} relational objecthood; predictive
-equivalence; Markov blankets; organizational closure; biological
-individuality; naturalized teleology; explanatory preservation}
+\noindent{\small\textbf{Keywords:} Relational objecthood; Predictive
+equivalence; Markov blankets; Organizational closure; Biological
+individuality; Naturalized teleology}
 \vspace{12pt}
 
-\section{Introduction: the explanatory transfer
+\section{Introduction: The explanatory transfer
 problem}\label{introduction-the-explanatory-transfer-problem}
 
 Consider an engineered or biological device that suffers internal damage
@@ -402,11 +401,10 @@ To turn factorization into a substantive methodological discipline, we
 formulate the \emph{Typed Principle of Explanatory Preservation}. Before
 transferring warrant from a representation \(q\) to a target explanation
 \(\mathcal{E}\), one must explicitly specify the target tuple
-\(\langle B_{\mathrm{ear}},\, F,\, \mathcal{M}_{\mathrm{prec}},\, \mathcal{I}\rangle\)---identifying
-the diachronic bearer \(B_{\mathrm{ear}}\), target invariant \(F\),
-precision mode \(\mathcal{M}_{\mathrm{prec}}\), and admissible
-intervention class \(\mathcal{I}\)---and verify preservation at the
-corresponding tier:
+\(\langle \mathcal{B},\, F,\, \mathcal{M}_{\mathrm{prec}},\, \mathcal{I}\rangle\)---identifying
+the diachronic bearer \(\mathcal{B}\), target invariant \(F\), precision
+mode \(\mathcal{M}_{\mathrm{prec}}\), and admissible intervention class
+\(\mathcal{I}\)---and verify preservation at the corresponding tier:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -500,7 +498,9 @@ the free-energy principle propose that any random dynamical system
 possessing a stationary distribution with a \emph{Markov blanket}---a
 statistical partition into internal, external, sensory, and active
 variables rendering internal and external states conditionally
-independent given the blanket---thereby individuates an autonomous,
+independent given sensory and active blanket states (typically paired
+with sparse coupling excluding direct internal-to-external and
+external-to-internal links)---thereby individuates an autonomous,
 self-evidencing object \citep{friston2013, parrPezzuloFriston2022}.
 
 Both compressionism and blanket metaphysics capture an important
@@ -854,24 +854,35 @@ silent physical tag \(\tau\) defines a non-injective projection
 \(\pi_\tau\) that merges physically distinct raw tokens while
 \emph{commuting exactly} with step transitions, six-unit budget
 accounting, repair expenditures, genealogical parent/offspring labels,
-and expected outcomes under every permitted public-history policy
-(Proposition 4a, Appendix A.4). Eliminating \(\tau\) is a paradigm of
-\emph{lawful explanatory compression}.
+and expected outcomes under every permitted public-history policy.
+Eliminating \(\tau\) is a paradigm of \emph{lawful explanatory
+compression}.
 
-By contrast, two superficially plausible informational compressions fail
-catastrophically. First, projecting a token onto its stored program
-\(\theta\) while erasing its diagnostic state (\(H\) vs.~\(D\)) destroys
-action affordability: \texttt{bloom} is feasible on \(H\) (\(4 \le 6\))
-but rejected on \(D\) (\(7 > 6\)). Second, and more subtly, projecting a
-token onto its \emph{decoded symbolic instruction}---the
-majority-decoded bit pattern of its rows---while erasing the physical
+\textbf{Proposition 4 (Lawful silent-tag lumpability versus
+decoded-sequence gate separation).} \emph{(a) Projecting raw assemblies
+in \(\mathcal{M}\) by erasing the silent tag \(\tau\) defines a strong
+Markov lumpability commuting with step transitions, six-unit budget
+feasibility, repair expenditures, genealogical labels, and expected
+outcomes across all policies in \(\Pi_{\mathrm{pub}}\). (b) Projecting
+assemblies onto their majority-decoded symbolic program
+\(\theta \in \{\theta_0, \theta_1\}\) (even together with row-parity
+agreement) while erasing the physical execution gate
+\(g \in \{\mathrm{open}, \mathrm{closed}\}\) fails to determine raw
+executable transitions: two assemblies with identical intact three-cell
+rows encoding \(\theta_1 = (\mathrm{bloom}, \mathrm{care})\) diverge
+under raw actuation without gate-opening repair---executing
+\texttt{bloom} when \(g = \mathrm{open}\) (strict-birth probability
+\(b+\gamma\)) while blocking actuation when \(g = \mathrm{closed}\).}
+
+Proposition 4 (proved in Appendix A.4) exposes why two superficially
+plausible informational compressions fail catastrophically. First,
+projecting a token onto its stored program \(\theta\) while erasing its
+diagnostic state (\(H\) vs.~\(D\)) destroys action affordability:
+\texttt{bloom} is feasible on \(H\) (\(4 \le 6\)) but rejected on \(D\)
+(\(7 > 6\)). Second, as Proposition 4(b) establishes, projecting a token
+onto its \emph{decoded symbolic instruction} while erasing the physical
 gate variable \(g \in \{\mathrm{open}, \mathrm{closed}\}\) destroys raw
-executable capacity (Proposition 4b). Two assemblies can carry
-bit-for-bit identical decoded instructions
-\(\theta_1 = (\mathrm{bloom}, \mathrm{care})\) under a healthy
-diagnosis, yet the assembly with \(g = \mathrm{open}\) executes
-\texttt{bloom} whereas the assembly with \(g = \mathrm{closed}\) is
-physically blocked from actuation.
+executable capacity even when every row cell is bit-for-bit intact.
 
 This provides a crisp stochastic realization of John von Neumann's
 \citeyearpar{vonNeumann1966} foundational insight into self-reproducing
@@ -1024,20 +1035,23 @@ How should organizational dependence be tested without sneaking
 universal topological assumptions through the back door? Fix a target
 capability certificate \(\mathcal{C}\) over a horizon \(T\) (for
 example, positive probability of restored execution) and a declared
-repertoire \(\mathcal{I}\) of structural component deletions
-\(D \subseteq \mathcal{E}\) \citep{woodward2003, craver2007}. Let
-\(\mathcal{F}(\mathcal{C}, \mathcal{I}) \subseteq \mathcal{P}_{\mathrm{fin}}(\mathcal{E})\)
-denote the family of finite deletion sets under which \(\mathcal{C}\)
-fails.
+downward-closed repertoire
+\(\mathcal{I} \subseteq \mathcal{P}_{\mathrm{fin}}(\mathcal{E})\) of
+structural component deletions \(D \subseteq \mathcal{E}\)
+\citep{woodward2003, craver2007}. Let
+\(\mathcal{F}(\mathcal{C}, \mathcal{I}) \subseteq \mathcal{I}\) denote
+the family of finite deletion sets in \(\mathcal{I}\) under which
+\(\mathcal{C}\) fails.
 
 \textbf{Proposition 5 (Minimal interventional cut-set reconstruction).}
-\emph{Suppose failure of \(\mathcal{C}\) is monotone with respect to
-deletions in \(\mathcal{I}\) (if \(D \in \mathcal{F}\) and
-\(D \subseteq D'\), then \(D' \in \mathcal{F}\)). Then
-\(\mathcal{F}(\mathcal{C}, \mathcal{I})\) is uniquely determined by its
-antichain of inclusion-minimal destructive cut-sets
-\(\mathcal{V}_{\min}(\mathcal{C}, \mathcal{I})\): a finite deletion
-\(D\) destroys \(\mathcal{C}\) if and only if \(M \subseteq D\) for some
+\emph{Suppose \(\mathcal{I}\) is closed under subsets and failure of
+\(\mathcal{C}\) is monotone with respect to deletions in \(\mathcal{I}\)
+(if \(D \in \mathcal{F}\) and \(D \subseteq D' \in \mathcal{I}\), then
+\(D' \in \mathcal{F}\)). Then \(\mathcal{F}(\mathcal{C}, \mathcal{I})\)
+is uniquely determined by its antichain of inclusion-minimal destructive
+cut-sets \(\mathcal{V}_{\min}(\mathcal{C}, \mathcal{I})\): a deletion
+\(D \in \mathcal{I}\) destroys \(\mathcal{C}\) if and only if
+\(M \subseteq D\) for some
 \(M \in \mathcal{V}_{\min}(\mathcal{C}, \mathcal{I})\).}
 
 Proposition 5 (proved in Appendix A.2) turns organizational integrity
@@ -1079,24 +1093,25 @@ inside a safe set \(S \subseteq \mathcal{X}\), where
 \(F_S(U) = \{x \in S : \exists a \in \mathcal{A},\ \mathrm{supp}\,T(\cdot \mid x,a) \subseteq U\}\).
 Even though \(K^\star\) is a subset of states, under partial observation
 \(h: \mathcal{X} \to \mathcal{O}\) there exist five-state systems in
-which \textbf{every} memoryless observation policy
-\(\pi_0: \mathcal{O} \to \mathcal{A}\) exits \(S\) within two steps with
-probability \(1/2\), whereas a \textbf{one-step finite-memory
-controller} \(\pi_1: \mathcal{O} \times \mathcal{O} \to \mathcal{A}\)
-maintains perpetual viability
+which \textbf{every} (possibly randomized) memoryless observation policy
+\(\pi_0: \mathcal{O} \to \Delta(\mathcal{A})\) exits \(S\) within two
+steps with probability \(1/2\), whereas a deterministic \textbf{one-step
+finite-memory controller}
+\(\pi_1: \mathcal{O} \times \mathcal{O} \to \mathcal{A}\) maintains
+perpetual viability
 \(\mathbb{P}_{\pi_1}(X_t \in K^\star\ \forall t \ge 0) = 1\).} \emph{(b)
 Fix any finite sample size \(n \ge 1\) and significance level
-\(\alpha \in [0, 1)\). Let
-\(\psi: \{0,1\}^n \to \{\mathrm{certify}, \mathrm{reject}\}\) be any
-statistical rule observing \(n\) independent indicator draws of
-out-of-support violation events \(Z_i \sim \mathrm{Bernoulli}(r)\). If
-\(\psi\) respects the zero-violation soundness bound
-\(\mathbb{P}_r(\psi = \mathrm{certify}) \le \alpha\) for all positive
-violation rates \(r \in (0,1]\), then by continuity
-\(\mathbb{P}_0(\psi = \mathrm{certify}) \le \alpha\); conversely, no
-fixed-\(n\) black-box test can certify \(r = 0\) with high probability
-\((1-\beta > \alpha)\) while uniformly bounding false certification
-across arbitrarily small positive hazard rates \(r = \varepsilon > 0\)
+\(\alpha \in [0, 1)\). Let \(\psi: \{0,1\}^n \to [0,1]\) be any
+(possibly randomized) statistical certification rule mapping \(n\)
+independent indicator draws of out-of-support violation events
+\(Z_i \sim \mathrm{Bernoulli}(r)\) to a certification probability
+\(\psi(Z_{1:n}) \in [0,1]\). If \(\psi\) respects the zero-violation
+soundness bound \(\mathbb{E}_r[\psi(Z_{1:n})] \le \alpha\) for all
+positive violation rates \(r \in (0,1]\), then by continuity
+\(\mathbb{E}_0[\psi(Z_{1:n})] \le \alpha\); conversely, no fixed-\(n\)
+black-box test can certify \(r = 0\) with probability
+\(1-\beta > \alpha\) while uniformly bounding false certification across
+arbitrarily small positive hazard rates \(r = \varepsilon > 0\)
 \citep{leCam1973, mayo2018}.}
 
 Philosophically, Proposition 6 closes two major loopholes. Part (a),
@@ -1153,12 +1168,13 @@ Furthermore, conditioning a branching or absorbing Markov process on
 long-run non-extinction alters its probability law in a mathematically
 subtle way that teleological theories often misread. For an absorbing
 chain on a transient viable set, the \emph{quasi-stationary
-distribution} (QSD) \(q\)---the limiting state distribution
+distribution} (QSD) \(\nu_{\mathrm{QSD}}\)---the limiting state
+distribution
 \(\lim_{t\to\infty} \mathbb{P}(X_t \in \cdot \mid \tau_{\mathrm{ext}} > t)\)
 among trajectories still alive at \(t\)---differs strictly in general
-from the stationary law \(\varpi(x) \propto q(x) h(x)\) of the
-\emph{Doob \(h\)-transformed survivor process} conditioned on surviving
-forever, weighted by reproductive or survival value \(h(x)\)
+from the stationary law \(\varpi(x) \propto \nu_{\mathrm{QSD}}(x) h(x)\)
+of the \emph{Doob \(h\)-transformed survivor process} conditioned on
+surviving forever, weighted by reproductive or survival value \(h(x)\)
 \citep{doob1957, darrochSeneta1965, collet2013}. In \(\mathcal{M}\)'s
 marked genealogy, weighting lineages by reproductive value yields a
 valid statistical many-to-one identity across ancestral paths, yet that
@@ -1428,14 +1444,15 @@ part contributes to a system-level capacity, whereas
 \emph{selected-effects theories}
 \citep{wright1973, millikan1984, neander1991, godfreySmith1994} explain
 \emph{why} the part exists via ancestral selection---grounding
-malfunction norms at the price of rendering de novo homeostatic traits
-epiphenomenal (``swampman'' cases). Seeking an ahistorical yet normative
-third way, \emph{organizational accounts}
-\citep{mossio2009, montevilMossio2015} ground a trait's function in its
-contribution to maintaining a closed regime of constraints on which the
-trait's own existence depends, recently enriched by Bich's
-\citeyearpar{bich2024} regulatory-control criterion and scrutinized by
-\citet{corti2023} and \citet{cuciniello2026}.
+malfunction norms at the price of classifying newly arisen homeostatic
+traits as non-functional despite full causal efficacy (``Swampman''
+cases). Seeking an ahistorical yet normative third way,
+\emph{organizational accounts} \citep{mossio2009, montevilMossio2015}
+ground a trait's function in its contribution to maintaining a closed
+regime of constraints on which the trait's own existence depends,
+recently enriched by Bich's \citeyearpar{bich2024} regulatory-control
+criterion and scrutinized by \citet{corti2023} and
+\citet{cuciniello2026}.
 
 Corti's \citeyearpar[§3]{corti2023} critique cuts to the heart of
 organizational teleology---echoing Bedau's \citeyearpar{bedau1992}
@@ -1595,14 +1612,14 @@ diagnoses three live patterns of overreach in contemporary science:
 inference \citep{friston2010, friston2013, parrPezzuloFriston2022},
 systems possessing a non-equilibrium steady-state density \(p^*\) with a
 Markov blanket are frequently described as \emph{acting to minimize
-variational free energy} \(-\ln p^*(o)\) and therefore \emph{pursuing
-self-evidencing persistence}. Our separations isolate three distinct
-leaps inside that transition. First, a passive Pearl blanket in
-observational coordinates need not correspond to an interventional
-physical boundary or an open/closed actuation gate (Section 2.3;
-Proposition 4b; \citet{bruineberg2022}; \citet{raja2021}). Second,
-rewriting stationary occupancy \(-\ln p^*\) as an objective function
-does not resolve reward/gauge underdetermination
+surprisal} \(-\ln p^*(o)\) \emph{via its variational free-energy upper
+bound} and therefore \emph{pursuing self-evidencing persistence}. Our
+separations isolate three distinct leaps inside that transition. First,
+a passive Pearl blanket in observational coordinates need not correspond
+to an interventional physical boundary or an open/closed actuation gate
+(Section 2.3; Proposition 4b; \citet{bruineberg2022}; \citet{raja2021}).
+Second, rewriting stationary occupancy \(-\ln p^*\) as an objective
+function does not resolve reward/gauge underdetermination
 (\(R' = R + \lambda\chi,\ I' = I + \chi\)) or identify whether internal
 states pay restorative costs (Proposition 3; \citet{biehl2021}). Third,
 when biological reproduction enters, minimizing surprise for a
@@ -1736,10 +1753,10 @@ nihilo \citep{jonas1966, montevilMossio2015}. What \(\mathcal{M}\)
 proves is a non-trivial \emph{sufficiency and boundary thesis}: external
 energy supply does not render internal restoration fictitious (since
 cutting \(b_{\mathrm{boot}}\) or backups halts recovery despite abundant
-inflow), while Rung 2 restorative closure does not explain \emph{de
-novo} evolutionary origination (which requires Rung 3 historical
-variation and selection). Keeping those explanatory burdens separate
-prevents both vitalist mystification and reductive dismissal.
+inflow), while Rung 2 restorative closure does not explain de novo
+evolutionary origination (which requires Rung 3 historical variation and
+selection). Keeping those explanatory burdens separate prevents both
+vitalist mystification and reductive dismissal.
 
 \textbf{Objection 4: Does the framework generate severe empirical
 discriminations?} \emph{What concrete experimental protocol would test
@@ -1793,17 +1810,18 @@ universal optimum, but because distinct explanatory relations can be
 jointly satisfied when their preservation conditions and boundaries are
 respected.
 
-\section*{Appendix: Formal definitions and
-proofs}\label{appendix-formal-definitions-and-proofs}
-\addcontentsline{toc}{section}{Appendix: Formal definitions and proofs}
+\appendix
+
+\section{Formal definitions and
+proofs}\label{formal-definitions-and-proofs}
 
 To ensure that every formal claim in the article is self-contained and
 independently verifiable without external manuscripts, this Appendix
 provides concise proofs of Propositions 1--7 and Theorem 1.
 
-\subsection{A.1 Predictive minimality and belief-quotient descent
+\subsection{Predictive minimality and belief-quotient descent
 (Propositions 1 and
-2)}\label{a.1-predictive-minimality-and-belief-quotient-descent-propositions-1-and-2}
+2)}\label{predictive-minimality-and-belief-quotient-descent-propositions-1-and-2}
 
 \emph{Proof of Proposition 1.} Because each
 \((\mathcal{Y}_i, \Sigma_{\mathcal{Y}_i})\) is countably generated,
@@ -1814,14 +1832,15 @@ intersections (with \(\mathcal{Y}_i \in \mathcal{G}_i\)). By Dynkin's
 measures on \((\mathcal{Y}_i, \Sigma_{\mathcal{Y}_i})\) coincide on all
 of \(\Sigma_{\mathcal{Y}_i}\) iff they agree on \(\mathcal{G}_i\), and
 the evaluation \(\sigma\)-algebra on \(\Delta(\mathcal{Y}_i)\) is
-generated by \(\{ \nu \mapsto \nu(G_{i,m}) : m \in \mathbb{N}\}\). By
-sufficiency of \(q\), for each \(i \in \mathcal{I}\) there exists a
-measurable kernel \(\widetilde{K}_i\) and a measurable null set
+generated by \(\{ \nu \mapsto \nu(G_{i,m}) : m \in \mathbb{N}\}\)
+(whence \(h \mapsto K_i(h, \cdot)\) and the product map
+\(C_{\mathcal{P}}\) are measurable). By sufficiency of \(q\), for each
+\(i \in \mathcal{I}\) there exists a measurable kernel
+\(\widetilde{K}_i\) and a measurable null set
 \(N_i \in \Sigma_{\mathcal{H}}\) with \(\mu(N_i) = 0\) such that
 \(K_i(h, A) = \widetilde{K}_i(q(h), A)\) for all \(h \notin N_i\) and
-\(A \in \Sigma_{\mathcal{Y}_i}\) (indeed, checking equality on the
-countable generator \(\mathcal{G}_i\) ensures measurability of the
-exceptional set
+\(A \in \Sigma_{\mathcal{Y}_i}\) (checking equality on the countable
+generator \(\mathcal{G}_i\) ensures measurability of the exceptional set
 \(N_i = \bigcup_{m \in \mathbb{N}} \{h : K_i(h, G_{i,m}) \neq \widetilde{K}_i(q(h), G_{i,m})\}\)).
 Define the measurable product decoder
 \(\psi: \mathcal{Z} \to \prod_{i \in \mathcal{I}} \Delta(\mathcal{Y}_i)\)
@@ -1877,27 +1896,30 @@ so \(\langle v, U_{a,o}f\rangle = 0\) for all
 \(v \in \mathcal{F}^\perp\). Therefore
 \(U_{a,o}f \in (\mathcal{F}^\perp)^\perp = \mathcal{F}\). \(\square\)
 
-\subsection{A.2 Cut-set reconstruction, finite-memory separation, and
+\subsection{Cut-set reconstruction, finite-memory separation, and
 fixed-sample impossibility (Propositions 5 and
-6)}\label{a.2-cut-set-reconstruction-finite-memory-separation-and-fixed-sample-impossibility-propositions-5-and-6}
+6)}\label{cut-set-reconstruction-finite-memory-separation-and-fixed-sample-impossibility-propositions-5-and-6}
 
 \emph{Proof of Proposition 5.} Let \(\mathcal{V}_{\min}\) be the set of
 \(\subseteq\)-minimal elements of
-\(\mathcal{F}(\mathcal{C}, \mathcal{I})\). If \(M \subseteq D\) for some
+\(\mathcal{F}(\mathcal{C}, \mathcal{I})\). If
+\(M \subseteq D \in \mathcal{I}\) for some
 \(M \in \mathcal{V}_{\min} \subseteq \mathcal{F}\), then
 \(D \in \mathcal{F}\) by monotonicity. Conversely, if
-\(D \in \mathcal{F}\), finiteness of \(D\) implies
-\(|D| \in \mathbb{N}\); choosing a subset \(M \subseteq D\) with
-\(M \in \mathcal{F}\) of minimum cardinality yields
-\(M \in \mathcal{V}_{\min}\) with \(M \subseteq D\). Uniqueness holds
-because no two distinct elements of an antichain are comparable: if
-\(\mathcal{A}_1, \mathcal{A}_2\) are two antichains generating
-\(\mathcal{F}\) upward, each \(M \in \mathcal{A}_1\) contains some
-\(M' \in \mathcal{A}_2\) which contains some \(M'' \in \mathcal{A}_1\),
-forcing \(M = M'' = M'\). \(\square\)
+\(D \in \mathcal{F} \subseteq \mathcal{I}\), finiteness of \(D\) implies
+\(|D| \in \mathbb{N}\), and downward subset closure of \(\mathcal{I}\)
+ensures that every subset of \(D\) belongs to \(\mathcal{I}\); choosing
+a subset \(M \subseteq D\) with \(M \in \mathcal{F}\) of minimum
+cardinality yields \(M \in \mathcal{V}_{\min}\) with \(M \subseteq D\).
+Uniqueness holds because no two distinct elements of an antichain are
+comparable: if \(\mathcal{A}_1, \mathcal{A}_2\) are two antichains
+generating \(\mathcal{F}\) upward in \(\mathcal{I}\), each
+\(M \in \mathcal{A}_1\) contains some \(M' \in \mathcal{A}_2\) which
+contains some \(M'' \in \mathcal{A}_1\), forcing \(M = M'' = M'\).
+\(\square\)
 
-\emph{Proof of Proposition 6.} \emph{(a) Finite-memory separation
-witness.} Consider the five-state system
+\emph{Proof of Proposition 6.} \textbf{(a)} \emph{Finite-memory
+separation witness.} Consider the five-state system
 \(\mathcal{X} = \{x_L, x_R, y_L, y_R, \bot\}\) with safe set
 \(S = \{x_L, x_R, y_L, y_R\}\), actions \(\mathcal{A} = \{a_L, a_R\}\),
 and observation space \(\mathcal{O} = \{o_L, o_R, o_M, o_\bot\}\) given
@@ -1923,8 +1945,9 @@ incurring two-step failure probability
 By contrast, the one-step memory controller \(\pi_1(o_{t-1}, o_t)\) that
 plays \(a_L\) on \((o_L, o_M)\) and \(a_R\) on \((o_R, o_M)\) (and
 \(a_L\) otherwise) satisfies
-\(\mathbb{P}_{\pi_1}(X_t \in K^\star\ \forall t \ge 0) = 1\). \emph{(b)
-Fixed-sample impossibility.} Under
+\(\mathbb{P}_{\pi_1}(X_t \in K^\star\ \forall t \ge 0) = 1\).
+
+\textbf{(b)} \emph{Fixed-sample impossibility.} Under
 \(Z_1, \dots, Z_n \stackrel{\mathrm{i.i.d.}}{\sim} \mathrm{Bernoulli}(r)\),
 represent any (possibly randomized) certification rule by
 \(\psi: \{0,1\}^n \to [0,1]\), where \(\psi(z)\) is the probability of
@@ -1938,8 +1961,8 @@ if \(g(0) \ge 1 - \beta > \alpha\), then
 \(g(\varepsilon) \ge 1 - \beta - n\varepsilon > \alpha\) for every
 \(\varepsilon \in (0, (1 - \beta - \alpha)/n)\). \(\square\)
 
-\subsection{A.3 Smooth bottleneck obstruction (Proposition
-7)}\label{a.3-smooth-bottleneck-obstruction-proposition-7}
+\subsection{Smooth bottleneck obstruction (Proposition
+7)}\label{smooth-bottleneck-obstruction-proposition-7}
 
 \emph{Proof of Proposition 7.} On \(U\), \(\Psi(s,b,q) = (s, b, bq)\) is
 \(C^\infty\) with Jacobian matrix
@@ -1952,14 +1975,16 @@ Thus \(\operatorname{rank} D\Psi(u) = 3\) for every \(u \in U\). If
 \(3 = \operatorname{rank} D\Psi(u) \le \min\{\operatorname{rank} Dg(f(u)),\, \operatorname{rank} Df(u)\} \le 2\),
 a contradiction. \(\square\)
 
-\subsection{\texorpdfstring{A.4 Regenerative process \(\mathcal{M}\),
-the 2--3--4 partition, and quotients (Propositions 3 and
-4)}{A.4 Regenerative process \textbackslash mathcal\{M\}, the 2--3--4 partition, and quotients (Propositions 3 and 4)}}\label{a.4-regenerative-process-mathcalm-the-234-partition-and-quotients-propositions-3-and-4}
+\subsection{\texorpdfstring{Regenerative process \(\mathcal{M}\), the
+2--3--4 partition, and quotients (Propositions 3 and
+4)}{Regenerative process \textbackslash mathcal\{M\}, the 2--3--4 partition, and quotients (Propositions 3 and 4)}}\label{regenerative-process-mathcalm-the-234-partition-and-quotients-propositions-3-and-4}
 
 \emph{Exact transition specification of \(\mathcal{M}\).} Each step on a
-living token proceeds through diagnosis \(d \in \{H, D\}\), action
-request \(a \in \{\mathrm{care}, \mathrm{bloom}, \mathrm{stop}\}\),
-budget check against \(6\) units, actuation, and post-step damage:
+living token proceeds through diagnosis \(d \in \{H, D\}\) (where
+\(d = H\) iff row parity matches backups and \(g = \mathrm{open}\)),
+action request
+\(a \in \{\mathrm{care}, \mathrm{bloom}, \mathrm{stop}\}\), budget check
+against \(6\) units, actuation, and post-step damage:
 
 \begin{itemize}
 \tightlist
@@ -1973,7 +1998,7 @@ budget check against \(6\) units, actuation, and post-step damage:
   \(2 + 2 = 4 \le 6\), retains parent w.p. \(s - \delta\) and creates
   \(1\) strict newborn w.p. \(b + \gamma\) independently.
 \item
-  Damaged (\(d = D\), active bits flipped, \(g = \mathrm{closed}\),
+  Damaged (\(d = D\), active bits flipped or \(g = \mathrm{closed}\),
   backups intact, \(b_{\mathrm{boot}} = 1\)): \texttt{care} pays
   \(R = 3\) to majority-restore active bits and set
   \(g = \mathrm{open}\), then spends \(1 + 2 = 3\) (\(3+3=6 \le 6\)) to
@@ -1989,17 +2014,18 @@ budget check against \(6\) units, actuation, and post-step damage:
   \(1-q\).
 \end{itemize}
 
-\emph{Proof of Proposition 3.} Under autonomous internal execution: (1)
-\emph{At \(t=1\)}: \(\theta_0 H\) runs healthy \texttt{care}
-(\(B_1 \sim \mathrm{Bern}(b), R_1 = 0\)); \(\theta_0 D\) and
-\(\theta_1 D\) both pay \(R_1 = 3\), restore their codes, and run
+\emph{Proof of Proposition 3.} Under autonomous internal execution:
+\textbf{(1)} \emph{At \(t=1\)}: \(\theta_0 H\) runs healthy
+\texttt{care} (\(B_1 \sim \mathrm{Bern}(b), R_1 = 0\)); \(\theta_0 D\)
+and \(\theta_1 D\) both pay \(R_1 = 3\), restore their codes, and run
 \texttt{care} (\(B_1 \sim \mathrm{Bern}(b)\)); \(\theta_1 H\) runs
 healthy \texttt{bloom} (\(B_1 \sim \mathrm{Bern}(b+\gamma), R_1 = 0\)).
 Since \(\gamma > 0\), \(b + \gamma \neq b\), giving exactly two
 \(B_1\)-classes: \(\{\theta_0 H, \theta_0 D, \theta_1 D\}\) and
-\(\{\theta_1 H\}\). (2) \emph{All finite birth records
-\((B_1,\dots,B_T)\)}: After actuation at \(t=1\), both \(\theta_0 H\)
-and \(\theta_0 D\) yield
+\(\{\theta_1 H\}\).
+
+\textbf{(2)} \emph{All finite birth records \((B_1,\dots,B_T)\)}: After
+actuation at \(t=1\), both \(\theta_0 H\) and \(\theta_0 D\) yield
 \((I_{\mathrm{ret}}, B_1) \sim \mathrm{Bern}(s) \otimes \mathrm{Bern}(b)\)
 of tokens all carrying \(\theta_0\), independently damaged w.p. \(q\).
 Hence their post-\(t=1\) population states have identical distributions,
@@ -2028,7 +2054,8 @@ classes: \(\{\theta_0 H, \theta_0 D\}\), \(\{\theta_1 D\}\),
 \(\mathbb{E}_{\theta_0 D}[B_2] = \frac{9}{8}\cdot\frac{3}{8} = \frac{27}{64}\)
 and
 \(\mathbb{E}_{\theta_1 D}[B_2] = \frac{9}{8}\bigl(\frac{3}{8} + \frac{2}{3}\cdot\frac{1}{4}\bigr) = \frac{9}{8}\cdot\frac{13}{24} = \frac{39}{64}\).
-(3) \emph{Adding \(R_1\)}: On \((B_1, R_1)\) alone,
+
+\textbf{(3)} \emph{Adding \(R_1\)}: On \((B_1, R_1)\) alone,
 \((\theta_0 H) \mapsto (\mathrm{Bern}(b), 0)\),
 \((\theta_1 H) \mapsto (\mathrm{Bern}(b+\gamma), 0)\), and both
 \(\theta_0 D, \theta_1 D \mapsto (\mathrm{Bern}(b), 3)\), yielding three
@@ -2037,25 +2064,28 @@ Adjoining \(R_1\) to \((B_1, B_2, \dots)\) splits
 \(\{\theta_0 H, \theta_0 D\}\) via \(R_1 = 0 \neq 3\), yielding all four
 singletons. \(\square\)
 
-\emph{Proposition 4 (Tag erasure vs.~gate erasure).} \emph{(a) Because
-no transition probability, affordability check, or payment depends on
-\(\tau\), erasing \(\tau\) defines a strong Markov lumpability
-\citep{burkeRosenblatt1958} commuting with every public-history policy.
-(b) Consider two tokens with row cells \((1,1,1)\) and \((0,0,0)\)
-(majority-decoded program
-\(\theta_1 = (\mathrm{bloom}, \mathrm{care})\)) and diagnosis \(H\), one
-with \(g = \mathrm{open}\) and one with \(g = \mathrm{closed}\).
-Majority decoding maps both to \(\theta_1\), yet raw actuation without
-repair executes \texttt{bloom} on \(g = \mathrm{open}\) (birth rate
-\(b+\gamma\)) and is blocked on \(g = \mathrm{closed}\).} \(\square\)
+\emph{Proof of Proposition 4 (Tag erasure vs.~gate erasure).}
+\textbf{(a)} Because no transition probability, affordability check, or
+payment depends on \(\tau\), erasing \(\tau\) defines a strong Markov
+lumpability \citep{burkeRosenblatt1958} commuting with every
+public-history policy in \(\Pi_{\mathrm{pub}}\). \textbf{(b)} Consider
+two tokens with identical intact three-cell rows \((1,1,1)\) and
+\((0,0,0)\)---both having majority-decoded program
+\(\theta_1 = (\mathrm{bloom}, \mathrm{care})\) and zero row-parity
+discrepancy---one with \(g = \mathrm{open}\) and one with
+\(g = \mathrm{closed}\). Projecting onto decoded sequence (and even row
+parity) maps both assemblies to the same informational state, yet raw
+actuation without three-unit gate restoration executes \texttt{bloom} on
+\(g = \mathrm{open}\) (strict-birth probability \(b+\gamma\)) and is
+physically blocked by \(g = \mathrm{closed}\). \(\square\)
 
-\subsection{A.5 Full-policy growth ceiling, attainment, and extinction
+\subsection{Full-policy growth ceiling, attainment, and extinction
 bounds (Theorem
-1)}\label{a.5-full-policy-growth-ceiling-attainment-and-extinction-bounds-theorem-1}
+1)}\label{full-policy-growth-ceiling-attainment-and-extinction-bounds-theorem-1}
 
-\emph{Proof of Theorem 1.} (1) \emph{Reproductive-potential upper
-envelope and optimality of \(\rho_*\).} Define the positive single-token
-potential \(v: \{H, D\} \to (0, \infty)\) by
+\emph{Proof of Theorem 1.} \textbf{(1)} \emph{Reproductive-potential
+upper envelope and optimality of \(\rho_*\).} Define the positive
+single-token potential \(v: \{H, D\} \to (0, \infty)\) by
 \[v(H) := \max\{k_c, k_b\}, \qquad v(D) := k_c,\] so
 \(0 < v_{\min} := k_c \le v(x) \le v_{\max} := \max\{k_c, k_b\}\) for
 \(x \in \{H, D\}\). For any single-token diagnosis \(x\) and action
@@ -2102,13 +2132,14 @@ actuation and damage noises are independent of the public history
 whence by induction
 \[\mathbb{E}_\pi[N_t] \le \frac{1}{v_{\min}} \mathbb{E}_\pi[V(P_t)] \le \frac{v_{\max} |P_0|}{k_c} \rho_*^t =: C \rho_*^t \qquad (\forall \pi \in \Pi_{\mathrm{pub}},\ \forall t \ge 0).\]
 To establish tightness and minimality of \(\rho_*\) from any non-empty
-\(P_0\): if \(\rho_* = 1\), either \(P_0\) already contains a
-\(D\)-token (preserved w.p. \(1\) by repeating \texttt{bloom}) or
-executing \texttt{care} at \(t=1\) on an \(H\)-token yields a surviving
-\(D\)-token w.p. at least \(s q > 0\), after which repeating
-\texttt{bloom} on \(D\)-tokens maintains
-\(\mathbb{E}[N_t] \ge s q \cdot 1^t\); if
-\(\rho_* = \lambda_0 \ge \max\{1, \lambda_1\}\), stationary
+\(P_0\): if \(\rho_* = 1\), define the stationary policy
+\(\pi_{\mathrm{dorm}}\) that requests \texttt{care} on \(H\)-tokens and
+\texttt{bloom} on \(D\)-tokens---either \(P_0\) already contains a
+\(D\)-token (preserved w.p. \(1\) for all \(t \ge 0\)) or one step of
+\texttt{care} on an \(H\)-token yields a surviving \(D\)-token w.p. at
+least \(s q > 0\), maintaining
+\(\min\{1, s q\}\cdot 1^t \le \mathbb{E}_{\pi_{\mathrm{dorm}}}[N_t] \le C \cdot 1^t\);
+if \(\rho_* = \lambda_0 \ge \max\{1, \lambda_1\}\), stationary
 \texttt{care} (\(\theta_0\)) yields
 \(\mathbb{E}_{\theta_0}[N_t] = |P_0| \lambda_0^t\); and if
 \(\rho_* = \lambda_1 \ge \max\{1, \lambda_0\}\) (\(\gamma \ge \delta\)),
@@ -2118,13 +2149,7 @@ eigen-equality \((L_{\theta_1(x)} v)(x) = \lambda_1 v(x)\), so
 \(\frac{V(P_0)}{v_{\max}} \rho_*^t \le \mathbb{E}_{\theta_1}[N_t] \le \frac{V(P_0)}{v_{\min}} \rho_*^t\)
 for all \(t \ge 0\).
 
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  \emph{Exact attainment conditions from a damaged founder.}
-\end{enumerate}
+\textbf{(2)} \emph{Exact attainment conditions from a damaged founder.}
 
 \begin{itemize}
 \tightlist
@@ -2191,17 +2216,38 @@ healthy founders \(\theta_1 H\)
 declarations}\label{acknowledgements-and-declarations}
 \addcontentsline{toc}{section}{Acknowledgements and declarations}
 
-\textbf{Competing interests and funding.} The author declares no
-competing financial or institutional interests and received no external
-grant funding for this work.
+\textbf{Funding.} The author received no external funding, grants, or
+financial support for the research, authorship, or preparation of this
+manuscript.
 
-\textbf{Reproducibility and research assistance.} All mathematical
-propositions, counterexamples, and exact rational calculations reported
-in the main text are self-contained and proved in full in the Appendix.
-AI-assisted tools were used for bibliographic verification, algebraic
-cross-checking, and editorial preparation; the author bears sole
-responsibility for all philosophical arguments, mathematical claims, and
-scholarly attributions.
+\textbf{Conflicts of interest / Competing interests.} The author
+declares no competing financial or non-financial interests relevant to
+the content of this article.
+
+\textbf{Data, code, and formal verification availability.} No empirical
+datasets were generated or analyzed. All mathematical propositions,
+counterexamples, and exact rational calculations reported in the main
+text are self-contained and proved in full in Appendix A.1--A.5,
+accompanied by reproducible Python scripts for figure generation and
+exact rational verification. Companion machine-checked Lean 4 (v4.33.1 /
+Mathlib) formalizations of the core measure-theoretic, viability,
+fixed-sample impossibility, and regenerative branching results are
+permanently archived under the Apache License, Version 2.0 (Apache-2.0)
+on Zenodo at
+\href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585}
+(Concept DOI:
+\href{https://doi.org/10.5281/zenodo.24433584}{doi:10.5281/zenodo.24433584}).
+
+\textbf{Author contributions and AI disclosure.} This research and
+manuscript were directed by Degui Qian and completed with Gemini 4
+Carbon and ChatGPT 6 Astra across philosophical analysis, mathematical
+derivation, algebraic and formal cross-checking, bibliographic
+verification, and manuscript preparation. In accordance with Springer
+Nature and COPE authorship and generative AI policies, AI systems are
+not listed as co-authors; Degui Qian defined the philosophical theses,
+conceptual architecture, and mathematical models, audited and verified
+every argument, proof, rational calculation, and scholarly attribution,
+and bears sole academic and legal responsibility for the entire work.
 
 \textbf{Rights.} Copyright © 2026 Degui Qian. Licensed under Creative
 Commons Attribution 4.0 International (CC BY 4.0).

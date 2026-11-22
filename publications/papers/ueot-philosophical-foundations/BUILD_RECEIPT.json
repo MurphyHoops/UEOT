@@ -1,11 +1,13 @@
 {
-  "schema": "standalone-philosophy-build/2",
-  "version": "2.1",
-  "built_at_utc": "2026-11-21T23:30:12.176139+00:00",
-  "git_base_commit": "b16fc25b9a05d65a16d94dfcee3967fcd7d50030",
+  "schema": "standalone-philosophy-build/3",
+  "version": "2.2",
+  "built_at_utc": "2026-11-22T07:19:08.387437+00:00",
+  "git_base_commit": "4b04fb0b030b99fb04439c00ca3026862a7ea114",
   "commands": [
+    "python3 generate_figures.py",
     "pandoc manuscript.md --standalone --number-sections --natbib --template=template.tex --lua-filter=layout.lua --to=latex --output=manuscript.tex",
-    "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build manuscript.tex"
+    "latexmk -xelatex -interaction=nonstopmode -halt-on-error -outdir=build manuscript.tex",
+    "compile submissions/{synthese,bjps,philosophy-of-science}/*"
   ],
   "tools": {
     "pandoc": [
@@ -28,19 +30,41 @@
     ]
   },
   "inputs": {
-    "manuscript.md": "832ab015408c0c52c3457c88db27bb57d11da368c3a875ddd2c1f3b1777795c7",
-    "references.bib": "25939e7eb75d19d22024242b00841ac7bb6eb1512eb171f9533a1cfbfeee64f4",
-    "template.tex": "8c936d209503af48782d2d8af53651dcccb261bf5fd0fffd1ceac77517e40465",
+    "manuscript.md": "fb0fc1cf7d509892dbaedaa7fc73cc1b952c3eceb70c57eb7b3be95f52cb9d25",
+    "references.bib": "abc26300898e685d70928b404d27082b1867f6146e0f9a82934d31d537f59337",
+    "template.tex": "763dff31ee41327c8dcd3f293ed3639e16279fee9f194e520d5f0514aedb3c41",
     "layout.lua": "fe43b69ca5e3e94cc5b1740d6fdd540f4c8d934dcaec617f144352da53842c31",
-    "build.py": "f7596f373080419f3965a3f0a9a1cbdec616e47a69e0a1c248383326afe96dfe",
-    "generate_figures.py": "ccc457001d354ecf9f583fc0724ed62a93354fb232deeeb5419e784aadcea64d",
-    "figures/fig1_architecture_and_lattice.pdf": "5ae37cfdf1049c5e86dcfbee826cd2af28ac2d0014f04e214869636faff34c51",
-    "figures/fig2_memory_and_phase.pdf": "6ff219c8d102ab78856accd33d55b78a781b31eaba93905e162c38b28c0d8ceb",
-    "figures/fig3_preservation_and_rungs.pdf": "d5950fd8d8e5f649d628ab34d7d49da1f88a460717da40dc0c0989a0a1f10ad6"
+    "build.py": "160bbd0f736eaf49c722714491fae1178f5624e3ce130b0e9bc50c5771403e8a",
+    "generate_figures.py": "05f45d89c2dc93c986cb4578bd9014548cffafe06741ea226589bc71a5a2b2fc",
+    "figures/fig1_architecture_and_lattice.pdf": "9aa92f01d142a0baf2a172d704a52491848c73368f465252e8be7134c270086d",
+    "figures/fig2_memory_and_phase.pdf": "7c769d80bd3a10e39cd81a6d79e8255eac91bcd82a12eceb25f65cfee52fefa7",
+    "figures/fig3_preservation_and_rungs.pdf": "a9fef83b812a250595fa390d4ba47baf98459a75034cbe0bbab82671983974db",
+    "submissions/synthese/template_synthese.tex": "71380fef80629c13f94c048355e22cf3addbca90028588ef7c8f63dea91f4bb1",
+    "submissions/synthese/synthese_title_page.tex": "b19e780327b426e657bf6ef3c90fe0d9876be3d351b6169ebd8d959edf473494",
+    "submissions/bjps/template_bjps.tex": "d42173509e10d1c896780286d57ed70baf0c1363f272c8af8e0ebeffbc130781",
+    "submissions/bjps/bjps_blinded_manuscript.md": "6bd9826b1401c39963cc6f723a6ee6c1b405533d82f8d854abc39b9b820b3329",
+    "submissions/bjps/bjps_online_technical_appendix.md": "cf8daac408c03cac05f977876ba42f911e1e0c8cb3eb5ad992e7880f2c6e858d",
+    "submissions/bjps/bjps_title_page.tex": "2c4eb41910ce1a60e253ecefc7079638dab74feb1ee5f2bf396940d67b0dce06",
+    "submissions/philosophy-of-science/template_pos.tex": "091e0c9647e3ce674614cab2f8b5222a83f249f78dc499f008b2d7c265fa47da",
+    "submissions/philosophy-of-science/pos_blinded_manuscript.md": "9993076dd8a3bc09d963752dcbdee84d36951e3863ae4012016430ada9423331",
+    "submissions/philosophy-of-science/pos_supplementary_appendix.md": "51e0cde469e5e86e962c65aef2da5c7e9c858f873bfbefd6879daee7f5033bc6"
   },
   "outputs": {
-    "manuscript.tex": "4b7db5f53bff7e983ab520053d22d52baffb8a87c1c4758619981ec5c9ff0edf",
-    "manuscript.pdf": "17ed57e0fcccfaba6cfbb968e71fda33ce1680b8637ebb1bdd1e7b7312c3f62a"
+    "manuscript.tex": "6178a06cdb9274f74fe47f6d740e192e0f8c795cd582a3316e0fefaac619c05a",
+    "manuscript.pdf": "1f144fe16771d9fbe69f30da9069f3f8a2acf9f62a14884bc9d1a8d60bcade7d",
+    "submissions/synthese/synthese_blinded_manuscript.md": "41d67637f17ae7ba0ff9464919348a6146f69dd30dc1b9a9baf6254137486ed6",
+    "submissions/synthese/synthese_blinded_manuscript.tex": "3901d62d5ff2b7ae3de752852bee64a3c0ef271565b2e531419134b08929ed28",
+    "submissions/synthese/synthese_blinded_manuscript.pdf": "b2717680169bf86b217adf019f9e96d3dd4ed1716c2a84512fce7ffd31dc1f9d",
+    "submissions/synthese/synthese_title_page.pdf": "9b10c66a1de67df169ffe57bdc5b5211912e2b425fd88128cd4b0885dea65f80",
+    "submissions/bjps/bjps_blinded_manuscript.tex": "93f662c660a8dab30081d1834b23f7657257cebf69996e456d4d26597d3d5afe",
+    "submissions/bjps/bjps_blinded_manuscript.pdf": "d8f9794ec143dee90538a960091c46267b5ad9c32811eca356b6a753bc6e0f58",
+    "submissions/bjps/bjps_online_technical_appendix.tex": "fc0a0c2c3e2a2973df69e8e2f03f089847a879226afeff1b0f691174149c69d5",
+    "submissions/bjps/bjps_online_technical_appendix.pdf": "e584fa22a460c696fa3bf4ab1b96dade449d264f389e8ca80e21560536440d27",
+    "submissions/bjps/bjps_title_page.pdf": "c7f847ac41741151a20a3c17f0d466dec027b6a5f1d60d78514abed8c94313b8",
+    "submissions/philosophy-of-science/pos_blinded_manuscript.tex": "24ef89076c7e768ff832e78ad4ba523eeaca8194c57d4d779e829dab98e4b591",
+    "submissions/philosophy-of-science/pos_blinded_manuscript.pdf": "d96603bda7c7a48d1783012eae6a9877ba9b75c462329fe465b27278634e409c",
+    "submissions/philosophy-of-science/pos_supplementary_appendix.tex": "464cefe9fc0c24a412ca7630be473ca3a853a96bcfcea2ec2bd1776ec6cb71db",
+    "submissions/philosophy-of-science/pos_supplementary_appendix.pdf": "e70bab409efa35e58f93b001de6aa62be6c4167c909c4338a6f423c1a6e2be5a"
   },
   "pages": 32,
   "undefined_references_or_tex_errors": [],

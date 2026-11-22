@@ -1,41 +1,44 @@
-\documentclass[11pt,a4paper]{article}
-\usepackage[margin=25mm]{geometry}
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{fontspec}
 \IfFontExistsTF{Liberation Serif}{\setmainfont{Liberation Serif}}{\setmainfont{Times New Roman}}
 \usepackage{setspace}
-\setstretch{1.18}
+\setstretch{1.14}
 \usepackage[unicode,colorlinks=true,allcolors=blue]{hyperref}
 \hypersetup{
   pdftitle={Title Page: Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance},
   pdfauthor={Degui Qian}
 }
 \begin{document}
-\thispagestyle{empty}
+\pagestyle{empty}
 \begin{center}
 {\LARGE\bfseries Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance\par}
-\vspace{16pt}
+\vspace{12pt}
 {\large\bfseries Separate Unblinded Title Page — \emph{Mathematics of Operations Research}\par}
 \end{center}
 
-\vspace{14pt}
+\vspace{10pt}
 \noindent\textbf{Author:} Degui Qian\\
 \textbf{Affiliation:} Independent Researcher\\
 \textbf{Date:} November 2026
 
-\vspace{12pt}
+\vspace{10pt}
 \noindent\textbf{MSC 2020 Subject Classification:} Primary: 90C40, 93E20; Secondary: 60J85, 62C10, 68V15\\
 \textbf{OR/MS Subject Classification:} Dynamic programming/optimal control: Markov, Bayesian; Probability: branching processes; Reliability: maintenance/repairs\\
 \textbf{Keywords:} Bayesian dynamic programming; partially observable Markov decision processes; regenerative maintenance and standby control; sufficient statistics and decision diagrams; certifying algorithms
 
-\vspace{14pt}
+\vspace{10pt}
 \noindent\textbf{Funding Disclosure:} The author received no external funding, grants, or financial support for this research.
 
-\vspace{8pt}
+\vspace{6pt}
 \noindent\textbf{Competing Interests:} The author declares no financial or non-financial competing interests.
 
-\vspace{8pt}
-\noindent\textbf{Formal Verification and Reproducibility Disclosure:} Every definition, closed-form boundary, sufficient-statistic theorem, counterexample witness, and shared decision-diagram certificate reported in the blinded manuscript is self-containedly proved in Appendix A.1--A.6 and formally verified in Lean 4 (v4.33.1) over Mathlib across 24 compiled modules depending exclusively on \texttt{\{propext, Classical.choice, Quot.sound\}} (\texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}). AI-assisted tools were used during bibliographic cross-checking, Lean proof engineering, and editorial preparation; the sole author bears full responsibility for all mathematical proofs, formal specifications, and scholarly attributions.
+\vspace{6pt}
+\noindent\textbf{Formal Verification and Reproducibility Disclosure:} Every definition, closed-form boundary, sufficient-statistic theorem, counterexample witness, and shared decision-diagram certificate reported in the blinded manuscript is self-containedly proved in Appendix A.1--A.6, independently cross-checked by an exact-rational solver, and formally verified in Lean 4 (v4.33.1) over Mathlib across 30 interconnected \texttt{UnifiedClosure} modules (within the 1,051-module pure-kernel archive) depending exclusively on \texttt{\{propext, Classical.choice, Quot.sound\}} (\texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}).
 
-\vspace{8pt}
-\noindent\textbf{Prior Open Dissemination \& Licensing:} Copyright \copyright\ 2026 Degui Qian. Preprint prose and figures are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), permitted under INFORMS preprint policies; the exported Lean 4 formalization archive (v1.0.0) and accompanying verification scripts are permanently archived on Zenodo under the Apache License, Version 2.0 (Apache-2.0) at \href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585}.
+\vspace{6pt}
+\noindent\textbf{Author Contributions \& Generative AI Disclosure:} This research and manuscript were directed by Degui Qian and completed with \textbf{Gemini 4 Carbon} and \textbf{ChatGPT 6 Astra} across mathematical derivation, Lean 4 formalization engineering, exact-rational solver verification, bibliographic cross-checking, and manuscript preparation. In accordance with INFORMS authorship and generative AI policies, AI systems are not listed as co-authors; Degui Qian defined the research program and stochastic-control architecture, audited and verified every mathematical proof, mechanized Lean 4 theorem, rational benchmark, and scholarly citation, and bears sole academic and legal responsibility for the entire work.
+
+\vspace{6pt}
+\noindent\textbf{Prior Open Dissemination \& Archival Software DOI:} Copyright \copyright\ 2026 Degui Qian. Preprint prose and figures are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), permitted under INFORMS preprint policies; the exported Lean 4 formalization archive (v1.0.0) and accompanying verification scripts are permanently archived on Zenodo under the Apache License, Version 2.0 (Apache-2.0) at \href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585} (Concept DOI: \href{https://doi.org/10.5281/zenodo.24433584}{doi:10.5281/zenodo.24433584}).
 \end{document}
