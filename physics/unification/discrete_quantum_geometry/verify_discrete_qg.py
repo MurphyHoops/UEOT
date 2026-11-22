@@ -154,28 +154,43 @@ def verify_multisite_regge_wheeler_dewitt() -> dict:
     # Collective non-commuting 4-site Regge volume S_z and extrinsic-curvature shift S_x on (C^2)^x4:
     Sx_geom = sp.zeros(16, 16)
     Sz_geom = sp.zeros(16, 16)
-    G_verts = []
     for v in range(4):
         ops_x = [X if i == v else I2 for i in range(4)]
         ops_z = [Z if i == v else I2 for i in range(4)]
         Sx_geom += sp.Rational(1, 2) * kron_list(ops_x)
         Sz_geom += sp.Rational(1, 2) * kron_list(ops_z)
-        v_next = (v + 1) % 4
-        ops_zz = [Z if i in (v, v_next) else I2 for i in range(4)]
-        G_verts.append(sp.Rational(1, 2) * (sp.eye(16) - kron_list(ops_zz)))
+
+    # Complete K_4 6-edge projector family G_edges[(u, w)] = (1/2)(I_16 - Z_u Z_w) (0 <= u < w < 4)
+    # and per-vertex star sums G_verts[v] = sum_{w != v} G_edges[(min(v, w), max(v, w))]:
+    G_edges: dict[tuple[int, int], sp.Matrix] = {}
+    for u in range(4):
+        for w in range(u + 1, 4):
+            ops_zz = [Z if i in (u, w) else I2 for i in range(4)]
+            G_edges[(u, w)] = sp.Rational(1, 2) * (sp.eye(16) - kron_list(ops_zz))
+    require(len(G_edges) == 6, "Expected all 6 tetrahedral edges of K_4")
+
+    G_verts = [
+        sum((G_edges[(min(v, w), max(v, w))] for w in range(4) if w != v), sp.zeros(16, 16))
+        for v in range(4)
+    ]
 
     # Verify non-commutativity [S_z, S_x] = i S_y != 0 (operator-valued quantum geometry, Tr(S_y^2) = 16):
     comm_zx = Sz_geom * Sx_geom - Sx_geom * Sz_geom
     comm_zx_frob_sq = int(sum(abs(x) ** 2 for x in comm_zx))
     require(comm_zx_frob_sq == 16, f"Expected ||[S_z, S_x]||_F^2 == 16 on 4-site geometry, got {comm_zx_frob_sq}")
 
-    # Verify ultralocal vertex Gauss/homogeneity constraints commute [G_u, G_v] == 0:
+    # Verify idempotence & pairwise vanishing commutators across all 6 K_4 edge projectors and all 4 vertex stars:
+    for e1, ge1 in G_edges.items():
+        require(ge1 * ge1 == ge1, f"Edge constraint projector G_edges[{e1}] is not idempotent")
+        for e2, ge2 in G_edges.items():
+            require(ge1 * ge2 - ge2 * ge1 == sp.zeros(16, 16),
+                    f"Edge constraint anomaly detected on {e1}, {e2}")
     for u in range(4):
         for v in range(4):
             require(G_verts[u] * G_verts[v] - G_verts[v] * G_verts[u] == sp.zeros(16, 16),
-                    "Vertex constraint anomaly detected")
+                    "Vertex star constraint anomaly detected")
 
-    # S_4 discrete spatial diffeomorphism generators on 4-site tetrahedral slice K_4:
+    # S_4 discrete spatial diffeomorphism generators on complete 4-site tetrahedral slice K_4:
     def perm_matrix_16(perm: tuple[int, int, int, int]) -> sp.Matrix:
         P = sp.zeros(16, 16)
         for idx in range(16):
@@ -185,11 +200,23 @@ def verify_multisite_regge_wheeler_dewitt() -> dict:
             P[new_idx, idx] = 1
         return P
 
+    s4_generators = [
+        ("swap01", (1, 0, 2, 3)),
+        ("cyc0123", (3, 0, 1, 2)),
+    ]
     U_swap01 = perm_matrix_16((1, 0, 2, 3))
     U_cyc0123 = perm_matrix_16((3, 0, 1, 2))
-    for v in range(4):
-        require(U_cyc0123 * G_verts[v] * U_cyc0123.T == G_verts[(v + 1) % 4],
-                "Discrete diffeomorphism covariance failed on vertex constraints")
+    for gen_name, perm in s4_generators:
+        U_gen = perm_matrix_16(perm)
+        # Under new_bits[v] = bits[perm[v]], site u moves to sigma(u) with perm[sigma(u)] == u:
+        sigma = tuple(perm.index(u) for u in range(4))
+        for (u, w), g_uw in G_edges.items():
+            img_edge = (min(sigma[u], sigma[w]), max(sigma[u], sigma[w]))
+            require(U_gen * g_uw * U_gen.T == G_edges[img_edge],
+                    f"S_4 edge covariance failed under {gen_name} on edge {(u, w)}")
+        for v in range(4):
+            require(U_gen * G_verts[v] * U_gen.T == G_verts[sigma[v]],
+                    f"S_4 vertex star covariance failed under {gen_name} on vertex {v}")
 
     # Coupled 64x64 Hamiltonian H_tot_dyn (in Planck units omega_0):
     # H_tot_dyn = (3 S_x + 4 S_z) x I_src x I_ptr - 2 S_z x |1><1|_src x (I_ptr - X_ptr)
