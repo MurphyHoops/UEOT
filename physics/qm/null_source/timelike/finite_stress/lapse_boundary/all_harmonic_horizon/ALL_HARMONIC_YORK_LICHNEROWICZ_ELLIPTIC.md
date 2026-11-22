@@ -1,0 +1,23 @@
+# AH05 — All-Harmonic ($\ell \ge 2$ to $\ell = \infty$) Continuum Elliptic Constraint Solution on Curved Bounce FRW
+
+## 1. Universal $(\ell - 1)(\ell + 3)$ Invertibility Across All Three York–Lichnerowicz Sectors
+
+With the $\ell = 0$ homogeneous Friedmann constraint solved by the sub-critical bounce $a(\tau)$ (`RC06`) and all 14 $\ell = 1$ conformal + $SO(4)$ Killing obstructions matched (`RC08`, `AH03`, `AH04`), consider the remaining infinite-dimensional $\ell \ge 2$ ($k = \ell + 1 \ge 3$) components of the continuum total stress-energy expectation $\langle T_{\mu\nu}^{\mathrm{tot},\rho_0,\infty}(\pi, x)\rangle$ on the encoding slice $\tau = \pi$.
+
+Adopt **constant-mean-curvature (CMC) slice gauge** $\delta K_\ell = 0$ ($\ell \ge 2$) with perturbed spatial metric $g_{ij} = a(\pi)^2(1 + 2\psi)\gamma_{ij}$ and shift covector $N_i = a(\pi)^3(\nabla_i B + W_i)$ ($\nabla^i W_i = 0$ wrt $\gamma_{ij}$). Because the background FRW extrinsic curvature $\bar K_{ij} = -H_p \bar g_{ij}$ has **identically zero trace-free shear** ($\bar A_{ij} \equiv 0$), $\delta(\tilde A_{ij}\tilde A^{ij} - \frac{2}{3}K^2) = -\frac{4}{3}\bar K\,\delta K = 0$ even when $H_p(\pi) = a'(\pi)/a(\pi)^2 \neq 0$. Linearizing $R^{(3)}(a^2(1+2\psi)\gamma) = a^{-2}[6 - 12\psi - 4\Delta_{S^3}\psi]$ and $\bar\nabla^j\delta\tilde A_{ij}$ on unit $S^3$ ($R_{ij}(\gamma) = 2\gamma_{ij}$, $-\Delta_{S^3} Y_\ell = \ell(\ell+2)Y_\ell$, rough Laplacian $-\Delta_{S^3} W_\ell = [\ell(\ell+2)-1]W_\ell$) yields **closed-form algebraic inversion for every $\ell \ge 2$**:
+$$\psi_\ell = \frac{4\pi G a(\pi)^2}{(\ell - 1)(\ell + 3)}\,\delta\rho_{\mathrm{tot},\ell}, \qquad B_\ell = -\frac{12\pi G a(\pi)^2}{(\ell - 1)(\ell + 3)}\,\delta q_{\mathrm{tot},\ell}, \qquad W_\ell^i = \frac{16\pi G a(\pi)^2}{(\ell - 1)(\ell + 3)}\,\delta j_{\perp,\mathrm{tot},\ell}^i,$$
+where $(\ell - 1)(\ell + 3) \ge 5$ for all $\ell \ge 2$.
+
+## 2. Exact Closed-Form 3-Sphere Sobolev–Green Constant
+
+By the Unsöld / Funk–Hecke addition theorem on unit $S^3$ ($V_0 = 2\pi^2$), $\|\psi_\ell\|_{L^\infty(S^3)} \le \frac{\ell + 1}{\sqrt{2}\pi}\|\psi_\ell\|_{L^2(S^3)}$. Cauchy–Schwarz across $\ell = 2 \dots \infty$ gives for **any** $\delta\rho_{\mathrm{tot},\ge 2} \in L^2(S^3)$:
+$$\|\psi_{\ge 2}\|_{L^\infty(S^3)} \le 4\pi G a(\pi)^2 C_{\mathrm{Sob},S^3}\,\|\delta\rho_{\mathrm{tot},\ge 2}\|_{L^2(S^3)}, \qquad C_{\mathrm{Sob},S^3} := \frac{1}{\sqrt{2}\pi}\sqrt{\sum_{\ell=2}^\infty \frac{(\ell + 1)^2}{(\ell - 1)^2(\ell + 3)^2}},$$
+where $\frac{\ell + 1}{(\ell - 1)(\ell + 3)} = \frac{1}{2}\bigl(\frac{1}{\ell - 1} + \frac{1}{\ell + 3}\bigr)$ evaluates the infinite series in **exact closed form**:
+$$\sum_{\ell=2}^\infty \frac{(\ell + 1)^2}{(\ell - 1)^2(\ell + 3)^2} = \frac{1}{4}\left[\frac{\pi^2}{6} + \left(\frac{\pi^2}{6} - \frac{205}{144}\right) + \frac{25}{24}\right] = \frac{\pi^2}{12} - \frac{55}{576}.$$
+Similarly, $\|\Delta_{S^3}\psi_{\ge 2}\|_{L^\infty(S^3)} \le 4\pi G a(\pi)^2 C_{\mathrm{Sob},S^3}\|\Delta_{S^3}\delta\rho_{\mathrm{tot},\ge 2}\|_{L^2(S^3)}$ whenever $\delta\rho_{\mathrm{tot},\ge 2} \in H^2(S^3)$.
+
+## 3. Explicit $C^4_c$ Beacon Realization, $SO(4)$-Commuting Mode Gronwall Bound, and Continuum $C^2$ Metric Bounds
+
+Instantiate `RC09`'s beacon profile $h_{\mathrm{rec}}(\chi) = c_{\mathrm{core}} P_9\bigl(\frac{31/80 - \chi}{1/40}\bigr)$ on the transition collar $\chi \in [\frac{29}{80}, \frac{31}{80}]$ ($c_{\mathrm{core}} = \frac{1}{2} V_{1/2}^{-1/2}$, $V_{1/2} = 2\pi(\frac{1}{2} - \frac{\sin 1}{2})$) using the degree-9 Hermite step polynomial $P_9(s) = \frac{9!}{4!4!}\int_0^s t^4(1-t)^4 dt = 126 s^5 - 420 s^6 + 540 s^7 - 315 s^8 + 70 s^9 \in C^4([0,1])$ (`\|\nabla h_{\mathrm{rec}}^{\mathrm{sym}}\|_{L^2(S^3)} < 16 \le 80`).
+
+Because $-\Delta_{S^3}$ commutes identically with the $SO(4)$-invariant FRW wave operator $\partial_\tau^2 - \Delta_{S^3} + 1 + u(\tau)$, each mode amplitude $\tilde b_k$ satisfies $\frac{d}{d\tau}\bigl[\tilde b_k'^2 + (k^2+1+u(\tau))\tilde b_k^2\bigr] = u'(\tau)\tilde b_k^2$, so backward Gronwall across $|\tau_* - \pi| \le 3$ gives $E_k(\pi) \le \exp(3\sup_{[-1,\pi+3]}|u'|)\,E_k(\tau_*) < 1.2\,E_k(\tau_*)$ uniformly for every $k \ge 1$ and every Sobolev weight $k^{2m}$. Using the exact unit-$S^3$ $H^2 \hookrightarrow L^\infty$ constant $\|f\|_{L^\infty(S^3)}^2 \le \frac{1}{2\pi^2}\bigl(\sum_{k=1}^\infty \frac{k^2}{k^4}\bigr)\|(1-\Delta_{S^3})f\|_{L^2(S^3)}^2 = \frac{1}{12}\|(1-\Delta_{S^3})f\|_{L^2(S^3)}^2$ together with Hölder's inequality $\|FG\|_{L^2} \le \|F\|_{L^\infty}\|G\|_{L^2}$ and exact $g^2$-cancellation $4\pi G \cdot (r_b/g)^2 = \frac{3}{10}r_b^2 = 3\times 10^{-29}$, we certify $\|\psi_{\ge 2}\|_{L^\infty(S^3)} < 10^{-21}$ and $\|\Delta_{S^3}\psi_{\ge 2}\|_{L^\infty(S^3)} < 10^{-14}$ across all $\ell \in [2, \infty)$.
