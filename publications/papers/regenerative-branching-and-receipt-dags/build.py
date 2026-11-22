@@ -65,9 +65,20 @@ execute(["pdftoppm", "-png", "-r", "144", "manuscript.pdf", "build/page"], "pdft
 
 # 3. Prepare and build double-anonymous INFORMS MOR submission package
 src_md = (ROOT / "manuscript.md").read_text(encoding="utf-8")
-blinded_md = src_md.replace('author: "Degui Qian"\n', "")
+blinded_md = src_md
+for strip_line in ('author: "Degui Qian"\n', 'version: "1.2"\n'):
+    blinded_md = blinded_md.replace(strip_line, "", 1)
+
+mor_ai_disclosure = """# Generative AI and reproducibility disclosure {.unnumbered}
+
+**Generative AI models and roles.** In accordance with INFORMS *Mathematics of Operations Research* generative-AI transparency and double-anonymous review guidelines, the human author(s) disclose that **Gemini 4 Carbon** and **ChatGPT 6 Astra** were used during research and manuscript preparation for proof-sketch exploration, Lean 4 formalization tactic engineering, exact-rational dynamic-programming and benchmark scripting, bibliographic cross-checking, and prose editing. Generative AI tools are not listed as co-authors, and the human author(s) bear sole academic and legal responsibility for the accuracy, originality, and clarity of the submitted work.
+
+**Mathematical exploration and verification governance.** Participation of language models in mathematical exploration was governed by three strict verification gates: (i) *self-contained analytical proof audit*—no heuristic step or model-suggested conjecture was accepted without a complete step-by-step mathematical proof derived and verified line-by-line by the human author(s) (Appendix A.1–A.6); (ii) *dual exact-rational and pure-kernel formal gating*—every closed-form threshold, four-step standby-window comparison, `1,440`-instance parameter sweep, negative boundary probe, and multi-wallet DAG benchmark was independently cross-checked in deterministic `Fraction` arithmetic (`validate.py`), and core native/compressed transitions, counting posteriors, five-coordinate sufficiency theorems, and `accept` (`certify` + `boundCheck`) certificate checkers were formally verified in Lean 4 (v4.33.1) over `{propext, Classical.choice, Quot.sound}` (`0` `sorryAx`, `0` `Lean.ofReduceBool`); and (iii) *primary-source citation verification*—every bibliographic entry was verified against primary publication metadata.
+
+**Reproducibility and anonymized archival metadata.** Accompanying scripts (`build.py`, `validate.py`, `validate.py --benchmark-timings`, and `generate_figures.py`) reproduce all figures, exact rational values, sweep checks, and timing medians; to preserve double-anonymous peer review, author identity, funding and competing-interest statements, shared-archive component boundaries, and the permanent archival software DOI are recorded on the separate unblinded Title Page.
+"""
 if "\n# Declarations" in blinded_md:
-    blinded_md = blinded_md[:blinded_md.index("\n# Declarations")].rstrip() + "\n"
+    blinded_md = blinded_md[:blinded_md.index("\n# Declarations")].rstrip() + "\n\n" + mor_ai_disclosure
 (MOR_DIR / "mor_blinded_manuscript.md").write_text(blinded_md, encoding="utf-8")
 shutil.copy2(ROOT / "references.bib", MOR_DIR / "references.bib")
 shutil.copy2(ROOT / "layout.lua", MOR_DIR / "layout.lua")
@@ -106,8 +117,8 @@ git_probe = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, env=ENV, capt
 head_sha = git_probe.stdout.strip() if git_probe.returncode == 0 else "standalone"
 
 record = {
-    "schema": "standalone-mor-build/1",
-    "version": "1.0",
+    "schema": "standalone-mor-build/2",
+    "version": "1.2",
     "built_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "git_base_commit": head_sha,
     "commands": [

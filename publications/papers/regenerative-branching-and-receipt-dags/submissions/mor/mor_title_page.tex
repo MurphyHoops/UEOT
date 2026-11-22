@@ -1,10 +1,14 @@
 \documentclass[11pt,letterpaper]{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.92in]{geometry}
 \usepackage{fontspec}
 \IfFontExistsTF{Liberation Serif}{\setmainfont{Liberation Serif}}{\setmainfont{Times New Roman}}
+\IfFontExistsTF{DejaVu Sans Mono}{\setmonofont[Scale=0.84]{DejaVu Sans Mono}}{\setmonofont[Scale=0.84]{Menlo}}
+\usepackage{microtype}
+\setlength{\emergencystretch}{2.5em}
 \usepackage{setspace}
-\setstretch{1.14}
+\setstretch{1.08}
 \usepackage[unicode,colorlinks=true,allcolors=blue]{hyperref}
+\usepackage{xurl}
 \hypersetup{
   pdftitle={Title Page: Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance},
   pdfauthor={Degui Qian}
@@ -34,10 +38,10 @@
 \noindent\textbf{Competing Interests:} The author declares no financial or non-financial competing interests.
 
 \vspace{6pt}
-\noindent\textbf{Formal Verification and Reproducibility Disclosure:} Every definition, closed-form boundary, sufficient-statistic theorem, counterexample witness, and shared decision-diagram certificate reported in the blinded manuscript is self-containedly proved in Appendix A.1--A.6, independently cross-checked by an exact-rational solver, and formally verified in Lean 4 (v4.33.1) over Mathlib across 30 interconnected \texttt{UnifiedClosure} modules (within the 1,051-module pure-kernel archive) depending exclusively on \texttt{\{propext, Classical.choice, Quot.sound\}} (\texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}).
+\noindent\textbf{Formal Verification, Shared-Archive Delineation, and Reproducibility Disclosure:} Every definition, arbitrary-price single-wallet stopping rule, closed-form boundary, sufficient-statistic theorem, counterexample witness, and polynomial complexity bound reported in the blinded manuscript is self-containedly proved in Appendix A.1--A.6 and cross-checked by an exact-rational solver (\texttt{validate.py}). Core native/compressed transitions, prepayment invariants, high-price boundaries, value-of-information witnesses, counting posteriors, five-coordinate sufficiency, and executable rational certificate checkers are formally verified in Lean 4 (v4.33.1) over Mathlib across 30 interconnected \texttt{UnifiedClosure} modules (\texttt{RegisterJointDecision*}, \texttt{RegisterDecision*}, sharing generic store/solver infrastructure \texttt{RegisterPopulationHistorySource} and \texttt{FiniteJointDecision*} within the 1,051-module pure-kernel archive while remaining disjoint from companion fixed-mechanism modules \texttt{RegisterMechanismDecision*}) depending exclusively on \texttt{\{propext, Classical.choice, Quot.sound\}} (\texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}).
 
 \vspace{6pt}
-\noindent\textbf{Author Contributions \& Generative AI Disclosure:} This research and manuscript were directed by Degui Qian and completed with \textbf{Gemini 4 Carbon} and \textbf{ChatGPT 6 Astra} across mathematical derivation, Lean 4 formalization engineering, exact-rational solver verification, bibliographic cross-checking, and manuscript preparation. In accordance with INFORMS authorship and generative AI policies, AI systems are not listed as co-authors; Degui Qian defined the research program and stochastic-control architecture, audited and verified every mathematical proof, mechanized Lean 4 theorem, rational benchmark, and scholarly citation, and bears sole academic and legal responsibility for the entire work.
+\noindent\textbf{Author Contributions \& Generative AI Disclosure:} This research and manuscript were directed by Degui Qian and completed with \textbf{Gemini 4 Carbon} and \textbf{ChatGPT 6 Astra} across proof-sketch exploration, Lean 4 tactic engineering, exact-rational solver scripting, bibliographic cross-checking, and manuscript preparation under three verification rules: (i) line-by-line human audit of all self-contained proofs (Appendix A.1--A.6), (ii) deterministic \texttt{Fraction} DP (\texttt{validate.py}) and pure-kernel Lean 4 gating, and (iii) primary-source citation verification. AI systems are not co-authors; Degui Qian bears sole academic and legal responsibility for the work.
 
 \vspace{6pt}
 \noindent\textbf{Prior Open Dissemination \& Archival Software DOI:} Copyright \copyright\ 2026 Degui Qian. Preprint prose and figures are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), permitted under INFORMS preprint policies; the exported Lean 4 formalization archive (v1.0.0) and accompanying verification scripts are permanently archived on Zenodo under the Apache License, Version 2.0 (Apache-2.0) at \href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585} (Concept DOI: \href{https://doi.org/10.5281/zenodo.24433584}{doi:10.5281/zenodo.24433584}).

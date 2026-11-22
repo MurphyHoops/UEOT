@@ -179,7 +179,25 @@ def exact_dag_counts(H, B0=Q(2), tariff=Q(1), price=Q(13, 10), discount=Q(3, 4),
             walk(rem - 1, nxt)
 
     walk(H, init_st)
-    return len(memo), len(exec_vis)
+
+    hist_memo = {}
+
+    def count_hist(rem, st):
+        k = (rem, st)
+        if k in hist_memo:
+            return hist_memo[k]
+        if rem == 0:
+            hist_memo[k] = 1
+            return 1
+        nd = memo[k]
+        tot = sum(count_hist(rem - 1, nxt) for asucc in nd["succ"].values() for nxt in asucc)
+        hist_memo[k] = tot
+        return tot
+
+    legal_h = count_hist(H, init_st)
+
+    diff_keys = {(rem, (st[1] - st[2], st[3], st[4])) for (rem, st) in memo}
+    return len(memo), len(diff_keys), len(exec_vis), legal_h
 
 
 def build_fig1():
@@ -197,9 +215,9 @@ def build_fig1():
 
     draw_box(ax1, 0.02, 0.71, 0.94, 0.18,
              "Persistent Unknown Reliability $\\theta \\sim \\pi_0$ ($r_\\theta \\in [0,1]\\cap\\mathbb{Q}$ drawn ONCE at $t=0$)\n"
-             "Native Population Store $\\mathcal{S}_t$: founder $\\mathrm{root}_0$, standby $\\mathrm{child}_1$, tail slots $j \\geq 2$,\n"
+             "Native Store $\\mathcal{S}_t$: founder $\\mathrm{root}_0$, $t=0$-provisioned standby $\\mathrm{child}_1$, audit slots $j \\geq 2$,\n"
              "protected target $g$, parent–offspring lineages, clocks, and $\\mathrm{None}$ failed-birth slots",
-             facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=8.05)
+             facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=8.0)
 
     draw_box(ax1, 0.02, 0.40, 0.44, 0.20,
              "Two-Bit Transaction Receipt\n"
@@ -219,8 +237,8 @@ def build_fig1():
     draw_box(ax1, 0.02, 0.08, 0.94, 0.21,
              "Seven-Action Menu $\\mathcal{A}$:  $\\mathrm{stop}$ (commits to $\\mathrm{root}_0$ idle)  or  $\\{\\mathrm{root}_0, \\mathrm{child}_1\\} \\times \\{\\mathrm{idle}, \\mathrm{write\\ }0, \\mathrm{write\\ }1\\}$\n"
              "Thm. 1: Exact native-to-compressed commutation & Bayes optimality over all real-randomized policies\n"
-             "Thm. 2 ($B_0 = c,\\ p \\geq S_H(d)$):  $V_{H+1}^* = \\max\\{0,\\ \\mathbb{E}[r_\\theta(1 - p + d\\,U_2(r_\\theta, d, H))]\\}$",
-             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=7.95)
+             "Thm. 2 ($c \\leq B_0 < 2c,\\ \\forall p \\geq 0$):  $V_{H+1}^* = \\sum_{t=0}^H d^t \\max\\{0, \\Delta_t\\}$  (single-crossing $m^*$ retries; $V^* > 0 \\Leftrightarrow p < p_0^*$)",
+             facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=7.85)
 
     draw_arrow(ax1, (0.24, 0.39), (0.24, 0.305), color=TEAL, lw=1.15)
     draw_arrow(ax1, (0.74, 0.39), (0.74, 0.305), color=TEAL, lw=1.15)
@@ -368,46 +386,54 @@ def build_fig2():
 
 
 def build_fig3():
-    fig = plt.figure(figsize=(12.2, 5.05))
-    ax1 = fig.add_axes([0.065, 0.13, 0.425, 0.76])
-    ax2 = fig.add_axes([0.535, 0.05, 0.450, 0.89])
+    from math import comb
+    fig = plt.figure(figsize=(12.2, 5.15))
+    ax1 = fig.add_axes([0.065, 0.13, 0.430, 0.76])
+    ax2 = fig.add_axes([0.540, 0.05, 0.445, 0.89])
 
     # Panel (a): Exact scaling from H = 1 to H = 8 at B0 = 2
     hs = np.arange(1, 9)
     raw_tree = np.array([28.0 ** int(h) for h in hs])
     quartic_bound = np.array([24.0 * ((int(h) + 1) ** 4) for h in hs])
-    cert_counts = []
-    exec_counts = []
+    cubic_bound = np.array([
+        1.0 + 12.0 * sum(comb(t + 2, 2) * (min(2, t) + 1) for t in range(1, int(h) + 1))
+        for h in hs
+    ])
+    cert_counts, diff_counts, exec_counts, legal_hists = [], [], [], []
     for h in hs:
-        cn, en = exact_dag_counts(int(h))
+        cn, dn, en, lh = exact_dag_counts(int(h))
         cert_counts.append(cn)
+        diff_counts.append(dn)
         exec_counts.append(en)
+        legal_hists.append(lh)
     cert_counts = np.array(cert_counts, dtype=float)
+    diff_counts = np.array(diff_counts, dtype=float)
     exec_counts = np.array(exec_counts, dtype=float)
+    legal_hists = np.array(legal_hists, dtype=float)
 
-    ax1.semilogy(hs, raw_tree, color=CRIMSON, lw=2.0, ls="-.", marker="s", markersize=4.8,
-                 label="Uncompressed $(|\\mathcal{A}||\\mathcal{O}|)^H = 28^H$ tree")
-    ax1.semilogy(hs, quartic_bound, color=AMBER, lw=2.0, ls="--", marker="^", markersize=5.2,
-                 label="Proved certificate ceiling $24(H+1)^4$ (Thm. 6)")
-    ax1.semilogy(hs, cert_counts, color=NAVY, lw=2.3, marker="o", markersize=5.5,
-                 label="Certified all-action DAG nodes")
-    ax1.semilogy(hs, exec_counts, color=TEAL, lw=2.1, marker="D", markersize=4.8,
-                 label="Optimal execution subgraph nodes")
+    ax1.semilogy(hs, raw_tree, color="#888888", lw=1.4, ls=":", marker=".", markersize=4.2,
+                 label="Syntactic strings $28^H$ ($3.78\\times 10^{11}$)")
+    ax1.semilogy(hs, legal_hists, color=CRIMSON, lw=2.0, ls="-.", marker="s", markersize=4.5,
+                 label="Legal pos.-prob. histories ($2.38\\times 10^7$)")
+    ax1.semilogy(hs, quartic_bound, color=AMBER, lw=1.7, ls="--", marker="^", markersize=4.6,
+                 label="Verifier ceiling $24(H+1)^4$ ($157,464$)")
+    ax1.semilogy(hs, cubic_bound, color="#6B46C1", lw=1.75, ls="--", marker="v", markersize=4.5,
+                 label="Reachable cubic bound $N_{\\mathrm{reach}}$ ($5,869$)")
+    ax1.semilogy(hs, cert_counts, color=NAVY, lw=2.25, marker="o", markersize=5.0,
+                 label="Certified $(s,f)$ DAG ($1,661$)")
+    ax1.semilogy(hs, diff_counts, color="#2B6CB0", lw=1.8, ls="-", marker="x", markersize=5.0,
+                 label="Log-odds $(s-f)$ DAG ($1,020$)")
+    ax1.semilogy(hs, exec_counts, color=TEAL, lw=2.05, marker="D", markersize=4.4,
+                 label="Optimal execution DAG ($151$)")
 
-    ax1.annotate("$H=8,\\ B_0=2$:\n$28^8 \\approx 3.78\\times 10^{11}$\nBound: $157,464$\nCert. DAG: $1,661$\nExec. DAG: $151$",
-                 xy=(8, cert_counts[-1]), xytext=(5.55, 3.8e5),
-                 arrowprops=dict(arrowstyle="->", color=NAVY, lw=1.05),
-                 fontsize=7.8, color=NAVY,
-                 bbox=dict(boxstyle="round,pad=0.25", facecolor="white", edgecolor="#CBD5E1", alpha=0.95))
-
-    ax1.set_title("(a) Exponential Tree vs. Certified Polynomial DAG ($B_0 = 2$)",
-                  fontsize=10.1, fontweight="bold", color=NAVY, pad=9)
+    ax1.set_title("(a) Feasible History Tree vs. Polynomial DAGs ($B_0 = 2$)",
+                  fontsize=10.0, fontweight="bold", color=NAVY, pad=9)
     ax1.set_xlabel("Planning horizon $H$", fontsize=9.2)
-    ax1.set_ylabel("Number of nodes / branches ($\\log_{10}$ scale)", fontsize=9.1)
+    ax1.set_ylabel("Histories / DAG nodes ($\\log_{10}$ scale)", fontsize=9.1)
     ax1.set_xticks(hs)
-    ax1.set_ylim(1, 1e12)
+    ax1.set_ylim(1, 2e12)
     ax1.grid(True, which="both", linestyle=":", alpha=0.5)
-    ax1.legend(loc="upper left", fontsize=7.45, frameon=True, facecolor="white", framealpha=0.93)
+    ax1.legend(loc="upper left", fontsize=6.85, frameon=True, facecolor="white", framealpha=0.94, labelspacing=0.28)
 
     # Panel (b): Certifying Algorithm & All-Action Soundness Architecture
     ax2.set_xlim(0, 1)
@@ -416,20 +442,20 @@ def build_fig3():
 
     ax2.text(0.01, 0.98,
              "(b) Certifying DAG Synthesis & All-Action Soundness (Thm. 6)",
-             fontsize=10.3, fontweight="bold", color=NAVY, ha="left", va="top")
+             fontsize=10.2, fontweight="bold", color=NAVY, ha="left", va="top")
 
     draw_box(ax2, 0.03, 0.73, 0.93, 0.16,
-             "Untrusted Memoized Generator ($\\mathrm{generate}$)\n"
-             "Hash-consing on $(n,\\ \\sigma = (t,q,s,f,k))$ in decreasing remaining horizon $n = H - t$\n"
-             "Produces flat shared node array $G$ without materializing $28^H$ tree",
-             facecolor=LIGHT_BG, edgecolor=SLATE, fontsize=8.0)
+             "Canonical Memoized Generator ($\\mathrm{generate}$)\n"
+             "Hash-consing on $(n,\\ \\sigma = (t,q,s,f,k))$ in decreasing $n = H - t$\n"
+             "$|G_{\\mathrm{reach}}| \\leq N_{\\mathrm{reach}}(H,M) = O(1 + (\\min(M,H)+1)H^3)$,  $\\leq 14|G_{\\mathrm{reach}}|$ edges",
+             facecolor=LIGHT_BG, edgecolor=SLATE, fontsize=7.85)
 
     draw_box(ax2, 0.03, 0.42, 0.93, 0.21,
-             "Trusted Executable Certificate Checker ($\\mathrm{certify} : \\mathrm{Option\\ Certified}$)\n"
-             "1. Unique keys across array $G$ & $\\mathrm{boundCheck}(H) \\Rightarrow |G| \\leq 24(H+1)^4$\n"
-             "2. Verifies ALL legal actions $a \\in \\mathrm{menu}(B_t)$ & ALL receipts with $m_b^a(o) > 0$\n"
-             "3. Recomputes exact rational $Q$-values & deterministic tie-breaking",
-             facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=7.95)
+             "Two-Layer Executable Verifier ($\\mathrm{accept} = \\mathrm{certify} + \\mathrm{boundCheck}$)\n"
+             "1. $\\mathrm{certify}$: Unique keys, root binding & ALL-action rational $Q$-value check\n"
+             "2. $\\mathrm{boundCheck}(H)$: $n_i + t_i = H,\\ s_i + f_i \\leq t_i,\\ k_i \\leq t_i \\Rightarrow |G| \\leq 24(H+1)^4$\n"
+             "3. Returns $\\mathrm{some\\ res}$ ($\\mathrm{Option\\ Result}$) iff both stages pass",
+             facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=7.85)
 
     draw_arrow(ax2, (0.495, 0.72), (0.495, 0.645), color=NAVY, lw=1.2)
 
@@ -441,11 +467,11 @@ def build_fig3():
              facecolor=LIGHT_TEAL, edgecolor=TEAL, fontsize=7.9)
 
     draw_box(ax2, 0.52, 0.09, 0.44, 0.23,
-             "Omitted-Alternative Rejection\n"
-             "Dropping ANY $m > 0$ edge of even an\n"
-             "unselected action ($\\mathrm{stop}$) returns $\\mathrm{none}$\n"
-             "(prevents false upper-bound certificates)",
-             facecolor=LIGHT_CRIMSON, edgecolor=CRIMSON, fontsize=7.9)
+             "Dual Negative Rejection Probes\n"
+             "$\\mathrm{certify}$ rejects omitted alt. edges;\n"
+             "$\\mathrm{boundCheck}$ rejects unbound rows\n"
+             "(e.g., $25 > 24$ terminal rows at $H=0$)",
+             facecolor=LIGHT_CRIMSON, edgecolor=CRIMSON, fontsize=7.85)
 
     draw_arrow(ax2, (0.28, 0.41), (0.25, 0.335), color=TEAL, lw=1.2)
     draw_arrow(ax2, (0.71, 0.41), (0.74, 0.335), color=CRIMSON, lw=1.2)
