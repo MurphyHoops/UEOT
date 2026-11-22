@@ -8,7 +8,7 @@
 
 ## Exported Lean 4 Proof Code & Verification Scripts
 
-- The exported pure-kernel Lean 4 formalization archive (`publications/artifacts/lean4-core-export/`, exported from `formalization/ueot-core/`) and the standalone Python verification and figure-generation scripts (`build.py`, `validate.py`, `generate_figures.py`, `layout.lua`) accompanying this release are licensed under the **Apache License, Version 2.0 (`Apache-2.0`)** (see `LICENSES/Apache-2.0.txt`, `publications/artifacts/lean4-core-export/SOFTWARE_LICENSE_AUDIT.md`, and `NOTICE`). Non-code documentation under `formalization/ueot-core/docs/` remains governed by `CC BY 4.0` per root `LICENSE_SCOPE.md`.
+- The exported pure-kernel Lean 4 formalization archive (`publications/artifacts/lean4-core-export/`, exported from `formalization/ueot-core/`) and the standalone Python verification and figure-generation scripts (`build.py`, `validate.py`, `generate_figures.py`, `layout.lua`) accompanying this release are licensed under the **Apache License, Version 2.0 (`Apache-2.0`)** and permanently archived on Zenodo at <https://doi.org/10.5281/zenodo.24433585> (DOI: `10.5281/zenodo.24433585`; see `LICENSES/Apache-2.0.txt`, `publications/artifacts/lean4-core-export/SOFTWARE_LICENSE_AUDIT.md`, and `NOTICE`). Non-code documentation under `formalization/ueot-core/docs/` remains governed by `CC BY 4.0` per root `LICENSE_SCOPE.md`.
 
 ## Relationship to Maintained Repository Sources
 

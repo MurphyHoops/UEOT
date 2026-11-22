@@ -13,6 +13,7 @@ A self-contained mathematical, control-theoretic, and interactive-theorem-provin
 - [Verified external scholarly bibliography (80 entries)](references.bib)
 - [Chinese abstract and formal contribution synopsis](ABSTRACT_ZH.md)
 - [Claim, self-contained proof, and Lean 4 correspondence matrix](CLAIM_MATRIX.md)
+- [Archived pure-kernel Lean 4 formalization (Apache-2.0, Zenodo DOI: 10.5281/zenodo.24433585)](https://doi.org/10.5281/zenodo.24433585)
 - [*Journal of Automated Reasoning* (Springer Nature) submission guide & cover letter](submissions/jar/SUBMISSION_GUIDE_AND_MANIFEST.md)
 - [Build receipt](BUILD_RECEIPT.json), [editorial/arithmetic validation](VALIDATION.json), and [integrity checksums](SHA256SUMS)
 
