@@ -19,6 +19,11 @@ SUITES = [
     ("local_control_ctp", HERE / "local_control_ctp/verify_control_ctp.py", HERE / "local_control_ctp/result.json"),
     ("matter_gauge_flavor", HERE / "matter_gauge_flavor/verify_matter_flavor.py", HERE / "matter_gauge_flavor/result.json"),
     ("cosmology_perturbation", HERE / "cosmology_perturbation/verify_perturbation_holdout.py", HERE / "cosmology_perturbation/result.json"),
+    ("rg_eft_bridge", HERE / "rg_eft_bridge/verify_rg_eft.py", HERE / "rg_eft_bridge/result.json"),
+    ("thermodynamics_memory", HERE / "thermodynamics_memory/verify_thermo_memory.py", HERE / "thermodynamics_memory/result.json"),
+    ("spacetime_gravity_bounds", HERE / "spacetime_gravity_bounds/verify_spacetime_gravity.py", HERE / "spacetime_gravity_bounds/result.json"),
+    ("topological_index_spectrum", HERE / "topological_index_spectrum/verify_topo_index.py", HERE / "topological_index_spectrum/result.json"),
+    ("flavor_spam_identifiability", HERE / "flavor_spam_identifiability/verify_flavor_spam.py", HERE / "flavor_spam_identifiability/result.json"),
 ]
 
 
@@ -78,6 +83,11 @@ def main() -> int:
             "UEOTPhysicsUnification.CorrelatedBathIdentifiability",
             "UEOTPhysicsUnification.GaugeFlavorSelection",
             "UEOTPhysicsUnification.ConformalControlGravityGates",
+            "UEOTPhysicsUnification.RGBridgeAndEFTMatching",
+            "UEOTPhysicsUnification.ThermodynamicsAndLandauerBounds",
+            "UEOTPhysicsUnification.SpacetimeEquivalenceAndGravityBounds",
+            "UEOTPhysicsUnification.TopologicalCarrierAndIndex",
+            "UEOTPhysicsUnification.FlavorCyclicAndSPAMContract",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
