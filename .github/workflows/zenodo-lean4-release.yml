@@ -1,0 +1,95 @@
+name: Zenodo Lean 4 Release
+
+on:
+  push:
+    tags:
+      - "lean4-export-v*.*.*"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Semantic version to release (e.g. 1.0.1 or v1.0.1)"
+        required: true
+        type: string
+      mode:
+        description: "Release action (draft = safe stage only, dry-run = build & check, publish = publish & mint DOI)"
+        required: true
+        default: "draft"
+        type: choice
+        options:
+          - draft
+          - dry-run
+          - publish
+      run_lean_kernel_audit:
+        description: "Run full Lean 4 build & ExhaustiveAxiomAudit.lean before exporting"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+concurrency:
+  group: zenodo-lean4-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Optional Lean 4 pure-kernel build & axiom audit
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.run_lean_kernel_audit }}
+        working-directory: formalization/ueot-core
+        shell: bash
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+          export PATH="$HOME/.elan/bin:$PATH"
+          test -s lake-manifest.json
+          lake exe cache get
+          lake build UEOT
+          lake env lean scripts/ExhaustiveAxiomAudit.lean
+
+      - name: Run deterministic export & mock-API tests
+        working-directory: publications/artifacts/lean4-core-export
+        run: python3 -m unittest test_zenodo_release.py -v
+
+      - name: Build Apache-2.0 archive & sync Zenodo version lineage
+        working-directory: publications/artifacts/lean4-core-export
+        env:
+          ZENODO_TOKEN: ${{ secrets.ZENODO_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+          INPUT_VERSION: ${{ inputs.version }}
+          INPUT_MODE: ${{ inputs.mode }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ "$EVENT_NAME" == "push" ]]; then
+            TARGET_VERSION="$REF_NAME"
+            TARGET_MODE="publish"
+          else
+            TARGET_VERSION="$INPUT_VERSION"
+            TARGET_MODE="$INPUT_MODE"
+          fi
+          python3 publish_zenodo_version.py \
+            --version "$TARGET_VERSION" \
+            --mode "$TARGET_MODE" \
+            --summary-file "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload built tarball and provenance receipt artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lean4-pure-kernel-formalization-export
+          path: |
+            publications/artifacts/lean4-core-export/dist/lean4-pure-kernel-formalization-v*.tar.gz
+            publications/artifacts/lean4-core-export/dist/EXPORT_RECEIPT-v*.json
+          if-no-files-found: ignore
