@@ -1,0 +1,96 @@
+{
+  "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/ConformalControlGravityGates.lean",
+  "local_chi_and_smooth_ctp": {
+    "covariant_stress_divergence_defect": 0,
+    "one_loop_mass_counterterm_relation": "delta_m_chi_sq = lam_c^2 * H_K / (8 * pi^2)",
+    "quadratic_control_nonneg_threshold": "m_chi^2 >= lam_c^2 / (2 * g_4)",
+    "quartic_control_global_lower_bound": "-lam_c^4 / (16 * g_chi * g_4^2)",
+    "smooth_inhomogeneous_lapse_ctp_harmonics": {
+      "m_3": {
+        "C_m": [
+          "0.0112579092935930857",
+          "0.0112579092935930857"
+        ],
+        "ell": 8,
+        "noise_quadratic_form_unit_eps": [
+          "0.000923223140470576547",
+          "0.000923223140470576547"
+        ],
+        "phase_tail_factor_K500": [
+          "5.65153819341743894e-9",
+          "5.65153819341743894e-9"
+        ]
+      },
+      "m_4": {
+        "C_m": [
+          "0.0506605918211688857",
+          "0.0506605918211688857"
+        ],
+        "ell": 15,
+        "noise_quadratic_form_unit_eps": [
+          "0.00400660709776020485",
+          "0.00400660709776020485"
+        ],
+        "phase_tail_factor_K500": [
+          "2.54319218703784752e-8",
+          "2.54319218703784752e-8"
+        ]
+      },
+      "m_5": {
+        "C_m": [
+          "0.14184965709927288",
+          "0.14184965709927288"
+        ],
+        "ell": 24,
+        "noise_quadratic_form_unit_eps": [
+          "0.0108069185356074311",
+          "0.0108069185356074311"
+        ],
+        "phase_tail_factor_K500": [
+          "7.12093812370597307e-8",
+          "7.12093812370597307e-8"
+        ]
+      }
+    }
+  },
+  "physical_unification": "OPEN",
+  "result_ids": [
+    "P-UNIF-CTRL-01",
+    "P-UNIF-CHI-02",
+    "P-UNIF-CTP-03"
+  ],
+  "source_sha256": "8f7c1a971bf05a60f765eebd7759f6bc25d480e141cd4951fa266ee86778bec6",
+  "split_core_and_collision": {
+    "r_double_prime_supremum": [
+      "6.45085151060407419",
+      "6.45085151761222717"
+    ],
+    "r_prime_supremum": [
+      "0.847128084426977644",
+      "0.847128084426977644"
+    ],
+    "split_core_uv_rates_at_t_0p22": {
+      "100": {
+        "probe_probability_orthogonality_error_upper": "0.00967570283794071829",
+        "state_norm_upper": "0.0983651505253412327"
+      },
+      "1000": {
+        "probe_probability_orthogonality_error_upper": "0.00096609913568332769",
+        "state_norm_upper": "0.0310821353140887091"
+      },
+      "10000": {
+        "probe_probability_orthogonality_error_upper": "0.0000965635624936853808",
+        "state_norm_upper": "0.00982667606536846111"
+      }
+    },
+    "z5_outside_collision_t_0p22": {
+      "full_field_uv_tail_allowance_K0_10000": 0.0001931271,
+      "initial_total_energy_mean_exact": "56.5",
+      "initial_total_energy_variance_exact": "1290.5",
+      "low_mode_binary_contrast_abs": 0.0029689533,
+      "net_full_field_contrast_lower_estimate": 0.0027758262,
+      "post_reader_total_energy_mean_exact": "69.0"
+    }
+  },
+  "status": "PASS"
+}

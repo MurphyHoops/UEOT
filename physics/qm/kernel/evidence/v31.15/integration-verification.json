@@ -1,0 +1,73 @@
+{
+  "schema": "ueot-qm-v31.15-observed-integration/1",
+  "status": "PASS",
+  "scientific_main_verified": true,
+  "scientific_source_head": "67aa5c4d9a7e77da3f2a74dfb717a711f885cca9",
+  "merge_preparation_head": "8b09be053df043e3325b4f69898723cb8d4b76e1",
+  "verified_scientific_main": "cc5670d5f2ac96f88270c0f38ae6fb6f77e26093",
+  "tree": "7f1ced12e43e3853ce96363c4746aca9baba0265",
+  "pr": 467,
+  "pr_runs": {
+    "ueot_qm_kernel": 44965595889,
+    "chapter71_publication": 44965595845,
+    "correlated_bath": 44965595916
+  },
+  "main_runs": {
+    "ueot_qm_kernel": 44966629945,
+    "chapter71_publication": 44966630116,
+    "correlated_bath": 44966630894
+  },
+  "jobs": [
+    {
+      "workflow": "UEOT QM Kernel",
+      "run_id": 44966629945,
+      "names": ["lean", "runtime"],
+      "conclusion": "success"
+    },
+    {
+      "workflow": "Chapter 71 publication candidate",
+      "run_id": 44966630116,
+      "names": ["manuscript", "pdf (zh, UEOT_PHYSICS)", "pdf (en, UEOT_PHYSICS.en)"],
+      "conclusion": "success"
+    },
+    {
+      "workflow": "Correlated bath and local field",
+      "run_id": 44966630894,
+      "names": ["reproduce"],
+      "conclusion": "success"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 14732016933,
+      "name": "ueot-qm-lean-44966629945",
+      "bytes": 152764,
+      "github_reported_digest": "sha256:f1047b3f6c5c30023e2822cbf0dca74fca0ded6e4d74d262a2298ec2d63be4e6"
+    },
+    {
+      "id": 14731524362,
+      "name": "ueot-qm-runtime-44966629945",
+      "bytes": 1128949,
+      "github_reported_digest": "sha256:77aba15547bc339c8c76d3f89a281b01d4447b874fdd56fdb66ffc0ba9c26161"
+    },
+    {
+      "id": 14731688914,
+      "name": "chapter71-candidate-en",
+      "bytes": 3015217,
+      "github_reported_digest": "sha256:b7bc6fadaff3115d9cefc9de014ff2cb95c398d3cb38bd3b8d2c2a80c3ef13c3"
+    },
+    {
+      "id": 14731408245,
+      "name": "chapter71-candidate-zh",
+      "bytes": 3790626,
+      "github_reported_digest": "sha256:ce879fc9ddbad9b32d5857c2d3fdc04907a15868c36a60054fa5f00032d381dc"
+    },
+    {
+      "id": 14731389643,
+      "name": "correlated-bath-replay",
+      "bytes": 10911,
+      "github_reported_digest": "sha256:ecc2602e8e51b9938318da48bc526eaa5cf61ba374df48b87cbff3c0d59e5b7d"
+    }
+  ],
+  "scope": "Chapter 71 (v31.15 / Book 3.12, 210 numbered results, 133 claims) merged into main via PR #467 after syncing Philosophy v3.1, Mathematics v4.2, and pure-kernel Core Lean upgrades. All three main workflows (UEOT QM Kernel, Chapter 71 publication candidate, and Correlated bath and local field) succeeded on exact head cc5670d5f2ac96f88270c0f38ae6fb6f77e26093."
+}
