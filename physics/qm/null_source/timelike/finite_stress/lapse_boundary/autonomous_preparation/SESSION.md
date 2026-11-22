@@ -156,3 +156,36 @@ and a complete same-state readout. At active intermediate times the third
 instantaneous energy moment diverges; endpoint flatness is essential for
 all final moments. No old mode/geometry ODE was rerun. The external ramp
 is not relabeled as an autonomous gravitational controller.
+
+## AP7 accepted, AR locality closure and geometric reflection
+
+All three reviewers actually read the six AP7 files at
+d286f8333d8d52cf1f210a8928aecdf4af5a47f4 and passed them. AP6-C-001
+is now resolved at that immutable commit. A independently matched all
+14 source-binding entries across 10 distinct files.
+
+AR replaces the global homogeneous encoding/readout by two disjoint
+smooth caps on the same actual AQ reference. The continuum local field
+has exact early no-signalling, a strictly positive later local quantum
+record, actual all-outcome normal instrument convergence, conditional
+Hadamard/all-final-energy domains and complete retained energy/stress
+impulses. The selected cap functions are norm-bounded, not normalized
+to one; the final energy statement is an upper bound. No-signalling
+is restricted to the receiver cap/record, not the full retained body.
+
+Reflection then derives a genuine but deliberately limited next-gate
+obstruction: the frozen prescribed cap density has a positive first
+spherical-harmonic projection outside the range of the round-sphere
+scalar-curvature derivative. This rejects the naive linear geometric
+repair, not the full coupled quantum/semiclassical constraint. The
+actual metric/preparation/apparatus response and momentum constraints
+are now explicitly required by NEXT_GATE.md. No new Core theorem or
+separate automatic entry is counted for this diagnostic.
+
+AR was extended before its immutable audit with the exact post-readout
+full tensor noise increment v Re<B_F B_G>+2v^2 C_F C_G. B and C derived
+and independently checked it. It is a positive semidefinite same-state
+nonselective increment on smooth future tests; it reproduces the
+retained energy formula and does not subtract sharp divergent variances
+or include the missing apparatus stress. The root certificate checks
+the noncommuting Gaussian polynomial identity.

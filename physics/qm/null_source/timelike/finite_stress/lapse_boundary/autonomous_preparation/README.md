@@ -70,3 +70,15 @@ has a real preparation past, explicit .43/(tau*k^3) final and
 .60/(tau*k^3) intermediate bounds, retained counterterm/work/phase,
 and the same-state sign record. Its external source and reader hardware
 have not been made into a local autonomous gravitational apparatus.
+
+## Local causal record and the next geometric gate
+
+[AR: separated-cap signal and complete local record](LOCAL_RECORD.md),
+[certificate](local_record.json), [reflection and next gate](NEXT_GATE.md).
+The actual AQ prepared state supports a finite-window receiver-local
+quantum record under the fixed local Hamiltonian, an explicit normal
+mathematical readout and retained local stress/energy accounting. The
+encoding violates the fixed-ESU pointwise Einstein constraint. A further
+frozen-density linearized metric repair fails four first-harmonic range
+conditions for this single-cap source; the full joint response is still
+required. No autonomous apparatus or physical unification is declared.

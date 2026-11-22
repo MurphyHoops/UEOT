@@ -56,3 +56,9 @@ sources, bring the ledger to 18 records and 214 identities (177 full-text,
 37 hash-only). AP6-C-001 remains open pending immutable verification of
 the explicit graph-domain clarification. All three agents are read-only;
 only root executed the new science.
+
+## AP7 immutable review
+
+All three PASS; AP6-C-001 resolved at d286f8333d8d52cf1f210a8928aecdf4af5a47f4.
+Current ledger: 21 records, 237 identities
+(195 full-text, 42 hash-only). Final audit still pending.
