@@ -72,6 +72,16 @@ open UEOT.V3.Compression.TransportCertificate
 def euclidDistSq4 (x y : Fin 4 → ℝ) : ℝ :=
   ∑ mu : Fin 4, (x mu - y mu) ^ 2
 
+/-- Explicit 4D vertices of a `(4,1)` causal 4-simplex in `ℝ⁴`:
+- vertices `0, 1, 2, 3` form a regular equilateral spatial tetrahedron of side `a` in `ℝ³ × {0}`,
+- vertex `4` is the apex at `(0, 0, 0, h₄₁)`. -/
+noncomputable def vertices41 (a h41 : ℝ) : Fin 5 → Fin 4 → ℝ
+  | 0 => ![a / (2 * Real.sqrt 2), a / (2 * Real.sqrt 2), a / (2 * Real.sqrt 2), 0]
+  | 1 => ![a / (2 * Real.sqrt 2), -a / (2 * Real.sqrt 2), -a / (2 * Real.sqrt 2), 0]
+  | 2 => ![-a / (2 * Real.sqrt 2), a / (2 * Real.sqrt 2), -a / (2 * Real.sqrt 2), 0]
+  | 3 => ![-a / (2 * Real.sqrt 2), -a / (2 * Real.sqrt 2), a / (2 * Real.sqrt 2), 0]
+  | 4 => ![0, 0, 0, h41]
+
 /-- Explicit 4D vertices of a `(3,2)` causal 4-simplex in `ℝ⁴`:
 - vertices `0, 1, 2` form an equilateral spatial triangle of side `a` in `ℝ² × {0} × {0}`,
 - vertices `3, 4` form an orthogonal spatial segment of side `a` in `{0}² × ℝ × {h₃₂}`. -/
@@ -84,49 +94,134 @@ noncomputable def vertices32 (a h32 : ℝ) : Fin 5 → Fin 4 → ℝ
 
 /-- Exact 4D Causal Simplex `(4,1)` and `(3,2)` Euclidean Realizability & `α̃ > 7/12` Threshold:
 For lattice spacing `a > 0` and Euclideanized timelike parameter `α̃ : ℝ`:
-1. Every spatial edge on the `(3,2)` triangle/segment has squared length `a²`, and all 6 timelike
-   struts connecting `{0,1,2}` to `{3,4}` have squared length `(7 / 12) a² + h₃₂²`,
-2. Both causal simplex squared heights `h_{4,1}² = (α̃ - 3/8) a²` and `h_{3,2}² = (α̃ - 7/12) a²`
-   are strictly positive **if and only if `7 / 12 < α̃`**,
-3. At `α̃ = 1`, both Euclidean 4-volumes `(√(8 α̃ - 3) / 96) a⁴` and `(√(12 α̃ - 7) / 96) a⁴`
-   coincide and equal the strictly positive equilateral 4-simplex volume `(√5 / 96) a⁴`. -/
+1. All 6 spatial edges of `vertices41 a h41` and all 4 spatial edges of `vertices32 a h32` have
+   squared length `a²`, while all 4 timelike struts of `vertices41` equal `(3 / 8) a² + h₄₁²` and
+   all 6 timelike cross-struts of `vertices32` equal `(7 / 12) a² + h₃₂²`,
+2. Nondegenerate positive-height 4D Euclidean embeddings `(h41 > 0, h32 > 0)` realizing timelike
+   edge squared length `α̃ * a²` on every strut of both `vertices41` and `vertices32` (with strictly
+   positive 4-volumes `(√(8 α̃ - 3) / 96) a⁴ > 0` and `(√(12 α̃ - 7) / 96) a⁴ > 0`) exist **if and
+   only if `7 / 12 < α̃`**,
+3. At `α̃ = 1`, both Euclidean 4-volumes coincide and equal `(√5 / 96) a⁴ > 0`. -/
 theorem causal_4simplex_41_32_euclidean_realizability_iff
-    {a tilde_alpha h32 : ℝ} (ha : 0 < a) :
-    (euclidDistSq4 (vertices32 a h32 1) (vertices32 a h32 2) = a ^ 2 ∧
+    {a tilde_alpha : ℝ} (ha : 0 < a) :
+    (∀ h41 : ℝ,
+      (∀ u ∈ ({0, 1, 2, 3} : Finset (Fin 5)), ∀ v ∈ ({0, 1, 2, 3} : Finset (Fin 5)),
+        u ≠ v → euclidDistSq4 (vertices41 a h41 u) (vertices41 a h41 v) = a ^ 2) ∧
+      (∀ u ∈ ({0, 1, 2, 3} : Finset (Fin 5)),
+        euclidDistSq4 (vertices41 a h41 u) (vertices41 a h41 4) = (3 / 8 : ℝ) * a ^ 2 + h41 ^ 2)) ∧
+    (∀ h32 : ℝ,
+      euclidDistSq4 (vertices32 a h32 0) (vertices32 a h32 1) = a ^ 2 ∧
+      euclidDistSq4 (vertices32 a h32 1) (vertices32 a h32 2) = a ^ 2 ∧
+      euclidDistSq4 (vertices32 a h32 0) (vertices32 a h32 2) = a ^ 2 ∧
       euclidDistSq4 (vertices32 a h32 3) (vertices32 a h32 4) = a ^ 2 ∧
-      euclidDistSq4 (vertices32 a h32 0) (vertices32 a h32 3) = (7 / 12 : ℝ) * a ^ 2 + h32 ^ 2 ∧
-      euclidDistSq4 (vertices32 a h32 1) (vertices32 a h32 4) = (7 / 12 : ℝ) * a ^ 2 + h32 ^ 2) ∧
-      (((tilde_alpha - (3 / 8 : ℝ)) * a ^ 2 > 0 ∧ (tilde_alpha - (7 / 12 : ℝ)) * a ^ 2 > 0) ↔
-        (7 / 12 : ℝ) < tilde_alpha) ∧
-      (Real.sqrt (8 * (1 : ℝ) - 3) / 96) * a ^ 4 = (Real.sqrt 5 / 96) * a ^ 4 ∧
-      (Real.sqrt (12 * (1 : ℝ) - 7) / 96) * a ^ 4 = (Real.sqrt 5 / 96) * a ^ 4 ∧
-      0 < (Real.sqrt 5 / 96) * a ^ 4 := by
+      (∀ u ∈ ({0, 1, 2} : Finset (Fin 5)), ∀ v ∈ ({3, 4} : Finset (Fin 5)),
+        euclidDistSq4 (vertices32 a h32 u) (vertices32 a h32 v) =
+          (7 / 12 : ℝ) * a ^ 2 + h32 ^ 2)) ∧
+    ((∃ h41 h32 : ℝ,
+        0 < h41 ∧ 0 < h32 ∧
+        h41 ^ 2 = (tilde_alpha - (3 / 8 : ℝ)) * a ^ 2 ∧
+        h32 ^ 2 = (tilde_alpha - (7 / 12 : ℝ)) * a ^ 2 ∧
+        (∀ u ∈ ({0, 1, 2, 3} : Finset (Fin 5)),
+          euclidDistSq4 (vertices41 a h41 u) (vertices41 a h41 4) = tilde_alpha * a ^ 2) ∧
+        (∀ u ∈ ({0, 1, 2} : Finset (Fin 5)), ∀ v ∈ ({3, 4} : Finset (Fin 5)),
+          euclidDistSq4 (vertices32 a h32 u) (vertices32 a h32 v) = tilde_alpha * a ^ 2) ∧
+        0 < (Real.sqrt (8 * tilde_alpha - 3) / 96) * a ^ 4 ∧
+        0 < (Real.sqrt (12 * tilde_alpha - 7) / 96) * a ^ 4) ↔
+      (7 / 12 : ℝ) < tilde_alpha) ∧
+    (Real.sqrt (8 * (1 : ℝ) - 3) / 96) * a ^ 4 = (Real.sqrt 5 / 96) * a ^ 4 ∧
+    (Real.sqrt (12 * (1 : ℝ) - 7) / 96) * a ^ 4 = (Real.sqrt 5 / 96) * a ^ 4 ∧
+    0 < (Real.sqrt 5 / 96) * a ^ 4 := by
   have ha2 : 0 < a ^ 2 := sq_pos_of_pos ha
+  have ha4 : 0 < a ^ 4 := pow_pos ha 4
+  have hsq2 : Real.sqrt 2 ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+  have hs2_ne : Real.sqrt 2 ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr (by norm_num))
   have hsq3 : Real.sqrt 3 ^ 2 = 3 := Real.sq_sqrt (by norm_num)
   have hs3_ne : Real.sqrt 3 ≠ 0 := ne_of_gt (Real.sqrt_pos.mpr (by norm_num))
-  refine ⟨⟨?_, ?_, ?_, ?_⟩, ?_, ?_, ?_, ?_⟩
-  · simp [euclidDistSq4, vertices32, Fin.sum_univ_four]
-    ring
-  · simp [euclidDistSq4, vertices32, Fin.sum_univ_four]
-    ring
-  · simp [euclidDistSq4, vertices32, Fin.sum_univ_four]
-    field_simp [hs3_ne]
-    rw [hsq3]
-    ring
-  · simp [euclidDistSq4, vertices32, Fin.sum_univ_four]
-    field_simp [hs3_ne]
-    rw [hsq3]
-    ring
-  · constructor
-    · rintro ⟨_, h712⟩
-      have hpos : 0 < tilde_alpha - (7 / 12 : ℝ) :=
-        (mul_pos_iff_of_pos_right ha2).mp h712
-      linarith
-    · intro hgt
-      exact ⟨mul_pos (by linarith) ha2, mul_pos (by linarith) ha2⟩
-  · norm_num
-  · norm_num
-  · positivity
+  have h41_geom : ∀ h41 : ℝ,
+      (∀ u ∈ ({0, 1, 2, 3} : Finset (Fin 5)), ∀ v ∈ ({0, 1, 2, 3} : Finset (Fin 5)),
+        u ≠ v → euclidDistSq4 (vertices41 a h41 u) (vertices41 a h41 v) = a ^ 2) ∧
+      (∀ u ∈ ({0, 1, 2, 3} : Finset (Fin 5)),
+        euclidDistSq4 (vertices41 a h41 u) (vertices41 a h41 4) = (3 / 8 : ℝ) * a ^ 2 + h41 ^ 2) := by
+    intro h41
+    refine ⟨?_, ?_⟩
+    · intro u hu v hv huv
+      simp only [Finset.mem_insert, Finset.mem_singleton] at hu hv
+      rcases hu with rfl | rfl | rfl | rfl <;> rcases hv with rfl | rfl | rfl | rfl
+      all_goals try exact False.elim (huv rfl)
+      all_goals
+        simp [euclidDistSq4, vertices41, Fin.sum_univ_four]
+        field_simp [hs2_ne]
+        rw [hsq2]
+        ring
+    · intro u hu
+      simp only [Finset.mem_insert, Finset.mem_singleton] at hu
+      rcases hu with rfl | rfl | rfl | rfl
+      all_goals
+        simp [euclidDistSq4, vertices41, Fin.sum_univ_four]
+        field_simp [hs2_ne]
+        rw [hsq2]
+        ring
+  have h32_struts : ∀ h32 : ℝ,
+      ∀ u ∈ ({0, 1, 2} : Finset (Fin 5)), ∀ v ∈ ({3, 4} : Finset (Fin 5)),
+        euclidDistSq4 (vertices32 a h32 u) (vertices32 a h32 v) =
+          (7 / 12 : ℝ) * a ^ 2 + h32 ^ 2 := by
+    intro h32 u hu v hv
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hu hv
+    rcases hu with rfl | rfl | rfl <;> rcases hv with rfl | rfl
+    all_goals
+      simp [euclidDistSq4, vertices32, Fin.sum_univ_four]
+      field_simp [hs3_ne]
+      rw [hsq3]
+      ring
+  have h32_geom : ∀ h32 : ℝ,
+      euclidDistSq4 (vertices32 a h32 0) (vertices32 a h32 1) = a ^ 2 ∧
+      euclidDistSq4 (vertices32 a h32 1) (vertices32 a h32 2) = a ^ 2 ∧
+      euclidDistSq4 (vertices32 a h32 0) (vertices32 a h32 2) = a ^ 2 ∧
+      euclidDistSq4 (vertices32 a h32 3) (vertices32 a h32 4) = a ^ 2 ∧
+      (∀ u ∈ ({0, 1, 2} : Finset (Fin 5)), ∀ v ∈ ({3, 4} : Finset (Fin 5)),
+        euclidDistSq4 (vertices32 a h32 u) (vertices32 a h32 v) =
+          (7 / 12 : ℝ) * a ^ 2 + h32 ^ 2) := by
+    intro h32
+    refine ⟨?_, ?_, ?_, ?_, h32_struts h32⟩
+    · simp [euclidDistSq4, vertices32, Fin.sum_univ_four]
+      field_simp [hs3_ne]
+      rw [hsq3]
+      ring
+    · simp [euclidDistSq4, vertices32, Fin.sum_univ_four]
+      ring
+    · simp [euclidDistSq4, vertices32, Fin.sum_univ_four]
+      field_simp [hs3_ne]
+      rw [hsq3]
+      ring
+    · simp [euclidDistSq4, vertices32, Fin.sum_univ_four]
+      ring
+  refine ⟨h41_geom, h32_geom, ?_, by norm_num, by norm_num, by positivity⟩
+  constructor
+  · rintro ⟨h41, h32, _, hh32_pos, _, _, _, hstruts32, _, _⟩
+    have h03 := hstruts32 0 (by simp) 3 (by simp)
+    rw [(h32_struts h32) 0 (by simp) 3 (by simp)] at h03
+    have hh32_sq_pos : 0 < h32 ^ 2 := sq_pos_of_pos hh32_pos
+    have hprod_pos : 0 < (tilde_alpha - (7 / 12 : ℝ)) * a ^ 2 := by linarith
+    have hdiff_pos : 0 < tilde_alpha - (7 / 12 : ℝ) :=
+      (mul_pos_iff_of_pos_right ha2).mp hprod_pos
+    linarith
+  · intro hgt
+    have hp41 : 0 < (tilde_alpha - (3 / 8 : ℝ)) * a ^ 2 := mul_pos (by linarith) ha2
+    have hp32 : 0 < (tilde_alpha - (7 / 12 : ℝ)) * a ^ 2 := mul_pos (by linarith) ha2
+    let h41 := Real.sqrt ((tilde_alpha - (3 / 8 : ℝ)) * a ^ 2)
+    let h32 := Real.sqrt ((tilde_alpha - (7 / 12 : ℝ)) * a ^ 2)
+    have hh41_sq : h41 ^ 2 = (tilde_alpha - (3 / 8 : ℝ)) * a ^ 2 := Real.sq_sqrt (le_of_lt hp41)
+    have hh32_sq : h32 ^ 2 = (tilde_alpha - (7 / 12 : ℝ)) * a ^ 2 := Real.sq_sqrt (le_of_lt hp32)
+    have hv41_pos : 0 < Real.sqrt (8 * tilde_alpha - 3) := Real.sqrt_pos.mpr (by linarith)
+    have hv32_pos : 0 < Real.sqrt (12 * tilde_alpha - 7) := Real.sqrt_pos.mpr (by linarith)
+    refine ⟨h41, h32, Real.sqrt_pos.mpr hp41, Real.sqrt_pos.mpr hp32, hh41_sq, hh32_sq,
+      ?_, ?_, by positivity, by positivity⟩
+    · intro u hu
+      rw [(h41_geom h41).2 u hu, hh41_sq]
+      ring
+    · intro u hu v hv
+      rw [h32_struts h32 u hu v hv, hh32_sq]
+      ring
 
 /-- Coercivity & Boundedness-from-Below of the Wick-Rotated Causal Regge Action:
 Under topological vertex bound `N₀ ≤ c₀ (N₄^(4,1) + N₄^(3,2))` (`c₀ ≥ 0`, `N₄^(4,1), N₄^(3,2) ≥ 0`),
