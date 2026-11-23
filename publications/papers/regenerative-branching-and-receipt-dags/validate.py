@@ -632,6 +632,14 @@ f_mu3 = Q(559, 1024)
 f_mu4 = Q(3697, 8192)
 open_four = f_mu1 * (1 - Q(37, 16)) + (Q(3, 4) + Q(9, 16)) * f_mu2 + Q(27, 64) * f_mu3
 feedback_gap_four = Q(27, 64) * (f_mu3 - f_mu4)
+feedback_post_subgame = Q(9, 16) * (f_mu3 - f_mu4) / f_mu1
+
+from math import comb
+cubic_lower_ok = all(
+    solve_dag(h_c, Q(1), Q(1), Q(13, 10), Q(3, 4), [Q(1, 4), Q(3, 4)], [Q(1, 2), Q(1, 2)])["cert_nodes"] >= 1 + comb(h_c + 1, 3)
+    and solve_dag(h_c, Q(0), Q(1), Q(13, 10), Q(3, 4), [Q(1, 4), Q(3, 4)], [Q(1, 2), Q(1, 2)])["cert_nodes"] == 2 * h_c + 1
+    for h_c in range(0, 9)
+)
 
 mass_hA = Q(1, 2) * (Q(1, 4)**2 * Q(3, 4) + Q(3, 4)**2 * Q(1, 4))
 mass_hB = Q(1, 2) * (Q(1, 4) * Q(3, 4) + Q(3, 4) * Q(1, 4))
@@ -673,7 +681,9 @@ arithmetic_ok = (
     and prior_freeze_three == Q(51, 640) and b3["val"] - prior_freeze_three == Q(3, 640)
     and root_only_three == Q(-9, 512)
     and open_four == Q(2325, 65536) and feedback_gap_four == Q(20925, 524288)
+    and feedback_post_subgame == Q(6975, 106496) and Q(3, 4) * f_mu1 * feedback_post_subgame == feedback_gap_four
     and open_four + feedback_gap_four == b4["val"]
+    and cubic_lower_ok
     and mass_hA == Q(3, 32) and mass_hB == Q(3, 16)
     and post_hA_low == Q(1, 4) and post_hB_low == Q(1, 2)
     and next_birth_hA == Q(5, 8) and next_birth_hB == Q(1, 2)
@@ -706,12 +716,14 @@ required = [
     "manuscript.md", "manuscript.tex", "manuscript.pdf", "references.bib",
     "ABSTRACT_ZH.md", "CLAIM_MATRIX.md", "README.md", "COPYRIGHT_AND_LICENSE.md",
     "BUILD_RECEIPT.json", "template.tex", "layout.lua", "generate_figures.py",
-    "build.py", "validate.py",
+    "verify_standalone.py", "build.py", "validate.py",
     "figures/fig1_architecture_and_thresholds.pdf",
     "figures/fig2_informative_counts_and_sufficiency.pdf",
     "figures/fig3_dag_compression_and_scaling.pdf",
     "submissions/mor/mor_blinded_manuscript.pdf",
     "submissions/mor/mor_title_page.pdf",
+    "submissions/mor/verify_standalone.py",
+    "submissions/mor/generate_figures.py",
     "submissions/mor/cover_letter.md",
     "submissions/mor/SUBMISSION_GUIDE_AND_MANIFEST.md",
 ]
@@ -763,24 +775,40 @@ ref_page_idx = next(
 mor_pages_excl_references = ref_page_idx  # 0-based index of first References page = count of preceding pages
 abstract_on_page_2 = len(mor_page_splits) >= 2 and ("Abstract." in mor_page_splits[1])
 
+mor_verify_txt = (MOR_DIR / "verify_standalone.py").read_text(encoding="utf-8") if (MOR_DIR / "verify_standalone.py").is_file() else ""
+mor_genfig_txt = (MOR_DIR / "generate_figures.py").read_text(encoding="utf-8") if (MOR_DIR / "generate_figures.py").is_file() else ""
+standalone_run = subprocess.run(
+    [sys.executable, str(MOR_DIR / "verify_standalone.py")],
+    cwd="/tmp", env=ENV, capture_output=True, text=True, check=True,
+)
+standalone_verifier_pass = json.loads(standalone_run.stdout).get("status") == "PASS"
+
 anonymity_leaks = [
     tok for tok in [
         "Degui", "Qian", "MurphyHoops", "24433585", "24433584",
-        "Single-authored", "sole author",
+        "Single-authored", "sole author", "UEOT",
     ]
-    if tok in mor_text or tok in mor_info
+    if tok in mor_text or tok in mor_info or tok in mor_verify_txt or tok in mor_genfig_txt
 ]
 ai_disclosure_in_blinded_manuscript = (
     "Generative AI and reproducibility disclosure" in mor_text
     and "Gemini 4 Carbon" in mor_text
     and "ChatGPT 6 Astra" in mor_text
+    and "verify_standalone.py" in mor_text
 )
+
+mor_title_info = subprocess.run(
+    ["pdfinfo", "mor_title_page.pdf"],
+    cwd=MOR_DIR, env=ENV, capture_output=True, text=True, check=True,
+).stdout
+mor_title_pages = int(re.search(r"^Pages:\s+(\d+)", mor_title_info, re.M).group(1))
 
 mor_record = {
     "journal": "Mathematics of Operations Research (INFORMS)",
     "review_mode": "double-anonymous (two-file split: mor_title_page.pdf + mor_blinded_manuscript.pdf)",
     "status": "PASS" if (
-        not anonymity_leaks and ai_disclosure_in_blinded_manuscript
+        not anonymity_leaks and ai_disclosure_in_blinded_manuscript and standalone_verifier_pass
+        and mor_title_pages == 1
         and not mor_tex_errors and not mor_bib_warnings
         and not mor_missing_glyphs and not mor_overfull
         and abstract_on_page_2 and mor_pages_excl_references <= 40
@@ -796,6 +824,8 @@ mor_record = {
     "msc2020_present": "MSC 2020" in mor_text,
     "orms_present": "OR/MS" in mor_text,
     "ai_disclosure_in_blinded_manuscript": ai_disclosure_in_blinded_manuscript,
+    "standalone_verifier_pass": standalone_verifier_pass,
+    "title_page_pages": mor_title_pages,
     "pdf_pages": mor_pages,
     "pdf_pages_excl_references": mor_pages_excl_references,
     "page_ceiling_excl_references": 40,
@@ -839,8 +869,8 @@ if not arithmetic_ok:
     errors.append("Live rational dynamic-programming arithmetic mismatch")
 
 record = {
-    "schema": "standalone-mor-editorial-validation/2",
-    "version": "1.2",
+    "schema": "standalone-mor-editorial-validation/3",
+    "version": "1.3",
     "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
     "status": "PASS" if not errors else "FAIL",
     "errors": errors,

@@ -7,13 +7,14 @@
 | Upload Slot | File to Upload | Verified Status |
 |:---|:---|:---|
 | **Blinded Main Manuscript** | `mor_blinded_manuscript.pdf` (`.tex` + `.bib` included) | **0 author/DOI leaks**, anonymized Generative AI & mathematical-guidance disclosure included, US Letter `11pt` / `1in` / `1.5` spacing with line numbers, Page 1 blinded Title Page + Page 2 **140-word** Abstract, numbered `amsplain` citations, `<= 40` pages excl. references, 0 TeX/BibTeX warnings, 0 overfull boxes |
-| **Unblinded Title Page** | `mor_title_page.pdf` (`.tex` included) | Separate 1-page author metadata, Funding, Competing Interests, named Generative AI disclosure (`Gemini 4 Carbon` & `ChatGPT 6 Astra` under Degui Qian's direction & 3-gate verification rules), shared-archive vs. exclusive *MOR* module manifest, and Zenodo Apache-2.0 DOI (`https://doi.org/10.5281/zenodo.24433585`) |
+| **Anonymized Reproducibility Code** | `verify_standalone.py`, `generate_figures.py` | **0 author/DOI leaks**, zero-dependency Python 3 standard-library verifier (`python3 verify_standalone.py` & `--benchmark-timings`) reproducing Table 3, $\binom{H+1}{3}$ lower bounds, and `1,440` DP checks |
+| **Unblinded Title Page (Editor-Only Slot)** | `mor_title_page.pdf` (`.tex` included) | Upload **solely** in ScholarOne's Editor-only / non-referee Title Page designation (verify exclusion in the merged ScholarOne reviewer proof PDF); 1-page author metadata, Funding, Competing Interests, named AI disclosure, and Zenodo v1.0.0 Lean library DOI (`10.5281/zenodo.24433585`) |
 | **Figures (Vector / 300-DPI)** | `figures/fig1_*.pdf`, `fig2_*.pdf`, `fig3_*.pdf` (`.png` also supplied) | 3 programmatic vector figures matching Section 2–6 notation |
-| **Cover Letter** | `cover_letter.md` | Tailored to *MOR* Stochastic Models / Dynamic Programming areas with transparent INFORMS Generative AI and shared-archive component disclosures |
+| **Cover Letter** | `cover_letter.md` | Tailored to *MOR* Stochastic Models / Dynamic Programming areas with transparent INFORMS Generative AI, Lean library DOI, and bundled Python script disclosures |
 
 ## 2. Automated Compliance Summary (`VALIDATION_MOR.json`)
 
-- **Double-Anonymous & AI-Disclosure Check:** `PASS` (`anonymity_leaks = []` across body, headers, Zenodo DOI redaction, and PDF metadata; `ai_disclosure_in_blinded_manuscript = true`)
+- **Double-Anonymous, AI-Disclosure & Standalone Verifier Check:** `PASS` (`anonymity_leaks = []` across PDF, metadata, `verify_standalone.py`, and `generate_figures.py`; `ai_disclosure_in_blinded_manuscript = true`; `standalone_verifier_pass = true`)
 - **Abstract Word Count & Placement:** **140 words** on **Page 2** following blinded Title Page (official *MOR* limit: **up to 150 words**, single paragraph)
 - **Equations / Citations in Abstract:** **0** (`$` count = `0`, `@` count = `0`)
 - **Keywords Count:** **5 keywords** (required: 3–5 keywords)

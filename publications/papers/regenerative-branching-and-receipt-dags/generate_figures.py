@@ -355,9 +355,9 @@ def build_fig2():
 
     draw_box(ax2, 0.05, 0.44, 0.88, 0.18,
              "Shared Five-Coordinate Sufficient Summary $\\sigma = (t, q, s, f, k) = (3, q_*, 2, 1, 1)$\n"
-             "Identical joint law over $(o,\\ \\sigma',\\ \\mathrm{birth},\\ C,\\ B')$ for ALL 7 actions in $\\{\\mathrm{root}_0, \\mathrm{child}_1\\}$ menu\n"
-             "Merged into a SINGLE certified DAG node (e.g. node 1294 in $H=8$ graph)",
-             facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=7.95)
+             "Identical joint law over $(o,\\ \\sigma',\\ \\mathrm{birth},\\ C,\\ B')$ for ALL legal actions in $\\{\\mathrm{root}_0, \\mathrm{child}_1\\}$ menu\n"
+             "Merged into a SINGLE certified DAG node (e.g. node 1294 in $H=8,\\ B_0=2$ graph)",
+             facecolor=LIGHT_BLUE, edgecolor=NAVY, fontsize=7.90)
 
     draw_arrow(ax2, (0.245, 0.71), (0.35, 0.63), color=TEAL, lw=1.15)
     draw_arrow(ax2, (0.74, 0.71), (0.63, 0.63), color=TEAL, lw=1.15)
@@ -447,8 +447,8 @@ def build_fig3():
     draw_box(ax2, 0.03, 0.73, 0.93, 0.16,
              "Canonical Memoized Generator ($\\mathrm{generate}$)\n"
              "Hash-consing on $(n,\\ \\sigma = (t,q,s,f,k))$ in decreasing $n = H - t$\n"
-             "$|G_{\\mathrm{reach}}| \\leq N_{\\mathrm{reach}}(H,M) = O(1 + (\\min(M,H)+1)H^3)$,  $\\leq 14|G_{\\mathrm{reach}}|$ edges",
-             facecolor=LIGHT_BG, edgecolor=SLATE, fontsize=7.85)
+             "Tight $\\Theta(1+H^3)$ for $M \\geq 1$:  $1 + \\binom{H+1}{3} \\leq |G_{\\mathrm{reach}}| \\leq N_{\\mathrm{reach}}(H,M)$,  $\\leq 14|G_{\\mathrm{reach}}|$ edges",
+             facecolor=LIGHT_BG, edgecolor=SLATE, fontsize=7.80)
 
     draw_box(ax2, 0.03, 0.42, 0.93, 0.21,
              "Two-Layer Executable Verifier ($\\mathrm{accept} = \\mathrm{certify} + \\mathrm{boundCheck}$)\n"
