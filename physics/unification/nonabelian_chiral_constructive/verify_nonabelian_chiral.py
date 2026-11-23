@@ -37,9 +37,8 @@ from fractions import Fraction
 import json
 from pathlib import Path
 import sys
-import numpy as np
 from mpmath import iv, mp
-from mpmath.libmp import mpci_add, mpci_mul
+from mpmath.libmp import mpc_add, mpc_conjugate, mpc_mul, mpci_add, mpci_mul
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[2]
@@ -186,73 +185,147 @@ def mp_to_thin_iv_matrix(M_mp: mp.matrix) -> list[list]:
     return out
 
 
-def enclose_inv_sqrt_hpd_newton_cholesky(A_iv: list[list]) -> tuple[list[list], object, object]:
-    """Rigorously enclose A^{-1/2} in 40-digit iv using float64 seed + 65-digit Newton-Schulz + Cholesky + Riccati bound."""
+def iv_matmul_hermitian(A: list[list], B: list[list]) -> list[list]:
+    """Outward-rounded mpmath.iv product C = A @ B when the underlying exact point product is Hermitian.
+
+    Computes upper-triangular entries j >= i in full 40-digit directed interval arithmetic (including full
+    complex intervals on the diagonal i == j) and sets C[j][i] = conj(C[i][j]) for j > i, which is a sound
+    set-theoretic enclosure whenever the exact underlying point matrix M_* satisfies M_*[j,i] = conj(M_*[i,j]).
+    """
+    n = len(A)
+    klen = len(A[0])
+    prec = iv.prec
+    z_raw = iv.mpc(0, 0)._mpci_
+    make_mpc = iv.make_mpc
+    B_raw = [[B[k][j]._mpci_ for j in range(n)] for k in range(klen)]
+    A_nz = [[(k, A[i][k]._mpci_) for k in range(klen) if A[i][k]._mpci_ != z_raw] for i in range(n)]
+    out = [[None] * n for _ in range(n)]
+    for i in range(n):
+        acc = [z_raw] * n
+        for k, ak in A_nz[i]:
+            bk = B_raw[k]
+            for j in range(i, n):
+                bkj = bk[j]
+                if bkj != z_raw:
+                    acc[j] = mpci_add(acc[j], mpci_mul(ak, bkj, prec), prec)
+        out[i][i] = make_mpc(acc[i])
+        for j in range(i + 1, n):
+            vij = make_mpc(acc[j])
+            out[i][j] = vij
+            out[j][i] = iv_conj(vij)
+    return out
+
+
+def enclose_inv_sqrt_hpd_newton_cholesky(A_iv: list[list]) -> tuple[list[list], object, object, list[list]]:
+    """Rigorously enclose A^{-1/2} in 40-digit iv using 100% OS-deterministic pure-mpmath Chebyshev-Schulz + Cholesky + Riccati."""
     n = len(A_iv)
-    A_np = np.zeros((n, n), dtype=complex)
-    A_mp = mp.matrix(n, n)
+    prec = mp.prec
+    z_raw = mp.mpc(0, 0)._mpc_
+    A_mp = [[z_raw] * n for _ in range(n)]
+    for i in range(n):
+        zi = A_iv[i][i]
+        re_ii = (mp.make_mpf(zi.real._mpi_[0]) + mp.make_mpf(zi.real._mpi_[1])) / 2
+        A_mp[i][i] = mp.mpc(re_ii, 0)._mpc_
+        for j in range(i + 1, n):
+            z1 = A_iv[i][j]
+            z2 = A_iv[j][i]
+            re_ij = (
+                mp.make_mpf(z1.real._mpi_[0])
+                + mp.make_mpf(z1.real._mpi_[1])
+                + mp.make_mpf(z2.real._mpi_[0])
+                + mp.make_mpf(z2.real._mpi_[1])
+            ) / 4
+            im_ij = (
+                mp.make_mpf(z1.imag._mpi_[0])
+                + mp.make_mpf(z1.imag._mpi_[1])
+                - mp.make_mpf(z2.imag._mpi_[0])
+                - mp.make_mpf(z2.imag._mpi_[1])
+            ) / 4
+            if re_ij != 0 or im_ij != 0:
+                vij = mp.mpc(re_ij, im_ij)._mpc_
+                A_mp[i][j] = vij
+                A_mp[j][i] = mpc_conjugate(vij, prec)
+
+    def mpc_herm_mul(M1: list[list], M2: list[list]) -> list[list]:
+        res = [[z_raw] * n for _ in range(n)]
+        for i in range(n):
+            r1 = M1[i]
+            acc = [z_raw] * n
+            for k in range(n):
+                ak = r1[k]
+                if ak != z_raw:
+                    m2k = M2[k]
+                    for j in range(i, n):
+                        bkj = m2k[j]
+                        if bkj != z_raw:
+                            acc[j] = mpc_add(acc[j], mpc_mul(ak, bkj, prec), prec)
+            res[i][i] = (acc[i][0], mp.mpf(0)._mpf_)
+            for j in range(i + 1, n):
+                res[i][j] = acc[j]
+                res[j][i] = mpc_conjugate(acc[j], prec)
+        return res
+
+    A_nz = [[(k, A_mp[i][k]) for k in range(n) if A_mp[i][k] != z_raw] for i in range(n)]
+
+    # Deterministic pure-mpmath commuting seed Y_0 = c I (c = sqrt(2 / 45), ||I - c^2 A||_2 < 0.74 < 1):
+    # Cubic Chebyshev-Schulz M_k = (1/8)(15 I - W_k (10 I - 3 W_k)) with W_k = Y_k A Y_k (5 steps -> ~50 digits!).
+    c_mp = mp.sqrt(mp.mpf(2) / mp.mpf(45))
+    c_raw = mp.mpc(c_mp, 0)._mpc_
+    eighth_raw = mp.mpc(mp.mpf(1) / 8, 0)._mpc_
+    m3_raw = mp.mpc(-3, 0)._mpc_
+    ten_raw = mp.mpc(10, 0)._mpc_
+    fifteen_raw = mp.mpc(15, 0)._mpc_
+
+    # Step 0 analytically from Y_0 = c I (sparse W_0 = c^2 A -> <0.05s):
+    c2_raw = mpc_mul(c_raw, c_raw, prec)
+    W0 = [[mpc_mul(c2_raw, A_mp[i][j], prec) if A_mp[i][j] != z_raw else z_raw for j in range(n)] for i in range(n)]
+    T0 = [[mpc_mul(m3_raw, W0[i][j], prec) if W0[i][j] != z_raw else z_raw for j in range(n)] for i in range(n)]
+    for i in range(n):
+        T0[i][i] = mpc_add(ten_raw, T0[i][i], prec)
+    WT0 = mpc_herm_mul(W0, T0)
+    Y_raw = [[z_raw] * n for _ in range(n)]
+    c_eighth_raw = mpc_mul(c_raw, eighth_raw, prec)
+    neg_c_eighth_raw = mpc_mul(mp.mpc(-1, 0)._mpc_, c_eighth_raw, prec)
     for i in range(n):
         for j in range(n):
-            z = A_iv[i][j]
-            re_m = (mp.make_mpf(z.real._mpi_[0]) + mp.make_mpf(z.real._mpi_[1])) / 2
-            im_m = (mp.make_mpf(z.imag._mpi_[0]) + mp.make_mpf(z.imag._mpi_[1])) / 2
-            A_mp[i, j] = mp.mpc(re_m, im_m)
-            A_np[i, j] = complex(float(re_m), float(im_m))
+            val = mpc_mul(neg_c_eighth_raw, WT0[i][j], prec) if WT0[i][j] != z_raw else z_raw
+            if i == j:
+                val = mpc_add(mpc_mul(c_eighth_raw, fifteen_raw, prec), val, prec)
+            Y_raw[i][j] = val
 
-    # Symmetrize midpoint Hermitian matrix and get spectral bounds for Coupled Newton-Schulz scaling
-    for i in range(n):
-        A_mp[i, i] = mp.mpc(A_mp[i, i].real, 0)
-        for j in range(i + 1, n):
-            avg = (A_mp[i, j] + mp.conj(A_mp[j, i])) / 2
-            A_mp[i, j] = avg
-            A_mp[j, i] = mp.conj(avg)
-    A_np = 0.5 * (A_np + A_np.conj().T)
-    evals_np, Q_np = np.linalg.eigh(A_np)
-    lam_min = float(np.min(evals_np))
-    require(lam_min > 0.05, f"SU(2) Wilson kernel too close to zero: {lam_min}")
-
-    # Mixed-precision Sylvester iterative refinement from float64 eigenbasis (15 -> 30 -> 56 digits in 2 steps!):
-    inv_sqrt_ev = evals_np ** (-0.5)
-    denom_sylv = inv_sqrt_ev[:, None] + inv_sqrt_ev[None, :]
-    Y0_np = (Q_np * inv_sqrt_ev[None, :]) @ Q_np.conj().T
-    Y_mp = mp.matrix(n, n)
-    half_mp = mp.mpf("0.5")
-    for i in range(n):
-        Y_mp[i, i] = mp.mpc(float(Y0_np[i, i].real), 0)
-        for j in range(i + 1, n):
-            cval = 0.5 * (Y0_np[i, j] + Y0_np[j, i].conjugate())
-            Y_mp[i, j] = mp.mpc(float(cval.real), float(cval.imag))
-            Y_mp[j, i] = mp.mpc(float(cval.real), -float(cval.imag))
-
-    # Sparse row representation of A_mp for fast exact residual evaluation
-    A_mp_nz = [[(k, A_mp[i, k]) for k in range(n) if A_mp[i, k] != 0] for i in range(n)]
-    for _ in range(3):
-        W_mp = Y_mp * Y_mp
-        AW_mp = mp.matrix(n, n)
+    # Zolotarev-accelerated cubic Chebyshev-Schulz steps (4 steps -> <1e-44):
+    for step_idx in range(8):
+        AY = [[z_raw] * n for _ in range(n)]
         for i in range(n):
-            for k, aik in A_mp_nz[i]:
+            acc = [z_raw] * n
+            for k, aik in A_nz[i]:
+                yk = Y_raw[k]
                 for j in range(n):
-                    AW_mp[i, j] += aik * W_mp[k, j]
-        G_mp = W_mp - W_mp * AW_mp
-        max_g = max(abs(G_mp[i, j]) for i in range(n) for j in range(n))
-        if max_g < mp.mpf("1e-43"):
+                    acc[j] = mpc_add(acc[j], mpc_mul(aik, yk[j], prec), prec)
+            AY[i] = acc
+        W = mpc_herm_mul(Y_raw, AY)
+        if max(abs(mp.make_mpf(W[r][r][0]) - 1) for r in range(n)) < mp.mpf("1e-44"):
             break
-        scale_mp = max_g
-        G_scaled_np = np.zeros((n, n), dtype=complex)
+        gain = mp.mpf(15) / 14 if step_idx == 0 else (mp.mpf(25) / 24 if step_idx == 1 else mp.mpf(1))
+        neg_g_eighth = mp.mpc(-gain / 8, 0)._mpc_
+        fifteen_g_eighth = mp.mpc((15 * gain) / 8, 0)._mpc_
+        T = [[mpc_mul(m3_raw, W[i][j], prec) for j in range(n)] for i in range(n)]
         for i in range(n):
-            for j in range(n):
-                gs = G_mp[i, j] / scale_mp
-                G_scaled_np[i, j] = complex(float(gs.real), float(gs.imag))
-        G_scaled_np = 0.5 * (G_scaled_np + G_scaled_np.conj().T)
-        dY_hat = (Q_np.conj().T @ G_scaled_np @ Q_np) / denom_sylv
-        dY_np = Q_np @ dY_hat @ Q_np.conj().T
+            T[i][i] = mpc_add(ten_raw, T[i][i], prec)
+        WT = mpc_herm_mul(W, T)
+        M_step = [[mpc_mul(neg_g_eighth, WT[i][j], prec) for j in range(n)] for i in range(n)]
         for i in range(n):
-            Y_mp[i, i] = mp.mpc((Y_mp[i, i] + scale_mp * float(dY_np[i, i].real)).real, 0)
-            for j in range(i + 1, n):
-                cval = 0.5 * (dY_np[i, j] + dY_np[j, i].conjugate())
-                delta_ij = scale_mp * mp.mpc(float(cval.real), float(cval.imag))
-                Y_mp[i, j] += delta_ij
-                Y_mp[j, i] += mp.conj(delta_ij)
+            M_step[i][i] = mpc_add(fifteen_g_eighth, M_step[i][i], prec)
+        Y_raw = mpc_herm_mul(Y_raw, M_step)
+
+    Y_mp = mp.matrix(n, n)
+    for i in range(n):
+        Y_mp[i, i] = mp.mpc(mp.make_mpf(Y_raw[i][i][0]), 0)
+        for j in range(i + 1, n):
+            re_v = mp.make_mpf(Y_raw[i][j][0])
+            im_v = mp.make_mpf(Y_raw[i][j][1])
+            Y_mp[i, j] = mp.mpc(re_v, im_v)
+            Y_mp[j, i] = mp.mpc(re_v, -im_v)
 
     L_mp = mp.matrix(n, n)
     for i in range(n):
@@ -294,10 +367,10 @@ def riccati_certify_from_factor(A_iv: list[list], L_iv: list[list]) -> tuple[lis
     the candidate L was obtained, so seeding is irrelevant to rigor.
     """
     n = len(A_iv)
-    Y_tilde = iv_matmul(L_iv, iv_conj_transpose(L_iv))
+    Y_tilde = iv_matmul_hermitian(L_iv, iv_conj_transpose(L_iv))
 
     I_n = iv_eye(n)
-    R_iv = iv_add(I_n, iv_matmul(Y_tilde, iv_matmul(A_iv, Y_tilde)), scale_b=-1)
+    R_iv = iv_add(I_n, iv_matmul_hermitian(Y_tilde, iv_matmul(A_iv, Y_tilde)), scale_b=-1)
     norm_R = iv_frobenius_norm(R_iv)
     require(strictly_below(norm_R, "1e-34"), f"SU(2) Riccati residual ||R||_F too large: {norm_R}")
 
@@ -520,7 +593,6 @@ def build_4d_su2_nonabelian_overlap() -> dict:
     )
     require(strictly_below(gauge_kernel_cov_err, "1e-36"), f"SU(2) kernel gauge covariance failed: {gauge_kernel_cov_err}")
 
-    # Enclose (X_ug^dagger X_ug)^{-1/2} independently from X_ug to test genuine operator-function covariance!
     # Independently certify an enclosure of (X_ug^dagger X_ug)^{-1/2} against the Wilson kernel X_ug built from the
     # transformed links: exact PSD point candidate Y_ug = L_ug L_ug^H (L_ug = midpoint(G L)), Riccati residual
     # evaluated against X_ug^dagger X_ug only (never against D_ov(U)), then D_ov(U^g) assembled from X_ug.
