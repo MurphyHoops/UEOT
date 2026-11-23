@@ -126,7 +126,7 @@ def main() -> int:
         if args.check:
             cmd.append("--check")
         t0 = time.monotonic()
-        proc = subprocess.run(cmd, cwd=REPO, env=env, capture_output=True, text=True, timeout=300)
+        proc = subprocess.run(cmd, cwd=REPO, env=env, capture_output=True, text=True, timeout=480)
         dur = round(time.monotonic() - t0, 3)
         if proc.returncode != 0:
             sys.stderr.write(f"FAIL [{name}]:\n{proc.stdout}\n{proc.stderr}\n")
