@@ -46,6 +46,10 @@ SUITES = [
     ("mesoscopic_decoherence_gravimetry", HERE / "mesoscopic_decoherence_gravimetry/verify_meso_decoherence.py", HERE / "mesoscopic_decoherence_gravimetry/certificate.json"),
     ("math_v42_closed_tests_bridge", HERE / "math_v42_closed_tests_bridge/verify_math_v42_bridge.py", HERE / "math_v42_closed_tests_bridge/certificate.json"),
     ("philosophy_v31_omega_bridge", HERE / "philosophy_v31_omega_bridge/verify_phil_v31_bridge.py", HERE / "philosophy_v31_omega_bridge/certificate.json"),
+    ("lorentzian_causal_qg_limit", HERE / "lorentzian_causal_qg_limit/verify_lorentzian_qg_limit.py", HERE / "lorentzian_causal_qg_limit/certificate.json"),
+    ("nonabelian_chiral_constructive", HERE / "nonabelian_chiral_constructive/verify_nonabelian_chiral.py", HERE / "nonabelian_chiral_constructive/certificate.json"),
+    ("unimodular_vacuum_selection", HERE / "unimodular_vacuum_selection/verify_unimodular_lambda.py", HERE / "unimodular_vacuum_selection/certificate.json"),
+    ("unified_causal_chiral_unimodular", HERE / "unified_causal_chiral_unimodular/verify_unified_synthesis.py", HERE / "unified_causal_chiral_unimodular/certificate.json"),
 ]
 
 
@@ -122,7 +126,7 @@ def main() -> int:
         if args.check:
             cmd.append("--check")
         t0 = time.monotonic()
-        proc = subprocess.run(cmd, cwd=REPO, env=env, capture_output=True, text=True, timeout=180)
+        proc = subprocess.run(cmd, cwd=REPO, env=env, capture_output=True, text=True, timeout=480)
         dur = round(time.monotonic() - t0, 3)
         if proc.returncode != 0:
             sys.stderr.write(f"FAIL [{name}]:\n{proc.stdout}\n{proc.stderr}\n")
@@ -185,6 +189,10 @@ def main() -> int:
             "UEOTPhysicsUnification.MesoscopicDecoherenceGravimetry",
             "UEOTPhysicsUnification.MathV42ClosedTestsAndMechanismBridge",
             "UEOTPhysicsUnification.PhilosophyV31OmegaObserverBridge",
+            "UEOTPhysicsUnification.LorentzianCausalQuantumGravityLimit",
+            "UEOTPhysicsUnification.NonAbelianChiralConstructiveBoundary",
+            "UEOTPhysicsUnification.UnimodularVacuumConstantSelection",
+            "UEOTPhysicsUnification.UnifiedCausalChiralUnimodularSynthesis",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
