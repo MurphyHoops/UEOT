@@ -1,12 +1,12 @@
 \documentclass[11pt,letterpaper]{article}
-\usepackage[margin=0.92in]{geometry}
+\usepackage[margin=0.86in]{geometry}
 \usepackage{fontspec}
 \IfFontExistsTF{Liberation Serif}{\setmainfont{Liberation Serif}}{\setmainfont{Times New Roman}}
-\IfFontExistsTF{DejaVu Sans Mono}{\setmonofont[Scale=0.84]{DejaVu Sans Mono}}{\setmonofont[Scale=0.84]{Menlo}}
+\IfFontExistsTF{DejaVu Sans Mono}{\setmonofont[Scale=0.83]{DejaVu Sans Mono}}{\setmonofont[Scale=0.83]{Menlo}}
 \usepackage{microtype}
 \setlength{\emergencystretch}{2.5em}
 \usepackage{setspace}
-\setstretch{1.08}
+\setstretch{1.04}
 \usepackage[unicode,colorlinks=true,allcolors=blue]{hyperref}
 \usepackage{xurl}
 \hypersetup{
@@ -16,33 +16,31 @@
 \begin{document}
 \pagestyle{empty}
 \begin{center}
-{\LARGE\bfseries Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance\par}
-\vspace{12pt}
-{\large\bfseries Separate Unblinded Title Page — \emph{Mathematics of Operations Research}\par}
+{\Large\bfseries Prepayment Thresholds, Informative Zero Receipts, and Certified Polynomial Decision Diagrams in Partially Observed Regenerative Maintenance\par}
+\vspace{8pt}
+{\normalsize\bfseries Separate Unblinded Title Page — \emph{Mathematics of Operations Research}\par}
 \end{center}
 
-\vspace{10pt}
-\noindent\textbf{Author:} Degui Qian\\
-\textbf{Affiliation:} Independent Researcher\\
-\textbf{Date:} November 2026
+\vspace{7pt}
+\noindent\textbf{Author:} Degui Qian \quad$\cdot$\quad \textbf{Affiliation:} Independent Researcher \quad$\cdot$\quad \textbf{Date:} November 2026
 
-\vspace{10pt}
+\vspace{7pt}
 \noindent\textbf{MSC 2020 Subject Classification:} Primary: 90C40, 93E20; Secondary: 60J85, 62C10, 68V15\\
 \textbf{OR/MS Subject Classification:} Dynamic programming/optimal control: Markov, Bayesian; Probability: branching processes; Reliability: maintenance/repairs\\
 \textbf{Keywords:} Bayesian dynamic programming; partially observable Markov decision processes; regenerative maintenance and standby control; sufficient statistics and decision diagrams; certifying algorithms
 
-\vspace{10pt}
+\vspace{7pt}
 \noindent\textbf{Funding Disclosure:} The author received no external funding, grants, or financial support for this research.
 
 \vspace{6pt}
 \noindent\textbf{Competing Interests:} The author declares no financial or non-financial competing interests.
 
 \vspace{6pt}
-\noindent\textbf{Formal Verification, Shared-Archive Delineation, and Reproducibility Disclosure:} Every definition, arbitrary-price single-wallet stopping rule, closed-form boundary, sufficient-statistic theorem, counterexample witness, and polynomial complexity bound reported in the blinded manuscript is self-containedly proved in Appendix A.1--A.6 and cross-checked by an exact-rational solver (\texttt{validate.py}). Core native/compressed transitions, prepayment invariants, high-price boundaries, value-of-information witnesses, counting posteriors, five-coordinate sufficiency, and executable rational certificate checkers are formally verified in Lean 4 (v4.33.1) over Mathlib across 30 interconnected \texttt{UnifiedClosure} modules (\texttt{RegisterJointDecision*}, \texttt{RegisterDecision*}, sharing generic store/solver infrastructure \texttt{RegisterPopulationHistorySource} and \texttt{FiniteJointDecision*} within the 1,051-module pure-kernel archive while remaining disjoint from companion fixed-mechanism modules \texttt{RegisterMechanismDecision*}) depending exclusively on \texttt{\{propext, Classical.choice, Quot.sound\}} (\texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}).
+\noindent\textbf{Formal Verification, Shared-Archive Delineation, and Reproducibility Disclosure:} Every definition, arbitrary-price single-repair stopping rule, closed-form boundary, sufficient-statistic theorem, counterexample witness, and matching $\Theta(1 + H^3)$ complexity bound reported in the blinded manuscript is self-containedly proved in Appendix A.1--A.6 and deterministically verified by the zero-dependency Python 3 script \texttt{verify\_standalone.py} (\texttt{python3 verify\_standalone.py} and \texttt{--benchmark-timings}) bundled in the submission package. Symbolic theorems for native/compressed transitions, prepayment invariants, high-price boundaries ($B_0 = c$), value-of-information and separation witnesses (\texttt{RegisterJointDecisionBoundary}, \texttt{RegisterDecisionRepresentationWitnesses}), counting posteriors, five-coordinate sufficiency, and two-layer \texttt{accept} (\texttt{certify} + \texttt{boundCheck}) checkers (\texttt{RegisterDecisionRepresentation}) are formally verified in Lean 4 (v4.33.1 / Mathlib) across 30 \texttt{UnifiedClosure} modules (sharing generic store/solver primitives \texttt{RegisterPopulationHistorySource} and \texttt{FiniteJointDecision*} while remaining disjoint from \texttt{RegisterMechanismDecision*}) over \texttt{\{propext, Classical.choice, Quot.sound\}} (\texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}).
 
 \vspace{6pt}
-\noindent\textbf{Author Contributions \& Generative AI Disclosure:} This research and manuscript were directed by Degui Qian and completed with \textbf{Gemini 4 Carbon} and \textbf{ChatGPT 6 Astra} across proof-sketch exploration, Lean 4 tactic engineering, exact-rational solver scripting, bibliographic cross-checking, and manuscript preparation under three verification rules: (i) line-by-line human audit of all self-contained proofs (Appendix A.1--A.6), (ii) deterministic \texttt{Fraction} DP (\texttt{validate.py}) and pure-kernel Lean 4 gating, and (iii) primary-source citation verification. AI systems are not co-authors; Degui Qian bears sole academic and legal responsibility for the work.
+\noindent\textbf{Author Contributions \& Generative AI Disclosure:} This research and manuscript were directed by Degui Qian and completed with \textbf{Gemini 4 Carbon} and \textbf{ChatGPT 6 Astra} across proof-sketch exploration, Lean 4 tactic engineering, exact-rational solver scripting, bibliographic cross-checking, and manuscript preparation under three verification rules: (i) line-by-line human audit of all self-contained proofs (Appendix A.1--A.6), (ii) deterministic \texttt{Fraction} DP (\texttt{verify\_standalone.py}) and pure-kernel Lean 4 gating, and (iii) primary-source citation verification. AI systems are not co-authors; Degui Qian bears sole academic and legal responsibility for the work.
 
 \vspace{6pt}
-\noindent\textbf{Prior Open Dissemination \& Archival Software DOI:} Copyright \copyright\ 2026 Degui Qian. Preprint prose and figures are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), permitted under INFORMS preprint policies; the exported Lean 4 formalization archive (v1.0.0) and accompanying verification scripts are permanently archived on Zenodo under the Apache License, Version 2.0 (Apache-2.0) at \href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585} (Concept DOI: \href{https://doi.org/10.5281/zenodo.24433584}{doi:10.5281/zenodo.24433584}).
+\noindent\textbf{Prior Open Dissemination \& Archival Software DOI:} Copyright \copyright\ 2026 Degui Qian. Preprint prose and figures are licensed under Creative Commons Attribution 4.0 International (CC BY 4.0), permitted under INFORMS preprint policies. The exported 1,051-module Lean 4 formalization library (v1.0.0) and kernel axiom verifier (\texttt{scripts/ExhaustiveAxiomAudit.lean}) are permanently archived on Zenodo under Apache-2.0 at \href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585} (Concept DOI: \href{https://doi.org/10.5281/zenodo.24433584}{doi:10.5281/zenodo.24433584}), while the manuscript-specific Python verifier (\texttt{verify\_standalone.py}) and figure script (\texttt{generate\_figures.py}) accompany the submission package directly.
 \end{document}

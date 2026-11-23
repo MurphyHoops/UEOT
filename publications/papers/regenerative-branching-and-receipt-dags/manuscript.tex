@@ -202,52 +202,55 @@ or idealize away:
   genealogical store requires an explicit measure-preserving commutation
   bridge rather than defining a reduced POMDP by fiat.
 \item
-  \emph{Arbitrary-price single-wallet retry stopping, persistence
-  premiums, and asymmetric value of information.} When the priced repair
-  fee \(p = \lambda c\) exceeds single-step output (\(p > 1\)), any
-  strict one-step myopic controller refuses repair and earns zero. Over
-  a multi-step horizon \(H+1\) with a single-repair budget
-  \(c \le B_0 < 2c\) (\(\lfloor B_0/c\rfloor = 1\)), however, immediate
-  step-\(0\) repair uniquely provisions the standby unit \texttt{child1}
-  alongside \texttt{root0}, while uncharged step-\(0\) faults leave
-  \(B_1 = B_0 \ge c\) available for single-unit field retries under a
-  pessimistic Bayesian posterior
+  \emph{Arbitrary-price single-repair retry stopping,
+  initialization-window forfeiture, and asymmetric value of
+  information.} At the heart of single-repair maintenance
+  (\(c \le B_0 < 2c\), i.e., \(\lfloor B_0/c\rfloor = 1\)) is a
+  three-way operational tension: an uncharged failure costs zero fee yet
+  \emph{simultaneously} shifts the reliability posterior downward,
+  consumes a finite-horizon epoch, and permanently forfeits the
+  step-\(0\) standby bay \texttt{child1}, while the first paid success
+  terminates write affordability (\(B_0 - c < c\))
   \citep{wald1947, raiffaSchlaifer1961, martin1967, degroot1970, berryFristedt1979, fristedtBerry1988, aghion1991, duff2002, ross2011, ghavamzadeh2015, barronYechiali2017}.
-  Across \emph{all} prices \(p \ge 0\), we show that optimal
-  single-repair control admits a canonical deterministic monotone
-  retry-cap rule governed by nested price thresholds. Moreover, once a
-  repair succeeds and reduces remaining balance to \(B_0 - c < c\),
-  \emph{state estimation} diverges sharply from \emph{parameter
-  learning} \citep{blackwell1953, howard1966}: receipt-adaptive standby
-  switching yields strictly positive feedback value at \(H+1 \ge 4\) by
-  identifying which unit faulted, whereas revealing the persistent
-  parameter \(\theta\) for free in that same continuation subgame has
-  \emph{exact zero value}.
+  Across \emph{all} prices \(p = \lambda c \ge 0\), we prove
+  single-crossing marginal retry gains and nested price thresholds.
+  Crucially, stopping after a failure is \emph{not} merely Bayesian
+  pessimism: fixing \(r = 1/2\) (\emph{zero} parameter uncertainty) and
+  \(d = 3/4\) over four steps (\(H + 1 = 4\)), closing \texttt{child1}
+  after step \(0\) lowers the first-retry price ceiling from \(53/32\)
+  (if a retry could still commission \texttt{child1}) to \(97/64\) (gap
+  \(9/64\)), flipping the optimal post-fault action at \(p = 8/5\) from
+  \textbf{retrying} to \textbf{stopping}. Moreover, once repair
+  succeeds, \emph{unit-state telemetry}
+  (\(\mathbb{E}_{\pi_{(1,1)}}[d^2 r_\theta^2(1 - r_\theta)] > 0\) at
+  \(t=1\), \(d^3\mathbb{E}_{\pi_0}[r_\theta^3(1 - r_\theta)]\) ex-ante)
+  diverges sharply from \emph{parameter revelation}
+  (\(\mathrm{EVPI}_{\theta,\mathrm{post}} = 0\))
+  \citep{blackwell1953, howard1966}.
 \item
-  \emph{Informative zero-receipt filtering, tight reachable complexity,
-  and all-action certifying decision diagrams.} Over horizon \(H\) with
-  \(|\mathcal{A}| = 7\) actions and \(|\mathcal{O}| = 4\) receipts,
-  syntactic action--receipt strings scale as \(28^H\)
-  (\(3.78 \times 10^{11}\) at \(H=8\), with \(23,841,395\) legal
-  positive-probability full histories at \(B_0 = 2c\))
-  \citep{papadimitriouTsitsiklis1987, lovejoy1991, cassandra1997, kaelbling1998, madani2003}.
-  Compressing this history tree into a shared directed acyclic decision
-  diagram
-  \citep{bryant1986, bahar1997, hoey1999, hansen1998, meuleau1999, poupartBoutilier2003}
-  without losing exact optimality over real-randomized policies requires
-  an exact sufficient summary
+  \emph{Zero-receipt filtering, tight \(\Theta(H^3)\) reachable
+  representation, and all-action certifying DAGs.} Why does multi-repair
+  control (\(B_0 \ge 2c\)) require more than standard Bayes-adaptive
+  POMDP memoization \citep{ross2011, meuleau1999, poupartBoutilier2003}?
+  Over \(28^H\) syntactic action--receipt strings (\(23,841,395\) legal
+  positive-probability histories at \(H=8, B_0=2c\))
+  \citep{papadimitriouTsitsiklis1987, lovejoy1991, cassandra1997, kaelbling1998, madani2003},
+  \emph{the same \((0,0)\) receipt is sometimes a genuine fault sample
+  and sometimes a deterministic zero-information outcome}
+  (\(L_r((0,0)) \equiv 1\) on damaged-slot idles or absent
+  \texttt{child1}). Reconstructing local unit states \(q\) from coarse
+  receipts yields a five-coordinate summary \(\sigma = (t, q, s, f, k)\)
+  preserving \emph{all-action} joint transitions and fees
   \citep{halmosSavage1949, striebel1965, hinderer1970, subramanian2022}.
-  Crucially, \emph{not every \((0,0)\) receipt is a fault sample}:
-  idling a damaged unit or addressing an absent standby slot emits
-  \((0,0)\) with likelihood \(1\) under every \(r_\theta\). Furthermore,
-  following the certifying-algorithm paradigm
-  \citep{blumKannan1995, mcconnell2011} and pure-kernel theorem proving
-  \citep{nipkowPaulsonWenzel2002, bertotCasteran2004, hoelzl2017, mouraUllrich2021, schaeffelerAbdulaziz2023},
-  certifying global Bellman optimality and bounding stored array size
-  require both all-action optimality checks (\texttt{certify}) and
-  source-level count/time invariants (\texttt{boundCheck} inside
-  \texttt{accept}), yielding both a cubic fixed-wallet reachable DAG
-  bound and a machine-checked quartic certificate ceiling.
+  Pairing memoized synthesis (\texttt{generate})
+  \citep{bryant1986, bahar1997, hoey1999} with a two-layer executable
+  verifier \texttt{accept\ =\ certify\ +\ boundCheck}
+  \citep{blumKannan1995, mcconnell2011, nipkowPaulsonWenzel2002, bertotCasteran2004, hoelzl2017, mouraUllrich2021, schaeffelerAbdulaziz2023}
+  certifies global Bellman optimality across \emph{all} legal
+  actions---not merely the executed policy---establishing both a
+  matching \(\Theta(1 + H^3)\) reachable node order
+  (\(1 + \binom{H+1}{3} \le |G_{\mathrm{reach}}|\)) for fixed positive
+  wallets and a machine-checked \(24(H+1)^4\) acceptance ceiling.
 \end{enumerate}
 
 \subsubsection{Summary of main
@@ -324,13 +327,16 @@ logical axioms (\texttt{propext}, \texttt{Classical.choice},
   via \(\mu_1\mu_3 - \mu_2^2 = w(1-w)r_0 r_1(r_0 - r_1)^2 > 0\)
   (\(21/16 \to 5/4\), penalizing prior-freezing retries by \(3/640\) at
   total horizon \(3\)); (iii) at total horizon \(4\), receipt-adaptive
-  standby switching beats \emph{every} open-loop continuation by raw
-  margin \(d^3 \mathbb{E}[r_\theta^3(1 - r_\theta)]\) (\(20925/524288\)
-  net optimal gain at \(r \in \{3/4, 7/8\}\)), whereas in the very same
-  post-repair subgame (iv) \texttt{freeSchedule} attains the
-  \(\theta\)-omniscient optimum uniformly for all \(r \in [0,1]\),
-  rendering free \(\theta\)-revelation strictly worthless
-  (\(\mathrm{EVPI}_{\mathrm{post}} = 0\)).
+  standby switching beats \emph{every} open-loop continuation by
+  conditional \(t=1\) post-success margin
+  \(\mathbb{E}_{\pi_{(1,1)}}[d^2 r_\theta^2(1 - r_\theta)]\)
+  (\(6975/106496\)) and \(t=0\) ex-ante margin
+  \(d^3 \mathbb{E}_{\pi_0}[r_\theta^3(1 - r_\theta)]\)
+  (\(20925/524288\)), whereas in that identical \(t=1\) post-repair
+  subgame (iv) \texttt{freeSchedule} attains the \(\theta\)-omniscient
+  optimum uniformly for all \(r \in [0,1]\), rendering free
+  \(\theta\)-revelation worthless
+  (\(\mathrm{EVPI}_{\theta,\mathrm{post}} = 0\)).
 \item
   \textbf{Informative zero-receipt filtering and universal
   counting-posterior factorization (Section 5.1, Theorem 4).}
@@ -354,29 +360,28 @@ logical axioms (\texttt{propext}, \texttt{Classical.choice},
   \((s,f)\) to net-success log-odds \(\delta = s - f\) under
   complementary two-point priors \(r_1 = 1 - r_0\)), while reachable
   witnesses prove physical-Markov insufficiency (\(5/8 \neq 1/2\)),
-  lawful genealogy-erasing history mergers, and immediate separation if
-  slot-2 dispatch is added (\(0\) vs.~\(r_\theta\)).
+  lawful genealogy-erasing history mergers across all legal actions, and
+  immediate separation if slot-2 dispatch is added (\(0\)
+  vs.~\(r_\theta\)).
 \item
-  \textbf{All-action certifying decision diagrams, cubic fixed-wallet
-  reachability, polynomial rational bit-length, and \(24(H+1)^4\)
-  acceptance bound (Section 6, Theorem 6).} Decoupling memoized graph
-  construction (\texttt{generate}) from the two-layer executable
-  verifier \texttt{accept\ :\ Option\ Result}---which pairs generic
-  all-action Bellman certification (\texttt{certify}) with source-level
-  count/time invariants (\texttt{boundCheck})---we prove native
-  optimality, pathwise prepayment, and \(N_H \le 24(H+1)^4\) on every
+  \textbf{All-action certifying decision diagrams, tight \(\Theta(H^3)\)
+  fixed-wallet reachability, polynomial rational bit-length, and
+  \(24(H+1)^4\) acceptance bound (Section 6, Theorem 6).} Decoupling
+  memoized graph construction (\texttt{generate}) from the two-layer
+  executable verifier \texttt{accept\ :\ Option\ Result}
+  (\texttt{certify} + \texttt{boundCheck}), we prove native optimality,
+  pathwise prepayment, and \(N_H \le 24(H+1)^4\) on every
   \texttt{accept}-verified array, and establish canonical generator
-  completeness (\texttt{accept(generate(...))\ =\ some\ res}) with
-  reachable node bound
-  \(N_{\mathrm{reach}}(H, M) \le 1 + 12\sum_{t=1}^H \binom{t+2}{2}(\min(M,t)+1) = O(1 + (\min(M, H) + 1)\,H^3)\)
-  (\(M = \lfloor B_0/c\rfloor\)), at most \(14 N_{\mathrm{reach}}\)
-  edges, and reduced rational bit-lengths
-  \(O(1 + \log(D_0 D_p) + \log(1 + H(1 + \lambda c)) + H\log(D_r D_d))\)
-  (\(O(H)\) for fixed numerical parameters)---compressing \(23,841,395\)
-  legal positive-probability eight-step histories
-  (\(28^8 \approx 3.78 \times 10^{11}\) syntactic strings) at
+  completeness with upper bound
+  \(N_{\mathrm{reach}}(H, M) = O(1 + (\min(M, H) + 1)\,H^3)\)
+  (\(M = \lfloor B_0/c\rfloor\)), matching lower bound
+  \(|G_{\mathrm{reach}}| \ge 1 + \binom{H+1}{3} = \Omega(1 + H^3)\)
+  whenever \(M \ge 1\) and \(\pi_0(\{\theta : 0 < r_\theta < 1\}) > 0\)
+  (versus \(2H + 1\) at \(M = 0\)), and reduced rational bit-lengths
+  \(O(1 + \log(D_0 D_p) + \log(1 + H(1 + \lambda c)) + H\log(D_r D_d))\)---compressing
+  \(23,841,395\) legal positive-probability eight-step histories at
   \(B_0 = 2c\) into \(1,661\) general certified nodes (\(1,020\) under
-  \(s - f\) log-odds) and \(151\) execution nodes with exact value
+  \(s - f\)) and \(151\) execution nodes with exact value
   \(884450457 / 1342177280\).
 \end{itemize}
 
@@ -535,14 +540,19 @@ strictly positive probability, so \(B_t < c\) forbids that write under
 both rules. The two feasibility rules differ \emph{only} on zero-charge
 edge cases---addressing an absent \texttt{child1}, issuing nominal write
 labels after \(\mathrm{stopped}_t = 1\), or acting under a degenerate
-posterior \(r_\theta = 0\) a.s.---where replacing the nominal write by a
-free \texttt{idle} preserves the exact physical transition, receipt
-\((0,0)\), and zero charge. Hence strict pre-execution prepayment
-attains the \emph{same} optimal value \(V_H^*\) as an ex-post
-almost-sure hard wallet while keeping \(\mathrm{menu}(c, B_t)\) a purely
-syntactic, prior-independent function of \(B_t\); the genuine economic
-value gap lies between sample-path hard wallets (\(B_t \ge 0\) pathwise)
-and expected-budget CMDPs (\(\mathbb{E}[\sum_t C_t] \le B_0\)).
+posterior \(r_\theta = 0\) a.s.---where replacing the nominal write by
+the corresponding free \texttt{idle} request (\texttt{(1,\ idle)} on an
+absent \texttt{child1}, or \texttt{(0,\ idle)} when
+\(\mathrm{stopped}_t = 1\) or \(r_\theta = 0\) a.s., noting that a
+healthy \texttt{root0} under \(\mathrm{stopped}_t = 1\) may still emit
+\((1,0)\)) preserves the exact effective action, physical transition,
+delivered receipt, and zero charge \(C_t = 0\). Hence strict
+pre-execution prepayment attains the \emph{same} optimal value \(V_H^*\)
+as an ex-post almost-sure hard wallet while keeping
+\(\mathrm{menu}(c, B_t)\) a purely syntactic, prior-independent function
+of \(B_t\); the genuine economic value gap lies between sample-path hard
+wallets (\(B_t \ge 0\) pathwise) and expected-budget CMDPs
+(\(\mathbb{E}[\sum_t C_t] \le B_0\)).
 
 \subsection{Inherited-target projection and optimality over
 real-randomized history
@@ -864,7 +874,7 @@ from \(\mathcal{S}_0 = [\mathrm{Some}(\neg g)]\) with discount
 Theorem 2 (proved across \(c \le B_0 < 2c\) in Appendix A.2, with its
 \(B_0 = c, p \ge S_H(d)\) specialization formally verified in
 \texttt{RegisterJointDecisionOptimality} and its general arbitrary-price
-formula cross-checked in \texttt{validate.py} across \(1,440\)
+formula cross-checked in \texttt{verify\_standalone.py} across \(1,440\)
 exact-rational DP instances---\(1,200\) positive-horizon plus \(240\)
 zero-horizon boundary checks---plus interior \(c < B_0 < 2c\) checks)
 exposes both the multi-retry stopping structure and the failure of
@@ -971,14 +981,16 @@ Two-body vs.~root-only cand. (\(H=3\)) & Cand. gap
 \((d + d^2)\mu_2 - (d\mu_2 + d^2\mu_3) = d^2(\mu_2 - \mu_3)\) &
 \(r \in \{1/4, 3/4\}\) eq., \(d=3/4, p=7/4\): \(V_3^* = +9/256\)
 vs.~cand. \(-9/512\) (opt. \(0\)) \\
-Receipt feedback vs.~open-loop (\(H=4\)) & Raw cont. gap
-\(d^3\mathbb{E}[r_\theta^3(1 - r_\theta)]\); net gap equal when
-\(V_{4,\mathrm{open,cand}} \ge 0\) & \(r \in \{3/4, 7/8\}\) eq.,
-\(d=3/4, p=37/16\): \(V_4^* - V_{4,\mathrm{open}}^* = 20925/524288\) \\
-Post-repair \(\theta\)-revelation (\(\mathrm{EVPI}_{\mathrm{post}}\)) &
-\(U_2(r_\theta, d, n)\) attained uniformly by \texttt{freeSchedule} &
-\(\mathrm{EVPI}_{\mathrm{post}} = 0\) for \emph{every} prior \(\pi_0\)
-and remaining horizon \(n \ge 0\) \\
+Receipt feedback vs.~open-loop (\(H=4\)) & Subgame
+\(\mathbb{E}_{\pi_{(1,1)}}[d^2 r_\theta^2(1 - r_\theta)]\); ex-ante
+\(d^3\mathbb{E}_{\pi_0}[r_\theta^3(1 - r_\theta)]\) &
+\(r \in \{3/4, 7/8\}\) eq., \(d=3/4, p=37/16\): subgame \(6975/106496\),
+ex-ante \(20925/524288\) \\
+Post-repair \(\theta\)-revelation
+(\(\mathrm{EVPI}_{\theta,\mathrm{post}}\)) & \(U_2(r_\theta, d, n)\)
+attained uniformly by \texttt{freeSchedule} &
+\(\mathrm{EVPI}_{\theta,\mathrm{post}} = 0\) for \emph{every} prior
+\(\pi_0\) and remaining horizon \(n \ge 0\) \\
 \end{longtable}
 }
 
@@ -1028,65 +1040,69 @@ model of Theorem 1 with \(c \le B_0 < 2c\):}
   optimal with \(V_3^* = 89/640\)).}
 \item
   \textbf{Open-loop sufficiency at \(H=3\) versus strict
-  receipt-feedback gain at \(H=4\).} \emph{At total horizon \(3\)
-  (\(B_0 = c\), \(p \ge p_1^*(2)\)), the open-loop action sequence
+  receipt-feedback gain at \(H=4\) (subgame vs.~ex-ante).} \emph{At
+  total horizon \(3\) (\(c \le B_0 < 2c\), \(p \ge p_1^*(2)\)), the
+  open-loop sequence
   \([(0, \mathrm{write}_g), (0, \mathrm{idle}), (1, \mathrm{idle})]\)
   already achieves \(\mu_1(1-p) + (d + d^2)\mu_2 = V_3^*\) whenever
-  positive (e.g., at \(r \in \{1/4, 3/4\}, d = 3/4, p = 7/4\),
-  \(V_3^* = 9/256 > 0\), whereas the root-only repair candidate
+  positive (at \(r \in \{1/4, 3/4\}, d = 3/4, p = 7/4\),
+  \(V_3^* = 9/256 > 0\), whereas root-only
   \([(0, \mathrm{write}_g), (0, \mathrm{idle}), (0, \mathrm{idle})]\)
-  yields net value \(-9/512 < 0\), forcing a root-only controller with
-  \texttt{stop} to earn optimal value \(0\)). At total horizon \(4\), by
-  contrast, after initial repair succeeds and exhausts the wallet, the
-  maximum continuation value over all predetermined three-step open-loop
-  sequences in \(\{(0, \mathrm{idle}), (1, \mathrm{idle})\}^3\) is
-  \(r + dr + d^2 r^2\) (attained by alternating
-  \((0, \mathrm{idle}), (1, \mathrm{idle}), (0, \mathrm{idle})\)),
-  whereas receipt-adaptive switching achieves
-  \(U_2(r, d, 3) = r + dr + d^2(2r^2 - r^3)\), yielding the nonnegative
-  raw continuation feedback advantage}
-  \[\Delta_{\mathrm{raw}}^{(4)} := d^3\,\mathbb{E}_{\pi_0}\!\bigl[r_\theta^3(1 - r_\theta)\bigr] \ge 0,\]
-  \emph{which is strictly positive iff \(d > 0\) and
-  \(\mathbb{P}_{\pi_0}(0 < r_\theta < 1) > 0\), and equals the global
-  optimal value gap \(V_4^* - V_{4,\mathrm{open}}^*\) whenever
-  \(p \ge p_1^*(3)\) and the open-loop repair candidate value
-  \(V_{4,\mathrm{open,cand}}\) is nonnegative. At equal weights on
-  \(r \in \{3/4, 7/8\}\), \(d = 3/4\), and
-  \(p = 37/16 \ge 1 + 3/4 + 9/16\), both repair candidates are strictly
-  positive
-  (\(V_{4,\mathrm{open}}^* = V_{4,\mathrm{open,cand}} = 2325 / 65536 > 0\)
-  and \(V_4^* = 39525 / 524288\)), so
+  yields \(-9/512 < 0\), optimal value \(0\)). At total horizon \(4\),
+  after initial repair succeeds (\(o_0 = (1,1)\) with probability
+  \(\mu_1 > 0\), posterior
+  \(\pi_{(1,1)}(\theta) = \pi_0(\theta)r_\theta / \mu_1\), residual
+  balance \(B_1 = B_0 - c < c\)), the maximum three-step open-loop
+  continuation in \(\{(0, \mathrm{idle}), (1, \mathrm{idle})\}^3\) is
+  \(r + dr + d^2 r^2\) whereas \texttt{freeSchedule} achieves
+  \(U_2(r, d, 3) = r + dr + d^2(2r^2 - r^3)\), yielding conditional
+  \(t = 1\) post-success state-telemetry value and \(t = 0\) ex-ante raw
+  feedback gain} \[\begin{aligned}
+  \mathrm{EVSI}_{\mathrm{state,post}}^{(3)} &:= \mathbb{E}_{\pi_{(1,1)}}\!\bigl[d^2 r_\theta^2(1 - r_\theta)\bigr] = \frac{d^2\,\mathbb{E}_{\pi_0}[r_\theta^3(1 - r_\theta)]}{\mu_1}, \\
+  \Delta_{\mathrm{raw}}^{(4)} &:= d\,\mu_1\,\mathrm{EVSI}_{\mathrm{state,post}}^{(3)} = d^3\,\mathbb{E}_{\pi_0}\!\bigl[r_\theta^3(1 - r_\theta)\bigr] \ge 0,
+  \end{aligned}\] \emph{strictly positive iff \(d > 0\) and
+  \(\mathbb{P}_{\pi_0}(0 < r_\theta < 1) > 0\), with
+  \(V_4^* - V_{4,\mathrm{open}}^* = \Delta_{\mathrm{raw}}^{(4)}\)
+  whenever \(p \ge p_1^*(3)\) and \(V_{4,\mathrm{open,cand}} \ge 0\). At
+  equal weights on \(r \in \{3/4, 7/8\}\), \(d = 3/4\), and
+  \(p = 37/16\),
+  \(\mathrm{EVSI}_{\mathrm{state,post}}^{(3)} = 6975 / 106496\),
+  \(V_{4,\mathrm{open}}^* = 2325 / 65536\), \(V_4^* = 39525 / 524288\),
+  and
   \(V_4^* - V_{4,\mathrm{open}}^* = \Delta_{\mathrm{raw}}^{(4)} = 20925 / 524288\).}
 \item
   \textbf{Exact zero post-repair value of \(\theta\)-revelation.}
-  \emph{In the exact same post-repair continuation subgame (\(B = 0\),
-  two intact units, arbitrary remaining horizon \(n \in \mathbb{N}\)),
-  the parameter-blind receipt policy \texttt{freeSchedule} attains the
-  \(\theta\)-omniscient continuation optimum \(U_2(r_\theta, d, n)\)
-  pointwise for every \(r_\theta \in [0,1]\). Hence the expected value
-  of perfect information on \(\theta\) after repair is identically zero
-  (\(\mathrm{EVPI}_{\mathrm{post}} = 0\)), and any positively priced
-  auxiliary read of \(\theta\) strictly reduces expected net payoff.}
+  \emph{Measured from the identical \(t = 1\) post-success continuation
+  subgame (\(0 \le B_1 < c\), two intact units, arbitrary remaining
+  horizon \(n \in \mathbb{N}\)), the parameter-blind receipt policy
+  \texttt{freeSchedule} attains the \(\theta\)-omniscient optimum
+  \(U_2(r_\theta, d, n)\) pointwise for every \(r_\theta \in [0,1]\).
+  Hence both the \(t = 1\) subgame value
+  \(\mathrm{EVPI}_{\theta,\mathrm{post}}^{(n)} = 0\) and the \(t = 0\)
+  ex-ante value
+  \(d\,\mu_1\,\mathrm{EVPI}_{\theta,\mathrm{post}}^{(n)} = 0\) vanish
+  identically.}
 \end{enumerate}
 
-Theorem 3(3)--(4) (proved in Appendix A.3) places \emph{device-state
-feedback} and \emph{parameter revelation} side by side inside the
-identical post-repair subgame
-\citep{striebel1965, kumarVaraiya1986, krishnamurthy2016}. Revealing the
-latent reliability parameter \(\theta\) after wallet exhaustion changes
-\emph{parameter uncertainty} without altering the dominant dispatch rule
-(\texttt{keep\ idling\ root0\ until\ its\ first\ fault,\ then\ switch\ to\ child1}),
-yielding \(\mathrm{EVPI}_{\mathrm{post}} = 0\). Observing two-bit birth
-receipts, by contrast, resolves \emph{hidden physical-state
-uncertainty}---identifying whether \texttt{root0} faulted on step \(1\)
-while \texttt{child1} survived step \(2\) (probability
-\((1 - r_\theta)r_\theta\))---routing step \(3\) to the surviving unit
-for strictly positive value \(d^3\mathbb{E}[r_\theta^3(1 - r_\theta)]\)
-(\(20925 / 524288\) at \(H = 4\)). Notice also that optimizing net
-discounted payoff \(J_H\) is distinct from maximizing event
-probabilities: in the \(H=2\) and \(H=3\) positive witnesses above,
-\(\mathbb{P}(\sum_t \mathrm{birth}_t \ge 1) = 1/2\), and in the \(H=4\)
-witness it is \(13/16\).
+Theorem 3(3)--(4) (proved in Appendix A.3) places \emph{unit-state
+telemetry} and \emph{parameter revelation} on the exact same \(t = 1\)
+post-repair accounting footing
+\citep{striebel1965, kumarVaraiya1986, krishnamurthy2016}. Once repair
+funds are exhausted, learning the shared failure rate \(\theta\) cannot
+alter the dominant dispatch rule
+(\texttt{idle\ root0\ until\ its\ first\ fault,\ then\ switch\ to\ child1}),
+so \(\mathrm{EVPI}_{\theta,\mathrm{post}}^{(n)} = 0\). Observing two-bit
+birth receipts, by contrast, tracks \emph{which physical unit remains
+alive}---routing step \(3\) to the surviving unit for \(t = 1\) subgame
+gain
+\(\mathbb{E}_{\pi_{(1,1)}}[d^2 r_\theta^2(1 - r_\theta)] = 6975 / 106496\)
+(\(20925 / 524288\) ex-ante at \(t = 0\)). Practically, even after
+maintenance budgets are spent and further failure-rate estimation is
+worthless, state telemetry remains valuable whenever standby routing is
+active. Notice also that optimizing \(J_H\) differs from maximizing
+survival probabilities
+(\(\mathbb{P}(\sum_t \mathrm{birth}_t \ge 1) = 1/2\) in the \(H=2,3\)
+witnesses and \(13/16\) at \(H=4\)).
 
 \section{Informative zero receipts, counting posteriors, and joint
 all-action
@@ -1323,8 +1339,11 @@ permitted action menu (Figure 2).
   \end{aligned}\] \emph{(each with probability \(3/32\) and posterior
   \(\pi(1/4) = 1/4\)) share the exact complete summary
   \(\sigma(m_A) = \sigma(m_B) = (3, q_*, 2, 1, 1)\) and induce identical
-  future joint laws across all seven actions in \(\mathcal{A}\), even
-  though their native population stores have distinct slot layouts}
+  future joint laws across all legal actions in the original menu
+  \(\mathrm{menu}(c, B_3) = \{\mathrm{stop}, (0, \mathrm{idle}), (1, \mathrm{idle})\}\)
+  at \(B_3 = 0\) (and across all seven actions of \(\mathcal{A}\)
+  whenever \(B_0 \ge 2c\) so \(B_3 \ge c\)), even though their native
+  population stores have distinct slot layouts}
   \[[\mathrm{Some}(\neg g),\, \mathrm{Some}(g),\, \mathrm{None},\, \mathrm{Some}(g)]
   \;\neq\;
   [\mathrm{Some}(\neg g),\, \mathrm{Some}(g),\, \mathrm{Some}(g),\, \mathrm{None}],\]
@@ -1477,10 +1496,10 @@ gate \texttt{accept} in the module
 \end{enumerate}
 
 Both verification stages are provably non-redundant (and both negative
-boundary probes are checked in \texttt{validate.py}). First, why must
-\texttt{NodeValid} inside \texttt{certify} check unselected suboptimal
-actions? Because storing only the chosen action \(a_i^*\) verifies
-\(J_H(G) = v_{\mathrm{root}}\) \emph{without certifying that no
+boundary probes are checked in \texttt{verify\_standalone.py}). First,
+why must \texttt{NodeValid} inside \texttt{certify} check unselected
+suboptimal actions? Because storing only the chosen action \(a_i^*\)
+verifies \(J_H(G) = v_{\mathrm{root}}\) \emph{without certifying that no
 alternative action beats \(a_i^*\)}; deleting a single positive-mass
 edge of an unselected action (\texttt{stop}) causes \texttt{certify} to
 reject immediately. Second, why is \texttt{boundCheck} inside
@@ -1493,9 +1512,9 @@ reject immediately. Second, why is \texttt{boundCheck} inside
 \texttt{certify} yet exceeding \(24(0+1)^4 = 24\), whereas
 \texttt{boundCheck} rejects every row violating \(n_i + t_i = H\).
 
-\subsection{Reachable cubic bounds, quartic acceptance ceilings,
-rational bit-lengths, and
-benchmarks}\label{reachable-cubic-bounds-quartic-acceptance-ceilings-rational-bit-lengths-and-benchmarks}
+\subsection{\texorpdfstring{Tight \(\Theta(H^3)\) fixed-wallet
+reachability, quartic acceptance ceilings, rational bit-lengths, and
+benchmarks}{Tight \textbackslash Theta(H\^{}3) fixed-wallet reachability, quartic acceptance ceilings, rational bit-lengths, and benchmarks}}\label{tight-thetah3-fixed-wallet-reachability-quartic-acceptance-ceilings-rational-bit-lengths-and-benchmarks}
 
 Once \texttt{accept} returns \texttt{some\ res} for
 \((G, \mathrm{root\_id})\), runtime execution (\texttt{packedRun} /
@@ -1509,10 +1528,10 @@ along the certified edge for \((a_{i_t}^*, o_t)\), and falls back to an
 explicit safe zero-fee action (\texttt{stop}) on any impossible
 zero-mass branch (Figure 3).
 
-\textbf{Theorem 6 (Acceptance soundness, quartic verifier ceiling, cubic
-fixed-wallet reachability, and polynomial bit-complexity).}
-\emph{Consider any valid rational problem instance over horizon
-\(H \in \mathbb{N}\) with write capacity
+\textbf{Theorem 6 (Acceptance soundness, quartic verifier ceiling, tight
+\(\Theta(H^3)\) fixed-wallet reachability, and polynomial
+bit-complexity).} \emph{Consider any valid rational problem instance
+over horizon \(H \in \mathbb{N}\) with write capacity
 \(M := \lfloor B_0 / c \rfloor \in \mathbb{N}\).}
 
 \begin{enumerate}
@@ -1544,47 +1563,63 @@ fixed-wallet reachability, and polynomial bit-complexity).}
   \texttt{boundCheck}, counting all stored rows even if unreachable)
   satisfies} \[N_H := G.\mathrm{size} \le 24\,(H + 1)^4.\]
 \item
-  \textbf{Canonical generator completeness, fixed-wallet cubic reachable
-  size, and polynomial rational bit-length.} \emph{For every valid
-  rational instance, bottom-up memoized synthesis (\texttt{generate})
-  terminates, produces a duplicate-free reachable array
-  \(G_{\mathrm{reach}}\) passing \textbf{both} \texttt{certify} and
-  \texttt{boundCheck}
+  \textbf{Canonical generator completeness, matching \(\Theta(H^3)\)
+  fixed-wallet reachability, and polynomial rational bit-length.}
+  \emph{For every valid rational instance, bottom-up memoized synthesis
+  (\texttt{generate}) terminates, produces a duplicate-free reachable
+  array \(G_{\mathrm{reach}}\) passing \textbf{both} \texttt{certify}
+  and \texttt{boundCheck}
   (\texttt{accept(G\_\{\textbackslash{}mathrm\{reach\}\})\ =\ some\ res},
-  so \texttt{returned} succeeds), and satisfies the reachable node and
-  positive-edge bounds}
+  so \texttt{returned} succeeds), and satisfies}
   \[|G_{\mathrm{reach}}| \le N_{\mathrm{reach}}(H, M) := 1 + 12 \sum_{t=1}^{H} \binom{t+2}{2}\bigl(\min(M, t) + 1\bigr) = O\Bigl(1 + \bigl(\min(M, H) + 1\bigr)H^3\Bigr),\]
   \emph{with at most \(14\,|G_{\mathrm{reach}}|\) positive-mass edges
   (and under complementary two-point priors \(r_1 = 1 - r_0\) using
   \(\delta = s - f\), at most
   \(1 + 12\sum_{t=1}^H (2t + 1)(\min(M, t) + 1) = O(1 + (\min(M, H) + 1)H^2)\)
-  nodes). Moreover, if \(D_0, D_r, D_d, D_p \in \mathbb{N}_{\ge 1}\) are
-  common denominators for \(\pi_0\), \(\{r_\theta\}\), \(d\), and
-  \(\lambda c\), telescoping cancellation
-  \(Z(s,f)\,m_\sigma^a(o) = Z(s + \Delta s, f + \Delta f)\) ensures
+  nodes). Conversely, at \(M = 0\) (\(B_0 < c\)),
+  \(|G_{\mathrm{reach}}| = 2H + 1\), whereas whenever \(M \ge 1\)
+  (\(B_0 \ge c\)) and
+  \(\pi_0(\{\theta \in \Theta : 0 < r_\theta < 1\}) > 0\),}
+  \[|G_{\mathrm{reach}}| \ge 1 + \binom{H + 1}{3} = \Omega\bigl(1 + H^3\bigr),\]
+  \emph{so for any fixed positive repair capacity \(M \ge 1\), the
+  general \((s, f)\) all-action certificate DAG has exact reachable node
+  order \(\Theta(1 + H^3)\). Moreover, if
+  \(D_0, D_r, D_d, D_p \in \mathbb{N}_{\ge 1}\) are common denominators
+  for \(\pi_0\), \(\{r_\theta\}\), \(d\), and \(\lambda c\), telescoping
+  cancellation \(Z(s,f)\,m_\sigma^a(o) = Z(s + \Delta s, f + \Delta f)\)
+  ensures
   \(D_0 D_r^H D_p D_d^{H-t} Z(s,f)\,V_{H-t}^{\mathrm{stat}}(\sigma) \in \mathbb{Z}\),
   bounding reduced numerator and denominator bit-lengths of every node
   value and edge probability by}
   \[O\Bigl(1 + \log(D_0 D_p) + \log\bigl(1 + H(1 + \lambda c)\bigr) + H\log(D_r D_d)\Bigr)\]
   \emph{(\(O(H)\) bits for fixed numerical parameters, so synthesis and
-  \texttt{accept} verification run in time polynomial in the horizon
-  \(H\) for fixed \(|\Theta|\) and fixed parameter bit-lengths).}
+  \texttt{accept} verification run in time polynomial in \(H\) for fixed
+  \(|\Theta|\) and fixed parameter bit-lengths).}
 \end{enumerate}
 
 Theorem 6 (Parts 1--3 mechanized in Lean 4 via
 \texttt{RegisterDecisionRepresentation}; Part 4 proved in Appendix A.6)
-separates \emph{verifier-level array bounds} from \emph{reachable
-state-space and bit-level complexity}. While \texttt{accept} enforces
-\(N_H \le 24(H+1)^4\) over arbitrary candidate arrays, every reachable
-node at \(t \ge 1\) has \texttt{fresh} \(= 0\) (\(12\) local states in
-\(Q\)), \(s + f \le t\) (\(\binom{t+2}{2}\) count pairs), and
-\(k \le \min(M, t)\), giving \(O(1 + H^3)\) nodes for any fixed repair
-capacity \(M\) (including \(M = 0\)) and \(O(1 + H^2)\) under
-complementary two-point log-odds. Crucially, Table 3 benchmarks
-compression against the \emph{exact number of legal positive-probability
-full histories} (leaves of the unmerged feasible decision--receipt tree)
-alongside standalone \texttt{generate} and \texttt{accept} wall-clock
-medians (\texttt{python3\ validate.py\ -\/-benchmark-timings}).
+pins down the \emph{exact} growth order of the general \((s,f)\)
+all-action representation. Why is the cubic upper bound tight whenever
+\(M \ge 1\) and \(\pi_0\) supports an interior rate
+\(0 < r_{\theta_*} < 1\)? For each layer \(t \in \{2, \dots, H\}\) and
+every pair \((s, f) \in \mathbb{N}_{\ge 1}^2\) with \(s + f \le t\),
+experiencing \(f \ge 1\) uncharged \((0, \mathrm{write}_g)\) faults
+permanently closes \texttt{child1}, one normal \((0, \mathrm{write}_g)\)
+repair restores \texttt{root0} (\(k = 1\)), \(s - 1\) normal
+\((0, \mathrm{idle})\) steps accumulate \(s\) successes, and
+\(t - s - f\) uninformative \texttt{(1,\ idle)} steps on the absent
+\texttt{child1} advance time without altering \((s, f, k)\)---reaching
+\(\binom{t}{2}\) distinct keys \((H - t, (t, q_\star, s, f, 1))\) at
+layer \(t\) and \(\sum_{t=2}^H \binom{t}{2} = \binom{H+1}{3}\) interior
+nodes overall (note that this \(\Theta(1 + H^3)\) bound governs the
+universal \((s,f)\) all-action generator; the complementary \((s - f)\)
+reduction, selected-action execution subgraph, and minimal optimal
+controller obey distinct lower-order complexity regimes). Table 3
+reports all five benchmarks alongside legal positive-probability history
+counts and standalone \texttt{generate} / \texttt{accept} wall-clock
+medians
+(\texttt{python3\ verify\_standalone.py\ -\/-benchmark-timings}).
 
 \Needspace{14\baselineskip}
 
@@ -1638,13 +1673,15 @@ Gen.~/ Accept (ms)
 }
 
 Table 3. Exact rational values, certified all-action and execution DAG
-sizes, legal positive-probability history leaf counts, fixed-wallet
-cubic reachable bounds (\(N_{\mathrm{reach}}\)) versus quartic
-\texttt{accept} ceilings, and standalone \texttt{generate} /
-\texttt{accept} median times over \(5\) single-core runs
-(\texttt{python3\ validate.py\ -\/-benchmark-timings}, arm64 macOS,
-CPython 3.9 \texttt{Fraction}; exact values and counts identically
-verified in Lean 4).
+sizes, legal positive-probability history leaf counts, cubic reachable
+upper bounds (\(N_{\mathrm{reach}}\)) versus quartic \texttt{accept}
+ceilings, and standalone \texttt{generate} / \texttt{accept} median
+times over \(5\) single-core runs
+(\texttt{python3\ verify\_standalone.py} and
+\texttt{python3\ verify\_standalone.py\ -\/-benchmark-timings}, arm64
+macOS, CPython 3.9 \texttt{Fraction}; symbolic soundness, prepayment,
+and \(24(H+1)^4\) theorems proved in Lean 4 via
+\texttt{RegisterDecisionRepresentation}).
 
 Table 3 and Figure 3 display the complete hierarchy across all five
 benchmarks, highlighted by the eight-step two-repair problem
@@ -1716,23 +1753,29 @@ certificate
 checking}\label{pure-kernel-lean-4-formalization-and-exact-rational-certificate-checking}
 
 All native and compressed transitions, prepayment invariants, high-price
-continuation formulas (\(B_0 = c, p \ge S_H(d)\)), value-of-information
-witnesses, counting-posterior factorizations, five-coordinate
-sufficiency theorems, and \texttt{accept} (\texttt{certify} +
-\texttt{boundCheck}) soundness and quartic size bounds in Sections 2--6
-have been formalized in Lean 4 (v4.33.1) over Mathlib
-\citep{mouraUllrich2021, mathlib2020} across 30 interconnected modules
-(\texttt{FiniteJointDecision*}, \texttt{RegisterJointDecision*}, and
-\texttt{RegisterDecision*}), while the arbitrary-price single-repair
-stopping extension across \(c \le B_0 < 2c\) (Theorem 2(2)--(3)) and
-canonical generator/bit-length bounds (Theorem 6(4)) are proved
-self-containedly in Appendix A.2 and A.6 and cross-checked by our
-exact-rational validation suite (\texttt{validate.py}). Across the
-entire compiled Lean environment, an automated axiom audit confirms zero
-occurrences of \texttt{sorryAx} and zero occurrences of compiler-trusted
-evaluation (\texttt{Lean.ofReduceBool} / \texttt{native\_decide})
-\citep{boespflug2011}, leaving solely Lean's three standard logical
-axioms \texttt{\{propext,\ Classical.choice,\ Quot.sound\}}
+continuation formulas (\(B_0 = c, p \ge S_H(d)\)), symbolic
+value-of-information and history-separation theorems (in the Lean
+modules \texttt{RegisterJointDecisionBoundary} and
+\texttt{RegisterDecisionRepresentationWitnesses}), counting-posterior
+factorizations, five-coordinate sufficiency theorems, and
+\texttt{accept} (\texttt{certify} + \texttt{boundCheck}) soundness and
+quartic size bounds in Sections 2--6 have been formalized in Lean 4
+(v4.33.1) over Mathlib \citep{mouraUllrich2021, mathlib2020} across 30
+interconnected modules (\texttt{FiniteJointDecision*},
+\texttt{RegisterJointDecision*}, and \texttt{RegisterDecision*}), while
+the arbitrary-price single-repair stopping extension across
+\(c \le B_0 < 2c\) (Theorem 2(2)--(3)) and canonical generator
+completeness, matching \(\Theta(1 + H^3)\) bounds, and bit-length bounds
+(Theorem 6(4)) are proved self-containedly in Appendix A.2 and A.6 and
+verified by the zero-dependency script \texttt{verify\_standalone.py}
+bundled with the manuscript. Across the entire compiled Lean
+environment, an automated axiom audit
+(\texttt{ExhaustiveAxiomAudit.lean} under \texttt{scripts/}) confirms
+zero occurrences of \texttt{sorryAx} and zero occurrences of
+compiler-trusted evaluation (\texttt{Lean.ofReduceBool} /
+\texttt{native\_decide}) \citep{boespflug2011}, leaving solely Lean's
+three standard logical axioms
+\texttt{\{propext,\ Classical.choice,\ Quot.sound\}}
 \citep{carneiro2019}.
 
 Architecturally, the formalization enforces three methodological
@@ -1782,12 +1825,12 @@ as well as probabilistic model checking
   requiring mutable hash-table invariants inside the trusted kernel.
   Theorem 6(4) proves mathematically that \texttt{generate} always
   passes both \texttt{certify} and \texttt{boundCheck}
-  (\texttt{returned} evaluates \texttt{accept} on \texttt{generate} to
-  \texttt{some\ res}), and all five main benchmarks (Table 3) plus eight
-  boundary stress tests (\(H = 0\), \(B_0 = 0\), \(B_0 < c\), endpoint
-  rates \(r \in \{0,1\}\), zero-weight prior atoms, duplicate rate
-  atoms, and inverted target \(g = 0\)) are explicitly generated and
-  kernel-checked.
+  (\texttt{returned} evaluates \texttt{accept} on \texttt{generate}),
+  while \texttt{verify\_standalone.py} deterministically reproduces and
+  \texttt{accept}-verifies all five Table 3 benchmarks (plus
+  complementary \((s - f)\) reductions, negative probes, and
+  \texttt{1,440} single-wallet instances) directly from the submission
+  package.
 \end{enumerate}
 
 \subsection{Comparison with classical operations research and explicit
@@ -2290,11 +2333,13 @@ consider any predetermined three-step open-loop sequence
 \end{itemize}
 
 By contrast, \texttt{freeSchedule} earns
-\(U_2(r, d, 3) = r + d r + d^2(2r^2 - r^3)\), so multiplying by \(r d\)
-and subtracting gives
-\(r d\bigl(U_2(r,d,3) - (r + dr + d^2 r^2)\bigr) = d^3 r^3(1 - r) \ge 0\),
-with expectation
-\(\Delta_{\mathrm{raw}}^{(4)} = d^3 \mathbb{E}[r_\theta^3(1 - r_\theta)]\).
+\(U_2(r, d, 3) = r + d r + d^2(2r^2 - r^3)\), so inside the \(t = 1\)
+post-success subgame (posterior
+\(\pi_{(1,1)}(\theta) = \pi_0(\theta)r_\theta/\mu_1\)), subtracting
+\(r + dr + d^2 r^2\) gives conditional state-telemetry value
+\(\mathrm{EVSI}_{\mathrm{state,post}}^{(3)} = \mathbb{E}_{\pi_{(1,1)}}[d^2 r_\theta^2(1 - r_\theta)] = d^2\mathbb{E}_{\pi_0}[r_\theta^3(1 - r_\theta)]/\mu_1\),
+and multiplying by \(d\,\mu_1\) gives the \(t = 0\) ex-ante raw gain
+\(\Delta_{\mathrm{raw}}^{(4)} = d^3 \mathbb{E}_{\pi_0}[r_\theta^3(1 - r_\theta)] \ge 0\).
 Whenever \(p \ge p_1^*(3)\),
 \(V_4^* = \max\{0, V_{4,\mathrm{open,cand}} + \Delta_{\mathrm{raw}}^{(4)}\}\)
 and \(V_{4,\mathrm{open}}^* = \max\{0, V_{4,\mathrm{open,cand}}\}\), so
@@ -2303,13 +2348,15 @@ and \(V_{4,\mathrm{open}}^* = \max\{0, V_{4,\mathrm{open,cand}}\}\), so
 weighted, \(d = 3/4, p = 37/16 \ge 1 + 3/4 + 9/16 = 37/16\):
 \(\mu_1 = 13/16\), \(\mu_2 = 85/128\), \(\mu_3 = 559/1024\),
 \(\mu_4 = 3697/8192\), giving
+\(\mathrm{EVSI}_{\mathrm{state,post}}^{(3)} = \frac{6975}{106496}\),
 \(V_{4,\mathrm{open}}^* = V_{4,\mathrm{open,cand}} = \frac{2325}{65536} > 0\),
-\(\Delta^{(4)} = \frac{20925}{524288}\), and
+\(\Delta_{\mathrm{raw}}^{(4)} = \frac{20925}{524288}\), and
 \(V_4^* = \frac{39525}{524288}\). Finally, Part (4) follows immediately
 from Appendix A.2(2): even if \(\theta\) is revealed at \(t = 1\) when
-\(B_1 = 0\), no policy depending on \(\theta\) can exceed
-\(U_2(r_\theta, d, H)\), which \texttt{freeSchedule} already attains
-without knowing \(\theta\). \(\square\)
+\(0 \le B_1 < c\), no policy depending on \(\theta\) can exceed
+\(U_2(r_\theta, d, n)\), which \texttt{freeSchedule} already attains
+without knowing \(\theta\), so
+\(\mathrm{EVPI}_{\theta,\mathrm{post}}^{(n)} = 0\). \(\square\)
 
 \subsection{Proof of Theorem 4 (Informative zero receipts and counting
 posteriors)}\label{proof-of-theorem-4-informative-zero-receipts-and-counting-posteriors}
@@ -2448,10 +2495,12 @@ store
 Both have likelihood \(r^2(1-r)\) (prior mass \(3/32\),
 \(\pi(1/4) = 1/4\)) and identical summary
 \(\sigma = (3, q_*, 2, 1, 1)\), so by Part (1) their future laws under
-\(\mathcal{A}\) agree identically; yet dispatching \texttt{(2,\ idle)}
-yields birth probability \(0\) on \(m_A\) (\texttt{None} at slot \(2\))
-versus \(r_\theta\) (prior mean \(5/8\)) on \(m_B\) (\texttt{Some(g)} at
-slot \(2\)). \(\square\)
+all legal actions in \(\mathrm{menu}(c, B_3)\) agree identically
+(\texttt{stop}, \texttt{(0,\ idle)}, \texttt{(1,\ idle)} at \(B_3 = 0\),
+and all seven actions of \(\mathcal{A}\) whenever \(B_0 \ge 2c\)); yet
+dispatching \texttt{(2,\ idle)} yields birth probability \(0\) on
+\(m_A\) (\texttt{None} at slot \(2\)) versus \(r_\theta\) (prior mean
+\(5/8\)) on \(m_B\) (\texttt{Some(g)} at slot \(2\)). \(\square\)
 
 \subsection{\texorpdfstring{Proof of Theorem 6 (\texttt{accept}
 soundness, reachable cubic bounds, and rational
@@ -2517,8 +2566,8 @@ appending \(\ge 24\) unreachable terminal rows
 \(v_i = 0\)).
 
 \textbf{(4) Canonical generator completeness (\texttt{accept} success),
-cubic reachable size, and rational bit-lengths.} Starting from
-\((H, \sigma_{\mathrm{init}})\) where
+matching \(\Theta(H^3)\) reachable size, and rational bit-lengths.}
+Starting from \((H, \sigma_{\mathrm{init}})\) where
 \(\sigma_{\mathrm{init}} = (0, (\neg g, \mathrm{None}, 0, 1), 0, 0, 0)\)
 (\(n_0 + t_0 = H + 0 = H\), \(s_0 = f_0 = k_0 = 0\),
 \(Z(0,0) = 1 > 0\)), \texttt{generate} recurses strictly downward on
@@ -2537,20 +2586,54 @@ index satisfies \(j < i < |G_{\mathrm{reach}}|\) with matching key, and
 \emph{both} \texttt{NodeValid} (\texttt{certify}) and
 \texttt{boundCheck} evaluate to \texttt{true} at every row, proving
 \texttt{accept}\((G_{\mathrm{reach}}) = \mathrm{some\ res}\)! Counting
-reachable keys: at \(t = 0\) only \((H, \sigma_{\mathrm{init}})\) is
-visited (\(1\) node); at each \(t \in \{1, \dots, H\}\), \texttt{upd}
-forces \(q.\mathrm{fresh} = 0\) (\(2 \cdot 3 \cdot 2 = 12\) states in
-\(Q\)), \(s + f \le t\) gives \(\binom{t+2}{2}\) count pairs (or
-\(2t + 1\) values of \(\delta = s - f \in \{-t, \dots, t\}\) under
-\(r_1 = 1 - r_0\)), and menu-legality
-\(c\,\mathrm{cap}(a_u) \le B_0 - k_u c\) forces \(k \le \min(M, t)\)
-(\(\min(M, t) + 1\) values), yielding
+reachable keys for the upper bound: at \(t = 0\) only
+\((H, \sigma_{\mathrm{init}})\) is visited (\(1\) node); at each
+\(t \in \{1, \dots, H\}\), \texttt{upd} forces \(q.\mathrm{fresh} = 0\)
+(\(2 \cdot 3 \cdot 2 = 12\) states in \(Q\)), \(s + f \le t\) gives
+\(\binom{t+2}{2}\) count pairs (or \(2t + 1\) values of
+\(\delta = s - f \in \{-t, \dots, t\}\) under \(r_1 = 1 - r_0\)), and
+menu-legality \(c\,\mathrm{cap}(a_u) \le B_0 - k_u c\) forces
+\(k \le \min(M, t)\) (\(\min(M, t) + 1\) values), yielding
 \(|G_{\mathrm{reach}}| \le 1 + 12\sum_{t=1}^H \binom{t+2}{2}(\min(M, t) + 1) \le 1 + 12(\min(M, H) + 1)\bigl(\binom{H+3}{3} - 1\bigr) = O(1 + (\min(M, H) + 1)H^3)\)
-(and \(O(1 + (\min(M, H) + 1)H^2)\) under \(\delta = s - f\)). Because
-\(|\mathcal{A}| = 7\) and
-\(L_r(o \mid g, q, a) > 0 \implies o \in \{o_{\mathrm{norm}}(g,q,a), (0,0)\}\),
-each node emits at most \(7 \times 2 = 14\) edges. Finally, by Table 2
-and Theorem 4,
+(and \(O(1 + (\min(M, H) + 1)H^2)\) under \(\delta = s - f\)), with at
+most \(7 \times 2 = 14\) positive-mass edges per node. For the lower
+bound: when \(M = 0\) (\(B_0 < c\)), only \texttt{stop},
+\texttt{(0,\ idle)}, and \texttt{(1,\ idle)} are legal from
+\((\neg g, \mathrm{None}, 0, 1)\), all emitting \((0,0)\) w.p. \(1\)
+with \(\Delta s = \Delta f = \Delta k = 0\) and transitioning at each
+\(t \in \{1, \dots, H\}\) exclusively to the two states
+\((\neg g, \mathrm{None}, \mathrm{stopped}, 0)\)
+(\(\mathrm{stopped} \in \{0,1\}\)), so
+\(|G_{\mathrm{reach}}| = 1 + 2H\). Conversely, suppose \(M \ge 1\)
+(\(B_0 \ge c\)) and fix \(\theta_* \in \Theta\) with
+\(\pi_0(\theta_*) > 0\) and \(0 < r_{\theta_*} < 1\). For any
+\(t \in \{2, \dots, H\}\) and any \((s, f) \in \mathbb{N}^2\) with
+\(s \ge 1\), \(f \ge 1\), and \(s + f \le t\), consider the menu-legal
+trajectory: (i) \(f \ge 1\) consecutive requests
+\((0, \mathrm{write}_g)\) realizing fault \(o_u = (0,0)\) (since step
+\(0\) faults while \texttt{fresh} \(= 1\), \texttt{child1} becomes
+permanently \texttt{None}, advancing to
+\((f, (\neg g, \mathrm{None}, 0, 0), 0, f, 0)\) with balance
+\(B_0 \ge c\)); (ii) one request \((0, \mathrm{write}_g)\) realizing
+normal \(o_f = (1,1)\) (restoring \texttt{root0} to \(g\) while
+\texttt{child1} stays \texttt{None}, reaching
+\((f+1, q_\star, 1, f, 1)\) where
+\(q_\star := (g, \mathrm{None}, 0, 0)\)); (iii) \(s - 1\) zero-fee
+requests \((0, \mathrm{idle})\) realizing normal \(o_u = (1,0)\) on
+healthy \texttt{root0} (reaching \((s+f, q_\star, s, f, 1)\)); and (iv)
+\(t - s - f\) zero-fee requests \((1, \mathrm{idle})\) on absent
+\texttt{child1} (each uninformative with \(o_u = (0,0)\) w.p. \(1\),
+\(\Delta s = \Delta f = \Delta k = 0\), and \(q' = q_\star\)). Because
+\texttt{generate} expands \emph{every} legal action and positive-mass
+receipt---and this trajectory has prior probability at least
+\(\pi_0(\theta_*) r_{\theta_*}^s (1 - r_{\theta_*})^f > 0\)---every such
+key \((H - t, (t, q_\star, s, f, 1))\) belongs to
+\(G_{\mathrm{reach}}\). There are \(\binom{t}{2}\) pairs
+\((s, f) \in \mathbb{N}_{\ge 1}^2\) with \(s + f \le t\) at each
+\(t \in \{2, \dots, H\}\) plus the distinct \(t = 0\) root
+\((H, \sigma_{\mathrm{init}})\), giving
+\(|G_{\mathrm{reach}}| \ge 1 + \sum_{t=2}^H \binom{t}{2} = 1 + \binom{H+1}{3} = \Omega(1 + H^3)\).
+Finally, by Table 2 and Theorem 4,
 \(Z(s,f)\,m_\sigma^a(o) = \sum_\theta \pi_0(\theta) r_\theta^s(1 - r_\theta)^f L_{r_\theta}(o \mid g, q, a) = Z(s + \Delta s, f + \Delta f)\)
 for every compatible \((a, o)\). Setting
 \(\widetilde{V}_n(\sigma) := Z(s,f)\,V_n^{\mathrm{stat}}(\sigma)\),
@@ -2588,24 +2671,34 @@ datasets were generated or analyzed; all mathematical proofs, rational
 dynamic-programming benchmarks, and counterexample trajectories are
 self-contained in the text and Mathematical Appendix.
 
-\textbf{Code availability.} Native and compressed semantics, prepayment
-invariants, high-price continuation formulas (\(B_0 = c\)),
-value-of-information witnesses, counting-posterior factorizations,
-five-coordinate sufficiency theorems, and executable rational
-\texttt{accept} (\texttt{certify} + \texttt{boundCheck}) certificate
-checkers reported in this article have been formally verified in Lean 4
-(v4.33.1) over Mathlib across 30 interconnected modules, passing an
-environment-wide axiom audit restricting transitive dependencies
-exclusively to \texttt{\{propext,\ Classical.choice,\ Quot.sound\}}
-(\texttt{0} \texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}).
-The exported Lean 4 formalization archive (v1.0.0) and accompanying
-Python verification scripts (\texttt{validate.py},
-\texttt{validate.py\ -\/-benchmark-timings},
-\texttt{generate\_figures.py}) reproducing every exact rational value,
-\texttt{1,440}-instance arbitrary-price check, node/history count,
-timing median, and vector figure are permanently archived on Zenodo
-under the Apache License, Version 2.0 (Apache-2.0) at
-\href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585}.
+\textbf{Code and formal-archive availability.} Two complementary
+verification artifacts support this article: (1) \emph{Pure-kernel Lean
+4 library archive (Zenodo v1.0.0)}---the 1,051-module Lean 4 (v4.33.1 /
+Mathlib) formalization library containing the 30 \texttt{UnifiedClosure}
+decision modules (\texttt{FiniteJointDecision*},
+\texttt{RegisterJointDecision*}, \texttt{RegisterDecision*}, including
+\texttt{accept}, \texttt{returned}, \texttt{result\_native\_value},
+\texttt{result\_native\_optimal}, and \texttt{result\_node\_bound} in
+\texttt{RegisterDecisionRepresentation}, alongside
+\texttt{RegisterJointDecisionBoundary} and the witness module
+\texttt{RegisterDecisionRepresentationWitnesses}) together with the
+kernel axiom verifier \texttt{ExhaustiveAxiomAudit.lean} (in
+\texttt{scripts/}, verifying
+\texttt{\{propext,\ Classical.choice,\ Quot.sound\}} only; \texttt{0}
+\texttt{sorryAx}, \texttt{0} \texttt{Lean.ofReduceBool}) is permanently
+archived under Apache-2.0 on Zenodo at
+\href{https://doi.org/10.5281/zenodo.24433585}{doi:10.5281/zenodo.24433585};
+and (2) \emph{Manuscript Python reproducibility scripts}---bundled
+directly in the manuscript package (rather than inside the v1.0.0 Lean
+library tarball), the zero-dependency Python 3 standard-library verifier
+\texttt{verify\_standalone.py} (\texttt{python3\ verify\_standalone.py}
+and \texttt{python3\ verify\_standalone.py\ -\/-benchmark-timings}) and
+vector figure generator \texttt{generate\_figures.py}
+(\texttt{python3\ generate\_figures.py}, alongside \texttt{build.py} and
+\texttt{validate.py}) deterministically reproduce all Table 3
+benchmarks, \((s - f)\) reductions, negative \texttt{certify} /
+\texttt{boundCheck} probes, \(\binom{H+1}{3}\) cubic lower-bound node
+sets, \texttt{1,440}-instance single-wallet checks, and Figures 1--3.
 
 \textbf{Author contributions and AI disclosure.} This research and
 manuscript were directed by Degui Qian and completed with \textbf{Gemini
@@ -2618,8 +2711,9 @@ model-suggested conjecture or threshold step was retained without a
 complete algebraic proof derived and verified line-by-line by the author
 (Appendix A.1--A.6); (ii) \emph{dual exact-rational and pure-kernel
 formal gating}---every closed-form formula, standby-window
-counterfactual, and DAG benchmark was cross-checked in deterministic
-\texttt{Fraction} arithmetic (\texttt{validate.py}) and core
+counterfactual, lower-bound node count, and DAG benchmark was
+cross-checked in deterministic \texttt{Fraction} arithmetic
+(\texttt{verify\_standalone.py}, \texttt{validate.py}) and core
 operational, sufficiency, and verifier theorems were machine-checked by
 the Lean 4 kernel (\texttt{0} \texttt{sorryAx}, \texttt{0}
 \texttt{Lean.ofReduceBool}); and (iii) \emph{primary-source citation
