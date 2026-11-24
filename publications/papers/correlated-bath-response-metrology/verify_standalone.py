@@ -740,6 +740,9 @@ def verify_part1_ramsey_and_break() -> dict:
         for pt in ((float(l1), float(n1), float(c1)), (float(l2), float(n2), float(c2)),
                    (0.2, 0.0, 0.0), (0.4, 0.6, 0.6), (0.4, 0.6, -0.6)):
             blks = bell_blocks(*pt, t_name)
+            if t_name == "original" and pt == (float(l1), float(n1), float(c1)):
+                # Off-diagonal h0 != h0' coherence stays nonzero inside B_f while cancelling under Tr and Tr[(Z x Z) .]
+                assert abs(blks["f"][0][3]) > 0.05
             assert abs(mat_trace(blks["f"]).real - 3.0 / 16.0) < 1e-14
             assert abs(mat_trace(mat_mul(zz_kron, blks["f"])).real - 3.0 / 16.0) < 1e-14
             for eta_test in (0.65, 0.90, 0.96, 1.0):
@@ -794,6 +797,46 @@ def verify_part1_ramsey_and_break() -> dict:
         val_lin = sum(wt * cmath.exp(-(A_t * c_pt[0] + B_t * c_pt[1]) + 1j * P_t * c_pt[2]) for wt, c_pt in zip(wts, corners))
         assert abs(val_mid - val_lin) <= rem_cap + 1e-15
 
+    # Local Fisher-information / Cramér-Rao variance lower-bound check at P1 under 720k calibration shots
+    shots_720k = (40000.0, 150000.0, 150000.0, 30000.0, 160000.0, 30000.0, 160000.0)
+    w_p1, eta_p1, delta_p1 = 0.09, 0.96, 0.012
+    o_p1 = obs_vec(math.sqrt(w_p1), 0.5, 0.25, eta_p1, delta_p1)
+    jac_w = [[0.0] * 5 for _ in range(7)]
+    fd_eps = 1e-7
+    base_params = [w_p1, 0.5, 0.25, eta_p1, delta_p1]
+    for j in range(5):
+        p_hi = list(base_params)
+        p_lo = list(base_params)
+        p_hi[j] += fd_eps
+        p_lo[j] -= fd_eps
+        o_hi = obs_vec(math.sqrt(p_hi[0]), p_hi[1], p_hi[2], p_hi[3], p_hi[4])
+        o_lo = obs_vec(math.sqrt(p_lo[0]), p_lo[1], p_lo[2], p_lo[3], p_lo[4])
+        for row_i in range(7):
+            jac_w[row_i][j] = (o_hi[row_i] - o_lo[row_i]) / (2.0 * fd_eps)
+    fim = [[0.0] * 5 for _ in range(5)]
+    for i in range(5):
+        for j in range(5):
+            fim[i][j] = sum(
+                (shots_720k[k] / (1.0 - o_p1[k] ** 2)) * jac_w[k][i] * jac_w[k][j]
+                for k in range(7)
+            )
+    aug = [fim[i][:] + [1.0 if i == j else 0.0 for j in range(5)] for i in range(5)]
+    for col in range(5):
+        piv = max(range(col, 5), key=lambda r: abs(aug[r][col]))
+        aug[col], aug[piv] = aug[piv], aug[col]
+        div = aug[col][col]
+        assert abs(div) > 1e-18
+        aug[col] = [x / div for x in aug[col]]
+        for r in range(5):
+            if r != col and aug[r][col] != 0.0:
+                fac = aug[r][col]
+                aug[r] = [aug[r][c] - fac * aug[col][c] for c in range(10)]
+    cov_w = [row[5:] for row in aug]
+    crlb_ratio_n_w = cov_w[1][1] / cov_w[0][0]
+    crlb_ratio_c_w = cov_w[2][2] / cov_w[0][0]
+    assert 6700.0 < crlb_ratio_n_w < 6850.0, crlb_ratio_n_w
+    assert 10750.0 < crlb_ratio_c_w < 10900.0, crlb_ratio_c_w
+
     return {
         "ramsey_equivalent_u_v": [str(u0), str(v0)],
         "w_fiber_interval": [str(w_min), str(w_max)],
@@ -804,6 +847,10 @@ def verify_part1_ramsey_and_break() -> dict:
             "im_z_plus_P2": round(z_p2.imag, 12),
         },
         "calibration_roundtrip_max_err": max_rt_err,
+        "local_crlb_var_ratios_P1_720k": {
+            "n_over_w": round(crlb_ratio_n_w, 1),
+            "c_over_w": round(crlb_ratio_c_w, 1),
+        },
         "aligned_Y_threshold": round(align_thresh, 12),
         "aligned_Y_worst_gap": round(align_gap, 12),
         "ramsey_det": round(det_M, 12),
@@ -868,6 +915,7 @@ def verify_part2_cutoff_bounds() -> dict:
     for k in (4, 8, 12, 13, 14, 16, 20, 24):
         cur = exact_duhamel_cutoff_bound(k)
         assert cur < prev
+        assert cur > Q(6, 11) ** (k + 1)
         prev = cur
 
     expected = {
