@@ -1,6 +1,6 @@
 # UEOT Open Specifications Registry (`OPEN_SPECS.md`)
 
-本表直接对齐 Wave 11 综合工作树（基线 `origin/main` `e824ef0b` 之上已合入 `M1..M3` 并完成 `M4` `SYNTH-11`：`38` Lean 模块 / `854` 定理、`38` Python 验证套件 + `345` 条 PR #468 回归、`81` 条 `VALIDATION_LEDGER.json` 记录）。  
+本表直接对齐 Wave 11 + Round 03 综合工作树（基线 `origin/main` `e824ef0b` 之上已合入 `M1..M3` 并完成 `M4` `SYNTH-11` 与 Round 03 `H2d` 障碍形式化：`38` Lean 模块 / `902` 定理、`38` Python 验证套件 + `345` 条 PR #468 回归、`82` 条 `VALIDATION_LEDGER.json` 记录，含 `P-H2D-OBSTRUCT-01`）。  
 新增条目请严格遵循下方模板；必须拆解为可机器判定的 Lean 签名或数值证伪阈值，严禁偷渡未声明物理前提。
 
 ---
@@ -15,6 +15,7 @@
 | `SPEC-20261124-04` | `CLOSED` | Wave 11 / `H3` (Dimensionless Couplings, Flavor & Vacuum Window; `H3d` `OPEN`) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/DimensionlessCouplingsFlavorAndVacuumWindowH3.lean` | `C/B/P/E/O` | `M2` (`fe0ba9ec`) / Round 2 |
 | `SPEC-20261124-05` | `CLOSED` | Wave 11 / `H4` (Bell-CHSH, Blind Holdout & Portfolio Contracts; `H4d` `OPEN`) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/BellCHSHAndBlindHoldoutContractH4.lean` | `C/B/E/O` | `M3` (`a95d3c69`) / Round 2 |
 | `SPEC-20261124-06` | `CLOSED` | Wave 11 / `SYNTH-11` (Cross-Sector Synthesis, Ledger & Monograph Sync; `OPEN` governance) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/CrossSectorPostWave10UnificationSynthesis.lean` | `C/B/P/E/O/X` | `M4` (`wt-wave11-synth`) / Round 2 |
+| `SPEC-20261124-07` | `OPEN` | Round 03 / `H2d` (Clay 4D Continuum Chiral YM Measure & Unconditional Mass Gap — **`H2d` itself remains `OPEN`**) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` | `C/B/P/O/X` | Round 03 Explorers A/B/C & Worker / Round 3 |
 
 ---
 
@@ -100,3 +101,21 @@
   1. `python3 -B research/lab_wiki/gatekeeper.py --mode full --write-receipt` 返回 `0`（38 Lean 模块 + 全量 `run_verification.py --check` 含 345 条 `all_harmonic_horizon` 回归全过）。
   2. `git status --short -uall` 确认无游离 `.lake` 目录、无冻结路径改动、无 `.agents/teamwork/` 污染。
 - **Falsification Criterion**: 若四向独立性 `(H1d4d, H2d, H3d, H4d)` 存在隐含耦合导致任一未决前沿被误标为闭合，或任一模块出现 `sorryAx`/`Lean.ofReduceBool`/自定义 `axiom`/数值不确定性，或触发冻结路径修改，则门禁拒绝合并。
+
+### `SPEC-20261124-07` — Round 03 `H2d`: 4D 无限体积非阿贝尔手征杨–米尔斯连续统测度存在性与无条件质量间隙（`H2d` 诚实保持 `OPEN`）
+- **Status**: `OPEN`（Round 03 障碍定理与条件化归约制品已通过红队与全套门禁审查，归档于 `LEMMA-20261124-15..16` 及 `DEAD-20261124-09..12`；数学核心 `H2d` 本身依据 `R2` 在 3 项 `H2dCoreObligation` 未被无条件卸下前诚实保持 **`OPEN`**）
+- **Target**:
+  - 在 Option 1 架构下扩展 `NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` 与 `physics/unification/nonabelian_lattice_massgap_h2/{verify_nonabelian_lattice_h2.py, certificate.json}`（新增 `"h2d_continuum_obstruction_audit"` 顶层字段，严格保留 Wave 11 `expectedModules := 38`、`CrossSectorPostWave10UnificationSynthesis.lean` 四向独立性、`result_ids`、`h2_layer_decomposition`、`physical_unification: "OPEN"` 与 `device_certified: false`），记录三条独立探索路线对 `H2d` 的障碍定理、条件化归约与 40 位外区间复核：
+    - **Route A（UV 多尺度块自旋 RG）**：`multiscale_one_loop_running_coupling_flow`、`multiscale_polymer_kp_threshold_and_scale_sum`、`block_spin_rg_obstruction_and_mz_floor`（1-loop 粗粒化膨胀流 + Mori–Zwanzig `1/16` / `1/8` 仿射余项下界 + `a_0^{-4}` 发散）、`h2d_uv_multiscale_conditional_reduction`（显式隔离 `[X]` 前提 `H2dUVMultiscaleAndIRPremise`）。
+    - **Route B（IR 跨越与 OS 质量间隙）**：`single_site_glauber_dobrushin_alpha_eq_one`、`product_dobrushin_volume_collapse_and_scaling_mismatch`、`asymptotic_freedom_knife_edge_scaling_and_local_dobrushin_breakdown`、`conditional_continuum_os_mass_gap_persistence`（半群倍增对数凸性消去 `C_ψ`，显式参数化 `[X]` 前提）。
+    - **Route C（手征和乐障碍与三义务尖锐分解）**：`torus_flat_cochain_nonzero_holonomy_not_coboundary`、`luscher_flat_fibre_nonzero_holonomy_blocks_quotient_descent`、`chiral_complex_phase_and_admissibility_entropy_obstruction`、`h2d_sharp_three_obligation_reduction_and_open_status`（`H2dCoreObligation` 三义务、`currentH2dRepoWitness := ⟨1, 1, 1⟩`，映射至 `H2LayerCandidate.Satisfies .h2d_clay_4d_continuum_measure`）。
+  - 台账 `VALIDATION_LEDGER.json` 新增 `P-H2D-OBSTRUCT-01`，`DEAD_ENDS.md` 追加 `DEAD-20261124-09..12`。
+- **Allowed Premises (`C/B/S/P/E/O/X`)**:
+  - `C`：冻结的 `UEOT.V3.FiniteDobrushin`、`UEOT.V3.Compression.QuotientDescent`、`ObservableBeliefQuotient`；
+  - `B/P/O`：`RGBridgeAndEFTMatching`、`Nonperturbative4DMeasureLimitH1d4`、`NonAbelianChiralConstructiveBoundary`、`ChiralGaugeOverlapClockBridge` 及纯 `mpmath.iv` / `sympy` / `Fraction` 数值证书；
+  - `X`：所有未决连续统/全局手征前提必须显式标为 `[X]`（`H2dUVMultiscaleAndIRPremise`、`conditional_continuum_os_mass_gap_persistence` 输入、`H2dCoreObligation`），严禁将条件性结论伪装成无条件证明。
+- **Acceptance Gate**:
+  1. `python3 -B research/lab_wiki/gatekeeper.py --mode lean` 返回 `0`（`38` 模块纯内核公理 `{propext, Classical.choice, Quot.sound}`，零警告、`0 sorryAx`、`0 native_decide`）。
+  2. `verify_nonabelian_lattice_h2.py --check` 与 `verify_cross_sector_post_wave10.py --check` 及 `run_verification.py --check`（含 345 条 PR #468 回归）确定性返回 `PASS`。
+  3. 独立 Red-Team Referee 给出明确 `PASS` 裁决后，方可将本规格收口为 `OPEN`（`H2d` 诚实保持开放）并晋升 `VERIFIED_LEMMAS.md`。
+- **Falsification Criterion**: 若任何新声明存在空洞前提、将 `H2d` 误标为已无条件闭合、遗漏 `[X]` 标记、数值外推跨界失稳，或修改任何冻结路径，则判定 `BLOCKED` / `FALSIFIED` 并记入 [DEAD_ENDS.md](DEAD_ENDS.md)。

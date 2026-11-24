@@ -7,6 +7,9 @@ import json
 from pathlib import Path
 import sys
 
+if hasattr(sys, "set_int_max_str_digits"):
+    sys.set_int_max_str_digits(20000)
+
 from mpmath import iv, mp
 import sympy as sp
 
@@ -274,6 +277,329 @@ def besseli_iv(n: int, x, terms: int = 26):
     rem_ub = next_term / (iv.mpf(1) - ratio_bound)
     total += iv.mpf([0, rem_ub.b])
     return total
+
+
+def besseli_iv_any(n: int, x):
+    """Rigorous outward-interval enclosure of modified Bessel function I_n(x) for any x >= 0."""
+    x_iv = iv.mpf(x)
+    require(x_iv.a >= 0, "besseli_iv_any domain x >= 0")
+    half_x = x_iv / iv.mpf(2)
+    half_x_sq = half_x ** 2
+    fact_n = 1
+    for j in range(1, n + 1):
+        fact_n *= j
+    terms = max(26, int(mp.ceil(mp.make_mpf(x_iv._mpi_[1]))) * 3 + 140)
+    term = (half_x ** n) / iv.mpf(fact_n)
+    total = term
+    for k in range(1, terms):
+        term = term * half_x_sq / (iv.mpf(k) * iv.mpf(n + k))
+        total += term
+    next_term = term * half_x_sq / (iv.mpf(terms) * iv.mpf(n + terms))
+    ratio_bound = half_x_sq / (iv.mpf(terms + 1) * iv.mpf(n + terms + 1))
+    require(strictly_below(ratio_bound, "0.5"), "besseli_iv_any remainder ratio too large")
+    rem_ub = next_term / (iv.mpf(1) - ratio_bound)
+    total += iv.mpf([0, rem_ub.b])
+    return total
+
+
+def neg_log_one_minus_iv(x_iv, terms: int = 50):
+    """Rigorous outward-interval enclosure of -log(1 - x) for 0 <= x < 1 without 1 - (1 - x) cancellation."""
+    require(x_iv.a >= 0 and strictly_below(x_iv, "1"), "neg_log_one_minus_iv domain 0 <= x < 1")
+    if strictly_above(x_iv, "0.25"):
+        return -iv.log(iv.mpf(1) - x_iv)
+    total = iv.mpf(0)
+    x_pow = x_iv
+    for k in range(1, terms + 1):
+        total += x_pow / iv.mpf(k)
+        x_pow *= x_iv
+    rem_ub = x_pow / (iv.mpf(terms + 1) * (iv.mpf(1) - x_iv))
+    return total + iv.mpf([0, rem_ub.b])
+
+
+def su2_half_haar_iv(beta_iv):
+    """Rigorous outward-interval enclosure of int_0^{pi/2} exp(-beta cos t) sin^2 t dt via Wallis recurrence."""
+    W0 = iv.pi / iv.mpf(4)
+    W1 = iv.mpf(1) / iv.mpf(3)
+    N = max(60, int(mp.ceil(mp.make_mpf(beta_iv._mpi_[1]))) * 4 + 120)
+    total = W0 + (-beta_iv) * W1
+    bpow = -beta_iv
+    W_prev2, W_prev1 = W0, W1
+    for k in range(2, N):
+        bpow = bpow * (-beta_iv) / iv.mpf(k)
+        Wk = (iv.mpf(k - 1) / iv.mpf(k + 2)) * W_prev2
+        total += bpow * Wk
+        W_prev2, W_prev1 = W_prev1, Wk
+    next_bpow = beta_iv ** N
+    for k in range(1, N + 1):
+        next_bpow /= iv.mpf(k)
+    ratio = beta_iv / iv.mpf(N + 1)
+    require(strictly_below(ratio, "0.5"), "SU(2) Haar series remainder ratio too large")
+    rem = next_bpow * (iv.pi / iv.mpf(4)) / (iv.mpf(1) - ratio)
+    return total + iv.mpf([-rem.b, rem.b])
+
+
+def compute_h2d_continuum_obstruction_audit() -> dict:
+    """Deterministic 40-digit mpmath.iv + sympy audit for Round 03 H2d (Routes A, B, C)."""
+    mp.dps = 120
+    iv.dps = 40
+    try:
+        # ---------------------------------------------------------------------
+        # Route A: Multiscale UV Block-Spin RG, KP Thresholds & MZ Obstruction
+        # ---------------------------------------------------------------------
+        gk2_sym, dblk_sym = sp.symbols("g_k2 Delta_blk", positive=True)
+        gnext2_sym = gk2_sym / (1 - dblk_sym * gk2_sym)
+        require(sp.simplify(gnext2_sym - gk2_sym - dblk_sym * gk2_sym * gnext2_sym) == 0,
+                "Route A RG step identity failed")
+        require(sp.simplify(sp.diff(gnext2_sym, gk2_sym) - (1 - dblk_sym * gk2_sym) ** (-2)) == 0,
+                "Route A RG Jacobian derivative identity failed")
+        kap_sym, eps_sym, r0_sym = sp.symbols("kappa eps_mz r0", positive=True)
+        r_sym = r0_sym
+        for k_idx in range(1, 6):
+            r_sym = kap_sym * r_sym + eps_sym
+            closed_sym = kap_sym ** k_idx * r0_sym + eps_sym * (1 - kap_sym ** k_idx) / (1 - kap_sym)
+            require(sp.simplify(r_sym - closed_sym) == 0, f"Route A affine closed form failed at k={k_idx}")
+
+        b0_su3 = iv.mpf(7)
+        b1_su3 = iv.mpf(26)
+        pi2_16 = iv.mpf(16) * (iv.pi ** 2)
+        L_blk = iv.mpf(2)
+        delta_blk = (iv.mpf(2) * b0_su3 * iv.log(L_blk)) / pi2_16
+
+        eps_adm = iv.mpf(1) / iv.mpf(30)
+        exp_adm = iv.mpf(2) * (eps_adm ** 2 / pi2_16) * b0_su3
+        exp_su3_vortex = iv.mpf(2) * (iv.mpf(9) / pi2_16) * b0_su3
+        require(strictly_below(exp_adm, "4") and strictly_below(exp_su3_vortex, "4"),
+                "Route A single-plaquette / vortex exponents must be < 4")
+
+        K_ent = iv.mpf(81) * iv.e
+        mu_kp = iv.mpf(1)
+        kp_barrier = iv.log(K_ent) + mu_kp
+        g2_kp_fixed_adm = (eps_adm ** 2) / kp_barrier
+        g2_kp_running_half = iv.mpf(1) / (kp_barrier ** 2)
+        aK_Lambda_kp = iv.exp(-pi2_16 / (iv.mpf(2) * b0_su3 * g2_kp_running_half))
+        beta_su3_kp = iv.mpf(6) / g2_kp_running_half
+
+        gK2_target = iv.mpf("0.02")
+        require(strictly_below(gK2_target, g2_kp_running_half), "Target gK2 exceeds KP delta=1/2 threshold")
+        require(strictly_below(gK2_target * b1_su3, pi2_16 * b0_su3), "Target gK2 outside 2-loop AF basin")
+
+        K_steps = 500
+        inv_gK2 = iv.mpf(1) / gK2_target
+        inv_g02 = inv_gK2 + iv.mpf(K_steps) * delta_blk
+        g02 = iv.mpf(1) / inv_g02
+        g12 = iv.mpf(1) / (inv_g02 - delta_blk)
+        require(strictly_above(g12, g02), "Coarse-graining coupling g1^2 not > g0^2")
+        expanding_jacobian = (g12 / g02) ** 2
+        require(strictly_above(expanding_jacobian, "1"), "Coarse-graining Jacobian not > 1")
+
+        sum_balaban = iv.mpf(0)
+        sum_taylor_ub = iv.mpf(0)
+        require(strictly_below(delta_blk, inv_gK2), "delta_blk not minimal scale")
+        for j in range(K_steps):
+            w_j = iv.exp(-iv.sqrt(inv_gK2 + iv.mpf(j) * delta_blk))
+            sum_balaban += w_j
+            ub_j = iv.mpf(24) / ((delta_blk ** 2) * (iv.mpf(j + 1) ** 2))
+            require(strictly_below(w_j, ub_j), f"Route A Taylor bound failed at j={j}")
+            sum_taylor_ub += ub_j
+        uniform_taylor_ceiling = iv.mpf(48) / (delta_blk ** 2)
+        require(strictly_below(sum_balaban, sum_taylor_ub) and strictly_below(sum_taylor_ub, uniform_taylor_ceiling),
+                "Route A Balaban sum failed Taylor ceiling")
+
+        wK_fixed = iv.exp(-(eps_adm ** 2) * inv_gK2)
+        q_fixed = iv.exp(-(eps_adm ** 2) * delta_blk)
+        geom_ub_fixed = wK_fixed / (iv.mpf(1) - q_fixed)
+
+        r_mz = iv.mpf(0)
+        for _ in range(40):
+            r_mz = iv.mpf("0.5") * r_mz + iv.mpf(1) / iv.mpf(16)
+        require(strictly_above(r_mz, "0.124999999999") and strictly_below(r_mz, "0.125000000001"),
+                "Route A MZ floor did not converge to 1/8")
+
+        route_a = {
+            "su3_delta_blk": outward_str(delta_blk),
+            "su3_center_vortex_exponent": outward_str(exp_su3_vortex),
+            "kp_barrier_ln_81e_plus_1": outward_str(kp_barrier),
+            "g2_kp_fixed_adm": outward_str(g2_kp_fixed_adm),
+            "g2_kp_running_delta_half": outward_str(g2_kp_running_half),
+            "aK_lambda_at_kp_half": outward_str(aK_Lambda_kp),
+            "beta_su3_at_kp_half": outward_str(beta_su3_kp),
+            "k500_g02": outward_str(g02),
+            "k500_expanding_jacobian_multiplier": outward_str(expanding_jacobian),
+            "k500_sum_balaban_delta_half": outward_str(sum_balaban),
+            "k500_sum_taylor_ub": outward_str(sum_taylor_ub),
+            "uniform_taylor_ceiling_48_over_delta_sq": outward_str(uniform_taylor_ceiling),
+            "fixed_eps_geom_ub": outward_str(geom_ub_fixed),
+            "mz_affine_floor_step_40": outward_str(r_mz),
+            "sympy_rg_identities_verified": True,
+        }
+
+        # ---------------------------------------------------------------------
+        # Route B: IR Crossover, Q8/SU(2) Dobrushin Breakdown, Bessel & Doubling
+        # ---------------------------------------------------------------------
+        u_sym = sp.Symbol("u")
+        def hankel_poly(n_ord: int, K_ord: int = 5):
+            s_expr = sp.Integer(1)
+            term_expr = sp.Integer(1)
+            for k_ord in range(1, K_ord + 1):
+                term_expr = term_expr * (4 * n_ord ** 2 - (2 * k_ord - 1) ** 2) / (8 * k_ord) * (-u_sym)
+                s_expr += term_expr
+            return s_expr
+        ratio_ser = sp.series(hankel_poly(2, 5) / hankel_poly(1, 5), u_sym, 0, 4)
+        require(ratio_ser.coeff(u_sym, 0) == 1 and ratio_ser.coeff(u_sym, 1) == sp.Rational(-3, 2),
+                "Sympy Bessel I2/I1 asymptotic ratio mismatch")
+        sigma_ser = sp.series(-sp.log(ratio_ser.removeO()), u_sym, 0, 4)
+        require(sigma_ser.coeff(u_sym, 1) == sp.Rational(3, 2),
+                "Sympy sigma_SC asymptotic coefficient mismatch")
+
+        c_af_su2 = (iv.mpf(3) * (iv.pi ** 2)) / iv.mpf(11)
+        q8_and_h2a_scaling = {}
+        for label, b_frac in (
+            ("beta_0_5", Fraction(1, 2)),
+            ("beta_5", Fraction(5, 1)),
+            ("beta_20", Fraction(20, 1)),
+            ("beta_50", Fraction(50, 1)),
+            ("beta_100", Fraction(100, 1)),
+            ("beta_200", Fraction(200, 1)),
+        ):
+            beta_iv = iv.mpf(b_frac.numerator) / iv.mpf(b_frac.denominator)
+            exp_b = iv.exp(beta_iv)
+            exp_mb = iv.exp(-beta_iv)
+            z_q8 = exp_b + exp_mb + iv.mpf(6)
+            one_minus_alpha = (iv.mpf(2) * exp_mb + iv.mpf(6)) / z_q8
+            alpha_q8 = (exp_b - exp_mb) / z_q8
+            m_lat_1 = neg_log_one_minus_iv(one_minus_alpha)
+            require(strictly_above(m_lat_1, "0"), f"Q8 gap not positive at {label}")
+            a_lat = iv.exp(-c_af_su2 * beta_iv)
+            m_lat_1_over_a = m_lat_1 / a_lat
+            bc1_q8 = iv.mpf(8) / z_q8
+            bc64_q8 = bc1_q8 ** 64
+            local_18_alpha_q8 = iv.mpf(18) * alpha_q8
+            require(strictly_above(local_18_alpha_q8, "1"), f"Q8 18*alpha <= 1 at {label}")
+
+            i1_b = besseli_iv_any(1, beta_iv)
+            i2_b = besseli_iv_any(2, beta_iv)
+            u_char = i2_b / i1_b
+            sigma_sc = -iv.log(u_char)
+            beta_sigma_sc = beta_iv * sigma_sc
+            sigma_sc_over_a2 = sigma_sc / (a_lat ** 2)
+
+            q8_and_h2a_scaling[label] = {
+                "beta": str(b_frac),
+                "q8_one_minus_alpha": outward_str(one_minus_alpha),
+                "q8_m_lat_1": outward_str(m_lat_1),
+                "q8_m_lat_1_over_a": outward_str(m_lat_1_over_a),
+                "q8_bc1_pow_64": outward_str(bc64_q8),
+                "q8_local_18_alpha": outward_str(local_18_alpha_q8),
+                "h2a_beta_sigma_sc": outward_str(beta_sigma_sc),
+                "h2a_sigma_sc_over_a2": outward_str(sigma_sc_over_a2),
+            }
+
+        # Specific Route B threshold assertions at beta = 200
+        b200 = q8_and_h2a_scaling["beta_200"]
+        require(strictly_above(iv.mpf(b200["q8_m_lat_1_over_a"][0]), "1e147"),
+                "Q8 M=1 divergence at beta=200 failed")
+        require(strictly_below(iv.mpf(b200["q8_bc1_pow_64"][1]), "1e-5500"),
+                "Q8 M=64 Bhattacharyya collapse at beta=200 failed")
+        m_global_64_over_a_200 = neg_log_one_minus_iv(iv.mpf(b200["q8_bc1_pow_64"][1])) / iv.exp(-c_af_su2 * iv.mpf(200))
+        require(strictly_below(m_global_64_over_a_200, "1e-5260"),
+                "Q8 M=64 m_global/a collapse at beta=200 failed")
+        require(strictly_above(iv.mpf(b200["h2a_beta_sigma_sc"][0]), "1.5") and
+                strictly_below(iv.mpf(b200["h2a_beta_sigma_sc"][1]), "1.504"),
+                "H2a beta*sigma_SC asymptotic window at beta=200 failed")
+        require(strictly_above(iv.mpf(b200["h2a_sigma_sc_over_a2"][0]), "2.9e465"),
+                "H2a sigma_SC/a^2 divergence at beta=200 failed")
+
+        su2_local_dobrushin = {}
+        for label, b_frac in (
+            ("beta_0_1", Fraction(1, 10)),
+            ("beta_0_25", Fraction(1, 4)),
+            ("beta_0_5", Fraction(1, 2)),
+            ("beta_1_0", Fraction(1, 1)),
+            ("beta_5_0", Fraction(5, 1)),
+            ("beta_20_0", Fraction(20, 1)),
+        ):
+            beta_iv = iv.mpf(b_frac.numerator) / iv.mpf(b_frac.denominator)
+            num_su2 = iv.mpf(2) * su2_half_haar_iv(beta_iv)
+            den_su2 = iv.pi * besseli_iv_any(1, beta_iv) / beta_iv
+            alpha_su2 = iv.mpf(1) - num_su2 / den_su2
+            sum_18_su2 = iv.mpf(18) * alpha_su2
+            if b_frac >= Fraction(1, 4):
+                require(strictly_above(sum_18_su2, "1"), f"SU(2) 18*alpha <= 1 at {label}")
+            else:
+                require(strictly_below(sum_18_su2, "1"), f"SU(2) 18*alpha not < 1 at {label}")
+            su2_local_dobrushin[label] = {
+                "beta": str(b_frac),
+                "alpha_su2": outward_str(alpha_su2),
+                "local_18_alpha_su2": outward_str(sum_18_su2),
+            }
+
+        # 2x2 semigroup doubling convergence: U(t) = diag(e^{-t}, e^{-2t}), C_psi = 2 ||psi||^2
+        c_ratio = iv.mpf(2)
+        doubling_40 = c_ratio ** (iv.mpf(1) / (iv.mpf(2) ** 40))
+        require(strictly_above(doubling_40, "1") and strictly_below(doubling_40, "1.000000000001"),
+                "Semigroup doubling convergence check failed at k=40")
+
+        route_b = {
+            "c_af_pure_su2": outward_str(c_af_su2),
+            "sympy_bessel_i2_over_i1_3_over_2_verified": True,
+            "q8_and_h2a_scaling": q8_and_h2a_scaling,
+            "q8_m64_global_gap_over_a_beta_200_ub": outward_str(m_global_64_over_a_200),
+            "continuous_su2_local_dobrushin": su2_local_dobrushin,
+            "semigroup_doubling_ratio_k0": outward_str(c_ratio),
+            "semigroup_doubling_ratio_k40": outward_str(doubling_40),
+        }
+
+        # ---------------------------------------------------------------------
+        # Route C: T^2 Flat Holonomy, Complex Chiral RP Failure & Entropy Blowup
+        # ---------------------------------------------------------------------
+        L_torus = 3
+        c_cochain = iv.pi / iv.mpf(L_torus)
+        plaq_curv = (c_cochain + iv.mpf(0)) - (c_cochain + iv.mpf(0))
+        require(plaq_curv.a <= 0 <= plaq_curv.b, "T^2 plaquette curvature does not contain 0")
+        polyakov_hol = iv.mpf(L_torus) * c_cochain
+        require(strictly_above(polyakov_hol, "3.14159"), "T^2 Polyakov holonomy not > 3.14159")
+        phase_jump = abs(iv.exp(iv.mpc(0, 1) * iv.mpc(polyakov_hol, 0)) - iv.mpc(1, 0))
+        require(strictly_above(phase_jump, "1.999999") and strictly_below(phase_jump, "2.000001"),
+                f"T^2 phase discontinuity != 2: {phase_jump}")
+
+        # Complex chiral phase RP failure at r = 1, c = 1 + i
+        w_pi_half_im = iv.sin(iv.pi / iv.mpf(2))
+        require(strictly_above(w_pi_half_im, "0.999999"), "Im w(pi/2) check failed")
+        c_test = iv.mpc(1, 1)
+        rp_pi = (iv_conj(c_test) * iv.exp(iv.mpc(0, 1) * iv.mpc(iv.pi, 0)) * c_test).real
+        require(strictly_below(rp_pi, "-1.999999"), f"Chiral phase RP negation check failed: {rp_pi}")
+
+        two_cadm_b0 = iv.mpf(2) * ((eps_adm ** 2) / pi2_16) * b0_su3
+        entropy_excess = iv.mpf(4) - two_cadm_b0
+        require(strictly_above(entropy_excess, "3.9999"), "Admissibility entropy excess <= 3.9999")
+        admissibility_blowup = {}
+        prev_blowup = iv.mpf(0)
+        for tag, a_lam_str in (("a_lam_1e_minus_4", "1e-4"), ("a_lam_1e_minus_8", "1e-8"), ("a_lam_1e_minus_16", "1e-16")):
+            a_lam = iv.mpf(a_lam_str)
+            val = (iv.mpf(1) / a_lam) ** 4 * (a_lam ** two_cadm_b0)
+            require(strictly_above(val, prev_blowup), "Admissibility blowup not strictly increasing")
+            prev_blowup = val
+            admissibility_blowup[tag] = outward_str(val)
+
+        route_c = {
+            "t2_flat_curvature_bracket": outward_str(plaq_curv, digits=12),
+            "t2_polyakov_holonomy": outward_str(polyakov_hol),
+            "t2_phase_discontinuity_norm": outward_str(phase_jump),
+            "chiral_phase_im_pi_half": outward_str(w_pi_half_im),
+            "chiral_phase_rp_at_pi_c_1_plus_i": outward_str(rp_pi),
+            "admissibility_entropy_excess_4_minus_2cb0": outward_str(entropy_excess),
+            "admissibility_union_bound_blowup": admissibility_blowup,
+        }
+
+        return {
+            "h2d_status": "OPEN",
+            "route_a_uv_multiscale_rg": route_a,
+            "route_b_ir_crossover_and_os_gap": route_b,
+            "route_c_chiral_holonomy_and_admissibility": route_c,
+        }
+    finally:
+        mp.dps = 50
+        iv.dps = 40
 
 
 def q8_matrices_iv() -> list[list[list]]:
@@ -774,8 +1100,9 @@ def compute_certificate() -> dict:
             f"DEAD-20261124-01 guard violated: 2*c_adm*b0={peierls_exp}")
 
     # =========================================================================
-    # Pillar 4: C-H2-OPER-04
+    # Pillar 4: C-H2-OPER-04 & Round 03 H2d Continuum Obstruction Audit
     # =========================================================================
+    h2d_audit = compute_h2d_continuum_obstruction_audit()
     payload = {
         "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
         "result_ids": [
@@ -792,6 +1119,7 @@ def compute_certificate() -> dict:
             "UEOTPhysicsUnification.NonAbelianLatticeMassGapAndChiralIntegrabilityH2.luscher_berry_loop_holonomy_and_overlap_gap_stability",
             "UEOTPhysicsUnification.NonAbelianLatticeMassGapAndChiralIntegrabilityH2.ah01_lattice_uv_screening_and_h2_decomposition",
         ],
+        "h2d_continuum_obstruction_audit": h2d_audit,
         "wilson_transfer_and_symanzik": {
             "q8_strong_coupling_transfer": transfer_results,
             "symanzik_o_a2_leading_coeff": outward_str(c0_exact),
