@@ -23,14 +23,18 @@ Independently verifies from scratch:
        causal-break F(2/3, 3/4) = 1.819240198557, |z_+| = 0.735275955165,
        Im z_+(P1) = 0.119850748164 vs Im z_+(P2) = 0.147616987004;
      - Outward observable floors & Lipschitz bounds Eq. (16) stress-tested across
-       all 16 corners + 500 seeded random pairs in D x [0.9, 1] x [-0.02, 0.02];
-     - Stopped Bell splitting at eta=0.96, Tr[B_r] completeness, Tr[B_f] = 3/16,
-       readout-challenge (eta=0.65) gap/power/Hoeffding band, F(1, 3/4), aligned-Y
-       separator 0.605581355419, and Eq. (22)/(C1) polytope Taylor remainder.
-  3. Exact Rational Duhamel Total-Number Cutoff Bounds B_K (K = 0..24).
+       all 32 corners + 500 seeded random pairs + 300 shared-delta pairs, plus
+       exact forward-inverse calibration round-trip (< 1e-13);
+     - Stopped Bell splitting at eta=0.96, Tr[B_r] completeness, parameter-invariant
+       Tr[B_f] = Tr[(Z x Z) B_f] = 3/16, universal 27/64 <= P(ppp) <= 343/512,
+       readout-challenge (eta=0.65) composite-null gap/power/Hoeffding band,
+       F(1, 3/4), aligned-Y separator & gap, and Eq. (22)/(C1) Taylor remainder.
+  3. Exact Rational Duhamel Total-Number Cutoff Bounds B_K (K = 0..24) &
+     Constructive Normalized CP/TP Choi Repair (I_in/2 target, exact LDL^dag).
   4. Compactly Supported Scalar Field on R x S^1 & Two-Qubit Reuse Swap:
      - g_0 = 1, w_1 = 3/2, g_1 = 3/5, gap = 0.655649375, timelike & spacelike
-       phases/tails, mode-wise j^-11 bound, and full 4x4 swap unitary entropy Sigma.
+       phases/tails, mode-wise j^-11 / j^-10 bounds, damping/energy tails, and
+       full 4x4 swap unitary entropy Sigma.
 """
 from __future__ import annotations
 
@@ -44,7 +48,7 @@ import sys
 
 
 # ---------------------------------------------------------------------------
-# Exact rational arithmetic helpers
+# Exact rational arithmetic & Choi repair helpers
 # ---------------------------------------------------------------------------
 def isqrt_frac_ceil(x: Q, scale: int = 10 ** 12) -> Q:
     """Return exact Fraction >= sqrt(x) rounded upward at resolution 1/scale."""
@@ -71,6 +75,45 @@ def exp_taylor_upper(x: Q, terms: int = 24) -> Q:
         total += pow_x / fact
     rem = Q(3) * (pow_x * x) / (fact * terms)
     return total + rem
+
+
+def q_complex_mul(a: tuple[Q, Q], b: tuple[Q, Q]) -> tuple[Q, Q]:
+    return (a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0])
+
+
+def q_complex_conj(a: tuple[Q, Q]) -> tuple[Q, Q]:
+    return (a[0], -a[1])
+
+
+def q_hermitian_pd_ldl(mat: list[list[tuple[Q, Q]]]) -> bool:
+    """Exact Fraction LDL^dagger test: True iff Hermitian mat is strictly positive definite."""
+    n = len(mat)
+    for i in range(n):
+        if mat[i][i][1] != 0:
+            return False
+        for j in range(i + 1, n):
+            if mat[i][j][0] != mat[j][i][0] or mat[i][j][1] != -mat[j][i][1]:
+                return False
+    L = [[(Q(0), Q(0)) for _ in range(n)] for _ in range(n)]
+    D = [Q(0)] * n
+    for j in range(n):
+        s_re = Q(0)
+        for k in range(j):
+            lk = L[j][k]
+            s_re += D[k] * (lk[0] * lk[0] + lk[1] * lk[1])
+        dj = mat[j][j][0] - s_re
+        if dj <= 0:
+            return False
+        D[j] = dj
+        L[j][j] = (Q(1), Q(0))
+        for i in range(j + 1, n):
+            acc = (Q(0), Q(0))
+            for k in range(j):
+                p = q_complex_mul(L[i][k], q_complex_conj(L[j][k]))
+                acc = (acc[0] + D[k] * p[0], acc[1] + D[k] * p[1])
+            diff = (mat[i][j][0] - acc[0], mat[i][j][1] - acc[1])
+            L[i][j] = (diff[0] / dj, diff[1] / dj)
+    return True
 
 
 # ---------------------------------------------------------------------------
@@ -172,11 +215,31 @@ def disp_1d_vec_vacuum(alpha: complex, K: int) -> list[complex]:
     return vec
 
 
+def fock_apply_2mode_sep(u0: list[list[complex]], u1: list[list[complex]], n0: int, n1: int) -> tuple[list[complex], list[complex]]:
+    return [row[n0] for row in u0], [row[n1] for row in u1]
+
+
 def verify_fock_schrodinger_crosscheck() -> dict:
-    """Verify Eqs. (5), (A2), (13) (|z_s> vs |+>), and bell_blocks via direct Fock H(lam)."""
+    """Verify Eqs. (5), (A2), (13) (|z_s> + R_y(s*pi/2) vs |+>), and bell_blocks via direct Fock H(lam)."""
     lam = 0.30
     K_vac = 12
-    # 1. Verify Eq. (5) & Eq. (A2) single-slot unitary action on vacuum |0,0>
+    # 0. Verify R_y(s*pi/2)|z_s> = |+> matrix identity for s in (+1, -1)
+    inv_rt2 = 1.0 / math.sqrt(2.0)
+    z_states = {+1: [1.0 + 0j, 0j], -1: [0j, 1.0 + 0j]}
+    plus_state = [inv_rt2 + 0j, inv_rt2 + 0j]
+    ry_ops = {}
+    for sgn in (+1, -1):
+        theta = sgn * math.pi / 2.0
+        c_t, s_t = math.cos(theta / 2.0), math.sin(theta / 2.0)
+        R_op = [[complex(c_t), complex(-s_t)], [complex(s_t), complex(c_t)]]
+        # Unitarity R^dag R = I_2
+        prod_R = mat_mul(mat_conj_T(R_op), R_op)
+        assert max(abs(prod_R[i][j] - I2[i][j]) for i in range(2) for j in range(2)) < 1e-15
+        out_vec = [sum(R_op[r][col] * z_states[sgn][col] for col in range(2)) for r in range(2)]
+        assert math.sqrt(sum(abs(a - b) ** 2 for a, b in zip(out_vec, plus_state))) < 1e-15
+        ry_ops[sgn] = R_op
+
+    # 1. Verify Eq. (5) & Eq. (A2) single-slot unitary action on vacuum |0,0> and excited |1,1> (s_0 = +-1)
     dt = 0.75
     u0_p = fock_1d_unitary(OMEGA[0], G_COUP[0], lam, +1, dt, K_vac)
     u1_p = fock_1d_unitary(OMEGA[1], G_COUP[1], lam, +1, dt, K_vac)
@@ -191,7 +254,26 @@ def verify_fock_schrodinger_crosscheck() -> dict:
     eq5_err = math.sqrt(sum(abs(a - b) ** 2 for a, b in zip(fock_col0, weyl_col0)))
     assert eq5_err < 1e-13
 
-    # 2. Verify Eq. (13) causal-break protocol on vacuum: |z_s> over [0, a] + |+> on [a, a+b]
+    # Also test Eq. (A2) on excited Fock state |1,1> with s_0 = -1 (tests e^{-i H_0 dt} & s_0=-1 explicitly)
+    u0_m = fock_1d_unitary(OMEGA[0], G_COUP[0], lam, -1, dt, K_vac)
+    u1_m = fock_1d_unitary(OMEGA[1], G_COUP[1], lam, -1, dt, K_vac)
+    # D(alpha)|1> = a^dag(alpha) D(alpha)|0> => coeff of |m> is D_{m,0}*e^{-|a|^2...}: compute D(-lam*xi) via (D_col - conj(alpha)*...)
+    def disp_col1(alpha: complex) -> list[complex]:
+        c0 = disp_1d_vec_vacuum(alpha, K_vac)
+        out = [0j] * (K_vac + 1)
+        out[0] = -alpha.conjugate() * c0[0]
+        for m in range(1, K_vac + 1):
+            out[m] = math.sqrt(m) * c0[m - 1] - alpha.conjugate() * c0[m]
+        return out
+    d0_m1 = disp_col1(-lam * xi0)
+    d1_m1 = disp_col1(-lam * xi1)
+    phase_exc = cmath.exp(-1j * (phi0 + (OMEGA[0] + OMEGA[1]) * dt))
+    fock_11 = [u0_m[i][1] * u1_m[j][1] for i in range(K_vac + 1) for j in range(K_vac + 1)]
+    weyl_11 = [phase_exc * d0_m1[i] * d1_m1[j] for i in range(K_vac + 1) for j in range(K_vac + 1)]
+    eq5_excited_err = math.sqrt(sum(abs(a - b) ** 2 for a, b in zip(fock_11, weyl_11)))
+    assert eq5_excited_err < 1e-12
+
+    # 2. Verify Eq. (13) causal-break protocol on vacuum: |z_s> over [0, a] + R_y(s*pi/2) -> |+> on [a, a+b]
     a, b = 2.0 / 3.0, 0.75
     def run_vac_two_slot(s0_bra: int, s0_ket: int) -> complex:
         ua_bra = [fock_1d_unitary(OMEGA[k], G_COUP[k], lam, s0_bra, a, K_vac) for k in (0, 1)]
@@ -200,19 +282,37 @@ def verify_fock_schrodinger_crosscheck() -> dict:
         ub_m = [fock_1d_unitary(OMEGA[k], G_COUP[k], lam, -1, b, K_vac) for k in (0, 1)]
         prod = 1.0 + 0j
         for k in (0, 1):
-            # Final vectors: Ub(+1) Ua(s0_ket)|0> vs Ub(-1) Ua(s0_bra)|0>
             ket = [sum(ub_p[k][r][m] * ua_ket[k][m][0] for m in range(K_vac + 1)) for r in range(K_vac + 1)]
             bra = [sum(ub_m[k][r][m] * ua_bra[k][m][0] for m in range(K_vac + 1)) for r in range(K_vac + 1)]
             prod *= sum(bra[r].conjugate() * ket[r] for r in range(K_vac + 1))
         return prod
 
+    def run_vac_unitary_ry(sgn: int) -> complex:
+        """Full 2-qubit+2-mode unitary evolution U_b (R_y(s*pi/2) x I_B) U_a (|z_s> x |0>)."""
+        ua_s = [fock_1d_unitary(OMEGA[k], G_COUP[k], lam, sgn, a, K_vac) for k in (0, 1)]
+        ub_p = [fock_1d_unitary(OMEGA[k], G_COUP[k], lam, +1, b, K_vac) for k in (0, 1)]
+        ub_m = [fock_1d_unitary(OMEGA[k], G_COUP[k], lam, -1, b, K_vac) for k in (0, 1)]
+        idx_z = 0 if sgn == +1 else 1
+        amp_plus_0 = ry_ops[sgn][0][idx_z]
+        amp_plus_1 = ry_ops[sgn][1][idx_z]
+        ov = 1.0 + 0j
+        for k in (0, 1):
+            ket = [sum(ub_p[k][r][m] * ua_s[k][m][0] for m in range(K_vac + 1)) for r in range(K_vac + 1)]
+            bra = [sum(ub_m[k][r][m] * ua_s[k][m][0] for m in range(K_vac + 1)) for r in range(K_vac + 1)]
+            ov *= sum(bra[r].conjugate() * ket[r] for r in range(K_vac + 1))
+        return 2.0 * amp_plus_0 * amp_plus_1.conjugate() * ov
+
     z_p_fock = run_vac_two_slot(+1, +1)
     z_m_fock = run_vac_two_slot(-1, -1)
+    z_p_ry_fock = run_vac_unitary_ry(+1)
+    z_m_ry_fock = run_vac_unitary_ry(-1)
     z_plus_init_fock = run_vac_two_slot(-1, +1)  # Preparing |+> on slot 1 gives zero phase!
     z_p_weyl = z_causal_break(lam, 0.0, 0.0, +1, a, b)
     z_m_weyl = z_causal_break(lam, 0.0, 0.0, -1, a, b)
     assert abs(z_p_fock - z_p_weyl) < 1e-13
     assert abs(z_m_fock - z_m_weyl) < 1e-13
+    assert abs(z_p_ry_fock - z_p_weyl) < 1e-13
+    assert abs(z_m_ry_fock - z_m_weyl) < 1e-13
     assert abs(z_plus_init_fock.imag) < 1e-14
 
     # 3. Verify 3-slot bell_blocks on vacuum (lam=0.3, n=0, c=0) directly from Fock H(lam)
@@ -263,72 +363,71 @@ def verify_fock_schrodinger_crosscheck() -> dict:
                 max_vac_bell_err = max(max_vac_bell_err, abs(b_fock[r][col] - vac_weyl[rec][r][col]))
     assert max_vac_bell_err < 1e-13
 
-    # 4. Correlated thermal state Fock verification at P1 = (0.3, 0.5, 0.25) with K_th = 8
-    # Expand normal-mode Fock states |n_+, n_-> (n_+ + n_- <= 8) via 1/(sqrt(2)) transformation in (a_0, a_1)
-    K_th = 8
-    d_tot = (K_th + 1) * (K_th + 2) // 2
-    def idx_shell(s_n, i_n):
-        return s_n * (s_n + 1) // 2 + i_n
+    # 4. Correlated thermal state Fock verification at P1 = (0.3, 0.5, 0.25) across K_th = 8 and K_th = 12
+    def run_thermal_causal_break(K_th: int) -> float:
+        rp = (0.5 + 0.25) / (1.0 + 0.5 + 0.25)  # 3/7
+        rm = (0.5 - 0.25) / (1.0 + 0.5 - 0.25)  # 1/5
+        th_norm = 0.0
+        th_states = []
+        for sp in range(K_th + 1):
+            for np_idx in range(sp + 1):
+                nm_idx = sp - np_idx
+                w_p = (1.0 - rp) * (1.0 - rm) * (rp ** np_idx) * (rm ** nm_idx)
+                th_norm += w_p
+                inv_2sp = 2.0 ** (-0.5 * sp)
+                coeffs = [0.0] * (sp + 1)
+                pref_n = inv_2sp / math.sqrt(math.factorial(np_idx) * math.factorial(nm_idx))
+                for a_i in range(np_idx + 1):
+                    for b_i in range(nm_idx + 1):
+                        n0 = a_i + b_i
+                        sgn = (-1.0) ** (nm_idx - b_i)
+                        c_comb = math.comb(np_idx, a_i) * math.comb(nm_idx, b_i) * sgn
+                        coeffs[n0] += c_comb * pref_n * math.sqrt(math.factorial(n0) * math.factorial(sp - n0))
+                th_states.append((w_p, sp, coeffs))
 
-    rp = (0.5 + 0.25) / (1.0 + 0.5 + 0.25)  # 3/7
-    rm = (0.5 - 0.25) / (1.0 + 0.5 - 0.25)  # 1/5
-    th_norm = 0.0
-    th_states = []  # (weight, dict of (n0, n1) -> amp)
-    for sp in range(K_th + 1):
-        for np_idx in range(sp + 1):
-            nm_idx = sp - np_idx
-            w_p = (1.0 - rp) * (1.0 - rm) * (rp ** np_idx) * (rm ** nm_idx)
-            th_norm += w_p
-            # Coefficient of |n0, sp-n0> in (a_+^dag)^np (a_-^dag)^nm / sqrt(np! nm!) |0,0>
-            inv_2sp = 2.0 ** (-0.5 * sp)
-            coeffs = [0.0] * (sp + 1)
-            pref_n = inv_2sp / math.sqrt(math.factorial(np_idx) * math.factorial(nm_idx))
-            for a_i in range(np_idx + 1):
-                for b_i in range(nm_idx + 1):
-                    n0 = a_i + b_i
-                    sgn = (-1.0) ** (nm_idx - b_i)
-                    c_comb = math.comb(np_idx, a_i) * math.comb(nm_idx, b_i) * sgn
-                    coeffs[n0] += c_comb * pref_n * math.sqrt(math.factorial(n0) * math.factorial(sp - n0))
-            th_states.append((w_p, sp, coeffs))
-
-    # Build normalized truncated thermal state projector overlap on 2-slot causal-break (a=2/3, b=0.75)
-    u0_a_p = fock_1d_unitary(OMEGA[0], G_COUP[0], lam, +1, a, K_th)
-    u1_a_p = fock_1d_unitary(OMEGA[1], G_COUP[1], lam, +1, a, K_th)
-    u0_b_p = fock_1d_unitary(OMEGA[0], G_COUP[0], lam, +1, b, K_th)
-    u1_b_p = fock_1d_unitary(OMEGA[1], G_COUP[1], lam, +1, b, K_th)
-    u0_b_m = fock_1d_unitary(OMEGA[0], G_COUP[0], lam, -1, b, K_th)
-    u1_b_m = fock_1d_unitary(OMEGA[1], G_COUP[1], lam, -1, b, K_th)
-    p0 = mat_mul(u0_b_p, u0_a_p)
-    p1 = mat_mul(u1_b_p, u1_a_p)
-    m0 = mat_mul(u0_b_m, u0_a_p)
-    m1 = mat_mul(u1_b_m, u1_a_p)
-    z_p1_k8 = 0j
-    for w_p, sp, coeffs in th_states:
-        w_scaled = w_p / th_norm
-        # Compute <psi| (m0^dag x m1^dag)(p0 x p1) |psi> within K_th
-        for n0_l in range(sp + 1):
-            c_l = coeffs[n0_l]
-            if c_l == 0.0:
-                continue
-            n1_l = sp - n0_l
-            for n0_r in range(sp + 1):
-                c_r = coeffs[n0_r]
-                if c_r == 0.0:
+        u0_a_p = fock_1d_unitary(OMEGA[0], G_COUP[0], lam, +1, a, K_th)
+        u1_a_p = fock_1d_unitary(OMEGA[1], G_COUP[1], lam, +1, a, K_th)
+        u0_b_p = fock_1d_unitary(OMEGA[0], G_COUP[0], lam, +1, b, K_th)
+        u1_b_p = fock_1d_unitary(OMEGA[1], G_COUP[1], lam, +1, b, K_th)
+        u0_b_m = fock_1d_unitary(OMEGA[0], G_COUP[0], lam, -1, b, K_th)
+        u1_b_m = fock_1d_unitary(OMEGA[1], G_COUP[1], lam, -1, b, K_th)
+        p0 = mat_mul(u0_b_p, u0_a_p)
+        p1 = mat_mul(u1_b_p, u1_a_p)
+        m0 = mat_mul(u0_b_m, u0_a_p)
+        m1 = mat_mul(u1_b_m, u1_a_p)
+        # Precompute mode overlap matrices m_k^dag p_k in O(K^3) so state loop runs in O(K^4)
+        ov0_mat = mat_mul(mat_conj_T(m0), p0)
+        ov1_mat = mat_mul(mat_conj_T(m1), p1)
+        z_acc = 0j
+        for w_p, sp, coeffs in th_states:
+            w_scaled = w_p / th_norm
+            for n0_l in range(sp + 1):
+                c_l = coeffs[n0_l]
+                if c_l == 0.0:
                     continue
-                n1_r = sp - n0_r
-                ov0 = sum(m0[r][n0_l].conjugate() * p0[r][n0_r] for r in range(K_th + 1))
-                ov1 = sum(m1[r][n1_l].conjugate() * p1[r][n1_r] for r in range(K_th + 1))
-                z_p1_k8 += w_scaled * c_l * c_r * ov0 * ov1
-    z_p1_exact = z_causal_break(lam, 0.5, 0.25, +1, a, b)
-    thermal_k8_err = abs(z_p1_k8 - z_p1_exact)
-    assert thermal_k8_err < 1.5e-2  # Well inside Duhamel truncation envelope
+                n1_l = sp - n0_l
+                for n0_r in range(sp + 1):
+                    c_r = coeffs[n0_r]
+                    if c_r == 0.0:
+                        continue
+                    n1_r = sp - n0_r
+                    z_acc += w_scaled * c_l * c_r * ov0_mat[n0_l][n0_r] * ov1_mat[n1_l][n1_r]
+        return abs(z_acc - z_causal_break(lam, 0.5, 0.25, +1, a, b))
+
+    thermal_k8_err = run_thermal_causal_break(8)
+    thermal_k12_err = run_thermal_causal_break(12)
+    assert thermal_k8_err < 1.5e-2
+    assert thermal_k12_err < thermal_k8_err and thermal_k12_err < 5e-5
 
     return {
         "vac_K12_eq5_error": eq5_err,
+        "vac_K12_excited_11_error": eq5_excited_err,
         "vac_K12_causal_break_error": abs(z_p_fock - z_p_weyl),
+        "vac_K12_Ry_causal_break_error": max(abs(z_p_ry_fock - z_p_weyl), abs(z_m_ry_fock - z_m_weyl)),
         "vac_K12_plus_slot1_imag": abs(z_plus_init_fock.imag),
         "vac_K12_3slot_bell_max_error": max_vac_bell_err,
         "thermal_K8_P1_causal_break_error": thermal_k8_err,
+        "thermal_K12_P1_causal_break_error": thermal_k12_err,
     }
 
 
@@ -472,7 +571,7 @@ def verify_part1_ramsey_and_break() -> dict:
     assert abs(z_p1.imag - 0.119850748164) < 1e-12
     assert abs(z_p2.imag - 0.147616987004) < 1e-12
 
-    # 2. Whole-domain Lipschitz upper bounds & corner/random stress test on D x [0.9, 1] x [-0.02, 0.02]
+    # 2. Whole-domain Lipschitz upper bounds & 32-corner + random/shared-delta tests on D x [0.9, 1] x [-0.02, 0.02]
     h_u = (B2 / det_M, -B1 / det_M)
     h_v = (-A2 / det_M, A1 / det_M)
     eta_min = 0.9
@@ -483,13 +582,16 @@ def verify_part1_ramsey_and_break() -> dict:
     assert 0.067589 < m2_floor < 0.067590
     L_u = abs(h_u[0] + h_u[1]) / eta_min + abs(h_u[0]) / m1_floor + abs(h_u[1]) / m2_floor
     L_v = abs(h_v[0] + h_v[1]) / eta_min + abs(h_v[0]) / m1_floor + abs(h_v[1]) / m2_floor
-    L_w = math.pi * math.sqrt(2.0) / (2.0 * r_floor * F_val)
+    L_phi = math.pi * math.sqrt(2.0) / (2.0 * r_floor)
+    L_delta = L_phi
+    L_w = L_phi / F_val
     L_lam = L_w / 0.4
     L_n = (L_u + 2.2 * L_w) / 0.08
     L_c = (L_v + 0.6 * L_w) / 0.04
     assert 51.240114 < L_u < 51.240115
     assert 31.421916 < L_v < 31.421917
     assert 2.965318 < L_w < 2.965319
+    assert 5.394626 < L_delta < 5.394627
     assert 7.413296 < L_lam < 7.413297
     assert 722.047689 < L_n < 722.047690
     assert 830.027701 < L_c < 830.027702
@@ -501,20 +603,41 @@ def verify_part1_ramsey_and_break() -> dict:
         m1 = eta * math.exp(-(A1 * u + B1 * v))
         m2 = eta * math.exp(-(A2 * u + B2 * v))
         amp_b = eta * math.exp(-(Ab * u + Bb * v))
+        # X_s + i Y_s = eta |z_s| exp[i(delta + s w F)] matching Y_s := -eta <sigma_y>_s
         xp = amp_b * math.cos(delta + w * F_val)
-        yp = -amp_b * math.sin(delta + w * F_val)
+        yp = amp_b * math.sin(delta + w * F_val)
         xm = amp_b * math.cos(delta - w * F_val)
-        ym = -amp_b * math.sin(delta - w * F_val)
+        ym = amp_b * math.sin(delta - w * F_val)
         assert m1 >= m1_floor - 1e-15 and m2 >= m2_floor - 1e-15 and amp_b >= r_floor - 1e-15
         return (eta, m1, m2, xp, yp, xm, ym)
 
-    # Generate corners + 500 deterministic seeded points in D x [0.9, 1] x [-0.02, 0.02]
+    def wrap_pi(ang: float) -> float:
+        return (ang + math.pi) % (2.0 * math.pi) - math.pi
+
+    def invert_calibration(obs: tuple[float, ...]) -> tuple[float, float, float, float, float]:
+        eta, m1, m2, xp, yp, xm, ym = obs
+        l1_val = math.log(eta / m1)
+        l2_val = math.log(eta / m2)
+        u_rec = h_u[0] * l1_val + h_u[1] * l2_val
+        v_rec = h_v[0] * l1_val + h_v[1] * l2_val
+        phi_p = math.atan2(yp, xp)
+        phi_m = math.atan2(ym, xm)
+        dphi = wrap_pi(phi_p - phi_m)
+        w_rec = dphi / (2.0 * F_val)
+        delta_rec = wrap_pi(phi_m + w_rec * F_val)
+        lam_rec = math.sqrt(w_rec)
+        n_rec = 0.5 * (u_rec / w_rec - 1.0)
+        c_rec = v_rec / w_rec
+        return (lam_rec, n_rec, c_rec, eta, delta_rec)
+
+    # Generate ALL 32 domain corners + 500 deterministic seeded points in D x [0.9, 1] x [-0.02, 0.02]
     rng = random.Random(20261124)
     samples = []
     for lam in (0.2, 0.4):
         for n, c in ((0.0, 0.0), (0.6, 0.0), (0.6, 0.6), (0.6, -0.6)):
             for eta in (0.9, 1.0):
-                samples.append((lam, n, c, eta, 0.02 if eta > 0.95 else -0.02))
+                for delta in (-0.02, 0.02):
+                    samples.append((lam, n, c, eta, delta))
     for _ in range(500):
         lam = rng.uniform(0.2, 0.4)
         n = rng.uniform(0.0, 0.6)
@@ -523,7 +646,15 @@ def verify_part1_ramsey_and_break() -> dict:
         delta = rng.uniform(-0.02, 0.02)
         samples.append((lam, n, c, eta, delta))
     obs_list = [obs_vec(*pt) for pt in samples]
-    max_emp_ratios = [0.0] * 6  # u, v, w, lam, n, c
+
+    # Forward-inverse round-trip across all 532 configurations
+    max_rt_err = 0.0
+    for pt, obs in zip(samples, obs_list):
+        rec = invert_calibration(obs)
+        max_rt_err = max(max_rt_err, max(abs(a - b) for a, b in zip(pt, rec)))
+    assert max_rt_err < 1e-13
+
+    max_emp_ratios = [0.0] * 7  # u, v, w, lam, n, c, delta
     for i in range(len(samples)):
         p_i, o_i = samples[i], obs_list[i]
         ui, vi, wi = p_i[0] ** 2 * (2 * p_i[1] + 1), p_i[0] ** 2 * p_i[2], p_i[0] ** 2
@@ -537,11 +668,34 @@ def verify_part1_ramsey_and_break() -> dict:
             uj, vj, wj = p_j[0] ** 2 * (2 * p_j[1] + 1), p_j[0] ** 2 * p_j[2], p_j[0] ** 2
             du, dv, dw = abs(ui - uj), abs(vi - vj), abs(wi - wj)
             dl, dn, dc = abs(p_i[0] - p_j[0]), abs(p_i[1] - p_j[1]), abs(p_i[2] - p_j[2])
-            for idx, (val, cap) in enumerate(zip((du, dv, dw, dl, dn, dc), (L_u, L_v, L_w, L_lam, L_n, L_c))):
+            ddelta = abs(p_i[4] - p_j[4])
+            for idx, (val, cap) in enumerate(zip((du, dv, dw, dl, dn, dc, ddelta), (L_u, L_v, L_w, L_lam, L_n, L_c, L_delta))):
                 assert val <= cap * d_obs + 1e-12, (idx, val / d_obs, cap)
                 max_emp_ratios[idx] = max(max_emp_ratios[idx], val / d_obs)
+            assert abs(o_i[0] - o_j[0]) <= d_obs + 1e-15
 
-    # 3. Aligned-Y discrimination check at holdout window (a=1, b=3/4)
+    # Explicit shared-delta pairs & near-r_floor perturbations checking single-quadrature angle Lipschitz L_phi
+    for _ in range(300):
+        delta_s = rng.uniform(-0.02, 0.02)
+        if _ < 50:
+            p_a = (0.4, 0.6, 0.6, 0.9, delta_s)
+            p_b = (rng.uniform(0.2, 0.4), rng.uniform(0.0, 0.6), 0.0, rng.uniform(0.9, 1.0), delta_s)
+        else:
+            lam_a, n_a = rng.uniform(0.2, 0.4), rng.uniform(0.0, 0.6)
+            p_a = (lam_a, n_a, rng.uniform(-n_a, n_a), rng.uniform(0.9, 1.0), delta_s)
+            lam_b, n_b = rng.uniform(0.2, 0.4), rng.uniform(0.0, 0.6)
+            p_b = (lam_b, n_b, rng.uniform(-n_b, n_b), rng.uniform(0.9, 1.0), delta_s)
+        oa, ob = obs_vec(*p_a), obs_vec(*p_b)
+        d_obs = max(abs(x_a - x_b) for x_a, x_b in zip(oa, ob))
+        if d_obs < 1e-12:
+            continue
+        phi_pa, phi_pb = math.atan2(oa[4], oa[3]), math.atan2(ob[4], ob[3])
+        phi_ma, phi_mb = math.atan2(oa[6], oa[5]), math.atan2(ob[6], ob[5])
+        assert abs(phi_pa - phi_pb) <= L_phi * d_obs + 1e-12
+        assert abs(phi_ma - phi_mb) <= L_phi * d_obs + 1e-12
+        assert abs(p_a[0] ** 2 - p_b[0] ** 2) <= L_w * d_obs + 1e-12
+
+    # 3. Aligned-Y discrimination check at holdout window (a=1, b=3/4) & composite gap/error
     A_hold, B_hold, F_hold = causal_break_coeffs(1.0, 0.75)
     assert abs(F_hold - 3.056234252369) < 1e-12
     amp_hold = math.exp(-(A_hold * float(u0) + B_hold * float(v0)))
@@ -549,10 +703,15 @@ def verify_part1_ramsey_and_break() -> dict:
     upper_p1 = (1.0 + amp_hold * math.sin(float(l1 ** 2) * F_hold)) / 2.0 + err_hold
     lower_p2 = (1.0 + 0.9 * amp_hold * math.sin(float(l2 ** 2) * F_hold) * math.cos(0.02)) / 2.0 - err_hold
     align_thresh = (upper_p1 + lower_p2) / 2.0
+    align_gap = lower_p2 - upper_p1
+    align_one_sided_err = math.exp(-120000.0 * (align_gap ** 2) / 2.0)
     assert abs(align_thresh - 0.605581355419) < 1e-12
+    assert align_gap > 0.00939226 and align_one_sided_err < 0.005028
+    assert Q(71816, 120000) == Q(8977, 15000)
     assert 71816 / 120000 < upper_p1 < align_thresh < lower_p2
 
-    # 4. Stopped Bell separation, trace completeness, Tr[B_f]=3/16, readout challenge eta=0.65, Taylor remainder
+    # 4. Stopped Bell separation, trace completeness, universal Tr[B_f]=3/16, 27/64 <= P(ppp) <= 343/512,
+    #    Z-input survival, readout challenge eta=0.65, exact Fraction budget & Eq. (22)/(C1) Taylor check
     diffs = {}
     for t_name in ("original", "swapped"):
         b1 = bell_blocks(float(l1), float(n1), float(c1), t_name)
@@ -574,20 +733,48 @@ def verify_part1_ramsey_and_break() -> dict:
     assert abs(diffs["original"]["gap"] - 0.001730089430) < 1e-11
     assert abs(diffs["swapped"]["gap"] - 0.001581344541) < 1e-11
 
-    # Readout challenge eta=0.65 analytical check on f, ZZ-
-    b_p1_orig = bell_blocks(float(l1), float(n1), float(c1), "original")
-    ev_zz_cal = bell_events_from_blocks(b_p1_orig, 0.96, "ZZ")
-    ev_zz_chal = bell_events_from_blocks(b_p1_orig, 0.65, "ZZ")
-    # f, ZZ^- is index 0: exact = (3/16)(1 - eta) / 2? wait: Tr[ZZ B_f] = -3/16 => (3/16 - eta*(3/16))/2 = (3/32)*(1-eta)?
-    # Actually at (3/10, 1/2, 1/4) check exact formula Tr[(Z x Z) B_f] = Tr[K_f Z K_f^dag]/2? No: (K_f x I) (Phi+) (K_f^dag x I) gives Tr[(Z x Z)(B_f)] = sum_h?
-    # Let's assert exact equality with (3/32)*(1 - eta)!
-    assert abs(ev_zz_cal[0] - (3.0 / 32.0) * (1.0 - 0.96)) < 1e-14  # 0.00375
-    assert abs(ev_zz_chal[0] - (3.0 / 32.0) * (1.0 - 0.65)) < 1e-14  # 0.0328125
-    # Verify synthetic count 796/24000 and its 100-cell alpha=0.01 Hoeffding radius
+    # Sweep parameter-independence of P(f, ZZ-) = (3/32)*(1-eta) and 27/64 <= P(ppp) <= 343/512 across D & schedules
+    zz_kron = kron2(Z2, Z2)
+    z_surv_p1 = {}
+    for t_name in ("original", "swapped"):
+        for pt in ((float(l1), float(n1), float(c1)), (float(l2), float(n2), float(c2)),
+                   (0.2, 0.0, 0.0), (0.4, 0.6, 0.6), (0.4, 0.6, -0.6)):
+            blks = bell_blocks(*pt, t_name)
+            assert abs(mat_trace(blks["f"]).real - 3.0 / 16.0) < 1e-14
+            assert abs(mat_trace(mat_mul(zz_kron, blks["f"])).real - 3.0 / 16.0) < 1e-14
+            for eta_test in (0.65, 0.90, 0.96, 1.0):
+                ev_zz = bell_events_from_blocks(blks, eta_test, "ZZ")
+                assert abs(ev_zz[0] - (3.0 / 32.0) * (1.0 - eta_test)) < 1e-14
+            # Extract 2x2 POVM effect E_ppp = 2 * Tr_S(B_ppp)^T and verify exact eigenvalue bounds [27/64, 343/512]
+            bp = blks["ppp"]
+            e00 = 2.0 * (bp[0][0] + bp[2][2]).real
+            e11 = 2.0 * (bp[1][1] + bp[3][3]).real
+            e01_re = 2.0 * (bp[1][0] + bp[3][2]).real
+            e01_im = 2.0 * (bp[1][0] + bp[3][2]).imag
+            tr_h = 0.5 * (e00 + e11)
+            disc = math.sqrt((0.5 * (e00 - e11)) ** 2 + e01_re ** 2 + e01_im ** 2)
+            assert 27.0 / 64.0 - 1e-14 <= tr_h - disc <= tr_h + disc <= 343.0 / 512.0 + 1e-14
+            if pt == (float(l1), float(n1), float(c1)):
+                z_surv_p1[t_name] = (round(e00, 12), round(e11, 12))
+    assert abs(z_surv_p1["original"][0] - 0.574747436923) < 1e-12
+    assert abs(z_surv_p1["original"][1] - 0.492640660220) < 1e-12
+
+    # Readout challenge eta=0.65 composite-null check (vs domain eta >= 0.9) and Hoeffding interval
+    ev_zz_cal = bell_events_from_blocks(bell_blocks(float(l1), float(n1), float(c1), "original"), 0.96, "ZZ")
+    ev_zz_chal = bell_events_from_blocks(bell_blocks(float(l1), float(n1), float(c1), "original"), 0.65, "ZZ")
     h_rad_24k = math.sqrt(math.log(200.0 / 0.01) / (2.0 * 24000.0))
     zz0_freq = 796.0 / 24000.0
     assert abs((zz0_freq - h_rad_24k) - 0.018802730669) < 1e-9
     assert abs((zz0_freq + h_rad_24k) - 0.047530602665) < 1e-9
+    chal_comp_gap = (3.0 / 32.0) * (0.90 - 0.65) - 2.0 * (0.0005 + 2.0 ** (-40))
+    assert chal_comp_gap > 0.02243749 and (zz0_freq - h_rad_24k) > (3.0 / 32.0) * (1.0 - 0.90) + 0.0005 + 2.0 ** (-40)
+
+    # Exact Fraction verification of Weyl polytope -> 8-cell analog TV -> 40-bit TV arithmetic chain
+    assert Q("0.033892297103") + Q("0.010197843782") + Q("0.002000") == Q("0.046090140885")
+    assert Q("0.035357047207") + Q("0.010197843782") + Q("0.002000") == Q("0.047554890989")
+    ceil_40 = lambda x: Q(math.ceil(x * (10 ** 12)), 10 ** 12)
+    assert ceil_40(Q("0.046090140885") + Q(4, 2 ** 40)) == Q("0.046090140889") < Q(1, 20)
+    assert ceil_40(Q("0.047554890989") + Q(4, 2 ** 40)) == Q("0.047554890993") < Q(1, 20)
 
     # Eq. (22)/(C1) Convex polytope complex Taylor + Popoviciu check on a 3D box
     A_t, B_t, P_t = 1.5, 2.0, 1.819
@@ -598,7 +785,7 @@ def verify_part1_ramsey_and_break() -> dict:
     rng_re = (A_t * (u_hi - u_lo)) + abs(B_t) * (v_hi - v_lo)
     rng_im = P_t * (w_hi - w_lo)
     rem_cap = (rng_re ** 2 + rng_im ** 2) / 8.0
-    for m_i in range(25):
+    for _ in range(25):
         wts = [rng.random() for _ in range(8)]
         s_w = sum(wts)
         wts = [z / s_w for z in wts]
@@ -616,19 +803,23 @@ def verify_part1_ramsey_and_break() -> dict:
             "im_z_plus_P1": round(z_p1.imag, 12),
             "im_z_plus_P2": round(z_p2.imag, 12),
         },
+        "calibration_roundtrip_max_err": max_rt_err,
         "aligned_Y_threshold": round(align_thresh, 12),
+        "aligned_Y_worst_gap": round(align_gap, 12),
         "ramsey_det": round(det_M, 12),
         "causal_break_F": round(F_val, 12),
         "lipschitz_upper_outward": {
             "u": math.ceil(L_u * 1e6) / 1e6,
             "v": math.ceil(L_v * 1e6) / 1e6,
             "w": math.ceil(L_w * 1e6) / 1e6,
+            "delta": math.ceil(L_delta * 1e6) / 1e6,
             "lambda": math.ceil(L_lam * 1e6) / 1e6,
             "n": math.ceil(L_n * 1e6) / 1e6,
             "c": math.ceil(L_c * 1e6) / 1e6,
         },
         "max_empirical_stress_ratios": [round(r, 6) for r in max_emp_ratios],
         "stopped_bell_splitting_YZ_minus_eta096": diffs,
+        "z_input_ppp_survival_P1": z_surv_p1,
         "readout_challenge_f_ZZ_minus": {"cal_096": round(ev_zz_cal[0], 6), "chal_065": round(ev_zz_chal[0], 7)},
     }
 
@@ -695,90 +886,202 @@ def verify_part2_cutoff_bounds() -> dict:
         b_dec = math.ceil(float(b_k) * 10 ** 12) / (10 ** 12)
         assert abs(b_dec - exp_val) <= 2e-12, (K, b_dec, exp_val)
         out[str(K)] = b_dec
-    return {"uniform_duhamel_half_trace_upper": out}
+
+    # Constructive rational CP/TP Choi repair verification (normalized target I_in / 2)
+    blks_nom = bell_blocks(0.3, 0.5, 0.25, "original")
+    j_raw = {}
+    for rec in RECORDS:
+        j_raw[rec] = [
+            [(Q(round(blks_nom[rec][r][c].real * 10 ** 10), 10 ** 10), Q(round(blks_nom[rec][r][c].imag * 10 ** 10), 10 ** 10)) for c in range(4)]
+            for r in range(4)
+        ]
+    # Inject small non-Hermitian / trace-excess perturbation to test every repair branch
+    j_raw["f"][0][0] = (j_raw["f"][0][0][0] + Q(1, 50000), Q(1, 10 ** 8))
+    j_raw["ppp"][3][3] = (j_raw["ppp"][3][3][0] - Q(3, 50000), Q(0))
+    delta_buf = Q(1, 10000)
+    j_plus = {}
+    marg = [[(Q(0), Q(0)), (Q(0), Q(0))], [(Q(0), Q(0)), (Q(0), Q(0))]]
+    for rec, mat in j_raw.items():
+        # Symmetrize Hermiticity + positive diagonal buffer delta_buf
+        jp = [
+            [
+                (
+                    Q(1, 2) * (mat[r][c][0] + mat[c][r][0]) + (delta_buf if r == c else Q(0)),
+                    Q(1, 2) * (mat[r][c][1] - mat[c][r][1]) if r != c else Q(0),
+                )
+                for c in range(4)
+            ]
+            for r in range(4)
+        ]
+        assert q_hermitian_pd_ldl(jp), f"Repaired intermediate block {rec} failed exact LDL^dag"
+        j_plus[rec] = jp
+        # Partial trace over S in basis (S, R) -> index 2*s + r_idx
+        for ri in range(2):
+            for rj in range(2):
+                for s_i in range(2):
+                    val = jp[2 * s_i + ri][2 * s_i + rj]
+                    marg[ri][rj] = (marg[ri][rj][0] + val[0], marg[ri][rj][1] + val[1])
+    # Exact Frobenius upper bound tau >= ||marg - I_2 / 2||_F >= ||marg - I_2 / 2||_inf
+    frob2 = Q(0)
+    for ri in range(2):
+        for rj in range(2):
+            re_d = marg[ri][rj][0] - (Q(1, 2) if ri == rj else Q(0))
+            im_d = marg[ri][rj][1]
+            frob2 += re_d * re_d + im_d * im_d
+    tau = isqrt_frac_ceil(frob2, 10 ** 12)
+    scale_s = Q(1) / (Q(1) + 2 * tau)
+    m_scaled = [[(marg[ri][rj][0] * scale_s, marg[ri][rj][1] * scale_s) for rj in range(2)] for ri in range(2)]
+    rem_res = [
+        [
+            ((Q(1, 2) if ri == rj else Q(0)) - m_scaled[ri][rj][0], -m_scaled[ri][rj][1])
+            for rj in range(2)
+        ]
+        for ri in range(2)
+    ]
+    # Check remainder I_in/2 - M is PSD via scaled+jittered positive definiteness test
+    rem_jitter = [[(rem_res[i][j][0] + (Q(1, 10 ** 12) if i == j else Q(0)), rem_res[i][j][1]) for j in range(2)] for i in range(2)]
+    assert q_hermitian_pd_ldl(rem_jitter)
+    # Apply scale_s across all blocks & inject |0><0|_f x (I_in/2 - M) onto block 'f'
+    j_rep = {}
+    marg_rep = [[(Q(0), Q(0)), (Q(0), Q(0))], [(Q(0), Q(0)), (Q(0), Q(0))]]
+    frob_diff_sum = Q(0)
+    for rec, jp in j_plus.items():
+        jr = [[(jp[r][c][0] * scale_s, jp[r][c][1] * scale_s) for c in range(4)] for r in range(4)]
+        if rec == "f":
+            for ri in range(2):
+                for rj in range(2):
+                    jr[ri][rj] = (jr[ri][rj][0] + rem_res[ri][rj][0], jr[ri][rj][1] + rem_res[ri][rj][1])
+        assert q_hermitian_pd_ldl(jr), f"Final repaired block {rec} failed exact LDL^dag"
+        j_rep[rec] = jr
+        for ri in range(2):
+            for rj in range(2):
+                for s_i in range(2):
+                    val = jr[2 * s_i + ri][2 * s_i + rj]
+                    marg_rep[ri][rj] = (marg_rep[ri][rj][0] + val[0], marg_rep[ri][rj][1] + val[1])
+        d_frob2 = sum(
+            (jr[r][c][0] - j_raw[rec][r][c][0]) ** 2 + (jr[r][c][1] - j_raw[rec][r][c][1]) ** 2
+            for r in range(4) for c in range(4)
+        )
+        frob_diff_sum += isqrt_frac_ceil(d_frob2, 10 ** 12)
+    assert marg_rep[0][0] == (Q(1, 2), Q(0)) and marg_rep[1][1] == (Q(1, 2), Q(0))
+    assert marg_rep[0][1] == (Q(0), Q(0)) and marg_rep[1][0] == (Q(0), Q(0))
+    repair_half_diamond_ub = 2 * frob_diff_sum
+    assert repair_half_diamond_ub < Q(1, 100)
+
+    return {
+        "uniform_duhamel_half_trace_upper": out,
+        "rational_cptp_repair_test": {
+            "exact_trace_target": "I_R / 2",
+            "scale_s": f"{scale_s.numerator}/{scale_s.denominator}",
+            "half_diamond_bound_upper": round(float(repair_half_diamond_ub), 9),
+        },
+    }
 
 
 # ---------------------------------------------------------------------------
 # Part 3: Scalar KG Field on R x S^1 & Full 4x4 Two-Qubit Swap Thermodynamics
 # ---------------------------------------------------------------------------
-def entropy_bits_nats(probs: list[float]) -> float:
+def entropy_nats(probs: list[float]) -> float:
     return -sum(p * math.log(p) for p in probs if p > 0.0)
 
 
-def verify_part3_local_field() -> dict:
+def kg_field_parameters() -> tuple[float, float, float]:
+    """Return (beta, length L, mixing weight p_mix) matching (w0, w1)=(1, 3/2), (g0, g1)=(1, 3/5)."""
     beta = math.sqrt(5.0) / 2.0
-    length = 2.0 * math.pi / beta  # L = 4*pi / sqrt(5)
-    lam, n_occ, c_corr = 0.3, 0.5, 0.25
-
+    length = 2.0 * math.pi / beta
     x1 = math.pi / 80.0
     sinc1 = math.sin(x1) / x1
     target = 0.6 * math.sqrt(0.75)
     p_mix = 2.0 * (1.0 - target / (sinc1 ** 4))
+    return beta, length, p_mix
+
+
+def kg_run_mode_sum(
+    modes: int, a: float, b: float, opposite: bool,
+    lam: float = 0.3, n_occ: float = 0.5, c_corr: float = 0.25,
+) -> dict:
+    """Evaluate exact modes 0..modes sum for Phi_AB, D_field, Delta E_bare and analytical tail bounds."""
+    beta, _, p_mix = kg_field_parameters()
+    phase = 0.0
+    damping = 0.0
+    energy = 0.0
+    low_d = []
+    par_sign = -1.0 if opposite else 1.0
+    for j in range(modes + 1):
+        if j == 0:
+            wj, gj = 1.0, 1.0
+        else:
+            xj = math.pi * j / 80.0
+            fj = ((math.sin(xj) / xj) ** 4) * (1.0 - p_mix + p_mix * math.cos(math.pi * j / 3.0))
+            wj = math.sqrt(1.0 + (beta * j) ** 2)
+            gj = math.sqrt(2.0 / wj) * fj
+        par = (-1.0) ** j if opposite else 1.0
+        phase += 4.0 * (lam ** 2) * (gj ** 2) * par * (math.sin(wj * a) + math.sin(wj * b) - math.sin(wj * (a + b))) / (wj ** 2)
+        re_d = gj * (math.cos(wj * a) - math.cos(wj * (a + b))) / wj
+        im_d = gj * (math.sin(wj * a) - math.sin(wj * (a + b))) / wj
+        damping += 4.0 * (lam ** 2) * (gj ** 2) * (1.0 - math.cos(wj * b)) / (wj ** 2)
+        if j <= 1:
+            low_d.append((re_d, im_d))
+        energy += 2.0 * (lam ** 2) * (gj ** 2) * (2.0 - math.cos(wj * a) - math.cos(wj * b)) / wj
+    (r0, i0), (r1, i1) = low_d
+    damping += 4.0 * (lam ** 2) * n_occ * (r0 * r0 + i0 * i0 + r1 * r1 + i1 * i1)
+    damping += 8.0 * (lam ** 2) * c_corr * par_sign * (r0 * r1 + i0 * i1)
+    tail_hm = 2.0 * ((80.0 / math.pi) ** 8) / (10.0 * (beta ** 3) * (modes ** 10))
+    phase_tail = 12.0 * (lam ** 2) * tail_hm
+    damping_tail = 8.0 * (lam ** 2) * tail_hm
+    bare_energy_tail = 16.0 * (lam ** 2) * ((80.0 / math.pi) ** 8) / (9.0 * (beta ** 2) * (modes ** 9))
+    return {
+        "phase_rad": phase,
+        "phase_tail_upper": phase_tail,
+        "damping": damping,
+        "damping_tail_upper": damping_tail,
+        "im_z_plus": math.exp(-damping) * math.sin(phase),
+        "bare_energy_gain": energy,
+        "bare_energy_tail_upper": bare_energy_tail,
+    }
+
+
+def verify_part3_local_field() -> dict:
+    beta, length, p_mix = kg_field_parameters()
     assert 0.0 < p_mix < 1.0
 
     w1 = math.sqrt(1.0 + beta ** 2)
-    f1 = (sinc1 ** 4) * (1.0 - p_mix + p_mix * math.cos(math.pi / 3.0))
+    f1 = ((math.sin(math.pi / 80.0) / (math.pi / 80.0)) ** 4) * (1.0 - p_mix + p_mix * math.cos(math.pi / 3.0))
     g1 = math.sqrt(2.0 / w1) * f1
     assert abs(w1 - 1.5) < 1e-14 and abs(g1 - 0.6) < 1e-14
 
-    # Mode-wise j^{-11} bound Eq. (E2) check across j=1..200
+    # Mode-wise j^{-11} (phase/damping) and j^{-10} (energy) bounds across j=1..200
     c_tail = 2.0 * ((80.0 / math.pi) ** 8) / (beta ** 3)
+    c_eng_tail = 2.0 * ((80.0 / math.pi) ** 8) / (beta ** 2)
     for j in range(1, 201):
         xj = math.pi * j / 80.0
         fj = ((math.sin(xj) / xj) ** 4) * (1.0 - p_mix + p_mix * math.cos(math.pi * j / 3.0))
         wj = math.sqrt(1.0 + (beta * j) ** 2)
         gj = math.sqrt(2.0 / wj) * fj
         assert (gj ** 2) / (wj ** 2) <= c_tail * (j ** (-11)) + 1e-30
+        assert (gj ** 2) / wj <= c_eng_tail * (j ** (-10)) + 1e-30
 
     supp_R = (1.0 / 6.0 + 1.0 / 40.0) * length
     gap_dist = length / 2.0 - 2.0 * supp_R
     assert gap_dist > 0.4
 
-    def run_field(modes: int, a: float, b: float, opposite: bool) -> dict:
-        phase = 0.0
-        damping = 0.0
-        energy = 0.0
-        low_d = []
-        par_sign = -1.0 if opposite else 1.0
-        for j in range(modes + 1):
-            if j == 0:
-                wj, gj = 1.0, 1.0
-            else:
-                xj = math.pi * j / 80.0
-                fj = ((math.sin(xj) / xj) ** 4) * (1.0 - p_mix + p_mix * math.cos(math.pi * j / 3.0))
-                wj = math.sqrt(1.0 + (beta * j) ** 2)
-                gj = math.sqrt(2.0 / wj) * fj
-            par = (-1.0) ** j if opposite else 1.0
-            phase += 4.0 * (lam ** 2) * (gj ** 2) * par * (math.sin(wj * a) + math.sin(wj * b) - math.sin(wj * (a + b))) / (wj ** 2)
-            re_d = gj * (math.cos(wj * a) - math.cos(wj * (a + b))) / wj
-            im_d = gj * (math.sin(wj * a) - math.sin(wj * (a + b))) / wj
-            damping += 4.0 * (lam ** 2) * (gj ** 2) * (1.0 - math.cos(wj * b)) / (wj ** 2)
-            if j <= 1:
-                low_d.append((re_d, im_d))
-            energy += 2.0 * (lam ** 2) * (gj ** 2) * (2.0 - math.cos(wj * a) - math.cos(wj * b)) / wj
-        (r0, i0), (r1, i1) = low_d
-        damping += 4.0 * (lam ** 2) * n_occ * (r0 * r0 + i0 * i0 + r1 * r1 + i1 * i1)
-        damping += 8.0 * (lam ** 2) * c_corr * par_sign * (r0 * r1 + i0 * i1)
-        tail_sum = 2.0 * ((80.0 / math.pi) ** 8) / (10.0 * (beta ** 3) * (modes ** 10))
-        phase_tail = 12.0 * (lam ** 2) * tail_sum
-        return {
-            "phase_rad": phase,
-            "phase_tail_upper": phase_tail,
-            "im_z_plus": math.exp(-damping) * math.sin(phase),
-            "bare_energy_gain": energy,
-        }
-
-    two_mode_tl = run_field(1, 2.0 / 3.0, 0.75, False)
-    full_tl = run_field(160, 2.0 / 3.0, 0.75, False)
-    two_mode_sl = run_field(1, 0.2, 0.2, True)
-    full_sl = run_field(160, 0.2, 0.2, True)
+    two_mode_tl = kg_run_mode_sum(1, 2.0 / 3.0, 0.75, False)
+    full_tl = kg_run_mode_sum(160, 2.0 / 3.0, 0.75, False)
+    ref_tl = kg_run_mode_sum(2000, 2.0 / 3.0, 0.75, False)
+    two_mode_sl = kg_run_mode_sum(1, 0.2, 0.2, True)
+    full_sl = kg_run_mode_sum(160, 0.2, 0.2, True)
+    ref_sl = kg_run_mode_sum(2000, 0.2, 0.2, True)
 
     assert abs(two_mode_tl["phase_rad"] - 0.163731618) < 1e-9
     assert abs(full_tl["phase_rad"] - 0.209161320) < 1e-9
     assert abs(full_tl["im_z_plus"] - 0.145988513) < 1e-9
     assert abs(full_tl["bare_energy_gain"] - 0.296125651) < 1e-8
     assert abs(two_mode_sl["phase_rad"] - 0.001330794) < 1e-9
-    assert abs(full_sl["phase_rad"]) <= full_sl["phase_tail_upper"] < 2.486e-12
+    assert abs(full_sl["phase_rad"]) <= full_sl["phase_tail_upper"] < 2.485478e-12
+    assert 0.0 <= ref_tl["damping"] - full_tl["damping"] <= full_tl["damping_tail_upper"] < 1.657e-12
+    assert 0.0 <= ref_tl["bare_energy_gain"] - full_tl["bare_energy_gain"] <= full_tl["bare_energy_tail_upper"] < 3.294e-10
+    assert 0.0 <= ref_sl["damping"] - full_sl["damping"] <= full_sl["damping_tail_upper"] < 1.657e-12
+    assert 0.0 <= ref_sl["bare_energy_gain"] - full_sl["bare_energy_gain"] <= full_sl["bare_energy_tail_upper"] < 3.294e-10
     assert abs(full_sl["bare_energy_gain"] - 0.071708942) < 1e-8
 
     # Full 4x4 matrix unitary check for two-qubit resonant swap (theta = pi/6, H_0 = diag(0, 1, 1, 2))
@@ -819,7 +1122,7 @@ def verify_part3_local_field() -> dict:
     assert abs(cond_E0 - 49.0 / 65.0) < 1e-14
     assert abs(cond_E1 - 16.0 / 35.0) < 1e-14
     beta_th = math.log(4.0)  # (1-q)/q = 4
-    sigma_ent = entropy_bits_nats([pS_out, 1.0 - pS_out]) - entropy_bits_nats([0.8, 0.2]) + beta_th * (qE_out - 0.2)
+    sigma_ent = entropy_nats([pS_out, 1.0 - pS_out]) - entropy_nats([0.8, 0.2]) + beta_th * (qE_out - 0.2)
     assert abs(sigma_ent - 0.354988369664) < 1e-10
 
     return {
@@ -829,7 +1132,9 @@ def verify_part3_local_field() -> dict:
             "two_mode_phase": round(two_mode_tl["phase_rad"], 9),
             "full_field_phase": round(full_tl["phase_rad"], 9),
             "im_z_plus": round(full_tl["im_z_plus"], 9),
+            "damping_tail_upper_M160": full_tl["damping_tail_upper"],
             "bare_energy_gain": round(full_tl["bare_energy_gain"], 6),
+            "bare_energy_tail_upper_M160": full_tl["bare_energy_tail_upper"],
         },
         "spacelike_antipodal": {
             "two_mode_spurious_phase": round(two_mode_sl["phase_rad"], 9),

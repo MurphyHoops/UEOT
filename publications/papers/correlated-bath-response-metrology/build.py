@@ -10,6 +10,7 @@ import os
 import shutil
 import subprocess
 import sys
+import zipfile
 
 ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "build"
@@ -17,6 +18,8 @@ OUT.mkdir(exist_ok=True)
 PRA_DIR = ROOT / "submissions" / "pra"
 PRA_OUT = PRA_DIR / "build"
 PRA_OUT.mkdir(parents=True, exist_ok=True)
+FIXED_ZIP_TIME = (2026, 11, 24, 0, 0, 0)
+SOURCE_EPOCH = str(int(datetime.datetime(*FIXED_ZIP_TIME, tzinfo=datetime.timezone.utc).timestamp()))
 
 ENV = os.environ.copy()
 extra_paths = [
@@ -27,17 +30,21 @@ extra_paths = [
     "/usr/local/bin",
 ]
 ENV["PATH"] = ":".join(extra_paths + [ENV.get("PATH", "")])
+ENV["PYTHONDONTWRITEBYTECODE"] = "1"
+ENV["SOURCE_DATE_EPOCH"] = SOURCE_EPOCH
+ENV["FORCE_SOURCE_DATE"] = "1"
+ENV["LC_ALL"] = "C"
 
 
 def preflight_tools() -> None:
-    missing = [tool for tool in ("pandoc", "latexmk", "xelatex", "pdftoppm", "pdfinfo", "pdftotext")
+    missing = [tool for tool in ("pandoc", "latexmk", "xelatex", "pdflatex", "bibtex", "pdftoppm", "pdfinfo", "pdftotext")
                if shutil.which(tool, path=ENV["PATH"]) is None]
     if missing:
         raise SystemExit(f"Missing required build tools in PATH: {missing}")
 
 
 def execute(argv: list[str], name: str, cwd: Path = ROOT, log_dir: Path = OUT) -> str:
-    p = subprocess.run(argv, cwd=cwd, env=ENV, capture_output=True, text=True)
+    p = subprocess.run(argv, cwd=cwd, env=ENV, capture_output=True, text=True, timeout=180)
     log_path = log_dir / (name + ".txt")
     log_path.write_text(p.stdout + p.stderr, encoding="utf-8")
     if p.returncode:
@@ -50,10 +57,27 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def build_aps_source_zip(zip_path: Path) -> None:
+    """Create a deterministic, self-contained pdflatex+bibtex archive for APS upload."""
+    members = sorted([
+        "pra_manuscript.tex",
+        "references.bib",
+        "figures/fig1_ramsey_ambiguity_and_causal_break.pdf",
+        "figures/fig2_cutoff_bounds_and_channel_error.pdf",
+        "figures/fig3_local_field_microcausality.pdf",
+    ])
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
+        for rel in members:
+            zi = zipfile.ZipInfo(rel, date_time=FIXED_ZIP_TIME)
+            zi.create_system = 3
+            zi.external_attr = 0o100644 << 16
+            zf.writestr(zi, (PRA_DIR / rel).read_bytes())
+
+
 def main() -> None:
     preflight_tools()
-    execute([sys.executable, "verify_standalone.py"], "verify_standalone")
-    execute([sys.executable, "generate_figures.py"], "generate_figures")
+    execute([sys.executable, "-B", "verify_standalone.py"], "verify_standalone")
+    execute([sys.executable, "-B", "generate_figures.py"], "generate_figures")
     execute([
         "pandoc", "manuscript.md", "--standalone",
         "--natbib", "--template=template.tex", "--lua-filter=layout.lua", "--to=latex",
@@ -100,20 +124,37 @@ def main() -> None:
         old_png.unlink()
     execute(["pdftoppm", "-png", "-r", "144", "pra_manuscript.pdf", "build/pra-page"], "pdftoppm_pra", cwd=PRA_DIR, log_dir=PRA_OUT)
 
+    aps_zip = PRA_DIR / "pra_aps_latex_source.zip"
+    build_aps_source_zip(aps_zip)
+
     pdf_pages = len(list(OUT.glob("page-*.png")))
     pra_pages = len(list(PRA_OUT.glob("pra-page-*.png")))
+    tracked_for_receipt = [
+        "manuscript.md",
+        "references.bib",
+        "layout.lua",
+        "template.tex",
+        "generate_figures.py",
+        "verify_standalone.py",
+        "figures/fig1_ramsey_ambiguity_and_causal_break.pdf",
+        "figures/fig2_cutoff_bounds_and_channel_error.pdf",
+        "figures/fig3_local_field_microcausality.pdf",
+        "manuscript.tex",
+        "manuscript.pdf",
+        "submissions/pra/template_pra.tex",
+        "submissions/pra/pra_manuscript.tex",
+        "submissions/pra/pra_manuscript.pdf",
+        "submissions/pra/pra_aps_latex_source.zip",
+    ]
     receipt = {
         "built_at_utc": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "source_date_epoch": int(SOURCE_EPOCH),
         "master_pdf_pages": pdf_pages,
         "pra_pdf_pages": pra_pages,
-        "sha256": {
-            "manuscript.pdf": digest(ROOT / "manuscript.pdf"),
-            "submissions/pra/pra_manuscript.pdf": digest(PRA_DIR / "pra_manuscript.pdf"),
-            "verify_standalone.py": digest(ROOT / "verify_standalone.py"),
-        },
+        "sha256": {rel: digest(ROOT / rel) for rel in tracked_for_receipt},
     }
     (ROOT / "BUILD_RECEIPT.json").write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"status": "BUILT", "master_pages": pdf_pages, "pra_pages": pra_pages}))
+    print(json.dumps({"status": "BUILT", "master_pages": pdf_pages, "pra_pages": pra_pages, "aps_source_zip": aps_zip.name}))
 
 
 if __name__ == "__main__":

@@ -21,6 +21,13 @@ function HorizontalRule()
   end
 end
 
+function Math(m)
+  if FORMAT:match("latex") then
+    m.text = m.text:gsub("–", "--")
+    return m
+  end
+end
+
 function Header(el)
   if not FORMAT:match("latex") then
     return el
