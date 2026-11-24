@@ -8,21 +8,71 @@ from __future__ import annotations
 from collections import Counter
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
+import shutil
 import subprocess
+import sys
 import unicodedata
-import fitz
 
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parent
 HIST_REVIEW = HERE/'review/BILINGUAL_EDITION_2026-11-11'
 OUT_REVIEW = HERE/'review/BILINGUAL_EDITION_2026-11-22'
+UV_REEXEC_ENV = 'UEOT_VALIDATE_EDITION_UV_REEXEC'
 
 def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
+def _find_tool(name, fallback):
+    found = shutil.which(name)
+    if found:
+        return found
+    if Path(fallback).is_file():
+        return fallback
+    return None
+
+def _load_fitz():
+    try:
+        import pymupdf as fitz_mod
+        return fitz_mod
+    except ImportError:
+        pass
+    try:
+        import fitz as fitz_mod
+        return fitz_mod
+    except ImportError:
+        pass
+    if not os.environ.get(UV_REEXEC_ENV):
+        uv_bin = _find_tool('uv', '/opt/homebrew/bin/uv')
+        py312_bin = _find_tool('python3.12', '/opt/homebrew/bin/python3.12')
+        if uv_bin and py312_bin:
+            env = dict(os.environ)
+            env[UV_REEXEC_ENV] = '1'
+            homebrew_bin = '/opt/homebrew/bin'
+            if Path(homebrew_bin).is_dir() and homebrew_bin not in env.get('PATH', '').split(os.pathsep):
+                env['PATH'] = homebrew_bin + (os.pathsep + env['PATH'] if env.get('PATH') else '')
+            cmd = [
+                uv_bin, 'run', '--offline', '--no-project',
+                '--python', py312_bin, '--with', 'pymupdf',
+                'python3', str(Path(__file__).resolve()), *sys.argv[1:],
+            ]
+            try:
+                proc = subprocess.run(cmd, env=env, check=False)
+            except OSError as exc:
+                raise SystemExit(f'Failed to invoke offline uv PyMuPDF fallback ({uv_bin}): {exc}') from exc
+            raise SystemExit(proc.returncode)
+    raise SystemExit(
+        'Missing PyMuPDF (pymupdf/fitz) in current Python and offline uv fallback '
+        '(uv + python3.12 + cached pymupdf) is unavailable.'
+    )
+
 def main():
+    fitz = _load_fitz()
+    pdffonts_bin = _find_tool('pdffonts', '/opt/homebrew/bin/pdffonts')
+    if not pdffonts_bin:
+        raise SystemExit('Missing Poppler pdffonts binary on PATH or /opt/homebrew/bin/pdffonts.')
     failures = []
     def check(ok, message):
         if not ok:
@@ -127,7 +177,7 @@ def main():
             name,ext,kind,data=doc.extract_font(xref)
             check(bool(data), f'{lang}: font not embedded: {name}')
             fonts.append({'xref':xref,'name':name,'extension':ext,'type':kind,'embedded_bytes':len(data)})
-        font_table=subprocess.check_output(['pdffonts',str(pdf)],text=True)
+        font_table=subprocess.check_output([pdffonts_bin,str(pdf)],text=True)
         report['documents'][lang]={
             'hashes':hashes,'parts':len(parts),'chapters':len(chapters),'appendices':len(appendices),
             'anchors':len(anchors),'note_definitions':len(definitions),'note_calls':len(calls),
@@ -148,7 +198,7 @@ def main():
         'mathematics/UEOT_MATHEMATICS.md','mathematics/UEOT_MATHEMATICS.tex','mathematics/UEOT_MATHEMATICS.pdf','mathematics/BUILD.json',
         'mathematics/UEOT_MATHEMATICS.en.md','mathematics/UEOT_MATHEMATICS.en.tex','mathematics/UEOT_MATHEMATICS.en.pdf','mathematics/BUILD.en.json',
         'mathematics/UEOT_MATHEMATICS_SOURCES.md','mathematics/LEAN_API_SCOPE.md','mathematics/README.md','mathematics/tools/build_bilingual.py',
-        'core/status/CURRENT.md','README.md',
+        'core/status/CURRENT.md','README.md','LICENSE_SCOPE.md',
         'formalization/ueot-core/docs/V3_COVERAGE_STATUS.md','formalization/ueot-core/docs/PID_STATUS.yaml',
     }
     for entry in baseline['files']:

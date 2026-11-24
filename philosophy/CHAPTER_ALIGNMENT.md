@@ -16,14 +16,14 @@
 | 8 [中](UEOT_PHILOSOPHY.md#ph-ch-08) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-08) | 记忆保存对未来相关的历史区别 | 走廊标记、相同身体而不同后验 | 压缩是否偷删控制器记忆；保留实际完整历史 | 数学37、39.7/11—12/82—88；解释idle、收据、尾部 | 信息使用范围有限；不把全部痕迹当可读记忆 |
 | 9 [中](UEOT_PHILOSOPHY.md#ph-ch-09) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-09) | 最优先有可实行的完整策略 | 合法一步通向死端；共享六单位钱包 | 完整策略不等于幸运路径；同观察须同动作 | 数学37；同源组织合同；保留 | all positive-probability branches、资源与权限量词不丢失 |
 | 10 [中](UEOT_PHILOSOPHY.md#ph-ch-10) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-10) | 学习必须接回同一行动世界 | 训练选择联合风险；3步/4步、备份机制未知 | 不可辨认是否无法行动；同权限最小最坏后悔 | 数学36/38/39.75—95；改写长技术段，最终明确期望后悔 | 期望值差不误为逐路径差；知道机制无未来噪声先知权 |
-| 11 [中](UEOT_PHILOSOPHY.md#ph-ch-11) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-11) | 功能、目的与道德理由分层 | 损坏泵、偶然堵漏；长期因子与有限人数不同 | 有益效果不足赋功能；解释历史/能力/组织各自问题 | Wright、Cummins、Mossio等；增长与资源合同；新增两段并修旧引导句 | 严格正故障概率/价格；正概率超支非几乎必然破产 |
+| 11 [中](UEOT_PHILOSOPHY.md#ph-ch-11) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-11) | 四级目的阶梯与道德理由分离 | 损坏泵、偶然堵漏；长期因子与有限人数不同 | 有益效果不足赋功能；分离因果角色/自维持闭合/选择成因（≠前瞻增长）/实践理性（4a个人与4b制度）；意向立场仅作预测压缩视角 | Cummins/Craver、Mossio–Saborido–Moreno/Barandiaran–Di Paolo–Rohde、Wright/Millikan/Godfrey-Smith、Korsgaard/Scanlon/Street/List；Dennett；增长与资源合同 | 严格正故障概率/价格；正概率超支非几乎必然破产；与Paper 1四级目的完全对齐 |
 | 12 [中](UEOT_PHILOSOPHY.md#ph-ch-12) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-12) | Π/Φ保留两类关切，不预定维数 | 旅途水与地图；三响应s、b、bq局部独立 | 两关切何以成为两维定律；rank-3反例限制强版本 | 原文Φ语义漂移；数学23.4/33—34；保留已有精确例 | determinant b>0与smooth two-dimensional限定一致 |
 | 13 [中](UEOT_PHILOSOPHY.md#ph-ch-13) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-13) | 评价内容不等于唯一数字表示 | 评分尺度、回报成本抵消、公共权重 | 表示自由是否无客观性；寻找不变量与锚定 | Core18/23；数学33/35；保留 | 总值相等与仅排序相等的自由度不同 |
 | 14 [中](UEOT_PHILOSOPHY.md#ph-ch-14) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-14) | 稳态、可行、最优、幸存互不替代 | 1/8中断；两步15/64；幸存条件分布 | 稳态是否保证不中断；完整历史与边际分布不同 | 数学21.7/35.7；原GOD/GOA；保留完整推导说明 | 唯一梯度/固定点不被偷偷恢复；先固定有限时点再增群体 |
 | 15 [中](UEOT_PHILOSOPHY.md#ph-ch-15) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-15) | 目标反思是更强能动性 | 排名支配生活、受教育后重审目的 | 一切反馈是否agency；最小判据仍需辩护 | Barandiaran等；Core27；新增分层并修总括句 | 反思不是所有能动性或道德地位门槛 |
 | 16 [中](UEOT_PHILOSOPHY.md#ph-ch-16) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-16) | 整体能力由部分关系实现 | 两卡联合信息、乐团、交通规则、相关故障 | 整体因果重复计数；不增第二股力而要求实现和干预内容 | Core15；数学32/34、39.89—95；新增强反对 | joint capacity不自动等于lasting identity或政治正当性 |
 | 17 [中](UEOT_PHILOSOPHY.md#ph-ch-17) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-17) | 尺度改变须说明保存什么 | 地图与道路；解码程序相同而执行门不同 | 预测相同是否控制相同；费用权限也需保留 | 数学32/33及现行表示合同；修“预测码”为“解码内容” | decoded program不误译predictive code；尺度不等于时间 |
-| 18 [中](UEOT_PHILOSOPHY.md#ph-ch-18) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-18) | 协调需机制和公共理由 | 三制度局部改进成环；快慢决策 | 整体目标为何约束成员；宏观持续不自动授权服从 | Core24；原文8、18—28；保留 | 局部最优不升级global potential；共同义务不止即时同意 |
+| 18 [中](UEOT_PHILOSOPHY.md#ph-ch-18) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-18) | 协调需机制和公共理由 | 三制度局部改进成环；快慢决策 | 整体目标为何约束成员；宏观持续不自动授权服从 | 数学第24章（`P-ALI-01..03`）与 `DiscretePreferenceCochainObstruction`（`condorcet_3cycle_nonintegrable`）；原文8、18—28 | 区分流形 $C^1$ 1-形式与离散图上链；局部最优不升级global potential；共同义务不止即时同意 |
 | 19 [中](UEOT_PHILOSOPHY.md#ph-ch-19) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-19) | 谱系延续不同于个体持续 | 严格出生有限表阻碍；时戳身份；噪声父标记 | 标签能否提供祖先身份；保留权限与非识别界 | 数学25—26/34/39.2/8/20—25；拆技术长段 | η=1/2是噪声参数，任意未知混淆类限定保留 |
 | 20 [中](UEOT_PHILOSOPHY.md#ph-ch-20) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-20) | 创新可改变选择空间 | 全码擦除与不同原程序；环境改变排序 | 恢复定理能否解释创造；新差别来源仍需说明 | 原文12—15；同源擦除反例；自然中文重写 | no-go限定在相同物理信息，不宣称一切创新不可能 |
 | 21 [中](UEOT_PHILOSOPHY.md#ph-ch-21) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-21) | 主体的自然位置与体验难题 | 功能整合、报告仍留下为何有体验 | 功能主义与解释鸿沟双方；未裁决充分条件 | Chalmers；Core27.6；新增强反对并改结尾 | 未证明physical sufficiency，也未证明原则不可能 |
@@ -33,9 +33,9 @@
 | 25 [中](UEOT_PHILOSOPHY.md#ph-ch-25) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-25) | 平等关切是公开的规范承诺 | 一致利己者、不能说理者、代表约束 | 不能逻辑迫使利己者；不伪装额外前提 | Scanlon；独立道德理由；多段实修 | 生存/增长不产义务；possible suffering保留可能性 |
 | 26 [中](UEOT_PHILOSOPHY.md#ph-ch-26) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-26) | 制度对象性和正当性分开 | 一人占全部资源仍可能帕累托有效 | 效率能否定公平；初始权利需另辩护 | 原文18—24；Core15/24/29；保留准确反例 | 不能把市场机制推为普适社会分布定律 |
 | 27 [中](UEOT_PHILOSOPHY.md#ph-ch-27) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-27) | 文明反思能力的分配与后果 | 自动化、生态依赖、未来人、压迫制度也能恢复 | 可恢复是否天然善；须说明保存对象与现时牺牲 | 原文24—28、40—41；新增反例 | 不能为未来选项无限推迟紧急救助 |
-| 28 [中](UEOT_PHILOSOPHY.md#ph-ch-28) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-28) | 解释应承担可失败的内容 | 改边界逃反例、非空条件正例、竞争预测 | 无限收窄是否免疫；可承认只剩方法性贡献 | 现行合同/原诊断；新增最强方法论反对 | 形式化/执行/精确核对/外部经验分层，UNVERIFIED不变 |
-| 29 [中](UEOT_PHILOSOPHY.md#ph-ch-29) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-29) | 宇宙统一是可研究的远景 | 信息到时空、拓扑到粒子各需桥接 | 宇宙是否意向主体；整体结构不足推出 | 原文29—41；保留有条件的哲学展望 | 没有新增物理定律或改写物理书 |
-| 30 [中](UEOT_PHILOSOPHY.md#ph-ch-30) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-30) | 客观真理与历史求知可并存 | 共识可错、数学反例促修订、公共批评 | 社会过程是否制造真理；求真条件不等于真值 | Longino；Core31；新增比较并修结尾量词 | 只说一些客体有记忆/行动，统一不抹去差别 |
+| 28 [中](UEOT_PHILOSOPHY.md#ph-ch-28) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-28) | 解释应承担可失败的内容 | 改边界逃反例、非空条件正例、竞争预测 | 无限收窄是否免疫；可承认只剩方法性贡献 | 现行合同/原诊断；`PhilosophyV31OmegaObserverBridge`（`ad_hoc_domain_excision_is_degenerating_shift`、`ueot_lakatos_nonvacuous_and_non_immune`、`finite_zero_failures_preserve_unverified_open_honesty`）与 `DEAD-20261124-01..15` | 形式化/执行/精确核对/外部经验分层，UNVERIFIED、`EQUIVALENT_NO_ADDED_GAIN`、`physical_unification = OPEN`、`device_certified = false` 不变 |
+| 29 [中](UEOT_PHILOSOPHY.md#ph-ch-29) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-29) | 宇宙统一是有方向而诚实的开放远景 | 信息到时空、拓扑到粒子、Ch.71 $S_{jk}$ vs $\chi^{\mathrm{ret}}_{jk}$ 与 KG 微因果、PR #468 `AH01`–`AH10` 有限界 | 宇宙是否意向主体；`Object-RG`/`FiniteDobrushin`/`QuotientDescent` 捷径被 `DEAD-20261124-01..15` 证伪 | 原文29—41；对接《UEOT物理学》3.13（229结果/152主张）、`PR #468`（345项）及 Wave 8–11 增补 | 保持 `physical_unification = OPEN`、`device_certified = false`（`raw_hardware_h5_count = 0`）、`EQUIVALENT_NO_ADDED_GAIN` 及 `H1d4d`/`H2d`/`H3d`/`H4d` 开放，不改写冻结物理卷 |
+| 30 [中](UEOT_PHILOSOPHY.md#ph-ch-30) / [EN](UEOT_PHILOSOPHY.en.md#ph-ch-30) | 客观真理与历史求知可并存 | 共识可错、数学反例促修订、公共批评 | 社会过程是否制造真理；求真条件不等于真值 | Longino（SEP）；《UEOT物理学》3.13、`DEAD-20261124-01..15`、`H1d4d`–`H4d` | 三卷各自承担证明责任；保持 `EQUIVALENT_NO_ADDED_GAIN`、`physical_unification = OPEN` 与 `device_certified = false` |
 
 ## 六编的依赖与边界
 
@@ -48,8 +48,8 @@
 | 前言、版本、贡献和权利 | 3.0版说明；原作者与内部AI编辑分开；旧授权持续 | 同一权利范围，不把英文译文称独占改编 |
 | A | 19项概念表；客体、历史身份、能动性同步正文 | 按语义译object/subject/agent；feasibility与正式viability标识分开 |
 | B | 原43页全部主要主题的15行对照 | 原页序、章号、限制逐项保留 |
-| C | 接口表、全部历史来源段、当前合同完整保留；原孤段归回39.72—74位置；C.1—3有序 | 历史OPEN明确是当时；38章校准数值及39章精确分数保持 |
-| D | 原来源和使用层次保留；新增12项实质引用文献 | 作者、年、页码、DOI与核读范围一致 |
+| C | 接口表（含 C.1 第 24 章）、全部历史来源段、当前合同（`ASSUMPTION_CLASSIFICATION_106.json` `11/72/12/6/5` 与 `P12 = PARTIAL / EXPLICIT BOUNDARY`）及 C.3 M1 纯内核桥接完整保留；C.1—3 有序 | 历史OPEN明确是当时；38章校准数值、39章精确分数及 EN 版英文数学链接同步保持 |
+| D | 原来源、物理卷与失败台账接口（D.1—D.2）及 69 项 D.3 哲学书目完整保留；`[^lit-agency]`/`[^lit-longino]`/`[^lit-fischer]`/`[^lit-scanlon]` 全文核实公开原著／SEP 正文 | 作者、年、页码、DOI、开放全文链接与真实核读范围一致，零摘要／封底替代 |
 | 注释 | 68条定义、78次正文调用，无删注充数 | 逐项译出，不以链接或英文摘要替代全文 |
 
 本表的源事实可从相应章及注释直接回溯。最终文件哈希、编译和逐页视觉检查另见[发行清单](EDITION_MANIFEST.json)及[本轮验证记录](review/BILINGUAL_EDITION_2026-11-11/README.md)。
