@@ -17,6 +17,7 @@
 | `DEAD-20261124-05` | `SPEC-20261124-04` | `CLOSED` | 负宇宙学常数 Big Crunch 下界误用宽松 `9/4` 前置因子 `-3*pi^2/(t_obs/t_P)^2` | 允许 `-3.0e-121` 通过下界检查，但精确 Friedmann 积分显示其在 `11.31 Gyr < 13.80 Gyr` 即发生大坍缩；已按精确积分系数 `-(4*pi^2/3)/(t_obs/t_P)^2` 修复 | 仅在精确解析积分系数下有效，严禁放宽 `9/4` 近似因子 | 2026-11-24 / M2 & Red-Team |
 | `DEAD-20261124-06` | `SPEC-20261124-04` | `CLOSED` | 在平坦 `k = 0` FRW（`Λ > 0`）上声称存在无条件正下界 `3*pi^2/((100 Gyr)/t_P)^2` | 在平坦 `k = 0` FRW 中，当 `I_Λ → 0+` 时加速特征时标 `t_Λ → +∞`，不存在无条件正下界；正下界仅在闭宇宙 `k = +1`（`Ω_k0 < 0`）条件下成立 | 必须显式标注 `Omega_k0 < 0` 的 `E/P` 条件前提，不得声称平坦 FRW 存在正 `Λ` 下界 | 2026-11-24 / M2 & Red-Team |
 | `DEAD-20261124-07` | `SPEC-20261124-04` | `CLOSED` | 无离散误差填充的 `n = 40` Higgs 四次耦合 RK4 与离散阈值滞后判定 `t_cur.a >= t_portal.b` | 离散化截断误差 `5.74e-8` 与 `20.8%` 阈值步长滞后排除了真实连续解；已修复为精确 `t_portal` 分段与 `n = 100/200` `16*disc` 填充包络 | 仅当网格加密验证且分段点精确对齐时方可接受 | 2026-11-24 / M2 & Red-Team |
+| `DEAD-20261124-08` | `SPEC-20261124-06` | `CLOSED` | 在 `physics/unification` 增量 PR 中直接修改已封版的 Edition 3.13 `physics/qm/book/UEOT_PHYSICS(.en).md` | 任何触碰 `physics/qm/**` 的 PR 均会触发 `.github/workflows/ueot-qm-chapter72-publication.yml`，其运行 `physics/qm/book/build/verify_v3_13_increment.py` 并因 `VALIDATION_LEDGER.json` 及 Edition 3.13 正文/PDF SHA-256 锁定校验而硬失败；已恢复 `physics/qm/book/` 至 `origin/main` 并将 Wave 8–11 双语增补定稿归档于 `physics/unification/WAVE8_11_MONOGRAPH_ADDENDUM.md` | 仅在独立筹备下一版专著（Edition 3.14 Stage A+B 重排 XeLaTeX PDF 与全套签名封板 PR）时方可统一解除 Edition 3.13 冻结 | 2026-11-24 / Coordinator CI Check |
 
 ---
 
