@@ -1,46 +1,76 @@
 {
-  "validated_at_utc": "2026-11-24T05:13:10Z",
+  "validated_at_utc": "2026-11-24T05:54:39Z",
   "status": "PASS",
   "citations": {
-    "bib_entries": 61,
-    "cited_keys": 61,
+    "bib_entries": 72,
+    "cited_keys": 72,
     "missing": [],
     "unused": []
   },
+  "bundle_parity": {
+    "parity": "EXACT",
+    "figure_count": 6,
+    "receipt_verified": true
+  },
   "jargon_audit": {
-    "checked_files": 7,
+    "checked_files": 12,
     "clean": true
   },
   "tex_logs": {
-    "master_latexmk": {
+    "master_log": {
       "overfull": 0,
-      "bib_warnings": 0
+      "missing_chars": 0,
+      "warnings": 0,
+      "underfull_total": 10,
+      "high_badness_underfull": 1
+    },
+    "pra_log": {
+      "overfull": 0,
+      "missing_chars": 0,
+      "warnings": 0,
+      "underfull_total": 10,
+      "high_badness_underfull": 1
     },
     "master_blg": {
-      "overfull": 0,
-      "bib_warnings": 0
-    },
-    "pra_latexmk": {
-      "overfull": 0,
       "bib_warnings": 0
     },
     "pra_blg": {
-      "overfull": 0,
       "bib_warnings": 0
+    },
+    "master_pdf_outlines": {
+      "clean_bookmarks": true,
+      "outline_count": 26
+    },
+    "pra_pdf_outlines": {
+      "clean_bookmarks": true,
+      "outline_count": 26
     }
   },
   "master_pdf": {
     "pages": 23,
-    "chars": 64592,
-    "clean_glyphs": true
+    "chars": 70586,
+    "clean_glyphs": true,
+    "double_headings": 0
   },
   "pra_pdf": {
-    "pages": 24,
-    "chars": 63837,
-    "clean_glyphs": true
+    "pages": 23,
+    "chars": 69751,
+    "clean_glyphs": true,
+    "double_headings": 0
   },
+  "numeric_parity": {
+    "verified_literals": 19
+  },
+  "sha256sums_file_count": 37,
   "standalone_verifier": {
     "status": "PASS",
+    "part0_direct_fock_schrodinger_crosscheck": {
+      "vac_K12_eq5_error": 9.771983855711517e-15,
+      "vac_K12_causal_break_error": 6.899535898986843e-15,
+      "vac_K12_plus_slot1_imag": 4.910155071513846e-18,
+      "vac_K12_3slot_bell_max_error": 1.4988010832440416e-15,
+      "thermal_K8_P1_causal_break_error": 0.0007212001019913219
+    },
     "part1_ramsey_ambiguity_and_causal_break": {
       "ramsey_equivalent_u_v": [
         "9/50",
@@ -62,14 +92,22 @@
       "aligned_Y_threshold": 0.605581355419,
       "ramsey_det": -1.162022859636,
       "causal_break_F": 1.819240198557,
-      "lipschitz_upper": {
-        "u": 51.240114,
+      "lipschitz_upper_outward": {
+        "u": 51.240115,
         "v": 31.421917,
         "w": 2.965319,
-        "lambda": 7.413296,
+        "lambda": 7.413297,
         "n": 722.04769,
         "c": 830.027702
       },
+      "max_empirical_stress_ratios": [
+        3.152978,
+        1.959825,
+        0.826244,
+        1.363937,
+        21.657584,
+        31.906583
+      ],
       "stopped_bell_splitting_YZ_minus_eta096": {
         "original": {
           "p1_ppp_YZ_minus": 0.266807646507,
@@ -81,6 +119,10 @@
           "p2_ppp_YZ_minus": 0.265659518191,
           "gap": 0.001581344541
         }
+      },
+      "readout_challenge_f_ZZ_minus": {
+        "cal_096": 0.00375,
+        "chal_065": 0.0328125
       }
     },
     "part2_duhamel_total_number_cutoff": {
@@ -110,8 +152,14 @@
         "phase_tail_upper_M160": 2.4854774053275542e-12,
         "bare_energy_gain": 0.071709
       },
-      "two_qubit_reuse_excitation_excess": "3/80"
+      "two_qubit_reuse": {
+        "reuse_excitation_excess": "3/80",
+        "entropy_production_sigma": 0.354988369664,
+        "conditional_S_given_E0_E1": [
+          0.753846,
+          0.457143
+        ]
+      }
     }
-  },
-  "sha256sums_file_count": 37
+  }
 }

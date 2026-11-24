@@ -1,46 +1,51 @@
-% Standalone master manuscript typesetting template (XeLaTeX + natbib).
+% Standalone master manuscript typesetting template (XeLaTeX + STIX Two Math + natbib).
 \documentclass[11pt,letterpaper]{article}
 \usepackage[margin=25mm,headheight=15pt,headsep=8mm]{geometry}
-\usepackage{fontspec}
-\IfFontExistsTF{Liberation Serif}{%
-  \setmainfont{Liberation Serif}%
-}{%
+\usepackage[no-math]{fontspec}
+\IfFontExistsTF{Times New Roman}{%
   \setmainfont{Times New Roman}%
-}
-\IfFontExistsTF{Liberation Sans}{%
-  \setsansfont{Liberation Sans}%
 }{%
-  \IfFontExistsTF{Latin Modern Sans}{%
-    \setsansfont{Latin Modern Sans}%
-  }{%
-    \setsansfont{Helvetica}%
-  }%
+  \setmainfont{Liberation Serif}%
 }
-\IfFontExistsTF{DejaVu Sans Mono}{%
-  \setmonofont[Scale=0.84]{DejaVu Sans Mono}%
+\IfFontExistsTF{Helvetica}{%
+  \setsansfont{Helvetica}%
 }{%
-  \IfFontExistsTF{Menlo}{%
-    \setmonofont[Scale=0.81]{Menlo}%
-  }{%
-    \setmonofont[Scale=0.84]{Courier New}%
-  }%
+  \setsansfont{Latin Modern Sans}%
+}
+\IfFontExistsTF{Menlo}{%
+  \setmonofont[Scale=0.81]{Menlo}%
+}{%
+  \setmonofont[Scale=0.84]{Courier New}%
 }
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{unicode-math}
+\IfFontExistsTF{STIX Two Math}{%
+  \setmathfont{STIX Two Math}%
+}{%
+  \setmathfont{Latin Modern Math}%
+}
 \usepackage{microtype}
 \usepackage{setspace}
 \setstretch{1.12}
-\usepackage{longtable,booktabs,array,calc}
-\newcounter{none}
+\usepackage{booktabs,tabularx,array,calc}
+\usepackage[font=small,labelfont=bf,skip=6pt]{caption}
 \usepackage{needspace}
 \usepackage{graphicx}
+\makeatletter
+\define@key{Gin}{alt}{}
+\makeatother
 \usepackage{fancyhdr}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{xcolor}
 \definecolor{linkblue}{HTML}{1F4463}
-\PassOptionsToPackage{hyphens}{url}
-\usepackage[unicode,colorlinks=true,allcolors=linkblue,bookmarksnumbered=true]{hyperref}
-\usepackage{xurl}
+\usepackage[unicode,colorlinks=true,allcolors=linkblue,bookmarksnumbered=false]{hyperref}
+\usepackage{bookmark}
+\usepackage{url}
 \urlstyle{same}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\do\/\do-\do.}
+\makeatother
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\nolinkurl{#1}}}
 \hypersetup{
   pdftitle={$title$},
   pdfauthor={$author$},
@@ -49,12 +54,29 @@
 }
 \setlength{\parindent}{1.15em}
 \setlength{\parskip}{2pt}
-\setlength{\emergencystretch}{2.5em}
+\setlength{\emergencystretch}{3em}
 \setcounter{secnumdepth}{0}
 \setcounter{tocdepth}{2}
 \widowpenalty=10000
 \clubpenalty=10000
 \displaywidowpenalty=10000
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+  {-3.2ex \@plus -0.8ex \@minus -.2ex}%
+  {1.8ex \@plus .2ex}%
+  {\normalfont\Large\bfseries\raggedright\hyphenpenalty=10000}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+  {-2.6ex \@plus -0.6ex \@minus -.2ex}%
+  {1.2ex \@plus .2ex}%
+  {\normalfont\large\bfseries\raggedright\hyphenpenalty=10000}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+  {-2.0ex \@plus -0.4ex \@minus -.2ex}%
+  {0.9ex \@plus .2ex}%
+  {\normalfont\normalsize\bfseries\raggedright\hyphenpenalty=10000}}
+\makeatother
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{remark}{Remark}
 \providecommand{\tightlist}{\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}}
 \providecommand{\passthrough}[1]{#1}
 \providecommand{\pandocbounded}[1]{#1}
@@ -80,17 +102,17 @@
 \begin{abstract}
 \noindent $abstract$
 \end{abstract}
-\vspace{4pt}
+\vspace{6pt}
 \noindent{\small\textbf{Keywords:} $keywords$}
-\vspace{12pt}
+\vspace{10pt}
 
 $body$
 
-\clearpage
+\vspace{12pt}
 \begingroup
 \setstretch{1.02}
 \small
-\setlength{\bibsep}{4.5pt}
+\setlength{\bibsep}{3.0pt}
 \bibliographystyle{unsrtnat}
 \bibliography{references}
 \endgroup
