@@ -1,0 +1,149 @@
+{
+  "device_certified": false,
+  "h1d4_layer_decomposition": {
+    "H1d4a_WeightedBanachInfiniteTruncationConvergence": "CLOSED",
+    "H1d4b_OSWeakLimitGNSReconstructionAndNonTriviality": "CLOSED",
+    "H1d4c_OperationalHorizonUVScreeningEquivalence": "CLOSED",
+    "H1d4d_UnconditionalExact4DNonPolynomialDecouplingProof": "OPEN",
+    "four_way_logical_independence_proved": true,
+    "h1_operationally_closed_under_ah01_and_closed_tests": true
+  },
+  "infinite_order_banach_truncation": {
+    "contraction_kappa": "0.25",
+    "irrelevant_gap_upper_bounds": {
+      "n_3": -1.5,
+      "n_4": -3.0,
+      "n_5": -4.5,
+      "n_6": -6.0,
+      "n_7": -7.5,
+      "n_8": -9.0
+    },
+    "strong_mixing_n2_discriminant": -7,
+    "tail_error_bounds": {
+      "N_10": [
+        "0.00130208333333333333",
+        "0.00130208333333333334"
+      ],
+      "N_20": [
+        "0.00000127156575520833333",
+        "0.00000127156575520833334"
+      ],
+      "N_40": [
+        "1.21265960236390431E-12",
+        "1.21265960236390432E-12"
+      ],
+      "N_5": [
+        "0.0416666666666666666",
+        "0.0416666666666666667"
+      ]
+    },
+    "weight_base_rho": "2"
+  },
+  "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/Nonperturbative4DMeasureLimitH1d4.lean",
+  "lean_theorems": [
+    "UEOTPhysicsUnification.Nonperturbative4DMeasureLimitH1d4.weighted_banach_infinite_truncation_convergence",
+    "UEOTPhysicsUnification.Nonperturbative4DMeasureLimitH1d4.infinite_order_critical_surface_stability_gap",
+    "UEOTPhysicsUnification.Nonperturbative4DMeasureLimitH1d4.strong_mixing_truncation_spurious_fp_counterexample",
+    "UEOTPhysicsUnification.Nonperturbative4DMeasureLimitH1d4.os_reflection_positivity_closed_under_weak_limits_and_gns_quotient",
+    "UEOTPhysicsUnification.Nonperturbative4DMeasureLimitH1d4.subsequential_limit_uniqueness_via_cauchy_coherence_vs_oscillation",
+    "UEOTPhysicsUnification.Nonperturbative4DMeasureLimitH1d4.ursell_four_point_non_triviality_dichotomy_and_limit_preservation",
+    "UEOTPhysicsUnification.Nonperturbative4DMeasureLimitH1d4.ah01_horizon_uv_screening_and_finite_shot_indistinguishability",
+    "UEOTPhysicsUnification.Nonperturbative4DMeasureLimitH1d4.h1d4_final_sharp_reduction_and_operational_vs_mathematical_split"
+  ],
+  "operational_ah01_uv_screening": {
+    "ah01_planck_length_floor": [
+      "0.153021391481",
+      "0.153021391484"
+    ],
+    "planck_mass_GeV": [
+      "1.22088E+19",
+      "1.2209E+19"
+    ],
+    "quotient_descent_operational_equivalence": true,
+    "sub_planckian_regimes": {
+      "bmv_mesoscopic_1e_minus_12_GeV": {
+        "k_obs_GeV": "1e-12",
+        "min_shots_delta_1": [
+          "2.02606481364118601E+127",
+          "2.02619757790354368E+127"
+        ],
+        "uv_screening_ratio_kLmin_sq": [
+          "1.57088396365798623E-64",
+          "1.57093543136839709E-64"
+        ]
+      },
+      "gut_scale_1e15_GeV": {
+        "k_obs_GeV": "1e15",
+        "min_shots_delta_1": [
+          "2.02606481364118601E+19",
+          "2.02619757790354368E+19"
+        ],
+        "uv_screening_ratio_kLmin_sq": [
+          "1.57088396365798623E-10",
+          "1.57093543136839709E-10"
+        ]
+      },
+      "lhc_14_TeV": {
+        "k_obs_GeV": "1.4e4",
+        "min_shots_delta_1": [
+          "5.27401294679609021E+62",
+          "5.27435854306420157E+62"
+        ],
+        "uv_screening_ratio_kLmin_sq": [
+          "3.07893256876965302E-32",
+          "3.07903344548205829E-32"
+        ]
+      }
+    }
+  },
+  "os_weak_limit_gns_and_ursell": {
+    "approximant_min_eigenvalues": {
+      "m_2": [
+        "0.25",
+        "0.25"
+      ],
+      "m_20": [
+        "9.5367431640625E-7",
+        "9.5367431640625E-7"
+      ],
+      "m_8": [
+        "0.00390625",
+        "0.00390625"
+      ]
+    },
+    "discrete_spin_ursell4": [
+      "-2",
+      "-2"
+    ],
+    "gns_null_vector_norm": [
+      "0",
+      "0"
+    ],
+    "gns_physical_vector_norm": [
+      "1",
+      "1"
+    ],
+    "limit_kernel_min_eigenvalue": [
+      "0",
+      "0"
+    ],
+    "pure_quartic_kurtosis": [
+      "2.18843961522647663",
+      "2.18843961522647664"
+    ],
+    "pure_quartic_normalized_ursell4": [
+      "-0.811560384773523362",
+      "-0.811560384773523361"
+    ]
+  },
+  "physical_unification": "OPEN",
+  "result_ids": [
+    "P-H1D4-BANACH-01",
+    "P-H1D4-OSRECON-02",
+    "P-H1D4-OPER-03",
+    "C-H1D4-FINAL-04"
+  ],
+  "schema": "ueot-physics-unification-nonperturbative-4d-measure-h1d4/1",
+  "source_sha256": "0329e813d115c4c7beb5dddf69bbaf41ab2c5013530a7580d7846d698750955f",
+  "status": "PASS"
+}
