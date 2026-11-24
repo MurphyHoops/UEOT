@@ -1,18 +1,18 @@
 {
   "schema": "ueot.lab_wiki.gate_receipt.v1",
-  "timestamp_utc": "2026-11-24T12:40:53Z",
-  "git_head": "912956dc",
+  "timestamp_utc": "2026-11-24T19:12:38Z",
+  "git_head": "31c814d1",
   "mode": "full",
   "overall_status": "PASS",
   "checks": [
     {
       "name": "wiki_integrity",
       "status": "PASS",
-      "duration_sec": 0.001,
+      "duration_sec": 0.002,
       "stats": {
         "open_specs": 7,
-        "verified_lemmas": 16,
-        "dead_ends": 13
+        "verified_lemmas": 36,
+        "dead_ends": 22
       },
       "errors": []
     },
@@ -22,7 +22,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.024,
+      "duration_sec": 0.021,
       "output_tail": [
         "PASS: exact Core + QM toolchain and dependency revisions inherited"
       ]
@@ -33,7 +33,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.086,
+      "duration_sec": 0.171,
       "output_tail": [
         "PASS: zero syntactic proof escapes in UEOTPhysicsUnification"
       ]
@@ -44,23 +44,23 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 5.467,
+      "duration_sec": 6.098,
       "output_tail": [
-        "Note: This linter can be disabled with `set_option linter.unusedVariables false`",
-        "info: UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean:2094:82: Try this:",
-        "  [apply] ring_nf",
-        "  ",
-        "  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.",
-        "    ",
-        "  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
-        "⚠ [9165/9171] Replayed UEOTQM.QuantumTraceDistance",
+        "  letI̵",
+        "",
+        "The goal is a proposition, so `let` is preferred over `letI`.",
+        "The difference between `let` and `letI` is that `letI` inlines the value.",
+        "But this is not relevant for proofs because of proof irrelevance.",
+        "",
+        "Note: This linter can be disabled with `set_option linter.style.haveILetI false`",
+        "⚠ [9178/9186] Replayed UEOTQM.QuantumTraceDistance",
         "warning: UEOTQM/QuantumTraceDistance.lean:165:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumTraceDistance.difference_parts_mass_eq`:",
         "  [DecidableEq ι]",
         "consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:",
         "  omit [DecidableEq ι] in theorem ...",
         "",
         "Note: This linter can be disabled with `set_option linter.unusedSectionVars false`",
-        "Build completed successfully (9171 jobs)."
+        "Build completed successfully (9186 jobs)."
       ]
     },
     {
@@ -69,9 +69,9 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 93.311,
+      "duration_sec": 144.273,
       "output_tail": [
-        "UNIFICATION_AXIOM_AUDIT modules=38 constants=1977 theorems=902 defs=912 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
+        "UNIFICATION_AXIOM_AUDIT modules=39 constants=3708 theorems=1739 defs=1689 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
       ]
     },
     {
@@ -80,7 +80,7 @@
       "cwd": ".",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 165.556,
+      "duration_sec": 211.652,
       "output_tail": [
         "PASS: philosophy_v31_omega_bridge (P-PHIL31-OMEGA-01, P-PHIL31-REALIZ-02, P-PHIL31-LAKATOS-03)",
         "PASS: lorentzian_causal_qg_limit P-LORENTZ-QG-07",
