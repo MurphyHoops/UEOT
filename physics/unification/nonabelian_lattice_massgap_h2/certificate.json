@@ -1,0 +1,375 @@
+{
+  "chiral_331_ah01_and_dead_end_guard": {
+    "ah01_planck_length_floor": [
+      "0.153021391481",
+      "0.153021391484"
+    ],
+    "anomaly_331_grav_u1": "0",
+    "anomaly_331_su2_u1": "0",
+    "anomaly_331_su3_u1": "0",
+    "anomaly_331_u1_cubed": "0",
+    "dead_20261124_01_peierls_exponent_2_cadm_b0": [
+      "0.0000985067063189395",
+      "0.0000985067063189395001"
+    ],
+    "dead_20261124_01_strictly_below_4": true,
+    "planck_mass_GeV": [
+      "1.22088E+19",
+      "1.2209E+19"
+    ],
+    "sub_planckian_regimes": {
+      "bmv_mesoscopic_1e_minus_12_GeV": {
+        "k_obs_GeV": "1e-12",
+        "min_shots_delta_1": [
+          "2.02606481364118601E+127",
+          "2.02619757790354368E+127"
+        ],
+        "uv_screening_ratio_k_alat_sq": [
+          "1.57088396365798623E-64",
+          "1.57093543136839709E-64"
+        ]
+      },
+      "gut_scale_1e15_GeV": {
+        "k_obs_GeV": "1e15",
+        "min_shots_delta_1": [
+          "2.02606481364118601E+19",
+          "2.02619757790354368E+19"
+        ],
+        "uv_screening_ratio_k_alat_sq": [
+          "1.57088396365798623E-10",
+          "1.57093543136839709E-10"
+        ]
+      },
+      "lhc_14_TeV": {
+        "k_obs_GeV": "1.4e4",
+        "min_shots_delta_1": [
+          "5.27401294679609021E+62",
+          "5.27435854306420157E+62"
+        ],
+        "uv_screening_ratio_k_alat_sq": [
+          "3.07893256876965302E-32",
+          "3.07903344548205829E-32"
+        ]
+      }
+    },
+    "witten_su2_doublets": 4
+  },
+  "device_certified": false,
+  "dobrushin_mass_gap_and_boundary": {
+    "boundary_failure_alpha_eq_1": {
+      "identity_kernel_alpha": [
+        "1",
+        "1"
+      ],
+      "uniqueness_fails": true
+    },
+    "boundary_weak_coupling_beta_20": {
+      "dobrushin_alpha": [
+        "0.999999987633078409",
+        "0.99999998763307841"
+      ],
+      "gap_collapsed_below_1e_minus_6": true,
+      "mass_gap_m": [
+        "1.23669216666576794E-8",
+        "1.23669216666576795E-8"
+      ]
+    },
+    "strong_coupling_regimes": {
+      "strong_beta_1_2": {
+        "beta_eff": "1/2",
+        "dobrushin_alpha": [
+          "0.126245766909670232",
+          "0.126245766909670233"
+        ],
+        "dobrushin_perturbation_bound": [
+          "0.00200296243350021962",
+          "0.00200296243350021963"
+        ],
+        "mass_gap_m": [
+          "2.06952474081714628",
+          "2.06952474081714629"
+        ],
+        "row_perturbation_eps": [
+          "0.00175009690499172503",
+          "0.00175009690499172504"
+        ],
+        "stationary_residual_max": [
+          "0",
+          "1.92280570081E-40"
+        ],
+        "stationary_tv_dist": [
+          "0",
+          "5.883211472621312E-41"
+        ]
+      },
+      "strong_beta_1_5": {
+        "beta_eff": "1/5",
+        "dobrushin_alpha": [
+          "0.0500827510537418839",
+          "0.050082751053741884"
+        ],
+        "dobrushin_perturbation_bound": [
+          "0.00152434217898962497",
+          "0.00152434217898962498"
+        ],
+        "mass_gap_m": [
+          "2.99407862051731905",
+          "2.99407862051731906"
+        ],
+        "row_perturbation_eps": [
+          "0.00144799892911856913",
+          "0.00144799892911856914"
+        ],
+        "stationary_residual_max": [
+          "0",
+          "1.86540851571E-40"
+        ],
+        "stationary_tv_dist": [
+          "0",
+          "7.17464813734306341E-41"
+        ]
+      }
+    }
+  },
+  "h2_layer_decomposition": {
+    "H2a_WilsonTransferPositivityAndStrongCouplingAreaLaw": "CLOSED",
+    "H2b_DobrushinMassGapAndLuscherOverlapStability": "CLOSED",
+    "H2c_ChiralQuotientAndAH01LatticeUVScreening": "CLOSED",
+    "H2d_Clay4DContinuumMeasureAndUnconditionalMassGap": "OPEN",
+    "four_way_logical_independence_proved": true,
+    "h2_operationally_closed_under_ah01_and_closed_tests": true
+  },
+  "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean",
+  "lean_theorems": [
+    "UEOTPhysicsUnification.NonAbelianLatticeMassGapAndChiralIntegrabilityH2.wilson_plaquette_transfer_positivity_and_strong_coupling_area_law",
+    "UEOTPhysicsUnification.NonAbelianLatticeMassGapAndChiralIntegrabilityH2.dobrushin_lattice_cluster_mass_gap",
+    "UEOTPhysicsUnification.NonAbelianLatticeMassGapAndChiralIntegrabilityH2.luscher_berry_loop_holonomy_and_overlap_gap_stability",
+    "UEOTPhysicsUnification.NonAbelianLatticeMassGapAndChiralIntegrabilityH2.ah01_lattice_uv_screening_and_h2_decomposition"
+  ],
+  "luscher_berry_and_overlap_stability": {
+    "berry_curvature_gauge_invariance_error": [
+      "0",
+      "1.32367160384E-38"
+    ],
+    "berry_curvature_im_trace": [
+      "-7.70469251642653261",
+      "-7.7046925164265326"
+    ],
+    "berry_curvature_skew_error": [
+      "0",
+      "1.20382583903E-38"
+    ],
+    "berry_loop_holonomy_coboundary_sum": [
+      "0",
+      "1.41059322099E-37"
+    ],
+    "flux_loop_holonomy_angle": [
+      "0.158547779695079312",
+      "0.158547779695079313"
+    ],
+    "gauge_orbit_loop_holonomy_angle": [
+      "-8.8084789013E-41",
+      "8.92781958319E-41"
+    ],
+    "gauge_orbit_max_drift": [
+      "0",
+      "2.05711511394E-38"
+    ],
+    "hw_hermiticity_error": [
+      "0",
+      "1.71816907615E-40"
+    ],
+    "hw_sq_min_eigenvalue": [
+      "1.76005521589918525",
+      "1.76005521589918526"
+    ],
+    "hw_sq_perturbed_min_eigenvalue": [
+      "1.76011235342394225",
+      "1.76011235342394226"
+    ],
+    "operator_dimension": 16,
+    "overlap_projector_gauge_covariance_error": [
+      "0",
+      "7.02190835752E-40"
+    ],
+    "overlap_projector_idempotency_error": [
+      "0",
+      "8.61821041759E-40"
+    ],
+    "overlap_projector_trace_real": [
+      "7.99999999999999999",
+      "8.00000000000000001"
+    ],
+    "overlap_tangent_1_relation_error": [
+      "0",
+      "2.26602161076E-39"
+    ],
+    "overlap_tangent_2_relation_error": [
+      "0",
+      "1.39166583654E-39"
+    ],
+    "perturbation_frob_norm_eta": [
+      "0.0150914649159584564",
+      "0.0150914649159584565"
+    ],
+    "plaquette_dist_base": [
+      "0.0184085451255669761",
+      "0.0184085451255669762"
+    ],
+    "plaquette_dist_pert": [
+      "0.0288660100388584278",
+      "0.0288660100388584279"
+    ],
+    "weyl_gap_lower_bound": [
+      "1.7202401587719136",
+      "1.72024015877191361"
+    ]
+  },
+  "physical_unification": "OPEN",
+  "result_ids": [
+    "P-H2A-TRANSFER-01",
+    "P-H2B-DOBRUSHIN-02",
+    "P-H2C-CHIRAL-UV-03",
+    "C-H2-OPER-04"
+  ],
+  "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
+  "source_sha256": "cb144ce04f0e3870fd38fd24430d6abfdc93b146f226cc254a4cd1ae2d2eddbf",
+  "status": "PASS",
+  "wilson_transfer_and_symanzik": {
+    "q8_strong_coupling_transfer": {
+      "beta_1_2": {
+        "area_law_wilson_bounds": {
+          "area_1": [
+            "0.12371792827832073",
+            "0.123717928278320731"
+          ],
+          "area_16": [
+            "3.01246647494925331E-15",
+            "3.01246647494925332E-15"
+          ],
+          "area_4": [
+            "0.000234277486316028927",
+            "0.000234277486316028928"
+          ],
+          "area_9": [
+            "6.79037486196559019E-9",
+            "6.7903748619655902E-9"
+          ]
+        },
+        "beta": "1/2",
+        "character_ratio_u": [
+          "0.12371792827832073",
+          "0.123717928278320731"
+        ],
+        "string_tension_sigma": [
+          "2.08975107655021165",
+          "2.08975107655021166"
+        ],
+        "transfer_min_eigenvalue": [
+          "0.25525193041276157",
+          "0.255251930412761571"
+        ],
+        "transfer_sq_min_eigenvalue": [
+          "0.0651535479794412751",
+          "0.0651535479794412752"
+        ],
+        "weyl_enclosure_radius": [
+          "6.59451640727E-52",
+          "4.4014133983E-39"
+        ]
+      },
+      "beta_1_4": {
+        "area_law_wilson_bounds": {
+          "area_1": [
+            "0.0623378727282785401",
+            "0.0623378727282785402"
+          ],
+          "area_16": [
+            "5.20033890244362332E-20",
+            "5.20033890244362333E-20"
+          ],
+          "area_4": [
+            "0.000015101076644610646",
+            "0.0000151010766446106461"
+          ],
+          "area_9": [
+            "1.42156853282228875E-11",
+            "1.42156853282228876E-11"
+          ]
+        },
+        "beta": "1/4",
+        "character_ratio_u": [
+          "0.0623378727282785401",
+          "0.0623378727282785402"
+        ],
+        "string_tension_sigma": [
+          "2.77518612892939904",
+          "2.77518612892939905"
+        ],
+        "transfer_min_eigenvalue": [
+          "0.0628261997591463523",
+          "0.0628261997591463524"
+        ],
+        "transfer_sq_min_eigenvalue": [
+          "0.00394713137617616117",
+          "0.00394713137617616118"
+        ],
+        "weyl_enclosure_radius": [
+          "0",
+          "5.44549238537E-39"
+        ]
+      }
+    },
+    "symanzik_o_a2_checks": {
+      "a_inv_16": {
+        "a": "1/16",
+        "plaquette_frob_sq_over_a4": [
+          "0.00617216975564045966",
+          "0.00617216975564045967"
+        ],
+        "symanzik_o_a2_normalized_ratio": [
+          "0.000171456136289239819",
+          "0.00017145613628923982"
+        ],
+        "unitary_wilson_identity_err": [
+          "0",
+          "6.71229066696E-40"
+        ]
+      },
+      "a_inv_4": {
+        "a": "1/4",
+        "plaquette_frob_sq_over_a4": [
+          "0.00616213438923459799",
+          "0.006162134389234598"
+        ],
+        "symanzik_o_a2_normalized_ratio": [
+          "0.000171281871011864232",
+          "0.000171281871011864233"
+        ],
+        "unitary_wilson_identity_err": [
+          "0",
+          "5.29752126323E-40"
+        ]
+      },
+      "a_inv_8": {
+        "a": "1/8",
+        "plaquette_frob_sq_over_a4": [
+          "0.00617016104897682908",
+          "0.00617016104897682909"
+        ],
+        "symanzik_o_a2_normalized_ratio": [
+          "0.000171421260544666901",
+          "0.000171421260544666902"
+        ],
+        "unitary_wilson_identity_err": [
+          "0",
+          "5.68580311356E-40"
+        ]
+      }
+    },
+    "symanzik_o_a2_leading_coeff": [
+      "0.0061728395061728395",
+      "0.00617283950617283951"
+    ]
+  }
+}
