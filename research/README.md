@@ -8,6 +8,7 @@ Target categories:
 
 - `rfcs/` — proposed changes to Core, interfaces or governance
 - `audits/` — independent consistency and assumption audits
+- `lab_wiki/` — shared AI Lab Wiki, conference SOP ([AGENT_PLAYBOOK.md](lab_wiki/AGENT_PLAYBOOK.md)) and automated Lean/verification gatekeeper ([gatekeeper.py](lab_wiki/gatekeeper.py))
 - `prior-art/` — comparison with existing mathematics and physics
 - `open-problems/` — explicit unresolved questions
 - `derivations/` — exploratory derivations before promotion
