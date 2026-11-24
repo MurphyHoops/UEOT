@@ -92,7 +92,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small UEOT PHYSICS}
-\fancyhead[R]{\small Bilingual revision 3.12}
+\fancyhead[R]{\small Bilingual revision 3.13}
 \fancyfoot[C]{\small\thepage}
 \setlength{\headheight}{16pt}
 \renewcommand{\headrulewidth}{0.3pt}
@@ -123,18 +123,18 @@
   \vspace{10mm}
   {\color{teal}\rule{\textwidth}{1pt}\par}
   \vspace{7mm}
-  {\large Third edition\quad Bilingual revision 3.12\par}
+  {\large Third edition\quad Bilingual revision 3.13\par}
   \vspace{6mm}
   {Historical book by Degui Qian\par}\smallskip
-  {Chapter 71: AI-assisted research proposal\par}
+  {Chapters 71–72: AI-assisted research proposals\par}
   \vspace{5mm}
-  {72 chapters\quad 6 appendices\quad UEOT-PHYSICS\par}
+  {73 chapters\quad 6 appendices\quad UEOT-PHYSICS\par}
   \vfill
   {Objects and protocols\quad Quantum operations and fields\par}
   \vspace{3mm}
   {Proofs, countermodels, and empirical limits\par}
   \vspace{7mm}
-  {18 November 2026\par}
+  {24 November 2026\par}
   \end{titlepage}
 }
 \makeatother
@@ -146,7 +146,7 @@
 \urlstyle{same}
 \hypersetup{
   pdftitle={UEOT Physics},
-  pdfauthor={Historical book by Degui Qian. Chapter 71 is an AI-assisted research proposal.},
+  pdfauthor={Historical book by Degui Qian. Chapters 71--72 are AI-assisted research proposals.},
   colorlinks=true,
   linkcolor={teal},
   filecolor={Maroon},
@@ -163,9 +163,9 @@
 \makeatother
 \subtitle{From Object Mathematics to Quantum Physics: Derivations,
 Formal Proofs, and Research Boundaries}
-\author{Historical book by Degui Qian. Chapter 71 is an AI-assisted
-research proposal.}
-\date{2026-11-18}
+\author{Historical book by Degui Qian. Chapters 71--72 are AI-assisted
+research proposals.}
+\date{2026-11-24}
 
 \begin{document}
 \frontmatter
@@ -848,6 +848,26 @@ results and the claim ledger retains 126 prior claims. The new work has
 paper, interval and synthetic evidence. Its empirical and formal-proof
 status is given in the \href{../correlated_bath/README.md}{research
 packet}.
+
+\section{0.16 Chapter 72 integrated edition and three-volume reduction}
+
+\protect\hyperlink{ch-72}{Chapter 72} integrates into edition 3.13 the
+post-\href{https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f8\allowbreak 8270c0f38ae6fb6f\allowbreak 77e26093/physics/qm/book/UEOT_PHYSICS.en.pdf}{Chapter
+71} unification bridges merged onto \texttt{main}: Philosophy v3.1,
+Mathematics v4.2 (1,051 pure-kernel Lean 4 modules), the 345-entry
+\texttt{all\_\allowbreak harmonic\_\allowbreak horizon} chain, and the 31 pure-kernel Lean 4
+unification modules (582 theorems) paired with 31 outward-interval
+suites. The monograph now spans 73 chapters (0--72), six appendices, 229
+stable numbered results, and 152 claim-ledger entries while retaining
+every prior result ID, the 133 inherited claims, and all preceding
+chapter bodies verbatim. Unification is machine-reduced to four mutually
+independent irreducible hypotheses (\(H_1\)--\(H_4\)), preserving
+\texttt{physical\_\allowbreak unification\ =\ OPEN} and
+\texttt{device\_\allowbreak certified\ =\ false}.
+\href{../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md}{Three-volume
+matrix} · \href{../../unification/README.md}{Unification suites} ·
+\href{../../../formalization/ueot-physics-unification/README.md}{Formalization
+package}
 
 \chapter{1. Bridging UEOT Core and quantum physics}\label{ch-1}\hypertarget{ch-1}{}
 
@@ -8433,10 +8453,10 @@ into generic Core would make the claimed derivation circular.
 \section{48.1 One canonical theoretical source}
 
 The book retains the document identity \texttt{UEOT-\allowbreak PHYSICS}. Its
-continuous Chinese and English manuscripts cover Chapters 0--71 and
+continuous Chinese and English manuscripts cover Chapters 0--72 and
 Appendices A--F. The
-\href{https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978\allowbreak e173e23015f02699\allowbreak 4fb60c65/physics/qm/book/UEOT_PHYSICS.en.pdf}{previous
-reading edition} ends with Chapter 70. The \href{README.md}{edition
+\href{https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f8\allowbreak 8270c0f38ae6fb6f\allowbreak 77e26093/physics/qm/book/UEOT_PHYSICS.en.pdf}{previous
+reading edition} ends with Chapter 71. The \href{README.md}{edition
 index} distinguishes the manuscript, the PDF build and the reviewed
 release.
 
@@ -8482,12 +8502,12 @@ Statement, domain and checking evidence must be retrieved together.
 \begin{Verbatim}[breaklines,breakanywhere,fontsize=\scriptsize]
 document:
   id: UEOT-PHYSICS
-  edition: "3.12"
+  edition: "3.13"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
   derivative_pdf_path: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
   derivative_english_pdf_path: physics/qm/book/UEOT_PHYSICS.en.pdf
-  chapter_range: [0, 71]
+  chapter_range: [0, 72]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
   quantum_gravity_complete: false
@@ -18970,6 +18990,570 @@ memoryless replacement bath and a change of background metric each
 define a different experiment. None supplies the missing device
 calibrations, a unique matter sector or gravitational field equations.
 
+\chapter{72. Three-volume unification bridges, the all-harmonic horizon,
+and four irreducible frontiers}\label{ch-72}\hypertarget{ch-72}{}
+
+Chapters 0--71 established the trajectory from object mathematics to the
+finite quantum kernel, renormalized perturbative QFT, and
+complete-output predictions from correlated baths. This chapter closes
+the published literature integration across the three maintained
+volumes: connecting
+\href{../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md}{Philosophy
+Book v3.1} and Mathematics Book v4.2 (Chapters 0--40 and the
+1,051-module pure-kernel Lean 4 library) to the 345-entry
+\href{../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md}{all\_\allowbreak harmonic\_\allowbreak horizon}
+research chain from PR \#468 and uniting all 31 pure-kernel Lean 4
+unification modules (582 theorems) and 31 outward-interval suites inside
+a single non-fragmented coupled architecture.
+\href{../../unification/README.md}{Unification suites} ·
+\href{../../../formalization/ueot-physics-unification/README.md}{Formalization
+package} ·
+\href{../../../validation/physics_unification/VALIDATION_LEDGER.json}{Validation
+ledger}
+
+\textbf{Research attribution.} Like Chapter 71, Chapter 72 presents an
+AI-assisted research proposal; Degui Qian is credited for the historical
+book. Every Lean 4 statement listed here is kernel-checked under
+\texttt{leanprover/\allowbreak lean4:v4.\allowbreak 33.\allowbreak 1} with zero \texttt{sorry\allowbreak Ax} and zero
+\texttt{native\_\allowbreak decide}, while physical hardware certification and
+independent external human peer review remain pending and
+\texttt{physical\_\allowbreak unification} stays \texttt{OPEN}.
+
+\section{72.1 Deep bridges from Core and Mathematics v4.2 to spacetime,
+complex quantum theory, and operational quotients}
+
+\protect\hypertarget{c-qsel-05}{}{}
+
+\textbf{C-QSEL-05 (two-copy real-reference null gap and quotient-descent
+complex selection).} Closing the countermodel openings left in
+\protect\hyperlink{ch-71}{Chapter 71}, single-copy real-symmetric
+product effects fail to distinguish the real shared reference states
+\((I \pm J \otimes J)/4\), while purely local paths without purification
+can mimic visible faces. Applying
+\texttt{UEOT.\allowbreak V3.\allowbreak Compression.\allowbreak Quotient\allowbreak Descent.\allowbreak exists\allowbreak Unique\_\allowbreak descend} to
+phase-invariant observables and evaluating the two-copy real-symmetric
+witness \(W_{\mathrm{HW}} := (J \otimes I) \otimes (J \otimes I)\),
+pure-kernel theorems prove zero single-copy real leakage and an exact
+\(+1\) versus \(0\) separation between entangled states and all real
+separable ensembles (with two-shot TV exclusion radius \(0.45\) at
+\(\delta = 0.10\), requiring 4,239 trials at Hoeffding level
+\(\alpha = 0.01\)).
+\href{../../unification/quantum_selection/result.json}{Two-copy
+selection receipt}
+
+\protect\hypertarget{c-lr-cone-01}{}{}
+
+\textbf{C-LR-CONE-01 (discrete transport certificates to emergent
+Lieb--Robinson cones and Minkowski conformal geometry).} Inducting
+directly on the domain-neutral
+\texttt{UEOT.\allowbreak V3.\allowbreak Compression.\allowbreak Transport\allowbreak Certificate.\allowbreak weighted\_\allowbreak chain\_\allowbreak bound}
+with local coupling \(J > 0\) and decay parameter \(\mu > 0\) yields an
+\(n\)-step spatial commutator envelope whose ballistic limit locks the
+emergent causal velocity \(v_{\mathrm{LR}}\): \[
+\|[A_X(t), B_Y]\| \le 2\|A_X\|\|B_Y\|\,\frac{(2 J v)^n}{n!}\,e^{-\mu(d - v_{\mathrm{LR}} t)}, \qquad v_{\mathrm{LR}} = \frac{2 J e^{\mu}}{\mu}.
+\] At \(\mu = \ln 2\) and \(J = 1/2\), outward intervals bound
+\(v_{\mathrm{LR}} \in [1.442695040888, 1.442695040889]\) with supersonic
+Cramér decay rate \(\exp(-0.386294 t)\) (below \(3.35 \times 10^{-17}\)
+at \(t = 100\)). Combined with the positive-semidefinite Fisher--Rao
+timelike obstruction and null-cone rigidity, the emergent light cone
+uniquely selects the \((1+d)\) Minkowski metric conformal class.
+\href{../../unification/lieb_robinson_lightcone/result.json}{Light-cone
+bridge receipt}
+
+\protect\hypertarget{c-gpt-recon-02}{}{}
+
+\textbf{C-GPT-RECON-02 (finite GPT transitive orthogonal symmetry and
+Hurwitz self-dual cone reconstruction).} Starting from the operational
+minimal separating quotient (\texttt{Quotient\allowbreak Descent} ranks \(2, 3, 4\)
+for classical, real, and complex single systems), transitive orthogonal
+symmetry on pure orbits and self-duality \(\mathcal{C} = \mathcal{C}^*\)
+exclude the square gbit polytope cone (antipodal inner product
+\(-1/2\)). By the Koecher--Vinberg Euclidean Jordan algebra
+classification and the Hurwitz two-qubit tomographic defect
+\(\Delta_{\mathrm{tom}}(r)\), composite local tomography uniquely
+isolates \(r = 2\) (complex quantum theory:
+\(\Delta_{\mathrm{tom}}(2) = 0\) versus \(-1\) real, \(+8\)
+quaternionic, \(+48\) octonionic), paired with constructive
+Gleason--Busch Born uniqueness for dimensions \(d \ge 3\) (residual
+below \(10^{-38}\)).
+\href{../../unification/gpt_self_dual_reconstruction/result.json}{Self-dual
+reconstruction receipt}
+
+\protect\hypertarget{c-math42-bridge-01}{}{}
+
+\textbf{C-MATH42-BRIDGE-01 (Mathematics v4.2 Chapters 32--40 closed
+tests, memory separation, and minimax mechanism discrimination).}
+Importing thirteen post-Core-v3.0 \texttt{Theory\allowbreak Completion} modules
+(\texttt{Observable\allowbreak Belief\allowbreak Quotient} \texttt{M-\allowbreak 40.\allowbreak 6},
+\texttt{Finite\allowbreak Support\allowbreak Fixed\allowbreak Point} / \texttt{Finite\allowbreak Memory\allowbreak Separation}
+\texttt{M-\allowbreak 40.\allowbreak 1}, \texttt{Fixed\allowbreak Sample\allowbreak Support\allowbreak No\allowbreak Go} /
+\texttt{Noisy\allowbreak Finite\allowbreak Risk\allowbreak Oracle} \texttt{M-\allowbreak 40.\allowbreak 5},
+\texttt{Core\allowbreak Regenerative\allowbreak Growth\allowbreak Classification},
+\texttt{Register\allowbreak Mechanism\allowbreak Decision}, \texttt{SISCFuture\allowbreak Response\allowbreak Core}, and
+\texttt{Fisher\allowbreak Gauge}) establishes four machine-checked bridges: (i)
+unique POVM observable-belief quotient descent holds iff
+\texttt{Closed\allowbreak Tests}, unifying the \protect\hyperlink{ch-71}{Chapter 71}
+signed-phase resolution of Ramsey ambiguity (\(\Delta c = -19/400\)
+versus Weyl gap \(19/900\)), the 15-dimensional \(S^3\)
+conformal--Killing stress-moment quotient, and the dissipative clock
+regenerative threshold \(\max(1, \lambda_0, \lambda_1)\); (ii)
+\texttt{M-\allowbreak 40.\allowbreak 1} and executable synthesis (\texttt{M-\allowbreak 40.\allowbreak 4}) guarantee
+all-time support viability whereas memoryless policies fail by unit
+coverage gap; (iii) \texttt{M-\allowbreak 40.\allowbreak 5} proves fixed-sample impossibility of
+zero-gap support certification (for \texttt{RC09} at
+\(\eta = 10^{-13}\), \(10^{15}\) shots carry false-certification risk
+above \(0.947154\)) together with the \(\S 39.89\text{--}39.95\)
+three-step TV ceiling \(4/27\) and 4-point randomized minimax regret
+\(3/128\) (improving deterministic \(1/32\) by \(1/128\)); and (iv) all
+twelve Appendix G open math obligations (\texttt{O-\allowbreak OPEN-\allowbreak 01} through
+\texttt{O-\allowbreak OPEN-\allowbreak 12}) are audited with four sharp counterexamples.
+\href{../../unification/math_v42_closed_tests_bridge/certificate.json}{Math
+v4.2 bridge certificate}
+
+\section{72.2 All-harmonic conformal horizon, asymptotically flat
+clocks, and semiclassical backreaction}
+
+\protect\hypertarget{p-horizon-clock-01}{}{}
+
+\textbf{P-HORIZON-CLOCK-01 (squeezing-proof operational Planck sensor
+floor and RG-crunch no-go theorem).} Lifting the finite-mode setup of
+\texttt{all\_\allowbreak harmonic\_\allowbreak horizon} (\texttt{AH01}--\texttt{AH02}) to
+\(S^3\) smeared scalar QFT without assuming pointwise positive
+normal-ordered energy density, the skew-Hermitian commutator inequality
+\(-(A - A^\dagger)^2 \le 4 A^\dagger A + 2[A, A^\dagger]\) yields a
+squeezing-proof sensor floor across all coherent, squeezed, and
+non-Gaussian normal Fock states: \[
+16\,\eta_t^2\,\mathcal{E}\,(\mathcal{E}+\sqrt{7}) \ge \mathcal{N}_{\mathrm{gate}}^2, \qquad L > L_{\min}\,\ell_P.
+\] At unit SNR (\(\eta_t = 1, \lambda = 2\)), the operational horizon
+bound enforces \(L_{\min}/\ell_P \in [0.153021391482, 0.153021391483]\)
+(\([1.961928785879, 1.961928785880]\) at \(\mathrm{SNR} = 10\)),
+blocking any pointlike \(L \to 0^+\) clock limit. At fixed \(G > 0\),
+every power-law scaling exponent \(\nu \in \mathbb{R}\) fails
+simultaneous finite field variance and non-trapping (\(\nu = 1\) crunch
+radius \(\sqrt{30}/200 \in [0.027386127875, 0.027386127876]\) rad).
+\href{../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md}{All-harmonic
+packet} ·
+\href{../../unification/horizon_minimum_scale/result.json}{Horizon floor
+receipt}
+
+\protect\hypertarget{p-adm-allharm-02}{}{}
+
+\textbf{P-ADM-ALLHARM-02 (\(S^3\) fifteen-dimensional conformal--Killing
+closure, all-harmonic ellipticity, and contracted Bianchi propagation).}
+Across all spatial harmonics \(\ell \in [1, \infty)\) on \(S^3\)
+(\texttt{AH03}--\texttt{AH06}), the conformal--Killing obstruction space
+has exact dimension \(1 + 4 + 4 + 6 = 15 = \dim \mathfrak{so}(5,1)\):
+autonomous \(SO(4)\)-invariant dynamics identically cancels \(\ell = 1\)
+matter torque by clock-controller recoil, while a 24-channel quadrature
+trim solves the curved \(I_6\) Killing Jacobian with zero \(\ell = 1\)
+crosstalk and pointwise isotropy \(\mathbf{w} = \mathbf{0}\). For every
+\(\ell \ge 2\), the York--Lichnerowicz multiplier satisfies
+\(4(\ell - 1)(\ell + 3) \ge 20\), giving closed-form Sobolev--Green
+series sum
+\(\frac{\pi^2}{12} - \frac{55}{576} \in [0.726980922313, 0.726980922314]\)
+and \(L^\infty\) envelope \([0.191909571848, 0.191909571849]\), while
+gate-free 4D contracted Bianchi propagation preserves zero-mean smeared
+ADM constraints.
+\href{../../unification/all_harmonic_elliptic/result.json}{All-harmonic
+elliptic receipt}
+
+\protect\hypertarget{p-flat-dirac-03}{}{}
+
+\textbf{P-FLAT-DIRAC-03 (asymptotically flat \(\Lambda = 0\) clock
+barrier, semiclassical contraction, and Dirac closure trichotomy).} In
+asymptotically flat space with \(\Lambda = 0\)
+(\texttt{AH07}--\texttt{AH10}), pure-kernel proof establishes the sharp
+rational Lichnerowicz compactness threshold
+\(\mathcal{C}_{\mathrm{crit}} = 2048/9375\), guaranteeing a strict
+Banach contraction ratio \(\frac{9375}{2048}\mathcal{C}_0 < 1\),
+positive area-radius slope, and horizon-free \(C^1(\mathbb{R}^3)\)
+solutions whenever \(\mathcal{C}_0 < \mathcal{C}_{\mathrm{crit}}\). On
+active slabs, \(c\)-number slice normal ordering preserves equal-time
+Dirac commutators, whereas the Källén--Lehmann positive sum rule
+\(\sum_{j=1}^5 O_{5,j}^2 \equiv 1\) (\texttt{AH09}) forces an exact
+trichotomy preventing simultaneous \(K = \infty\) ghost-free UV
+finiteness and active-gate pointwise Dirac closure in canonical 3+1D
+scalar QFT, motivating discrete quantum geometry alongside \texttt{AH10}
+Einstein--Langevin fixed points.
+\href{../../unification/localized_clock_dirac/result.json}{Flat-clock
+and Dirac receipt}
+
+\section{72.3 Discrete Lorentzian quantum geometry and 4D non-Abelian
+chiral constructive boundaries}
+
+\protect\hypertarget{p-discrete-qg-01}{}{}
+
+\textbf{P-DISCRETE-QG-01 (continuum Pauli--Villars ghost necessity
+versus Planck-graph Wheeler--DeWitt quotient descent).} Pure-kernel
+proof establishes that any nonzero Pauli--Villars regulator satisfying
+leading UV cancellation \(\sum_j c_j = 0\) forces negative ghost weights
+\(c_{j_{\mathrm{ghost}}} < 0\) and negative-norm states (with 4-pole
+minimum weight \(\approx -2.366025\)). Conversely, a finite Planck graph
+\(K_5 = \partial\Delta^4\) satisfying the \texttt{AH01} floor
+\(a_{\mathrm{lat}} \ge L_{\min}\ell_P\) yields strictly positive
+definite Hilbert norms, ghost-free UV-finite equal-time variance
+(\(\approx 0.106523\) below formal bound \(0.331047\)), zero-anomaly
+hypersurface constraints
+\([\hat H_{\mathrm{ren}}[N_1], \hat H_{\mathrm{ren}}[N_2]] = 0\),
+group-averaged rigging projectors
+\(\Pi_{\mathrm{phys}}^2 = \Pi_{\mathrm{phys}}\) with unique relational
+\texttt{Quotient\allowbreak Descent}, and isometric Page--Wootters reduction. A
+1,344-dimensional 4-site tetrahedral \(K_4\) Regge geometry (6 edges and
+4 vertex stars closed under both generators of \(S_4\)) coupled to a
+21-tick clock achieves zero Wheeler--DeWitt residual, pointer
+entanglement at \(t = 3\) (purity \(\approx 0.511769\)), and exact
+revival at \(t = 7\) (contrast \(3/2\)).
+\href{../../unification/discrete_quantum_geometry/certificate.json}{Discrete
+QG certificate}
+
+\protect\hypertarget{p-lorentz-qg-07}{}{}
+
+\textbf{P-LORENTZ-QG-07 (causal foliation Wick reflection positivity,
+\(O(a^2)\) double-scaling continuum limit, and spectral dimension
+flow).} Explicit 4D Euclidean embeddings of \((4,1)\) and \((3,2)\)
+causal 4-simplices yield exact \(5 \times 5\) Cayley--Menger
+determinants proving that positive heights, squared strut lengths
+\(\tilde\alpha a^2\), and positive 4-volumes hold simultaneously if and
+only if \(\tilde\alpha > 7/12\): \[
+(V_4^{(4,1)})^2 = \frac{8\tilde\alpha - 3}{9216}\,a^8, \qquad (V_4^{(3,2)})^2 = \frac{12\tilde\alpha - 7}{9216}\,a^8.
+\] Analytic continuation yields a linearly coercive Euclidean Regge
+action and strictly reflection-positive transfer matrix
+\(\hat T = B^T \operatorname{diag}(w) B > 0\), contrasted against the
+unbounded-below unfoliated conformal kinetic term
+\(-\frac{3}{8\pi G}\dot\Omega^2\). Under double scaling
+\(\kappa_4 - \kappa_4^{\mathrm{crit}} = a^4\Lambda_{\mathrm{ren}}\),
+discrete minisuperspace generators converge at order \(O(a^2)\) to the
+continuum de Sitter Wheeler--DeWitt volume operator with positive
+quantum variance \(\langle\Delta V_3^2\rangle = 1/16 > 0\); spectral
+dimension flows monotonically along
+\(d_s(\sigma) = 4 - \frac{2c_{\mathrm{UV}}}{\sigma + c_{\mathrm{UV}}}\)
+from \(d_s(10^{-4}) \approx 2.00002\) (UV ghost-free boundedness) to
+\(d_s(10^5) \approx 3.99980\) (above branched-polymer
+\(d_s^{\mathrm{BP}} = 4/3\)), while \texttt{Quotient\allowbreak Descent} and
+\texttt{Transport\allowbreak Certificate} enforce multi-slab refinement bounds.
+\href{../../unification/lorentzian_causal_qg_limit/certificate.json}{Lorentzian
+QG certificate}
+
+\protect\hypertarget{p-chiral-clock-02}{}{}
+
+\textbf{P-CHIRAL-CLOCK-02 (Lüscher chiral projector factorization,
+15-Weyl \((3,3,1)\) complete anomaly cancellation, and clock Dirac
+gap).} Over any associative real algebra, pure-kernel theorems prove
+that \(\hat\gamma_5 = \gamma_5(1 - aD)\) is an involution, Lüscher
+projectors \((P_\pm, \hat P_\pm)\) are complete orthogonal idempotents,
+and \(D = P_+ D\hat P_- + P_- D\hat P_+\) decouples doublers identically
+while enabling two-sided \texttt{Quotient\allowbreak Descent} for Weyl actions and
+indices along gauge orbits. Without sterile right-handed neutrinos, one
+15-Weyl \((3,3,1)\) generation vanishes identically across all five
+anomalies (\([SU(3)_c]^2 U(1)_Y\), \([SU(2)_L]^2 U(1)_Y\), \(U(1)_Y^3\),
+mixed gravitational \(\operatorname{Tr}(Y) = 0\), and even Witten parity
+\(3 + 1 = 4\)), uniquely quantizing hypercharge ratios whenever
+\(Y_Q \neq 0\). Clock-dressed Dirac Hamiltonians
+\(H_N = \sqrt{N} H_0 \sqrt{N}\) (\(N \ge N_{\min} > 0\)) preserve strict
+spectral gaps and positive normal-ordered excitation shifts
+(\(\Delta E_{\mathrm{pair}} \approx 0.020136 > 0\)), paired with a
+40-digit Sylvester/Riccati certification of integer index
+\(\mathrm{Ind}(D_{\mathrm{ov}}) = +1\) on a \(2^4\) (\(64 \times 64\))
+Euclidean torus.
+\href{../../unification/chiral_gauge_overlap_clock/certificate.json}{Chiral
+clock certificate}
+
+\protect\hypertarget{p-nonabelian-chiral-08}{}{}
+
+\textbf{P-NONABELIAN-CHIRAL-08 (non-Abelian \(SU(N)\) Lüscher measure
+quotient, Witten and Dai--Freed invariants, and the Clay continuum
+boundary).} Extending chiral gauge theory to genuinely non-commuting
+\(SU(N)\) links, pure-kernel proof establishes skew-symmetry and gauge
+invariance of Lüscher's Berry curvature
+\(\operatorname{Tr}(\hat P_-[d_1 \hat P_-, d_2 \hat P_-])\), proving
+that Weyl measure descent (and \texttt{M-\allowbreak 40.\allowbreak 6} \texttt{Closed\allowbreak Tests}
+quotient) holds on admissible links iff the gauge-orbit coboundary
+anomaly vanishes. Theorems further certify \(SU(2)\) symplectic reality
+\(\varepsilon M = \overline{M}\varepsilon\), Witten
+\(\pi_4(SU(2)) = \mathbb{Z}_2\) odd-doublet Pfaffian cancellation
+(\(N_d = 3\)) versus 3-generation \((3,3,1)\) 12-doublet invariance, and
+the mod-16 \(\mathrm{Spin}^{\mathbb{Z}_4}\) Dai--Freed dichotomy between
+\(N_{\mathrm{Weyl}} = 15\)
+(\(15 \bmod 16 = 15, \operatorname{Tr}Q_X = -5\)) and \(16\)
+(\(0 \bmod 16\)). Zero-BLAS cross-platform 40-digit \texttt{mpmath.\allowbreak iv}
+arithmetic certifies a \(128 \times 128\) 4D \(SU(2)\) Overlap operator
+and independent \(D_{\mathrm{ov}}(U^g)\) covariance; paired two-loop
+asymptotic freedom and Boltzmann defect suppression
+\((a\Lambda_{\overline{\mathrm{MS}}})^{2 c_{\mathrm{adm}} b_0}\) leave
+\(2 c_{\mathrm{adm}} b_0 < 4\) at \(\varepsilon_{\mathrm{adm}} = 1/30\),
+explicitly recording
+\texttt{clay\_\allowbreak 4d\_\allowbreak infinite\_\allowbreak volume\_\allowbreak chiral\_\allowbreak continuum\_\allowbreak measure\ =\ OPEN}.
+\href{../../unification/nonabelian_chiral_constructive/certificate.json}{Non-Abelian
+chiral certificate}
+
+\section{72.4 Unit-gauge quotient elimination, the unimodular vacuum
+window, and mesoscopic blind-holdout protocols}
+
+\protect\hypertarget{c-core-const-01}{}{}
+
+\textbf{C-CORE-CONST-01 (\((M,L,T)\) parity-sublattice index 2 and
+\texttt{Quotient\allowbreak Descent} / \texttt{Fisher\allowbreak Gauge} unit-gauge
+elimination).} Pure-kernel matrix theorems prove
+\(\det M_{\mathrm{Planck}} = 2\) in raw \((M,L,T)\) dimensions
+(explaining half-integer Planck exponents via an index-2 parity
+sublattice), explicit factorization into \(GL_3(\mathbb{Z})\) unimodular
+factors, and exact \(GL_4(\mathbb{Z})\) Buckingham kernel
+\(\mathbb{Z} \cdot (1, 1, -3, 1)\). Proving
+\((G, \hbar, c) \in (\mathbb{R}_{>0})^3\) is a free transitive torsor
+under unit rescaling, \texttt{Quotient\allowbreak Descent} and
+\texttt{Fisher\allowbreak Gauge.\allowbreak p\_\allowbreak inv\_\allowbreak 02} uniquely factor all unit-invariant
+observables through one dimensionless gravitational-vacuum invariant: \[
+\mathcal{I}_\Lambda := \frac{G\hbar\Lambda}{c^3} = \Lambda\,\ell_P^2 \in [2.829147\times 10^{-122},\; 2.947947\times 10^{-122}].
+\] Equally candidly, the \texttt{RC05}/\texttt{RC12} illustrative
+benchmark value \(\approx 3.939092\times 10^{-82}\) exceeds cosmological
+observations by over 40 orders of magnitude (requiring
+\(g \approx 8.5 \times 10^{-61}\) for observed \(\Lambda\)), confirming
+that specific dimensionless parameter values remain empirical physical
+inputs (\texttt{P}).
+\href{../../unification/core_dimensionless_constants/certificate.json}{Dimensionless
+constants certificate}
+
+\protect\hypertarget{p-gut-desert-02}{}{}
+
+\textbf{P-GUT-DESERT-02 (\(>83\sigma\) PDG-2024 exclusion of one-loop
+\((3,3,1)\) desert unification and two-step threshold collinearity).}
+Pure-kernel proof establishes the canonical \(SU(5)\) factor \(3/5\),
+exact 1-loop SM betas \((41/10, -19/6, -7)\), generation-independence of
+\((b_i - b_j)\), and exact scale invariance of the unification defect
+\(\Delta_{123}\). Across the entire PDG-2024 \(3\sigma\) box,
+\(\Delta_{123}^{\mathrm{obs}} \in [-42.292449, -39.018165] < -38 < 0\),
+excluding minimal 1-loop \((3,3,1)\) desert unification at
+\([83.22\sigma, 88.22\sigma]\) (\(1\sigma\) interval
+\([-41.261262, -40.106623]\)) while characterizing two-step intermediate
+threshold collinearity.
+\href{../../unification/core_dimensionless_constants/certificate.json}{Desert
+exclusion certificate}
+
+\protect\hypertarget{p-unimodular-lambda-09}{}{}
+
+\textbf{P-UNIMODULAR-LAMBDA-09 (unimodular trace-free radiative
+quotient, 4-volume sequestering, and two-sided viability--entropy
+window).} On general non-diagonal \(4 \times 4\) Lorentzian metrics, the
+trace-free Einstein projector
+\(S_{\mu\nu} - \frac{1}{4}(g^{\alpha\beta}S_{\beta\alpha})g_{\mu\nu}\)
+annihilates multi-loop, phase-transition, and Dirac-sea shifts
+\(T_{\mu\nu} \mapsto T_{\mu\nu} - \Delta\rho_{\mathrm{vac}}g_{\mu\nu}\)
+(\(> 10^{120}\rho_\Lambda^{\mathrm{obs}}\)) via \texttt{Quotient\allowbreak Descent}
+and \texttt{Fisher\allowbreak Gauge.\allowbreak p\_\allowbreak inv\_\allowbreak 02}, while contracted Bianchi and stress
+conservation recover
+\(\Lambda_{\mathrm{int}} = \frac{1}{4}(R + 8\pi G T)\) as a global
+integration constant. Pure-kernel theorems contrast Weinberg's smooth
+local scalar-adjustment no-go theorem against global Kaloper--Padilla
+4-volume historic-average sequestering
+(\(\le \frac{1}{4} B_{\mathrm{hist}}\) residual);
+\texttt{Viability\allowbreak Kernel} halo turnaround (\(500/729\) rational
+threshold) encloses the persistent structure ceiling
+\(\mathcal{I}_{\Lambda,\max} \in [9.273858\times 10^{-120}, 9.792627\times 10^{-120}]\)
+and Gibbons--Hawking capacity
+\(S_{\mathrm{dS}} = \frac{3\pi}{\mathcal{I}_\Lambda} \in [3.197065\times 10^{122}, 3.331314\times 10^{122}]\),
+explicitly leaving the exact observed point \(2.89 \times 10^{-122}\)
+open.
+\href{../../unification/unimodular_vacuum_selection/certificate.json}{Unimodular
+vacuum certificate}
+
+\protect\hypertarget{p-meso-bmv-06}{}{}
+
+\textbf{P-MESO-BMV-06 (mesoscopic BMV commuting-stabilizer witness,
+Lindblad decoherence threshold, and blind-holdout hardware contract).}
+Pure-kernel proof verifies the spectrum \(\{\pm 2\}\) of
+\(W_{\mathrm{BMV}} = I \otimes I - X \otimes X + Y \otimes Z + Z \otimes Y\),
+derives via 3D Lagrange Cauchy--Schwarz
+\(\operatorname{Re}\operatorname{Tr}(W_{\mathrm{BMV}}\rho_{\mathrm{LOCC}}) \ge 0\)
+across all separable/LOCC ensembles (Kafri--Taylor--Milburn dephased
+baseline \(= +1\)), proves exact \(4 \times 4\) depolarizing and
+dephasing traces giving the critical ceiling
+\(\Gamma < \frac{\ln(\cos^2(\phi/2) + \sin\phi)}{2T}\), and proves exact
+differential SPAM cancellation plus strict
+\texttt{device\allowbreak Certified\ =\ false} whenever raw shot data are absent.
+Under cryo-UHV conditions (\(0.5\) K, \(10^{-15}\) Pa
+\(^{4}\mathrm{He}\)), environmental decoherence
+\([0.018095, 0.018096]\;\mathrm{s}^{-1}\) clears the depolarizing bound
+\([0.125907, 0.125914]\;\mathrm{s}^{-1}\) by \(> 6.95\times\), requiring
+69 differential runs and 435 stabilizer SPAM-calibrated shots alongside
+the SISC
+\href{../../../validation/physics_unification/HARDWARE_CERTIFICATION_CONTRACT.md}{hardware
+certification contract}.
+\href{../../unification/mesoscopic_decoherence_gravimetry/certificate.json}{Mesoscopic
+gravimetry certificate}
+
+\section{72.5 Philosophy v3.1 organizational integrity, non-fragmented
+synthesis, and four irreducible frontiers}
+
+\protect\hypertarget{p-phil31-omega-01}{}{}
+
+\textbf{P-PHIL31-OMEGA-01 (organizational integrity \(\Omega\)
+exclusivity and autonomous quantum clock--pointer persistence).}
+Importing \texttt{UEOT.\allowbreak V3.\allowbreak Persistence\allowbreak Omega}, \texttt{Viability\allowbreak Kernel},
+\texttt{Register\allowbreak Decision\allowbreak Representation}, and
+\texttt{Operational\allowbreak Horizon\allowbreak Minimum\allowbreak Scale}, pure-kernel theorems prove that
+passive Gibbs equilibrium has zero constitutive interventional repair
+differentiation and an empty thermal-fault viability kernel, whereas
+prepaid finite-wallet repair achieves all-horizon intact persistence iff
+\(c_{\mathrm{rep}} \le B\). In the coupled autonomous
+clock--controller--pointer model, non-trapped persistence and positive
+relational record distinguishability
+(\(d_{\mathrm{TV}} > 2.69 \times 10^{-30}\) and
+\(5.04 \times 10^{-23}\)) hold simultaneously if and only if sensor
+scale exceeds the \texttt{AH01} Planck floor \(L > L_{\min}\ell_P\) with
+strictly positive coherence/energy budget.
+\href{../../unification/philosophy_v31_omega_bridge/certificate.json}{Philosophy
+v3.1 bridge certificate}
+
+\protect\hypertarget{p-phil31-realiz-02}{}{}
+
+\textbf{P-PHIL31-REALIZ-02 (quotient realization without a ``second
+force'', Chapter 12 rank-3 bottleneck exclusion, and Chapters 21 and 25
+non-deduction walls).} \texttt{Quotient\allowbreak Descent} and
+\texttt{Representation\allowbreak Covariance} prove macroscopic laws descend
+uniquely from micro-rules (adding an independent second macro-force
+produces double-counting defect \(3/4\)) and break cleanly under
+enlarged action permission (\texttt{dispatch2}). Fréchet derivatives
+applied to \((s,b,q) \mapsto (s,b,bq)\) (\(\det J = b > 0\),
+\(\sigma_3 \in [0.467832, 0.467833]\)) refute any smooth two-dimensional
+\(\Pi/\Phi\) bottleneck (and hence scalar free-energy monism), while
+symmetric model-theoretic witnesses formally lock
+\href{../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md}{Philosophy
+v3.1} Chapter 21 (non-deduction of phenomenal consciousness) and Chapter
+25 (independence of growth rate \(\max(1,\lambda_0,\lambda_1)\) from
+moral justification and minimum capability).
+\href{../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md}{Three-volume
+matrix}
+
+\protect\hypertarget{p-phil31-lakatos-03}{}{}
+
+\textbf{P-PHIL31-LAKATOS-03 (Chapter 28 Lakatosian non-immunity theorem
+and preservation of honest \texttt{OPEN} status).} Formalizing the
+four-tier contract
+\texttt{(Hard\allowbreak Core,\ Formal\allowbreak Bridge,\ Empirical\allowbreak Belt,\ Normative\allowbreak Layer)}
+proves that post-hoc domain shrinking is a degenerating shift, exhibits
+explicit refutation witnesses for belt parameterizations (rank-3
+\(\Pi/\Phi\) and 1-loop desert \(SU(5)\)) and hard-core predictions
+(200-shot null-phase LOCC and Boltzmann baselines) without domain
+excision, and proves that any finite number of zero-failure synthetic
+tests preserves \texttt{empirical\_\allowbreak universality\ =\ UNVERIFIED} and
+\texttt{physical\_\allowbreak unification\ =\ OPEN}.
+\href{../../unification/philosophy_v31_omega_bridge/certificate.json}{Philosophy
+v3.1 bridge certificate}
+
+\protect\hypertarget{c-unified-synth-10}{}{}
+
+\textbf{C-UNIFIED-SYNTH-10 (non-fragmented causal--chiral--unimodular
+synthesis and minimal four-hypothesis reduction).} Uniting the eight
+previously separate submodels inside one \texttt{Unified\allowbreak Coupled\allowbreak System}
+structure constructively verified via
+\texttt{exists\_\allowbreak admissible\_\allowbreak unified\_\allowbreak coupled\_\allowbreak system}: (i) causal
+4-simplex positivity (\(\alpha > 7/12\)) above the \texttt{AH01} Planck
+floor; (ii) simultaneous trace-free cancellation of both bosonic clock
+vacuum energy (\(\approx 1.281 \times 10^{114}\;\mathrm{J/m^3}\)) and
+filled 45-Weyl Overlap Dirac-sea \(O(a^{-4})\) shifts
+(\(\approx -2.280 \times 10^{114}\;\mathrm{J/m^3}\)) to zero residual
+while retaining dynamical particle--hole stress
+(\(\approx 5.625 \times 10^{12}\;\mathrm{J/m^3}\)); (iii) unimodular
+Bianchi constancy across spacetime slabs iff all \((3,3,1)\) chiral and
+gravitational anomalies vanish; and (iv) autonomous pointer contrast,
+\texttt{M-\allowbreak 40.\allowbreak 1}/\texttt{M-\allowbreak 40.\allowbreak 6} closed-tests quotient,
+\texttt{Persistence\allowbreak Omega} attractor flow (approaching \(1/2\) at
+\(t=10\)), and Chapter 28 refutability.
+\texttt{six\_\allowbreak redundant\_\allowbreak gauge\_\allowbreak and\_\allowbreak vacuum\_\allowbreak parameters\_\allowbreak eliminated}
+eliminates six redundant coordinates (Jacobian determinant \(2\)), and a
+\(4 \times 4\) mutual-independence proof reduces complete physical
+unification to \textbf{exactly four non-redundant irreducible frontiers
+\(H_1\)--\(H_4\)}.
+\href{../../unification/unified_causal_chiral_unimodular/certificate.json}{Cross-sector
+synthesis certificate}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2100}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2800}}
+  >{\raggedleft\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3100}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Benchmark quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Exact / structural role
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Lower bound
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Upper bound
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{AH01} floor (\(L_{\min}/\ell_P\), \(\mathrm{SNR}=1\)) & Fock
+anti-squeezing bound & \texttt{0.\allowbreak 153021391482} &
+\texttt{0.\allowbreak 153021391483} \\
+\texttt{AH05} \(S^3\) Sobolev--Green series & \(\pi^2/12 - 55/576\) &
+\texttt{0.\allowbreak 726980922313} & \texttt{0.\allowbreak 726980922314} \\
+\texttt{AH07} flat Lichnerowicz barrier & \texttt{2048/\allowbreak 9375} &
+\texttt{0.\allowbreak 218453333333} & \texttt{0.\allowbreak 218453333334} \\
+Causal 4-simplex Wick threshold & \texttt{7/\allowbreak 12} &
+\texttt{0.\allowbreak 583333333333} & \texttt{0.\allowbreak 583333333334} \\
+Reduced observed \(\mathcal{I}_\Lambda^{\mathrm{obs}}\) &
+\(G\hbar\Lambda_{\mathrm{obs}}/c^3\) & \texttt{2.\allowbreak 829147e-\allowbreak 122} &
+\texttt{2.\allowbreak 947947e-\allowbreak 122} \\
+\texttt{Viability\allowbreak Kernel} halo bound \(\mathcal{I}_{\Lambda,\max}\) &
+\(\Omega>0\) collapse cap & \texttt{9.\allowbreak 273858e-\allowbreak 120} &
+\texttt{9.\allowbreak 792627e-\allowbreak 120} \\
+de Sitter causal-patch capacity \(S_{\mathrm{dS}}\) &
+\(3\pi/\mathcal{I}_\Lambda^{\mathrm{obs}}\) & \texttt{3.\allowbreak 197065e+122} &
+\texttt{3.\allowbreak 331314e+122} \\
+BMV \(0.5\text{ K}\) 95\% trials (diff / SPAM) & Differential /
+stabilizer & \texttt{69} & \texttt{435} \\
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2100}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2800}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3100}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Irreducible hypothesis
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Established mainline scope
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Open ultimate frontier
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Standing
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{H1} Lorentzian QG continuum & \(\alpha>7/12\) reflection pos. \&
+\(O(a^2)\) minisuperspace & Full 4D spin-2 \& nonperturbative
+\(\hat{\mathcal{H}}_{\mathrm{tot}}\Psi=0\) & \texttt{OPEN} \\
+\texttt{H2} 4D chiral continuum measure & \(2^4\) non-Abelian \(SU(2)\)
+Overlap \& Lüscher descent & Infinite-volume measure \& mass gap (Clay
+frontier) & \texttt{OPEN} \\
+\texttt{H3} Dimensionless vacuum \& couplings & Unit quotient \&
+unimodular \(10^{120}\) loop decoupling & Origin of
+\(\mathcal{I}_\Lambda^{\mathrm{obs}}\approx 2.89\times 10^{-122}\) \&
+thresholds & \texttt{OPEN} \\
+\texttt{H4} Blind hardware holdout & Deterministic benchmarks \& raw
+HDF5 schema ready & Real lab SISC \& mesoscopic gravimetry data &
+\texttt{device\_\allowbreak certified\ =\ false} \\
+\end{longtable}
+
+\textbf{72.6 Summary across Chapters 0--72 and the three maintained
+volumes.} Chapter 72 completes the integrated literary synthesis across
+the finite quantum kernel, Chapter 71 correlated-bath identification,
+the 345-entry \texttt{all\_\allowbreak harmonic\_\allowbreak horizon} horizon/backreaction
+chain, Philosophy v3.1, and Mathematics v4.2. By the Chapter 28
+refutability contract and the independent status axes of Chapter 48, the
+four irreducible boundaries \(H_1\)--\(H_4\) remain explicitly
+\texttt{OPEN} rather than hidden behind ad-hoc parameters or synthetic
+relabeling.
+\href{../../../validation/physics_unification/VALIDATION_LEDGER.json}{Validation
+ledger}
+
 \chapter{Appendix A. Notation, units, and responsibilities of standard
 theorems}\label{appendix-a}\hypertarget{appendix-a}{}
 
@@ -19617,6 +20201,66 @@ response after a causal break). \\
 interpolation and complete-output certificate). \\
 \protect\hyperlink{p-field-01}{P-FIELD-01} & 71 & P-FIELD-01 (matching
 two modes and testing a spacelike signal). \\
+\protect\hyperlink{c-qsel-05}{C-QSEL-05} & 72 & C-QSEL-05 (two-copy
+real-reference null gap and quotient-descent complex selection). \\
+\protect\hyperlink{c-lr-cone-01}{C-LR-CONE-01} & 72 & C-LR-CONE-01
+(discrete transport certificates to emergent Lieb--Robinson cones and
+Minkowski conformal geometry). \\
+\protect\hyperlink{c-gpt-recon-02}{C-GPT-RECON-02} & 72 & C-GPT-RECON-02
+(finite GPT transitive orthogonal symmetry and Hurwitz self-dual cone
+reconstruction). \\
+\protect\hyperlink{c-math42-bridge-01}{C-MATH42-BRIDGE-01} & 72 &
+C-MATH42-BRIDGE-01 (Mathematics v4.2 Chapters 32--40 closed tests,
+memory separation, and minimax mechanism discrimination). \\
+\protect\hyperlink{p-horizon-clock-01}{P-HORIZON-CLOCK-01} & 72 &
+P-HORIZON-CLOCK-01 (squeezing-proof operational Planck sensor floor and
+RG-crunch no-go theorem). \\
+\protect\hyperlink{p-adm-allharm-02}{P-ADM-ALLHARM-02} & 72 &
+P-ADM-ALLHARM-02 (\(S^3\) fifteen-dimensional conformal--Killing
+closure, all-harmonic ellipticity, and contracted Bianchi
+propagation). \\
+\protect\hyperlink{p-flat-dirac-03}{P-FLAT-DIRAC-03} & 72 &
+P-FLAT-DIRAC-03 (asymptotically flat \(\Lambda = 0\) clock barrier,
+semiclassical contraction, and Dirac closure trichotomy). \\
+\protect\hyperlink{p-discrete-qg-01}{P-DISCRETE-QG-01} & 72 &
+P-DISCRETE-QG-01 (continuum Pauli--Villars ghost necessity versus
+Planck-graph Wheeler--DeWitt quotient descent). \\
+\protect\hyperlink{p-lorentz-qg-07}{P-LORENTZ-QG-07} & 72 &
+P-LORENTZ-QG-07 (causal foliation Wick reflection positivity, \(O(a^2)\)
+double-scaling continuum limit, and spectral dimension flow). \\
+\protect\hyperlink{p-chiral-clock-02}{P-CHIRAL-CLOCK-02} & 72 &
+P-CHIRAL-CLOCK-02 (Lüscher chiral projector factorization, 15-Weyl
+\((3,3,1)\) complete anomaly cancellation, and clock Dirac gap). \\
+\protect\hyperlink{p-nonabelian-chiral-08}{P-NONABELIAN-CHIRAL-08} & 72
+& P-NONABELIAN-CHIRAL-08 (non-Abelian \(SU(N)\) Lüscher measure
+quotient, Witten and Dai--Freed invariants, and the Clay continuum
+boundary). \\
+\protect\hyperlink{c-core-const-01}{C-CORE-CONST-01} & 72 &
+C-CORE-CONST-01 (\((M,L,T)\) parity-sublattice index 2 and
+\texttt{Quotient\allowbreak Descent} / \texttt{Fisher\allowbreak Gauge} unit-gauge
+elimination). \\
+\protect\hyperlink{p-gut-desert-02}{P-GUT-DESERT-02} & 72 &
+P-GUT-DESERT-02 (\(>83\sigma\) PDG-2024 exclusion of one-loop
+\((3,3,1)\) desert unification and two-step threshold collinearity). \\
+\protect\hyperlink{p-unimodular-lambda-09}{P-UNIMODULAR-LAMBDA-09} & 72
+& P-UNIMODULAR-LAMBDA-09 (unimodular trace-free radiative quotient,
+4-volume sequestering, and two-sided viability--entropy window). \\
+\protect\hyperlink{p-meso-bmv-06}{P-MESO-BMV-06} & 72 & P-MESO-BMV-06
+(mesoscopic BMV commuting-stabilizer witness, Lindblad decoherence
+threshold, and blind-holdout hardware contract). \\
+\protect\hyperlink{p-phil31-omega-01}{P-PHIL31-OMEGA-01} & 72 &
+P-PHIL31-OMEGA-01 (organizational integrity \(\Omega\) exclusivity and
+autonomous quantum clock--pointer persistence). \\
+\protect\hyperlink{p-phil31-realiz-02}{P-PHIL31-REALIZ-02} & 72 &
+P-PHIL31-REALIZ-02 (quotient realization without a ``second force'',
+Chapter 12 rank-3 bottleneck exclusion, and Chapters 21 and 25
+non-deduction walls). \\
+\protect\hyperlink{p-phil31-lakatos-03}{P-PHIL31-LAKATOS-03} & 72 &
+P-PHIL31-LAKATOS-03 (Chapter 28 Lakatosian non-immunity theorem and
+preservation of honest \texttt{OPEN} status). \\
+\protect\hyperlink{c-unified-synth-10}{C-UNIFIED-SYNTH-10} & 72 &
+C-UNIFIED-SYNTH-10 (non-fragmented causal--chiral--unimodular synthesis
+and minimal four-hypothesis reduction). \\
 \end{longtable}
 
 \chapter{Appendix C. Sources, inheritance, and research
@@ -20047,6 +20691,15 @@ physics obligations:
 {[}QM3115{]} \href{../correlated_bath/README.md}{Correlated source and
 reproducible checks}. \href{../ROADMAP.md}{Evidence and open physical
 responsibilities}.
+
+{[}QM3116{]} \href{../../unification/README.md}{Physics unification
+workspace}.
+\href{../../../formalization/ueot-physics-unification/README.md}{Pure-kernel
+Lean 4 formalization}.
+\href{../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md}{PR
+\#468 all-harmonic extension}.
+\href{../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md}{Philosophy--mathematics--physics
+bridge matrix}.
 
 \chapter{Appendix D. Complete inherited verification code and versioned
 receipts}\label{appendix-d}\hypertarget{appendix-d}{}
@@ -20978,15 +21631,22 @@ contract}\label{appendix-e}\hypertarget{appendix-e}{}
 
 \section{E.1 Complete semantic sources and derived reading editions}
 
-The \protect\hyperlink{ch-71}{correlated-bath chapter} adds seven
-results to the continuous source candidate for edition 3.12. The
-\href{README.md}{edition index} records the builds and reviewed pages
-for each reading copy. The
-\href{https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978\allowbreak e173e23015f02699\allowbreak 4fb60c65/physics/qm/book/UEOT_PHYSICS.en.pdf}{Chapter
-70 PDF} preserves edition 3.11. The 210 result IDs include 203 inherited
-results and the claim ledger retains 126 prior claims. The new work has
-paper, interval and synthetic evidence. Its empirical and formal-proof
-status is given in the \href{../correlated_bath/README.md}{research
+The \protect\hyperlink{ch-72}{unification chapter} adds nineteen
+cross-sector synthesis and bridge results to the continuous source
+candidate for edition 3.13. The \href{README.md}{edition index} records
+the builds and reviewed pages for each reading copy. The
+\href{https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f8\allowbreak 8270c0f38ae6fb6f\allowbreak 77e26093/physics/qm/book/UEOT_PHYSICS.en.pdf}{Chapter
+71 PDF} preserves edition 3.12. The 229 result IDs include 210 inherited
+results and the claim ledger
+\href{../status/CLAIM_LEDGER_v31.16.json}{CLAIM\_\allowbreak LEDGER\_\allowbreak v31.16.json}
+retains 133 prior claims alongside 19 new pure-kernel claims, totaling
+152 entries. The new chapter synthesizes Philosophy Book v3.1,
+Mathematics Book v4.2 (1,051 Lean 4 modules), the
+\href{../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md}{PR
+\#468 all-harmonic extension} and the Wave 1--7 pure-kernel suite while
+honestly retaining \texttt{physical\_\allowbreak unification\ =\ OPEN} and
+\texttt{device\_\allowbreak certified\ =\ false}; its empirical and formal-proof
+status is recorded in the \href{../../unification/README.md}{research
 packet}.
 
 Both languages carry the same scientific commitments. Their prose is
@@ -22883,6 +23543,42 @@ rebuilt the existing QM library, audited its theorem axioms and checked
 the retained witnesses. Chapters 69--71 added no Lean declarations. The
 \href{../kernel/evidence/v31.14/integration-verification.json}{recorded
 run} identifies the prior commit.
+
+\section{F.11 Pure-kernel formalization and honest open boundaries of
+Chapter 72}
+
+Chapter 72 adds nineteen cross-sector synthesis and multi-book bridge
+results. All 210 earlier result IDs, 133 prior claim ledger entries and
+the historical \texttt{ueot-\allowbreak qm} (158-input source set) and
+\texttt{ueot-\allowbreak core} execution identities are preserved untouched without
+retroactive alteration.
+
+New formal proofs reside in the separate
+\href{../../../formalization/ueot-physics-unification/README.md}{pure-kernel
+Lean 4 package} (\texttt{leanprover/\allowbreak lean4:v4.\allowbreak 33.\allowbreak 1}, matching
+\texttt{ueot-\allowbreak core} and \texttt{ueot-\allowbreak qm} byte-for-byte), spanning 31
+modules, 1,128 constants, 582 machine-checked theorems and 471
+definitions with zero \texttt{sorry\allowbreak Ax}, zero \texttt{Lean.\allowbreak of\allowbreak Reduce\allowbreak Bool}
+(\texttt{native\_\allowbreak decide}) and zero nonstandard axioms. On merged commit
+\texttt{e2c67e27}, GitHub Actions workflow
+\texttt{UEOT\ Physics\ Unification\ Gates}
+(\href{https://github.com/MurphyHoops/UEOT/actions/runs/45118737723}{run
+45118737723}) verified the full 31-module Lean build alongside all 31
+outward-interval Python suites and the 56-entry
+\href{../../../validation/physics_unification/VALIDATION_LEDGER.json}{validation
+ledger}. Preceding Chapter 71 integration on main commit
+\texttt{cc5670d5} is recorded in
+\href{../kernel/evidence/v31.15/integration-verification.json}{v31.15
+integration verification}.
+
+All formal theorems hold conditional on their declared discrete,
+semiclassical, one-loop, effective-field-theory or finite-dimensional
+model hypotheses. Chapter 72 adds no hardware observations or
+independent human peer review, and honestly retains
+\texttt{physical\_\allowbreak unification\ =\ OPEN} and
+\texttt{device\_\allowbreak certified\ =\ false} across four-dimensional
+nonperturbative QFT, full quantum gravity, Planck-scale experimental
+tests and physical autonomous clock--pointer hardware realization.
 
 \backmatter
 \end{document}

@@ -1,9 +1,9 @@
 ---
 title: "UEOT物理学"
 subtitle: "从对象数学到量子物理：理论推导、形式证明与研究边界"
-author: "历史书稿作者为钱德桂。第71章为人工智能辅助研究提案。"
-version: "3.12"
-date: "2026-11-18"
+author: "历史书稿作者为钱德桂。第71–72章为人工智能辅助研究提案。"
+version: "3.13"
+date: "2026-11-24"
 language: "zh-CN"
 document_id: "UEOT-PHYSICS"
 status: "双语候选书稿。印本验收范围见版本入口。"
@@ -84,6 +84,7 @@ rights: "历史CC BY 4.0授权保留；新增版次表达未作额外统一许�
 - [69. 同时动力学、真实截断误差与校准后的完整预测](#ch-69)
 - [70. 持久环境的完整过程、有限认证与选择边界](#ch-70)
 - [71. 从相关浴中究竟能识别什么](#ch-71)
+- [72. 三卷统一桥接、全谐波视界与四大不可约前沿](#ch-72)
 - [附录 A. 符号、单位与标准定理责任表](#appendix-a)
 - [附录 B. 编号证明结果注册表](#appendix-b)
 - [附录 C. 来源、继承关系与研究诚实性](#appendix-c)
@@ -276,6 +277,10 @@ v31.14 / Kernel 1.14 在已合并并经 CI 核验的第69章基础上，新增�
 ## 0.15 第71章候选书稿阅读入口
 
 [相关浴新章](#ch-71)为3.12版连续候选书稿增加七项结果。[版本入口](README.md)记录各印本的构建与受检页。[第70章印本](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.pdf)保留3.11版原貌。现有210项稳定结果，其中203项沿用原编号，账本保留126项旧主张。新章提供书面论证、区间计算与合成数据，经验与形式证明范围见[研究材料](../correlated_bath/README.md)。
+
+## 0.16 第72章定版书稿与三卷统一归约
+
+[第72章](#ch-72)将[第71章](https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f88270c0f38ae6fb6f77e26093/physics/qm/book/UEOT_PHYSICS.pdf)合并后在主线完成的《UEOT 哲学著作》v3.1、《UEOT 数学著作》v4.2（含 1,051 模块纯内核 Lean 4）、`all_harmonic_horizon`（345 项全谐波与视界边界检验链）以及物理统一包（31 个纯内核 Lean 4 模块、582 条定理、31 套 40 位向外区间套件）完整整合为 3.13 版。全书现含 73 章（第 0–72 章）、6 个附录、229 项稳定编号结果与 152 项主张；既有的 210 项结果编号、133 项第 71 章账本主张及前 71 章正文保持原身份。本书将物理统一边界精确归约至四条经机器证明相互独立的不可约假设（$H_1$–$H_4$），同时诚实保留 `physical_unification = OPEN` 与 `device_certified = false`。[三卷统一矩阵](../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md) · [物理统一套件](../../unification/README.md) · [形式化范围](../../../formalization/ueot-physics-unification/README.md)
 
 <a id="ch-1"></a>
 
@@ -4834,7 +4839,7 @@ $$
 
 ## 48.1 唯一理论主源
 
-本书文档身份为 `UEOT-PHYSICS`。中英文连续书稿均含第0–71章、附录A–F。[前版印本](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.pdf)收至第70章。书稿、PDF 编译与评阅状态分别见[版本入口](README.md)。
+本书文档身份为 `UEOT-PHYSICS`。中英文连续书稿均含第0–72章、附录A–F。[前版印本](https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f88270c0f38ae6fb6f77e26093/physics/qm/book/UEOT_PHYSICS.pdf)收至第71章。书稿、PDF 编译与评阅状态分别见[版本入口](README.md)。
 
 版本报告、PR、日志和数学模块各有自己的身份，但不再与总著争夺理论正文的权威。源文件清单、章节修订档案及证据回执记录“这句话依据什么、哪一部分被检查过”。历史文件保留沿革责任；它们的旧状态不会覆盖较新的已验证内核，新的内核也不会为历史上未形式化的物理命题追授机器证明。
 
@@ -4849,12 +4854,12 @@ $$
 ~~~yaml
 document:
   id: UEOT-PHYSICS
-  edition: "3.12"
+  edition: "3.13"
   canonical_source: physics/qm/book/UEOT_PHYSICS.md
   derivative_pdf_path: physics/qm/book/UEOT_PHYSICS.pdf
   english_source: physics/qm/book/UEOT_PHYSICS.en.md
   derivative_english_pdf_path: physics/qm/book/UEOT_PHYSICS.en.pdf
-  chapter_range: [0, 71]
+  chapter_range: [0, 72]
   fundamental_unique_derivation_complete: false
   four_dimensional_nonperturbative_qft_complete: false
   quantum_gravity_complete: false
@@ -10316,6 +10321,136 @@ $$
 
 配套的[扇区计算](../correlated_bath/sectors/RESULTS.md)另在各自前提下考察热记忆、物质赋值和几何。外部开关驱动的场、每步重置的浴以及改变背景度规分别定义了不同实验。匹配器件的校准、唯一物质扇区及引力场方程仍是独立问题。
 
+<a id="ch-72"></a>
+
+# 72. 三卷统一桥接、全谐波视界与四大不可约前沿
+
+前七十一章依次建立了从对象数学到有限量子内核、重整化微扰 QFT 以及相关浴完全记录预测的主线结构；本章将其向上对接到完整的[《UEOT 哲学著作》v3.1](../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md)与《UEOT 数学著作》v4.2（含第 32–40 章及 1,051 模块纯内核 Lean 4 库），向右汇合 `PR #468` 的 345 项全谐波与自主视界链[research ledger](../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md)，并将物理统一包（31 个纯内核 Lean 4 模块、582 条机器证明定理、31 套 40 位向外有向区间套件）收束为单一非分裂耦合体系。[物理统一套件](../../unification/README.md) · [形式化范围](../../../formalization/ueot-physics-unification/README.md) · [验证总账本](../../../validation/physics_unification/VALIDATION_LEDGER.json)
+
+**研究署名说明。** 第72章与第71章同为人工智能辅助研究提案；钱德桂为历史书稿作者。本章所有 Lean 4 结论均经 `leanprover/lean4:v4.33.1` 纯内核审计（零 `sorryAx`、零 `native_decide`），但真实器件物理认证与独立外部同行评议仍待完成，终极物理统一保持 `OPEN`。
+
+## 72.1 Core 与数学 v4.2 到时空、复量子理论及操作商的深层桥接
+
+<a id="c-qsel-05"></a>
+
+**C-QSEL-05（双份实参考零间隙与商下降复量子选择）。** 接续[第 71 章](#ch-71)留下的反模型漏洞：单份实对称乘积测量无法区分实共享参考态 $(I \pm J\otimes J)/4$，且单纯局部酉路径在无纯化或相商等价类中可模拟可见统计。在总作用坐标空间上调用 `UEOT.V3.Compression.QuotientDescent.existsUnique_descend` 定义相不变可观测量商，并在双份（two-copy）联合体系上构造实对称见证算符 $W_{\mathrm{HW}} := (J\otimes I)\otimes(J\otimes I)$。纯内核证明单份实乘积泄漏恒为零，而双份见证对纯复纠缠/Hoffreumon–Woods 态取 $+1$、对全部实可分态取 $0$（在两份半径 $\delta = 0.10$ 上 TV 排除半径为 $0.45$，40 位 Hoeffding 置信度 $\alpha = 0.01$ 仅需 4,239 次双份试验）。[双份选择证书](../../unification/quantum_selection/result.json)
+
+<a id="c-lr-cone-01"></a>
+
+**C-LR-CONE-01（离散输运证书到 Lieb–Robinson 涌现光锥与 Minkowski 共形类）。** 直接从域中立 `UEOT.V3.Compression.TransportCertificate.weighted_chain_bound` 出发，对任意局域耦合强度 $J>0$ 与衰减率 $\mu>0$ 按步归纳导出 $n$ 步因果输运界并经弹道极限导出严格涌现光锥速度 $v_{\mathrm{LR}}$：
+$$
+\|[A_X(t), B_Y]\| \le 2\|A_X\|\|B_Y\|\,\frac{(2 J v)^n}{n!}\,e^{-\mu(d - v_{\mathrm{LR}} t)}, \qquad v_{\mathrm{LR}} = \frac{2 J e^{\mu}}{\mu}.
+$$
+在 $\mu=\ln 2, J=1/2$ 处得 $v_{\mathrm{LR}} \in [1.442695040888, 1.442695040889]$，且在超光锥射线上呈 $\exp(-0.386294 t)$ 指数衰减（在 $t=100$ 时泄漏上界 $<3.35\times 10^{-17}$）。联立 Fisher–Rao 拉回半正定（无类时方向）障碍与零锥（causal null-cone）刚性定理，因果叶零锥唯一锁定 $(1+d)$ 维 Minkowski 度规共形类。[光锥桥证书](../../unification/lieb_robinson_lightcone/result.json)
+
+<a id="c-gpt-recon-02"></a>
+
+**C-GPT-RECON-02（有限维 GPT 传递正交对称与自对偶锥 Hurwitz 重构）。** 在操作理论最小分离商（`QuotientDescent` 秩在经典/实/复单比特下严格为 $2, 3, 4$）上引入传递正交对称纯态轨道与自对偶锥条件 $\mathcal{C} = \mathcal{C}^*$（排除方盒 gbit 多面体锥之负内积 $-1/2$），调用 Koecher–Vinberg 欧氏 Jordan 代数分类并用 Hurwitz 除法环维度准则筛选双系统局部层析自由度缺陷 $\Delta_{\mathrm{tom}}(r)$，唯一锁定 Hurwitz 维数 $r=2$（复量子理论：$\Delta_{\mathrm{tom}}(2)=0$，对照实数 $-1$、四元数 $+8$ 与八元数 $+48$），并在纯内核构造性证明三维及以上 Hilbert 空间的 Gleason–Busch 密度算符存在唯一性（精度误差上界 $<10^{-38}$）。[自对偶重构证书](../../unification/gpt_self_dual_reconstruction/result.json)
+
+<a id="c-math42-bridge-01"></a>
+
+**C-MATH42-BRIDGE-01（数学著作 v4.2 第 32–40 章闭合检验、记忆分离与极小化最大机制辨识）。** 直接导入 13 个后 `Core v3.0` 的 `TheoryCompletion` 模块（含 `ObservableBeliefQuotient` `M-40.6`、`FiniteSupportFixedPoint` / `FiniteMemorySeparation` `M-40.1`、`FixedSampleSupportNoGo` / `NoisyFiniteRiskOracle` `M-40.5`、`CoreRegenerativeGrowthClassification`、`RegisterMechanismDecision`、`SISCFutureResponseCore` 与 `FisherGauge`），在纯内核 Lean 4 中建立四项定量连接：(i) 量子 POVM 仪器与物理信念商唯一下降等价于 `ClosedTests`，既涵盖[第 71 章](#ch-71)保留浴有符号干涉消去 Ramsey 精确歧义（$\Delta c = -19/400$ vs signed Weyl gap $+19/900$）与 $S^3$ 15 维共形—Killing 矩商，也导出耗散时钟再生临界率 $\max(1, \lambda_0, \lambda_1)$；(ii) `M-40.1` 与 `M-40.4` 可计算控制器给出有限记忆轨迹全时域安全，消除无记忆策略 1 单位覆盖缺口；(iii) `M-40.5` 证明固定有限样本下无间隔零支持不可认证（在 `RC09` $\eta = 10^{-13}$ 协议下 $N = 10^{15}$ 次测量假认证率 $> 0.947154$），并认证 §39.89–39.95 机制辨识 3 步 TV 上确界 $4/27$ 与 4 点随机化极小化最大后悔 $3/128$（较确定性策略 $1/32$ 净省 $1/128$）；(iv) 逐项 audited 数学书附录 G 全部 12 项开放数学义务（`O-OPEN-01` 至 `O-OPEN-12`），证明其中 4 项典型反例的尖锐边界。[数学 v4.2 桥证书](../../unification/math_v42_closed_tests_bridge/certificate.json)
+
+## 72.2 全谐波共形视界、渐近平直时钟与半经典反作用
+
+<a id="p-horizon-clock-01"></a>
+
+**P-HORIZON-CLOCK-01（抗压缩操作型普朗克传感器下界与 RG 挤压禁行定理）。** 在超越全局微超空间的有限半径 $S^3$ 涂抹量子场论（`all_harmonic_horizon` `AH01`–`AH02`）中，不假设逐点正规序能量非负，直接由正则对易关系与斜厄米算符不等式 $-(A-A^\dagger)^2 \le 4 A^\dagger A + 2[A, A^\dagger]$ 导出覆盖全部压缩与非高斯正规 Fock 态的普适传感器尺度下界：
+$$
+16\,\eta_t^2\,\mathcal{E}\,(\mathcal{E}+\sqrt{7}) \ge \mathcal{N}_{\mathrm{gate}}^2, \qquad L > L_{\min}\,\ell_P.
+$$
+在单位信噪比参数（$\mathrm{SNR}=1, \eta_t=1, \lambda=2$）下，最小传感器物理尺度锁定在 $L_{\min}/\ell_P \in [0.153021391482, 0.153021391483]$（$\mathrm{SNR}=10$ 时提升至 $[1.961928785879, 1.961928785880]$），排除一切点局域理想时钟 $L \to 0^+$；同时在固定牛顿常数 $G > 0$ 下证明全部幂律标度指数 $\nu \in \mathbb{R}$ 无法同时保持场方差有限与非捕获视界（$\nu=1$ 精确挤压半径 $\sqrt{30}/200 \in [0.027386127875, 0.027386127876]\text{ rad}$）。[全谐波研究包](../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md) · [视界下界证书](../../unification/horizon_minimum_scale/result.json)
+
+<a id="p-adm-allharm-02"></a>
+
+**P-ADM-ALLHARM-02（$S^3$ 十五维共形—Killing 闭合、全谐波椭圆性与缩并 Bianchi 传播）。** 在 $S^3$ 全空间模 $\ell \in [1, \infty)$ 上证明共形—Killing 阻碍维数严格等于 $1 + 4 + 4 + 6 = 15 = \dim \mathfrak{so}(5,1)$（`AH03`–`AH06`）：自主 $SO(4)$ 不变总哈密顿量通过控制器反冲恒等抵消 $\ell=1$ 转动角动量残差，24 通道正交平衡配平实现精确 $I_6$ 弯曲 Killing 雅可比并保持零 $\ell=1$ 串扰与逐点各向同性 $\mathbf{w}=\mathbf{0}$；全高谐波 $\ell \ge 2$ York–Lichnerowicz 椭圆乘子满足 $4(\ell-1)(\ell+3) \ge 20$，导出精确三维球面 Sobolev–Green 闭式求和常数 $\frac{\pi^2}{12} - \frac{55}{576} \in [0.726980922313, 0.726980922314]$ 与 $L^\infty$ 控制常数 $\in [0.191909571848, 0.191909571849]$；同时在演化板层证明四维缩并 Bianchi 等式维持涂抹 ADM 约束零均值传播。[全谐波椭圆证书](../../unification/all_harmonic_elliptic/result.json)
+
+<a id="p-flat-dirac-03"></a>
+
+**P-FLAT-DIRAC-03（渐近平直 $\Lambda=0$ 局域时钟屏障、半经典压缩与 Dirac 闭合三分法）。** 转入 $\Lambda=0$ 渐近平直局域时空（`AH07`–`AH10`），纯内核证明球对称辐射/物质分布的尖锐有理紧致度屏障 $\mathcal{C}_{\mathrm{crit}} = 2048/9375$，当初始紧致度 $\mathcal{C}_0 < \mathcal{C}_{\mathrm{crit}}$ 时压缩率 $\frac{9375}{2048}\mathcal{C}_0 < 1$ 确保无极小面、无捕获视界且全局 $C^1(\mathbb{R}^3)$ 解存在；并形式化证明 $c$-数 slice 正规序零点减除恒保持 Dirac 超曲面变形对易子，而物理空间在正定 Källén–Lehmann 谱和规则（`AH09` $\sum_{j=1}^5 O_{5,j}^2 \equiv 1$）下必将“活动门逐点 Dirac 封闭”与“$K=\infty$ 无鬼紫外有限性”逼入三选一，从而与 `AH10` 椭圆—双曲 CMC+TT Einstein–Langevin 收缩不动点一道锁定需要进入非微扰量子几何与手征规范构作的原因。[平直 Dirac 证书](../../unification/localized_clock_dirac/result.json)
+
+## 72.3 离散洛伦兹量子几何与四维非阿贝尔手征规范构造边界
+
+<a id="p-discrete-qg-01"></a>
+
+**P-DISCRETE-QG-01（连续统 Pauli–Villars 鬼模阻断 vs 普朗克图 Wheeler–DeWitt 商下降）。** 纯内核证明任意要求紫外领头抵消 $\sum_j c_j = 0$（且非零权重）的 Pauli–Villars 调整必强迫出现负权鬼模 $c_{j_{\mathrm{ghost}}} < 0$ 与负范数不定度规态（四极点例最负权重 $\approx -2.366025$），而具有 `AH01` 最小间距 $a_{\mathrm{lat}} \ge L_{\min}\ell_P$ 的有限普朗克图 $K_5 = \partial\Delta^4$ 在严格正定 Hilbert 空间上满足无鬼紫外有界性（等时方差 $\approx 0.106523$ 严格低于纯内核理论界 $0.331047$）、零反常超曲面约束代数 $[\hat H_{\mathrm{ren}}[N_1], \hat H_{\mathrm{ren}}[N_2]] = 0$、群平均装配投影 $\Pi_{\mathrm{phys}}^2 = \Pi_{\mathrm{phys}}$ 下的唯一关系可观测量商下降与 Page–Wootters 等距约化。1344 维四面体 $K_4$ 几何（6 条边与 4 个顶点星算符全部满足 $S_4$ 双生成元协变性）+ 21 刻度时钟耦合模型给出精确零残差 Wheeler–DeWitt 本征谱及刻度 $t=3$ 指针纠缠（纯度 $\approx 0.511769$）与 $t=7$ 精确相干复苏（关系对比度 $3/2$）。[离散量子几何证书](../../unification/discrete_quantum_geometry/certificate.json)
+
+<a id="p-lorentz-qg-07"></a>
+
+**P-LORENTZ-QG-07（因果叶状 Wick 反射正定性、$O(a^2)$ 双标度连续极限与谱维数流）。** 在洛伦兹因果三角剖分中构造 `(4,1)` 与 `(3,2)` 四单形的显式四维欧氏顶点嵌入，纯内核证明二者正高度、所有时空支柱长度平方 $\tilde\alpha a^2$ 与正四维体积同时成立**当且仅当** $\tilde\alpha > 7/12$：
+$$
+(V_4^{(4,1)})^2 = \frac{8\tilde\alpha - 3}{9216}\,a^8, \qquad (V_4^{(3,2)})^2 = \frac{12\tilde\alpha - 7}{9216}\,a^8.
+$$
+证明解析延拓后因果 Regge 作用量线性强制且传递矩阵 $\hat T = B^T \operatorname{diag}(w) B > 0$ 严格反射正定（直接对比无叶状共形动能 $-\frac{3}{8\pi G}\dot\Omega^2 \to -\infty$ 无下界不稳定）；在双标度重整化 $\kappa_4 - \kappa_4^{\mathrm{crit}} = a^4\Lambda_{\mathrm{ren}}$ 下证明微超空间离散生成元以 $O(a^2)$ 收敛至连续统 Wheeler–DeWitt 体积算符且具有严格正体积方差 $\langle\Delta V_3^2\rangle = 1/16 > 0$；导出无鬼紫外谱维数单调流 $d_s(\sigma) = 4 - \frac{2c_{\mathrm{UV}}}{\sigma+c_{\mathrm{UV}}}$（从紫外 $d_s(10^{-4}) \approx 2.00002$ 连续流向红外 $d_s(10^5) \approx 3.99980$，明显高于分支聚合物 $d_s^{\mathrm{BP}} = 4/3$）；并通过 `QuotientDescent` 与 `TransportCertificate` 闭合多板层细化半群一致界。[洛伦兹量子几何证书](../../unification/lorentzian_causal_qg_limit/certificate.json)
+
+<a id="p-chiral-clock-02"></a>
+
+**P-CHIRAL-CLOCK-02（Lüscher 手征投影分解、15-Weyl $(3,3,1)$ 全部异常抵消与时钟 Dirac 谱隙）。** 在一般结合代数上纯内核证明 Ginsparg–Wilson 修正手征算符 $\hat\gamma_5 = \gamma_5(1 - aD)$ 满足 $\hat\gamma_5^2 = 1$、Lüscher 投影正交完备性与精确手征规范分解 $D = P_+ D\hat P_- + P_- D\hat P_+$（交叉doubler项严格为零），并结合 `QuotientDescent` 证明双边 Weyl 作用量与指标沿规范轨道唯一商下降；证明零右手中微子的单代 15-Weyl $(3,3,1)$ 表示同时消去全部五项异常（$[SU(3)_c]^2 U(1)_Y$、$[SU(2)_L]^2 U(1)_Y$、$U(1)_Y^3$、混合引力 $\operatorname{Tr}(Y)=0$ 以及 Witten 偶性 $3+1=4$）并在 $Y_Q \ne 0$ 下唯一锁死全部超荷比值；构建非均匀时钟流逝穿衣 Dirac 算符 $H_N = \sqrt{N} H_0 \sqrt{N}$，证明其严格对称谱隙与正规序激发能移 $\Delta E_{\mathrm{pair}} \approx 0.020136 > 0$，同时在 $2^4$（$64\times 64$）格点上以 40 位 Sylvester/Riccati 区间认证瞬子拓扑指标 $\mathrm{Ind}(D_{\mathrm{ov}}) = +1$。[手征时钟证书](../../unification/chiral_gauge_overlap_clock/certificate.json)
+
+<a id="p-nonabelian-chiral-08"></a>
+
+**P-NONABELIAN-CHIRAL-08（非阿贝尔 $SU(N)$ Lüscher 测度商障碍、Witten / Dai–Freed 不变量与 Clay 连续统边界）。** 将手征规范推广至真非对易 $SU(N)$ 群：纯内核证明 Lüscher 手征子丛 Berry 曲率 $\operatorname{Tr}(\hat P_-[d_1 \hat P_-, d_2 \hat P_-])$ 反对称且规范不变，Weyl 测度（及 `ObservableBeliefQuotient` `ClosedTests` `M-40.6`）在可容许链路构型上唯一商下降**当且仅当**规范上边缘反常为零；证明 $SU(2)$ 辛实结构 $\varepsilon M = \overline{M}\varepsilon$、Witten $\pi_4(SU(2))=\mathbb{Z}_2$ 奇双重态 Pfaffian 抵消（$N_d=3$ 路径积分为 $0$）对照三代 $(3,3,1)$ 十二双重态不变性，以及 $\mathrm{Spin}^{\mathbb{Z}_4}$ 模 16 Dai–Freed 配边不变量对 $N_{\mathrm{Weyl}}=15$（$15 \bmod 16 = 15, \operatorname{Tr}Q_X = -5$）与 $16$（$0 \bmod 16$）的精确区分；在零 BLAS 跨平台确定性纯 `mpmath` 40 位算术下认证 $2^4$（$128\times 128$）非对易 $SU(2)$ Overlap 算符及独立由 $U^g$ 构造的 $D_{\mathrm{ov}}(U^g)$ 规范协变性，同时在证明两圈渐近自由与缺陷指数幂律压制 $(a\Lambda_{\overline{\mathrm{MS}}})^{2c_{\mathrm{adm}}b_0}$ 时明确标定 $\varepsilon_{\mathrm{adm}}=1/30$ 下 $2c_{\mathrm{adm}}b_0 < 4$，从而保持 `clay_4d_infinite_volume_chiral_continuum_measure = OPEN`。[非阿贝尔手征证书](../../unification/nonabelian_chiral_constructive/certificate.json)
+
+## 72.4 单位规范商消除、单模真空窗口与介观盲留出协议
+
+<a id="c-core-const-01"></a>
+
+**C-CORE-CONST-01（$(M,L,T)$ 奇偶子格指数 2 与 `QuotientDescent` / `FisherGauge` 单位规范消除）。** 纯内核证明原始普朗克量纲矩阵在 $(M,L,T)$ 基下满足 $\det M_{\mathrm{Planck}} = 2$（解释半整数普朗克幂次来源于指数 2 的奇偶子格）、显式分解为 $GL_3(\mathbb{Z})$ 单模矩阵与偶子格因子、并导出 $3\times 4$ Buckingham 矩阵的 $GL_4(\mathbb{Z})$ 整数核 $\mathbb{Z}\cdot(1,1,-3,1)$；随后证明 $(G,\hbar,c) \in (\mathbb{R}_{>0})^3$ 构成单位重标群下的自由传递主丛，经 `QuotientDescent` 与 `FisherGauge.p_inv_02` 精确消去全部 3 个单位规范自由度，将四维重力—真空常数 $(G,\Lambda,\hbar,c)$ 唯一压缩为单一切量无关的无量纲不变量：
+$$
+\mathcal{I}_\Lambda := \frac{G\hbar\Lambda}{c^3} = \Lambda\,\ell_P^2 \in [2.829147\times 10^{-122},\; 2.947947\times 10^{-122}].
+$$
+同时量化记录：现行 `RC05`/`RC12` 示范参数所对应的模型常数 $\approx 3.939092\times 10^{-82}$ 仍比宇宙观测值高逾 40 个数量级（真实 $\Lambda$ 需对应 $g \approx 8.5\times 10^{-61}$），说明具体无量纲常数取值仍为外部物理输入。[无量纲常数证书](../../unification/core_dimensionless_constants/certificate.json)
+
+<a id="p-gut-desert-02"></a>
+
+**P-GUT-DESERT-02（$(3,3,1)$ 一圈沙漠大统一 $>83\sigma$ 排除与双步中间阈值共线修复）。** 纯内核证明经典 $SU(5)$ 超荷归一化因子 $3/5$ 及标准模型三代一圈 $\beta$ 系数 $(41/10, -19/6, -7)$ 的代际无关性与精确 RG 标度不变统一判据 $\Delta_{123} = 0$，并在整个 PDG-2024 $3\sigma$ 观测参数盒上证明 $\Delta_{123}^{\mathrm{obs}} \in [-42.292449, -39.018165] < -38 < 0$，从而在 $[83.22\sigma, 88.22\sigma]$ 显著性下严格排除无中间新物理的最小单步 $(3,3,1)$ 沙漠大统一，并给出双步中间阈值共线修复的充要条件（40 位区间包络 $1\sigma$ 区间为 $[-41.261262, -40.106623]$）。[沙漠排除与常量证书](../../unification/core_dimensionless_constants/certificate.json)
+
+<a id="p-unimodular-lambda-09"></a>
+
+**P-UNIMODULAR-LAMBDA-09（无迹单模引力辐射真空商除、历史体积隔离与双侧可行熵窗口）。** 在一般非对角 $4\times 4$ 洛伦兹度规上证明无迹投影算子 $S_{\mu\nu} - \frac{1}{4}(g^{\alpha\beta}S_{\beta\alpha})g_{\mu\nu}$ 通过 `QuotientDescent` 与 `FisherGauge.p_inv_02` 精确商除比观测真空能大逾 $10^{120}$ 倍的任意多扇区辐射/相变/Overlap 零点能偏移 $T_{\mu\nu} \mapsto T_{\mu\nu} - \Delta\rho_{\mathrm{vac}}g_{\mu\nu}$，并由缩并 Bianchi 恒等式 $\nabla^\mu G_{\mu\nu} = 0$ 与能量动量守恒恢复全局四维体积共轭积分常数 $\Lambda_{\mathrm{int}} = \frac{1}{4}(R + 8\pi G T)$；纯内核证明 Weinberg 局域光滑标量平衡调节禁行定理对照全局 Kaloper–Padilla 四维体积历史平均隔离恒等消除圈偏移并界定历史残余 $\le \frac{1}{4} B_{\mathrm{hist}}$；联立 `UEOT.V3.ViabilityKernel` 导出束缚晕坍缩三次阈值 $500/729$（对应稀有结构组织 $\Omega>0$ 上限 $\mathcal{I}_{\Lambda,\max} \in [9.273858\times 10^{-120}, 9.792627\times 10^{-120}]$）与 Gibbons–Hawking de Sitter 视界信息容量 $S_{\mathrm{dS}} = \frac{3\pi}{\mathcal{I}_\Lambda} \in [3.197065\times 10^{122}, 3.331314\times 10^{122}]$，同时保持精确观测点 $2.89\times 10^{-122}$ 的第一性原理起源开放。[单模真空选择证书](../../unification/unimodular_vacuum_selection/certificate.json)
+
+<a id="p-meso-bmv-06"></a>
+
+**P-MESO-BMV-06（介观 BMV 对易稳定子见证、Lindblad 退相干阈值与盲留出硬件合同）。** 纯内核证明双路径量子引力纠缠见证算符 $W_{\mathrm{BMV}} = I\otimes I - X\otimes X + Y\otimes Z + Z\otimes Y$ 为谱 $\{\pm 2\}$ 的对易稳定子算符，利用三维 Lagrange 恒等式与 Cauchy–Schwarz 不等式严格证明全体可分与 LOCC 经典重力中介系综均满足 $\operatorname{Im}\operatorname{Tr}(W_{\mathrm{BMV}}\rho_{\mathrm{LOCC}})=0 \land \operatorname{Re}\operatorname{Tr}(W_{\mathrm{BMV}}\rho_{\mathrm{LOCC}})\ge 0$（Kafri–Taylor–Milburn 经典失相极限定标为 $+1$）；解析导出全 $4\times 4$ 退极化与空间退相干开放演化迹并证出违背 LOCC 的精确速率阈值 $\Gamma < \frac{\ln(\cos^2(\phi/2)+\sin\phi)}{2T}$；证明差分 $\pm\Delta\phi$ 测量精确消去对称 SPAM 偏移且在缺失原始 shot 时强制 `deviceCertified = false`。在 $0.5\text{ K}, 10^{-15}\text{ Pa}$ $^{4}\mathrm{He}$ 低温超高真空协议中，总环境退相干率 $\Gamma_{\mathrm{env}} \in [0.018095, 0.018096]\text{ s}^{-1}$ 远低于阈值 $[0.125907, 0.125914]\text{ s}^{-1}$（安全裕度 $>6.95\times$），SPAM 校准 95% 置信度分别需 69 次差分运行与 435 次稳定子测量，并与 SISC 双模浴一起纳入[硬件认证合同](../../../validation/physics_unification/HARDWARE_CERTIFICATION_CONTRACT.md)等待真机数据。[介观引力测量证书](../../unification/mesoscopic_decoherence_gravimetry/certificate.json)
+
+## 72.5 哲学 v3.1 组织完整性、非分裂总成与四大不可约前沿
+
+<a id="p-phil31-omega-01"></a>
+
+**P-PHIL31-OMEGA-01（组织完整性 $\Omega$ 排他性判据与自主量子时钟—指针持久充要条件）。** 直接导入 `UEOT.V3.PersistenceOmega`、`ViabilityKernel`、`RegisterDecisionRepresentation` 与 `OperationalHorizonMinimumScale`，纯内核证明被动 Gibbs 平衡态在干预下具有精确零构成性修复分化且热故障下可行核为空，而预付有限钱包自修复在修复费用 $c_{\mathrm{rep}} \le B$ 时达成全时域完整持久，并在自主量子时钟—控制器—指针模型上证明非捕获持续性与严格正记录可区分性（$d_{\mathrm{TV}} > 2.69\times 10^{-30}$ 与 $5.04\times 10^{-23}$）同时成立**当且仅当**传感器尺度超越 `AH01` 普朗克视界底线 $L > L_{\min}\ell_P$ 且预付相干/能量预算严格为正（$\eta_{\mathrm{bud}} > 0$）。[哲学 v3.1 桥证书](../../unification/philosophy_v31_omega_bridge/certificate.json)
+
+<a id="p-phil31-realiz-02"></a>
+
+**P-PHIL31-REALIZ-02（无“第二股力”宏观商实现、第 12 章秩三 $\Pi/\Phi$ 阻断与第 21/25 章非演绎壁）。** 利用 `QuotientDescent` 与 `RepresentationCovariance` 证明粗粒化宏观动力学仅是微观规则沿商映射的唯一前推（强加独立“第二股力”会引入非零因果重复计数缺陷 $3/4$），证明扩展动作权限（`dispatch2`）合法打破旧合并商，利用 Fréchet 导数链式法则对 $(s,b,q) \mapsto (s,b,bq)$（$\det J = b > 0$，最小奇异值 $\sigma_3 \in [0.467832, 0.467833]$）严格排除光滑二维 $\Pi/\Phi$ 普遍瓶颈（反驳标量自由能单论），并构造对称反模型形式化锁定[《哲学著作》v3.1](../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md)第 21 章（现象意识不从功能物理学演绎）与第 25 章（指数增长率 $\max(1,\lambda_0,\lambda_1)$ 与最小主体能力在 $M_{\mathrm{dom}}$ 下严格反向、增长不产生道德规范约束）。[三卷对齐矩阵](../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md)
+
+<a id="p-phil31-lakatos-03"></a>
+
+**P-PHIL31-LAKATOS-03（第 28 章 Lakatos 研究纲领非免疫性定理与诚实 `OPEN` 守恒）。** 形式化 `HardCore`–`FormalBridge`–`EmpiricalBelt`–`NormativeLayer` 四层契约，证明事后缩减定义域逃避反例构成退化研究纲领漂移，为保护带（秩三 $\Pi/\Phi$ 与一圈沙漠 $SU(5)$）及均匀硬核（200-shot LOCC 零相位与玻尔兹曼对照）构造显式不缩域反驳见证，同时证明任意有限次零失败样本均保持 `empirical_universality = UNVERIFIED` 与 `physical_unification = OPEN`。[哲学 v3.1 桥证书](../../unification/philosophy_v31_omega_bridge/certificate.json)
+
+<a id="c-unified-synth-10"></a>
+
+**C-UNIFIED-SYNTH-10（跨扇区因果—手征—单模非分裂总成与最小四假设独立约化定理）。** 在单一 `UnifiedCoupledSystem` 类型中联立并消除此前八模型分裂：(i) 因果叶状四单形正高度与反射正定转移（$\alpha > 7/12$）及高于 `AH01` 底线的晶格间距；(ii) 同一 $4\times 4$ 单模无迹引力投影同时精确消去玻色时钟/控制器真空能（$\approx +1.281\times 10^{114}\,\mathrm{J/m}^3$）与 45-Weyl Overlap 费米海 $O(a^{-4})$ 负零点能偏移（$\approx -2.280\times 10^{114}\,\mathrm{J/m}^3$），残差为 $0$ 且保留全部动态粒子—空穴应力（$\approx 5.625\times 10^{12}\,\mathrm{J/m}^3$）；(iii) 单模 Bianchi 积分常数在时空块上守恒当且仅当 $(3,3,1)$ 手征规范与引力异常全部抵消；(iv) 自主时钟指针正对比度、`M-40.1`/`M-40.6` 闭合检验商与 `PersistenceOmega` 稳态流动（$t=10$ 逼近 $1/2$）全部由构造性见证 `exists_admissible_unified_coupled_system` 共同满足；最后通过 `six_redundant_gauge_and_vacuum_parameters_eliminated` 商除 6 个冗余坐标（雅可比行列式为 2），并以 $4\times 4$ 逻辑独立反模型将终极物理闭环严格约化为**四条相互独立、不可删减的开放前沿假设 $H_1$–$H_4$**。[跨扇区总成证书](../../unification/unified_causal_chiral_unimodular/certificate.json)
+
+| 定量门控指标 | 精确解析值或角色 | 40位向外区间下界 | 40位向外区间上界 |
+|---|---|---:|---:|
+| `AH01` 最小传感器尺 ($L_{\min}/\ell_P$, $\mathrm{SNR}=1$) | 纯Fock抗压缩下界 | `0.153021391482` | `0.153021391483` |
+| `AH05` $S^3$ Sobolev–Green 级数 | $\pi^2/12 - 55/576$ | `0.726980922313` | `0.726980922314` |
+| `AH07` 平直空间 Lichnerowicz 门限 | `2048/9375` | `0.218453333333` | `0.218453333334` |
+| 因果四单形 Wick 正定阈值 | `7/12` | `0.583333333333` | `0.583333333334` |
+| 单位规范消除后观测常数 $\mathcal{I}_\Lambda^{\mathrm{obs}}$ | $G\hbar\Lambda_{\mathrm{obs}}/c^3$ | `2.829147e-122` | `2.947947e-122` |
+| `ViabilityKernel` 晕坍缩上限 $\mathcal{I}_{\Lambda,\max}$ | $\Omega>0$ 结构阈值 | `9.273858e-120` | `9.792627e-120` |
+| de Sitter 因果视界信息容量 $S_{\mathrm{dS}}$ | $3\pi/\mathcal{I}_\Lambda^{\mathrm{obs}}$ | `3.197065e+122` | `3.331314e+122` |
+| BMV $0.5\text{ K}$ 稳定子 95% 校准测量数 | SPAM 校准 / 差分 | `69` | `435` |
+
+| 不可约假设 | 当前主线已证范围 | 仍开放的终极缺口 | 主线治理状态 |
+|---|---|---|---|
+| `H1` 洛伦兹量子几何连续统 | $\alpha>7/12$ 反射正定与微超空间 $O(a^2)$ 极限 | 全4D局域自旋-2与非微扰 $\hat{\mathcal{H}}_{\mathrm{tot}}\Psi=0$ | `OPEN` |
+| `H2` 四维非阿贝尔手征连续统 | $2^4$ 非对易 $SU(2)$ Overlap 与 Lüscher 商等价 | 无限体积连续统测度与质量隙 (Clay 难题) | `OPEN` |
+| `H3` 无量纲常数点与阈值 | 单位商压缩与单模消除 $10^{120}$ 圈偏移 | $\mathcal{I}_\Lambda^{\mathrm{obs}}\approx 2.89\times 10^{-122}$ 与味耦合定值机制 | `OPEN` |
+| `H4` 真机硬件盲留出认证 | 确定性合成基准与逐 shot HDF5 合同完备 | 真实量子器件 SISC 与介观引力实验实测 | `device_certified = false` |
+
+**72.6 与既有第 0–71 章及三卷架构的收口判断。** 第72章把既有的离散量子内核、第71章相关浴辨识、`all_harmonic_horizon` 345 项全谐波检验以及哲学 v3.1 / 数学 v4.2 桥接为单一互锁框架；同时按照第 28 章可证伪合同与第 48 章独立状态轴，明确宣布 $H_1$–$H_4$ 四条不可约边界依然 `OPEN`——既不靠增加特设参数伪造“终极方程”，也不将计算自洽误称为自然界实证。[验证总账本](../../../validation/physics_unification/VALIDATION_LEDGER.json)
+
 <a id="appendix-a"></a>
 
 # 附录 A. 符号、单位与标准定理责任表
@@ -10614,6 +10749,25 @@ $\theta$ 为环边界扭转，$\eta$ 为规范不变扭转；$\mathcal A,\mathca
 | [P-QMEM-03](#p-qmem-03) | 71 | P-QMEM-03（因果断开后的带符号响应）。 |
 | [P-ROB-08](#p-rob-08) | 71 | P-ROB-08（内点插值与完整输出证书）。 |
 | [P-FIELD-01](#p-field-01) | 71 | P-FIELD-01（两模匹配与类空信号）。 |
+| [C-QSEL-05](#c-qsel-05) | 72 | C-QSEL-05（双份实参考零间隙与商下降复量子选择）。 |
+| [C-LR-CONE-01](#c-lr-cone-01) | 72 | C-LR-CONE-01（离散输运证书到 Lieb–Robinson 涌现光锥与 Minkowski 共形类）。 |
+| [C-GPT-RECON-02](#c-gpt-recon-02) | 72 | C-GPT-RECON-02（有限维 GPT 传递正交对称与自对偶锥 Hurwitz 重构）。 |
+| [C-MATH42-BRIDGE-01](#c-math42-bridge-01) | 72 | C-MATH42-BRIDGE-01（数学著作 v4.2 第 32–40 章闭合检验、记忆分离与极小化最大机制辨识）。 |
+| [P-HORIZON-CLOCK-01](#p-horizon-clock-01) | 72 | P-HORIZON-CLOCK-01（抗压缩操作型普朗克传感器下界与 RG 挤压禁行定理）。 |
+| [P-ADM-ALLHARM-02](#p-adm-allharm-02) | 72 | P-ADM-ALLHARM-02（$S^3$ 十五维共形—Killing 闭合、全谐波椭圆性与缩并 Bianchi 传播）。 |
+| [P-FLAT-DIRAC-03](#p-flat-dirac-03) | 72 | P-FLAT-DIRAC-03（渐近平直 $\Lambda=0$ 局域时钟屏障、半经典压缩与 Dirac 闭合三分法）。 |
+| [P-DISCRETE-QG-01](#p-discrete-qg-01) | 72 | P-DISCRETE-QG-01（连续统 Pauli–Villars 鬼模阻断 vs 普朗克图 Wheeler–DeWitt 商下降）。 |
+| [P-LORENTZ-QG-07](#p-lorentz-qg-07) | 72 | P-LORENTZ-QG-07（因果叶状 Wick 反射正定性、$O(a^2)$ 双标度连续极限与谱维数流）。 |
+| [P-CHIRAL-CLOCK-02](#p-chiral-clock-02) | 72 | P-CHIRAL-CLOCK-02（Lüscher 手征投影分解、15-Weyl $(3,3,1)$ 全部异常抵消与时钟 Dirac 谱隙）。 |
+| [P-NONABELIAN-CHIRAL-08](#p-nonabelian-chiral-08) | 72 | P-NONABELIAN-CHIRAL-08（非阿贝尔 $SU(N)$ Lüscher 测度商障碍、Witten / Dai–Freed 不变量与 Clay 连续统边界）。 |
+| [C-CORE-CONST-01](#c-core-const-01) | 72 | C-CORE-CONST-01（$(M,L,T)$ 奇偶子格指数 2 与 `QuotientDescent` / `FisherGauge` 单位规范消除）。 |
+| [P-GUT-DESERT-02](#p-gut-desert-02) | 72 | P-GUT-DESERT-02（$(3,3,1)$ 一圈沙漠大统一 $>83\sigma$ 排除与双步中间阈值共线修复）。 |
+| [P-UNIMODULAR-LAMBDA-09](#p-unimodular-lambda-09) | 72 | P-UNIMODULAR-LAMBDA-09（无迹单模引力辐射真空商除、历史体积隔离与双侧可行熵窗口）。 |
+| [P-MESO-BMV-06](#p-meso-bmv-06) | 72 | P-MESO-BMV-06（介观 BMV 对易稳定子见证、Lindblad 退相干阈值与盲留出硬件合同）。 |
+| [P-PHIL31-OMEGA-01](#p-phil31-omega-01) | 72 | P-PHIL31-OMEGA-01（组织完整性 $\Omega$ 排他性判据与自主量子时钟—指针持久充要条件）。 |
+| [P-PHIL31-REALIZ-02](#p-phil31-realiz-02) | 72 | P-PHIL31-REALIZ-02（无“第二股力”宏观商实现、第 12 章秩三 $\Pi/\Phi$ 阻断与第 21/25 章非演绎壁）。 |
+| [P-PHIL31-LAKATOS-03](#p-phil31-lakatos-03) | 72 | P-PHIL31-LAKATOS-03（第 28 章 Lakatos 研究纲领非免疫性定理与诚实 `OPEN` 守恒）。 |
+| [C-UNIFIED-SYNTH-10](#c-unified-synth-10) | 72 | C-UNIFIED-SYNTH-10（跨扇区因果—手征—单模非分裂总成与最小四假设独立约化定理）。 |
 
 <a id="appendix-c"></a>
 
@@ -10725,6 +10879,8 @@ $\theta$ 为环边界扭转，$\eta$ 为规范不变扭转；$\mathcal A,\mathca
 [QM3114] 本轮内核与执行报告：`physics/qm/UEOT_QM_KERNEL_v31.14.md`、`UEOT_QM_EXECUTION_v31.14.md`；完整证明、原始合成记录与交审：`physics/qm/kernel/evidence/v31.14/`；现行前提与全物理责任：`physics/qm/audits/PERSISTENT_BATH_v31.14/PREMISES_AND_RESPONSIBILITIES.md`。
 
 [QM3115] [相关源与可复核计算](../correlated_bath/README.md)。[证据与开放物理责任](../ROADMAP.md)。
+
+[QM3116] [物理统一工作空间总览](../../unification/README.md)。[纯净核心 Lean 4 形式化](../../../formalization/ueot-physics-unification/README.md)。[PR #468 全谐波边界扩展](../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md)。[哲学—数学—物理跨分支映射矩阵](../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md)。
 
 <a id="appendix-d"></a>
 
@@ -11637,7 +11793,7 @@ print(json.dumps(result,ensure_ascii=False,indent=2))
 
 ## E.1 完整语义主源与派生阅读版
 
-[相关浴新章](#ch-71)为3.12版连续候选书稿增加七项结果。[版本入口](README.md)记录各印本的构建与受检页。[第70章印本](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.pdf)保留3.11版原貌。现有210项稳定结果，其中203项沿用原编号，账本保留126项旧主张。新章提供书面论证、区间计算与合成数据，经验与形式证明范围见[研究材料](../correlated_bath/README.md)。
+[第72章](#ch-72)为3.13版连续候选书稿增加十九项跨部门统一与跨层次桥接结果。[版本入口](README.md)记录各印本的构建与受检页。[第71章印本](https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f88270c0f38ae6fb6f77e26093/physics/qm/book/UEOT_PHYSICS.pdf)保留3.12版原貌。现有229项稳定结果，其中210项沿用原编号，账本[CLAIM_LEDGER_v31.16.json](../status/CLAIM_LEDGER_v31.16.json)保留133项旧主张并新增19项纯核心声明，总计152项。新章整合哲学著作 v3.1、数学著作 v4.2（1,051个 Lean 4 模块）、[PR #468全谐波边界](../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md)与 Wave 1–7 纯净核心验证，仍诚实保持 `physical_unification = OPEN` 与 `device_certified = false`，经验与形式证明范围见[研究材料](../../unification/README.md)。
 
 两种语言承担相同的科学责任。文字为自然阅读作适当调整，前提、公式、常数、结果编号、源码身份与经验限定则共同核对。翻译不静默改变数学符号；公式中的纯文字标签和有记录的编辑更正列入忠实性报告。
 
@@ -13248,3 +13404,11 @@ UEOTQM.OperationalEquivalence.symmetricUnit_hermitian
 第71章增加七项书面与计算结果。203项既有结果对象、126项原主张均保留原身份。继承的 Lean 执行对应历史158项输入集。第71章没有新增 Lean 声明、硬件观测或独立人工评议。
 
 在第70章合并后的源码上，PR #466 的 main 运行 44318642942 实际重建了既有 QM 库，审计定理公理，并检查保留的见证。第69–71章未增加 Lean 声明。[运行回执](../kernel/evidence/v31.14/integration-verification.json)记录这次执行对应的前一提交。
+
+## F.11 第72章的纯净核心形式化与诚实开放边界
+
+第72章追加十九项跨部门统一与跨层次桥接结果；既有210项结果编号、133项旧主张及历史 `ueot-qm`（158输入集）与 `ueot-core` 执行身份全部原样保留，未作任何回溯修改。
+
+新增形式证明由独立包[纯净核心形式化包](../../../formalization/ueot-physics-unification/README.md)承担（工具链 `leanprover/lean4:v4.33.1`，与 `ueot-core` 及 `ueot-qm` 字节级一致），覆盖31个独立模块、1,128条常数、582条机器校验定理与471条定义，零 `sorryAx`、零 `Lean.ofReduceBool`（`native_decide`）且零非标准公理；并在已合并提交 `e2c67e27` 上由 GitHub Actions `UEOT Physics Unification Gates`（[运行 45118737723](https://github.com/MurphyHoops/UEOT/actions/runs/45118737723)）联动31组高精度外区间套件与[物理统一验证台账](../../../validation/physics_unification/VALIDATION_LEDGER.json)（56项条目）全量通过。另在主线合并提交 `cc5670d5` 上，PR #467 已完成第71章及其前置继承证据的运行验证（[v31.15 集成回执](../kernel/evidence/v31.15/integration-verification.json)）。
+
+全部数学命题均在声明的离散、半经典、单圈、有效场论或有限维模型前提下成立；第72章没有新增硬件实测数据或独立人工同行评议，并继续诚实保留 `physical_unification = OPEN` 与 `device_certified = false`（包括四维非微扰量子场论、完全量子引力、普朗克实验检验及真实自主时钟—指针硬件实现）。
