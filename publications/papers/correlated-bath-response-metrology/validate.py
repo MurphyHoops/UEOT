@@ -152,6 +152,12 @@ def check_forbidden_jargon() -> dict:
         r"`0\.017009`",
         r"\$0\.017009\$",
         r"\$B_\{16\}\s*=",
+        r"\bincommensurate\b",
+        r"super-exponential",
+        r"6\\times 10\^4",
+        r"6×10",
+        r"annihilates cross-terms",
+        r"routinely conflates",
     ]
     retracted_files = [
         ROOT / "manuscript.md",
@@ -439,14 +445,24 @@ def check_pra_latex_source_zip_roundtrip() -> dict:
         for cmd in (
             ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "pra_manuscript.tex"],
             ["bibtex", "pra_manuscript"],
-            ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "pra_manuscript.tex"],
-            ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "pra_manuscript.tex"],
         ):
             proc = subprocess.run(cmd, cwd=tmpdir, env=ENV, capture_output=True, text=True, timeout=180)
             assert proc.returncode == 0, (
                 f"APS ZIP round-trip command {cmd} failed ({proc.returncode}):\n"
                 + "\n".join((proc.stdout + proc.stderr).splitlines()[-30:])
             )
+        for _ in range(4):
+            proc = subprocess.run(
+                ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "pra_manuscript.tex"],
+                cwd=tmpdir, env=ENV, capture_output=True, text=True, timeout=180,
+            )
+            assert proc.returncode == 0, (
+                f"APS ZIP round-trip pdflatex failed ({proc.returncode}):\n"
+                + "\n".join((proc.stdout + proc.stderr).splitlines()[-30:])
+            )
+            cur_log = (tmpdir / "pra_manuscript.log").read_text(encoding="utf-8", errors="replace")
+            if "Label(s) may have changed" not in cur_log and "Rerun to get" not in cur_log:
+                break
         log_summary = audit_tex_log(tmpdir / "pra_manuscript.log", "pra_pdflatex_zip_roundtrip")
         blg_summary = audit_blg_log(tmpdir / "pra_manuscript.blg", "pra_pdflatex_zip_blg")
         pdf_summary = check_pdf_text(tmpdir / "pra_manuscript.pdf")
@@ -524,6 +540,8 @@ def check_manuscript_numeric_parity() -> dict:
         "2.485478",
         "720{,}000",
         "408{,}000",
+        "6{,}766.5",
+        "10{,}828.8",
     ]
     missing = [lit for lit in required_literals if lit not in md_text]
     assert not missing, f"Missing expected exact figures in manuscript.md: {missing}"

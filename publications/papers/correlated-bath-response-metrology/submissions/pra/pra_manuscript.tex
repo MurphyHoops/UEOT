@@ -122,28 +122,30 @@ Certified Process Instruments and Local-Field Microcausality\par}
 \end{center}
 \vspace{4pt}
 \begin{abstract}
-\noindent Gaussian dephasing spectroscopy routinely conflates
-environmental occupation fluctuations with coherent system-bath
-back-action. Studying a spin qubit coupled longitudinally to a
-correlated two-mode bosonic reservoir over a compact domain, we prove an
-exact identification obstruction: unperturbed Ramsey decay depends
+\noindent Unperturbed pure-dephasing Ramsey spectroscopy accesses only
+the symmetric fluctuation kernel of a Gaussian bath, leaving coherent
+system-bath back-action hidden unless active interventions break
+time-interval symmetry. Studying a spin qubit coupled longitudinally to
+a correlated two-mode bosonic reservoir over a compact domain, we prove
+an exact identification obstruction: unperturbed Ramsey decay depends
 exclusively on the symmetric Keldysh fluctuation coordinates
 \((u, v) = (\lambda^2(2n+1), \lambda^2 c)\) (thermal occupation \(n\),
 cross-correlation \(c\)), leaving bare coupling \(w = \lambda^2\)
 completely unidentifiable along a one-dimensional parameter fiber
 despite a non-degenerate two-time Ramsey Jacobian. Inserting a
 causal-break pointer initialization followed by bath-preserving
-re-preparation isolates the state-independent retarded commutator phase,
-stabilizing global recovery with whole-domain inverse Lipschitz bounds
-(\(L_w \le 2.97\) vs.~\(L_n \le 722.05\), \(L_c \le 830.03\)) that
-explain a four-order-of-magnitude (\(\sim 6\times 10^4\)-fold) disparity
-in shot complexity. Promoting the probe to a stopped complete-record
-three-slot Bell process instrument separates Ramsey-equivalent
-parameters cleanly and establishes two non-overlapping rational
-certification guarantees: an infinite-bath Weyl calibration-polytope
-complete half-diamond envelope (\(\le 0.0339\) original and
-\(\le 0.0354\) swapped schedule, yielding \(\le 0.0461\) and
-\(\le 0.0476\) terminal Bell total-variation bounds), and uniform
+re-preparation---provided a shared phase reference is maintained across
+both pointer signs---isolates the state-independent retarded commutator
+phase, yielding a globally injective calibration map with explicit
+whole-domain inverse Lipschitz bounds (\(L_w \le 2.97\),
+\(L_\delta \le 5.40\) vs.~\(L_n \le 722.05\), \(L_c \le 830.03\)) under
+unknown readout visibility and shared phase offset. Promoting the probe
+to a stopped complete-record three-slot Bell process instrument
+separates Ramsey-equivalent parameters cleanly and establishes two
+non-overlapping rational certification guarantees: an infinite-bath Weyl
+calibration-polytope complete half-diamond envelope (\(\le 0.0339\)
+original and \(\le 0.0354\) swapped schedule, yielding \(\le 0.0461\)
+and \(\le 0.0476\) terminal Bell total-variation bounds), and uniform
 rational Duhamel total-number truncation bounds (\(B_{16} \le 0.0117\),
 bounded pointwise at fixed parameters to \(\le 0.0277\) for cutoff
 \(K=16\)). Across \(1{,}128{,}000\) synthetic benchmark draws---without
@@ -201,6 +203,14 @@ tensors, quantum combs, and induced quantum quenches
 \citep{chiribella2009, gutoskiWatrous2007, oreshkov2012, costaShrapnel2016, pollock2018pra, pollock2018prl, taranto2019, figueroaRomero2019, milzModi2021, white2020, wangClerk2021, white2022}
 allows active intermediate interventions to access the state-independent
 retarded bath commutator \citep{chin2012, giovannetti2011, haase2018}.
+Whereas quench-based quantum noise spectroscopy \citep{wangClerk2021}
+reads out bath response via quench-induced phase shifts, the present
+work establishes an exact one-dimensional free-Ramsey equivalence fiber
+for a correlated two-mode bath, proves a globally injective calibration
+inverse with explicit whole-domain Lipschitz bounds under unknown
+readout visibility and shared phase offset, and certifies
+complete-record sequential instruments in diamond norm alongside a
+local-field microcausality completion.
 
 Yet elevating multi-time process tomography into rigorous,
 hardware-independent certificates requires resolving three interlocking
@@ -210,10 +220,10 @@ challenges rarely treated within a single self-contained analysis:
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  \textbf{Global inverse identifiability vs.~sample-complexity
-  conditioning.} Proving local sensitivity near one nominal parameter
-  point does not rule out global degeneracies or quantify whole-domain
-  Lipschitz inversion bounds \citep{hoeffding1963, clopperPearson1934}.
+  \textbf{Global inverse identifiability vs.~worst-case conditioning.}
+  Proving local sensitivity near one nominal parameter point does not
+  rule out global degeneracies or quantify whole-domain Lipschitz
+  inversion bounds \citep{hoeffding1963, clopperPearson1934}.
 \item
   \textbf{Controlled infinite-dimensional Fock truncation and convex
   certification.} Truncating bosonic Fock space introduces
@@ -242,16 +252,16 @@ free-Ramsey invariance along \((u, v) = (\lambda^2(2n+1), \lambda^2 c)\)
 (\(\omega = (1, 3/2)\) over \(\mathcal{D}\)) and constructs a rational
 twin witness pair \((P_1, P_2)\). Section 3 breaks this degeneracy via
 pointer-eigenstate causal-break initialization, proving global Lipschitz
-stability (Theorem 2) and exposing a four-order-of-magnitude
-(\(\sim 6\times 10^4\)-fold) shot-complexity gap between bare coupling
-and bath occupations (Remark 1). Section 4 promotes the protocol to a
-stopped complete-record three-slot Bell process instrument that resolves
-\((P_1, P_2)\), validates \(1{,}128{,}000\) synthetic benchmark draws at
-\(\le 2\%\) combined primary familywise significance (agreeing with
-persistent unitary dynamics within \(4.82 \times 10^{-13}\), with
-hardware execution uncertified \citep{masanes2019, renou2021}), and
-rejects degraded detector visibility (\(\eta_{\mathrm{chal}} = 0.65\)).
-Section 5 derives uniform rational Duhamel truncation bounds \(B_K\)
+stability (Theorem 2) and exposing a sharp worst-case conditioning gap
+between recovering bare coupling and bath occupations (Remark 1).
+Section 4 promotes the protocol to a stopped complete-record three-slot
+Bell process instrument that resolves \((P_1, P_2)\), validates
+\(1{,}128{,}000\) synthetic benchmark draws at \(\le 2\%\) combined
+primary familywise significance (agreeing with persistent unitary
+dynamics within \(4.82 \times 10^{-13}\), with hardware execution
+uncertified \citep{masanes2019, renou2021}), and rejects degraded
+detector visibility (\(\eta_{\mathrm{chal}} = 0.65\)). Section 5 derives
+uniform rational Duhamel truncation bounds \(B_K\)
 (\(B_{16} \le 0.0117\)) \citep{hornJohnson2012, mascherpa2017} and
 separates fixed-parameter \(K=16\) Fock Choi bounds (\(\le 0.0277\))
 from Weyl calibration-polytope envelopes (\(\le 0.0339\) and
@@ -298,7 +308,7 @@ annihilation operators \((a_0, a_1)\) obeying
 \([a_j, a_k^\dagger] = \delta_{jk}\). Working in the rotating frame of
 the uncoupled qubit energy, the joint Hamiltonian reads
 \[H(\lambda) = \sum_{k=0}^{1} \omega_k a_k^\dagger a_k + \lambda\,\sigma_z \otimes \sum_{k=0}^{1} g_k \left(a_k + a_k^\dagger\right),
-\tag{1}\] with incommensurate bath frequencies
+\tag{1}\] with distinct bath frequencies
 \(\omega = (\omega_0, \omega_1) = (1, 3/2)\) and dimensionless coupling
 weights \(g = (g_0, g_1) = (1, 3/5)\). The scalar coupling
 \(\lambda \in [1/5, 2/5]\) sets the interaction scale.
@@ -538,8 +548,8 @@ at readout visibility \(\eta = 0.96\).}
 \end{figure}
 
 \subsection{3.2 Global Identifiability, Inverse Lipschitz Bounds, and
-Shot
-Complexity}\label{global-identifiability-inverse-lipschitz-bounds-and-shot-complexity}
+Worst-Case
+Conditioning}\label{global-identifiability-inverse-lipschitz-bounds-and-worst-case-conditioning}
 
 Consider seven normalized calibration observables acquired with
 symmetric readout visibility \(\eta \in [9/10, 1]\) and an unknown
@@ -597,24 +607,33 @@ outward-certified global Lipschitz inequalities \[\begin{aligned}
 
 \end{theorem}
 
-\Needspace{6\baselineskip}\begin{remark}[Experimental Shot-Budget Separation]\label{rem-shots}
+\Needspace{6\baselineskip}\begin{remark}[Worst-Case Conditioning and Sufficient Shot Budgets]\label{rem-shots}
 
-Theorem 2 reveals a striking \(\sim 6\times 10^4\)-fold conditioning gap
-between causal interaction coupling and bath occupation statistics.
-Because independent repeated sampling concentrates expectations as
-\(\delta_{\mathrm{obs}} = O(N_{\mathrm{shots}}^{-1/2})\) via Hoeffding
-or Cramér--Rao scaling \citep{hoeffding1963, giovannetti2011},
-estimating a parameter \(\theta\) to absolute precision \(\varepsilon\)
-scales as \(N_{\mathrm{shots}} = O(L_\theta^2/\varepsilon^2)\).
-Recovering bare coupling \(w = \lambda^2\) requires
-\(L_w^2 \approx 8.8/\varepsilon^2\) draws because \(w\) enters linearly
-in the causal phase above \(r_{\min} \ge 0.411787\). Conversely,
-isolating bath thermal occupation \(n\) or cross-correlation \(c\)
-incurs \(L_n^2 \approx 5.2\times 10^5/\varepsilon^2\) and
-\(L_c^2 \approx 6.9\times 10^5/\varepsilon^2\): \((n, c)\) suffer
-compounding exponential decay at \(t_2 = 3/2\)
-(\(m_{2,\min} \approx 0.0676\)) followed by division through
-\(w_{\min} = 1/25\).
+Combining Theorem 2's global inverse Lipschitz bounds (\(L_w \le 2.97\)
+vs.~\(L_n \le 722.05\), \(L_c \le 830.03\)) with independent-sampling
+Hoeffding concentration
+\(\delta_{\mathrm{obs}} = O(N_{\mathrm{shots}}^{-1/2})\)
+\citep{hoeffding1963} yields \textbf{sufficient worst-case shot budgets}
+scaling as \(N_{\mathrm{suff}}(\theta) = O(L_\theta^2/\varepsilon^2)\)
+at common absolute target accuracy \(\varepsilon\):
+\(L_w^2 \approx 8.8\) prefactor draws for bare coupling
+\(w = \lambda^2\) (entering linearly in the causal phase above
+\(r_{\min} \ge 0.411787\)), versus \(L_n^2 \approx 5.2\times 10^5\) and
+\(L_c^2 \approx 6.9\times 10^5\) for \((n, c)\) (which suffer
+compounding exponential decay at \(t_2 = 3/2\),
+\(m_{2,\min} \approx 0.0676\), followed by division through
+\(w_{\min} = 1/25\)). Crucially, a ratio of two global sufficient upper
+bounds does not by itself determine the ratio of minimal required sample
+counts: local Cramér--Rao variance lower bounds \citep{giovannetti2011}
+depend on both the parameter point and the shot allocation. Evaluating
+the local Fisher information matrix at \(P_1\) (\(\eta = 0.96\),
+\(\delta = 0.012\,\mathrm{rad}\)) under ideal binary readout with
+unknown \((\eta, \delta)\) and the Section 4.2 seven-setting shot
+allocation yields local variance lower-bound ratios relative to \(w\) of
+\(\approx 6.8\times 10^3\) for \(n\) (\(6{,}766.5\)) and
+\(\approx 1.1\times 10^4\) for \(c\) (\(10{,}828.8\)), confirming the
+strong qualitative conditioning disparity without overclaiming a
+universal complexity factor.
 
 \end{remark}
 
@@ -702,9 +721,11 @@ yields an eight-cell joint probability distribution across
 \[P(r, \pm \mid O) = \frac{1}{2}\Big(\operatorname{Tr}[B_r] \pm \eta\,\operatorname{Tr}[O B_r]\Big).
 \tag{20}\] Notably, since
 \([H(\lambda), \sigma_z] = [K_{\mathrm{fail}}, \sigma_z] = 0\) and
-\((Z\otimes Z)|\Phi^+\rangle = |\Phi^+\rangle\), cross-history bath
-terms cancel identically on the first-slot halt branch (\(h_0 = h'_0\),
-\(\mathcal{L}_{h_0, h_0} = 1\)), forcing
+\((Z\otimes Z)|\Phi^+\rangle = |\Phi^+\rangle\), off-diagonal
+cross-history terms (\(h_0 \neq h'_0\)) remain nonzero inside
+\(B_{\mathrm{f}}\) yet vanish identically when traced against the
+\(\sigma_z\)-diagonal operators \(I\otimes I\) and \(Z\otimes Z\),
+leaving only \(\mathcal{L}_{h_0, h_0} = 1\) and forcing
 \(\operatorname{Tr}[B_{\mathrm{f}}] = \operatorname{Tr}[(Z\otimes Z) B_{\mathrm{f}}] = \frac{1}{2}\operatorname{Tr}[K_{\mathrm{fail}}^\dagger K_{\mathrm{fail}}] = 3/16\)
 (Appendix C). Thus
 \[P(\mathrm{f}, \mathrm{ZZ}^-) = \frac{3}{32}(1 - \eta)\] holds
@@ -921,9 +942,11 @@ weights yields the exact rational uniform upper bound over
 \[B_K(\mathcal{D}) := 1 - \sum_{s=0}^{K} (1 - a_*)(1 - b_*)\left(\sum_{i=0}^{s} a_*^{\,i} b_*^{\,s-i}\right)\big(1 - h_K(s)\big).
 \tag{24}\] Evaluated in exact arbitrary-precision rational arithmetic
 (upward \(10^{-12}\) integer square-root ceiling, Appendix D),
-\(B_K(\mathcal{D})\) decays super-exponentially across
-\(K \in \{4, 8, 12, 13, 14, 16, 20, 24\}\) (rounded upward to 12
-decimals, Fig.~2a): \[\begin{aligned}
+\(B_K(\mathcal{D})\) decays rapidly across the tested truncation range
+\(K \in \{4, 8, 12, 13, 14, 16, 20, 24\}\) (while remaining
+asymptotically bounded below by the geometric thermal tail
+\((6/11)^{K+1}\); rounded upward to 12 decimals, Fig.~2a):
+\[\begin{aligned}
 B_4 &\le 0.629532048416, & B_8 &\le 0.221934875279, & B_{12} &\le 0.055985832631, \\
 B_{13} &\le 0.038466572543, & B_{14} &\le 0.025259114053, & B_{16} &\le 0.011677620430, \\
 B_{20} &\le 0.002098904698, & B_{24} &\le 0.000357107093. & &
@@ -1246,16 +1269,16 @@ Ramsey spectroscopy confines parameter inference to invariant level sets
 of \((u, v) = (\lambda^2(2n+1), \lambda^2 c)\) (Theorem 1), initializing
 definite pointer eigenstates prior to coherent probing isolates the
 retarded commutator phase, securing global inverse Lipschitz stability
-across \(\mathcal{D}\) (Theorem 2) and exposing a
-\(\sim 6\times 10^4\)-fold sample-complexity advantage for recovering
-bare coupling over bath occupations (Remark 1). Promoting this protocol
-to a stopped complete-record three-slot Bell process instrument resolves
-Ramsey-degenerate twins, delivers non-overlapping certified half-diamond
-budgets (fixed-parameter \(K=16\) rational Fock Choi error
-\(\le 0.0277\) alongside \(B_{16} \le 0.0117\) vs.~Weyl 4-cell polytope
-error \(\le 0.0339\) and \(\le 0.0354\)), and validates
-\(1{,}128{,}000\) synthetic benchmark draws at \(\le 2\%\) combined
-primary significance while rejecting degraded visibility
+across \(\mathcal{D}\) (Theorem 2) and exposing a sharp worst-case
+conditioning gap between bare coupling and bath occupations
+(\(L_w \le 2.97\) vs.~\(L_n \le 722.05\), \(L_c \le 830.03\), Remark 1).
+Promoting this protocol to a stopped complete-record three-slot Bell
+process instrument resolves Ramsey-degenerate twins, delivers
+non-overlapping certified half-diamond budgets (fixed-parameter \(K=16\)
+rational Fock Choi error \(\le 0.0277\) alongside \(B_{16} \le 0.0117\)
+vs.~Weyl 4-cell polytope error \(\le 0.0339\) and \(\le 0.0354\)), and
+validates \(1{,}128{,}000\) synthetic benchmark draws at \(\le 2\%\)
+combined primary significance while rejecting degraded visibility
 (\(\eta_{\mathrm{chal}} = 0.65\)) and agreeing with persistent unitary
 evolution within \(4.82 \times 10^{-13}\). Finally, embedding the two
 matched modes into a \((1+1)\)-dimensional Klein--Gordon field on
@@ -1362,12 +1385,13 @@ vs.~\(s'_0 = -1\)), \(\beta^{(+)} = \xi(t)\) and
 by \(e^{i\omega_k t}\) gives
 \(\Delta\beta_k = 2 e^{i\omega_k t}\xi_k(t) = 2 d_k(t)\), which upon
 substitution into Eq. (A1) immediately gives Eqs. (8)--(9) for all
-\(t \in \mathbb{R}\). Because \(\omega_0 = 1\) and \(\omega_1 = 3/2\)
-are incommensurate, at \((t_1, t_2) = (3/4, 3/2)\) the determinant
-\(\det M(3/4, 3/2) = -1.162022859636 \neq 0\) uniquely fixes \((u, v)\)
-from \((-\ln m(3/4), -\ln m(3/2))\). Along any level set \((u, v)\), Eq.
-(11) parametrizes all compatible triples in \(\mathcal{D}\) subject to
-\(w \in [1/25, 4/25]\), \(|c(w)| \le n(w) \iff w \le u - 2|v|\), and
+\(t \in \mathbb{R}\). At \((t_1, t_2) = (3/4, 3/2)\), the distinct
+frequencies \(\omega_0 = 1 \neq \omega_1 = 3/2\) yield a non-vanishing
+determinant \(\det M(3/4, 3/2) = -1.162022859636 \neq 0\), which
+uniquely fixes \((u, v)\) from \((-\ln m(3/4), -\ln m(3/2))\). Along any
+level set \((u, v)\), Eq. (11) parametrizes all compatible triples in
+\(\mathcal{D}\) subject to \(w \in [1/25, 4/25]\),
+\(|c(w)| \le n(w) \iff w \le u - 2|v|\), and
 \(n(w) \le 3/5 \iff w \ge 5u/11\), proving Theorem 1.
 
 Under the causal-break protocol of Section 3.1
@@ -1454,9 +1478,16 @@ trace preservation
 on Bell input and exact CPTP normalization for arbitrary \(\rho_{SR}\)).
 On branch \(\mathrm{f}\),
 \([U(\Delta t_0), \sigma_z] = [K_{\mathrm{fail}}, \sigma_z] = 0\)
-annihilates cross-terms \(h_0 \neq h'_0\), leaving diagonal weights
-\(\mathcal{L}_{h_0, h_0} = 1\); paired with
-\((Z\otimes Z)|\Phi^+\rangle = |\Phi^+\rangle\), this proves
+preserves the computational basis: although off-diagonal
+\(h_0 \neq h'_0\) coherences \(|h_0, h_0\rangle\langle h'_0, h'_0|\)
+remain nonzero inside \(B_{\mathrm{f}}\), they vanish identically upon
+tracing against the \(\sigma_z\)-diagonal operators \(I_S \otimes I_R\)
+and \(Z_S \otimes Z_R\) (equivalently
+\(M_{\mathrm{f}}^\dagger M_{\mathrm{f}} = (K_{\mathrm{fail}}^\dagger K_{\mathrm{fail}})\otimes I_B\)
+and
+\(M_{\mathrm{f}}^\dagger (Z \otimes I_B) M_{\mathrm{f}} = (K_{\mathrm{fail}}^\dagger Z K_{\mathrm{fail}})\otimes I_B\)),
+leaving only the unit diagonal weights \(\mathcal{L}_{h_0, h_0} = 1\).
+Paired with \((Z\otimes Z)|\Phi^+\rangle = |\Phi^+\rangle\), this proves
 \(\operatorname{Tr}[B_{\mathrm{f}}] = \operatorname{Tr}[(Z\otimes Z) B_{\mathrm{f}}] = \frac{1}{2}\operatorname{Tr}[K_{\mathrm{fail}}^\dagger K_{\mathrm{fail}}] = \frac{3}{16}\)
 and hence \(P(\mathrm{f}, \mathrm{ZZ}^-) = \frac{3}{32}(1 - \eta)\)
 identically across \(\mathcal{D}\) and all schedules. Likewise,
@@ -1537,8 +1568,9 @@ hence the pure-state half-trace defect
 by Eq. (23). Purifying \(\rho_B(n, c)\) across shells and invoking
 stochastic dominance of \((a_*, b_*) = (6/11, 3/8)\) across
 \(|c| \le n \le 3/5\) against the monotone envelope \(1 - h_K(s)\)
-yields Eq. (24) and the super-exponential values in Eq. (25), audited
-over all finite reference probes \(R\) (so
+yields Eq. (24) and the rapidly decaying bounds in Eq. (25)
+(asymptotically bounded below by the geometric thermal tail
+\((6/11)^{K+1}\)), audited over all finite reference probes \(R\) (so
 \(B_K(\mathcal{D}) \ge \frac{1}{2}\|\mathcal{E} - \mathcal{E}_K\|_\diamond\)).
 
 Given any numerically approximated normalized multi-slot Choi operator
