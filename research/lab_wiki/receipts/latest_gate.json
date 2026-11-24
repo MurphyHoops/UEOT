@@ -1,0 +1,42 @@
+{
+  "schema": "ueot.lab_wiki.gate_receipt.v1",
+  "timestamp_utc": "2026-11-24T10:48:56Z",
+  "git_head": "6dac746d",
+  "mode": "fast",
+  "overall_status": "PASS",
+  "checks": [
+    {
+      "name": "wiki_integrity",
+      "status": "PASS",
+      "duration_sec": 0.002,
+      "stats": {
+        "open_specs": 6,
+        "verified_lemmas": 14,
+        "dead_ends": 9
+      },
+      "errors": []
+    },
+    {
+      "name": "lean_dependency_lock",
+      "command": "/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B scripts/check_dependencies.py",
+      "cwd": "formalization/ueot-physics-unification",
+      "status": "PASS",
+      "returncode": 0,
+      "duration_sec": 0.021,
+      "output_tail": [
+        "PASS: exact Core + QM toolchain and dependency revisions inherited"
+      ]
+    },
+    {
+      "name": "lean_no_escapes",
+      "command": "/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B scripts/check_no_escapes.py",
+      "cwd": "formalization/ueot-physics-unification",
+      "status": "PASS",
+      "returncode": 0,
+      "duration_sec": 0.085,
+      "output_tail": [
+        "PASS: zero syntactic proof escapes in UEOTPhysicsUnification"
+      ]
+    }
+  ]
+}

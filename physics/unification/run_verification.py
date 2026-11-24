@@ -53,6 +53,10 @@ SUITES = [
     ("causal_spin2_graviton_h1", HERE / "causal_spin2_graviton_h1/verify_causal_spin2_h1.py", HERE / "causal_spin2_graviton_h1/certificate.json"),
     ("nonperturbative_4d_qg_h1d", HERE / "nonperturbative_4d_qg_h1d/verify_nonperturbative_4d_h1d.py", HERE / "nonperturbative_4d_qg_h1d/certificate.json"),
     ("nonperturbative_4d_measure_h1d4", HERE / "nonperturbative_4d_measure_h1d4/verify_nonperturbative_4d_h1d4.py", HERE / "nonperturbative_4d_measure_h1d4/certificate.json"),
+    ("nonabelian_lattice_massgap_h2", HERE / "nonabelian_lattice_massgap_h2/verify_nonabelian_lattice_h2.py", HERE / "nonabelian_lattice_massgap_h2/certificate.json"),
+    ("dimensionless_couplings_viability_h3", HERE / "dimensionless_couplings_viability_h3/verify_couplings_viability_h3.py", HERE / "dimensionless_couplings_viability_h3/certificate.json"),
+    ("bell_chsh_blind_holdout_h4", HERE / "bell_chsh_blind_holdout_h4/verify_bell_holdout_h4.py", HERE / "bell_chsh_blind_holdout_h4/certificate.json"),
+    ("cross_sector_post_wave10_synthesis", HERE / "cross_sector_post_wave10_synthesis/verify_cross_sector_post_wave10.py", HERE / "cross_sector_post_wave10_synthesis/certificate.json"),
 ]
 
 
@@ -199,6 +203,10 @@ def main() -> int:
             "UEOTPhysicsUnification.CausalSpin2GravitonContinuumH1",
             "UEOTPhysicsUnification.Nonperturbative4DQuantumGravityH1d",
             "UEOTPhysicsUnification.Nonperturbative4DMeasureLimitH1d4",
+            "UEOTPhysicsUnification.NonAbelianLatticeMassGapAndChiralIntegrabilityH2",
+            "UEOTPhysicsUnification.DimensionlessCouplingsFlavorAndVacuumWindowH3",
+            "UEOTPhysicsUnification.BellCHSHAndBlindHoldoutContractH4",
+            "UEOTPhysicsUnification.CrossSectorPostWave10UnificationSynthesis",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {

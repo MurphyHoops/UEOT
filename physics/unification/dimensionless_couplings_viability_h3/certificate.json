@@ -1,0 +1,362 @@
+{
+  "c_h3_window_04": {
+    "exact_apriori_constants_derived": false,
+    "h3_sub_hypothesis_decomposition": {
+      "four_way_independence_matrix": [
+        [
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          0
+        ]
+      ],
+      "h3a_unit_unimodular_reduction": "CLOSED",
+      "h3b_eft_flavor_viability_windows": "CLOSED",
+      "h3c_horizon_indistinguishability": "CLOSED",
+      "h3d_exact_apriori_constants_selection": "OPEN",
+      "wave11_constructive_witness": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    "premise_classification": {
+      "B_Domain_Bridge": [
+        "(M,L,T) Buckingham unit-gauge torsor reduction to I_Lambda = G hbar Lambda / c^3",
+        "AH01 gravitational horizon sensor floor L_min > 0.153 l_P",
+        "3x3 CKM unitarity triangle and 6-phase rephasing-invariant Jarlskog J",
+        "3x3 Type-I seesaw Schur-complement determinant and mode bounds"
+      ],
+      "C_Core_v3": [
+        "UEOT.V3.InformationPacking.packing_ncard_image",
+        "UEOT.V3.BinaryTesting.binaryRisk_lower_bound",
+        "UEOT.V3.ViabilityKernel.controlledInvariant_of_fixed",
+        "UEOT.V3.Compression.QuotientDescent",
+        "UEOT.V3.FisherGauge.p_inv_02"
+      ],
+      "E_Effective_Model": [
+        "2-loop EFT truncation with alpha_t in [0.02, 0.08] 4D box enclosure",
+        "Step-function intermediate threshold 3 x (1,3,0)_W + 2 x (8,1,0)_W avoiding DEAD-20261124-02",
+        "Weinberg 500/729 spherical top-hat halo collapse criterion",
+        "Flat k=0 FRW imposes no positive Lambda floor; closed-FRW positive floor is conditional on Omega_k0 < 0 (evaluated at |Omega_k0| = 0.0044)",
+        "Finite-patch TV response bound tvDist <= C_IR * R_ratio * |I_1 - I_2|"
+      ],
+      "O_Empirical_Observable": [
+        "PDG-2024 3-sigma couplings at M_Z: alpha_em^-1, sin^2(theta_W), alpha_s, m_H, m_t, J_CKM",
+        "Super-K 90% CL bound tau(p -> e+ pi0) > 2.4e34 yr",
+        "NuFIT 3-sigma NO and IO neutrino mass splittings & Planck+BAO sum m_nu < 0.12 eV",
+        "Planck-2018+BAO + FIRAS cosmological parameters (1-sigma [2.829e-122, 2.948e-122] and 3-sigma [2.713e-122, 3.071e-122])"
+      ],
+      "P_Standard_Physics": [
+        "1-loop & Machacek-Vaughn 2-loop gauge RGEs with Caswell-Jones adjoint threshold shifts",
+        "Dimension-6 gauge-mediated proton decay p -> e+ pi0",
+        "Coupled 1-loop Higgs quartic RGE stability/perturbativity 0 < lambda_H(mu) < 4*pi",
+        "Exact k=0 dust + negative-Lambda Friedmann Big Crunch bound I_AdS,min = -(4*pi^2/3)/(t_obs/t_P)^2",
+        "Conditional k=+1 closed-FRW (Omega_k0 < 0) Einstein-Lemaitre recollapse-avoidance floor"
+      ],
+      "S_Sector_Selection": [
+        "(3,3,1) SM anomaly cancellation, k_Y = 3/5 hypercharge norm, IR SU(2)_L AF",
+        "N_g >= 3 Kobayashi-Maskawa Dirac CP threshold (diracCPPhaseCount 3 = 1)"
+      ],
+      "X_Open_Conjecture": [
+        "H3d / H3*: exact first-principles derivation of I_Lambda^*, alpha_i, y_f, M_I, M_GUT"
+      ]
+    }
+  },
+  "device_certified": false,
+  "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/DimensionlessCouplingsFlavorAndVacuumWindowH3.lean",
+  "lean_theorems": [
+    "UEOTPhysicsUnification.DimensionlessCouplingsFlavorAndVacuumWindowH3.two_loop_threshold_collinearity_and_proton_decay_bound",
+    "UEOTPhysicsUnification.DimensionlessCouplingsFlavorAndVacuumWindowH3.threshold_repair_raises_gut_scale_above_desert_crossing",
+    "UEOTPhysicsUnification.DimensionlessCouplingsFlavorAndVacuumWindowH3.jarlskog_invariant_rephasing_and_ceiling",
+    "UEOTPhysicsUnification.DimensionlessCouplingsFlavorAndVacuumWindowH3.two_sided_cosmological_viability_and_operational_ilambda_indistinguishability",
+    "UEOTPhysicsUnification.DimensionlessCouplingsFlavorAndVacuumWindowH3.h3_frontier_sharp_decomposition_and_open_selection"
+  ],
+  "p_h3a_twoloop_gut_01": {
+    "M_GUT_GeV_3sigma_enclosure_40d": [
+      "27300637487113732.52281300038163718487211",
+      "56561321860407077.22307056065039191072367"
+    ],
+    "M_I_GeV_3sigma_enclosure_40d": [
+      "16140052694.62832626300217789946865103932",
+      "29795453117.30013927857648307354718801714"
+    ],
+    "alpha_GUT_inv_3sigma_enclosure_40d": [
+      "36.54886337212868155334373367286228381052",
+      "37.09185866414424903176420597721289945627"
+    ],
+    "caswell_jones_adjoint_2loop_shifts": {
+      "dB22": 64,
+      "dB33": 96
+    },
+    "collinearity_defect_db_exact_rational": "-46/3",
+    "higgs_quartic_window": {
+      "central_pdg2024_lambdaH_at_MGUT_40d": [
+        "-0.02327527103710247150387178657897997004665",
+        "-0.02327522670956422221803195443735937579873"
+      ],
+      "central_pdg2024_max_lambdaH_40d": [
+        "0.1292801978676812924306423694038774069963",
+        "0.1292801978696812924306423694038774069967"
+      ],
+      "central_pdg2024_metastable_min_lambdaH_40d": [
+        "-0.02327527103710247150387178657897997004665",
+        "-0.02327522670956422221803195443735937579873"
+      ],
+      "instability_control_min_lambdaH_40d": [
+        "-0.1618897546677722610723894969447347953472",
+        "-0.1618820997080586001277866964960949937123"
+      ],
+      "landau_pole_crossed_4pi": true,
+      "landau_pole_mu_crossing_GeV_40d": [
+        "208156566.970594249831256669940113003786",
+        "246400467.33063339159625238020186836006"
+      ],
+      "landau_pole_step_lambdaH_above_4pi_40d": [
+        "16.26864863886757556182822955394696432399",
+        "16.26864863886757556182822955394696432643"
+      ],
+      "lower_mt_stability_edge_min_lambdaH_40d": [
+        "0.004071992145588080164283554660822814946631",
+        "0.004072069020399342424137256455009539532883"
+      ],
+      "pdg2024_mH_3sigma_GeV": [
+        "124.8699999999999999999999999999999999999",
+        "125.5300000000000000000000000000000000001"
+      ],
+      "pdg2024_mt_pole_3sigma_GeV": [
+        "171.6999999999999999999999999999999999999",
+        "173.4400000000000000000000000000000000001"
+      ],
+      "rk4_discretization_n_vs_2n": [
+        100,
+        200
+      ],
+      "scalar_portal_exact_split_applied": true,
+      "scalar_portal_threshold_min_lambdaH_40d": [
+        "0.01879357477657502543838020675933658004652",
+        "0.01879357522011813040583879119099752788821"
+      ]
+    },
+    "intermediate_beta_shift_db": [
+      "0",
+      "4",
+      "4"
+    ],
+    "intermediate_multiplet": "3 x (1,3,0)_W + 2 x (8,1,0)_W",
+    "jacobian_constant_sign_verified_across_4d_box": true,
+    "one_loop_desert_excluded_dead_20261124_02": true,
+    "one_loop_sm_desert_delta123_3sigma_40d": [
+      "-42.29244889648494890914112123722728528032",
+      "-39.01816509761433940445215380167678519801"
+    ],
+    "proton_decay_M_GUT_min_GeV_40d": [
+      "4633489769423982.719982929432001176672648",
+      "5336335617159123.317599554144759731325717"
+    ],
+    "proton_decay_negative_controls": {
+      "both_strictly_excluded_by_superk": true,
+      "desert_M12_1p03e13_yr_40d": [
+        "439884265164004317113411.0691212003185133",
+        "751395681978257464648188.4144668744072956"
+      ],
+      "pure_triplet_2p4e14_yr_40d": [
+        "111806004718733612982516021393.913603739",
+        "190983301331715125973435424840.3663401119"
+      ]
+    },
+    "proton_decay_superk_bound_yr": "2.4e34",
+    "proton_decay_tau_2loop_GUT_yr_40d": [
+      "16441061408862153247987837400976088687.3",
+      "532913362503090810864202618366628370712"
+    ],
+    "rk4_n24_vs_n48_t_GUT_discretization_residual_40d": [
+      "2.952990400175028949605765994394184989643E-8",
+      "2.952990400175028949605765994394184989644E-8"
+    ],
+    "two_loop_top_yukawa_alpha_t_enclosure_40d": [
+      "0.01999999999999999999999999999999999999999",
+      "0.08000000000000000000000000000000000000001"
+    ]
+  },
+  "p_h3b_jarlskog_02": {
+    "ckm_unitarity_3x3_symbolic_verified": true,
+    "dirac_cp_phase_count_3gen": 1,
+    "jarlskog_algebraic_ceiling_40d": [
+      "0.09622504486493762741819146341699290927459",
+      "0.09622504486493762741819146341699290927461"
+    ],
+    "jarlskog_dft_sharpness_attained": true,
+    "jarlskog_pdg2024_3sigma_direct_40d": [
+      "0.00002759999999999999999999999999999999999999",
+      "0.00003510000000000000000000000000000000000001"
+    ],
+    "jarlskog_pdg2024_3sigma_parametric_40d": [
+      "0.00002177532196798887224212377820972621285659",
+      "0.0000421273184124680928865876024174367124831"
+    ],
+    "jarlskog_rephasing_6phase_symbolic_verified": true,
+    "nufit_3sigma_io_sum_mnu_min_eV_40d": [
+      "0.09727546898750717183191176436195977940892",
+      "0.1008759052708463414068222794862591090232"
+    ],
+    "nufit_3sigma_no_sum_mnu_min_eV_40d": [
+      "0.05749866728710996749872818412590570235423",
+      "0.05990774721638407471075542968210862098633"
+    ],
+    "planck_bao_sum_mnu_upper_eV": "0.12",
+    "seesaw_3gen_trace_gev_40d": [
+      "0.0002648248014762991461018645554111056083531",
+      "0.0002648248014762991461018645554111056083532"
+    ],
+    "seesaw_3x3_schur_determinant_identity_verified": true
+  },
+  "p_h3c_viability_03": {
+    "I_AdS_crunch_min_3sigma_40d": [
+      "-2.034532973572381642931685564355781767891E-121",
+      "-1.999185876630228095970453336125653550354E-121"
+    ],
+    "I_AdS_crunch_min_40d": [
+      "-2.022647691362405283754291926182520485594E-121",
+      "-2.010865723198454819742393374511552605595E-121"
+    ],
+    "I_AdS_turnaround_min_40d": [
+      "-5.056619228406013209385729815456301213983E-122",
+      "-5.027164307996137049355983436278881513989E-122"
+    ],
+    "I_Lambda_max_rare_halo_40d": [
+      "9.273858803754591266170935755707959075988E-120",
+      "9.79262644645790420525820209098375389654E-120"
+    ],
+    "I_Lambda_max_typical_1sigma_40d": [
+      "1.406878728154770586156894550199251865749E-120",
+      "1.485577700914502800916207250543313183713E-120"
+    ],
+    "I_Lambda_max_typical_3sigma_40d": [
+      "1.33154661799668747268309295059073387532E-120",
+      "1.567757339872607700677873858239715000032E-120"
+    ],
+    "I_Lambda_obs_3sigma_40d": [
+      "2.713559233872118987871123747038236963768E-122",
+      "3.070000666177881394205100124482621380104E-122"
+    ],
+    "I_Lambda_obs_40d": [
+      "2.829147589298466130210377646371635582556E-122",
+      "2.947946780686782438018546281541555078586E-122"
+    ],
+    "ah01_binary_testing_lab_1m_min_shots_40d": [
+      "3.926004176269390626554780574160299194059E+103",
+      "4.2630248945738894043405790138702232041E+103"
+    ],
+    "ah01_binary_testing_lab_1m_risk_lower_bound_40d": [
+      "0.4999999999999999999999999999999999999999",
+      "0.5"
+    ],
+    "ah01_binary_testing_lab_1m_tv_bound_40d": [
+      "1.08299404294571661568853485646294277885E-52",
+      "1.12852094418543887212364282328278944398E-52"
+    ],
+    "closed_frw_k_plus1_recollapse_floor": {
+      "I_Lambda_min_closed_40d": [
+        "5.20353808170231530841836696814174985193E-129",
+        "5.744904590405427895947988847846721898471E-129"
+      ],
+      "conditional_on": "Omega_k0 < 0 (k = +1 closed FRW Einstein-Lemaitre recollapse avoidance under E_Effective_Model / P_Standard_Physics)",
+      "planck_95cl_abs_Omega_k0_edge": "0.0044",
+      "strictly_below_I_Lambda_obs_1sigma_and_3sigma": true
+    },
+    "flat_frw_k0_dynamical_viable_window": "I_AdS,min < 0 <= I_Lambda < I_{Lambda,max} (flat k=0 FRW has t_Lambda -> +infinity as I_Lambda -> 0+; no unconditional positive floor)",
+    "gibbons_hawking_S_dS_obs_nats_40d": [
+      "3.197065164987032604053309941024355950085E+122",
+      "3.331313642462325221593507452297554116814E+122"
+    ],
+    "illustrative_positive_witness_for_lean_Imin": "1e-124",
+    "illustrative_positive_witness_note": "Illustrative positive witness inside (0, I_obs) for Lean separation/indistinguishability theorem; NOT an unconditional flat-FRW physical floor",
+    "information_packing_directionality_upper_bound_verified": true,
+    "information_packing_upper_cap_at_S_obs_1e104_40d": [
+      "9.424777960769379715387930149838508652591E-104",
+      "9.424777960769379715387930149838508652592E-104"
+    ],
+    "negative_control_ads_crunch_m3e_121": {
+      "I_Lambda_test": "-3.0e-121",
+      "rejected_by_observational_age": true,
+      "strictly_below_I_AdS_crunch_min": true,
+      "t_crunch_Gyr_40d": [
+        "11.3145933871764118043168605261099998231",
+        "11.31484767722631134675260664166326197869"
+      ]
+    },
+    "two_sided_window_nonempty_and_contains_obs_1sigma_and_3sigma": true
+  },
+  "physical_unification": "OPEN",
+  "premise_classification": {
+    "B_Domain_Bridge": [
+      "(M,L,T) Buckingham unit-gauge torsor reduction to I_Lambda = G hbar Lambda / c^3",
+      "AH01 gravitational horizon sensor floor L_min > 0.153 l_P",
+      "3x3 CKM unitarity triangle and 6-phase rephasing-invariant Jarlskog J",
+      "3x3 Type-I seesaw Schur-complement determinant and mode bounds"
+    ],
+    "C_Core_v3": [
+      "UEOT.V3.InformationPacking.packing_ncard_image",
+      "UEOT.V3.BinaryTesting.binaryRisk_lower_bound",
+      "UEOT.V3.ViabilityKernel.controlledInvariant_of_fixed",
+      "UEOT.V3.Compression.QuotientDescent",
+      "UEOT.V3.FisherGauge.p_inv_02"
+    ],
+    "E_Effective_Model": [
+      "2-loop EFT truncation with alpha_t in [0.02, 0.08] 4D box enclosure",
+      "Step-function intermediate threshold 3 x (1,3,0)_W + 2 x (8,1,0)_W avoiding DEAD-20261124-02",
+      "Weinberg 500/729 spherical top-hat halo collapse criterion",
+      "Flat k=0 FRW imposes no positive Lambda floor; closed-FRW positive floor is conditional on Omega_k0 < 0 (evaluated at |Omega_k0| = 0.0044)",
+      "Finite-patch TV response bound tvDist <= C_IR * R_ratio * |I_1 - I_2|"
+    ],
+    "O_Empirical_Observable": [
+      "PDG-2024 3-sigma couplings at M_Z: alpha_em^-1, sin^2(theta_W), alpha_s, m_H, m_t, J_CKM",
+      "Super-K 90% CL bound tau(p -> e+ pi0) > 2.4e34 yr",
+      "NuFIT 3-sigma NO and IO neutrino mass splittings & Planck+BAO sum m_nu < 0.12 eV",
+      "Planck-2018+BAO + FIRAS cosmological parameters (1-sigma [2.829e-122, 2.948e-122] and 3-sigma [2.713e-122, 3.071e-122])"
+    ],
+    "P_Standard_Physics": [
+      "1-loop & Machacek-Vaughn 2-loop gauge RGEs with Caswell-Jones adjoint threshold shifts",
+      "Dimension-6 gauge-mediated proton decay p -> e+ pi0",
+      "Coupled 1-loop Higgs quartic RGE stability/perturbativity 0 < lambda_H(mu) < 4*pi",
+      "Exact k=0 dust + negative-Lambda Friedmann Big Crunch bound I_AdS,min = -(4*pi^2/3)/(t_obs/t_P)^2",
+      "Conditional k=+1 closed-FRW (Omega_k0 < 0) Einstein-Lemaitre recollapse-avoidance floor"
+    ],
+    "S_Sector_Selection": [
+      "(3,3,1) SM anomaly cancellation, k_Y = 3/5 hypercharge norm, IR SU(2)_L AF",
+      "N_g >= 3 Kobayashi-Maskawa Dirac CP threshold (diracCPPhaseCount 3 = 1)"
+    ],
+    "X_Open_Conjecture": [
+      "H3d / H3*: exact first-principles derivation of I_Lambda^*, alpha_i, y_f, M_I, M_GUT"
+    ]
+  },
+  "result_ids": [
+    "P-H3A-TWOLOOP-GUT-01",
+    "P-H3B-JARLSKOG-02",
+    "P-H3C-VIABILITY-03",
+    "C-H3-WINDOW-04"
+  ],
+  "schema": "ueot-physics-unification-dimensionless-couplings-viability-h3/1",
+  "source_sha256": "a9492b9ff9eac28aa18e4d9081d8ccd462fb0426117cf231970c41bb5156442d",
+  "status": "PASS"
+}

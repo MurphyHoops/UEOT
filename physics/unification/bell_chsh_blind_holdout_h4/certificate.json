@@ -1,0 +1,261 @@
+{
+  "c_h4_contract_and_honesty": {
+    "h4_layer_decomposition": {
+      "constructive_witness_defects": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "four_way_logical_independence_verified": true,
+      "h4a_chsh_tsirelson_and_witness_thresholds": "CLOSED",
+      "h4b_nonselective_multicell_holdout_soundness": "CLOSED",
+      "h4c_calibration_power_and_portfolio_contracts": "CLOSED",
+      "h4d_raw_hardware_shot_execution": "OPEN"
+    },
+    "negative_control_gate_checks": {
+      "HOLDOUT_ENVELOPE_REJECTED": "REJECTED_AS_EXPECTED",
+      "INSUFFICIENT_DISCRIMINATION_POWER": "REJECTED_AS_EXPECTED",
+      "LOCC_BASELINE_NOT_VIOLATED": "REJECTED_AS_EXPECTED",
+      "MISSING_MANDATORY_HDF5_COLUMNS": "REJECTED_AS_EXPECTED",
+      "MODEL_SPECIFICATION_REJECTED": "REJECTED_AS_EXPECTED",
+      "POSTSELECTED_SHOT_DROP_REJECTED": "REJECTED_AS_EXPECTED"
+    },
+    "raw_hardware_h5_count": 0
+  },
+  "device_certified": false,
+  "h4a_chsh_tsirelson": {
+    "detection_efficiency_checks": {
+      "blocked_0p80": [
+        "1.89019335983756166",
+        "1.89019335983756167"
+      ],
+      "certified_0p85": [
+        "2.08853859762912234",
+        "2.08853859762912235"
+      ]
+    },
+    "detection_efficiency_critical_nonselective": [
+      "0.828427124746190097",
+      "0.828427124746190098"
+    ],
+    "landau_4x4_max_residual_upper": "1e-38",
+    "lhv_max_over_16_vertices": 2,
+    "spectral_cubic_max_residual_upper": "1e-37",
+    "tsirelson_bell_value": [
+      "2.82842712474619009",
+      "2.8284271247461901"
+    ],
+    "werner_checks": {
+      "sub_threshold_0p707": [
+        "1.99969797719555639",
+        "1.9996979771955564"
+      ],
+      "super_threshold_0p75": [
+        "2.12132034355964257",
+        "2.12132034355964258"
+      ]
+    },
+    "werner_critical_visibility": [
+      "0.707106781186547524",
+      "0.707106781186547525"
+    ]
+  },
+  "h4b_holdout_tv_and_ville": {
+    "anytime_valid_optional_stopping": {
+      "exact_mixture_stopped_mean": "1",
+      "subgaussian_eprocess_stopped_mean": [
+        "0.999438235343593012",
+        "0.999438235343593013"
+      ],
+      "ville_thresholds": {
+        "alpha_0p01_threshold": "100",
+        "alpha_0p05_threshold": "20"
+      }
+    },
+    "cdf_40bit_grid_tv_bound": [
+      "3.63797880709171295E-12",
+      "3.63797880709171296E-12"
+    ],
+    "dead_end_postselection_counterexample": {
+      "dropped_fraction": [
+        "0.509999999999999999",
+        "0.510000000000000001"
+      ],
+      "eta": "0.70",
+      "gate_verdict": "POSTSELECTED_SHOT_DROP_REJECTED",
+      "nonselective_S_eff": [
+        "1.56592929112563314",
+        "1.56592929112563315"
+      ],
+      "postselected_fake_S": "2.60"
+    },
+    "dropout_bias_delta_0p05_norm1": "1/10",
+    "dropout_bias_delta_0p05_norm2": "1/5",
+    "familywise_type1_union_bound": "1/50",
+    "hoeffding_calibration_radii": {
+      "N_150000": [
+        "0.00491400295604420313",
+        "0.00491400295604420314"
+      ],
+      "N_160000": [
+        "0.00475796290299330399",
+        "0.004757962902993304"
+      ],
+      "N_30000": [
+        "0.0109880446513497492",
+        "0.0109880446513497493"
+      ],
+      "N_40000": [
+        "0.00951592580598660798",
+        "0.00951592580598660799"
+      ]
+    },
+    "hoeffding_holdout_radius_24k": [
+      "0.0143639359976471166",
+      "0.0143639359976471167"
+    ],
+    "hoeffding_holdout_radius_60k": [
+      "0.00908455078348957588",
+      "0.00908455078348957589"
+    ],
+    "readout_challenge_f_ZZminus_gap": [
+      "0.0224374999981810105",
+      "0.0224374999981810106"
+    ],
+    "readout_challenge_single_cell_power": [
+      "0.956227823894755148",
+      "0.956227823894755149"
+    ]
+  },
+  "h4c_calibration_and_portfolio": {
+    "bmv_casimir_polder_shielded_rad": [
+      "0.000943029032092395244",
+      "0.000943029032092395245"
+    ],
+    "bmv_casimir_polder_unshielded_100um_rad": [
+      "0.943029032092395244",
+      "0.943029032092395245"
+    ],
+    "bmv_casimir_polder_unshielded_200um_rad": [
+      "0.00736741431322183784",
+      "0.00736741431322183785"
+    ],
+    "bmv_differential_contrast": [
+      "0.295932683326994988",
+      "0.295945538350339648"
+    ],
+    "bmv_power_margin_ratio_linear": [
+      "6.22154254267176742",
+      "6.22181280033214711"
+    ],
+    "bmv_sigma_total_linear": [
+      "0.0475658056337761885",
+      "0.0475658056337761886"
+    ],
+    "bmv_sigma_total_rss": [
+      "0.0335542740013156762",
+      "0.0335542740013156763"
+    ],
+    "correlated_bath_signed_y_error_upper": [
+      "0.00502728927199999999",
+      "0.00502728927200000001"
+    ],
+    "correlated_bath_signed_y_gap": [
+      "0.00939226131099999999",
+      "0.00939226131100000001"
+    ],
+    "flavor_3ch_blind_holdout": {
+      "p_flavor_03_falsified_epsK": [
+        "0.00245079999999999999",
+        "0.00245080000000000001"
+      ],
+      "p_flavor_03_valid_epsK": [
+        "0.00225027999999999999",
+        "0.00225028000000000001"
+      ],
+      "rank1_cyclic_J_imag_upper": "1e-38",
+      "rank1_cyclic_J_real": [
+        "0.00732662761540786069",
+        "0.0073266276154078607"
+      ],
+      "rank2_negative_control_im_J": [
+        "-0.000250517587167928061",
+        "-0.00025051758716792806"
+      ],
+      "rank2_rejection_chi2": [
+        "627.590614804404342",
+        "627.590614804404343"
+      ],
+      "two_channel_max_residual_upper": "1e-38"
+    },
+    "p_cosmo_02": {
+      "EG_lcdm_z1p48": [
+        "0.324269422310755373",
+        "0.324269422310755374"
+      ],
+      "EG_scalar_z1p48": [
+        "0.306445459541141033",
+        "0.306445459541141034"
+      ],
+      "EG_z1p48_rel_separation": [
+        "0.0549665233391423442",
+        "0.0549665233391423443"
+      ],
+      "f_lcdm_z1p48": [
+        "0.925156611629272313",
+        "0.925156611629272314"
+      ],
+      "f_scalar_z1p48": [
+        "0.848438088752606824",
+        "0.848438088752606825"
+      ],
+      "fsigma8_z1p48_rel_separation": [
+        "0.440570221470540478",
+        "0.440570221470540479"
+      ],
+      "p_plus_scalar": [
+        "0.917261752992875201",
+        "0.917261752992875202"
+      ],
+      "slope_0p38_to_1p48_rel_separation": [
+        "0.0422226102434668685",
+        "0.0422226102434668686"
+      ],
+      "synthetic_holdout_delta_chi2": [
+        "25.3807848776983334",
+        "25.3807848776983335"
+      ]
+    },
+    "paired_baseline_64cell_discrepancy": [
+      "4.81503725779930399E-13",
+      "4.81503725779930401E-13"
+    ],
+    "paired_baseline_verdict": "EQUIVALENT_NO_ADDED_GAIN",
+    "resource_separation_cqmem02_gap": [
+      "0.00173008942999999999",
+      "0.00173008943100000001"
+    ],
+    "theta_0p99_facets": 16,
+    "theta_0p99_nonempty_verified": true,
+    "theta_0p99_vertices": 24
+  },
+  "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/BellCHSHAndBlindHoldoutContractH4.lean",
+  "lean_theorems": [
+    "UEOTPhysicsUnification.BellCHSHAndBlindHoldoutContractH4.chsh_lhv_bound_two_and_tsirelson_two_sqrt_two",
+    "UEOTPhysicsUnification.BellCHSHAndBlindHoldoutContractH4.nonselective_dropout_bias_and_multicell_tv_holdout_soundness",
+    "UEOTPhysicsUnification.BellCHSHAndBlindHoldoutContractH4.calibration_polytope_power_margin_and_paired_baseline_gate",
+    "UEOTPhysicsUnification.BellCHSHAndBlindHoldoutContractH4.h4_frontier_sharp_decomposition_and_honest_device_status"
+  ],
+  "physical_unification": "OPEN",
+  "result_ids": [
+    "P-H4A-CHSH-TSIRELSON-01",
+    "P-H4B-HOLDOUT-TV-02",
+    "P-H4C-PORTFOLIO-03",
+    "C-H4-CONTRACT-04"
+  ],
+  "schema": "ueot-physics-unification-bell-holdout-h4/1",
+  "source_sha256": "cb63f93d05df06251ef07e8f961ee64d9862d4e8b78245d61a218ff21606e000",
+  "status": "PASS",
+  "synthetic_protocol_only": true
+}
