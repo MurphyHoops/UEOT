@@ -50,6 +50,7 @@ SUITES = [
     ("nonabelian_chiral_constructive", HERE / "nonabelian_chiral_constructive/verify_nonabelian_chiral.py", HERE / "nonabelian_chiral_constructive/certificate.json"),
     ("unimodular_vacuum_selection", HERE / "unimodular_vacuum_selection/verify_unimodular_lambda.py", HERE / "unimodular_vacuum_selection/certificate.json"),
     ("unified_causal_chiral_unimodular", HERE / "unified_causal_chiral_unimodular/verify_unified_synthesis.py", HERE / "unified_causal_chiral_unimodular/certificate.json"),
+    ("causal_spin2_graviton_h1", HERE / "causal_spin2_graviton_h1/verify_causal_spin2_h1.py", HERE / "causal_spin2_graviton_h1/certificate.json"),
 ]
 
 
@@ -193,6 +194,7 @@ def main() -> int:
             "UEOTPhysicsUnification.NonAbelianChiralConstructiveBoundary",
             "UEOTPhysicsUnification.UnimodularVacuumConstantSelection",
             "UEOTPhysicsUnification.UnifiedCausalChiralUnimodularSynthesis",
+            "UEOTPhysicsUnification.CausalSpin2GravitonContinuumH1",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
