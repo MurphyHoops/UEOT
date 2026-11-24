@@ -1,29 +1,43 @@
-% Standalone master manuscript typesetting template (XeLaTeX + STIX Two Math + natbib).
+% Dual-engine standalone master manuscript typesetting template (XeLaTeX + pdfLaTeX).
 \documentclass[11pt,letterpaper]{article}
 \usepackage[margin=25mm,headheight=15pt,headsep=8mm]{geometry}
-\usepackage[no-math]{fontspec}
-\IfFontExistsTF{Times New Roman}{%
-  \setmainfont{Times New Roman}%
-}{%
-  \setmainfont{Liberation Serif}%
-}
-\IfFontExistsTF{Helvetica}{%
-  \setsansfont{Helvetica}%
-}{%
-  \setsansfont{Latin Modern Sans}%
-}
-\IfFontExistsTF{Menlo}{%
-  \setmonofont[Scale=0.81]{Menlo}%
-}{%
-  \setmonofont[Scale=0.84]{Courier New}%
-}
-\usepackage{amsmath,amssymb,amsthm}
-\usepackage{unicode-math}
-\IfFontExistsTF{STIX Two Math}{%
-  \setmathfont{STIX Two Math}%
-}{%
-  \setmathfont{Latin Modern Math}%
-}
+\usepackage{iftex}
+\ifTUTeX
+  \usepackage[no-math]{fontspec}
+  \IfFontExistsTF{Times New Roman}{%
+    \setmainfont{Times New Roman}%
+  }{%
+    \setmainfont{Liberation Serif}%
+  }
+  \IfFontExistsTF{Helvetica}{%
+    \setsansfont{Helvetica}%
+  }{%
+    \setsansfont{Latin Modern Sans}%
+  }
+  \IfFontExistsTF{Menlo}{%
+    \setmonofont[Scale=0.81]{Menlo}%
+  }{%
+    \setmonofont[Scale=0.84]{Courier New}%
+  }
+  \usepackage{amsmath,amssymb,amsthm}
+  \usepackage{unicode-math}
+  \IfFontExistsTF{STIX Two Math}{%
+    \setmathfont{STIX Two Math}%
+  }{%
+    \setmathfont{Latin Modern Math}%
+  }
+\else
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage{lmodern}
+  \usepackage{textcomp}
+  \usepackage{upquote}
+  \usepackage{amsmath,amssymb,amsthm}
+  \DeclareUnicodeCharacter{211D}{\texorpdfstring{\ensuremath{\mathbb{R}}}{\unichar{"211D}}}
+  \DeclareUnicodeCharacter{2212}{\texorpdfstring{\ensuremath{-}}{\unichar{"2212}}}
+  \DeclareUnicodeCharacter{00D7}{\texorpdfstring{\ifmmode\times\else\texttimes\fi}{\unichar{"00D7}}}
+  \DeclareUnicodeCharacter{00B9}{\texorpdfstring{\ifmmode^1\else\textonesuperior\fi}{\unichar{"00B9}}}
+\fi
 \usepackage{microtype}
 \usepackage{setspace}
 \setstretch{1.12}
