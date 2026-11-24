@@ -1,0 +1,97 @@
+% Standalone master manuscript typesetting template (XeLaTeX + natbib).
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=25mm,headheight=15pt,headsep=8mm]{geometry}
+\usepackage{fontspec}
+\IfFontExistsTF{Liberation Serif}{%
+  \setmainfont{Liberation Serif}%
+}{%
+  \setmainfont{Times New Roman}%
+}
+\IfFontExistsTF{Liberation Sans}{%
+  \setsansfont{Liberation Sans}%
+}{%
+  \IfFontExistsTF{Latin Modern Sans}{%
+    \setsansfont{Latin Modern Sans}%
+  }{%
+    \setsansfont{Helvetica}%
+  }%
+}
+\IfFontExistsTF{DejaVu Sans Mono}{%
+  \setmonofont[Scale=0.84]{DejaVu Sans Mono}%
+}{%
+  \IfFontExistsTF{Menlo}{%
+    \setmonofont[Scale=0.81]{Menlo}%
+  }{%
+    \setmonofont[Scale=0.84]{Courier New}%
+  }%
+}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{longtable,booktabs,array,calc}
+\newcounter{none}
+\usepackage{needspace}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xcolor}
+\definecolor{linkblue}{HTML}{1F4463}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage[unicode,colorlinks=true,allcolors=linkblue,bookmarksnumbered=true]{hyperref}
+\usepackage{xurl}
+\urlstyle{same}
+\hypersetup{
+  pdftitle={$title$},
+  pdfauthor={$author$},
+  pdfsubject={Open Quantum Systems, Quantum Metrology, Process Tomography, and Local-Field Microcausality},
+  pdfkeywords={$keywords$}
+}
+\setlength{\parindent}{1.15em}
+\setlength{\parskip}{2pt}
+\setlength{\emergencystretch}{2.5em}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{2}
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\providecommand{\tightlist}{\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}}
+\providecommand{\passthrough}[1]{#1}
+\providecommand{\pandocbounded}[1]{#1}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize Qian: Correlated-Bath Response Metrology}
+\fancyhead[R]{\footnotesize Process Instruments and Local-Field Microcausality}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.25pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+\begin{document}
+\thispagestyle{plain}
+\begin{center}
+{\fontsize{18}{22.5}\selectfont\bfseries $title$\par}
+\vspace{11pt}
+{\large $author$\par}
+\vspace{3pt}
+{\small Independent Researcher\par}
+\vspace{5pt}
+{\small $date$\par}
+\end{center}
+\vspace{4pt}
+\begin{abstract}
+\noindent $abstract$
+\end{abstract}
+\vspace{4pt}
+\noindent{\small\textbf{Keywords:} $keywords$}
+\vspace{12pt}
+
+$body$
+
+\clearpage
+\begingroup
+\setstretch{1.02}
+\small
+\setlength{\bibsep}{4.5pt}
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+\endgroup
+\end{document}

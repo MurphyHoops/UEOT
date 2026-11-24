@@ -1,0 +1,105 @@
+{
+  "validated_at_utc": "2026-11-24T05:13:10Z",
+  "status": "PASS",
+  "venue": "Physical Review A (APS)",
+  "review_model": "single-anonymous",
+  "pra_pdf": {
+    "pages": 24,
+    "chars": 63837,
+    "clean_glyphs": true
+  },
+  "citations": {
+    "bib_entries": 61,
+    "cited_keys": 61,
+    "missing": [],
+    "unused": []
+  },
+  "tex_logs": {
+    "pra_latexmk": {
+      "overfull": 0,
+      "bib_warnings": 0
+    },
+    "pra_blg": {
+      "overfull": 0,
+      "bib_warnings": 0
+    }
+  },
+  "jargon_audit": {
+    "checked_files": 7,
+    "clean": true
+  },
+  "standalone_verifier": {
+    "status": "PASS",
+    "part1_ramsey_ambiguity_and_causal_break": {
+      "ramsey_equivalent_u_v": [
+        "9/50",
+        "9/400"
+      ],
+      "w_fiber_interval": [
+        "9/110",
+        "27/200"
+      ],
+      "ramsey_means_P1_P2": {
+        "m_short": 0.730531651137,
+        "m_long": 0.360071794945
+      },
+      "causal_break_P1_P2": {
+        "modulus_invariant": 0.735275955165,
+        "im_z_plus_P1": 0.119850748164,
+        "im_z_plus_P2": 0.147616987004
+      },
+      "aligned_Y_threshold": 0.605581355419,
+      "ramsey_det": -1.162022859636,
+      "causal_break_F": 1.819240198557,
+      "lipschitz_upper": {
+        "u": 51.240114,
+        "v": 31.421917,
+        "w": 2.965319,
+        "lambda": 7.413296,
+        "n": 722.04769,
+        "c": 830.027702
+      },
+      "stopped_bell_splitting_YZ_minus_eta096": {
+        "original": {
+          "p1_ppp_YZ_minus": 0.266807646507,
+          "p2_ppp_YZ_minus": 0.265077557077,
+          "gap": 0.00173008943
+        },
+        "swapped": {
+          "p1_ppp_YZ_minus": 0.267240862732,
+          "p2_ppp_YZ_minus": 0.265659518191,
+          "gap": 0.001581344541
+        }
+      }
+    },
+    "part2_duhamel_total_number_cutoff": {
+      "uniform_duhamel_half_trace_upper": {
+        "4": 0.629532048416,
+        "8": 0.221934875279,
+        "12": 0.055985832631,
+        "13": 0.038466572543,
+        "14": 0.025259114053,
+        "16": 0.01167762043,
+        "20": 0.002098904698,
+        "24": 0.000357107093
+      }
+    },
+    "part3_local_kg_field_vs_two_mode": {
+      "p_mix": 0.95970049506,
+      "spacelike_gap": 0.655649375,
+      "timelike_colocated": {
+        "two_mode_phase": 0.163731618,
+        "full_field_phase": 0.20916132,
+        "im_z_plus": 0.145988513,
+        "bare_energy_gain": 0.296126
+      },
+      "spacelike_antipodal": {
+        "two_mode_spurious_phase": 0.001330794,
+        "full_field_160_phase": -1.959097632577313e-17,
+        "phase_tail_upper_M160": 2.4854774053275542e-12,
+        "bare_energy_gain": 0.071709
+      },
+      "two_qubit_reuse_excitation_excess": "3/80"
+    }
+  }
+}

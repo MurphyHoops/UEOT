@@ -1,0 +1,426 @@
+---
+title: "Separating Fluctuation Attenuation from Signed Causal Response in Correlated Quantum Baths: Certified Process Instruments and Local-Field Microcausality"
+author: "Degui Qian"
+date: "November 2026"
+keywords: "Open quantum systems, non-Markovian process tensor, correlated Gaussian bath, Ramsey interferometry, diamond norm, microcausality, local quantum probes"
+abstract: "Gaussian dephasing spectroscopy routinely conflates environmental occupation fluctuations with causal back-action phase response. Working within an analytically solvable spin coupled to a correlated two-mode bosonic bath, we prove an exact identification obstruction: unperturbed Ramsey decay is invariant along one-dimensional parameter fibers of $(u, v) = (\\lambda^2(2n+1), \\lambda^2 c)$ at constant noise-plus-correlation amplitude, leaving the bare coupling scale $w = \\lambda^2$ completely unidentifiable despite a non-degenerate Ramsey Jacobian. Introducing a signed causal-break intervention between preparation and readout activates a cross-time commutator phase $\\exp(is w F)$, unlocking global parameter recovery over $\\mathcal{D} = [1/5, 2/5] \\times \\{|c| \\le n \\le 3/5\\}$ with explicit whole-domain inverse Lipschitz bounds. We extend this separation to sequential stopped-record three-slot quantum instruments certified over a four-cell convex calibration polytope in exact rational arithmetic, bounding both analog and discretized process errors in complete-output half-diamond norm ($\\le 0.0339$ at cutoff $K=16$) after provable Duhamel total-number truncation ($B_{16} = 0.01168$) and Choi completely-positive trace-preserving repair. On $1{,}128{,}000$ synthetic calibration and holdout draws—explicitly reported as synthetic without hardware certification and agreeing to $4.82 \\times 10^{-13}$ with persistent unitary evolution—the framework separates Ramsey-degenerate parameters and rejects mis-specified readout axes at $1\\%$ familywise significance. Finally, embedding the two-mode coupling inside a $(1+1)$-dimensional Klein--Gordon field on $\\mathbb{R} \\times S^1$ demonstrates that naive mode truncation creates spurious spacelike signaling ($0.001331\\,\\mathrm{rad}$), whereas summing compactly supported field modes restores relativistic microcausality below $2.49 \\times 10^{-12}\\,\\mathrm{rad}$."
+---
+
+# 1. Introduction
+
+Distinguishing statistical environment fluctuations from coherent, causality-carrying probe-bath back-action is a central problem across quantum sensing, non-Markovian open-system spectroscopy, and foundational quantum theory [@breuerPetruccione2002; @weiss2012; @rivas2014; @breuer2016; @degen2017]. In standard pure-dephasing spectroscopy—extending from Ramsey's separated-oscillating-fields method [@ramsey1950] to dynamical-decoupling noise magnetometry [@bylander2011; @szankowski2017; @smirne2016]—an experimenter prepares a coherence superposition on a two-level probe, allows it to interact with an uncontrolled bosonic reservoir, and records the terminal Bloch vector magnitude. Because the probe observable commutes with the interaction Hamiltonian, free-evolution interferometry depends solely on the symmetric anticommutator (noise) kernel of the bath [@feynmanVernon1963; @caldeiraLeggett1983; @leggett1987; @luczka1990; @palma1996; @reina2002; @zurek2003]. Consequently, distinct combinations of bare system-bath coupling strength, bath thermal occupation, and cross-mode correlation can collapse onto identical free-decay trajectories at every positive interrogation time.
+
+Multi-time operational frameworks resolve part of this ambiguity by replacing single-step dynamical maps [@davies1974; @gorini1976; @lindblad1976; @kraus1983] with higher-order quantum combs and process tensors [@chiribella2009; @gutoskiWatrous2007; @oreshkov2012; @costaShrapnel2016; @pollock2018pra; @pollock2018prl; @taranto2019; @figueroaRomero2019; @milzModi2021; @white2020]. When an intermediate intervention acts on the system between two interaction windows, the bath retains an antisymmetric causal imprint proportional to the retarded commutator function rather than the bath state covariance alone [@chin2012; @giovannetti2011; @haase2018]. Yet turning multi-time process tomography into rigorous, hardware-independent guarantees raises three mathematical and physical challenges that are seldom treated within one unified, self-contained derivation:
+
+1. **Exact global identifiability vs. local sensitivity.** Knowing that an intervention phase breaks a degeneracy locally near one parameter point does not prove global injectivity or yield finite inverse Lipschitz bounds over an entire physical domain.
+2. **Controlled infinite-dimensional Fock truncation and convex certification.** Bosonic baths live on infinite-dimensional Hilbert spaces. Finite Fock or total-number Galerkin cutoffs introduce non-trace-preserving leakage that must be bounded prior to measurement [@woods2014; @tamascelli2018], repaired to an exact completely positive, trace-preserving (CP/TP) quantum channel [@nielsenChuang2010; @watrous2018], and audited in complete-output diamond norm [@kitaev1997; @aharonovKitaevNisan1998] across continuous parameter polytopes rather than pointwise fits.
+3. **Mode-truncation artifacts vs. relativistic field microcausality.** Retaining only two discrete harmonic bath modes preserves algebraic positivity while violating spacetime locality: two spatially separated probes coupling to the same truncated modes exhibit apparent spacelike phase signaling, illustrating why finite-mode open-system models cannot substitute for covariant quantum-field detector theory [@haag1996; @wald1994; @unruhWald1984; @sorkin1993; @fewsterVerch2020; @bostelmann2021; @deRamon2021; @poloGomez2022].
+
+The present work addresses all three problems in an analytically transparent, computationally self-verifying two-mode correlated Gaussian bath model and its local scalar-field embedding. First, we derive the exact Weyl-ordered influence functional [@wigner1932; @weedbrook2012; @serafini2017] for a qubit coupled to two correlated bosonic modes with incommensurate frequencies $\omega = (1, 3/2)$ and dimensionless couplings $g = (1, 3/5)$ over the compact domain $\mathcal{D} = [1/5, 2/5] \times \{|c| \le n \le 3/5\}$. We prove that all unperturbed Ramsey experiments depend strictly on the quadratic fluctuation coordinates $u = \lambda^2(2n+1)$ and $v = \lambda^2 c$, yielding a non-zero two-time Jacobian determinant $\det M(3/4, 3/2) = -1.162022859636$ for $(u,v)$ while leaving $w = \lambda^2$ completely degenerate along an exact analytical fiber. We construct the explicit witness pair $P_1 = (3/10, 1/2, 1/4)$ and $P_2 = (1/3, 31/100, 81/400)$, which match identically on $(u, v) = (9/50, 9/400)$ and all free Ramsey observables ($m(3/4) = 0.730532$, $m(3/2) = 0.360072$), then show how a single signed causal-break intervention ($s \in \{+1, -1\}$ preparing the initial pointer eigenstate prior to a $\pi/2$ coherence pulse) lifts the fiber via the retarded response $F(2/3, 3/4) = 1.819240198557$, establishing whole-domain global inverse Lipschitz constants for $(\lambda, n, c)$.
+
+Second, we promote this single-intervention protocol to a stopped-record three-slot sequential process instrument featuring disjoint outcome branches $\{\mathrm{f}, \mathrm{pf}, \mathrm{ppf}, \mathrm{ppp}\}$ coupled symmetrically with an ancillary Bell reference qubit [@pollock2018pra; @milzModi2021] at readout visibility $\eta = 0.96$. The Ramsey-degenerate pair $(P_1, P_2)$ splits measurably on the complete terminal event $P(\mathrm{ppp}, \mathrm{YZ}^-)$ by $\Delta = 1.730089 \times 10^{-3}$ (and $1.581345 \times 10^{-3}$ under timing permutation). Using a four-cell convex calibration polytope with explicit second-order Taylor linearization bounds and exact Hoeffding concentration intervals [@hoeffding1963] across $1{,}128{,}000$ synthetic draws ($720{,}000$ calibration and $408{,}000$ holdout), we demonstrate simultaneous interval calibration over 100 cells, clean model separation ($71{,}816/120{,}000 = 0.598467$ below the aligned-$Y$ midpoint threshold $0.605581$ separating $P_1$ from $P_2$), and $1\%$-level falsification of a rotated-readout mis-specification (`readout_challenge`, $796/24{,}000$). Crucially, we maintain strict scientific transparency: no hardware experiments are claimed (experimental device status is uncertified), and every complete-record observable agrees with standard unitary probe-bath quantum evolution to $4.82 \times 10^{-13}$, providing no evidence for dynamics beyond orthodox quantum mechanics [@chiribella2011; @masanesMuller2011; @dakicBrukner2011; @barnumWilce2011; @masanes2019; @renou2021].
+
+Third, we eliminate uncontrolled truncation heuristics by proving an explicit rational Duhamel remainder bound [@hornJohnson2012] for total-number Galerkin cutoffs $K$ in Fock space uniformly over $\mathcal{D}$, yielding half-trace error $B_{16} = 0.011677620430$ and $B_{20} = 0.002098904698$. Combining $B_{16}$ with rational Choi matrix repair (absorbing floating-point defects below $10^{-8}$) and polytope Frobenius transport yields a rigorous complete-output half-diamond certificate of $0.033892297103$ ($0.035357047207$ under conservative parameter drift), strictly enclosing both the eight-cell Bell analog process error ($0.046090$) and its 40-bit discretized readout ($0.046090$), as well as finite integer cutoff simulations ($0.0276$ at $K=16$).
+
+Fourth, we embed the two-mode bath inside an explicit massive Klein--Gordon field on a compact spacetime cylinder $\mathbb{R} \times S^1$ of circumference $L = 4\pi/\sqrt{5}$ using $C^2$ compactly supported four-box convolution probe profiles. When two antipodal probes interact within strictly spacelike separated windows (geometric gap $0.655649 > 2/5$), keeping only the matched two modes induces a spurious superluminal phase of $0.001330794\,\mathrm{rad}$, whereas summing modes to $M = 160$ drives the residual phase to $-1.96 \times 10^{-17}\,\mathrm{rad}$ with an analytic Fourier tail below $2.485477 \times 10^{-12}\,\mathrm{rad}$—while simultaneously strengthening co-located timelike signaling from $0.163732\,\mathrm{rad}$ to $0.209161\,\mathrm{rad}$.
+
+The remainder of the paper is organized as follows. Section 2 derives the exact correlated-bath Weyl influence functional and proves the free-Ramsey ambiguity theorem. Section 3 establishes causal-break phase identifiability and whole-domain inverse Lipschitz stability. Section 4 analyzes the stopped complete-record Bell protocol, polytope linearization bounds, and synthetic holdout benchmarks. Section 5 derives the rational Duhamel total-number cutoff bounds, Choi CP/TP repair, and complete-output half-diamond certificates. Section 6 analyzes the $(1+1)$-dimensional Klein--Gordon local-field embedding, compares mode-truncated versus covariant microcausality, and summarizes thermodynamic bath-reuse and model-selection limitations. Section 7 concludes, followed by complete, self-contained mathematical proofs in Appendices A–E.
+
+---
+
+# 2. Correlated Two-Mode Gaussian Bath Model and Free-Ramsey Equivalence
+
+## 2.1 Microscopic Hamiltonian and Gaussian Environment State
+
+Consider a two-level probe $S$ with computational basis $\{|0\rangle, |1\rangle\}$ and Pauli-$Z$ operator $\sigma_z = |0\rangle\langle 0| - |1\rangle\langle 1|$ coupled longitudinally to a two-mode bosonic reservoir $B$ with annihilation operators $(a_0, a_1)$ obeying canonical commutation relations $[a_j, a_k^\dagger] = \delta_{jk}$. In the interaction picture with respect to the uncoupled probe energy (absorbed into the rotating frame), the joint Hamiltonian reads
+$$
+H(\lambda) = \sum_{k=0}^{1} \omega_k a_k^\dagger a_k + \lambda\,\sigma_z \otimes \sum_{k=0}^{1} g_k \left(a_k + a_k^\dagger\right),
+\tag{1}
+$$
+with incommensurate bath frequencies $\omega = (\omega_0, \omega_1) = (1, 3/2)$ and fixed dimensionless coupling weights $g = (g_0, g_1) = (1, 3/5)$. The free scalar parameter $\lambda \in [1/5, 2/5]$ governs the overall coupling strength.
+
+The bath starts at $t = 0$ in a zero-mean, gauge-invariant correlated Gaussian state $\rho_B(n, c)$ determined by its normally ordered second-moment matrix [@weedbrook2012; @serafini2017]:
+$$
+\operatorname{Tr}\!\left[\rho_B(n, c)\, a_j^\dagger a_k\right] = \begin{pmatrix} n & c \\ c & n \end{pmatrix}_{jk}, \qquad \operatorname{Tr}\!\left[\rho_B(n, c)\, a_j a_k\right] = 0,
+\tag{2}
+$$
+where $n \in [0, 3/5]$ denotes the common mean thermal occupation per mode and $c \in \mathbb{R}$ is the real inter-mode cross-correlation. Positivity of the bath covariance requires $|c| \le n$; accordingly, all parameters range over the compact physical domain
+$$
+\mathcal{D} := \left\{(\lambda, n, c) \in \mathbb{R}^3 : \frac{1}{5} \le \lambda \le \frac{2}{5},\; |c| \le n \le \frac{3}{5}\right\}.
+\tag{3}
+$$
+Introducing the two-mode bosonic displacement operator $D(\eta) = \prod_{k=0}^1 \exp(\eta_k a_k^\dagger - \overline{\eta_k} a_k)$ for $\eta = (\eta_0, \eta_1) \in \mathbb{C}^2$, the symmetrically ordered Wigner characteristic function [@wigner1932; @serafini2017] of $\rho_B(n, c)$ takes the exact Gaussian form
+$$
+\chi_B(\eta; n, c) := \operatorname{Tr}\!\left[\rho_B(n, c)\, D(\eta)\right] = \exp\!\left[-\frac{2n+1}{2}\left(|\eta_0|^2 + |\eta_1|^2\right) - 2c\,\operatorname{Re}\!\left(\overline{\eta_0}\eta_1\right)\right],
+\tag{4}
+$$
+where the factor of $2$ multiplying $c$ arises from expanding the Hermitian quadratic form $\eta^\dagger C \eta$ (derived explicitly in Appendix A via normal-mode diagonalization $a_\pm = (a_0 \pm a_1)/\sqrt{2}$ with thermal occupancies $n \pm c$).
+
+## 2.2 Exact Reduced Dynamics via Weyl Displacement Algebra
+
+Because $\sigma_z$ commutes with $H(\lambda)$, each computational pointer state $|s_0\rangle \in \{|0\rangle, |1\rangle\}$ with eigenvalue $s_0 = \pm 1$ generates a coherent bosonic displacement over any slot duration $\Delta t$. Decomposing the unitary propagator $U(\Delta t) = \exp(-i H(\lambda) \Delta t)$ on $|s_0\rangle$ yields
+$$
+U(\Delta t)\left(|s_0\rangle \otimes |\psi_B\rangle\right) = |s_0\rangle \otimes e^{-i\Phi_0(\Delta t)} D\!\left(s_0 \lambda \xi(\Delta t)\right) e^{-i\sum_k \omega_k \Delta t\, a_k^\dagger a_k}|\psi_B\rangle,
+\tag{5}
+$$
+where the elementary mode displacement kernel is
+$$
+\xi_k(\Delta t) := \frac{g_k}{\omega_k}\left(e^{-i\omega_k \Delta t} - 1\right), \qquad k \in \{0, 1\},
+\tag{6}
+$$
+and $\Phi_0(\Delta t) = -\lambda^2 \sum_{k=0}^1 (g_k^2/\omega_k^2)(\omega_k\Delta t - \sin(\omega_k\Delta t))$ is a scalar dynamical phase independent of $s_0$ because $s_0^2 = 1$. Notice a structural asymmetry between single-interval free evolution and multi-time controlled evolution: over one uninterrupted evolution window $[0, t]$, $s_0^2 = 1$ cancels every phase linear in $s_0$ identically.
+
+Evaluating the reduced probe density matrix $\rho_S(t) = \operatorname{Tr}_B[U(t)(\rho_S(0) \otimes \rho_B)U^\dagger(t)]$ using the Weyl composition rule $D(\alpha)D(\beta) = \exp\!\big(i\operatorname{Im}\sum_k \alpha_k \overline{\beta_k}\big) D(\alpha+\beta)$ maps $(\lambda, n, c)$ onto three monomial combinations—the **fluctuation–response coordinates**:
+$$
+u := \lambda^2 (2n + 1), \qquad v := \lambda^2 c, \qquad w := \lambda^2.
+\tag{7}
+$$
+Over a single interval of duration $t$, the pointer displacement difference $\eta_k = \lambda(\xi_k(t) - (-\xi_k(t))) = -2\lambda e^{-i\omega_k t}d_k(t)$ with $d_k(t) := (g_k/\omega_k)(1 - e^{i\omega_k t})$ gives $|\eta_k|^2 = 4\lambda^2|d_k(t)|^2$ and $\operatorname{Re}(\overline{\eta_0}\eta_1) = 4\lambda^2\operatorname{Re}(\overline{d_0(t)}d_1(t))$. Substitution into Eq. (4) yields the exact unperturbed Ramsey coherence decay factor $m(t) := \langle 0 | \rho_S(t) | 1 \rangle / \langle 0 | \rho_S(0) | 1 \rangle$ [@luczka1990; @palma1996]:
+$$
+m(t; u, v) = \exp\!\Big[-\big(A_{\mathrm{ram}}(t)\, u + B_{\mathrm{ram}}(t)\, v\big)\Big],
+\tag{8}
+$$
+with strictly real noise sensitivity coefficients
+$$
+A_{\mathrm{ram}}(t) = 2\left(|d_0(t)|^2 + |d_1(t)|^2\right), \qquad B_{\mathrm{ram}}(t) = 8\,\operatorname{Re}\!\left(\overline{d_0(t)}\,d_1(t)\right).
+\tag{9}
+$$
+
+## 2.3 Theorem 1: Non-Identifiability Fiber of Unperturbed Ramsey Spectroscopy
+
+Equations (8)–(9) expose a fundamental metrological ambiguity: $m(t; u, v)$ is **real and positive** at every time $t \ge 0$, and completely independent of $w = \lambda^2$ once $(u, v)$ are fixed. Evaluating the two-time Jacobian matrix $M(t_1, t_2) = \begin{pmatrix} A_{\mathrm{ram}}(t_1) & B_{\mathrm{ram}}(t_1) \\ A_{\mathrm{ram}}(t_2) & B_{\mathrm{ram}}(t_2) \end{pmatrix}$ at benchmark Ramsey interrogation times $(t_1, t_2) = (3/4, 3/2)$ yields
+$$
+\det M(3/4, 3/2) = -1.162022859636 \neq 0.
+\tag{10}
+$$
+Thus $(u, v)$ are globally identifiable from two free Ramsey decay measurements by linear inversion of $-\ln m(t_j)$. However, the bare coupling scale $w = \lambda^2$ remains degenerate along every physically admissible fiber on $\mathcal{D}$:
+
+**Theorem 1 (Free-Ramsey Non-Identifiability Fiber).** *For any realized $(u, v)$ corresponding to a point in $\mathcal{D}$, every scalar $w \in [1/25, 4/25]$ satisfying $w \le u - 2|v|$ and $w \ge \frac{5}{11} u$ (i.e., $n \le 3/5$) generates an exact triple*
+$$
+\lambda(w) = \sqrt{w}, \qquad n(w) = \frac{1}{2}\left(\frac{u}{w} - 1\right), \qquad c(w) = \frac{v}{w}, \qquad (\lambda(w), n(w), c(w)) \in \mathcal{D},
+\tag{11}
+$$
+*that produces the identical unperturbed probe trajectory $\rho_S(t)$ for all $t \in \mathbb{R}$.*
+
+As a concrete rational witness on the non-negative sector $0 \le c \le n \le 3/5$, set $(u, v) = (9/50, 9/400)$. Under Eq. (3), admissibility bounds $w$ to the exact closed fiber interval $w \in [9/110, 27/200]$ ($\lambda \in [0.286039, 0.367423]$), yielding the two rational twin parameters:
+$$
+P_1 = \left(\frac{3}{10},\; \frac{1}{2},\; \frac{1}{4}\right), \qquad P_2 = \left(\frac{1}{3},\; \frac{31}{100},\; \frac{81}{400}\right).
+\tag{12}
+$$
+At $(t_1, t_2) = (3/4, 3/2)$, both $P_1$ and $P_2$ share $(u, v) = (9/50, 9/400)$ and produce identical free-decay coherences $m(3/4) = 0.730531651137$ and $m(3/2) = 0.360071794945$, even though $P_1$ has weaker coupling and higher thermal occupation ($n_1 = 0.50$) while $P_2$ has stronger coupling and lower thermal occupation ($n_2 = 0.31$).
+
+---
+
+# 3. Signed Causal-Break Phase and Global Inverse Stability
+
+## 3.1 Lifting the Degeneracy with an Intermediate Signed Intervention
+
+To separate bath occupation noise $(u, v)$ from bare coupling strength $w = \lambda^2$, we break the single-interval symmetry using a two-stage sequential control protocol [@pollock2018prl; @milzModi2021]. Note why preparing a coherence state $|+\rangle$ for both slots $[0, a]$ and $[a, a+b]$ fails: along the off-diagonal pointer histories $(+1, s)$ vs. $(-1, -s)$, the initial eigenvalues sum to $s_0 + s'_0 = +1 + (-1) = 0$, causing the accumulated Weyl phase difference across $[0, a]$ and $[a, a+b]$ to vanish identically!
+
+Instead, initialize the probe in a **definite pointer eigenstate** $|z_s\rangle \in \{|0\rangle, |1\rangle\}$ selected by sign $s \in \{+1, -1\}$ (giving common first-slot pointer eigenvalue $s_0 = s'_0 = s$), evolve under $H(\lambda)$ for preparation interval $[0, a]$, apply a $\pi/2$ Hadamard pulse at $t = a$ creating an equal coherence superposition ($s_1 = +1$ vs. $s'_1 = -1$), evolve for probe window $[a, a+b]$, and measure $\sigma_x$ and $\sigma_y$.
+
+Applying the multi-slot Weyl composition law (Appendix B) along the two histories $(s, +1)$ and $(s, -1)$ preserves a non-zero initial displacement $\lambda s\,\xi(a)$ before the branching window $[a, a+b]$. Writing the complex post-intervention coherence factor as $z_s(a, b; u, v, w) := \operatorname{Tr}[\rho_S(a+b)(|1\rangle\langle 0|)] / \tfrac{1}{2}$, we obtain
+$$
+z_s(a, b; u, v, w) = \exp\!\Big[-\big(A_{\mathrm{br}}(a, b)\, u + B_{\mathrm{br}}(a, b)\, v\big) + i s\, w\, F(a, b)\Big],
+\tag{13}
+$$
+where, setting $y_k(a,b) := e^{i\omega_k a}(g_k/\omega_k)(1 - e^{i\omega_k b})$, the attenuation weights are $A_{\mathrm{br}}(a,b) = 2(|y_0|^2 + |y_1|^2)$ and $B_{\mathrm{br}}(a,b) = 8\operatorname{Re}(\overline{y_0}y_1)$, while the **causal-break phase sensitivity** $F(a, b)$ measures the non-commutativity of the retarded bath displacement across $[0, a]$ and $[a, a+b]$:
+$$
+F(a, b) = 4 \sum_{k=0}^{1} \left(\frac{g_k}{\omega_k}\right)^2 \Big[\sin(\omega_k a) + \sin(\omega_k b) - \sin(\omega_k(a + b))\Big].
+\tag{14}
+$$
+Thus $|z_s|$ depends strictly on $(u, v)$ and remains completely invariant along any fiber (11), whereas the **sign-antisymmetric phase quadrature** $\operatorname{Im}\,z_+ - \operatorname{Im}\,z_- = 2|z_s|\sin(w F(a, b))$ cleanly isolates $w = \lambda^2$.
+
+At the benchmark calibration windows $(a, b) = (2/3, 3/4)$, Eq. (14) evaluates to
+$$
+F(2/3, 3/4) = 1.819240198557 \in [1.819240198557,\; 1.819240198558].
+\tag{15}
+$$
+Across $\mathcal{D}$, $w \in [1/25, 4/25]$, so $w F(2/3, 3/4) \in [0.072770, 0.291078] \subset (0, \pi/2)$. On the Ramsey-equivalent pair (12), both models share identical causal-break modulus $|z_s| = 0.735275955165$, yet separate cleanly in imaginary quadrature: $P_1$ yields $\operatorname{Im}\,z_+ = +0.119850748164$ ($w_1 = 9/100$), whereas $P_2$ yields $\operatorname{Im}\,z_+ = +0.147616987004$ ($w_2 = 1/9$) (Fig. 1a).
+
+![Ramsey equivalence fiber and causal-break phase separation. (a) Imaginary quadrature $\mathrm{Im}\,z_s$ along the exact free-Ramsey equivalence fiber $(u, v) = (9/50, 9/400)$ over $w \in [9/110, 27/200]$, showing how causal-break sign $s = \pm 1$ splits $P_1 = (3/10, 1/2, 1/4)$ from $P_2 = (1/3, 31/100, 81/400)$. (b) Exact free-Ramsey coherence tie $m(3/4) = 0.730532$ contrasted against the signed causal-break separation and the stopped complete-record Bell witness split $\Delta_{\mathrm{YZ}^-} = 0.001730$ at readout visibility $\eta = 0.96$.](figures/fig1_ramsey_ambiguity_and_causal_break.pdf){width=100%}
+
+## 3.2 Theorem 2: Global Identifiability and Whole-Domain Inverse Lipschitz Bounds
+
+Consider calibration observables calibrated with symmetric probe-readout visibility $\eta \in [9/10, 1]$ and unknown common frame phase offset $\delta \in [-0.02, 0.02]$:
+- Unperturbed readout calibration $m_0 = \eta$,
+- Short and long free Ramsey means $m_1 = \eta\,m(3/4)$ and $m_2 = \eta\,m(3/2)$,
+- Causal-break quadrature means $X_s + i Y_s = \eta\,|z_s| \exp[i(\delta + s w F(2/3, 3/4))]$ ($s \in \{+1, -1\}$) at $(a, b) = (2/3, 3/4)$.
+
+Inverting $(u, v) = M(3/4, 3/2)^{-1}(\ln(\eta/m_1), \ln(\eta/m_2))$ and recovering $w = (\varphi_+ - \varphi_-)/(2F)$ directly from the measured phases $\varphi_s = \operatorname{atan2}(Y_s, X_s)$ cancels both $\delta$ and any $(du, dv)$ dependence of $|z_s|$ identically! Uniformly bounding $|A u + B v| \le A(u + 2|v|) \le 0.544\,A$ over $\mathcal{D}$ gives explicit whole-domain observable floors $m_1 \ge 0.411788$, $m_2 \ge 0.067590$, and $|z_\pm| \ge 0.411788$ (Appendix B), proving:
+
+**Theorem 2 (Whole-Domain Global Inverse Stability on $\mathcal{D}$).** *On $\mathcal{D} = [1/5, 2/5] \times \{|c| \le n \le 3/5\}$ with $\eta \in [9/10, 1]$, the calibration observable map is globally injective, and any two parameter-and-visibility configurations in $\mathcal{D} \times [9/10, 1]$ differing by maximum $\ell_\infty$ expectation perturbation $\delta_{\mathrm{obs}}$ across $(m_0, m_1, m_2, X_+, Y_+)$ (and $X_-, Y_-$ averaged with shared phase error) satisfy*
+$$
+\begin{aligned}
+|u - u'| &\le 51.240114\,\delta_{\mathrm{obs}}, & |v - v'| &\le 31.421917\,\delta_{\mathrm{obs}}, & |w - w'| &\le 2.965319\,\delta_{\mathrm{obs}}, \\
+|\lambda - \lambda'| &\le 7.413296\,\delta_{\mathrm{obs}}, & |n - n'| &\le 722.047690\,\delta_{\mathrm{obs}}, & |c - c'| &\le 830.027702\,\delta_{\mathrm{obs}}.
+\end{aligned}
+\tag{16}
+$$
+
+Notice the sharp conditioning separation: bare coupling $w$ exhibits a modest inverse Lipschitz constant $L_w \le 2.965319$ ($L_\lambda \le 7.413296$), whereas recovering individual bath occupations $(n, c)$ by dividing $(u, v)$ by $w \ge 1/25$ amplifies observation uncertainty to $L_n \le 722.047690$ and $L_c \le 830.027702$.
+
+---
+
+# 4. Stopped-Record Multi-Time Process Certification and Holdout Separation
+
+## 4.1 Sequential Three-Slot Instrument and Bell-Reference Process Tensor
+
+To certify non-Markovian bath correlations beyond single-qubit interferometry, we promote the probe to a **stopped complete-record sequential quantum instrument** acting across three time slots $t = (t_0, t_1, t_2) = (2/3, 3/4, 1/2)$ (and timing permutation $t_{\mathrm{swap}} = (3/4, 2/3, 1/2)$) while paired with an uncoupled reference qubit $R$ prepared in the maximally entangled Bell state $\rho_{SR}(0) = |\Phi^+\rangle\langle\Phi^+|$ [@pollock2018pra; @milzModi2021].
+
+At each active slot $j \in \{0, 1, 2\}$, the probe undergoes unitary bath evolution $U(t_j)$ under Eq. (1), followed by a binary sequential instrument $\{K_{\mathrm{fail}}, K_{\mathrm{pass}, j}\}$ satisfying $K_{\mathrm{fail}}^\dagger K_{\mathrm{fail}} + K_{\mathrm{pass}, j}^\dagger K_{\mathrm{pass}, j} = I_2$:
+$$
+K_{\mathrm{fail}} = \begin{pmatrix} \sqrt{1/8} & 0 \\ 0 & 1/2 \end{pmatrix}, \qquad K_{\mathrm{pass}, j} = U_j \begin{pmatrix} \sqrt{7/8} & 0 \\ 0 & \sqrt{3/4} \end{pmatrix},
+\tag{17}
+$$
+with step rotations $U_0 = R_y(\pi/2) = \exp(-i\pi\sigma_y/4)$, $U_1 = R_x(\pi/3) = \exp(-i\pi\sigma_x/6)$, and $U_2 = I_2$. Probing halts immediately upon `fail` (`f`), partitioning all trajectories into four mutually exclusive classical record prefixes
+$$
+\mathcal{R} = \{\mathrm{f},\; \mathrm{pf},\; \mathrm{ppf},\; \mathrm{ppp}\}.
+\tag{18}
+$$
+Along a fixed record $r \in \mathcal{R}$ of length $\ell(r) \in \{1, 2, 3\}$, summing over pointer histories $h \in \{0, 1\}^{\ell(r)}$ yields the exact two-qubit ($SR$) four-dimensional terminal Choi block (Appendix C):
+$$
+B_r(\lambda, n, c) = \sum_{h, h' \in \{0,1\}^{\ell(r)}} \mathcal{L}_{h, h'}(\lambda, n, c)\, (A_{r, h} \otimes I_R)\, |\Phi^+\rangle\langle\Phi^+|\, (A_{r, h'}^\dagger \otimes I_R),
+\tag{19}
+$$
+where $A_{r, h}$ collects the ordered projective step Kraus operators and $\mathcal{L}_{h, h'} = \exp(-\frac{u}{2}\|\Delta\beta\|_2^2 - v\,\Sigma_{h,h'} + i w\,\Theta_{h,h'})$, with $\Delta\beta_k = e^{i\omega_k T_{\mathrm{tot}}}(\beta_k^{(h)} - \beta_k^{(h')})$, $\Sigma_{h,h'} = 2\operatorname{Re}(\overline{\Delta\beta_0}\Delta\beta_1)$, and $\Theta_{h,h'} = \phi^{(h)} - \phi^{(h')} + \sum_{k=0}^1 \operatorname{Im}(\overline{\beta_k^{(h')}}\beta_k^{(h)})$. Exact completeness $\sum_{r \in \mathcal{R}} \operatorname{Tr}[B_r(\lambda, n, c)] = 1$ holds identically for all $(\lambda, n, c) \in \mathcal{D}$.
+
+Measuring a terminal Pauli correlator $O \in \{XX, YZ, ZZ\}$ (plus $XY$ in the full 4-observable test suite) at symmetric visibility $\eta = 0.96$ defines an eight-cell joint probability distribution across $\mathcal{R} \times \{-, +\}$:
+$$
+P(r, \pm \mid O) = \frac{1}{2}\Big(\operatorname{Tr}[B_r] \pm \eta\,\operatorname{Tr}[O B_r]\Big).
+\tag{20}
+$$
+Evaluating Eq. (20) at the Ramsey-equivalent benchmark points (12) confirms exact splitting driven by the non-commutative phase $w\,\Theta_{h,h'}$: on the stopped-all-pass branch $P(\mathrm{ppp}, \mathrm{YZ}^-)$ at $\eta = 0.96$, we obtain (Fig. 1b)
+$$
+\begin{aligned}
+\text{Original }(2/3, 3/4, 1/2):\;& P_1 = 0.266807646507,\; P_2 = 0.265077557077, \\
+&\Delta = 1.730089 \times 10^{-3}, \\
+\text{Swapped }(3/4, 2/3, 1/2):\;& P_1 = 0.267240862732,\; P_2 = 0.265659518191, \\
+&\Delta = 1.581345 \times 10^{-3}.
+\end{aligned}
+\tag{21}
+$$
+
+## 4.2 Convex-Polytope Taylor Certification and Synthetic Holdout Separation
+
+Because point optimization over curved parameter sets can underestimate linearization errors, prediction intervals are certified in exact rational interval arithmetic over a convex outer polytope in $(u, v, w, \ln\eta)$ determined by the linear calibration facets (Section 3.2) and physical faces $w \in [1/25, 4/25]$, $w + 2|v| \le u \le \frac{11}{5} w$, partitioned across a four-cell outer enclosure in $(u, v, w)$ covering the calibrated confidence region ($u \in [0.16, 0.24]$, $v \in [0.00, 0.045]$, with $w$ split across $[0.06, 0.14]$). On any convex cell $\mathcal{C}$, every Weyl kernel $\exp(-A u - B v + i P w)$ is an exponential of an affine function of $q = (u, v, w)$. Applying multivariate Taylor expansion with Popoviciu's variance inequality (Appendix C) yields a rigorous uniform envelope across $\mathcal{C}$ directly from vertex evaluations:
+$$
+\left|e^{\zeta(q)} - \sum_{m \in \operatorname{vert}(\mathcal{C})} \mu_m(q)\,e^{\zeta(q_m)}\right| \le \frac{1}{8}\left[\Big(\operatorname{range}_{\mathcal{C}}(Au + Bv)\Big)^2 + \Big(\operatorname{range}_{\mathcal{C}}(Pw)\Big)^2\right], \qquad q \in \mathcal{C}.
+\tag{22}
+$$
+
+| Protocol family / test | Shots | Cells | Key empirical / analytical result | Verdict (`alpha = 0.01`) |
+| :--- | :---: | :---: | :--- | :--- |
+| Calibration settings (`R0`, `R`, `X`, `Y`) | $720{,}000$ | 7 | Simultaneous calibration box | Validated box |
+| Independent break (`Hp`/`Hm`) | $120{,}000$ | 4 | $H_+$ & $H_-$ match interval bands | `NOT_REJECTED` (0/4) |
+| Paired-$Y$ ($P_1$ vs. $P_2$) | $120{,}000$ | 1 | $0.5985 < 0.6056$ ($71{,}816$ / $120{,}000$) | Selects $P_1$; rejects $P_2, w{=}0$ |
+| Original Bell correlators | $72{,}000$ | 48 | All 48 cell frequencies in bands | `NOT_REJECTED` (0/48) |
+| Swapped Bell correlators | $72{,}000$ | 48 | All 48 cell frequencies in bands | `NOT_REJECTED` (0/48) |
+| Readout challenge (`XX`/`ZZ`) | $24{,}000$ | 4 | `ZZ/0`: $796/24{,}000 = 0.03317$ | `REJECTED` (4/4 cells) |
+
+Table 1: Summary of the $1{,}128{,}000$-shot synthetic calibration and holdout validation benchmark (drawn in a pre-computed repository verification run under Hoeffding simultaneous familywise confidence intervals at $\alpha = 0.01$ [@hoeffding1963]). Synthetic counts simulate $P_1$; no experimental hardware claim is made (`device = NOT_CERTIFIED`).
+
+Table 1 summarizes the benchmark ($720{,}000$ calibration + $408{,}000$ holdout = $1{,}128{,}000$ synthetic shots). Using distribution-free Hoeffding concentration bounds [@hoeffding1963] across 100 prespecified holdout cells at familywise significance $\alpha = 0.01$ (alongside exact binomial confidence checks [@clopperPearson1934]), all $96$ cells of `independent_break` (probed at $(a, b) = (1, 3/4)$ with $F(1, 3/4) = 3.056234$), `original`, and `swap` remain inside their polytope-certified prediction intervals (`0` disjoint cells). Conversely, an adversarial rotated-readout alternative (`readout_challenge`, perturbing the first-slot readout axis on `XX`/`ZZ` with a composite `f, ZZ^-` probability gap $[0.022437, 0.022438]$ and single-cell sampling power $\ge 0.956228$) is cleanly rejected on all four designated `XX/{0,1}` and `ZZ/{0,1}` cells (recording $796/24{,}000 = 0.033167$ on `ZZ/0`, band $[0.018803, 0.047531]$). Furthermore, on an aligned-phase holdout test at $(a, b) = (1, 3/4)$, the midpoint separator between the worst-case $P_1$ upper bound ($0.600885224763$) and $P_2$ lower bound ($0.610277486074$) is $\theta_{\mathrm{align}} = 0.605581355419$ (verified directly in `verify_standalone.py`); the synthetic observation $71{,}816 / 120{,}000 = 8977/15000 \approx 0.598467$ falls below $\theta_{\mathrm{align}}$, selecting $P_1$ and rejecting $P_2$ and zero-response baselines at $1\%$ significance.
+
+We emphasize two essential scientific boundaries of this benchmark:
+
+- **Synthetic vs. physical hardware:** All counts in Table 1 come from a verified classical stochastic generator seeded at $P_1$. Physical superconducting, trapped-ion, or spin-qubit runs remain uncertified (`NOT_CERTIFIED`).
+- **Baseline equivalence with standard quantum mechanics:** Comparing every terminal distribution against an independent full persistent-bath unitary simulation carrying the same Gaussian covariance yields numerical agreement to $4.82 \times 10^{-13}$ (`EQUIVALENT_NO_ADDED_GAIN`). Thus, the value of the process certificate lies in non-Markovian parameter identifiability and finite-cutoff error guarantees, not in non-standard quantum kinematics [@masanes2019; @renou2021].
+
+---
+
+# 5. Total-Number Galerkin Truncation, Duhamel Remainder, and Exact Rational CP/TP Repair
+
+## 5.1 Uniform Duhamel Tail Bound on Total-Number Projections
+
+Any numerical solver of the coupled spin–boson Hamiltonian (1) must truncate the infinite-dimensional two-mode Fock space $\mathcal{F}_2 = \operatorname{span}\{|n_0, n_1\rangle : n_0, n_1 \ge 0\}$. Define the total-excitation number operator $N_{\mathrm{tot}} = a_0^\dagger a_0 + a_1^\dagger a_1$ and the Galerkin projector $P_K := \mathbf{1}_{N_{\mathrm{tot}} \le K}$ onto total occupation at most $K$, with truncated Hamiltonian $H_K = P_K H P_K$. Across all three slots of total duration $T_{\max} = 23/12$, setting $x := 9/10 > \lambda_{\max}\|g\|_2 T_{\max} = \frac{2}{5}\sqrt{\frac{34}{25}}\frac{23}{12}$, Duhamel's identity [@hornJohnson2012; @woods2014; @tamascelli2018] bounds the integrated leakage from any initial total-occupation shell $s \in \{0, \dots, K\}$ ($d = K - s$) in half-trace norm by
+$$
+f_K(s) := \min\!\left(1,\; \frac{x^{d+1}\sqrt{(K+1)!/s!}}{1 - x^2/2} \sum_{l=0}^{s} \binom{s}{l} \frac{x^{2l}}{(d+l)!(d + 2l + 1)}\right), \qquad h_K(s) := \max_{0 \le j \le s} f_K(j).
+\tag{23}
+$$
+On the physical domain $|c| \le n \le 3/5$, normal-mode thermal occupation weights $(n+c)/(1+n+c)$ and $(n-c)/(1+n-c)$ are stochastically dominated in total number by $(a_*, b_*) = (6/11, 3/8)$ (since at $(n,c) = (3/5, 3/5)$, $r_+ = 6/11$, while the sorted residual satisfies $r_- \le 3/8$). Combining the initial tail and monotone boundary flux envelope $h_K(s)$ yields the exact rational uniform upper bound over $\mathcal{D}$:
+$$
+B_K(\mathcal{D}) := 1 - \sum_{s=0}^{K} (1 - a_*)(1 - b_*)\left(\sum_{i=0}^{s} a_*^{\,i} b_*^{\,s-i}\right)\big(1 - h_K(s)\big).
+\tag{24}
+$$
+Evaluated constructively in exact arbitrary-precision rational arithmetic (upward $10^{-12}$ integer `isqrt` ceiling, Appendix D), $B_K(\mathcal{D})$ decays super-exponentially across $K \in \{4, 8, 12, 13, 14, 16, 20, 24\}$ (Fig. 2a):
+$$
+\begin{aligned}
+B_4 &= 0.629532048416, & B_8 &= 0.221934875279, & B_{12} &= 0.055985832631, & B_{13} &= 0.038466572543, \\
+B_{14} &= 0.025259114053, & B_{16} &= 0.011677620430, & B_{20} &= 0.002098904698, & B_{24} &= 0.000357107093.
+\end{aligned}
+\tag{25}
+$$
+At our benchmark cutoff $K = 16$, the total finite-Fock truncation discrepancy is strictly at most $0.011678$ in half-trace norm uniformly over all inputs, both timing schedules, and every bath state in $\mathcal{D}$.
+
+![Total-number Galerkin truncation bounds and complete-output channel certification. (a) Exact rational Duhamel half-trace upper bound $B_K$ versus total-number cutoff $K$, highlighting $B_{16} = 0.011678$. (b) Summary of pre-computed tight ($\gamma = 0.391$) and conservative ($\gamma = 0.400$) certified complete-output half-diamond norm bounds against the 8-cell Bell analog TV envelope, the 40-bit discretized process TV envelope, and an actual $K = 16$ integer solver comparison ($0.0276$).](figures/fig2_cutoff_bounds_and_channel_error.pdf){width=100%}
+
+## 5.2 Exact Rational Choi Repair and Complete-Output Half-Diamond Certificate
+
+Finite floating-point evaluation of the multi-slot Choi map $\hat{J}_K$ leaves a tiny negative-eigenvalue and non-trace-preserving defect ($\le 10^{-8}$). Projecting $\hat{J}_K$ to positive semidefinite form and mixing with maximally depolarizing trace correction using rational weights restores exact CP/TP validity while altering the channel in half-diamond norm by at most $10^{-8}$ (Appendix D) [@watrous2018; @kitaev1997].
+
+For arbitrary ancillary-entangled inputs, propagating parameter box drift $\Delta q = (u-u', v-v', w-w')$ over the four-cell calibration box via $2\sum_{r \in \mathcal{R}} \|\Delta B_r\|_F$ plus rational Choi repair ($\le 10^{-8}$) through the **complete-output diamond norm** $\|\Delta\|_\diamond := \sup_{\|\rho\|_1 \le 1}\|(\Delta \otimes \operatorname{id}_R)(\rho)\|_1$ [@kitaev1997; @aharonovKitaevNisan1998; @watrous2018] was carried out in multi-precision interval arithmetic in the repository certification pipeline, yielding the following certified envelopes (Fig. 2b; summary diagnostics):
+
+- **Complete-output half-diamond norm $\frac{1}{2}\|\mathcal{E} - \widetilde{\mathcal{E}}_{16}\|_\diamond$:** $0.033892297103$ under tight calibration box drift ($\gamma = 0.391$) and $0.035357047207$ under conservative outer drift ($\gamma = 0.400$).
+- **Eight-cell Bell analog total-variation distance:** $0.046090140885$ (tight) and $0.047554890989$ (conservative).
+- **Discretized 40-bit measurement-record total-variation distance:** $0.046090140889$ (tight) and $0.047554890993$ (conservative).
+- **Direct $K = 16$ integer solver comparison:** $0.0276$, safely nested inside every certified bound above (note: while $B_K$ in Eq. (25) is directly computed in `verify_standalone.py`, these downstream complete-output diamond and $K=16$ integer solver comparisons are reported from the multi-precision interval certification outputs).
+
+---
+
+# 6. Local Klein–Gordon Field Microcausality vs. Two-Mode Reduction and Sector Obstructions
+
+## 6.1 Compactly Supported $(1+1)$-Dimensional Scalar Field Embedding on $\mathbb{R} \times S^1$
+
+Does a discrete two-mode bath faithfully represent a spatially extended quantum environment? To test this rigorously, we embed the $(\omega_0, \omega_1) = (1, 3/2)$, $(g_0, g_1) = (1, 3/5)$ system inside a relativistic real massive scalar Klein--Gordon field $\phi(t, x)$ ($m = 1$) quantized on the $(1+1)$-dimensional flat Lorentzian cylinder $\mathbb{R} \times S^1$ of circumference $L$ [@haag1996; @wald1994; @reedSimon1975]. Choosing
+$$
+\beta := \frac{2\pi}{L} = \frac{\sqrt{5}}{2}, \qquad L = \frac{4\pi}{\sqrt{5}} \approx 5.619852,
+\tag{26}
+$$
+sets the first harmonic frequency exactly to $\omega_1 = \sqrt{1 + \beta^2} = \sqrt{1 + 5/4} = 3/2$, while the zero mode has $\omega_0 = 1$.
+
+Now couple two compactly supported probes $A$ and $B$—centered at $x_A = 0$ and antipodal $x_B = L/2$, respectively—linearly to the smeared field operator via identical normalized parity-symmetric spatial smearing profiles $\psi(x)$ obtained from a four-fold box convolution ($C^2$ regularity) split into balanced lobes at $\pm L/6$ of half-width $L/40$ (total support radius $R = (1/6 + 1/40)L \approx 1.077138$, Fig. 3a). In Fourier space, the spatial form factor is
+$$
+f_j = \operatorname{sinc}^4\!\left(\frac{\pi j}{80}\right)\left[(1 - p_{\mathrm{mix}}) + p_{\mathrm{mix}}\cos\!\left(\frac{\pi j}{3}\right)\right], \qquad \operatorname{sinc}(z) := \frac{\sin z}{z}.
+\tag{27}
+$$
+Because the zero-mode $j=0$ is non-degenerate ($\omega_0 = 1$, $f_0 = 1$, giving coupling $g_0 = f_0/\sqrt{\omega_0} = 1$), whereas each harmonic $j \ge 1$ combines $\pm k_j$ momentum modes into an even cosine mode $a_j = (b_j + b_{-j})/\sqrt{2}$ with coupling $g_j = \sqrt{2/\omega_j}\,f_j$ (Appendix E), choosing the unique mixing weight
+$$
+p_{\mathrm{mix}} = 2\left(1 - \frac{3}{5}\frac{\sqrt{3/4}}{\operatorname{sinc}^4(\pi/80)}\right) = 0.959700495060 \in (0, 1)
+\tag{28}
+$$
+matches both $(g_0, g_1) = (1, 3/5)$ and $(\omega_0, \omega_1) = (1, 3/2)$ **identically** to the discrete model of Section 2!
+
+![Local Klein–Gordon field embedding on $\mathbb{R} \times S^1$ versus two-mode truncation. (a) Compactly supported $C^2$ four-box convolution probe profiles $\psi(x)$ centered at $x = 0$ (solid) and antipodal $x = \pm L/2$ (dashed) with support radius $R = (1/6 + 1/40)L$, leaving an open spacelike gap $\Delta x_{\mathrm{gap}} = 0.655649 > 2/5$. (b) Cross-probe causal-break phase $|\Phi_{AB}|$ (log scale): under timelike co-located operation $(2/3, 3/4)$, higher modes enhance $\Phi_{AB}$ from $0.1637\,\mathrm{rad}$ to $0.2092\,\mathrm{rad}$; under strictly spacelike antipodal separation $(1/5, 1/5)$, the $M=1$ truncation suffers a spurious $0.001331\,\mathrm{rad}$ superluminal violation, whereas summing to $M=160$ restores microcausality below $2.49 \times 10^{-12}\,\mathrm{rad}$.](figures/fig3_local_field_microcausality.pdf){width=100%}
+
+## 6.2 Theorem 3: Spurious Superluminal Signaling under Mode Truncation vs. Continuum Cancellation
+
+Suppose probe $A$ operates over $[0, a]$ and probe $B$ over $[a, a+b]$ under the signed causal-break protocol of Section 3.1 ($s = \pm 1$). Because the retarded field commutator between regions $A$ and $B$ reverses sign on odd harmonics under antipodal translation $x \mapsto x + L/2$ ($\cos(\pi j) = (-1)^j$), the cross-probe causal-break phase accumulated up to mode cutoff $M$ is
+$$
+\Phi_{AB}^{(M)}(a, b; \sigma_{\mathrm{loc}}) = 4\lambda^2 \sum_{j=0}^{M} \sigma_{\mathrm{loc}}^{\,j}\,\frac{g_j^2}{\omega_j^2}\Big[\sin(\omega_j a) + \sin(\omega_j b) - \sin(\omega_j(a + b))\Big],
+\tag{29}
+$$
+where $\sigma_{\mathrm{loc}} = +1$ denotes co-located timelike probes ($x_B = x_A$) and $\sigma_{\mathrm{loc}} = -1$ denotes antipodal probes ($x_B = x_A + L/2$). We also track the full-field imaginary coherence $\operatorname{Im}\,z_+ = e^{-D_{\mathrm{field}}}\sin\Phi_{AB}^{(M)}$ (thermal $(n, c) = (1/2, 1/4)$ on the matched modes $j \in \{0, 1\}$ and vacuum $n = c = 0$ on $j \ge 2$) and the sudden-switching bare interaction energy injection $\Delta E_{\mathrm{bare}} = 2\lambda^2 \sum_{j=0}^{M} (g_j^2/\omega_j)(2 - \cos(\omega_j a) - \cos(\omega_j b))$ (Appendix E).
+
+For antipodal probes, the minimal periodic spatial separation between their supports is
+$$
+\Delta x_{\mathrm{gap}} = \frac{L}{2} - 2R = 0.655649375 > \frac{2}{5}.
+\tag{30}
+$$
+Setting $a = b = 1/5$ yields total elapsed time $a + b = 2/5 < \Delta x_{\mathrm{gap}}$, so the spacetime supports of probes $A$ and $B$ are **strictly spacelike separated** (unit light speed). By Einstein microcausality of the Klein--Gordon field algebra [@haag1996; @liebRobinson1972; @fewsterVerch2020; @bostelmann2021; @deRamon2021; @poloGomez2022], the exact smeared Pauli--Jordan commutator vanishes identically and hence $\Phi_{AB}^{(\infty)}(1/5, 1/5; -1) = 0$. Table 2 contrasts the two-mode truncation ($M=1$) against the $M=160$ field sum:
+
+| Probe geometry & window $(a, b)$ | Two-mode ($M{=}1$) phase (rad) | Full-field ($M{=}160$) phase (rad) | Tail upper bound & bare energy gain |
+| :--- | :---: | :---: | :--- |
+| Timelike co-located, $(2/3, 3/4)$ | $0.163731618$ | $0.209161320$ | $\operatorname{Im}\,z_+ = 0.145988513$; $\Delta E_{\mathrm{bare}} = 0.296126$ |
+| Spacelike antipodal, $(1/5, 1/5)$ | $0.001330794$ (spurious) | $-1.96 \times 10^{-17}$ | $|\Phi_{\mathrm{tail}}| < 2.485477 \times 10^{-12}$; $\Delta E_{\mathrm{bare}} = 0.071709$ |
+
+Table 2: Comparison between the matched two-mode reduction ($M=1$) and the $161$-mode local Klein--Gordon field sum ($M=160$) on $\mathbb{R} \times S^1$ at $\lambda = 3/10$, $(n, c) = (1/2, 1/4)$ (computed in `verify_standalone.py`).
+
+Explicitly (Fig. 3b), the $M = 1$ truncation fabricates a spurious superluminal phase of $1.331 \times 10^{-3}\,\mathrm{rad}$ across spacelike separation, whereas summing the $C^2$ Fourier series to $M = 160$ cancels the signal to double-precision roundoff ($-1.96 \times 10^{-17}\,\mathrm{rad}$) with a rigorous $j^{-10}$ remainder tail bound below $2.485477 \times 10^{-12}\,\mathrm{rad}$ (Appendix E). Meanwhile, the same higher modes increase the genuine co-located timelike cross-probe phase from $0.163732\,\mathrm{rad}$ to $0.209161\,\mathrm{rad}$, showing that mode compression alters both causal locality and metrological response even when lower-mode couplings match identically.
+
+## 6.3 Physical Scope: Thermodynamic Bath Reuse and Sector Underdetermination
+
+Two brief physical observations clarify the operational boundaries of finite-probe models:
+
+- **Explicit thermodynamic switching work vs. bath reuse:** Because pure-dephasing couplings (1) inject non-zero bare counterterm work $\Delta E_{\mathrm{bare}} = 0.296126$ (timelike) or $0.071709$ (antipodal) during sudden boundary switching [@poloGomez2022], we cross-check energy conservation in an exactly resonant two-qubit energy-exchange control ($H_0 = |1\rangle\langle 1|_S + |1\rangle\langle 1|_E$, $H_{\mathrm{int}} \propto |10\rangle\langle 01| + \mathrm{h.c.}$ of pulse area $\theta = \pi/6$, $[U, H_0] = 0$, ideal zero switch work). Starting from thermal bath occupancy $q = 1/5$ ($\beta = \ln 4$) and system occupancy $p = 4/5$, one swap deposits $\sin^2(\pi/6)(p - q) = (1/4)(3/5) = 3/20$ energy into the bath ($p' = 13/20$, $q' = 7/20$, entropy production $\Sigma = \Delta S_S + \beta \Delta E_E \approx 0.35499$). If the bath is reused without refreshing while re-preparing $S$ at $p = 4/5$, the second-step system excitation jumps by $(q' - q)/4 = +3/80 = +0.0375$ relative to a fresh bath—quantifying the physical distinction between persistent memory and Markovian refreshment.
+- **Limits of finite-probe identifiability in quantum reconstructions:** Our Ramsey degeneracy proof (Theorem 1) complements finite-probe non-uniqueness phenomena seen in operational reconstructions of quantum theory [@chiribella2011; @masanesMuller2011; @dakicBrukner2011; @barnumWilce2011; @masanes2019; @renou2021] and relativistic detector signaling [@unruhWald1984; @fewsterVerch2020; @bostelmann2021; @deRamon2021]. Even with complete single-step local state tomography or free Ramsey access, continuous trajectories leave unidentifiable parameter fibers that only multi-time causal interventions—and, in spacetime settings, covariant local-field completions—can unambiguously resolve.
+
+---
+
+# 7. Conclusion
+
+We have presented a self-contained analytical and computational framework separating Gaussian environmental occupation fluctuations from signed causal response in a correlated two-mode bosonic bath. While unperturbed Ramsey interferometry exhibits an exact non-identifiability fiber $(u, v) = (\lambda^2(2n+1), \lambda^2 c)$ leaving bare coupling strength $\lambda^2$ degenerate, a single signed causal-break intervention isolates $\lambda^2$ via the retarded commutator phase $F(2/3, 3/4) = 1.819240$, stabilizing global parameter recovery over $\mathcal{D} = [1/5, 2/5] \times \{|c| \le n \le 3/5\}$ with explicit whole-domain inverse Lipschitz bounds. Lifting the protocol to stopped complete-record three-slot Bell instruments certified over a convex calibration polytope separates Ramsey-equivalent parameters on $1{,}128{,}000$ synthetic shots while rejecting mis-specified readout axes at $1\%$ familywise significance, bounded in complete-output half-diamond norm ($\le 0.033892$) after exact rational Duhamel truncation ($K=16$, $B_{16} = 0.011678$) and Choi CP/TP repair. Embedding the matched modes into a $(1+1)$-dimensional Klein--Gordon field on $\mathbb{R} \times S^1$ resolves spurious spacelike signaling ($1.331 \times 10^{-3}\,\mathrm{rad} \to < 2.49 \times 10^{-12}\,\mathrm{rad}$), highlighting why finite-mode models require explicit local-field verification whenever spacetime separability is invoked.
+
+## Acknowledgments, Code Availability, and AI Use Disclosure
+
+Core algebraic identities, exact Ramsey and causal-break values, whole-domain Lipschitz constants, aligned-$Y$ threshold discrimination, stopped Bell separations at $\eta = 0.96$, exact rational Duhamel bounds $B_K$, and $\mathbb{R} \times S^1$ Klein--Gordon field evaluations are independently verified from scratch in Python 3 stdlib (`verify_standalone.py`), alongside vector figure generation (`generate_figures.py`); synthetic holdout sweeps and multi-precision Choi interval certifications summarize the accompanying reproducible benchmark logs. Under American Physical Society transparency guidelines, the author discloses substantive assistance from large language model tools (`Gemini 4 Carbon` and `ChatGPT 6 Astra`) in drafting portions of the exposition, organizing verification scripts, and cross-checking LaTeX formatting; the human author directed the theoretical architecture, verified every proof, and audited all numerical outputs and external citations directly. The author declares no competing financial interests.
+
+---
+
+# Appendix A: Exact Weyl Influence Functional and Gaussian Bath Algebra
+
+Diagonalize the correlated normally ordered covariance matrix $C = \begin{pmatrix} n & c \\ c & n \end{pmatrix}$ of Eq. (2) via the symmetric/antisymmetric normal modes $a_\pm = (a_0 \pm a_1)/\sqrt{2}$, so that $\rho_B(n, c)$ factors as an uncorrelated product of thermal states with mean occupations $n_\pm = n \pm c \ge 0$ [@weedbrook2012; @serafini2017]. Setting $\eta_\pm = (\eta_0 \pm \eta_1)/\sqrt{2}$, the Wigner characteristic function of a single thermal mode of occupation $N$ is $\operatorname{Tr}[\rho_{\mathrm{th}}(N) e^{\eta a^\dagger - \overline{\eta} a}] = \exp[-(N + \frac{1}{2})|\eta|^2]$, giving
+$$
+\begin{aligned}
+\chi_B(\eta_0, \eta_1; n, c) &= \exp\!\left[-\left(n + c + \frac{1}{2}\right)\frac{|\eta_0 + \eta_1|^2}{2} - \left(n - c + \frac{1}{2}\right)\frac{|\eta_0 - \eta_1|^2}{2}\right] \\
+&= \exp\!\left[-\frac{2n+1}{2}\left(|\eta_0|^2 + |\eta_1|^2\right) - 2c\,\operatorname{Re}\!\left(\overline{\eta_0}\eta_1\right)\right],
+\end{aligned}
+\tag{A1}
+$$
+establishing Eq. (4). Next, under the spin-boson Hamiltonian (1) conditioned on pointer eigenvalue $s \in \{+1, -1\}$, Baker--Campbell--Hausdorff integration over $[0, \Delta t]$ in the interaction picture gives
+$$
+e^{-i\Delta t H(\lambda)}|_{s}\,e^{i\Delta t\sum_k \omega_k a_k^\dagger a_k} = \exp\!\left[+i s^2 \lambda^2 \sum_{k=0}^1 \frac{g_k^2}{\omega_k^2}\left(\omega_k \Delta t - \sin(\omega_k \Delta t)\right)\right] D\!\left(s \lambda \xi(\Delta t)\right),
+\tag{A2}
+$$
+where $\xi_k(\Delta t) = (g_k/\omega_k)(e^{-i\omega_k \Delta t} - 1)$ as in Eq. (6). Because the dynamical scalar phase inside Eq. (A2) scales with $s^2 = 1$, it cancels identically across any pair of pointer branches $(s, s') \in \{\pm 1\}^2$. Across $\ell$ slots with durations $\Delta t_0, \dots, \Delta t_{\ell-1}$ and trajectory $h = (s_0, \dots, s_{\ell-1}) \in \{\pm 1\}^\ell$, repeatedly applying $e^{-i\omega_k \Delta t_j a_k^\dagger a_k} D(\beta_k) e^{i\omega_k \Delta t_j a_k^\dagger a_k} = D(e^{-i\omega_k \Delta t_j}\beta_k)$ and the Weyl product rule updates the cumulative displacement $\beta^{(h)}$ and geometric phase $\phi^{(h)}$ via
+$$
+\beta_k^{(j+1)} = e^{-i\omega_k \Delta t_j}\beta_k^{(j)} + s_j \xi_k(\Delta t_j), \qquad \phi^{(j+1)} = \phi^{(j)} + \sum_{k=0}^{1} \operatorname{Im}\!\left[\overline{\left(e^{-i\omega_k \Delta t_j}\beta_k^{(j)}\right)}\,s_j \xi_k(\Delta t_j)\right],
+\tag{A3}
+$$
+initialized at $\beta^{(0)} = 0$, $\phi^{(0)} = 0$. Evaluating $\operatorname{Tr}_B[D(\lambda\beta^{(h)})\rho_B D^\dagger(\lambda\beta^{(h')})]$ yields $\mathcal{L}_{h, h'} = \exp[i\lambda^2(\phi^{(h)} - \phi^{(h')} + \sum_k \operatorname{Im}(\overline{\beta_k^{(h')}}\beta_k^{(h)}))]\,\chi_B(\lambda(\beta^{(h)} - \beta^{(h')}); n, c)$, proving Eqs. (8) and (19).
+
+---
+
+# Appendix B: Ramsey Equivalence Proof, Causal-Break Phase, and Whole-Domain Inverse Lipschitz Bounds
+
+For free Ramsey evolution ($\ell = 1$, $s_0 = +1$ vs. $s'_0 = -1$), $\beta^{(+)} = \xi(t)$ and $\beta^{(-)} = -\xi(t)$, so $\phi^{(+)} = \phi^{(-)} = 0$ and $\operatorname{Im}(\overline{\beta^{(-)}}\beta^{(+)}) = -\operatorname{Im}|\xi|^2 = 0$. Since $\Delta\beta_k = 2 e^{i\omega_k t}\xi_k(t) = -2 d_k(t)$ and $\|\Delta\beta\|_2^2 = 4\sum_k |d_k|^2$, substituting $\eta = \lambda\Delta\beta$ into Eq. (A1) immediately recovers Eqs. (8)–(9) with no factor of $1/2$. Because $\omega_0 = 1$ and $\omega_1 = 3/2$ are incommensurate, at $(t_1, t_2) = (3/4, 3/2)$ we have $\det M(3/4, 3/2) = -1.162022859636 \neq 0$, so $(u, v)$ is uniquely determined by linear inversion from $(-\ln m(3/4), -\ln m(3/2))$. Fixing $(u, v)$, Eq. (11) parametrizes all compatible triples $(\lambda(w), n(w), c(w)) \in \mathcal{D}$ subject to $w \in [1/25, 4/25]$, $|c(w)| \le n(w) \iff w \le u - 2|v|$, and $n(w) \le 3/5 \iff w \ge 5u/11$, proving Theorem 1.
+
+Under the causal-break protocol of Section 3.1 ($s_0 = s'_0 = s \in \{\pm 1\}$ over $[0, a]$, followed by a $\pi/2$ pulse yielding $s_1 = +1$, $s'_1 = -1$ over $[a, a+b]$), applying Eq. (A3) yields $\Delta\beta_k = 2 e^{-i\omega_k b}\xi_k(b)$, matching $A_{\mathrm{br}}, B_{\mathrm{br}}$ in Eq. (13), while the accumulated phase difference is
+$$
+\phi^{(s,+)} - \phi^{(s,-)} + \sum_{k=0}^{1} \operatorname{Im}\!\left(\overline{\beta_k^{(s,-)}}\beta_k^{(s,+)}\right) = 4s \sum_{k=0}^{1} \operatorname{Im}\!\left[\overline{\left(e^{-i\omega_k b}\xi_k(a)\right)}\,\xi_k(b)\right] = s F(a, b),
+\tag{B1}
+$$
+yielding Eq. (14). Conversely, if one prepares $|+\rangle$ on $[0, a]$ ($s_0 = +1, s'_0 = -1$), then replacing $s + s = 2s$ by $s_0 + s'_0 = 0$ annihilates Eq. (B1) identically.
+
+To prove Theorem 2 on $\mathcal{D}$ with $\eta \in [9/10, 1]$, observe first by Cauchy--Schwarz that $|B_{\mathrm{ram}}(t)| = 8|\operatorname{Re}(\overline{d_0}d_1)| \le 4(|d_0|^2 + |d_1|^2) = 2 A_{\mathrm{ram}}(t)$. Since $u_{\max} = \frac{4}{25}(\frac{6}{5} + 1) = 0.352$ and $|v_{\max}| = \frac{4}{25}(\frac{3}{5}) = 0.096$, every point in $\mathcal{D}$ satisfies $A u + B v \le A(u + 2|v|) \le 0.544\,A$, giving uniform expectation floors $m_1 \ge m_{1,\min} = 0.9 e^{-0.544 A_1} = 0.411788$, $m_2 \ge m_{2,\min} = 0.9 e^{-0.544 A_2} = 0.067590$, and $|z_\pm| \ge r_{\min} = 0.9 e^{-0.544 A_{\mathrm{br}}} = 0.411788$. Differentiating $(u, v) = M^{-1}(\ln(\eta/m_1), \ln(\eta/m_2))$ with $M^{-1} = \begin{pmatrix} h_{u,1} & h_{u,2} \\ h_{v,1} & h_{v,2} \end{pmatrix}$ directly gives
+$$
+L_u = \frac{|h_{u,1} + h_{u,2}|}{0.9} + \frac{|h_{u,1}|}{m_{1,\min}} + \frac{|h_{u,2}|}{m_{2,\min}}, \qquad L_v = \frac{|h_{v,1} + h_{v,2}|}{0.9} + \frac{|h_{v,1}|}{m_{1,\min}} + \frac{|h_{v,2}|}{m_{2,\min}},
+$$
+while $w = (\varphi_+ - \varphi_-)/(2F)$ (with $\varphi_s = \operatorname{atan2}(Y_s, X_s)$ and $\ell_\infty$ quadrature cord factor $\pi\sqrt{2}/2$) gives $L_w = \frac{\pi\sqrt{2}}{2 r_{\min} F(2/3, 3/4)}$, $L_\lambda = L_w / (2\lambda_{\min}) = L_w / 0.4$, $L_n = (L_u + (2n_{\max}+1)L_w)/(2 w_{\min}) = (L_u + 2.2 L_w)/0.08$, and $L_c = (L_v + c_{\max} L_w)/w_{\min} = (L_v + 0.6 L_w)/0.04$:
+$$
+\begin{aligned}
+L_u &= 51.240114, & L_v &= 31.421917, & L_w &= 2.965319, \\
+L_\lambda &= 7.413296, & L_n &= 722.047690, & L_c &= 830.027702.
+\end{aligned}
+\tag{B2}
+$$
+All bounds in Eq. (B2) are verified deterministically from scratch in `verify_standalone.py`.
+
+---
+
+# Appendix C: Stopped-Record Bell Process Tensor and Polytope Taylor Remainder
+
+Along any complete-record prefix $r \in \{\mathrm{f}, \mathrm{pf}, \mathrm{ppf}, \mathrm{ppp}\}$ of length $\ell(r)$, let $K_{r,j}$ denote $K_{\mathrm{fail}}$ at the terminal failure slot ($j = \ell(r) - 1$ for $r \neq \mathrm{ppp}$) and $K_{\mathrm{pass}, j}$ at all earlier slots. For any pointer trajectory $h = (i_0, \dots, i_{\ell-1}) \in \{0, 1\}^{\ell}$, define the projected path operator inductively by $A_{h}^{(0)} = I_2$ and $A_{h}^{(j+1)} = K_{r,j} |i_j\rangle\langle i_j| A_h^{(j)}$. Because $K_{\mathrm{fail}}^\dagger K_{\mathrm{fail}} + K_{\mathrm{pass}, j}^\dagger K_{\mathrm{pass}, j} = I_2$, summing the resulting Choi blocks over $r \in \mathcal{R}$ collapses telescopically onto $\sum_{r} \operatorname{Tr}[B_r] = \operatorname{Tr}[\rho_S(0)] = 1$ for all $(\lambda, n, c)$, guaranteeing exact trace preservation.
+
+On each convex polytope cell $\mathcal{C} \subset \mathbb{R}^3$ parameterized affinely in $q = (u, v, w)$, every Weyl multiplier entry takes the form $L(q) = e^{-x(q) + iy(q)}$ with affine functions $x(q) = Au + Bv \ge 0$ and $y(q) = Pw$. Writing any interior point as a barycentric convex combination $q = \sum_m \mu_m q_m$ of vertices ($\mu_m \ge 0, \sum_m \mu_m = 1$), applying the second-order multivariate Taylor remainder around $q$ to both $\operatorname{Re}(e^{-x+iy})$ and $\operatorname{Im}(e^{-x+iy})$ (whose directional Hessians satisfy $|\partial^2_t e^{-x(t)+iy(t)}| = |e^{-x+iy}|((\Delta x)^2 + (\Delta y)^2) \le (\Delta x)^2 + (\Delta y)^2$ since $x \ge 0$) gives
+$$
+\left|L(q) - \sum_m \mu_m L(q_m)\right| \le \frac{1}{2} \sum_m \mu_m \Big[(x(q_m) - x(q))^2 + (y(q_m) - y(q))^2\Big] \le \frac{1}{8}\Big[(\operatorname{range}_{\mathcal{C}} x)^2 + (\operatorname{range}_{\mathcal{C}} y)^2\Big],
+\tag{C1}
+$$
+where the final inequality applies Popoviciu's bound $\operatorname{Var}(Z) \le \frac{1}{4}(\max Z - \min Z)^2$ to both $x = Au + Bv$ and $y = Pw$, proving Eq. (22) rigorously.
+
+---
+
+# Appendix D: Rational Duhamel Total-Number Cutoff Bounds and Choi Repair
+
+Split Eq. (1) as $H = H_0 + \lambda V$ with $H_0 = \sum_{k=0}^1 \omega_k a_k^\dagger a_k$ and $V = \sigma_z \otimes \sum_{k=0}^1 g_k(a_k + a_k^\dagger)$, and let $H_K = P_K H P_K$. Whereas $H_0$ commutes with $N_{\mathrm{tot}} = a_0^\dagger a_0 + a_1^\dagger a_1$, each action of $V$ shifts $N_{\mathrm{tot}}$ by at most $\pm 1$, so the boundary defect $(I - P_K)V P_K$ connects total-occupation shell $K$ to $K+1$ with operator norm bounded by $\|(P_{K+1} - P_K) V P_K\| \le \|g\|_2 \sqrt{K+1}$, where $\|g\|_2 = \sqrt{1 + (3/5)^2} = \sqrt{34/25}$. Iterating Duhamel's formula $U(t) - U_K(t) = -i\lambda \int_0^t U(t - s)(H - H_K) U_K(s)\,ds$ ($d = K - s$ steps across total evolution time $\le T_{\max} = 23/12$, $x = 9/10 > \lambda_{\max}\|g\|_2 T_{\max}$) and bounding the shell transition probability from initial Fock shell $s$ gives the integrated flux bound $f_K(s)$ in Eq. (23), with exponential growth factor $\exp(x^2/2) \le (1 - x^2/2)^{-1} = 200/119$ verified constructively via Lagrange remainder `exp_taylor_upper`. Summing the monotone flux envelope $h_K(s)$ against the stochastically dominating sorted thermal weights $(a_*, b_*) = (6/11, 3/8)$ on $|c| \le n \le 3/5$ produces the exact rational formula (24), yielding Eq. (25) cleanly via upward integer square-root rounding in `verify_standalone.py`.
+
+Given a numerically computed Choi matrix $\hat{J}_K$ on the $d_{\mathrm{in}} d_{\mathrm{out}}$-dimensional system–record space with minimum Hermitian eigenvalue $-\epsilon_- < 0$ and partial-trace deviation $\|\operatorname{Tr}_{\mathrm{out}}(\hat{J}_K) - I_{d_{\mathrm{in}}}\|_\infty = \delta_{\mathrm{TP}}$ ($\epsilon_-, \delta_{\mathrm{TP}} \le 10^{-8}$), convex mixing $\tilde{J}_K = (1 - \alpha_{\mathrm{rep}})\hat{J}_K^+ + \alpha_{\mathrm{rep}} (I_{\mathrm{out}} / d_{\mathrm{out}}) \otimes I_{\mathrm{in}}$ with rational $\alpha_{\mathrm{rep}} \ge \max(d_{\mathrm{out}}\epsilon_-, \delta_{\mathrm{TP}})/(1 + d_{\mathrm{out}}\epsilon_-)$ restores exact complete positivity and partial-trace normalization while altering the channel in half-diamond norm by at most $\alpha_{\mathrm{rep}} + \delta_{\mathrm{TP}} \le 10^{-8}$ [@watrous2018]. Combining this with the Duhamel error $B_{16}$ and Frobenius parameter drift across the calibration box yields the certified complete-output half-diamond bounds of Section 5.2.
+
+---
+
+# Appendix E: $\mathbb{R} \times S^1$ Klein–Gordon Fourier Series Tail and Microcausal Cancellation
+
+Consider the $(1+1)$-dimensional real massive scalar Klein--Gordon field ($m = 1$) on $\mathbb{R} \times S^1_L$ with canonical periodic mode expansion
+$$
+\phi(t, x) = \frac{1}{\sqrt{L}} \sum_{j \in \mathbb{Z}} \frac{1}{\sqrt{2\omega_j}}\left(b_j e^{-i(\omega_j t - k_j x)} + b_j^\dagger e^{i(\omega_j t - k_j x)}\right), \qquad k_j = \frac{2\pi j}{L}, \qquad \omega_j = \sqrt{1 + k_j^2}.
+\tag{E1}
+$$
+Coupling an even spatial smearing profile $\psi(x)$ supported in $[-R, R]$ (normalized to $\int \psi(x)\,dx = 1$) to $\phi(t, x)$ retains only the cosine parity sector. Crucially, the $j=0$ mode is unpaired ($\phi_0(0) \propto (b_0 + b_0^\dagger)/\sqrt{2\omega_0}$, $f_0 = 1$), yielding dimensionless coupling $g_0 = f_0/\sqrt{\omega_0} = 1$, whereas each $j \ge 1$ pairs the degenerate modes $\pm k_j$ into the single standing cosine oscillator $a_j = (b_j + b_{-j})/\sqrt{2}$, picking up an extra factor of $\sqrt{2}$ so that $g_j = \sqrt{2/\omega_j}\,f_j$, where $f_j = \int_{-L/2}^{L/2} \psi(x)\cos(k_j x)\,dx$. Choosing $\psi(x)$ to be the $p_{\mathrm{mix}}$-weighted combination (28) of shifted four-fold box convolutions of $\frac{1}{L/40}\mathbf{1}_{[-L/80, L/80]}$ gives Eq. (27) identically with support $[-R, R]$, $R = (\frac{1}{6} + \frac{1}{40})L$.
+
+With thermal state $(n, c) = (1/2, 1/4)$ on modes $j \in \{0, 1\}$ and vacuum on $j \ge 2$, summing the mode-wise causal-break damping yields $D_{\mathrm{field}} = \lambda^2 \sum_{j=0}^{M} \frac{4 g_j^2(1 - \cos(\omega_j b))}{\omega_j^2} + 4\lambda^2 n \sum_{j=0}^{1} |y_j|^2 + 8\lambda^2 c\,\operatorname{Re}(\overline{y_0}y_1)$ (recovering Eq. (13) cleanly on $j \in \{0, 1\}$), giving $\operatorname{Im}\,z_+ = e^{-D_{\mathrm{field}}}\sin\Phi_{AB}^{(M)}$, while the sudden-switching bare probe energy injection is $\Delta E_{\mathrm{bare}} = 2\lambda^2 \sum_{j=0}^{M} \frac{g_j^2}{\omega_j}(2 - \cos(\omega_j a) - \cos(\omega_j b))$. Because $\operatorname{sinc}^4(\pi j/80) \le (80/(\pi j))^4$ and $\omega_j \ge \beta j$, each mode $j > M$ in the causal-break phase sum (29) satisfies $g_j^2/\omega_j^2 \le \frac{2}{\beta^3}(80/\pi)^8 j^{-11}$. Bounding $|\sin(\omega_j a) + \sin(\omega_j b) - \sin(\omega_j(a + b))| \le 3$ and integrating $j^{-11}$ from $M$ to $\infty$ yields
+$$
+\left|\Phi_{AB}^{(\infty)} - \Phi_{AB}^{(M)}\right| \le 12\lambda^2 \sum_{j=M+1}^{\infty} \frac{2}{\beta^3}\left(\frac{80}{\pi}\right)^8 j^{-11} \le 12\lambda^2 \cdot \frac{2\,(80/\pi)^8}{10\,\beta^3\,M^{10}}.
+\tag{E2}
+$$
+At $\lambda = 3/10$, $\beta = \sqrt{5}/2$, and $M = 160$, Eq. (E2) gives $|\Phi_{AB}^{(\infty)} - \Phi_{AB}^{(160)}| \le 2.485477405 \times 10^{-12}\,\mathrm{rad}$. Meanwhile, because $\Delta x_{\mathrm{gap}} = L/2 - 2R = 0.655649375 > 2/5 = a + b$, the supports $[0, a] \times \operatorname{supp}(\psi_A)$ and $[a, a+b] \times \operatorname{supp}(\psi_B)$ are strictly spacelike separated, forcing the smeared Pauli--Jordan commutator to vanish and $\Phi_{AB}^{(\infty)}(1/5, 1/5; -1) = 0$ identically [@reedSimon1975; @haag1996; @wald1994], confirming that $|\Phi_{AB}^{(160)}| \approx 1.96 \times 10^{-17}\,\mathrm{rad}$ reflects exact local-field cancellation in contrast to the spurious $1.331 \times 10^{-3}\,\mathrm{rad}$ signal of the $M = 1$ reduction.

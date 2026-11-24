@@ -1,0 +1,13 @@
+# Claim & Verification Traceability Matrix
+
+| Paper Claim / Result | Equation / Theorem | Standalone Verification Source | Observed Verified Value / Bound |
+| :--- | :--- | :--- | :--- |
+| Free-Ramsey invariance along $(u, v) = (9/50, 9/400)$ on $\mathcal{D}$ | Eqs. (8)–(12), Theorem 1, App. B | `verify_standalone.py::verify_part1_ramsey_and_break` | `det M(3/4, 3/2) = -1.162022859636`, exact tie $m(3/4)=0.730531651137$, $m(3/2)=0.360071794945$, $w \in [9/110, 27/200]$ |
+| Signed causal-break sensitivity & whole-domain Lipschitz | Eqs. (13)–(16), Theorem 2, App. B | `verify_standalone.py::verify_part1_ramsey_and_break` | $F(2/3, 3/4) = 1.819240198557$; $|z_+| = 0.735275955165$, $\operatorname{Im} z_+(P_1)=0.119850748164$ vs. $P_2=0.147616987004$; $(L_u \dots L_c) = (51.240114, \dots, 830.027702)$ |
+| Stopped 3-slot complete-record Bell witness split ($\eta = 0.96$) | Eqs. (17)–(21), App. C | `verify_standalone.py::verify_part1_ramsey_and_break` | `original` $\Delta = 0.001730089430$; `swap` $\Delta = 0.001581344541$ on $P(\mathrm{ppp}, \mathrm{YZ}^-)$ |
+| 4-cell convex polytope + $1{,}128{,}000$ synthetic holdout | Eq. (22), Table 1, App. C | `physics/qm/correlated_bath/inference/` (`calibration_fit.json`, `holdout_results.json`) | 0/96 disjoint cells on valid families; `readout_challenge` rejected (4/4, `ZZ/0`: $796/24{,}000$); paired-$Y$ $71{,}816/120{,}000 = 0.598467 < 0.605581$ |
+| Exact rational Duhamel total-number cutoff $B_K$ | Eqs. (23)–(24), App. D | `verify_standalone.py::verify_part2_cutoff_bounds` | $B_{16} = 0.011677620430$, $B_{20} = 0.002098904698$, $B_{24} = 0.000357107093$ |
+| Rational Choi CP/TP repair & half-diamond envelope | Sec. 5.2, Fig. 2b, App. D | `physics/qm/correlated_bath/certificate/joint-result.json` | $\frac{1}{2}\|\Delta\|_\diamond \le 0.033892297103$ (tight) / $0.035357047207$ (conservative); solver $0.0276$ |
+| $\mathbb{R} \times S^1$ Klein–Gordon field vs. $M=1$ mode artifact | Eqs. (25)–(29), Table 2, App. E | `verify_standalone.py::verify_part3_local_field` | $p_{\mathrm{mix}} = 0.959700495060$; gap $0.655649375 > 0.4$; $M=1$ spacelike $0.001330794\text{ rad}$ vs. $M=160$ $-1.96 \times 10^{-17}\text{ rad}$ ($< 2.485477 \times 10^{-12}$ tail) |
+| Resonant two-qubit bath reuse vs. Markovian refresh | Sec. 6.3 | `verify_standalone.py::verify_part3_local_field` | $3/20$ deposit; entropy production $\approx 0.35499$; reuse excitation excess $+3/80 = +0.0375$ |
+| Honest empirical & quantum-mechanics boundaries | Abstract, Sec. 4.2, Sec. 7 | `holdout_results.json`, `CURRENT.md` | `device = NOT_CERTIFIED` (synthetic only); baseline agreement `4.82e-13` (`EQUIVALENT_NO_ADDED_GAIN`) |
