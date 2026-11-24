@@ -1,10 +1,14 @@
-name: Chapter 71 publication candidate
+name: Chapter 72 publication candidate
 
 on:
   pull_request:
     paths: &publication_paths
       - 'physics/qm/**'
       - 'physics/status/**'
+      - 'physics/unification/**'
+      - 'physics/interfaces/**'
+      - 'formalization/ueot-physics-unification/**'
+      - 'validation/physics_unification/**'
       - 'formalization/ueot-qm/**'
       - 'formalization/ueot-core/**'
       - '.github/workflows/ueot-qm*.yml'
@@ -28,8 +32,8 @@ jobs:
           persist-credentials: false
       - name: Ensure PDF metadata reader is available
         run: command -v pdfinfo || (sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends poppler-utils)
-      - name: Check both manuscripts, historical identities and scoped results
-        run: python3 -B physics/qm/book/build/verify_v3_12_increment.py
+      - name: Check both manuscripts, frozen baselines and Chapter 72 results
+        run: python3 -B physics/qm/book/build/verify_v3_13_increment.py --manuscript-only
 
   pdf:
     needs: manuscript
@@ -57,11 +61,11 @@ jobs:
           book=physics/qm/book
           out="$RUNNER_TEMP/reading"
           python3 -B "$book/build/build_pdf.py" --source "$book/$STEM.md" --output-dir "$out"
-          python3 -B "$book/build/verify_v3_12_pdf.py" "$book/$STEM.md" "$out"
+          python3 -B "$book/build/verify_v3_13_pdf.py" "$book/$STEM.md" "$out"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: chapter71-candidate-${{ matrix.lang }}
+          name: chapter72-candidate-${{ matrix.lang }}
           path: |
             ${{ runner.temp }}/reading/*.pdf
             ${{ runner.temp }}/reading/*.tex

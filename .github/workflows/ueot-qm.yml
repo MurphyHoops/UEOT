@@ -94,10 +94,16 @@ jobs:
           prior="$RUNNER_TEMP/ueot-book311"
           git worktree add --detach "$prior" a3f95dc1a6821978e173e23015f026994fb60c65
           python "$prior/physics/qm/book/build/verify_v3_11_increment.py" --repo-root "$prior" --output /tmp/ueot-qm-book3.11-increment.json --require-complete
+      - name: Replay the complete Chapter 71 publication gate at its merged revision
+        run: |
+          command -v pdfinfo || (sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends poppler-utils)
+          prior312="$RUNNER_TEMP/ueot-book312"
+          git worktree add --detach "$prior312" cc5670d5f2ac96f88270c0f38ae6fb6f77e26093
+          python -B "$prior312/physics/qm/book/build/verify_v3_12_increment.py"
       - name: Verify the current edition and inherited scientific identities
         run: |
           command -v pdfinfo || (sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends poppler-utils)
-          python -B physics/qm/book/build/verify_v3_12_increment.py
+          python -B physics/qm/book/build/verify_v3_13_increment.py --manuscript-only
       - name: Verify exact kernel and independent negative controls
         run: python physics/qm/kernel/verify_kernel.py --output /tmp/ueot-qm-runtime-verification.json
       - name: Run complete kernel example

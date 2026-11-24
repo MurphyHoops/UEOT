@@ -1,6 +1,6 @@
-# UEOT Physics 3.12 — bilingual stable result map
+# UEOT Physics 3.13 — bilingual stable result map
 
-210 stable statements; old result objects retain their original proof and execution scope. Titles below are parsed from the actual canonical anchors.
+229 stable statements; old result objects retain their original proof and execution scope. Titles below are parsed from the actual canonical anchors.
 
 | ID | Chapter | 中文 | English |
 |---|---:|---|---|
@@ -214,3 +214,22 @@
 | P-QMEM-03 | 71 | P-QMEM-03（因果断开后的带符号响应）。 | P-QMEM-03 (signed response after a causal break). |
 | P-ROB-08 | 71 | P-ROB-08（内点插值与完整输出证书）。 | P-ROB-08 (interior interpolation and complete-output certificate). |
 | P-FIELD-01 | 71 | P-FIELD-01（两模匹配与类空信号）。 | P-FIELD-01 (matching two modes and testing a spacelike signal). |
+| C-QSEL-05 | 72 | C-QSEL-05（双份实参考零间隙与商下降复量子选择）。 | C-QSEL-05 (two-copy real-reference null gap and quotient-descent complex selection). |
+| C-LR-CONE-01 | 72 | C-LR-CONE-01（离散输运证书到 Lieb–Robinson 涌现光锥与 Minkowski 共形类）。 | C-LR-CONE-01 (discrete transport certificates to emergent Lieb–Robinson cones and Minkowski conformal geometry). |
+| C-GPT-RECON-02 | 72 | C-GPT-RECON-02（有限维 GPT 传递正交对称与自对偶锥 Hurwitz 重构）。 | C-GPT-RECON-02 (finite GPT transitive orthogonal symmetry and Hurwitz self-dual cone reconstruction). |
+| C-MATH42-BRIDGE-01 | 72 | C-MATH42-BRIDGE-01（数学著作 v4.2 第 32–40 章闭合检验、记忆分离与极小化最大机制辨识）。 | C-MATH42-BRIDGE-01 (Mathematics v4.2 Chapters 32–40 closed tests, memory separation, and minimax mechanism discrimination). |
+| P-HORIZON-CLOCK-01 | 72 | P-HORIZON-CLOCK-01（抗压缩操作型普朗克传感器下界与 RG 挤压禁行定理）。 | P-HORIZON-CLOCK-01 (squeezing-proof operational Planck sensor floor and RG-crunch no-go theorem). |
+| P-ADM-ALLHARM-02 | 72 | P-ADM-ALLHARM-02（$S^3$ 十五维共形—Killing 闭合、全谐波椭圆性与缩并 Bianchi 传播）。 | P-ADM-ALLHARM-02 ($S^3$ fifteen-dimensional conformal–Killing closure, all-harmonic ellipticity, and contracted Bianchi propagation). |
+| P-FLAT-DIRAC-03 | 72 | P-FLAT-DIRAC-03（渐近平直 $\Lambda=0$ 局域时钟屏障、半经典压缩与 Dirac 闭合三分法）。 | P-FLAT-DIRAC-03 (asymptotically flat $\Lambda = 0$ clock barrier, semiclassical contraction, and Dirac closure trichotomy). |
+| P-DISCRETE-QG-01 | 72 | P-DISCRETE-QG-01（连续统 Pauli–Villars 鬼模阻断 vs 普朗克图 Wheeler–DeWitt 商下降）。 | P-DISCRETE-QG-01 (continuum Pauli–Villars ghost necessity versus Planck-graph Wheeler–DeWitt quotient descent). |
+| P-LORENTZ-QG-07 | 72 | P-LORENTZ-QG-07（因果叶状 Wick 反射正定性、$O(a^2)$ 双标度连续极限与谱维数流）。 | P-LORENTZ-QG-07 (causal foliation Wick reflection positivity, $O(a^2)$ double-scaling continuum limit, and spectral dimension flow). |
+| P-CHIRAL-CLOCK-02 | 72 | P-CHIRAL-CLOCK-02（Lüscher 手征投影分解、15-Weyl $(3,3,1)$ 全部异常抵消与时钟 Dirac 谱隙）。 | P-CHIRAL-CLOCK-02 (Lüscher chiral projector factorization, 15-Weyl $(3,3,1)$ complete anomaly cancellation, and clock Dirac gap). |
+| P-NONABELIAN-CHIRAL-08 | 72 | P-NONABELIAN-CHIRAL-08（非阿贝尔 $SU(N)$ Lüscher 测度商障碍、Witten / Dai–Freed 不变量与 Clay 连续统边界）。 | P-NONABELIAN-CHIRAL-08 (non-Abelian $SU(N)$ Lüscher measure quotient, Witten and Dai–Freed invariants, and the Clay continuum boundary). |
+| C-CORE-CONST-01 | 72 | C-CORE-CONST-01（$(M,L,T)$ 奇偶子格指数 2 与 `QuotientDescent` / `FisherGauge` 单位规范消除）。 | C-CORE-CONST-01 ($(M,L,T)$ parity-sublattice index 2 and `QuotientDescent` / `FisherGauge` unit-gauge elimination). |
+| P-GUT-DESERT-02 | 72 | P-GUT-DESERT-02（$(3,3,1)$ 一圈沙漠大统一 $>83\sigma$ 排除与双步中间阈值共线修复）。 | P-GUT-DESERT-02 ($>83\sigma$ PDG-2024 exclusion of one-loop $(3,3,1)$ desert unification and two-step threshold collinearity). |
+| P-UNIMODULAR-LAMBDA-09 | 72 | P-UNIMODULAR-LAMBDA-09（无迹单模引力辐射真空商除、历史体积隔离与双侧可行熵窗口）。 | P-UNIMODULAR-LAMBDA-09 (unimodular trace-free radiative quotient, 4-volume sequestering, and two-sided viability–entropy window). |
+| P-MESO-BMV-06 | 72 | P-MESO-BMV-06（介观 BMV 对易稳定子见证、Lindblad 退相干阈值与盲留出硬件合同）。 | P-MESO-BMV-06 (mesoscopic BMV commuting-stabilizer witness, Lindblad decoherence threshold, and blind-holdout hardware contract). |
+| P-PHIL31-OMEGA-01 | 72 | P-PHIL31-OMEGA-01（组织完整性 $\Omega$ 排他性判据与自主量子时钟—指针持久充要条件）。 | P-PHIL31-OMEGA-01 (organizational integrity $\Omega$ exclusivity and autonomous quantum clock–pointer persistence). |
+| P-PHIL31-REALIZ-02 | 72 | P-PHIL31-REALIZ-02（无“第二股力”宏观商实现、第 12 章秩三 $\Pi/\Phi$ 阻断与第 21/25 章非演绎壁）。 | P-PHIL31-REALIZ-02 (quotient realization without a "second force", Chapter 12 rank-3 bottleneck exclusion, and Chapters 21 and 25 non-deduction walls). |
+| P-PHIL31-LAKATOS-03 | 72 | P-PHIL31-LAKATOS-03（第 28 章 Lakatos 研究纲领非免疫性定理与诚实 `OPEN` 守恒）。 | P-PHIL31-LAKATOS-03 (Chapter 28 Lakatosian non-immunity theorem and preservation of honest `OPEN` status). |
+| C-UNIFIED-SYNTH-10 | 72 | C-UNIFIED-SYNTH-10（跨扇区因果—手征—单模非分裂总成与最小四假设独立约化定理）。 | C-UNIFIED-SYNTH-10 (non-fragmented causal–chiral–unimodular synthesis and minimal four-hypothesis reduction). |

@@ -1,0 +1,101 @@
+{
+  "schema": "ueot-physics-current/3.13",
+  "date": "2026-11-24",
+  "version": "v31.16",
+  "research_baseline": "a93209c58eef71b0eac489758bd46e38b975848a",
+  "previous_book_baseline": "cc5670d5f2ac96f88270c0f38ae6fb6f77e26093",
+  "frozen_qm_current": {
+    "path": "physics/qm/status/CURRENT.json",
+    "sha256": "084672f4503febc972f22b05b50d04021235dc9a3c86c24fa1865a1c40cf5190",
+    "bytes": 4193
+  },
+  "kernel": "physics/unification/README.md",
+  "runtime_entrypoint": "physics/unification/run_verification.py",
+  "formalization": "formalization/ueot-physics-unification/README.md",
+  "validation_ledger": "validation/physics_unification/VALIDATION_LEDGER.json",
+  "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.16.json",
+  "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.15.json",
+  "verification_state": "MANUSCRIPT_CANDIDATE",
+  "physical_unification": "OPEN",
+  "device_certified": false,
+  "lean_formalization_summary": {
+    "package": "formalization/ueot-physics-unification",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "modules": 31,
+    "constants": 1128,
+    "theorems": 582,
+    "definitions": 471,
+    "sorry_ax": 0,
+    "native_decide": 0,
+    "nonstandard_axioms": 0,
+    "ci_commit": "e2c67e27852629a3450828f0049a2255b79e0dd9",
+    "ci_run": 45118737723
+  },
+  "integration": {
+    "state": "MANUSCRIPT_CANDIDATE",
+    "remote_verified": false,
+    "previous_verified_scientific_main": "a93209c58eef71b0eac489758bd46e38b975848a",
+    "previous_ch71_verified_main": "cc5670d5f2ac96f88270c0f38ae6fb6f77e26093",
+    "previous_ch71_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.15/integration-verification.json",
+      "sha256": "fcb681bfb17854afbffba496a887e08e2675f3fa54e10c9378e050b8ad5b53bd",
+      "bytes": 2628
+    },
+    "unification_ci_commit": "e2c67e27852629a3450828f0049a2255b79e0dd9",
+    "unification_ci_run": 45118737723,
+    "pr": null,
+    "merge_state": "DRAFT_PREPARATION"
+  },
+  "completed_in_this_delivery": [
+    "C-QSEL-05",
+    "C-LR-CONE-01",
+    "C-GPT-RECON-02",
+    "C-MATH42-BRIDGE-01",
+    "P-HORIZON-CLOCK-01",
+    "P-ADM-ALLHARM-02",
+    "P-FLAT-DIRAC-03",
+    "P-DISCRETE-QG-01",
+    "P-LORENTZ-QG-07",
+    "P-CHIRAL-CLOCK-02",
+    "P-NONABELIAN-CHIRAL-08",
+    "C-CORE-CONST-01",
+    "P-GUT-DESERT-02",
+    "P-UNIMODULAR-LAMBDA-09",
+    "P-MESO-BMV-06",
+    "P-PHIL31-OMEGA-01",
+    "P-PHIL31-REALIZ-02",
+    "P-PHIL31-LAKATOS-03",
+    "C-UNIFIED-SYNTH-10"
+  ],
+  "book": {
+    "edition": "3.13",
+    "status": "MANUSCRIPT_CANDIDATE",
+    "chapters": 73,
+    "appendices": 6,
+    "numbered_results": 229,
+    "inherited_numbered_results": 210,
+    "new_numbered_results": 19,
+    "canonical": "physics/qm/book/UEOT_PHYSICS.md",
+    "english": "physics/qm/book/UEOT_PHYSICS.en.md",
+    "dossier": {
+      "path": "physics/qm/book/CHAPTER_DOSSIER.json",
+      "sha256": "597400550abb4460ce04deca19a1fa937625c2a7517de9e4fb3dce682539e99b",
+      "bytes": 1858642
+    },
+    "source_manifest": {
+      "path": "physics/qm/book/SOURCE_MANIFEST.json",
+      "sha256": "538325157a2c771c4129c89cb963db96d2fac5b710b90fb3e97040318db63038",
+      "bytes": 14428
+    },
+    "checked_in_pdf_edition": "3.12",
+    "pdf_acceptance": "PENDING_CI_STAGE_A",
+    "whole_chapter_72_formalized": true
+  },
+  "new_hardware_data": false,
+  "scope_limits": [
+    "All Chapter 72 theorems hold under explicit discrete, semiclassical, one-loop, EFT or finite-dimensional model hypotheses.",
+    "Four independent frontier obligations (H1-H4: 4D nonperturbative QFT, full quantum gravity, Planck-scale experiments, autonomous clock hardware) remain OPEN.",
+    "New formal proofs live in formalization/ueot-physics-unification (31 modules, 582 theorems, 0 sorryAx, 0 native_decide); historical ueot-qm (158 inputs) and physics/qm/status/CURRENT.json remain untouched per PR #468.",
+    "Chapter 72 adds no hardware observations or independent human peer review; device_certified = false and physical_unification = OPEN."
+  ]
+}

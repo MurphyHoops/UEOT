@@ -1,34 +1,25 @@
 # 《UEOT物理学》 / UEOT Physics
 
-## 3.12 双语书稿候选 · Bilingual manuscript candidate
+## 3.13 双语定版集成：跨卷统一与全谐波边界 · Edition 3.13 Bilingual Monograph
 
-两种连续书稿均含第0–71章、六个附录、210项稳定结果。第71章是供评议的人工智能辅助研究提案。钱德桂保留历史书稿作者署名。本页列出同一候选书稿的中英文印本。第0章、第48章及附录E另附固定的前版阅读入口。印本验收范围见下方回执。
+两种连续书稿均含 **第 0–72 章、附录 A–F、229 项稳定结果（既有 210 项 + 第 72 章新增 19 项）**，对应科学版本 **v3.16 (`3.13`)**。钱德桂保留历史书稿作者署名；第 72 章整合已合并主线的《UEOT 哲学著作》v3.1、《UEOT 数学著作》v4.2（1,051 模块 Lean 4）、`PR #468 all_harmonic_horizon`（345 项检验链）与 Wave 1–7 物理统一套件（31 纯内核 Lean 4 模块 / 582 定理 / 31 套 40 位向外区间）。全书将统一边界归约至四条经机器证明独立的不可约假设（$H_1$–$H_4$），并诚实保留 `physical_unification = OPEN` 与 `device_certified = false`。
 
-| Language | Continuous 3.12 source | Chapter 71 | Edition 3.12 PDF and TeX |
+| Language | Continuous 3.13 source | Chapter 72 | Edition 3.13 PDF and TeX |
 |---|---|---|---|
-| 中文 | [完整书稿](UEOT_PHYSICS.md) | [从相关浴中究竟能识别什么](UEOT_PHYSICS.md#ch-71) | [PDF](UEOT_PHYSICS.pdf) · [TeX](UEOT_PHYSICS.tex) |
-| English | [Complete manuscript](UEOT_PHYSICS.en.md) | [What a correlated bath lets us infer](UEOT_PHYSICS.en.md#ch-71) | [PDF](UEOT_PHYSICS.en.pdf) · [TeX](UEOT_PHYSICS.en.tex) |
+| 中文 | [完整书稿](UEOT_PHYSICS.md) | [从逻辑、哲学与全谐波边界到物理统一前沿](UEOT_PHYSICS.md#ch-72) | [PDF](UEOT_PHYSICS.pdf) · [TeX](UEOT_PHYSICS.tex) |
+| English | [Complete manuscript](UEOT_PHYSICS.en.md) | [From logic, philosophy and all-harmonic boundaries to the unification frontier](UEOT_PHYSICS.en.md#ch-72) | [PDF](UEOT_PHYSICS.en.pdf) · [TeX](UEOT_PHYSICS.en.tex) |
 
-The checked-in reading copies were built from the manuscripts at `a20d178a`. The build receipts identify the exact source, TeX and PDF for each language. The visual review records the pages examined. Chapter 71 remains a manuscript candidate in [PR #467](https://github.com/MurphyHoops/UEOT/pull/467). [CI run 44324949932](https://github.com/MurphyHoops/UEOT/actions/runs/44324949932) · [Chinese build](evidence/v3.12/zh-build.json) · [English build](evidence/v3.12/en-build.json) · [Reading-copy review](evidence/v3.12/reading-review.json)
+Stage A bilingual manuscripts generated; CI XeLaTeX build and reading-review sealing pending.
 
-Chapter 71 follows a pair of sources with identical free Ramsey responses through a signed intervention, a calibrated complete-output certificate and a local-field counterexample. The complete channel, Bell analog readout and digitized sampler have separate error budgets. The case for global complex-sector selection remains open. Matched hardware evidence and independent human review are pending.
+[Unification suites](../../unification/README.md) · [pure-kernel Lean 4 (`v4.33.1`, 582 theorems)](../../../formalization/ueot-physics-unification/README.md) · [PR #468 all_harmonic_horizon](../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md) · [validation ledger](../../../validation/physics_unification/VALIDATION_LEDGER.json) · [stable result map](PHYSICS_RESULT_MAPPING.md) · [chapter dossier](CHAPTER_DOSSIER.json) · [sources](SOURCE_MANIFEST.json) · [claim ledger v31.16](../status/CLAIM_LEDGER_v31.16.json) · [v31.16 status](../../status/CURRENT_v31.16.json) · [frozen PR #468 QM status](../status/CURRENT.json)
 
-[Research packet and replay](../correlated_bath/README.md) · [stable result map](PHYSICS_RESULT_MAPPING.md) · [chapter dossier](CHAPTER_DOSSIER.json) · [sources](SOURCE_MANIFEST.json) · [claim ledger](../status/CLAIM_LEDGER_v31.15.json) · [current status](../status/CURRENT.json) · [roadmap](../ROADMAP.md)
+## 历史版本说明
 
-## Historical edition 3.11 · 历史版
+### 历史 3.12：第 71 章相关浴（`cc5670d5` / PR #467） / Historical 3.12: Chapter 71 Correlated Bath
 
-该版连续双语阅读本为第0–70章、六个附录、203项稳定结果。第70章新增九项结果，原194项结果对象和117项账本主张保留历史身份。发布状态与实际PR/main回执以[CURRENT](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/status/CURRENT.json)为准。
+第 71 章合并版包含第 0–71 章、210 项稳定结果（`v31.15`），合并提交 [`cc5670d5`](https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f88270c0f38ae6fb6f77e26093/physics/qm/book/README.md) · [中文 PDF](https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f88270c0f38ae6fb6f77e26093/physics/qm/book/UEOT_PHYSICS.pdf) · [English PDF](https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f88270c0f38ae6fb6f77e26093/physics/qm/book/UEOT_PHYSICS.en.pdf) · [v31.15 集成回执](../kernel/evidence/v31.15/integration-verification.json)。
 
-- 中文：[完整Markdown](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.md)、[PDF](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.pdf)、[TeX](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.tex)。
-- English: [complete Markdown](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.en.md), [PDF](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.en.pdf), [TeX](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/UEOT_PHYSICS.en.tex).
-- [新章内核报告](../UEOT_QM_KERNEL_v31.14.md)、[证据目录](../kernel/evidence/v31.14/)、[可复现入口](../persistent_bath/README.md)。
-- [结果逐项映射](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/PHYSICS_RESULT_MAPPING.md)、[dossier](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/CHAPTER_DOSSIER.json)、[来源清单](https://github.com/MurphyHoops/UEOT/blob/a3f95dc1a6821978e173e23015f026994fb60c65/physics/qm/book/SOURCE_MANIFEST.json)、[前提与长期物理责任](../audits/PERSISTENT_BATH_v31.14/PREMISES_AND_RESPONSIBILITIES.md)。
-
-同一持久双模真空源的完整CQ证书上界为0.036581185645，固定终端读出分布上界为0.040451414205。数学量词、实际区间计算、精确CP/TP修复、合成校准/留出及外部处理后observable分别登记。全球复量子选择仍开放；强标准过程基线等价而无额外增益；匹配器件仍未认证；第69/70章没有新增Lean证明。
-
-The new chapter connects one persistent source to complete instruments, controlled finite propagation, exact physical prediction, joint calibration and frozen holdout. Its numerical and statistical certificate is conditional on the declared physical inputs. Global complex-quantum selection, matched-device confirmation and an advantage over the strong standard process remain open. Historical result objects and execution identities are retained.
-
-## 历史版本说明（保留原执行身份）
+（保留原执行身份）
 
 ## 《UEOT物理学》 / UEOT Physics
 

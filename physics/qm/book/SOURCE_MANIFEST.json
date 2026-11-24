@@ -68,8 +68,8 @@
     "scope": "3.7 preserves the three exact program payloads in both languages; Appendix D prose is edited. The older preservation_receipt and historical_receipt below keep their original scope.",
     "publication_preservation_receipt": "physics/qm/book/evidence/v3.7/publication-metadata-update.json"
   },
-  "schema": "ueot-physics-book-source-manifest/3.12",
-  "edition": "3.12",
+  "schema": "ueot-physics-book-source-manifest/3.13",
+  "edition": "3.13",
   "entries": [
     {
       "id": "S1",
@@ -208,61 +208,75 @@
       "path": "physics/qm/correlated_bath/README.md",
       "evidence_level": "PAPER_EXACT_INTERVAL_SYNTHETIC_NO_NEW_LEAN",
       "use": "Seven Chapter 71 result objects and their declared controls"
+    },
+    {
+      "id": "QM3116",
+      "name": "Three-volume Philosophy v3.1 / Math v4.2 / Wave 1-7 physics unification & PR #468 all-harmonic integration",
+      "path": "physics/unification/README.md",
+      "evidence_level": "LEAN4_PURE_KERNEL_582_THEOREMS_AND_40_DIGIT_INTERVAL_OPEN_FRONTIERS",
+      "use": "Nineteen Chapter 72 cross-sector synthesis and bridge results; physical_unification remains OPEN"
     }
   ],
   "prior_complete_manifest": {
-    "commit": "a3f95dc1a6821978e173e23015f026994fb60c65",
+    "commit": "cc5670d5f2ac96f88270c0f38ae6fb6f77e26093",
     "path": "physics/qm/book/SOURCE_MANIFEST.json",
-    "sha256": "a2d1c146c45152087755d12a6e4054f49679633eb75fbe800a581c109f9b3984",
-    "bytes": 15326
+    "sha256": "ec86eb77ecd6bd3c4add2adde169a1d4756e3f662e047ebc56ce54856488cb76",
+    "bytes": 13911
   },
   "publication_revision": {
-    "edition": "3.12",
-    "scope": "Continuous bilingual manuscript candidate. The canonical TeX and PDF files match the frozen PR build. Visual acceptance covers only the pages in the reading review.",
-    "new_scientific_results_in_publication": 7,
+    "edition": "3.13",
+    "scope": "Continuous bilingual Stage A manuscript candidate awaiting CI XeLaTeX build and PNG inspection.",
+    "new_scientific_results_in_publication": 19,
     "new_experimental_data": false,
-    "local_artifact_state": "PASS_SCOPED",
-    "remote_publication": "MANUSCRIPT_CANDIDATE",
-    "print_source_commit": "a20d178a2f54f2c984354e638060869fe97636fb",
-    "build_run_id": 44324949932,
-    "visual_review": {
-      "path": "physics/qm/book/evidence/v3.12/reading-review.json",
-      "sha256": "1ddd1aa91a265db24d8ab5b9ab73e2b68d641c6791a02e82916dd50f37a153b0",
-      "bytes": 3800
-    }
+    "local_artifact_state": "MANUSCRIPT_CANDIDATE_STAGE_A",
+    "remote_publication": "MANUSCRIPT_CANDIDATE"
   },
   "canonical_identity": {
     "path": "physics/qm/book/UEOT_PHYSICS.md",
-    "sha256": "d6c50d944a9d07cc3fb35e80194a130060e8eb9c7290870d545499fa71b04d62",
-    "bytes": 833645,
-    "language": "zh",
-    "status": "MANUSCRIPT_CANDIDATE",
-    "chapters": 72,
+    "sha256": "2346aa143876cc31af978d1c4f6ca252103efb322f79f4aba54153a5df9abb26",
+    "bytes": 866932,
+    "chapters": 73,
     "appendices": 6,
-    "numbered_results": 210,
-    "inherited_result_ids": 203,
-    "new_result_ids": 7
+    "numbered_results": 229,
+    "inherited_results": 210,
+    "new_results": 19
   },
   "canonical_english_identity": {
     "path": "physics/qm/book/UEOT_PHYSICS.en.md",
-    "sha256": "610642d4f3081aaee1076cf33dd90ddfcedad92de9a77427ce19028070d6c595",
-    "bytes": 1012005,
-    "language": "en",
-    "status": "MANUSCRIPT_CANDIDATE",
-    "chapters": 72,
+    "sha256": "adcf4ea1eddb108d10be0c81fd50e1ddaba1b63e290169759f77d8daf3a79df1",
+    "bytes": 1046352,
+    "chapters": 73,
     "appendices": 6,
-    "numbered_results": 210,
-    "inherited_result_ids": 203,
-    "new_result_ids": 7
+    "numbered_results": 229,
+    "inherited_results": 210,
+    "new_results": 19
   },
   "unified_source_identity": {
-    "manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
-    "verification": "physics/qm/kernel/evidence/v31.11/lean-verification.json",
-    "source_count": 158,
-    "source_set_sha256": "f9ea1e3e9bc695e3916d764e8f005d98556e4541653d439a60e57a5fb8c4cacf",
-    "scope": "Historical v31.11 proof execution only; 158 unchanged inputs; no new Chapter69 or Chapter70 Lean coverage",
-    "current_bytes_match_executed_bytes": true,
-    "current_identity_check": "physics/qm/kernel/evidence/v31.14/proof-reuse.json"
+    "zh": {
+      "path": "physics/qm/book/UEOT_PHYSICS.md",
+      "sha256": "2346aa143876cc31af978d1c4f6ca252103efb322f79f4aba54153a5df9abb26",
+      "bytes": 866932
+    },
+    "en": {
+      "path": "physics/qm/book/UEOT_PHYSICS.en.md",
+      "sha256": "adcf4ea1eddb108d10be0c81fd50e1ddaba1b63e290169759f77d8daf3a79df1",
+      "bytes": 1046352
+    },
+    "unification_verification": {
+      "path": "physics/unification/verification.json",
+      "sha256": "ad655639650449e2cee06817833fc4707ab9bcabdad04a2eb00cdcf6b8b1c492",
+      "bytes": 17927
+    },
+    "validation_ledger": {
+      "path": "validation/physics_unification/VALIDATION_LEDGER.json",
+      "sha256": "3312d9c8c99d133373caa1f907cc4a060a70ea0cee0cf2ec7f1c38cbcc8494d9",
+      "bytes": 21919
+    },
+    "claim_ledger_v31_16": {
+      "path": "physics/qm/status/CLAIM_LEDGER_v31.16.json",
+      "sha256": "b163712e560e4a35dcfb972dd679adeaa2d0c5bf048990983ca94b925b7b0ef2",
+      "bytes": 508831
+    }
   },
   "publication_source_identity": {
     "manifest": "physics/qm/kernel/evidence/v31.11/source-manifest.json",
@@ -277,15 +291,17 @@
   "current_remote_code_identity": {
     "state": "MANUSCRIPT_CANDIDATE",
     "remote_verified": false,
-    "previous_verified_scientific_main": "a3f95dc1a6821978e173e23015f026994fb60c65",
-    "previous_main_run": 44318642942,
-    "previous_main_receipt": {
-      "path": "physics/qm/kernel/evidence/v31.14/integration-verification.json",
-      "sha256": "28fcfba79237fe26fc06b024bcf88d79a2804a831751bb50915036f4e545e1b4",
-      "bytes": 4706
+    "previous_verified_scientific_main": "a93209c58eef71b0eac489758bd46e38b975848a",
+    "previous_ch71_verified_main": "cc5670d5f2ac96f88270c0f38ae6fb6f77e26093",
+    "previous_ch71_receipt": {
+      "path": "physics/qm/kernel/evidence/v31.15/integration-verification.json",
+      "sha256": "fcb681bfb17854afbffba496a887e08e2675f3fa54e10c9378e050b8ad5b53bd",
+      "bytes": 2628
     },
-    "pr": 467,
-    "merge_state": "AWAITING_MERGE"
+    "unification_ci_commit": "e2c67e27852629a3450828f0049a2255b79e0dd9",
+    "unification_ci_run": 45118737723,
+    "pr": null,
+    "merge_state": "DRAFT_PREPARATION"
   },
   "scientific_execution_partition": {
     "historical_lean_identity": {
@@ -307,6 +323,6 @@
     "synthetic_holdout_shots": 408000,
     "new_device_data": false
   },
-  "current_science_entry": "physics/qm/correlated_bath/README.md",
-  "current_science_replay": "physics/qm/correlated_bath/portable_replay.py"
+  "current_science_entry": "physics/unification/README.md",
+  "current_science_replay": "physics/unification/run_verification.py --check"
 }
