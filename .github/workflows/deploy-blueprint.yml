@@ -1,0 +1,54 @@
+name: Deploy Lean 4 Interactive Blueprint
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "publications/blueprint/**"
+      - "formalization/ueot-core/UEOT.lean"
+      - "formalization/ueot-core/UEOT/**"
+      - "formalization/ueot-core/lean-toolchain"
+      - "formalization/ueot-core/docs/ASSUMPTION_CLASSIFICATION_106.json"
+      - ".github/workflows/deploy-blueprint.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages-blueprint"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build Lean 4 Blueprint static site
+        run: python3 publications/blueprint/build_blueprint.py
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: publications/blueprint/site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
