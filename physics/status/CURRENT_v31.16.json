@@ -15,7 +15,7 @@
   "validation_ledger": "validation/physics_unification/VALIDATION_LEDGER.json",
   "claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.16.json",
   "previous_claim_ledger": "physics/qm/status/CLAIM_LEDGER_v31.15.json",
-  "verification_state": "MANUSCRIPT_CANDIDATE",
+  "verification_state": "PASS_SCOPED",
   "physical_unification": "OPEN",
   "device_certified": false,
   "lean_formalization_summary": {
@@ -43,8 +43,8 @@
     },
     "unification_ci_commit": "e2c67e27852629a3450828f0049a2255b79e0dd9",
     "unification_ci_run": 45118737723,
-    "pr": null,
-    "merge_state": "DRAFT_PREPARATION"
+    "pr": 492,
+    "merge_state": "AWAITING_MERGE"
   },
   "completed_in_this_delivery": [
     "C-QSEL-05",
@@ -69,7 +69,7 @@
   ],
   "book": {
     "edition": "3.13",
-    "status": "MANUSCRIPT_CANDIDATE",
+    "status": "PASS_SCOPED",
     "chapters": 73,
     "appendices": 6,
     "numbered_results": 229,
@@ -79,17 +79,22 @@
     "english": "physics/qm/book/UEOT_PHYSICS.en.md",
     "dossier": {
       "path": "physics/qm/book/CHAPTER_DOSSIER.json",
-      "sha256": "597400550abb4460ce04deca19a1fa937625c2a7517de9e4fb3dce682539e99b",
-      "bytes": 1858642
+      "sha256": "f949fda3ef8fb73b0f1a99cd0d5c85076814dd21e3ce273c04bb69093ed6f688",
+      "bytes": 1860550
     },
     "source_manifest": {
       "path": "physics/qm/book/SOURCE_MANIFEST.json",
-      "sha256": "538325157a2c771c4129c89cb963db96d2fac5b710b90fb3e97040318db63038",
-      "bytes": 14428
+      "sha256": "29af1ab130d996e1c7e56d933d43313c81a1e47096c26fc2b1be2eae69591e56",
+      "bytes": 14786
     },
-    "checked_in_pdf_edition": "3.12",
-    "pdf_acceptance": "PENDING_CI_STAGE_A",
-    "whole_chapter_72_formalized": true
+    "checked_in_pdf_edition": "3.13",
+    "pdf_acceptance": "PASS_SCOPED",
+    "whole_chapter_72_formalized": true,
+    "visual_review": {
+      "path": "physics/qm/book/evidence/v3.13/reading-review.json",
+      "sha256": "df1dd33cffa556afb6df26680ec7ac32acd14bf5679a10b008625a13534f26dc",
+      "bytes": 4416
+    }
   },
   "new_hardware_data": false,
   "scope_limits": [

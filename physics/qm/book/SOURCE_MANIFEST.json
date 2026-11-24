@@ -225,11 +225,18 @@
   },
   "publication_revision": {
     "edition": "3.13",
-    "scope": "Continuous bilingual Stage A manuscript candidate awaiting CI XeLaTeX build and PNG inspection.",
+    "scope": "Continuous bilingual manuscript candidate. The canonical TeX and PDF files match the frozen CI PR build. Visual acceptance covers only the pages in the reading review.",
     "new_scientific_results_in_publication": 19,
     "new_experimental_data": false,
-    "local_artifact_state": "MANUSCRIPT_CANDIDATE_STAGE_A",
-    "remote_publication": "MANUSCRIPT_CANDIDATE"
+    "local_artifact_state": "PASS_SCOPED",
+    "remote_publication": "MANUSCRIPT_CANDIDATE",
+    "print_source_commit": "c4d0a7b474bfc98a72e41d399510c87fc0217e77",
+    "build_run_id": 45320237937,
+    "visual_review": {
+      "path": "physics/qm/book/evidence/v3.13/reading-review.json",
+      "sha256": "df1dd33cffa556afb6df26680ec7ac32acd14bf5679a10b008625a13534f26dc",
+      "bytes": 4416
+    }
   },
   "canonical_identity": {
     "path": "physics/qm/book/UEOT_PHYSICS.md",
@@ -274,8 +281,8 @@
     },
     "claim_ledger_v31_16": {
       "path": "physics/qm/status/CLAIM_LEDGER_v31.16.json",
-      "sha256": "b163712e560e4a35dcfb972dd679adeaa2d0c5bf048990983ca94b925b7b0ef2",
-      "bytes": 508831
+      "sha256": "97455d3a214fb5be0b19f8832b1afcdb9cfcf87015ad8eddb4a222561174aa61",
+      "bytes": 508651
     }
   },
   "publication_source_identity": {
@@ -287,7 +294,7 @@
     "current_bytes_match_executed_bytes": true,
     "current_identity_check": "physics/qm/kernel/evidence/v31.14/proof-reuse.json"
   },
-  "current_release_stage": "MANUSCRIPT_CANDIDATE",
+  "current_release_stage": "PASS_SCOPED_CANDIDATE",
   "current_remote_code_identity": {
     "state": "MANUSCRIPT_CANDIDATE",
     "remote_verified": false,
@@ -300,8 +307,8 @@
     },
     "unification_ci_commit": "e2c67e27852629a3450828f0049a2255b79e0dd9",
     "unification_ci_run": 45118737723,
-    "pr": null,
-    "merge_state": "DRAFT_PREPARATION"
+    "pr": 492,
+    "merge_state": "AWAITING_MERGE"
   },
   "scientific_execution_partition": {
     "historical_lean_identity": {

@@ -9,7 +9,7 @@
 | 中文 | [完整书稿](UEOT_PHYSICS.md) | [从逻辑、哲学与全谐波边界到物理统一前沿](UEOT_PHYSICS.md#ch-72) | [PDF](UEOT_PHYSICS.pdf) · [TeX](UEOT_PHYSICS.tex) |
 | English | [Complete manuscript](UEOT_PHYSICS.en.md) | [From logic, philosophy and all-harmonic boundaries to the unification frontier](UEOT_PHYSICS.en.md#ch-72) | [PDF](UEOT_PHYSICS.en.pdf) · [TeX](UEOT_PHYSICS.en.tex) |
 
-Stage A bilingual manuscripts generated; CI XeLaTeX build and reading-review sealing pending.
+The checked-in reading copies were built from `c4d0a7b4` in [PR #492](https://github.com/MurphyHoops/UEOT/pull/492). [CI run 45320237937](https://github.com/MurphyHoops/UEOT/actions/runs/45320237937) · [Chinese build](evidence/v3.13/zh-build.json) · [English build](evidence/v3.13/en-build.json) · [Reading-copy review](evidence/v3.13/reading-review.json)
 
 [Unification suites](../../unification/README.md) · [pure-kernel Lean 4 (`v4.33.1`, 582 theorems)](../../../formalization/ueot-physics-unification/README.md) · [PR #468 all_harmonic_horizon](../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md) · [validation ledger](../../../validation/physics_unification/VALIDATION_LEDGER.json) · [stable result map](PHYSICS_RESULT_MAPPING.md) · [chapter dossier](CHAPTER_DOSSIER.json) · [sources](SOURCE_MANIFEST.json) · [claim ledger v31.16](../status/CLAIM_LEDGER_v31.16.json) · [v31.16 status](../../status/CURRENT_v31.16.json) · [frozen PR #468 QM status](../status/CURRENT.json)
 
