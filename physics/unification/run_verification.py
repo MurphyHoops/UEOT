@@ -51,6 +51,7 @@ SUITES = [
     ("unimodular_vacuum_selection", HERE / "unimodular_vacuum_selection/verify_unimodular_lambda.py", HERE / "unimodular_vacuum_selection/certificate.json"),
     ("unified_causal_chiral_unimodular", HERE / "unified_causal_chiral_unimodular/verify_unified_synthesis.py", HERE / "unified_causal_chiral_unimodular/certificate.json"),
     ("causal_spin2_graviton_h1", HERE / "causal_spin2_graviton_h1/verify_causal_spin2_h1.py", HERE / "causal_spin2_graviton_h1/certificate.json"),
+    ("nonperturbative_4d_qg_h1d", HERE / "nonperturbative_4d_qg_h1d/verify_nonperturbative_4d_h1d.py", HERE / "nonperturbative_4d_qg_h1d/certificate.json"),
 ]
 
 
@@ -195,6 +196,7 @@ def main() -> int:
             "UEOTPhysicsUnification.UnimodularVacuumConstantSelection",
             "UEOTPhysicsUnification.UnifiedCausalChiralUnimodularSynthesis",
             "UEOTPhysicsUnification.CausalSpin2GravitonContinuumH1",
+            "UEOTPhysicsUnification.Nonperturbative4DQuantumGravityH1d",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
