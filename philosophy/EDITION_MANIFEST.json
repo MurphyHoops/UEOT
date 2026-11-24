@@ -10,7 +10,7 @@
   "source_main_sha": "3d443ec29eb17af1fc00699a74e2d42d73516d81",
   "source_chinese_edition": "2.0",
   "publication_identity": {
-    "branch": "core/comprehensive-upgrade-20261121",
+    "branch": "main",
     "commit_rule": "The Git commit containing this manifest and these exact six files is the publication identity. The PR records that SHA; this file does not embed its own circular commit identifier.",
     "release_scope": "Independent review branch and pull request; not a merge to main or publisher approval."
   },
@@ -19,56 +19,56 @@
       "path": "philosophy/UEOT_PHILOSOPHY.md",
       "language": "zh",
       "format": "md",
-      "bytes": 229945,
-      "sha256": "70378618e0d9f5d42970ca94bf452af60b94f67b793d571057cc26e1068ad486"
+      "bytes": 248050,
+      "sha256": "2472fabfb0e1cb67e3e62397dae7ce23d660ba365b4b315b96401f30a3f5bb71"
     },
     {
       "path": "philosophy/UEOT_PHILOSOPHY.tex",
       "language": "zh",
       "format": "tex",
-      "bytes": 245186,
-      "sha256": "8a14b0ba15855160aeaa252f0e5e6426c36f18d201f3419793e1d11f293f2c00"
+      "bytes": 265581,
+      "sha256": "07994623c6ccf8f3aa8a869778bb31e636f14558109603ede7782115cfa3d464"
     },
     {
       "path": "philosophy/UEOT_PHILOSOPHY.pdf",
       "language": "zh",
       "format": "pdf",
-      "bytes": 752089,
-      "sha256": "98e74b4c0181a0668c242440a1ede7d5e88e1221a548758ed10a0217b21fe94a",
-      "physical_pages": 104
+      "bytes": 804157,
+      "sha256": "b7dc3a0c38cf419b1bbda100062740102ac5c487510fd68f98e1ed70c5326152",
+      "physical_pages": 110
     },
     {
       "path": "philosophy/UEOT_PHILOSOPHY.en.md",
       "language": "en",
       "format": "md",
-      "bytes": 285257,
-      "sha256": "dca1291514f150a4d7daa84507de1ea1a643995e6539fb2e1e5a039e9b8a0976"
+      "bytes": 304575,
+      "sha256": "730b1b045abbc587c0944be202e5debe43d00315d85443c68eaf1e32208f9ca1"
     },
     {
       "path": "philosophy/UEOT_PHILOSOPHY.en.tex",
       "language": "en",
       "format": "tex",
-      "bytes": 301725,
-      "sha256": "1d807b0f55c403733544c441c4537676b44896c366682309a9b07eebcc3df02a"
+      "bytes": 323394,
+      "sha256": "7c96444dbccb3a0c762c9a5bfee23ebda00c3cec3ba79aab3b420bead7274a68"
     },
     {
       "path": "philosophy/UEOT_PHILOSOPHY.en.pdf",
       "language": "en",
       "format": "pdf",
-      "bytes": 419478,
-      "sha256": "36e5c709f5c28139764f3a9f83c15c66448326f4b2b69b6a43678f1c2c80274a",
-      "physical_pages": 157
+      "bytes": 454963,
+      "sha256": "c71c41bab295dce65ba1553e1e15287703fb1ce92b8ce57585c646cd6efbd1d3",
+      "physical_pages": 164
     }
   ],
   "structure_per_language": {
     "parts": 6,
     "chapters": 30,
-    "body_paragraphs_in_chapters": 324,
+    "body_paragraphs_in_chapters": 329,
     "appendices": 4,
     "footnote_definitions": 68,
     "footnote_calls": 78,
     "stable_explicit_anchors": 47,
-    "substantive_philosophical_references": 61
+    "substantive_philosophical_references": 69
   },
   "rights": {
     "notice": "philosophy/PUBLICATION_RIGHTS.md",
@@ -91,10 +91,16 @@
   ],
   "scientific_boundary": {
     "core_at_source_baseline": "CLASSIFIED_CORE_CLOSED",
+    "ueot_core_assumption_classification_106": "11 core-generated, 72 domain modeling adapters, 12 protocol calibration contracts, 6 explicit no-go/gauge boundaries, 5 standard mathematical interfaces",
+    "p12_autopoiesis_status": "PARTIAL / EXPLICIT BOUNDARY",
+    "physical_unification": "OPEN",
+    "device_certified": false,
     "external_empirical_support": "UNVERIFIED",
-    "new_lean_proofs_or_physical_experiments_in_this_task": false
+    "new_lean_proofs_in_ueot_core": false,
+    "new_lean_bridge_proofs_in_ueot_physics_unification": true,
+    "new_physical_experiments_in_this_task": false
   },
-  "unchanged_scope": "Original PDF/ZIP, all philosophy/source files, mathematics, physics, Lean, frozen evidence, root licences, root README, and tools/books remain unmodified.",
+  "unchanged_scope": "Original PDF/ZIP (UEOT_v3_top.pdf, UEOT_v3_top[1].zip), all philosophy/source/* files, mathematics/*, physics/qm/* (frozen), formalization/ueot-core/* (frozen 106-P-ID pure-kernel library), publications/papers/* (Papers 1-4 under active journal review), root LICENSE, COPYRIGHT.md, root README.md, and tools/books/* remain unmodified; formalization/ueot-physics-unification/ (including PhilosophyV31OmegaObserverBridge.lean and DiscretePreferenceCochainObstruction.lean), physics/interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md, physics/unification/philosophy_v31_omega_bridge/*, and LICENSE_SCOPE.md (commit 5aaff4ac) are updated and disclosed.",
   "unresolved_scholarly_questions": [
     "Empirical universality",
     "A sufficient account of phenomenal experience",

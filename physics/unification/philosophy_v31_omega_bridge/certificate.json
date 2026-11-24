@@ -19,6 +19,10 @@
     ]
   },
   "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/PhilosophyV31OmegaObserverBridge.lean",
+  "lean_modules": [
+    "formalization/ueot-physics-unification/UEOTPhysicsUnification/PhilosophyV31OmegaObserverBridge.lean",
+    "formalization/ueot-physics-unification/UEOTPhysicsUnification/DiscretePreferenceCochainObstruction.lean"
+  ],
   "macroscopic_realization_and_boundaries": {
     "ch12_s_b_bq_benchmark_point": [
       "3/4",
@@ -30,9 +34,19 @@
       "0.467832765152408168",
       "0.467832765152408169"
     ],
+    "ch13_fisher_accumulation_det_exact": "9/4",
+    "ch13_rank2_sensitivity_det_exact": "-3/2",
     "ch16_coarse_markov_lumping_commutation_defect_exact": "0",
-    "ch16_naive_additive_second_force_defect_exact": "3/4",
+    "ch16_nonlumpable_fiber_defect_exact": "1/4",
+    "ch16_quotient_descent_uniqueness_defect_exact": "0",
     "ch17_enlarged_dispatch2_birth_law_gap_exact": "3/4",
+    "ch18_ch24_discrete_cochain": {
+      "condorcet_3cycle_sum_exact": "3",
+      "condorcet_min_l2_residual_sq_exact": "3",
+      "exact_cochain_cycle_sum_exact": "0",
+      "p_ali_03_threshold_eta_star_exact": "1/2"
+    },
+    "ch21_bool_flip_wrapper_removed": true,
     "ch21_phenomenal_consciousness_deduced_from_physics": false,
     "ch25_extractive_vs_cooperative_growth_exact": [
       "3/2",
@@ -100,17 +114,41 @@
     "zero_budget_eta0_record_d_TV": "0"
   },
   "physical_unification": "OPEN",
+  "removed_trivializations_absent": true,
   "result_ids": [
     "P-PHIL31-OMEGA-01",
     "P-PHIL31-REALIZ-02",
     "P-PHIL31-LAKATOS-03"
   ],
   "schema": "ueot-physics-unification-philosophy-v31-omega-bridge/1",
-  "source_sha256": "79c1b077b23d3d986b8e536295bdefd4dabed57095675c4aae0e941a392b1adc",
+  "source_sha256": "5526e29f05373bae017dd5793818378f684ce3c9df2d13666ad2d3d7c4d5d356",
   "status": "PASS",
   "upstream_books_aligned": {
     "mathematics_edition": "v4.2 (Core Synthesis, Ch. 0-40, Appendices A-G, 1051 pure-kernel Lean modules)",
     "philosophy_edition": "v3.1 (Parts I-VI, Ch. 1-30, Appendices A-D)",
     "physics_edition": "3.12 / Ch. 71 SISC + PR #468 (345-entry all_harmonic_horizon) + physics/unification (27 suites)"
+  },
+  "verified_lean_theorems": {
+    "DiscretePreferenceCochainObstruction": [
+      "discrete_exact_iff_zero_cycle_sum",
+      "condorcet_3cycle_nonintegrable"
+    ],
+    "PhilosophyV31OmegaObserverBridge": [
+      "passive_kernel_viability_collapses_under_thermal_fault",
+      "passive_gibbs_viability_collapses_under_thermal_fault",
+      "prepaid_regen_positive_repair_diff_iff_budget",
+      "rc02_and_rc09_continuum_record_tv_certified",
+      "ah01_nontrapped_clock_persistence_iff_above_planck_floor",
+      "autonomous_clock_pointer_omega_persistence_and_record_iff",
+      "no_second_force_unique_quotient_realization",
+      "no_second_force_additive_residual_vanishes",
+      "ch13_pi_phi_gauge_orbit_and_rank2_identifiability",
+      "ch13_two_intervention_fisher_kernel_trivial_iff",
+      "ch12_no_differentiable_two_dim_piphi_bottleneck",
+      "ch15_ch25_agency_capability_mono_and_scalar_non_equivalence",
+      "ad_hoc_domain_excision_is_degenerating_shift",
+      "ueot_lakatos_nonvacuous_and_non_immune",
+      "finite_zero_failures_preserve_unverified_open_honesty"
+    ]
   }
 }

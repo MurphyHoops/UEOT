@@ -1,17 +1,18 @@
 # 第3.1版：双语学术深化修订说明
 
-日期：2026-11-22。本版在 2026-11-11 的第 3.0 双语学术修订版基础上同步升级中英双卷（中文 PDF **104 页**，英文 PDF **157 页**），并与配套数学著作 v4.2（全库 1,051 个纯内核 Lean 4 模块）完全对齐。六编三十章、四附录、47 个显式锚点、68 条注释定义与 78 处注释调用保持严格一一对应。
+日期：2026-11-22。本版在 2026-11-11 的第 3.0 双语学术修订版基础上同步升级中英双卷（中文 PDF **110 页**，英文 PDF **164 页**），并与配套数学著作 v4.2（全库 1,051 个纯内核 Lean 4 模块）完全对齐。六编三十章、四附录、47 个显式锚点、68 条注释定义与 78 处注释调用保持严格一一对应。
 
 ## 3.1 版实质深化内容
 
 | 维度 | 3.1 版的具体改进 | 所在章节 |
 |---|---|---|
 | 核心概念排他性判准 | 为关系性客体实在论确立“预测—控制压缩 + 反事实干预稳健性 + 实现代价可追责”三联判准（对照 Dennett 真实模式、Ladyman–Ross 与 Quine 任意拼合）；为组织完整性 $\Omega$ 区分运动学周期、外源伺服反馈与内生再生至少一项构成约束的强闭合（对照 Kant §§64–65、Rosen 与 Woodward–Craver） | 2、4 章、附录 A |
-| 当代科学哲学与认知科学正面交锋 | 引入 Cartwright/Dupré 多元主义与 Kitcher 解释统一（1 章）、Parfit 分叉与关系 R（5 章）、von Neumann 自繁殖构造器与 Jonas/Thompson 生命脆弱性（6、7 章）、Millikan/Dennett 四层自然化目的阶梯并回应逆向因果质疑（11 章）、正面对比 Friston 自由能原理／主动推理并严格区分托诺尼 $\Phi^{\mathrm{IIT}}$（12 章）、Krantz–Luce–Suppes–Tversky 表征测量理论（13 章） | 1—2、4—7、11—13 章 |
+| 当代科学哲学与认知科学正面交锋 | 引入 Cartwright/Dupré 多元主义与 Kitcher 解释统一（1 章）、Parfit 分叉与关系 R（5 章）、von Neumann 自繁殖构造器与 Jonas/Thompson 生命脆弱性（6、7 章）、对照 Paper 1 确立“系统因果角色→内生调节与生存闭合→选择／保留成因→反思实践与道德理由（含 4a 个人理由权衡与 4b 制度共同承诺）”四级目的阶梯并回应逆向因果质疑，将 Dennett 意向立场定位于解释性预测压缩视角（11 章）、正面对比 Friston 自由能原理／主动推理并严格区分托诺尼 $\Phi^{\mathrm{IIT}}$（12 章）、Krantz–Luce–Suppes–Tversky 表征测量理论（13 章） | 1—2、4—7、11—13 章 |
 | 演化重大转变与社会选择 | 接入 Maynard Smith–Szathmáry、Okasha 与 Godfrey-Smith 的达尔文个体性转变机制（19 章），并以 Condorcet 悖论和 Arrow 不可能定理定位多目标局部改进循环（18 章） | 18、19 章 |
 | 第五编与前四编结构贯通 | 明确交代 $\Omega$、历史身份、有限可行性与跨尺度控制商对心灵、自由、伦理和制度的结构约束；系统评析 GWT、IIT、预测加工、生成论、错觉论与解释鸿沟（21 章）；结合 List 跨尺度备选可能、Frankfurt、van Inwagen、Pereboom 与 Pettit 无支配自由确立四条件相容论（23 章）；引入 Nozick 体验机、Nagel 与 Williams 并删改结尾自夸句及与 14 章的重复（14、24 章）；回应 Street 达尔文两难，结合 Korsgaard、Scanlon 与 Sen–Nussbaum 可行能力路径（25 章）；以 $\Omega$ 检验制度存续（Searle、Ostrom、List–Pettit）并引入 Hayek、Coase、Akerlof 与 Parfit 非同一性难题（26、27 章） | 14、21—27 章 |
 | 可证伪性与开放实在论 | 在第 28 章建立结合 Popper、Lakatos 与 Mayo 严苛检验的四层“硬核—数学桥—经验保护带—规范层”反驳判准表；在第 29—30 章结合 Friedman/Kitcher、Putnam、Laudan 悲观元归纳、van Fraassen、Hacking 干预实在论与 Niiniluoto 逼真度深化开放实在论 | 28—30 章 |
-| 汉语表达润色与附录升级 | 全面修正非人主语误用“独自”的句式；附录 A 补齐多义词分层消歧与自由四条件对齐；附录 B 明示对原 43 页论文“保留问题／收窄条件／公开撤回”三类处分；附录 C 对齐数学书 v4.2 第 40 章与纯内核状态；附录 D.3 实质讨论的哲学与基础文献由 12 项扩充至 61 项核实书目 | 全书、附录 A—D |
+| 汉语表达润色与附录升级 | 全面修正非人主语误用“独自”的句式；附录 A 补齐多义词分层消歧与自由四条件对齐；附录 B 明示对原 43 页论文“保留问题／收窄条件／公开撤回”三类处分；附录 C 对齐数学书 v4.2 第 40 章与纯内核状态；附录 D.3 实质讨论的哲学与基础文献由 12 项扩充至 69 项核实书目 | 全书、附录 A—D |
+| 跨卷形式闭合、物理支柱对齐与引注／双语闭环 | 对齐数学第 24 章（`P-ALI-01..03`）与 `DiscretePreferenceCochainObstruction`（18 章、`[^coordination]`），接入 `PhilosophyV31OmegaObserverBridge` 升级定理并严守 21 章不可演绎边界 `X`；公开 `ASSUMPTION_CLASSIFICATION_106.json`（`11/72/12/6/5`）与 `P12 = PARTIAL / EXPLICIT BOUNDARY`（附录 C、`[^autopoiesis]`）；同步《UEOT 物理学》3.13（Ch. 0–72，229 项结果／152 项主张）、Ch. 71 相关浴 $S_{jk}$／$\chi^{\mathrm{ret}}_{jk}$ 与 $(1+1)$ 维 KG 微因果（`EQUIVALENT_NO_ADDED_GAIN`）、`PR #468` `all_harmonic_horizon` 条件界及 Wave 8–11／`DEAD-20261124-01..15`，严格保持 `physical_unification = OPEN`、`device_certified = false`（`raw_hardware_h5_count = 0`）与 `H1d4d`、`H2d`、`H3d`、`H4d`；通读核实 `[^lit-agency]`、`[^lit-longino]`、`[^lit-fischer]`、`[^lit-scanlon]` 公开原著／SEP 全文（保留 69 项 D.3 条目，零出版摘要替代）并消除中英双卷末段排版／数学模式与链接差异 | 11、18、23、28—30 章、附录 A—D、相关脚注 |
 
 ---
 

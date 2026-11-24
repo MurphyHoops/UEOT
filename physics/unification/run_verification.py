@@ -207,6 +207,7 @@ def main() -> int:
             "UEOTPhysicsUnification.DimensionlessCouplingsFlavorAndVacuumWindowH3",
             "UEOTPhysicsUnification.BellCHSHAndBlindHoldoutContractH4",
             "UEOTPhysicsUnification.CrossSectorPostWave10UnificationSynthesis",
+            "UEOTPhysicsUnification.DiscretePreferenceCochainObstruction",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {

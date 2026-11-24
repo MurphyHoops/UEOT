@@ -3,6 +3,10 @@ import UEOT.V3.ViabilityKernel
 import UEOT.V3.Agency
 import UEOT.V3.RepresentationCovariance
 import UEOT.V3.Compression.QuotientDescent
+import UEOT.V3.DualDriveGauge
+import UEOT.V3.FisherIntersection
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveGaugeCompleteness
+import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.DualDriveOperationalAnchors
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionNativeConsumer
 import UEOTPhysicsUnification.OperationalHorizonMinimumScale
@@ -24,10 +28,10 @@ and `UEOTPhysicsUnification`):
 
 1. **Physical Realization & Exclusivity of Organizational Integrity `Ω` (`P-PHIL31-OMEGA-01`,
    Philosophy v3.1 Ch. 4, 6–9, 14)**:
-   - Passive Gibbs / state-independent variational equilibrium kernels have identically zero
-     interventional self-repair differentiation (`passive_gibbs_zero_constitutive_repair_diff`) and
-     collapse to an empty controlled viability kernel (`viabilityStep = ∅`) under any nonzero thermal
-     damage probability (`passive_gibbs_viability_collapses_under_thermal_fault`).
+   - Any passive controlled Markov kernel whose intact state retains positive fault support across
+     every permitted action collapses to an empty controlled viability kernel (`viabilityStep = ∅`)
+     (`passive_kernel_viability_collapses_under_thermal_fault`, instantiated for passive Gibbs
+     equilibrium in `passive_gibbs_viability_collapses_under_thermal_fault`).
    - By contrast, a prepaid regenerative organization achieves strictly positive interventional
      self-repair differentiation and a non-empty all-horizon controlled viability kernel (`ViabilityKernel`)
      if and only if its prepaid resource budget covers the positive repair tariff
@@ -47,21 +51,28 @@ and `UEOTPhysicsUnification`):
      `L > L_min * l_P` and its prepaid energy/coherence budget is strictly positive.
 
 2. **Macroscopic Realization Without Causal Double-Counting, Representation Covariance, Rank-3
-   `(s, b, bq)` Boundary & Phenomenal/Normative Non-Deduction (`P-PHIL31-REALIZ-02`, Ch. 12–13, 15–17, 21, 25)**:
-   - Applies `QuotientDescent.existsUnique_descend` to prove unique coarse-grained RG/hydrodynamic/
-     gravitational realization (`no_second_force_unique_quotient_realization`) and proves the
-     additive causal-exclusion theorem (`double_counting_sum_equals_realized_iff_zero`): summing
-     microscopic and macroscopic responses agrees with physical realization iff the response vanishes.
+   `(s, b, bq)` Boundary, Ch. 13 Rank-2 Identifiability & Ch. 21/25 Boundaries (`P-PHIL31-REALIZ-02`, Ch. 12–13, 15–17, 21, 25)**:
+   - Applies `QuotientDescent.existsUnique_descend` and `QuotientDescent.eq_descend_of_comp_eq` to prove
+     unique coarse-grained RG/hydrodynamic/gravitational realization
+     (`no_second_force_unique_quotient_realization`) and causal-commutation uniqueness
+     (`no_second_force_additive_residual_vanishes`): any additive macro residual `Δ_macro` satisfying
+     `F_micro + Δ_macro ∘ q = F_micro` vanishes identically on `M`, ruling out an independent
+     additive "second force" whenever `F_micro ≠ 0`.
    - Directly links `RepresentationCovariance` (`p_fac_01_covariance_bundle`,
-     `optimalExpectedValue_transport`), Ch. 13 `Π/Φ` additive gauge invariance, and Ch. 5/8/17
-     lineage retention vs enlarged-permission (`dispatch2`) quotient breakdown.
+     `optimalExpectedValue_transport`), Ch. 13 dual-drive gauge orbits vs two-intervention rank-2
+     identifiability and Fisher kernel intersection (`ch13_pi_phi_gauge_orbit_and_rank2_identifiability`,
+     `ch13_two_intervention_fisher_kernel_trivial_iff` via `DualDriveGauge`, `DualDriveGaugeCompleteness`,
+     `DualDriveOperationalAnchors`, and `FisherIntersection.p_inv_03`), and Ch. 5/8/17 lineage
+     retention vs enlarged-permission (`dispatch2`) quotient breakdown.
    - Formalizes Ch. 12 / Mathematics v4.2 §23.4's exact `3 × 3` Jacobian determinant `det J = b > 0`
      for `(s, b, q) ↦ (s, b, b * q)` and proves via the Fréchet chain rule (`HasFDerivAt.comp`) plus
      constructive `ℝ³ → ℝ²` kernel elimination that **no differentiable 2D `Π/Φ` bottleneck** can
      locally factor `(s, b, bq)` whenever `b ≠ 0` (`ch12_no_differentiable_two_dim_piphi_bottleneck`).
-   - Proves Ch. 21's model-theoretic non-deduction of phenomenal consciousness from functional
-     transition/report laws alone and Ch. 25's non-deduction of republican non-domination /
-     substantive capabilities from exponential growth rates (`Agency.extension_optimalValue_mono`).
+   - Respects Ch. 21's explanatory gap as an explicit philosophical non-overreach boundary (`X`: no
+     Lean theorem deduces phenomenal `quale` from physical/functional equations), and proves via
+     `UEOT.V3.Agency.extension_optimalValue_mono` that capability extension is monotone while scalar
+     growth optimization and capability-floor criteria remain non-equivalent on any nontrivial policy
+     space (`ch15_ch25_agency_capability_mono_and_scalar_non_equivalence`).
 
 3. **Formalized Ch. 28 Lakatosian Research Programme Contract & Non-Immunity (`P-PHIL31-LAKATOS-03`,
    Philosophy v3.1 Ch. 28–30)**:
@@ -111,28 +122,28 @@ noncomputable def passiveGibbsKernel (A : Type*) (pEq : ℝ≥0) (hp : pEq ≤ 1
     Bool → A → PMF Bool :=
   fun _ _ => boolCoinPMF pEq hp
 
-/-- **Passive Gibbs Zero Repair Differentiation (`Ch. 4`)**: Any passive equilibrium relaxation law
-whose transition weights do not consume prepaid work to counter damage exhibits identically zero
-constitutive repair differentiation across all interventions `a₁, a₂`. -/
-theorem passive_gibbs_zero_constitutive_repair_diff
-    {A : Type*} (pEq : ℝ≥0) (hp : pEq ≤ 1) (a₁ a₂ : A) :
-    (passiveGibbsKernel A pEq hp false a₁ true).toReal -
-      (passiveGibbsKernel A pEq hp false a₂ true).toReal = 0 := by
-  simp [passiveGibbsKernel]
+/-- **General Passive Fault Collapse (`Ch. 4` & `ViabilityKernel`)**: For *any* controlled Markov
+kernel `K : Bool → A → PMF Bool` on `{true, false}` whose intact state retains positive fault
+support across every permitted action `a` (`∀ a, false ∈ (K true a).support`), the controlled
+viability step of `{true}` collapses to `∅`. -/
+theorem passive_kernel_viability_collapses_under_thermal_fault
+    {A : Type*} [Fintype A] (K : Bool → A → PMF Bool)
+    (hfault : ∀ a : A, false ∈ (K true a).support) :
+    UEOT.V3.ViabilityKernel.viabilityStep K ({true} : Set Bool) = ∅ := by
+  ext x
+  simp only [UEOT.V3.ViabilityKernel.viabilityStep, UEOT.V3.ViabilityKernel.StaysIn,
+    mem_singleton_iff, mem_empty_iff_false, iff_false]
+  rintro ⟨rfl, a, hsub⟩
+  exact Bool.false_ne_true (mem_singleton_iff.mp (hsub (hfault a)))
 
 /-- **Passive Gibbs Controlled Viability Collapse (`Ch. 4` & `ViabilityKernel`)**: Whenever thermal
 fluctuations assign strictly positive probability to the damaged state (`pEq < 1`), the intact domain
 `{true}` has an empty controlled viability step under `passiveGibbsKernel`. -/
 theorem passive_gibbs_viability_collapses_under_thermal_fault
     (A : Type*) [Fintype A] (pEq : ℝ≥0) (hp : pEq ≤ 1) (hfault : pEq < 1) :
-    UEOT.V3.ViabilityKernel.viabilityStep (passiveGibbsKernel A pEq hp) ({true} : Set Bool) = ∅ := by
-  ext x
-  simp only [UEOT.V3.ViabilityKernel.viabilityStep, UEOT.V3.ViabilityKernel.StaysIn,
-    mem_singleton_iff, mem_empty_iff_false, iff_false]
-  rintro ⟨rfl, a, hsub⟩
-  have hfalse : false ∈ (passiveGibbsKernel A pEq hp true a).support :=
-    false_mem_support_boolCoinPMF hp hfault
-  exact Bool.false_ne_true (mem_singleton_iff.mp (hsub hfalse))
+    UEOT.V3.ViabilityKernel.viabilityStep (passiveGibbsKernel A pEq hp) ({true} : Set Bool) = ∅ :=
+  passive_kernel_viability_collapses_under_thermal_fault (passiveGibbsKernel A pEq hp)
+    (fun _ => false_mem_support_boolCoinPMF hp hfault)
 
 /-- Prepaid regenerative transition kernel on `Bool` (`true` = intact, `false` = damaged) with
 action `a : Bool` (`false` = unpaid idle, `true` = paid repair/maintenance), repair tariff `cRep`,
@@ -421,7 +432,7 @@ theorem autonomous_clock_pointer_omega_persistence_and_record_iff
     exact ⟨hiff_L.mpr ⟨hLgt, hpos_E⟩, mul_pos hβpos hd_pos⟩
 
 /-! ## Section 2. Macroscopic Realization Without Double-Counting, Representation Covariance,
-Rank-3 `(s, b, bq)` Boundary & Phenomenal/Normative Non-Deduction
+Rank-3 `(s, b, bq)` Boundary, Ch. 13 Rank-2 Identifiability & Ch. 21/25 Boundaries
 (`P-PHIL31-REALIZ-02`: Philosophy v3.1 Ch. 12–13, 15–17, 21, 25) -/
 
 /-- **Unique Macroscopic Quotient Realization (`Ch. 16–17` & `QuotientDescent`)**:
@@ -435,24 +446,60 @@ theorem no_second_force_unique_quotient_realization
     ∀ a : A, ∃! F_macro : M → V, F_macro ∘ q = F_micro a :=
   fun a => UEOT.V3.Compression.QuotientDescent.existsUnique_descend q (F_micro a) hq (hcompat a)
 
-/-- **Causal-Exclusion / Double-Counting Obstruction (`Ch. 16`)**:
-If `F_macro ∘ q = F_micro` realizes a microscopic response in a torsion-free additive module (such
-as `ℝ` or `ℝⁿ`), adding `F_macro (q x)` *on top of* `F_micro x` as an independent "second force"
-equals the actual physical response `F_micro x` **if and only if** `F_micro x = 0` (otherwise it
-strictly double-counts `2 • F_micro x ≠ F_micro x`). -/
-theorem double_counting_sum_equals_realized_iff_zero
-    {X M V : Type*} [AddCommGroup V] [Module ℝ V]
-    (q : X → M) (F_micro : X → V) (F_macro : M → V)
-    (hreal : ∀ x : X, F_macro (q x) = F_micro x) (x : X) :
-    (F_micro x + F_macro (q x) = F_micro x ↔ F_micro x = 0) ∧
-      F_micro x + F_macro (q x) = (2 : ℝ) • F_micro x := by
-  rw [hreal x]
-  refine ⟨?_, (two_smul ℝ (F_micro x)).symm⟩
-  constructor
-  · intro h
-    simpa using add_left_cancel (a := F_micro x) (b := F_micro x) (c := 0) (by simpa using h)
-  · intro hz
-    simp [hz]
+/-- **Causal-Exclusion / No-Second-Force Quotient Uniqueness (`Ch. 16` & `QuotientDescent`)**:
+Given a surjective coarse-graining `q : X → M` and a fiber-compatible microscopic dynamics
+`F_micro : X → V`:
+1. `QuotientDescent.existsUnique_descend` yields a unique realized macroscopic law
+   `F_macro : M → V` satisfying `F_macro ∘ q = F_micro`;
+2. Any additive macro-level perturbation `Δ_macro : M → V` satisfies
+   `(fun x => F_micro x + Δ_macro (q x)) = F_micro` **if and only if** `Δ_macro = 0` everywhere
+   on `M` (proved by `QuotientDescent.eq_descend_of_comp_eq` uniqueness);
+3. In particular, whenever `F_micro ≠ 0`, adding the realized macro law `F_macro ∘ q` on top of
+   `F_micro` as an independent "second force" strictly violates `F_total = F_micro`. -/
+theorem no_second_force_additive_residual_vanishes
+    {X M V : Type*} [AddCommGroup V]
+    (q : X → M) (hq : Surjective q)
+    (F_micro : X → V)
+    (hcompat : UEOT.V3.Compression.QuotientDescent.FiberCompatible q F_micro) :
+    (∃! F_macro : M → V, F_macro ∘ q = F_micro) ∧
+    (∀ Δ_macro : M → V,
+      ((fun x => F_micro x + Δ_macro (q x)) = F_micro ↔ Δ_macro = 0)) ∧
+    (F_micro ≠ 0 →
+      let F_macro := UEOT.V3.Compression.QuotientDescent.descend q F_micro hq hcompat
+      (fun x => F_micro x + F_macro (q x)) ≠ F_micro) := by
+  have huniq := UEOT.V3.Compression.QuotientDescent.existsUnique_descend q F_micro hq hcompat
+  have hres : ∀ Δ_macro : M → V,
+      ((fun x => F_micro x + Δ_macro (q x)) = F_micro ↔ Δ_macro = 0) := by
+    intro Δ_macro
+    constructor
+    · intro hadd
+      let F_macro := UEOT.V3.Compression.QuotientDescent.descend q F_micro hq hcompat
+      have hcomp0 : F_macro ∘ q = F_micro :=
+        UEOT.V3.Compression.QuotientDescent.descend_comp q F_micro hq hcompat
+      have hcomp1 : (F_macro + Δ_macro) ∘ q = F_micro := by
+        funext x
+        have hx : F_macro (q x) = F_micro x := congrFun hcomp0 x
+        change F_macro (q x) + Δ_macro (q x) = F_micro x
+        rw [hx]
+        exact congrFun hadd x
+      have heq_desc : F_macro + Δ_macro = F_macro :=
+        UEOT.V3.Compression.QuotientDescent.eq_descend_of_comp_eq
+          q F_micro hq hcompat (F_macro + Δ_macro) hcomp1
+      funext m
+      have hm : F_macro m + Δ_macro m = F_macro m + 0 := by
+        simpa using congrFun heq_desc m
+      exact add_left_cancel hm
+    · intro hz
+      funext x
+      simp [hz]
+  refine ⟨huniq, hres, ?_⟩
+  intro hne F_macro hbad
+  have hcomp0 : F_macro ∘ q = F_micro :=
+    UEOT.V3.Compression.QuotientDescent.descend_comp q F_micro hq hcompat
+  have hzero : F_macro = 0 := (hres F_macro).mp hbad
+  apply hne
+  rw [← hcomp0, hzero]
+  rfl
 
 /-- **Representation Covariance Preserves Dynamical Closure & Optimal Control Value (`Ch. 13, 17`)**:
 Direct bridge to `UEOT.V3.RepresentationCovariance` establishing that bimeasurable microscopic
@@ -514,19 +561,138 @@ theorem scale_quotient_retains_lineage_and_breaks_under_enlarged_permission
   rw [hdisp.1, hdisp.2]
   exact hr.symm
 
-/-- **Philosophy v3.1 Ch. 13 `Π/Φ` Additive Gauge Invariance vs Anchoring**:
-Shifting `(Π_val, Φ_val)` by `(+δ, -δ)` leaves every policy total score and `UEOT.V3.Agency.feasibleValue`
-identically invariant across every feasible set `S`, proving that aggregate choice rankings alone
-cannot uniquely decompose `Π` from `Φ` without independent channel anchors. -/
-theorem ch13_pi_phi_additive_gauge_invariance
-    {P : Type*} (piVal phiVal delta : P → ℝ) (S : Set P) :
-    (fun p => (piVal p + delta p) + (phiVal p - delta p)) = (fun p => piVal p + phiVal p) ∧
-      UEOT.V3.Agency.feasibleValue (fun p => (piVal p + delta p) + (phiVal p - delta p)) S =
-        UEOT.V3.Agency.feasibleValue (fun p => piVal p + phiVal p) S := by
-  have hfun : (fun p => (piVal p + delta p) + (phiVal p - delta p)) =
-      (fun p => piVal p + phiVal p) := by
-    funext p; ring
-  exact ⟨hfun, by rw [hfun]⟩
+/-- **Philosophy v3.1 Ch. 13 `(Π, Φ)` Gauge-Orbit Classification, Positive Rescaling & Rank-2
+Identifiability (`DualDriveGauge`, `DualDriveGaugeCompleteness`, `DualDriveOperationalAnchors`)**:
+1. **Scalar Gauge Orbit (`P-DDH-01` / `UMC-04`)**: Two `(Π, Φ)` decompositions induce identical
+   `driveObjective` (and hence identical `UEOT.V3.Agency.feasibleValue` on every feasible set `S`)
+   **if and only if** they differ by a `DualDriveGauge.p_ddh_01` affine gauge field `(λχ, χ)`,
+   which is genuinely non-trivial (`∃ pi phi pi' phi', ... ∧ pi ≠ pi' ∧ phi ≠ phi'`);
+2. **Positive Coordinate Rescaling vs Unit Anchoring**: Preserving both oriented latent rays in
+   `TwoDriveLatent` reduces `GL(2)` precisely to independent positive coordinate rescalings
+   `driveAxisScaling c` (`0 < c i`), whereas two registered unit interventions identify `(H, G)`
+   uniquely (`registered_unit_interventions_identify_factorization`);
+3. **Rank-2 Two-Intervention Sensitivity Identifiability**: A `2 × 2` linear intervention
+   sensitivity matrix `M : Matrix (Fin 2) (Fin 2) ℝ` uniquely identifies `(Π, Φ)`
+   (`Injective M.mulVec`) **if and only if** `M.det ≠ 0` (`rank = 2`). -/
+theorem ch13_pi_phi_gauge_orbit_and_rank2_identifiability
+    {P X Y : Type*}
+    [AddCommGroup X] [Module ℝ X] [AddCommGroup Y] [Module ℝ Y]
+    (piVal phiVal piVal' phiVal' : P → ℝ) (lambda : ℝ) (S : Set P)
+    (A : TwoDriveLatent ≃ₗ[ℝ] TwoDriveLatent)
+    (M : Matrix (Fin 2) (Fin 2) ℝ) :
+    ((driveObjective piVal phiVal lambda = driveObjective piVal' phiVal' lambda ↔
+        ∃ chi : P → ℝ,
+          (∀ p, piVal' p = piVal p + lambda * chi p) ∧
+          (∀ p, phiVal' p = phiVal p + chi p)) ∧
+      (driveObjective piVal phiVal lambda = driveObjective piVal' phiVal' lambda →
+        UEOT.V3.Agency.feasibleValue (driveObjective piVal' phiVal' lambda) S =
+          UEOT.V3.Agency.feasibleValue (driveObjective piVal phiVal lambda) S) ∧
+      (∃ (pi0 phi0 pi1 phi1 : PUnit → ℝ),
+        driveObjective pi0 phi0 1 = driveObjective pi1 phi1 1 ∧
+        pi0 ≠ pi1 ∧ phi0 ≠ phi1)) ∧
+    (((∀ i : Fin 2, ∃ c : ℝ, 0 < c ∧ A (driveUnitAxis i) = c • driveUnitAxis i) ↔
+        ∃ (c : Fin 2 → ℝ) (hc : ∀ i, 0 < c i),
+          A = driveAxisScaling c (fun i => ne_of_gt (hc i))) ∧
+      (∀ (H H' : X →ₗ[ℝ] TwoDriveLatent) (G G' : TwoDriveLatent →ₗ[ℝ] Y),
+        Injective G → Injective G' → G.comp H = G'.comp H' →
+        ∀ d : Fin 2 → X,
+          (∀ i, H (d i) = driveUnitAxis i ∧ H' (d i) = driveUnitAxis i) →
+          H = H' ∧ G = G')) ∧
+    (Injective M.mulVec ↔ M.det ≠ 0) := by
+  refine ⟨⟨?_, ?_, ?_⟩, ⟨?_, ?_⟩, ?_⟩
+  · exact same_objective_iff_gauge_related piVal phiVal piVal' phiVal' lambda
+  · intro hobj
+    rw [hobj]
+  · exact unanchored_drive_is_not_uniquely_identified
+  · exact oriented_axis_rays_iff_positive_diagonal_gauge A
+  · intro H H' G G' hG hG' hJ d hanchor
+    exact registered_unit_interventions_identify_factorization H H' G G' hG hG' hJ d hanchor
+  · constructor
+    · intro hinj hdet
+      have hdet0 : M 0 0 * M 1 1 - M 0 1 * M 1 0 = 0 := by
+        simpa [Matrix.det_fin_two] using hdet
+      have hker : ∃ v : Fin 2 → ℝ, v ≠ 0 ∧ M.mulVec v = 0 := by
+        by_cases hrow0 : M 0 0 = 0 ∧ M 0 1 = 0
+        · by_cases hrow1 : M 1 0 = 0 ∧ M 1 1 = 0
+          · refine ⟨![1, 0], ?_, ?_⟩
+            · intro hv; have := congrFun hv 0; norm_num at this
+            · ext i; fin_cases i <;>
+                simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two, hrow0.1, hrow0.2,
+                  hrow1.1, hrow1.2]
+          · refine ⟨![-M 1 1, M 1 0], ?_, ?_⟩
+            · intro hv
+              apply hrow1
+              have h0 := congrFun hv 0
+              have h1 := congrFun hv 1
+              simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Pi.zero_apply] at h0 h1
+              exact ⟨h1, by linarith⟩
+            · ext i; fin_cases i
+              · simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two, hrow0.1, hrow0.2]
+              · simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two]; ring
+        · refine ⟨![-M 0 1, M 0 0], ?_, ?_⟩
+          · intro hv
+            apply hrow0
+            have h0 := congrFun hv 0
+            have h1 := congrFun hv 1
+            simp only [Matrix.cons_val_zero, Matrix.cons_val_one, Pi.zero_apply] at h0 h1
+            exact ⟨h1, by linarith⟩
+          · ext i; fin_cases i
+            · simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two]; ring
+            · simp [Matrix.mulVec, dotProduct, Fin.sum_univ_two]
+              linarith
+      obtain ⟨v, hv_ne, hv_zero⟩ := hker
+      have hzero_vec : M.mulVec 0 = 0 := Matrix.mulVec_zero M
+      exact hv_ne (hinj (hv_zero.trans hzero_vec.symm))
+    · intro hdet u v huv
+      let w : Fin 2 → ℝ := u - v
+      have hw : M.mulVec w = 0 := by
+        dsimp [w]
+        rw [Matrix.mulVec_sub, huv, sub_self]
+      have hw0 : M 0 0 * w 0 + M 0 1 * w 1 = 0 := by
+        simpa [Matrix.mulVec, dotProduct, Fin.sum_univ_two] using congrFun hw 0
+      have hw1 : M 1 0 * w 0 + M 1 1 * w 1 = 0 := by
+        simpa [Matrix.mulVec, dotProduct, Fin.sum_univ_two] using congrFun hw 1
+      have hdet_w0 : M.det * w 0 = 0 := by
+        rw [Matrix.det_fin_two]
+        calc (M 0 0 * M 1 1 - M 0 1 * M 1 0) * w 0
+            = M 1 1 * (M 0 0 * w 0 + M 0 1 * w 1) - M 0 1 * (M 1 0 * w 0 + M 1 1 * w 1) := by ring
+          _ = 0 := by rw [hw0, hw1]; ring
+      have hdet_w1 : M.det * w 1 = 0 := by
+        rw [Matrix.det_fin_two]
+        calc (M 0 0 * M 1 1 - M 0 1 * M 1 0) * w 1
+            = M 0 0 * (M 1 0 * w 0 + M 1 1 * w 1) - M 1 0 * (M 0 0 * w 0 + M 0 1 * w 1) := by ring
+          _ = 0 := by rw [hw0, hw1]; ring
+      have hz0 : w 0 = 0 := (mul_eq_zero.mp hdet_w0).resolve_left hdet
+      have hz1 : w 1 = 0 := (mul_eq_zero.mp hdet_w1).resolve_left hdet
+      ext i
+      fin_cases i
+      · exact sub_eq_zero.mp hz0
+      · exact sub_eq_zero.mp hz1
+
+/-- **Two-Intervention Fisher Identifiability Bridge (`Ch. 13` & `FisherIntersection.p_inv_03`)**:
+For two independent centered 2-axis `(Π, Φ)` experiment scores `s : Fin 2 → Ω → Fin 2 → ℝ`, the
+joint Fisher operator `fisherAction μ (scoreSum s)` has trivial kernel (local identifiability of both
+`Π` and `Φ`) **if and only if** the two experiment-wise Fisher kernels intersect trivially. -/
+theorem ch13_two_intervention_fisher_kernel_trivial_iff
+    {Ω : Type*} [MeasurableSpace Ω]
+    (μ : Measure Ω) [IsProbabilityMeasure μ]
+    (s : Fin 2 → Ω → Fin 2 → ℝ)
+    (h_int : ∀ e f i j, Integrable (fun ω => s e ω i * s f ω j) μ)
+    (h_indep : ∀ e f, e ≠ f → ∀ i j,
+      (fun ω => s e ω i) ⟂ᵢ[μ] (fun ω => s f ω j))
+    (h_meas : ∀ e i, AEStronglyMeasurable (fun ω => s e ω i) μ)
+    (h_centered : ∀ e i, ∫ ω, s e ω i ∂μ = 0) :
+    (∀ v : Fin 2 → ℝ,
+      UEOT.V3.FisherGauge.fisherAction μ (UEOT.V3.FisherIntersection.scoreSum s) v = 0 →
+        v = 0) ↔
+    (∀ v : Fin 2 → ℝ,
+      (∀ e : Fin 2, UEOT.V3.FisherGauge.fisherAction μ (s e) v = 0) →
+        v = 0) := by
+  constructor
+  · intro hjoint v heach
+    exact hjoint v ((UEOT.V3.FisherIntersection.p_inv_03 μ s h_int h_indep h_meas h_centered v).mpr heach)
+  · intro hinter v hsum
+    exact hinter v ((UEOT.V3.FisherIntersection.p_inv_03 μ s h_int h_indep h_meas h_centered v).mp hsum)
 
 /-- Philosophy v3.1 Ch. 12 / Mathematics v4.2 §23.4 three-observable care response map
 `(s, b, q) ↦ (s, b, b * q)`. -/
@@ -678,91 +844,58 @@ theorem ch12_no_differentiable_two_dim_piphi_bottleneck
   have hinj := sbbqJacobian_toLin_injective (q := p₀ 2) hb
   exact hv_ne (hinj (by simpa using hJv_zero))
 
-/-- Finite-horizon trajectory and external behavioral report trace of a physical-functional machine. -/
-def functionalReportTrace
-    {X A Obs : Type*} (step : X → A → X) (report : X → Obs) :
-    ∀ n : ℕ, X → (Fin n → A) → List Obs
-  | 0, x, _ => [report x]
-  | n + 1, x, as =>
-      report x :: functionalReportTrace step report n (step x (as 0)) (fun i => as i.succ)
+/-! ### Ch. 21 Non-Overreach Boundary (`X`)
+Per Philosophy v3.1 Ch. 21 (`UEOT_PHILOSOPHY.en.md:599`), no Lean theorem deduces phenomenal feel
+(`quale`) from physical or functional equations; this explanatory boundary is maintained as an
+explicit philosophical scope wall rather than a synthetic `Bool`-field theorem. -/
 
-/-- Paired physical-functional machine plus phenomenal assignment (`Philosophy v3.1 Ch. 21`). -/
-structure PsychophysicalWorld (X A Obs : Type*) where
-  step : X → A → X
-  report : X → Obs
-  quale : X → Bool
-
-/-- Complete physical-functional observable projection erasing phenomenal labels. -/
-def PsychophysicalWorld.physProj {X A Obs : Type*}
-    (W : PsychophysicalWorld X A Obs) : (X → A → X) × (X → Obs) :=
-  (W.step, W.report)
-
-/-- **Philosophy v3.1 Ch. 21 Symmetric Model-Theoretic Non-Deduction of Phenomenal Experience**:
-For any physical-functional machine `(step, report)` on nonempty `X`:
-1. There exist two worlds `W₀, W₁` with identical physical transitions `physProj W₀ = physProj W₁`
-   and identical external behavioral report traces across every horizon `n` and action sequence `as`,
-   yet opposite phenomenal assignments (`quale = false` vs `quale = true`);
-2. Consequently, **no** purely physical-functional predicate `T_phys` satisfied by `(step, report)`
-   can logically entail either universal phenomenal presence OR universal phenomenal absence across
-   models (`Ch. 21`: physical functionalism neither deduces phenomenal feel nor proves its impossibility
-   without an independent psychophysical bridge). -/
-theorem ch21_phenomenal_non_deduction_from_functional_dynamics
-    {X A Obs : Type*} [Nonempty X] (step : X → A → X) (report : X → Obs) :
-    (∃ W₀ W₁ : PsychophysicalWorld X A Obs,
-      W₀.physProj = (step, report) ∧
-      W₁.physProj = (step, report) ∧
-      W₀.quale ≠ W₁.quale ∧
-      ∀ (n : ℕ) (x : X) (as : Fin n → A),
-        functionalReportTrace W₀.step W₀.report n x as =
-          functionalReportTrace W₁.step W₁.report n x as) ∧
-    ∀ (T_phys : ((X → A → X) × (X → Obs)) → Prop),
-      T_phys (step, report) →
-        ¬ (∀ W : PsychophysicalWorld X A Obs, T_phys W.physProj → ∀ x : X, W.quale x = true) ∧
-        ¬ (∀ W : PsychophysicalWorld X A Obs, T_phys W.physProj → ∀ x : X, W.quale x = false) := by
-  let W₀ : PsychophysicalWorld X A Obs := ⟨step, report, fun _ => false⟩
-  let W₁ : PsychophysicalWorld X A Obs := ⟨step, report, fun _ => true⟩
-  let x₀ : X := Classical.arbitrary X
-  refine ⟨⟨W₀, W₁, rfl, rfl, ?_, fun _ _ _ => rfl⟩, ?_⟩
-  · intro h
-    exact Bool.false_ne_true (congrFun h x₀)
-  · intro T_phys hT
-    refine ⟨fun hall => Bool.false_ne_true (hall W₀ hT x₀),
-      fun hall => Bool.false_ne_true (hall W₁ hT x₀).symm⟩
-
-/-- Explicit two-participant institutional/regenerative mechanism comparing aggregate growth against
-each participant's substantive capability floor (`Philosophy v3.1 Ch. 25`). -/
-structure TwoAgentSocialMechanism where
-  cap : Fin 2 → ℝ
-  growthFactor : ℝ
-
-/-- Minimum capability across both interdependent participants (`Sen–Nussbaum / Scanlon` floor). -/
-def TwoAgentSocialMechanism.minCapability (M : TwoAgentSocialMechanism) : ℝ :=
-  min (M.cap 0) (M.cap 1)
-
-/-- **Philosophy v3.1 Ch. 25 Normative Non-Reduction & `Agency` Capability Monotonicity**:
-1. Explicit extractive vs cooperative two-agent mechanisms prove that strictly higher aggregate
-   growth (`3/2 > 5/4 > 1`) reverses the substantive capability / non-domination ordering
-   (`minCapability M_dom = 0 < 5/4 = minCapability M_coop`), blocking Hume/Street evolutionary
-   deduction of moral legitimacy from growth rates alone;
-2. Expanding feasible capabilities (`Extends D₁ D₂`) monotonically preserves or improves attainable
-   agency value (`UEOT.V3.Agency.extension_optimalValue_mono`). -/
-theorem ch25_normative_independence_and_capability_monotonicity
-    {P : Type*} {D₁ D₂ : UEOT.V3.Agency.FeasibleDecision P}
-    (hExt : UEOT.V3.Agency.Extends D₁ D₂) :
-    (∃ M_dom M_coop : TwoAgentSocialMechanism,
-      1 < M_coop.growthFactor ∧
-      M_coop.growthFactor < M_dom.growthFactor ∧
-      M_dom.minCapability = 0 ∧
-      0 < M_coop.minCapability ∧
-      M_dom.minCapability < M_coop.minCapability) ∧
-    UEOT.V3.Agency.optimalValue D₁ ≤ UEOT.V3.Agency.optimalValue D₂ := by
-  let M_dom : TwoAgentSocialMechanism := ⟨![3, 0], 3 / 2⟩
-  let M_coop : TwoAgentSocialMechanism := ⟨![5 / 4, 5 / 4], 5 / 4⟩
-  refine ⟨⟨M_dom, M_coop, by norm_num, by norm_num, ?_, ?_, ?_⟩,
-    UEOT.V3.Agency.extension_optimalValue_mono hExt⟩
-  · simp [TwoAgentSocialMechanism.minCapability, M_dom]
-  · simp [TwoAgentSocialMechanism.minCapability, M_coop]
-  · simp [TwoAgentSocialMechanism.minCapability, M_dom, M_coop]
+/-- **Ch. 15 & Ch. 25 `Agency` Capability Monotonicity and Scalar Objective Non-Equivalence**:
+1. Expanding feasible capabilities (`UEOT.V3.Agency.Extends D₁ D₂`) monotonically preserves or
+   improves attainable agency value (`UEOT.V3.Agency.extension_optimalValue_mono`);
+2. On *any* policy space `P` with at least two distinct policies `[Nontrivial P]`, and for *any*
+   ordered growth targets `g_coop < g_dom` and capability floors `c_dom < c_coop`, there exist
+   distinct policies `p_dom ≠ p_coop` and criteria `J_growth, J_floor : P → ℝ` such that
+   `J_growth` strictly prefers `p_dom` while `J_floor` strictly prefers `p_coop`, and their
+   `Agency.feasibleValue`s on `{p_dom, p_coop}` equal `(g_dom : EReal)` and `(c_coop : EReal)`
+   respectively (so scalar growth maximization never entails capability-floor maximization; normative
+   justification of capabilities remains an explicit Ch. 25 philosophical commitment). -/
+theorem ch15_ch25_agency_capability_mono_and_scalar_non_equivalence
+    {P : Type*} [Nontrivial P]
+    {D₁ D₂ : UEOT.V3.Agency.FeasibleDecision P}
+    (hExt : UEOT.V3.Agency.Extends D₁ D₂)
+    {g_coop g_dom c_dom c_coop : ℝ}
+    (hg : g_coop < g_dom) (hc : c_dom < c_coop) :
+    UEOT.V3.Agency.optimalValue D₁ ≤ UEOT.V3.Agency.optimalValue D₂ ∧
+    ∃ (p_dom p_coop : P) (J_growth J_floor : P → ℝ),
+      p_dom ≠ p_coop ∧
+      J_growth p_coop < J_growth p_dom ∧
+      J_floor p_dom < J_floor p_coop ∧
+      UEOT.V3.Agency.feasibleValue J_growth {p_dom, p_coop} = (g_dom : EReal) ∧
+      UEOT.V3.Agency.feasibleValue J_floor {p_dom, p_coop} = (c_coop : EReal) := by
+  classical
+  obtain ⟨p_dom, p_coop, hne⟩ := exists_pair_ne P
+  let J_growth : P → ℝ := fun p => if p = p_dom then g_dom else g_coop
+  let J_floor : P → ℝ := fun p => if p = p_coop then c_coop else c_dom
+  refine ⟨UEOT.V3.Agency.extension_optimalValue_mono hExt, p_dom, p_coop, J_growth, J_floor,
+    hne, ?_, ?_, ?_, ?_⟩
+  · simp [J_growth, hne.symm, hg]
+  · simp [J_floor, hne, hc]
+  · unfold UEOT.V3.Agency.feasibleValue
+    apply le_antisymm
+    · refine iSup_le ?_
+      rintro ⟨p, hp⟩
+      rcases hp with rfl | rfl
+      · simp [J_growth]
+      · simp [J_growth, hne.symm, le_of_lt hg]
+    · exact le_iSup_of_le ⟨p_dom, by simp⟩ (by simp [J_growth])
+  · unfold UEOT.V3.Agency.feasibleValue
+    apply le_antisymm
+    · refine iSup_le ?_
+      rintro ⟨p, hp⟩
+      rcases hp with rfl | rfl
+      · simp [J_floor, hne, le_of_lt hc]
+      · simp [J_floor]
+    · exact le_iSup_of_le ⟨p_coop, by simp⟩ (by simp [J_floor])
 
 /-! ## Section 3. Formalized Ch. 28 Lakatosian Research Programme Contract & Non-Immunity
 (`P-PHIL31-LAKATOS-03`: Philosophy v3.1 Ch. 28–30) -/
