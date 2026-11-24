@@ -1,41 +1,102 @@
 {
   "schema": "ueot.lab_wiki.gate_receipt.v1",
-  "timestamp_utc": "2026-11-24T07:18:18Z",
-  "git_head": "e824ef0b",
-  "mode": "fast",
+  "timestamp_utc": "2026-11-24T09:28:59Z",
+  "git_head": "917646d8",
+  "mode": "full",
   "overall_status": "PASS",
   "checks": [
     {
       "name": "wiki_integrity",
       "status": "PASS",
-      "duration_sec": 0.001,
+      "duration_sec": 0.002,
       "stats": {
         "open_specs": 6,
-        "verified_lemmas": 6,
-        "dead_ends": 4
+        "verified_lemmas": 14,
+        "dead_ends": 8
       },
       "errors": []
     },
     {
       "name": "lean_dependency_lock",
-      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B scripts/check_dependencies.py",
+      "command": "/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B scripts/check_dependencies.py",
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.019,
+      "duration_sec": 0.024,
       "output_tail": [
         "PASS: exact Core + QM toolchain and dependency revisions inherited"
       ]
     },
     {
       "name": "lean_no_escapes",
-      "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -B scripts/check_no_escapes.py",
+      "command": "/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B scripts/check_no_escapes.py",
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.14,
+      "duration_sec": 0.089,
       "output_tail": [
         "PASS: zero syntactic proof escapes in UEOTPhysicsUnification"
+      ]
+    },
+    {
+      "name": "lean_build_unification",
+      "command": "/Users/murphyhoops/.elan/bin/lake build UEOTPhysicsUnification",
+      "cwd": "formalization/ueot-physics-unification",
+      "status": "PASS",
+      "returncode": 0,
+      "duration_sec": 4.559,
+      "output_tail": [
+        "warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteJointDecisionDAGGenerator.lean:136:0: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.FiniteJointDecisionDAGGenerator.certified_randomized_upper`:",
+        "  [BEq I]",
+        "  [Hashable I]",
+        "consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:",
+        "  omit [BEq I] [Hashable I] in theorem ...",
+        "",
+        "Note: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+        "⚠ [9165/9171] Replayed UEOTQM.QuantumTraceDistance",
+        "warning: UEOTQM/QuantumTraceDistance.lean:165:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumTraceDistance.difference_parts_mass_eq`:",
+        "  [DecidableEq ι]",
+        "consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:",
+        "  omit [DecidableEq ι] in theorem ...",
+        "",
+        "Note: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+        "Build completed successfully (9171 jobs)."
+      ]
+    },
+    {
+      "name": "lean_exhaustive_axiom_audit",
+      "command": "/Users/murphyhoops/.elan/bin/lake env lean scripts/ExhaustiveAxiomAudit.lean",
+      "cwd": "formalization/ueot-physics-unification",
+      "status": "PASS",
+      "returncode": 0,
+      "duration_sec": 96.052,
+      "output_tail": [
+        "UNIFICATION_AXIOM_AUDIT modules=38 constants=1874 theorems=854 defs=868 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
+      ]
+    },
+    {
+      "name": "physics_unification_verification",
+      "command": "/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-wave11-synth/physics/unification/run_verification.py --check",
+      "cwd": ".",
+      "status": "PASS",
+      "returncode": 0,
+      "duration_sec": 168.23,
+      "output_tail": [
+        "PASS: philosophy_v31_omega_bridge (P-PHIL31-OMEGA-01, P-PHIL31-REALIZ-02, P-PHIL31-LAKATOS-03)",
+        "PASS: lorentzian_causal_qg_limit P-LORENTZ-QG-07",
+        "PASS: nonabelian_chiral_constructive (P-NONABELIAN-CHIRAL-08)",
+        "PASS: unimodular_vacuum_selection (P-UNIMODULAR-LAMBDA-09)",
+        "PASS: unified_causal_chiral_unimodular C-UNIFIED-SYNTH-10",
+        "PASS: causal_spin2_graviton_h1 (P-H1-SPIN2-01, P-H1-REGGE-02, P-H1-BIANCHI-03, C-H1-FRONTIER-04)",
+        "PASS: nonperturbative_4d_qg_h1d (P-H1D-FRG-01, P-H1D-CLUSTER-02, P-H1D-WARD-03, C-H1D-CORE-04)",
+        "PASS: nonperturbative_4d_measure_h1d4 (P-H1D4-BANACH-01, P-H1D4-OSRECON-02, P-H1D4-OPER-03, C-H1D4-FINAL-04)",
+        "PASS: nonabelian_lattice_massgap_h2 (P-H2A-TRANSFER-01, P-H2B-DOBRUSHIN-02, P-H2C-CHIRAL-UV-03, C-H2-OPER-04)",
+        "PASS: dimensionless_couplings_viability_h3 (P-H3A-TWOLOOP-GUT-01, P-H3B-JARLSKOG-02, P-H3C-VIABILITY-03, C-H3-WINDOW-04)",
+        "PASS: bell_chsh_blind_holdout_h4 (P-H4A-CHSH-TSIRELSON-01, P-H4B-HOLDOUT-TV-02, P-H4C-PORTFOLIO-03, C-H4-CONTRACT-04)",
+        "PASS: cross_sector_post_wave10_synthesis (C-UNIFIED-SYNTH-11)",
+        "PASS: exact Core + QM toolchain and dependency revisions inherited",
+        "PASS: pr468_all_harmonic_horizon read-only regression (332 reused + 13 executed = 345 entries, 56 cohort/route files byte-identical)",
+        "PASS: all 38 physics/unification suites + 345-entry PR #468 regression verified."
       ]
     }
   ]

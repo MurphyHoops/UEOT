@@ -1,6 +1,6 @@
 # UEOT Open Specifications Registry (`OPEN_SPECS.md`)
 
-本表直接对齐主分支 `origin/main`（当前基线 `e824ef0b`：PR #498 Paper 4 v3.0，叠合于 PR #497 `1ff5170f` Wave 10 `H1d4` 之上；`34` Lean 模块、`34` Python 验证套件 + `345` 条 PR #468 回归、`68` 条 `VALIDATION_LEDGER.json` 记录）。  
+本表直接对齐 Wave 11 综合工作树（基线 `origin/main` `e824ef0b` 之上已合入 `M1..M3` 并完成 `M4` `SYNTH-11`：`38` Lean 模块 / `854` 定理、`38` Python 验证套件 + `345` 条 PR #468 回归、`81` 条 `VALIDATION_LEDGER.json` 记录）。  
 新增条目请严格遵循下方模板；必须拆解为可机器判定的 Lean 签名或数值证伪阈值，严禁偷渡未声明物理前提。
 
 ---
@@ -11,10 +11,10 @@
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `SPEC-20261124-01` | `CLOSED` | Wave 10 / `H1d4` (`H1` operationally closed; `H1d4d` `OPEN`, `H1` NOT sliced further) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/Nonperturbative4DMeasureLimitH1d4.lean` | `C/P/X` | `PR #497` / Round 0 |
 | `SPEC-20261124-02` | `OPEN` | Empirical / Device Certification (`device_certified: false`) | `publications/papers/correlated-bath-response-metrology/VALIDATION.json` | `E/O` | Unassigned |
-| `SPEC-20261124-03` | `IN_PROGRESS` | Wave 11 / `H2` (Lattice Mass Gap & Chiral Integrability) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` | `C/B/P/X` | `M1` (`wt-wave11-h2`) / Round 1 |
-| `SPEC-20261124-04` | `IN_PROGRESS` | Wave 11 / `H3` (Dimensionless Couplings, Flavor & Vacuum Window) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/DimensionlessCouplingsFlavorAndVacuumWindowH3.lean` | `C/B/P/E/O` | `M2` (`wt-wave11-h3`) / Round 1 |
-| `SPEC-20261124-05` | `IN_PROGRESS` | Wave 11 / `H4` (Bell-CHSH, Blind Holdout & Portfolio Contracts) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/BellCHSHAndBlindHoldoutContractH4.lean` | `C/B/E/O` | `M3` (`wt-wave11-h4`) / Round 1 |
-| `SPEC-20261124-06` | `IN_PROGRESS` | Wave 11 / `SYNTH-11` (Cross-Sector Synthesis, Ledger & Monograph Sync) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/CrossSectorPostWave10UnificationSynthesis.lean` | `C/B/P/E/O/X` | `M4` (`wt-wave11-synth`) / Round 1 |
+| `SPEC-20261124-03` | `CLOSED` | Wave 11 / `H2` (Lattice Mass Gap & Chiral Integrability; `H2d` `OPEN`) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` | `C/B/P/X` | `M1` (`60b347dc`) / Round 2 |
+| `SPEC-20261124-04` | `CLOSED` | Wave 11 / `H3` (Dimensionless Couplings, Flavor & Vacuum Window; `H3d` `OPEN`) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/DimensionlessCouplingsFlavorAndVacuumWindowH3.lean` | `C/B/P/E/O` | `M2` (`fe0ba9ec`) / Round 2 |
+| `SPEC-20261124-05` | `CLOSED` | Wave 11 / `H4` (Bell-CHSH, Blind Holdout & Portfolio Contracts; `H4d` `OPEN`) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/BellCHSHAndBlindHoldoutContractH4.lean` | `C/B/E/O` | `M3` (`a95d3c69`) / Round 2 |
+| `SPEC-20261124-06` | `CLOSED` | Wave 11 / `SYNTH-11` (Cross-Sector Synthesis, Ledger & Monograph Sync; `OPEN` governance) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/CrossSectorPostWave10UnificationSynthesis.lean` | `C/B/P/E/O/X` | `M4` (`wt-wave11-synth`) / Round 2 |
 
 ---
 
@@ -37,7 +37,7 @@
 - **Falsification Criterion**: 只要缺少有序逐 shot 原始记录或器件系统误差包络宽于备择信号分离度，就必须保持 `NOT_CERTIFIED` / `device_certified: false`（禁止伪造任何硬件数据）。
 
 ### `SPEC-20261124-03` — Wave 11 `H2`: 非阿贝尔晶格质量间隙、Lüscher 几何可积性与手征 UV 屏蔽
-- **Status**: `IN_PROGRESS`
+- **Status**: `CLOSED`（归档于 `LEMMA-20261124-07`, `LEMMA-20261124-08`；Clay 4D 连续统 `H2d` 诚实保留 `OPEN`）
 - **Target**:
   - 在 `wt-wave11-h2`（分支 `physics/wave11-h2-lattice-chiral-gap`）新建纯内核模块 `NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` 与 40 位外区间验证套件 `physics/unification/nonabelian_lattice_massgap_h2/verify_nonabelian_lattice_h2.py` + `certificate.json`（Result IDs: `P-H2A-TRANSFER-01`, `P-H2B-DOBRUSHIN-02`, `P-H2C-CHIRAL-UV-03`, `C-H2-OPER-04`）：
     - `H2a`：正转移 Wilson 格子核反射正性、强耦合面积律弦张力 `σ > 0` 衰减 `exp(-σ A)` 与 Symanzik `O(a^2)` 收敛检查；
@@ -55,7 +55,7 @@
 - **Falsification Criterion**: 若在正耦合弱/强区交界出现 Dobrushin 收缩破缺却未显式限定耦合域，或 `H2SubHypothesis` 将 `H2d`（Clay 4D 连续统极限）隐含包装为已无条件导出，或数值证书在声明域边界失稳/依赖单格子 Peierls 熵 `2*c_adm*b0 >= 4` 假定，则判定 `BLOCKED` / `FALSIFIED` 并记入 [DEAD_ENDS.md](DEAD_ENDS.md)。
 
 ### `SPEC-20261124-04` — Wave 11 `H3`: 无量纲耦合统一窗口、3 代味循环边界与双侧宇宙学可行性窗
-- **Status**: `IN_PROGRESS`
+- **Status**: `CLOSED`（归档于 `LEMMA-20261124-09`, `LEMMA-20261124-10`；先验精确常数推导 `H3d` 诚实保留 `OPEN`）
 - **Target**:
   - 在 `wt-wave11-h3`（分支 `physics/wave11-h3-couplings-flavor-viability`）新建纯内核模块 `DimensionlessCouplingsFlavorAndVacuumWindowH3.lean` 与 40 位外区间验证套件 `physics/unification/dimensionless_couplings_viability_h3/verify_couplings_viability_h3.py` + `certificate.json`（Result IDs: `P-H3A-TWOLOOP-GUT-01`, `P-H3B-JARLSKOG-02`, `P-H3C-VIABILITY-03`, `C-H3-WINDOW-04`）：
     - `H3a`：2-loop `(3,3,1)` 中间阈值 `(M_I, M_GUT)` 修复多胞体 `Δ_123 = 0` 与 Super-K 维度-6 质子衰变下界 `M_GUT >= M_GUT,min` 及 Higgs 四次耦合稳定性窗口 `0 < λ_H(μ) < 4π`（避开 `DEAD-20261124-02` 1-loop 沙漠 GUT 死路）；
@@ -73,7 +73,7 @@
 - **Falsification Criterion**: 若宣称无中间阈值即可实现 1-loop `(3,3,1)` 精确规范耦合统一（撞车 `DEAD-20261124-02`），或双侧可行性窗 `I_min <= I_Λ <= I_max` 退化为空集/隐含先验确定 `I_Λ^*`，或未能显式标注 `E/O` 输入依赖类别，则判定 `BLOCKED` / `FALSIFIED` 并记入 [DEAD_ENDS.md](DEAD_ENDS.md)。
 
 ### `SPEC-20261124-05` — Wave 11 `H4`: Bell-CHSH 边界、非选择性盲留出合同与实验组合门禁
-- **Status**: `IN_PROGRESS`
+- **Status**: `CLOSED`（归档于 `LEMMA-20261124-11`, `LEMMA-20261124-12`；真实硬件执行 `H4d` 诚实保留 `OPEN` 且 `device_certified = false`）
 - **Target**:
   - 在 `wt-wave11-h4`（分支 `physics/wave11-h4-chsh-holdout-portfolio`）新建纯内核模块 `BellCHSHAndBlindHoldoutContractH4.lean` 与 40 位外区间验证套件 `physics/unification/bell_chsh_blind_holdout_h4/verify_bell_holdout_h4.py` + `certificate.json`（Result IDs: `P-H4A-CHSH-TSIRELSON-01`, `P-H4B-HOLDOUT-TV-02`, `P-H4C-PORTFOLIO-03`, `C-H4-CONTRACT-04`）：
     - `H4a`：LHV 精确上界 `|S_CHSH| <= 2`、4×4 量子 Tsirelson 等式 `S_CHSH^2 = 4I - [A0,A1]⊗[B0,B1] <= 8`（`2 sqrt(2)`）、Werner 态可见度阈值 `V > 1/sqrt(2)` 与无公平采样假定的探测效率阈值 `η > 2(sqrt(2)-1)`；
@@ -91,9 +91,9 @@
 - **Falsification Criterion**: 若定理在 `Θ_0.99 = ∅` 时仍允许通过（空洞假设）、依赖公平采样后选择绕过 `η > 2(sqrt(2)-1)` 或 `2 δ_drop` 界（撞车 `DEAD-20261124-03`）、或在任意路径出现 `device_certified = true` / 伪造硬件数据，则判定 `BLOCKED` / `FALSIFIED` 并记入 [DEAD_ENDS.md](DEAD_ENDS.md)。
 
 ### `SPEC-20261124-06` — Wave 11 `SYNTH-11`: 跨扇区后 Wave 10 统一综合、台账与双语专著同步
-- **Status**: `IN_PROGRESS`
+- **Status**: `CLOSED`（归档于 `LEMMA-20261124-13`, `LEMMA-20261124-14`）
 - **Target**:
-  - 在 `wt-wave11-synth`（分支 `physics/wave11-cross-sector-synthesis`）合入 `M1..M3` 后，新建 `CrossSectorPostWave10UnificationSynthesis.lean` 与 `physics/unification/cross_sector_post_wave10/verify_cross_sector_post_wave10.py` + `certificate.json`（Result ID: `C-UNIFIED-SYNTH-11`），链接只读 Wave 10 `H1` 闭合（`Nonperturbative4DMeasureLimitH1d4`）、`UnifiedCausalChiralUnimodularSynthesis`、`ConformalControlGravityGates` 及 `H2`/`H3`/`H4` 三个新模块；证明四向独立性模型 `(H1d4d, H2d, H3d, H4d)`、`physicalUnificationStatus = .OPEN`、`deviceCertified = false`。
+  - 在 `wt-wave11-synth`（分支 `physics/wave11-cross-sector-synthesis`）合入 `M1..M3` 后，新建 `CrossSectorPostWave10UnificationSynthesis.lean` 与 `physics/unification/cross_sector_post_wave10_synthesis/verify_cross_sector_post_wave10.py` + `certificate.json`（Result ID: `C-UNIFIED-SYNTH-11`），链接只读 Wave 10 `H1` 闭合（`Nonperturbative4DMeasureLimitH1d4`）、`UnifiedCausalChiralUnimodularSynthesis`、`ConformalControlGravityGates` 及 `H2`/`H3`/`H4` 三个新模块；证明四向独立性模型 `(H1d4d, H2d, H3d, H4d)`、`physicalUnificationStatus = .OPEN`、`deviceCertified = false`。
   - 同步更新 `UEOTPhysicsUnification.lean`（38 模块）、`ExhaustiveAxiomAudit.lean`（38 模块）、`physics/unification/run_verification.py`、`verification.json`、`physics/unification/README.md`、`validation/physics_unification/VALIDATION_LEDGER.json`、`physics/qm/book/UEOT_PHYSICS.md` & `UEOT_PHYSICS.en.md`（仅状态/台账/摘要章节，严格保留其余 `physics/qm/**` 字节不变），以及 Round 2 `research/lab_wiki/` 晋升记录。
 - **Allowed Premises (`C/B/S/P/E/O/X`)**: `C/B/P/E/O/X` 继承自 `SPEC-20261124-01..05` 与主分支既有审计模块；严禁修改冻结路径（`core/`, `formalization/ueot-core/`, `formalization/ueot-qm/`, `mathematics/`, `philosophy/`, `publications/`, `.github/workflows/**`, 除两本专著外的 `physics/qm/**`）。
 - **Acceptance Gate**:

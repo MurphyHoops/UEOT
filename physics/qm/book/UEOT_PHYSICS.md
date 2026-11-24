@@ -280,7 +280,7 @@ v31.14 / Kernel 1.14 在已合并并经 CI 核验的第69章基础上，新增�
 
 ## 0.16 第72章定版书稿与三卷统一归约
 
-[第72章](#ch-72)将[第71章](https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f88270c0f38ae6fb6f77e26093/physics/qm/book/UEOT_PHYSICS.pdf)合并后在主线完成的《UEOT 哲学著作》v3.1、《UEOT 数学著作》v4.2（含 1,051 模块纯内核 Lean 4）、`all_harmonic_horizon`（345 项全谐波与视界边界检验链）以及物理统一包（31 个纯内核 Lean 4 模块、582 条定理、31 套 40 位向外区间套件）完整整合为 3.13 版。全书现含 73 章（第 0–72 章）、6 个附录、229 项稳定编号结果与 152 项主张；既有的 210 项结果编号、133 项第 71 章账本主张及前 71 章正文保持原身份。本书将物理统一边界精确归约至四条经机器证明相互独立的不可约假设（$H_1$–$H_4$），同时诚实保留 `physical_unification = OPEN` 与 `device_certified = false`。[三卷统一矩阵](../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md) · [物理统一套件](../../unification/README.md) · [形式化范围](../../../formalization/ueot-physics-unification/README.md)
+[第72章](#ch-72)将[第71章](https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f88270c0f38ae6fb6f77e26093/physics/qm/book/UEOT_PHYSICS.pdf)合并后在主线完成的《UEOT 哲学著作》v3.1、《UEOT 数学著作》v4.2（含 1,051 模块纯内核 Lean 4）、`all_harmonic_horizon`（345 项全谐波与视界边界检验链）以及物理统一包（Wave 1–7 定版基线 31 模块 / 582 定理，并在后续 Wave 8–11 扩展至 **38 个纯内核 Lean 4 模块、854 条定理、38 套 40 位向外区间套件与 81 条验证台账记录**）完整整合为 3.13 版。全书现含 73 章（第 0–72 章）、6 个附录、229 项稳定编号结果与 152 项 `CLAIM_LEDGER_v31.16.json` 主张；既有的 210 项结果编号、133 项第 71 章账本主张及前 71 章正文保持原身份。经 Wave 8–11 推进，$H_1$–$H_4$ 的操作化与条件性可行窗口（$H_{1d4a\text{--}c}, H_{2a\text{--}c}, H_{3a\text{--}c}, H_{4a\text{--}c}$）已获机器闭环，同时诚实将四个不可约终极前沿（$H_{1d4d}, H_{2d}, H_{3d}, H_{4d}$）保留为 `OPEN`，并保持 `physical_unification = OPEN` 与 `device_certified = false`。[三卷统一矩阵](../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md) · [物理统一套件](../../unification/README.md) · [形式化范围](../../../formalization/ueot-physics-unification/README.md)
 
 <a id="ch-1"></a>
 
@@ -10325,9 +10325,9 @@ $$
 
 # 72. 三卷统一桥接、全谐波视界与四大不可约前沿
 
-前七十一章依次建立了从对象数学到有限量子内核、重整化微扰 QFT 以及相关浴完全记录预测的主线结构；本章将其向上对接到完整的[《UEOT 哲学著作》v3.1](../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md)与《UEOT 数学著作》v4.2（含第 32–40 章及 1,051 模块纯内核 Lean 4 库），向右汇合 `PR #468` 的 345 项全谐波与自主视界链[research ledger](../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md)，并将物理统一包（31 个纯内核 Lean 4 模块、582 条机器证明定理、31 套 40 位向外有向区间套件）收束为单一非分裂耦合体系。[物理统一套件](../../unification/README.md) · [形式化范围](../../../formalization/ueot-physics-unification/README.md) · [验证总账本](../../../validation/physics_unification/VALIDATION_LEDGER.json)
+前七十一章依次建立了从对象数学到有限量子内核、重整化微扰 QFT 以及相关浴完全记录预测的主线结构；本章将其向上对接到完整的[《UEOT 哲学著作》v3.1](../../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md)与《UEOT 数学著作》v4.2（含第 32–40 章及 1,051 模块纯内核 Lean 4 库），向右汇合 `PR #468` 的 345 项全谐波与自主视界链[research ledger](../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md)，并将物理统一包（Wave 1–7 基线 31 模块 / 582 定理，及 Wave 8–11 增补后的 **38 个纯内核 Lean 4 模块、854 条机器证明定理、38 套 40 位向外有向区间套件与 81 条验证台账条目**）收束为单一非分裂耦合体系。[物理统一套件](../../unification/README.md) · [形式化范围](../../../formalization/ueot-physics-unification/README.md) · [验证总账本](../../../validation/physics_unification/VALIDATION_LEDGER.json)
 
-**研究署名说明。** 第72章与第71章同为人工智能辅助研究提案；钱德桂为历史书稿作者。本章所有 Lean 4 结论均经 `leanprover/lean4:v4.33.1` 纯内核审计（零 `sorryAx`、零 `native_decide`），但真实器件物理认证与独立外部同行评议仍待完成，终极物理统一保持 `OPEN`。
+**研究署名说明。** 第72章与第71章同为人工智能辅助研究提案；钱德桂为历史书稿作者。本章及 Wave 8–11 所有 Lean 4 结论均经 `leanprover/lean4:v4.33.1` 纯内核审计（零 `sorryAx`、零 `native_decide`），但真实器件物理认证与独立外部同行评议仍待完成，终极物理统一保持 `OPEN`。
 
 ## 72.1 Core 与数学 v4.2 到时空、复量子理论及操作商的深层桥接
 
@@ -10441,15 +10441,19 @@ $$
 | `ViabilityKernel` 晕坍缩上限 $\mathcal{I}_{\Lambda,\max}$ | $\Omega>0$ 结构阈值 | `9.273858e-120` | `9.792627e-120` |
 | de Sitter 因果视界信息容量 $S_{\mathrm{dS}}$ | $3\pi/\mathcal{I}_\Lambda^{\mathrm{obs}}$ | `3.197065e+122` | `3.331314e+122` |
 | BMV $0.5\text{ K}$ 稳定子 95% 校准测量数 | SPAM 校准 / 差分 | `69` | `435` |
+| 4D Type-Ia FRG Reuter UV 不动点 ($\lambda_*, g_*$) | Wave 9 $\eta_N=-2, d_s=2$ | `(0.193200, 0.707320)` | `(0.193201, 0.707321)` |
+| 强耦合 Wilson 弦张力 ($\beta=1/2$) 与 Dobrushin 间隙 | Wave 11 $H_{2a\text{--}b}$ | `2.089751 / 2.069524` | `2.089752 / 2.069525` |
+| 2-loop `(3,3,1)` 质子寿命下界 $\tau_p$ ($\mathrm{yr}$) | Wave 11 $H_{3a}$ ($>2.4\times 10^{34}$) | `1.6441e+37` | `5.3292e+38` |
+| 非选择性 CHSH 临界检测效率 $\eta_{\mathrm{crit}}$ & BMV 功率裕度 | Wave 11 $H_{4a}, H_{4c}$ | `0.828427 / 6.22154` | `0.828428 / 6.22182` |
 
-| 不可约假设 | 当前主线已证范围 | 仍开放的终极缺口 | 主线治理状态 |
+| 不可约假设 | 当前主线已证范围 (Wave 1–11) | 仍开放的终极缺口 | 主线治理状态 |
 |---|---|---|---|
-| `H1` 洛伦兹量子几何连续统 | $\alpha>7/12$ 反射正定与微超空间 $O(a^2)$ 极限 | 全4D局域自旋-2与非微扰 $\hat{\mathcal{H}}_{\mathrm{tot}}\Psi=0$ | `OPEN` |
-| `H2` 四维非阿贝尔手征连续统 | $2^4$ 非对易 $SU(2)$ Overlap 与 Lüscher 商等价 | 无限体积连续统测度与质量隙 (Clay 难题) | `OPEN` |
-| `H3` 无量纲常数点与阈值 | 单位商压缩与单模消除 $10^{120}$ 圈偏移 | $\mathcal{I}_\Lambda^{\mathrm{obs}}\approx 2.89\times 10^{-122}$ 与味耦合定值机制 | `OPEN` |
-| `H4` 真机硬件盲留出认证 | 确定性合成基准与逐 shot HDF5 合同完备 | 真实量子器件 SISC 与介观引力实验实测 | `device_certified = false` |
+| `H1` 洛伦兹量子几何连续统 | Wave 8–10 闭合 $H_{1a\text{--}c}, H_{1d1\text{--}d3}, H_{1d4a\text{--}c}$（Banach $\rho^{-N}$、OS/GNS、Ursell、与 `AH01` 视界 UV 屏蔽下 **$H_1$ 操作化闭合**） | 数学核心 `H1d4d`（非多项式 4D 精确解耦纯数学证明） | `H1d4d: OPEN` |
+| `H2` 四维非阿贝尔手征连续统 | Wave 11 `M1` 闭合 $H_{2a\text{--}c}$（Wilson 正转移面积律、Dobrushin $\alpha<1$ 质量隙、Lüscher/Neuberger $H_W^2$ 谱隙与 `AH01` UV 屏蔽） | Clay 4D 无限体积连续统测度与无条件质量隙 (`H2d`) | `H2d: OPEN` |
+| `H3` 无量纲常数点与阈值 | Wave 11 `M2` 闭合 $H_{3a\text{--}c}$（2-loop `(3,3,1)` 阈值修复、CKM Jarlskog 上界 $1/(6\sqrt{3})$、双侧可行窗与 `AH01` `BinaryTesting` 不可分辨性） | 第一性原理精确确定 $(\mathcal{I}_\Lambda^*, \alpha_i, y_f)$ (`H3d`) | `H3d: OPEN` |
+| `H4` 真机硬件盲留出认证 | Wave 11 `M3` 闭合 $H_{4a\text{--}c}$（CHSH/Tsirelson $2\sqrt{2}$、$2\delta_{\mathrm{drop}}$ 非选择性多单元 TV 留出与 Ville 停时、非空 $\Theta_{0.99}$ 与 BMV/Cosmo/Flavor 合同） | 真实量子器件 SISC 与介观引力原始逐 shot 实测 (`H4d`) | `device_certified = false` |
 
-**72.6 与既有第 0–71 章及三卷架构的收口判断。** 第72章把既有的离散量子内核、第71章相关浴辨识、`all_harmonic_horizon` 345 项全谐波检验以及哲学 v3.1 / 数学 v4.2 桥接为单一互锁框架；同时按照第 28 章可证伪合同与第 48 章独立状态轴，明确宣布 $H_1$–$H_4$ 四条不可约边界依然 `OPEN`——既不靠增加特设参数伪造“终极方程”，也不将计算自洽误称为自然界实证。[验证总账本](../../../validation/physics_unification/VALIDATION_LEDGER.json)
+**72.6 与既有第 0–71 章及三卷架构的收口判断（含 Wave 8–11 扩展）。** 第72章把既有的离散量子内核、第71章相关浴辨识、`all_harmonic_horizon` 345 项全谐波检验以及哲学 v3.1 / 数学 v4.2 桥接为单一互锁框架；随后的 Wave 8（`CausalSpin2GravitonContinuumH1`）、Wave 9（`Nonperturbative4DQuantumGravityH1d`）、Wave 10（`Nonperturbative4DMeasureLimitH1d4`，证明 $H_1$ 在 `AH01` + `ClosedTests` 下操作化闭合且不再进一步切片）以及 Wave 11（`M1`–`M3` 分别闭合 $H_{2a\text{--}c}, H_{3a\text{--}c}, H_{4a\text{--}c}$，并由 `CrossSectorPostWave10UnificationSynthesis` 综合为 `C-UNIFIED-SYNTH-11`）在保持 `physical_unification = OPEN` 与 `device_certified = false` 的前提下，将纯内核 Lean 4 覆盖推进至 38 模块、854 条定理，明确锁定四个逻辑独立的终极开放前沿 $(H_{1d4d}, H_{2d}, H_{3d}, H_{4d})$。[验证总账本](../../../validation/physics_unification/VALIDATION_LEDGER.json) · [后 Wave 10 跨扇区总成证书](../../unification/cross_sector_post_wave10_synthesis/certificate.json)
 
 <a id="appendix-a"></a>
 
@@ -10768,6 +10772,38 @@ $\theta$ 为环边界扭转，$\eta$ 为规范不变扭转；$\mathcal A,\mathca
 | [P-PHIL31-REALIZ-02](#p-phil31-realiz-02) | 72 | P-PHIL31-REALIZ-02（无“第二股力”宏观商实现、第 12 章秩三 $\Pi/\Phi$ 阻断与第 21/25 章非演绎壁）。 |
 | [P-PHIL31-LAKATOS-03](#p-phil31-lakatos-03) | 72 | P-PHIL31-LAKATOS-03（第 28 章 Lakatos 研究纲领非免疫性定理与诚实 `OPEN` 守恒）。 |
 | [C-UNIFIED-SYNTH-10](#c-unified-synth-10) | 72 | C-UNIFIED-SYNTH-10（跨扇区因果—手征—单模非分裂总成与最小四假设独立约化定理）。 |
+
+### 后 3.13 版 Wave 8–11 物理统一台账增补（25 条，`VALIDATION_LEDGER.json` 总计 81 条）
+
+以下 25 项为 Edition 3.13（Wave 7，229 项书稿锚点结果）合并之后在 `UEOTPhysicsUnification` 与 `VALIDATION_LEDGER.json` 中新增并经纯内核审计与 40 位外区间复核的成果条目（Wave 8–11，`physical_unification = OPEN`，`device_certified = false`）：
+
+| `Result-ID` | Wave | Lean 4 Module | Scope & Standing |
+|---|---|---|---|
+| `P-H1-SPIN2-01` | Wave 8 | `CausalSpin2GravitonContinuumH1` | York/DeWitt TT 商与 $O(a^2)$ 3D 自旋-2 反射正定性 (`H1a` 闭合) |
+| `P-H1-REGGE-02` | Wave 8 | `CausalSpin2GravitonContinuumH1` | 4D Schläfli 驻定性、曲 $S^3$ Regge $O(a^2)$ 与涂抹 Dirac Wronskian (`H1b` 闭合) |
+| `P-H1-BIANCHI-03` | Wave 8 | `CausalSpin2GravitonContinuumH1` | Bianchi IX `AH01` 普朗克底线、Isaacson $w_{\mathrm{GW}}=1/3$ 与投射输运 (`H1c` 闭合) |
+| `C-H1-FRONTIER-04` | Wave 8 | `CausalSpin2GravitonContinuumH1` | $H_{1a\text{--}c}$ 闭合 vs $H_{1d}$ 四向独立分离 (`H1d: OPEN`) |
+| `P-H1D-FRG-01` | Wave 9 | `Nonperturbative4DQuantumGravityH1d` | 4D Type-Ia Litim FRG Reuter UV 不动点与 $(3,3,1)$/$f(R)$ 稳定性 (`H1d1` 闭合) |
+| `P-H1D-CLUSTER-02` | Wave 9 | `Nonperturbative4DQuantumGravityH1d` | Kotecký–Preiss / Kirkwood–Salsburg 聚团展开与非高斯 OS/Prokhorov 紧性 (`H1d2` 闭合) |
+| `P-H1D-WARD-03` | Wave 9 | `Nonperturbative4DQuantumGravityH1d` | IR $O(k^2)$ 修正分裂 Ward 恒等式与 `QuotientDescent`/`FisherGauge` (`H1d3` 闭合) |
+| `C-H1D-CORE-04` | Wave 9 | `Nonperturbative4DQuantumGravityH1d` | $H_{1d1\text{--}d3}$ 闭合 vs $H_{1d4}$ 四向独立分离 (`H1d4: OPEN`) |
+| `P-H1D4-BANACH-01` | Wave 10 | `Nonperturbative4DMeasureLimitH1d4` | 无穷阶加权 Banach $\rho^{-N}$ 截断收敛与强混合反例 (`H1d4a` 闭合) |
+| `P-H1D4-OSRECON-02` | Wave 10 | `Nonperturbative4DMeasureLimitH1d4` | OS 弱极限闭合、GNS 商、Cauchy 相干性与四点 Ursell 非平凡性 (`H1d4b` 闭合) |
+| `P-H1D4-OPER-03` | Wave 10 | `Nonperturbative4DMeasureLimitH1d4` | UEOT `AH01` 视界 UV 屏蔽与有限次测量不可分辨商等效 (`H1d4c` 闭合) |
+| `C-H1D4-FINAL-04` | Wave 10 | `Nonperturbative4DMeasureLimitH1d4` | `H1` 在 `AH01` + `ClosedTests` 下操作化闭合；数学前沿 `H1d4d` `OPEN` |
+| `P-H2A-TRANSFER-01` | Wave 11 (`M1`) | `NonAbelianLatticeMassGapAndChiralIntegrabilityH2` | Wilson 小方格正转移核反射正定、强耦合面积律 ($\sigma>0$) 与 Symanzik $O(a^2)$ (`H2a` 闭合) |
+| `P-H2B-DOBRUSHIN-02` | Wave 11 (`M1`) | `NonAbelianLatticeMassGapAndChiralIntegrabilityH2` | Dobrushin ($\alpha<1$) 晶格质量隙与 Lüscher Berry 闭环 / Neuberger $H_W^2$ 谱隙 (`H2b` 闭合) |
+| `P-H2C-CHIRAL-UV-03` | Wave 11 (`M1`) | `NonAbelianLatticeMassGapAndChiralIntegrabilityH2` | $(3,3,1)$ 手征 `ClosedTests` 商、`AH01` 晶格 UV 屏蔽与 `DEAD-20261124-01` (`H2c` 闭合) |
+| `C-H2-OPER-04` | Wave 11 (`M1`) | `NonAbelianLatticeMassGapAndChiralIntegrabilityH2` | $H_{2a\text{--}c}$ 操作化闭合 vs Clay 4D 连续统质量隙 (`H2d: OPEN`) |
+| `P-H3A-TWOLOOP-GUT-01` | Wave 11 (`M2`) | `DimensionlessCouplingsFlavorAndVacuumWindowH3` | 2-loop `(3,3,1)` 中间阈值 $(M_I, M_{\mathrm{GUT}})$ 多胞体、Super-K 质子寿命与 Higgs 稳定性 (`H3a` 闭合) |
+| `P-H3B-JARLSKOG-02` | Wave 11 (`M2`) | `DimensionlessCouplingsFlavorAndVacuumWindowH3` | 3 代 CKM 重相位不变性与 $\|J\|\le 1/(6\sqrt{3})$ 上界及 Type-I seesaw (`H3b` 闭合) |
+| `P-H3C-VIABILITY-03` | Wave 11 (`M2`) | `DimensionlessCouplingsFlavorAndVacuumWindowH3` | 双侧宇宙学可行窗口（AdS 坍缩下界 + `ViabilityKernel` 上界）与 `BinaryTesting` 不可分辨性 (`H3c` 闭合) |
+| `C-H3-WINDOW-04` | Wave 11 (`M2`) | `DimensionlessCouplingsFlavorAndVacuumWindowH3` | $H_{3a\text{--}c}$ 条件窗闭合 vs 先验常数定值 (`H3d: OPEN`) |
+| `P-H4A-CHSH-TSIRELSON-01` | Wave 11 (`M3`) | `BellCHSHAndBlindHoldoutContractH4` | LHV $\|S\|\le 2$、4×4 Landau/Tsirelson $2\sqrt{2}$、Werner 可见度与非选择性效率 $\eta>2(\sqrt{2}-1)$ (`H4a` 闭合) |
+| `P-H4B-HOLDOUT-TV-02` | Wave 11 (`M3`) | `BellCHSHAndBlindHoldoutContractH4` | 非选择性丢包 $2\delta_{\mathrm{drop}}$ 界、多单元 TV 留出与 Ville 停时 (`H4b` 闭合) |
+| `P-H4C-PORTFOLIO-03` | Wave 11 (`M3`) | `BellCHSHAndBlindHoldoutContractH4` | 非空 $\Theta_{0.99}$、Casimir/$1/f$ BMV 功率裕度、成对基线与 `P-COSMO-02`/3-ch 味留出 (`H4c` 闭合) |
+| `C-H4-CONTRACT-04` | Wave 11 (`M3`) | `BellCHSHAndBlindHoldoutContractH4` | $H_{4a\text{--}c}$ 统计合同闭合；原始硬件 (`H4d`) `OPEN` 且 `device_certified = false` |
+| `C-UNIFIED-SYNTH-11` | Wave 11 (`M4`) | `CrossSectorPostWave10UnificationSynthesis` | 后 Wave 10 跨扇区 `H1–H4` + 共形控制引力门非分裂总成与四向独立性 (`physical_unification: OPEN`) |
 
 <a id="appendix-c"></a>
 
@@ -11793,7 +11829,7 @@ print(json.dumps(result,ensure_ascii=False,indent=2))
 
 ## E.1 完整语义主源与派生阅读版
 
-[第72章](#ch-72)为3.13版连续候选书稿增加十九项跨部门统一与跨层次桥接结果。[版本入口](README.md)记录各印本的构建与受检页。[第71章印本](https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f88270c0f38ae6fb6f77e26093/physics/qm/book/UEOT_PHYSICS.pdf)保留3.12版原貌。现有229项稳定结果，其中210项沿用原编号，账本[CLAIM_LEDGER_v31.16.json](../status/CLAIM_LEDGER_v31.16.json)保留133项旧主张并新增19项纯核心声明，总计152项。新章整合哲学著作 v3.1、数学著作 v4.2（1,051个 Lean 4 模块）、[PR #468全谐波边界](../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md)与 Wave 1–7 纯净核心验证，仍诚实保持 `physical_unification = OPEN` 与 `device_certified = false`，经验与形式证明范围见[研究材料](../../unification/README.md)。
+[第72章](#ch-72)为3.13版连续候选书稿增加十九项跨部门统一与跨层次桥接结果。[版本入口](README.md)记录各印本的构建与受检页。[第71章印本](https://github.com/MurphyHoops/UEOT/blob/cc5670d5f2ac96f88270c0f38ae6fb6f77e26093/physics/qm/book/UEOT_PHYSICS.pdf)保留3.12版原貌。现有229项稳定书稿锚点结果，其中210项沿用原编号，账本[CLAIM_LEDGER_v31.16.json](../status/CLAIM_LEDGER_v31.16.json)保留133项旧主张并新增19项纯核心声明，总计152项保持原貌。新章及后续 Wave 1–11 扩展整合哲学著作 v3.1、数学著作 v4.2（1,051个 Lean 4 模块）、[PR #468全谐波边界](../null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md)与 Wave 1–11 纯净核心验证（38 模块、854 条定理、38 套 40 位套件与 81 条验证台账），仍诚实保持 `physical_unification = OPEN` 与 `device_certified = false`，经验与形式证明范围见[研究材料](../../unification/README.md)。
 
 两种语言承担相同的科学责任。文字为自然阅读作适当调整，前提、公式、常数、结果编号、源码身份与经验限定则共同核对。翻译不静默改变数学符号；公式中的纯文字标签和有记录的编辑更正列入忠实性报告。
 
@@ -13405,10 +13441,10 @@ UEOTQM.OperationalEquivalence.symmetricUnit_hermitian
 
 在第70章合并后的源码上，PR #466 的 main 运行 44318642942 实际重建了既有 QM 库，审计定理公理，并检查保留的见证。第69–71章未增加 Lean 声明。[运行回执](../kernel/evidence/v31.14/integration-verification.json)记录这次执行对应的前一提交。
 
-## F.11 第72章的纯净核心形式化与诚实开放边界
+## F.11 第72章的纯净核心形式化与诚实开放边界（Wave 1–11 同步）
 
-第72章追加十九项跨部门统一与跨层次桥接结果；既有210项结果编号、133项旧主张及历史 `ueot-qm`（158输入集）与 `ueot-core` 执行身份全部原样保留，未作任何回溯修改。
+第72章在 Edition 3.13（Wave 7）追加十九项跨部门统一与跨层次桥接结果；既有229项书稿锚点结果编号、152项 `CLAIM_LEDGER_v31.16.json` 主张及历史 `ueot-qm`（158输入集）与 `ueot-core` 执行身份全部原样保留，未作任何回溯修改。
 
-新增形式证明由独立包[纯净核心形式化包](../../../formalization/ueot-physics-unification/README.md)承担（工具链 `leanprover/lean4:v4.33.1`，与 `ueot-core` 及 `ueot-qm` 字节级一致），覆盖31个独立模块、1,128条常数、582条机器校验定理与471条定义，零 `sorryAx`、零 `Lean.ofReduceBool`（`native_decide`）且零非标准公理；并在已合并提交 `e2c67e27` 上由 GitHub Actions `UEOT Physics Unification Gates`（[运行 45118737723](https://github.com/MurphyHoops/UEOT/actions/runs/45118737723)）联动31组高精度外区间套件与[物理统一验证台账](../../../validation/physics_unification/VALIDATION_LEDGER.json)（56项条目）全量通过。另在主线合并提交 `cc5670d5` 上，PR #467 已完成第71章及其前置继承证据的运行验证（[v31.15 集成回执](../kernel/evidence/v31.15/integration-verification.json)）。
+新增形式证明由独立包[纯净核心形式化包](../../../formalization/ueot-physics-unification/README.md)承担（工具链 `leanprover/lean4:v4.33.1`，与 `ueot-core` 及 `ueot-qm` 字节级一致），截至 Wave 11 覆盖 **38 个独立模块、1,874 条常数、854 条机器校验定理与 868 条定义**，零 `sorryAx`、零 `Lean.ofReduceBool`（`native_decide`）且零非标准公理；在 Wave 7 定版合并提交 `e2c67e27` 上由 GitHub Actions `UEOT Physics Unification Gates`（[运行 45118737723](https://github.com/MurphyHoops/UEOT/actions/runs/45118737723)）与后续 Wave 8–11 局部工作树全量核验联动 **38 组 40 位高精度外区间套件**（含 345 项 `all_harmonic_horizon` 回归）及[物理统一验证台账](../../../validation/physics_unification/VALIDATION_LEDGER.json)（**81 项条目**，含 Wave 1–7 56 项、Wave 8–10 12 项与 Wave 11 13 项）全量通过。另在主线合并提交 `cc5670d5` 上，PR #467 已完成第71章及其前置继承证据的运行验证（[v31.15 集成回执](../kernel/evidence/v31.15/integration-verification.json)）。
 
-全部数学命题均在声明的离散、半经典、单圈、有效场论或有限维模型前提下成立；第72章没有新增硬件实测数据或独立人工同行评议，并继续诚实保留 `physical_unification = OPEN` 与 `device_certified = false`（包括四维非微扰量子场论、完全量子引力、普朗克实验检验及真实自主时钟—指针硬件实现）。
+全部数学命题均在声明的离散、半经典、二圈有效场论、有限体积 Dobrushin 或有限维模型前提下成立；Wave 8–11 虽已实现 $H_1$ 操作化闭环及 $H_{2a\text{--}c}, H_{3a\text{--}c}, H_{4a\text{--}c}$ 的分支收口，但没有新增硬件实测数据或独立人工同行评议，并继续诚实保留 `physical_unification = OPEN` 与 `device_certified = false`（四项核心前沿 `H1d4d` 非多项式 4D 解耦、`H2d` Clay 4D 连续统测度与质量隙、`H3d` 先验常数定值、`H4d` 真实量子器件与介观引力逐 shot 硬件实测均保持 `OPEN`）。
