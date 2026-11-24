@@ -319,6 +319,7 @@ import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecision
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionOptimality
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionSource
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterJointDecisionValueBounds
+import UEOT.V3.Compression.TheoryCompletion.Proposed.CertifiedDevelopmentViability
 
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentation
 import UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterMechanismDecision
