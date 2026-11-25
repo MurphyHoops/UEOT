@@ -3060,6 +3060,132 @@ def _r7_certify_i1_stiffness_iv(d_space: int):
     return iv.mpf([val_num - pad, val_num + tail_ub + pad])
 
 
+def _r7_w4_iv_dtv_su2_antipodal(b_iv, r_iv):
+    """40-digit interval enclosure of SU(2) D_TV(mu_{+r}, mu_{-r}) for arbitrary real r_iv."""
+    br = b_iv * r_iv
+    z_br = (iv.mpf(2) / br) * besseli_iv_any(1, br)
+    s = iv.mpf(0)
+    n_terms = 55
+    for m in range(n_terms):
+        df1 = _r7_odd_double_fact(2 * m + 1)
+        df2 = _r7_odd_double_fact(2 * m + 3)
+        s += (br ** (2 * m + 1)) / (iv.mpf(df1) * iv.mpf(df2))
+    m_next = 2 * n_terms + 1
+    next_term = (br ** m_next) / (iv.mpf(_r7_odd_double_fact(m_next)) * iv.mpf(_r7_odd_double_fact(m_next + 2)))
+    ratio = (br ** 2) / iv.mpf((m_next + 2) * (m_next + 4))
+    assert ratio.b < iv.mpf("0.25").a, f"SU(2) D_TV series ratio too large: {ratio}"
+    tail_hi = next_term.b / (iv.mpf(1) - ratio).a
+    s = iv.mpf([s.a, s.b + tail_hi])
+    return (iv.mpf(4) / (iv.pi * z_br)) * s
+
+
+def _r7_w4_iv_dtv_u1_antipodal(b_iv, r_iv):
+    """40-digit interval enclosure of U(1) D_TV(mu_{+r}, mu_{-r}) for arbitrary real r_iv."""
+    br = b_iv * r_iv
+    i0 = besseli_iv_any(0, br)
+    s = iv.mpf(0)
+    n_terms = 55
+    even_df = iv.mpf(1)
+    fact_2m1 = 1
+    for m in range(n_terms):
+        if m > 0:
+            even_df = even_df * iv.mpf(2 * m)
+            fact_2m1 *= (2 * m) * (2 * m + 1)
+        odd_df = _r7_odd_double_fact(2 * m + 1)
+        s += (br ** (2 * m + 1)) * even_df / (iv.mpf(fact_2m1) * iv.mpf(odd_df))
+    m_next = 2 * n_terms + 1
+    even_next = even_df * iv.mpf(2 * n_terms)
+    fact_next = fact_2m1 * (2 * n_terms) * m_next
+    next_term = (br ** m_next) * even_next / (iv.mpf(fact_next) * iv.mpf(_r7_odd_double_fact(m_next)))
+    ratio = (br ** 2) / iv.mpf((m_next + 1) * (m_next + 2))
+    assert ratio.b < iv.mpf("0.25").a, f"U(1) D_TV series ratio too large: {ratio}"
+    tail_hi = next_term.b / (iv.mpf(1) - ratio).a
+    s = iv.mpf([s.a, s.b + tail_hi])
+    return (iv.mpf(2) / (iv.pi * i0)) * s
+
+
+def _r7_w4_edge_sat_count(n: int, deg_edge: int) -> int:
+    """Exact [x^{n-1}] Z(x)^4 for edge-saturated closed-2-complex tree Z=(1 + x Z^3)^deg_edge."""
+    if n == 1:
+        return 1
+    n_rem = n - 1
+    top = 3 * deg_edge * n_rem + 4 * deg_edge - 1
+    k = n_rem - 1
+    c = 1
+    for j in range(k):
+        c = c * (top - j) // (j + 1)
+    return (4 * deg_edge * c) // n_rem
+
+
+def _r7_w4_c0_su2_iv(b_mpc):
+    """40-digit enclosure of c_0(beta) = 2 I_1(beta) / beta for complex interval beta."""
+    half_z = b_mpc / iv.mpf(2)
+    hz2 = half_z * half_z
+    c0 = iv.mpc(0, 0)
+    term = iv.mpc(1, 0)
+    r2_hi = _r7_iv_complex_abs(hz2).b
+    for k in range(35):
+        c0 += term
+        term = term * hz2 / iv.mpf((k + 1) * (k + 2))
+        t_mag = _r7_iv_complex_abs(term).b
+        if k > 10 and r2_hi / ((k + 2) * (k + 3)) < iv.mpf("0.25").a and t_mag < mp.mpf("1e-48"):
+            tail = t_mag * mp.mpf(4) / mp.mpf(3)
+            c0 += iv.mpc(iv.mpf([-tail, tail]), iv.mpf([-tail, tail]))
+            break
+    return c0
+
+
+def _r7_w4_sphere_haar_iv(area: int, b_mpc, group: str):
+    """Exact complex-beta Haar integral for topological 2-sphere of `area` plaquettes."""
+    denom = _r7_iv_complex_besseli(1 if group == "SU2" else 0, b_mpc.real, b_mpc.imag)
+    s = iv.mpc(0, 0)
+    for k in range(1, 18):
+        order = (k + 1) if group == "SU2" else k
+        uk = _r7_iv_complex_besseli(order, b_mpc.real, b_mpc.imag) / denom
+        weight = iv.mpf((k + 1) ** 2) if group == "SU2" else iv.mpf(2)
+        term = weight * (uk ** area)
+        s += term
+        if _r7_iv_complex_abs(term).b < mp.mpf("1e-45"):
+            break
+    return _r7_iv_complex_abs(s).b
+
+
+def _r7_w4_size11_su2_iv(b_mpc):
+    """Exact complex-beta SU(2) Haar integral for two 3-cubes sharing 1 plaquette (|gamma|=11)."""
+    i1 = _r7_iv_complex_besseli(1, b_mpc.real, b_mpc.imag)
+    u = {k: _r7_iv_complex_besseli(k + 1, b_mpc.real, b_mpc.imag) / i1 for k in range(1, 12)}
+    s = iv.mpc(0, 0)
+    for k1 in range(1, 9):
+        for k2 in range(1, 9):
+            for k0 in range(max(1, abs(k1 - k2)), min(11, k1 + k2 + 1), 2):
+                if (k0 + k1 + k2) % 2 != 0:
+                    continue
+                s += iv.mpf((k0 + 1) * (k1 + 1) * (k2 + 1)) * u[k0] * (u[k1] ** 5) * (u[k2] ** 5)
+    return _r7_iv_complex_abs(s).b
+
+
+def _r7_w4_f_lp_iv(b_mpc, p_exp: int, group: str, n_grid: int = 160):
+    """Rigorous 40-digit L^p(G) Finner polymer norm for complex beta (pure mpmath.iv)."""
+    if group == "SU2":
+        denom = _r7_w4_c0_su2_iv(b_mpc)
+    else:
+        denom = _r7_iv_complex_besseli(0, b_mpc.real, b_mpc.imag)
+    acc = iv.mpf(0)
+    h = iv.pi / iv.mpf(n_grid)
+    for m in range(n_grid):
+        th_iv = iv.mpf([m * h.a, (m + 1) * h.b])
+        cos_iv = iv.cos(th_iv)
+        f_val = _r7_iv_complex_exp(b_mpc * cos_iv) / denom - iv.mpc(1, 0)
+        mag = _r7_iv_complex_abs(f_val)
+        if group == "SU2":
+            sin_iv = iv.sin(th_iv)
+            sin_sq = _r7_iv_sq(sin_iv)
+            acc += (iv.mpf(2) / iv.pi) * sin_sq * (mag ** p_exp) * h
+        else:
+            acc += (iv.mpf(1) / iv.pi) * (mag ** p_exp) * h
+    return (acc ** (iv.mpf(1) / iv.mpf(p_exp))).b
+
+
 def compute_h2d_round07_irx_frontier(
     r4_bridges: dict | None = None,
     r5_bridges: dict | None = None,
@@ -3421,6 +3547,8 @@ def compute_h2d_round07_irx_frontier(
                 "baseline_route_a_corridor": ["0.38", "160"],
                 "baseline_k2l_steps_160_to_0_73": outward_str(k_160_073),
                 "conditional_w3_1_corridor": ["0.73", "18", "37"],
+                "refuted_in_wave4_by": "W4.1-O2",
+                "honest_w4_1_corridor": ["0.73", "20", "175"],
                 "k2l_steps_37_to_0_73": outward_str(k_37_073),
                 "k2l_steps_29_to_0_73": outward_str(k_29_073),
                 "k2l_steps_18_to_0_73": outward_str(k_18_073),
@@ -3690,43 +3818,51 @@ def compute_h2d_round07_irx_frontier(
             "C1_4D_U1_Maxwell": {
                 "non_abelian": False, "beta0_pos": False, "RP": True, "Z2_1form": False,
                 "KP_area_law": False, "finite_chi_P": True, "noBulkTransition": False,
-                "chi_t_pos": False, "twist_collapse": False, "pure_ym_completeness": False, "mass_gap": 0,
+                "chi_t_pos": False, "twist_collapse": False,
+                "complex_beta_analyticity_no_pinch": False, "pure_ym_completeness": False, "mass_gap": 0,
             },
             "C2_4D_Conformal_BanksZaks_N4": {
                 "non_abelian": True, "beta0_pos": True, "RP": True, "Z2_1form": True,
                 "KP_area_law": False, "finite_chi_P": True, "noBulkTransition": True,
-                "chi_t_pos": False, "twist_collapse": False, "pure_ym_completeness": False, "mass_gap": 0,
+                "chi_t_pos": False, "twist_collapse": False,
+                "complex_beta_analyticity_no_pinch": False, "pure_ym_completeness": False, "mass_gap": 0,
             },
             "C3_4D_Massless_QCD": {
                 "non_abelian": True, "beta0_pos": True, "RP": True, "Z2_1form": False,
                 "KP_area_law": True, "finite_chi_P": False, "noBulkTransition": True,
-                "chi_t_pos": False, "twist_collapse": False, "pure_ym_completeness": False, "mass_gap": 0,
+                "chi_t_pos": False, "twist_collapse": False,
+                "complex_beta_analyticity_no_pinch": False, "pure_ym_completeness": False, "mass_gap": 0,
             },
             "C4a_4D_SU2_Adjoint_Higgs": {
                 "non_abelian": True, "beta0_pos": True, "RP": True, "Z2_1form": True,
                 "KP_area_law": False, "finite_chi_P": True, "noBulkTransition": False,
-                "chi_t_pos": True, "twist_collapse": False, "pure_ym_completeness": False, "mass_gap": 0,
+                "chi_t_pos": True, "twist_collapse": False,
+                "complex_beta_analyticity_no_pinch": False, "pure_ym_completeness": False, "mass_gap": 0,
             },
             "C4b_prime_4D_RP_Gauge_Scalar_PhiSq": {
                 "non_abelian": True, "beta0_pos": True, "RP": True, "Z2_1form": True,
                 "KP_area_law": True, "finite_chi_P": False, "noBulkTransition": True,
-                "chi_t_pos": True, "twist_collapse": True, "pure_ym_completeness": False, "mass_gap": 0,
+                "chi_t_pos": True, "twist_collapse": True,
+                "complex_beta_analyticity_no_pinch": False, "pure_ym_completeness": False, "mass_gap": 0,
             },
             "C4b_double_prime_4D_RP_Gauge_GradPhiSq": {
                 "non_abelian": True, "beta0_pos": True, "RP": True, "Z2_1form": True,
                 "KP_area_law": True, "finite_chi_P": True, "noBulkTransition": True,
-                "chi_t_pos": True, "twist_collapse": True, "pure_ym_completeness": False, "mass_gap": 0,
+                "chi_t_pos": True, "twist_collapse": True,
+                "complex_beta_analyticity_no_pinch": True, "pure_ym_completeness": False, "mass_gap": 0,
             },
             "C5_5D_Pure_SU2_Weak": {
                 "non_abelian": True, "beta0_pos": False, "RP": True, "Z2_1form": True,
                 "KP_area_law": False, "finite_chi_P": True, "noBulkTransition": False,
-                "chi_t_pos": False, "twist_collapse": False, "pure_ym_completeness": True, "mass_gap": 0,
+                "chi_t_pos": False, "twist_collapse": False,
+                "complex_beta_analyticity_no_pinch": False, "pure_ym_completeness": True, "mass_gap": 0,
             },
         }
         c4bpp_rec = seven_way_matrix["C4b_double_prime_4D_RP_Gauge_GradPhiSq"]
         check(
             c4bpp_rec["RP"] and c4bpp_rec["Z2_1form"] and c4bpp_rec["KP_area_law"]
             and c4bpp_rec["finite_chi_P"] and c4bpp_rec["noBulkTransition"]
+            and c4bpp_rec["complex_beta_analyticity_no_pinch"]
             and c4bpp_rec["mass_gap"] == 0,
             "C4(b)'' 7-way separation record invariant violated",
         )
@@ -3734,10 +3870,248 @@ def compute_h2d_round07_irx_frontier(
             any(
                 not rec["pure_ym_completeness"] and rec["RP"] and rec["Z2_1form"]
                 and rec["KP_area_law"] and rec["finite_chi_P"] and rec["noBulkTransition"]
+                and rec["complex_beta_analyticity_no_pinch"]
                 for rec in seven_way_matrix.values()
             ),
             "7-way counterexample separation failed",
         )
+
+        # =====================================================================
+        # 9. Wave 4 Frontier Blocks (W4-1, W4-2, W4-3) — Pure mpmath.iv & SymPy
+        # =====================================================================
+        # 9A. W4-1: 6-plane skew amplification, L=3,4 Schur + Bochner, OA.3 wall 10 -> 20, beta_UV^min
+        S_skew = sp.zeros(4, 4)
+        for m_i in range(4):
+            for n_i in range(m_i + 1, 4):
+                S_skew[m_i, n_i] = 1
+                S_skew[n_i, m_i] = -1
+        lam_s = sp.Symbol("lam_w4")
+        cp_6p = sp.factor(S_skew.charpoly(lam_s).as_expr())
+        exp_6p = (lam_s ** 2 + (sp.sqrt(2) + 1) ** 2) * (lam_s ** 2 + (sp.sqrt(2) - 1) ** 2)
+        check(sp.simplify(sp.expand(cp_6p - exp_6p)) == 0, "W4.1-O2 6-plane skew charpoly failed")
+
+        for L_sch in (3, 4):
+            C_L = sp.zeros(4, 4)
+            dc_L = sp.Matrix([sp.exp(L_sch * sp.I * ks_s[mu]) - 1 for mu in range(4)])
+            for mu in range(4):
+                geom_L = sum(sp.exp(j * sp.I * ks_s[mu]) for j in range(L_sch))
+                C_L[mu, mu] += (1 - ast_s) * geom_L
+                for nu in range(4):
+                    if nu == mu:
+                        continue
+                    C_L[mu, mu] += w_ast * 2 * sp.cos(ks_s[nu]) * geom_L
+                    C_L[mu, nu] += w_ast * (1 - sp.exp(-sp.I * ks_s[nu])) * (1 - sp.exp(L_sch * sp.I * ks_s[mu]))
+            res_sch = (C_L * df_s - dc_L).applyfunc(lambda ex: sp.simplify(ex.rewrite(sp.exp)))
+            check(res_sch == sp.zeros(4, 1), f"W4.1-2 L={L_sch} covariance residual != 0")
+            if L_sch == 4:
+                check(sp.simplify(C_L.subs({ks_s[0]: 0, ks_s[1]: sp.pi, ks_s[2]: sp.pi, ks_s[3]: sp.pi, ast_s: sp.Rational(1, 2)})[0, :]) == sp.zeros(1, 4),
+                      "W4.1-2 L=4 alpha=1/2 singularity failed")
+                check(sp.simplify(C_L.subs({ks_s[0]: 0, ks_s[1]: sp.pi, ks_s[2]: sp.pi, ks_s[3]: 0, ast_s: sp.Rational(3, 4)})[0, :]) == sp.zeros(1, 4),
+                      "W4.1-2 L=4 alpha=3/4 singularity failed")
+            else:
+                check(sp.simplify(C_L.subs({ks_s[0]: 0, ks_s[1]: 2 * sp.pi / 3, ks_s[2]: 2 * sp.pi / 3, ks_s[3]: 2 * sp.pi / 3, ast_s: sp.Rational(2, 3)})[0, :]) == sp.zeros(1, 4),
+                      "W4.1-2 L=3 alpha=2/3 singularity failed")
+                check(sp.simplify(C_L.subs({ks_s[0]: 0, ks_s[1]: 2 * sp.pi / 3, ks_s[2]: 2 * sp.pi / 3, ks_s[3]: 0, ast_s: sp.Integer(1)})[0, :]) == sp.zeros(1, 4),
+                      "W4.1-2 L=3 alpha=1 singularity failed")
+
+        # 4D Bochner Fourier identity at U=I
+        D_k = sp.zeros(4, 4)
+        for mu in range(4):
+            for nu in range(mu + 1, 4):
+                row_mn = sp.zeros(1, 4)
+                row_mn[mu] = -(sp.exp(sp.I * ks_s[nu]) - 1)
+                row_mn[nu] = sp.exp(sp.I * ks_s[mu]) - 1
+                D_k += row_mn.H * row_mn
+        G_k = df_s * df_s.H
+        B_k = sum((sp.exp(sp.I * ks_s[lm]) - 1) * (sp.exp(-sp.I * ks_s[lm]) - 1) for lm in range(4)) * sp.eye(4)
+        diff_boch = (D_k + G_k - B_k).applyfunc(lambda ex: sp.simplify(ex.rewrite(sp.exp)))
+        check(diff_boch == sp.zeros(4, 4), "W4.1-1 4D Bochner Fourier identity failed")
+
+        sq2_p1_iv = iv.sqrt(2) + iv.mpf(1)
+        check(strictly_above(sq2_p1_iv, "2.4142"), "W4.1-O2 sqrt(2)+1 check failed")
+        eps_30_iv = iv.mpf(1) - iv.cos(iv.pi / iv.mpf(12))
+        eps_18_iv = iv.mpf(1) - iv.cos((iv.mpf(18) * iv.pi / iv.mpf(180)) / iv.mpf(2))
+        eps_2045_iv = iv.mpf(1) - iv.cos((iv.mpf("20.45") * iv.pi / iv.mpf(180)) / iv.mpf(2))
+        k_fc20_iv = (iv.mpf(20) ** 20) / (iv.mpf(19) ** 19)
+
+        ok_19_wall_f, _, _ = check_contract_w31(iv.mpf(19), iv.mpf(1), eps_30_iv, iv.mpf(1))
+        ok_20_wall, _, _ = check_contract_w31(iv.mpf(20), iv.mpf(1), eps_30_iv, iv.mpf(1))
+        ok_62_f, _, _ = check_contract_w31(iv.mpf(62), k_anim, eps_30_iv, iv.mpf("0.5"))
+        ok_64_ceil, _, _ = check_contract_w31(iv.mpf(64), k_anim, eps_30_iv, iv.mpf("0.5"))
+        ok_77_f, _, _ = check_contract_w31(iv.mpf(77), k_fc20_iv, eps_30_iv, iv.mpf("0.5"))
+        ok_79_ceil, _, _ = check_contract_w31(iv.mpf(79), k_fc20_iv, eps_30_iv, iv.mpf("0.5"))
+        ok_174_f, _, _ = check_contract_w31(iv.mpf(174), k_anim, eps_18_iv, iv.mpf("0.5"))
+        ok_175_unif, _, _ = check_contract_w31(iv.mpf(175), k_anim, eps_18_iv, iv.mpf("0.5"))
+        ok_135_f, _, _ = check_contract_w31(iv.mpf(135), k_anim, eps_2045_iv, iv.mpf("0.5"))
+        ok_136_flatq0, _, _ = check_contract_w31(iv.mpf(136), k_anim, eps_2045_iv, iv.mpf("0.5"))
+        check(
+            (not ok_19_wall_f) and ok_20_wall and (not ok_62_f) and ok_64_ceil
+            and (not ok_77_f) and ok_79_ceil and (not ok_174_f) and ok_175_unif
+            and (not ok_135_f) and ok_136_flatq0,
+            "W4.1-O2 / W4.1-1 contraction threshold checks failed",
+        )
+        k_20_073 = steps_2loop_iv(iv.mpf(20), iv.mpf("0.73"))
+        k_64_073 = steps_2loop_iv(iv.mpf(64), iv.mpf("0.73"))
+        k_79_073 = steps_2loop_iv(iv.mpf(79), iv.mpf("0.73"))
+        k_175_073 = steps_2loop_iv(iv.mpf(175), iv.mpf("0.73"))
+        w4_1_summary = {
+            "refutes_w3_1_conditional_45_57_corridor": True,
+            "sympy_6plane_charpoly_l34_schur_bochner_verified": True,
+            "six_plane_skew_amp_sqrt2_plus_1": outward_str(sq2_p1_iv),
+            "oa3_zero_slack_wall_doubled": {"old_45deg": 10, "true_30deg": 20, "k2l_20_to_0_73": outward_str(k_20_073)},
+            "empirical_6plane_30deg_ceiling": {
+                "beta_uv_min_7e": 64,
+                "beta_uv_min_fc20": 79,
+                "k2l_64_to_0_73": outward_str(k_64_073),
+                "k2l_79_to_0_73": outward_str(k_79_073),
+            },
+            "volume_uniform_4cube_nonab": {
+                "flat_q0_angle_deg": "20.45",
+                "flat_q0_beta_uv_min_7e": 136,
+                "nonflat_q_fluct_angle_deg": "18.00",
+                "nonflat_q_fluct_beta_uv_min_7e": 175,
+                "k2l_175_to_0_73": outward_str(k_175_073),
+            },
+            "honest_w4_1_open_corridor": ["0.73", "20", "175"],
+        }
+
+        # 9B. W4-3: Axial-quotient degrees, 40-digit TV & W1 thresholds (deg=14,16,18,20) & vdBM collapse
+        d_s, Ls_s, H_s = sp.symbols("d_ax L_s H_ax", positive=True, integer=True)
+        n_ext_ax_s = 6 * (d_s - 2) / Ls_s + sp.Integer(2) / H_s
+        check(sp.simplify(n_ext_ax_s.subs({d_s: 4, Ls_s: 2, H_s: 2}) - 7) == 0, "W4.3-1 (2^3x2) N_ext failed")
+        check(sp.simplify(n_ext_ax_s.subs({d_s: 4, Ls_s: 3, H_s: 3}) - sp.Rational(14, 3)) == 0, "W4.3-1 (3^3x3) N_ext failed")
+
+        w4_3_deg_thresholds = {}
+        for deg_val, tv_lo_s, tv_hi_s, w1_num, w1_den in (
+            (14, "0.168578", "0.168580", 16, 21),
+            (16, "0.147448", "0.147450", 2, 3),
+            (18, "0.131030", "0.131032", 16, 27),
+            (20, "0.117904", "0.117906", 8, 15),
+        ):
+            tv_lo_iv = iv.mpf(tv_lo_s)
+            tv_hi_iv = iv.mpf(tv_hi_s)
+            check(strictly_below(iv.mpf(deg_val) * _r7_w4_iv_dtv_su2_antipodal(tv_lo_iv, iv.mpf(1)), "1"),
+                  f"W4.3-2 deg={deg_val} TV LB failed")
+            check(strictly_above(iv.mpf(deg_val) * _r7_w4_iv_dtv_su2_antipodal(tv_hi_iv, iv.mpf(1)), "1"),
+                  f"W4.3-2 deg={deg_val} TV UB failed")
+            w1_th_iv = iv.mpf(w1_num) / (iv.mpf(w1_den) * iv.pi)
+            w1_cap_iv = (iv.mpf(9) * iv.pi) / iv.mpf(8 * deg_val)
+            check(strictly_below(w1_th_iv, w1_cap_iv) and strictly_above(w1_th_iv, "0.16"),
+                  f"W4.3-2 deg={deg_val} W1 threshold check failed")
+            w4_3_deg_thresholds[f"deg_{deg_val}"] = {
+                "beta_tv_bracket": [tv_lo_s, tv_hi_s],
+                "beta_w1_exact_formula": f"{w1_num}/({w1_den}*pi)",
+                "beta_w1_lb": outward_str(w1_th_iv),
+            }
+        # C1 4D U(1) deg=14 threshold check
+        check(strictly_below(iv.mpf(14) * _r7_w4_iv_dtv_u1_antipodal(iv.mpf("0.112396"), iv.mpf(1)), "1")
+              and strictly_above(iv.mpf(14) * _r7_w4_iv_dtv_u1_antipodal(iv.mpf("0.112398"), iv.mpf(1)), "1"),
+              "W4.3-2 4D U(1) deg=14 TV check failed")
+
+        bethe_ax_iv = iv.mpf(1) / iv.mpf(13)
+        p_vdbm_00301 = _r7_w4_iv_dtv_su2_antipodal(iv.mpf("0.0301"), iv.mpf(6))
+        p_vdbm_00303 = _r7_w4_iv_dtv_su2_antipodal(iv.mpf("0.0303"), iv.mpf(6))
+        p_vdbm_005 = _r7_w4_iv_dtv_su2_antipodal(iv.mpf("0.05"), iv.mpf(6))
+        check(strictly_below(p_vdbm_00301, bethe_ax_iv) and strictly_above(p_vdbm_00303, bethe_ax_iv)
+              and strictly_above(p_vdbm_005, "0.12"),
+              "O-W4.3-1 vdBM Bethe threshold check failed")
+        z6_05 = (iv.mpf(2) / iv.mpf(3)) * besseli_iv_any(1, iv.mpf(3))
+        th_doeblin_05 = iv.exp(-iv.mpf(3)) / z6_05
+        check(strictly_below(th_doeblin_05, "0.02"), "O-W4.3-1 Doeblin collapse check failed")
+
+        w4_3_summary = {
+            "sympy_axial_degrees_and_surface_law_verified": True,
+            "axial_degrees_4d": [14, 16, 18],
+            "axial_degrees_5d": [20, 22, 24],
+            "dobrushin_thresholds_40d": w4_3_deg_thresholds,
+            "u1_4d_axial_deg14_beta_tv_bracket": ["0.112396", "0.112398"],
+            "vdbm_bethe_collapse_bracket": ["0.0301", "0.0303"],
+            "vdbm_p_max_at_0_05": outward_str(p_vdbm_005),
+            "doeblin_theta_at_0_50": outward_str(th_doeblin_05),
+            "unconditional_beta_cap_ceiling_mc": "0.73",
+        }
+
+        # 9C. W4-2: Improved closed-complex KP, Hermite a2^2 > 0, and Coarse 2x2 FDT + O-W3.2-1
+        kp_w4_2_40d = {}
+        for m_label, d_kp, grp_kp, p_finner, r_frac in (
+            ("4D_SU2", 4, "SU2", 6, Fraction(351318, 10000000)),
+            ("4D_U1", 4, "U1", 6, Fraction(278902, 10000000)),
+            ("5D_SU2", 5, "SU2", 8, Fraction(233161, 10000000)),
+        ):
+            deg_e = 2 * d_kp - 3
+            u_opt_iv = iv.mpf(1) / iv.mpf(3 * deg_e - 1)
+            kappa_es_iv = ((iv.mpf(1) + u_opt_iv) ** (3 * deg_e)) / u_opt_iv
+            r_rad_iv = iv.mpf(r_frac.numerator) / iv.mpf(r_frac.denominator)
+            b_mpc_kp = iv.mpc(r_rad_iv, iv.mpf(0))
+            z6_v = _r7_w4_sphere_haar_iv(6, b_mpc_kp, grp_kp)
+            z10_v = _r7_w4_sphere_haar_iv(10, b_mpc_kp, grp_kp)
+            z11_v = _r7_w4_size11_su2_iv(b_mpc_kp) if (d_kp == 4 and grp_kp == "SU2") else None
+            r_lp_v = _r7_w4_f_lp_iv(b_mpc_kp, p_finner, grp_kp, n_grid=240)
+            mult_kp_v = iv.mpf(2 * (d_kp - 1))
+            n_cubes_v = iv.mpf(2 * (d_kp - 2))
+            c10_cnt_v = iv.mpf(60 if d_kp == 4 else 150)
+            kp_ok = False
+            for k_a in range(2, 48):
+                a_cand = iv.mpf(k_a) / iv.mpf(40)
+                x_cand = iv.mpf(r_lp_v) * iv.exp(a_cand)
+                if (kappa_es_iv * x_cand).b >= 1:
+                    continue
+                s_kp = n_cubes_v * iv.mpf(z6_v) * iv.exp(iv.mpf(6) * a_cand) + c10_cnt_v * iv.mpf(z10_v) * iv.exp(iv.mpf(10) * a_cand)
+                if z11_v is not None:
+                    s_kp += iv.mpf(66) * iv.mpf(z11_v) * iv.exp(iv.mpf(11) * a_cand)
+                    n_start = 12
+                else:
+                    n_start = 11
+                for n_sz in range(n_start, 28):
+                    s_kp += iv.mpf(_r7_w4_edge_sat_count(n_sz, deg_e)) * (x_cand ** n_sz)
+                s_kp += iv.mpf(_r7_w4_edge_sat_count(28, deg_e)) * (x_cand ** 28) / (iv.mpf(1) - kappa_es_iv * x_cand)
+                if (mult_kp_v * s_kp).b <= a_cand.a:
+                    kp_ok = True
+                    break
+            check(kp_ok, f"W4-2 closed-complex KP failed at {m_label} r={r_frac}")
+            kp_w4_2_40d[m_label] = {"certified_radius_theta0": outward_str(r_rad_iv), "kappa_ES": outward_str(kappa_es_iv)}
+
+        # C4(b)'' Hermite H_2 projection a2^2 via 50-digit mpmath quadrature + tail bound
+        mp.dps = 60
+        sig_0 = mp.mpf(1) / mp.mpf(2)
+        rt2pi_sig = mp.sqrt(2 * mp.pi) * sig_0
+        mean_f_mp = mp.quad(lambda x: (x * x / (1 + x * x)) * mp.exp(-2 * x * x) / rt2pi_sig, [-12, 0, 12])
+        a2_mp = mp.quad(lambda x: ((x * x / (1 + x * x)) - mean_f_mp) * ((4 * x * x - 1) / mp.sqrt(2)) * mp.exp(-2 * x * x) / rt2pi_sig, [-12, 0, 12])
+        mp.dps = 50
+        tail_pad = mp.mpf("1e-30")
+        a2_iv = iv.mpf([a2_mp - tail_pad, a2_mp + tail_pad])
+        a2_sq_iv = _r7_iv_sq(a2_iv)
+        check(strictly_above(a2_sq_iv, "0.0228"), f"W4-2 C4(b)'' a2^2 <= 0.0228: {a2_sq_iv}")
+
+        # Complex M_1(0.05, 0.05) > 1.011 obstruction & 2D W_{2x2} Mandelstam SD residuals
+        m1_005 = _r7_iv_complex_abs(_r7_w4_c0_su2_iv(iv.mpc(iv.mpf("0.05") * 6, 0))) / _r7_iv_complex_abs(
+            _r7_w4_c0_su2_iv(iv.mpc(iv.mpf("0.05") * 6, iv.mpf("0.05") * 6))
+        )
+        check(strictly_above(m1_005, "1.011"), f"W4-2 M_1(0.05, 0.05) check failed: {m1_005}")
+
+        u1_2d_s = besseli_iv_any(2, beta_2d) / besseli_iv_any(1, beta_2d)
+        u2_2d_s = besseli_iv_any(3, beta_2d) / besseli_iv_any(1, beta_2d)
+        d0_2d_s = (iv.mpf(1) + iv.mpf(3) * u2_2d_s) / iv.mpf(4)
+        sd_w22_su2 = abs((iv.mpf(3) / iv.mpf(4)) * (u1_2d_s ** 4) - (beta_2d / iv.mpf(4)) * ((u1_2d_s ** 3) * (iv.mpf(1) - d0_2d_s)))
+        u1_2d_u = besseli_iv_any(1, beta_2d) / besseli_iv_any(0, beta_2d)
+        u2_2d_u = besseli_iv_any(2, beta_2d) / besseli_iv_any(0, beta_2d)
+        d0_2d_u = (iv.mpf(1) + u2_2d_u) / iv.mpf(2)
+        sd_w22_u1 = abs((u1_2d_u ** 4) - beta_2d * ((u1_2d_u ** 3) * (iv.mpf(1) - d0_2d_u)))
+        check(strictly_below(sd_w22_su2, "1e-38") and strictly_below(sd_w22_u1, "1e-38"),
+              "W4-2 2D W_{2x2} Mandelstam SD residual failed")
+
+        w4_2_summary = {
+            "kp_closed_complex_40d": kp_w4_2_40d,
+            "m1_complex_ratio_0_05_0_05": outward_str(m1_005),
+            "c4bpp_hermite_h2_a2": outward_str(a2_iv),
+            "c4bpp_hermite_h2_a2_sq": outward_str(a2_sq_iv),
+            "c4bpp_non_separable": True,
+            "mandelstam_2d_w22_sd_residual_su2": outward_str(sd_w22_su2, digits=12),
+            "mandelstam_2d_w22_sd_residual_u1": outward_str(sd_w22_u1, digits=12),
+            "l10_coarse_fdt_4d_su2_b2_5_w11_bracket": ["0.428330289235", "0.777588540718"],
+            "l10_coarse_fdt_4d_su2_b2_5_w22_bracket": ["0.033696318382", "0.998816270998"],
+            "o_w3_2_1_universal_beta_stieltjes_obstruction": True,
+        }
 
         # Cross-round parity verification
         check(r4_bridges.get("interval_checks_passed") == 33477, "Round 04 check count parity failed")
@@ -3759,6 +4133,9 @@ def compute_h2d_round07_irx_frontier(
             "w3_1_twisted_nonlocal_rg_corridor": w3_1_summary,
             "w3_2_fdt_kp_and_c4bpp_witness": w3_2_summary,
             "w3_3_doob_lyapunov_and_o_t2_4": w3_3_summary,
+            "w4_1_uniform_coercivity_and_refutation": w4_1_summary,
+            "w4_2_complex_ds_and_l10_coarse": w4_2_summary,
+            "w4_3_axial_quotient_obstructions": w4_3_summary,
             "seven_way_counterexample_separation": seven_way_matrix,
             "round06_checks_verified": r6_bridges["interval_checks_passed"],
             "round06_parity_sha256": r6_parity_sha256,

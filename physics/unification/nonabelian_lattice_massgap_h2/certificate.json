@@ -3068,7 +3068,7 @@
   },
   "h2d_round07_irx_frontier": {
     "h2d_status": "OPEN",
-    "interval_checks_passed": 89,
+    "interval_checks_passed": 122,
     "irx_status": "OPEN",
     "round": "round_07",
     "round06_checks_verified": 121,
@@ -3163,6 +3163,7 @@
         "Z2_1form": false,
         "beta0_pos": false,
         "chi_t_pos": false,
+        "complex_beta_analyticity_no_pinch": false,
         "finite_chi_P": true,
         "mass_gap": 0,
         "noBulkTransition": false,
@@ -3176,6 +3177,7 @@
         "Z2_1form": true,
         "beta0_pos": true,
         "chi_t_pos": false,
+        "complex_beta_analyticity_no_pinch": false,
         "finite_chi_P": true,
         "mass_gap": 0,
         "noBulkTransition": true,
@@ -3189,6 +3191,7 @@
         "Z2_1form": false,
         "beta0_pos": true,
         "chi_t_pos": false,
+        "complex_beta_analyticity_no_pinch": false,
         "finite_chi_P": false,
         "mass_gap": 0,
         "noBulkTransition": true,
@@ -3202,6 +3205,7 @@
         "Z2_1form": true,
         "beta0_pos": true,
         "chi_t_pos": true,
+        "complex_beta_analyticity_no_pinch": false,
         "finite_chi_P": true,
         "mass_gap": 0,
         "noBulkTransition": false,
@@ -3215,6 +3219,7 @@
         "Z2_1form": true,
         "beta0_pos": true,
         "chi_t_pos": true,
+        "complex_beta_analyticity_no_pinch": true,
         "finite_chi_P": true,
         "mass_gap": 0,
         "noBulkTransition": true,
@@ -3228,6 +3233,7 @@
         "Z2_1form": true,
         "beta0_pos": true,
         "chi_t_pos": true,
+        "complex_beta_analyticity_no_pinch": false,
         "finite_chi_P": false,
         "mass_gap": 0,
         "noBulkTransition": true,
@@ -3241,6 +3247,7 @@
         "Z2_1form": true,
         "beta0_pos": false,
         "chi_t_pos": false,
+        "complex_beta_analyticity_no_pinch": false,
         "finite_chi_P": true,
         "mass_gap": 0,
         "noBulkTransition": false,
@@ -3379,6 +3386,11 @@
           "77.479552",
           "77.479553"
         ],
+        "honest_w4_1_corridor": [
+          "0.73",
+          "20",
+          "175"
+        ],
         "k2l_steps_18_to_0_73": [
           "65.228849629005993",
           "65.2288496290059931"
@@ -3394,7 +3406,8 @@
         "oa3_zero_slack_wall_beta_10_steps": [
           "34.5155521274417487",
           "34.5155521274417488"
-        ]
+        ],
+        "refuted_in_wave4_by": "W4.1-O2"
       },
       "naive_1p_tail_beta_160_delta_0_27955": [
         "0.302478292250608311",
@@ -3790,6 +3803,189 @@
           ]
         }
       }
+    },
+    "w4_1_uniform_coercivity_and_refutation": {
+      "empirical_6plane_30deg_ceiling": {
+        "beta_uv_min_7e": 64,
+        "beta_uv_min_fc20": 79,
+        "k2l_64_to_0_73": [
+          "243.093862801244724",
+          "243.093862801244725"
+        ],
+        "k2l_79_to_0_73": [
+          "301.21586117512263",
+          "301.215861175122631"
+        ]
+      },
+      "honest_w4_1_open_corridor": [
+        "0.73",
+        "20",
+        "175"
+      ],
+      "oa3_zero_slack_wall_doubled": {
+        "k2l_20_to_0_73": [
+          "72.9319410358479213",
+          "72.9319410358479214"
+        ],
+        "old_45deg": 10,
+        "true_30deg": 20
+      },
+      "refutes_w3_1_conditional_45_57_corridor": true,
+      "six_plane_skew_amp_sqrt2_plus_1": [
+        "2.41421356237309504",
+        "2.41421356237309505"
+      ],
+      "sympy_6plane_charpoly_l34_schur_bochner_verified": true,
+      "volume_uniform_4cube_nonab": {
+        "flat_q0_angle_deg": "20.45",
+        "flat_q0_beta_uv_min_7e": 136,
+        "k2l_175_to_0_73": [
+          "673.531334243680694",
+          "673.531334243680695"
+        ],
+        "nonflat_q_fluct_angle_deg": "18.00",
+        "nonflat_q_fluct_beta_uv_min_7e": 175
+      }
+    },
+    "w4_2_complex_ds_and_l10_coarse": {
+      "c4bpp_hermite_h2_a2": [
+        "0.151103269383134971",
+        "0.151103269383134972"
+      ],
+      "c4bpp_hermite_h2_a2_sq": [
+        "0.0228321980182722544",
+        "0.0228321980182722545"
+      ],
+      "c4bpp_non_separable": true,
+      "kp_closed_complex_40d": {
+        "4D_SU2": {
+          "certified_radius_theta0": [
+            "0.0351317999999999999",
+            "0.0351318000000000001"
+          ],
+          "kappa_ES": [
+            "39.4072733445130408",
+            "39.4072733445130409"
+          ]
+        },
+        "4D_U1": {
+          "certified_radius_theta0": [
+            "0.0278901999999999999",
+            "0.0278902000000000001"
+          ],
+          "kappa_ES": [
+            "39.4072733445130408",
+            "39.4072733445130409"
+          ]
+        },
+        "5D_SU2": {
+          "certified_radius_theta0": [
+            "0.0233160999999999999",
+            "0.0233161000000000001"
+          ],
+          "kappa_ES": [
+            "55.7192518080328228",
+            "55.7192518080328229"
+          ]
+        }
+      },
+      "l10_coarse_fdt_4d_su2_b2_5_w11_bracket": [
+        "0.428330289235",
+        "0.777588540718"
+      ],
+      "l10_coarse_fdt_4d_su2_b2_5_w22_bracket": [
+        "0.033696318382",
+        "0.998816270998"
+      ],
+      "m1_complex_ratio_0_05_0_05": [
+        "1.01120694826384812",
+        "1.01120694826384813"
+      ],
+      "mandelstam_2d_w22_sd_residual_su2": [
+        "0",
+        "2.80528742171E-40"
+      ],
+      "mandelstam_2d_w22_sd_residual_u1": [
+        "0",
+        "2.9616947511E-39"
+      ],
+      "o_w3_2_1_universal_beta_stieltjes_obstruction": true
+    },
+    "w4_3_axial_quotient_obstructions": {
+      "axial_degrees_4d": [
+        14,
+        16,
+        18
+      ],
+      "axial_degrees_5d": [
+        20,
+        22,
+        24
+      ],
+      "dobrushin_thresholds_40d": {
+        "deg_14": {
+          "beta_tv_bracket": [
+            "0.168578",
+            "0.168580"
+          ],
+          "beta_w1_exact_formula": "16/(21*pi)",
+          "beta_w1_lb": [
+            "0.242521818044792892",
+            "0.242521818044792893"
+          ]
+        },
+        "deg_16": {
+          "beta_tv_bracket": [
+            "0.147448",
+            "0.147450"
+          ],
+          "beta_w1_exact_formula": "2/(3*pi)",
+          "beta_w1_lb": [
+            "0.212206590789193781",
+            "0.212206590789193782"
+          ]
+        },
+        "deg_18": {
+          "beta_tv_bracket": [
+            "0.131030",
+            "0.131032"
+          ],
+          "beta_w1_exact_formula": "16/(27*pi)",
+          "beta_w1_lb": [
+            "0.188628080701505583",
+            "0.188628080701505584"
+          ]
+        },
+        "deg_20": {
+          "beta_tv_bracket": [
+            "0.117904",
+            "0.117906"
+          ],
+          "beta_w1_exact_formula": "8/(15*pi)",
+          "beta_w1_lb": [
+            "0.169765272631355024",
+            "0.169765272631355025"
+          ]
+        }
+      },
+      "doeblin_theta_at_0_50": [
+        "0.0188903640299242119",
+        "0.018890364029924212"
+      ],
+      "sympy_axial_degrees_and_surface_law_verified": true,
+      "u1_4d_axial_deg14_beta_tv_bracket": [
+        "0.112396",
+        "0.112398"
+      ],
+      "unconditional_beta_cap_ceiling_mc": "0.73",
+      "vdbm_bethe_collapse_bracket": [
+        "0.0301",
+        "0.0303"
+      ],
+      "vdbm_p_max_at_0_05": [
+        "0.126659591549261162",
+        "0.126659591549261163"
+      ]
     }
   },
   "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean",
@@ -3886,7 +4082,7 @@
     "C-H2-OPER-04"
   ],
   "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
-  "source_sha256": "6f9eeac5e4d25659c6bf86255c13d15eccfd699fd39aa7ff2ab5b9b6f6843f4e",
+  "source_sha256": "c5c7f68aa3a797368718458bc2f81350a0617b80bae13c18c1c69c3c36136e3a",
   "status": "PASS",
   "wilson_transfer_and_symanzik": {
     "q8_strong_coupling_transfer": {

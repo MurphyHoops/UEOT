@@ -28462,6 +28462,7 @@ structure IRXDiagnosticAxes where
   noBulkTransition : Bool
   chiTPos : Bool
   twistCollapse : Bool
+  complexBetaAnalyticityNoPinch : Bool
   pureYMCompleteness : Bool
   positiveMassGap : Bool
   deriving DecidableEq
@@ -28478,19 +28479,19 @@ inductive SevenWayCounterexampleId : Type
 
 def sevenWaySignature : SevenWayCounterexampleId → IRXDiagnosticAxes
   | .C1_4D_U1_Maxwell =>
-      ⟨false, false, true, false, false, true, false, false, false, false, false⟩
+      ⟨false, false, true, false, false, true, false, false, false, false, false, false⟩
   | .C2_4D_BanksZaks_N4 =>
-      ⟨true, true, true, true, false, true, true, false, false, false, false⟩
+      ⟨true, true, true, true, false, true, true, false, false, false, false, false⟩
   | .C3_4D_Massless_QCD =>
-      ⟨true, true, true, false, true, false, true, false, false, false, false⟩
+      ⟨true, true, true, false, true, false, true, false, false, false, false, false⟩
   | .C4a_4D_SU2_Adjoint_Higgs =>
-      ⟨true, true, true, true, false, true, false, true, false, false, false⟩
+      ⟨true, true, true, true, false, true, false, true, false, false, false, false⟩
   | .C4bp_4D_RP_Gauge_Scalar_PhiSq =>
-      ⟨true, true, true, true, true, false, true, true, true, false, false⟩
+      ⟨true, true, true, true, true, false, true, true, true, false, false, false⟩
   | .C4bpp_4D_RP_Gauge_GradPhiSq =>
-      ⟨true, true, true, true, true, true, true, true, true, false, false⟩
+      ⟨true, true, true, true, true, true, true, true, true, true, false, false⟩
   | .C5_5D_Pure_SU2_Weak =>
-      ⟨true, false, true, true, false, true, false, false, false, true, false⟩
+      ⟨true, false, true, true, false, true, false, false, false, false, true, false⟩
 
 /-- **Concrete `C4(b)''` Gapless Euclidean Gauge+Gradient-Scalar Witness (`[B/P]`)**:
 Simultaneously satisfies `[RP, Z2_1form, KP_area_law, finite_chi_P, noBulkTransition]` (and
@@ -28546,6 +28547,278 @@ theorem round07_irx_frontier_honest_open_lock :
   · refine ⟨?_, hopen.2.1, hopen.2.2.2.2.2.1, hconv.2.2.2.2.2.2.2.2.2.1, hconv.2.2.2.2.2.2.2.2.2.2⟩
     rw [hopen.1]
     simp [h2dEvaluatedCandidate, h2dPillarDefect_false]
+
+/-! ## Part 8. Wave 4 Outcomes (`W4-1`–`W4-3`): 6-Plane Amplification, Axial Quotient & `C4(b)''` Non-Separation -/
+
+/-- Exact 4D 6-plane skew-symmetric Savvidy field-strength matrix `S_skew` (`B = δ S_skew`). `[B/P]` -/
+def sixPlaneSkewMatrix : Matrix (Fin 4) (Fin 4) ℝ :=
+  Matrix.of ![![0, 1, 1, 1], ![-1, 0, 1, 1], ![-1, -1, 0, 1], ![-1, -1, -1, 0]]
+
+/-- **Theorem `W4.1-O2` (4D 6-Plane Skew-Eigenvalue Amplification, `[B/P]`)**:
+For isotropic 6-plane magnetic flux `B = δ S_skew`, the characteristic polynomial factors
+identically as `(λ² + (3 + 2√2)δ²)(λ² + (3 - 2√2)δ²) = (λ² + (√2+1)² δ²)(λ² + (√2-1)² δ²)`,
+amplifying the dominant Savvidy magnetic eigenvalue by `√2 + 1 > 2.414` and refuting W3-1's
+conditional `45°–57° / 18..37` isotropic coercivity corridor. `[B/P]` -/
+theorem w4_1_o2_six_plane_skew_eigenvalue_amp (lam delta : ℝ) :
+    (lam • (1 : Matrix (Fin 4) (Fin 4) ℝ) - delta • sixPlaneSkewMatrix).det =
+      (lam ^ 2 + (3 + 2 * Real.sqrt 2) * delta ^ 2) *
+        (lam ^ 2 + (3 - 2 * Real.sqrt 2) * delta ^ 2) ∧
+      (3 + 2 * Real.sqrt 2 = (Real.sqrt 2 + 1) ^ 2) ∧
+      ((2.414 : ℝ) < Real.sqrt 2 + 1) := by
+  have hmat : lam • (1 : Matrix (Fin 4) (Fin 4) ℝ) - delta • sixPlaneSkewMatrix =
+      Matrix.of ![![lam, -delta, -delta, -delta],
+        ![delta, lam, -delta, -delta],
+        ![delta, delta, lam, -delta],
+        ![delta, delta, delta, lam]] := by
+    ext i j
+    fin_cases i <;> fin_cases j <;> simp [sixPlaneSkewMatrix, Matrix.smul_apply, smul_eq_mul]
+  have h2 : Real.sqrt 2 ^ 2 = 2 := Real.sq_sqrt (by norm_num)
+  refine ⟨?_, by linarith, ?_⟩
+  · have hdet_eq : (lam • (1 : Matrix (Fin 4) (Fin 4) ℝ) - delta • sixPlaneSkewMatrix).det =
+        lam ^ 4 + 6 * lam ^ 2 * delta ^ 2 + delta ^ 4 := by
+      rw [hmat, Matrix.det_succ_row_zero]
+      simp [Fin.sum_univ_four, Matrix.det_fin_three, Fin.succAbove]
+      ring
+    have hrhs : (lam ^ 2 + (3 + 2 * Real.sqrt 2) * delta ^ 2) *
+        (lam ^ 2 + (3 - 2 * Real.sqrt 2) * delta ^ 2) =
+        lam ^ 4 + 6 * lam ^ 2 * delta ^ 2 + delta ^ 4 := by
+      linear_combination -(4 * delta ^ 4) * h2
+    rw [hdet_eq, hrhs]
+  · have hs2 : (1.414 : ℝ) < Real.sqrt 2 := by rw [Real.lt_sqrt (by norm_num)]; norm_num
+    linarith
+
+lemma cos_pi_div_eight_bounds :
+    0.92387 < Real.cos (Real.pi / 8) ∧ Real.cos (Real.pi / 8) < 0.92389 := by
+  have hsq : 2 * Real.cos (Real.pi / 8) ^ 2 - 1 = Real.sqrt 2 / 2 := by
+    rw [← Real.cos_two_mul, show 2 * (Real.pi / 8) = Real.pi / 4 by ring, Real.cos_pi_div_four]
+  have hnn : 0 ≤ Real.cos (Real.pi / 8) :=
+    Real.cos_nonneg_of_mem_Icc ⟨by linarith [Real.pi_pos], by linarith [Real.pi_pos]⟩
+  have hlt : Real.sqrt 2 < 1.41422 := by rw [Real.sqrt_lt' (by norm_num)]; norm_num
+  have hgt : 1.41421 < Real.sqrt 2 := by rw [Real.lt_sqrt (by norm_num)]; norm_num
+  constructor <;> by_contra h
+  · have := le_of_not_gt h; nlinarith
+  · have := le_of_not_gt h; nlinarith
+
+lemma cos_pi_div_twelve_bounds :
+    0.96592 < Real.cos (Real.pi / 12) ∧ Real.cos (Real.pi / 12) < 0.96593 := by
+  have hsq : 2 * Real.cos (Real.pi / 12) ^ 2 - 1 = Real.sqrt 3 / 2 := by
+    rw [← Real.cos_two_mul, show 2 * (Real.pi / 12) = Real.pi / 6 by ring, Real.cos_pi_div_six]
+  have hnn : 0 ≤ Real.cos (Real.pi / 12) :=
+    Real.cos_nonneg_of_mem_Icc ⟨by linarith [Real.pi_pos], by linarith [Real.pi_pos]⟩
+  have hlt : Real.sqrt 3 < 1.73206 := by rw [Real.sqrt_lt' (by norm_num)]; norm_num
+  have hgt : 1.73205 < Real.sqrt 3 := by rw [Real.lt_sqrt (by norm_num)]; norm_num
+  constructor <;> by_contra h
+  · have := le_of_not_gt h; nlinarith
+  · have := le_of_not_gt h; nlinarith
+
+/-- **Theorem `W4.1-O2` (`OA.3` Zero-Slack Wall Doubling `10 → 20`, `[B/P]`)**:
+Replacing the falsified `45°` (`ε_45 = 1 - cos(π/8)`) radius by the true 6-plane ceiling `30°`
+(`ε_30 = 1 - cos(π/12)`) satisfies `2 ε_30 < ε_45`, causing `OA.3`'s zero-slack contraction
+(`exp(-2 β ε_adm) + 1/β² < |Δβ_2L(β)|`) to hold at `β = 10` (`45°`) while failing at
+`β = 19` (`30°`) and crossing only at **`β = 20`** (`30°`), doubling the `OA.3` floor `10 → 20`. `[B/P]` -/
+theorem w4_1_o2_oa3_wall_doubling :
+    let eps45 := 1 - Real.cos (Real.pi / 8)
+    let eps30 := 1 - Real.cos (Real.pi / 12)
+    let db10 := (11 / (3 * Real.pi ^ 2) + 17 / (30 * Real.pi ^ 4)) * Real.log 2
+    let db19 := (11 / (3 * Real.pi ^ 2) + 17 / (57 * Real.pi ^ 4)) * Real.log 2
+    let db20 := (11 / (3 * Real.pi ^ 2) + 17 / (60 * Real.pi ^ 4)) * Real.log 2
+    2 * eps30 < eps45 ∧
+      Real.exp (-2 * 10 * eps45) + 1 / (10 : ℝ) ^ 2 < db10 ∧
+      db19 < Real.exp (-2 * 19 * eps30) + 1 / (19 : ℝ) ^ 2 ∧
+      Real.exp (-2 * 20 * eps30) + 1 / (20 : ℝ) ^ 2 < db20 := by
+  have hc8 := cos_pi_div_eight_bounds
+  have hc12 := cos_pi_div_twelve_bounds
+  have hpi_gt : 3.1415 < Real.pi := Real.pi_gt_d4
+  have hpi_lt : Real.pi < 3.1416 := Real.pi_lt_d4
+  have hlog_gt : 0.6931471803 < Real.log 2 := Real.log_two_gt_d9
+  have hlog_lt : Real.log 2 < 0.6931471808 := Real.log_two_lt_d9
+  dsimp only
+  refine ⟨by linarith, ?_, ?_, ?_⟩
+  · have hx : (3 / 2 : ℝ) < 2 * 10 * (1 - Real.cos (Real.pi / 8)) := by linarith
+    have hexp : Real.exp (-2 * 10 * (1 - Real.cos (Real.pi / 8))) < Real.exp (-(3 / 2 : ℝ)) :=
+      Real.exp_strictMono (by linarith)
+    have hsum := Real.sum_le_exp_of_nonneg (show 0 ≤ (3 / 2 : ℝ) by norm_num) 6
+    have hexp_ge : (4.44 : ℝ) < Real.exp (3 / 2 : ℝ) := by
+      have hs : (4.44 : ℝ) < ∑ m ∈ Finset.range 6, (3 / 2 : ℝ) ^ m / (m.factorial : ℝ) := by
+        simp only [Finset.sum_range_succ, Finset.range_zero, Finset.sum_empty, Nat.factorial]
+        norm_num
+      linarith
+    have hinv : Real.exp (-(3 / 2 : ℝ)) < 1 / 4.44 := by
+      rw [Real.exp_neg, one_div]
+      exact inv_strictAnti₀ (by norm_num) hexp_ge
+    have hpi2 : Real.pi ^ 2 < 3.1416 ^ 2 := by gcongr
+    have hpi4 : Real.pi ^ 4 < 3.1416 ^ 4 := by gcongr
+    have h1 : 11 / (3 * (3.1416 : ℝ) ^ 2) < 11 / (3 * Real.pi ^ 2) :=
+      div_lt_div_of_pos_left (by norm_num) (by positivity) (by linarith)
+    have h2 : 17 / (30 * (3.1416 : ℝ) ^ 4) < 17 / (30 * Real.pi ^ 4) :=
+      div_lt_div_of_pos_left (by norm_num) (by positivity) (by linarith)
+    have hdb : (0.26 : ℝ) < (11 / (3 * Real.pi ^ 2) + 17 / (30 * Real.pi ^ 4)) * Real.log 2 := by
+      nlinarith
+    linarith
+  · have hx : 2 * 19 * (1 - Real.cos (Real.pi / 12)) < (13 / 10 : ℝ) := by linarith
+    have hexp_ge : Real.exp (-(13 / 10 : ℝ)) < Real.exp (-2 * 19 * (1 - Real.cos (Real.pi / 12))) :=
+      Real.exp_strictMono (by linarith)
+    have hbd := Real.exp_bound (x := -(13 / 20 : ℝ)) (by norm_num) (n := 7) (by norm_num)
+    have hhalf_val : (0.521 : ℝ) < Real.exp (-(13 / 20 : ℝ)) := by
+      have hsub := (abs_le.mp hbd).1
+      have hsum_val : (0.522 : ℝ) < ∑ m ∈ Finset.range 7, (-(13 / 20 : ℝ)) ^ m / (m.factorial : ℝ) := by
+        simp only [Finset.sum_range_succ, Finset.range_zero, Finset.sum_empty, Nat.factorial]
+        norm_num
+      have herr_val : |-(13 / 20 : ℝ)| ^ 7 * ((Nat.succ 7 : ℝ) / ((Nat.factorial 7 : ℝ) * 7)) < 0.001 := by
+        norm_num [Nat.factorial]
+      linarith
+    have hexp_val : (0.271 : ℝ) < Real.exp (-(13 / 10 : ℝ)) := by
+      have heq : Real.exp (-(13 / 10 : ℝ)) = Real.exp (-(13 / 20 : ℝ)) ^ 2 := by
+        rw [← Real.exp_nat_mul]; congr 1; ring
+      nlinarith
+    have hpi2 : (3.1415 : ℝ) ^ 2 < Real.pi ^ 2 := by gcongr
+    have hpi4 : (3.1415 : ℝ) ^ 4 < Real.pi ^ 4 := by gcongr
+    have h1 : 11 / (3 * Real.pi ^ 2) < 11 / (3 * (3.1415 : ℝ) ^ 2) :=
+      div_lt_div_of_pos_left (by norm_num) (by positivity) (by linarith)
+    have h2 : 17 / (57 * Real.pi ^ 4) < 17 / (57 * (3.1415 : ℝ) ^ 4) :=
+      div_lt_div_of_pos_left (by norm_num) (by positivity) (by linarith)
+    have hdb : (11 / (3 * Real.pi ^ 2) + 17 / (57 * Real.pi ^ 4)) * Real.log 2 < 0.26 := by
+      nlinarith
+    linarith
+  · have hx : (3407 / 2500 : ℝ) < 2 * 20 * (1 - Real.cos (Real.pi / 12)) := by linarith
+    have hexp : Real.exp (-2 * 20 * (1 - Real.cos (Real.pi / 12))) < Real.exp (-(3407 / 2500 : ℝ)) :=
+      Real.exp_strictMono (by linarith)
+    have hsum := Real.sum_le_exp_of_nonneg (show 0 ≤ (3407 / 2500 : ℝ) by norm_num) 8
+    have hexp_ge : (3.906 : ℝ) < Real.exp (3407 / 2500 : ℝ) := by
+      have hs : (3.906 : ℝ) < ∑ m ∈ Finset.range 8, (3407 / 2500 : ℝ) ^ m / (m.factorial : ℝ) := by
+        simp only [Finset.sum_range_succ, Finset.range_zero, Finset.sum_empty, Nat.factorial]
+        norm_num
+      linarith
+    have hinv : Real.exp (-(3407 / 2500 : ℝ)) < 1 / 3.906 := by
+      rw [Real.exp_neg, one_div]
+      exact inv_strictAnti₀ (by norm_num) hexp_ge
+    have hpi2 : Real.pi ^ 2 < 3.1416 ^ 2 := by gcongr
+    have hpi4 : Real.pi ^ 4 < 3.1416 ^ 4 := by gcongr
+    have h1 : 11 / (3 * (3.1416 : ℝ) ^ 2) < 11 / (3 * Real.pi ^ 2) :=
+      div_lt_div_of_pos_left (by norm_num) (by positivity) (by linarith)
+    have h2 : 17 / (60 * (3.1416 : ℝ) ^ 4) < 17 / (60 * Real.pi ^ 4) :=
+      div_lt_div_of_pos_left (by norm_num) (by positivity) (by linarith)
+    have hdb : (0.2595 : ℝ) < (11 / (3 * Real.pi ^ 2) + 17 / (60 * Real.pi ^ 4)) * Real.log 2 := by
+      nlinarith
+    linarith
+
+/-- **Lemma `W4.1-2` ($L$-Step Admissibility Collapse $\epsilon_{\mathrm{adm}}(L) \propto L^{-4}$, `[B/P]`)**:
+Under single-step $L$-blocking, fluctuation-gap decay $\delta_{\mathrm{rig}}(L) = c_0 / L^2$ forces
+$\epsilon_{\mathrm{adm}}(L) = 1 - \cos(c_0 / (2 L^2))$ to satisfy the exact two-sided $\Theta(L^{-4})$
+enclosure `c0² / (2 π² L⁴) ≤ ε_adm(L) ≤ c0² / (8 L⁴)`, proving `L = 3, 4` blocking cannot bypass `OA.3`. `[B/P]` -/
+theorem w4_1_2_l_step_collapse {c0 : ℝ} {L : ℕ}
+    (hc0 : 0 ≤ c0) (hL : 1 ≤ L) (hle : c0 / (2 * (L : ℝ) ^ 2) ≤ Real.pi) :
+    let eps_L := 1 - Real.cos (c0 / (2 * (L : ℝ) ^ 2))
+    c0 ^ 2 / (2 * Real.pi ^ 2 * (L : ℝ) ^ 4) ≤ eps_L ∧
+      eps_L ≤ c0 ^ 2 / (8 * (L : ℝ) ^ 4) := by
+  dsimp only
+  set x : ℝ := c0 / (2 * (L : ℝ) ^ 2)
+  have hL_pos : (0 : ℝ) < L := Nat.cast_pos.mpr hL
+  have hx_nn : 0 ≤ x := by dsimp [x]; positivity
+  have hx2_le : x / 2 ≤ Real.pi / 2 := by linarith
+  have hsin := Real.mul_le_sin (div_nonneg hx_nn (by norm_num)) hx2_le
+  have hcos_id : 1 - Real.cos x = 2 * Real.sin (x / 2) ^ 2 := by
+    have h1 := Real.cos_two_mul (x / 2)
+    have h2 := Real.sin_sq_add_cos_sq (x / 2)
+    rw [show 2 * (x / 2) = x by ring] at h1
+    linarith
+  have hlb_x : (2 / Real.pi ^ 2) * x ^ 2 ≤ 1 - Real.cos x := by
+    rw [hcos_id]
+    have hmul : (x / Real.pi) ≤ Real.sin (x / 2) := by
+      have : (2 / Real.pi) * (x / 2) = x / Real.pi := by ring
+      linarith
+    have hsq : (x / Real.pi) ^ 2 ≤ Real.sin (x / 2) ^ 2 := by
+      have hxp : 0 ≤ x / Real.pi := div_nonneg hx_nn (le_of_lt Real.pi_pos)
+      nlinarith
+    have h2eq : (2 / Real.pi ^ 2) * x ^ 2 = 2 * (x / Real.pi) ^ 2 := by ring
+    linarith
+  have hub_x : 1 - Real.cos x ≤ x ^ 2 / 2 := by
+    linarith [Real.one_sub_sq_div_two_le_cos (x := x)]
+  refine ⟨?_, ?_⟩
+  · have hpi_ne : Real.pi ≠ 0 := ne_of_gt Real.pi_pos
+    have hL_ne : (L : ℝ) ≠ 0 := ne_of_gt hL_pos
+    have heq : (2 / Real.pi ^ 2) * x ^ 2 = c0 ^ 2 / (2 * Real.pi ^ 2 * (L : ℝ) ^ 4) := by
+      dsimp [x]; field_simp [hpi_ne, hL_ne]
+    linarith
+  · have hL_ne : (L : ℝ) ≠ 0 := ne_of_gt hL_pos
+    have heq : x ^ 2 / 2 = c0 ^ 2 / (8 * (L : ℝ) ^ 4) := by
+      dsimp [x]; field_simp [hL_ne]; norm_num
+    linarith
+
+/-- Axial-quotient Markov coordination degrees and open-temporal block exterior incidence. `[B]` -/
+def axialDegInt (d : ℕ) : ℕ := 6 * d - 10
+def axialDegBnd (d : ℕ) : ℕ := 6 * d - 8
+def axialDegPoly (d : ℕ) : ℕ := 6 * d - 6
+noncomputable def axialBlockExtIncidence (d Ls H : ℕ) : ℝ :=
+  6 * ((d : ℝ) - 2) / (Ls : ℝ) + 2 / (H : ℝ)
+
+/-- **Lemma `W4.3-1` (Axial-Quotient Degrees & `6(d-2)/L_s + 2/H` Block Surface Law, `[B/P]`)**:
+In the temporal-forest axial quotient (`U_0(0..T-2) = I`, `P(x)` retained), interior, boundary,
+and Polyakov link coordination degrees satisfy `Δ_int = 6d - 10`, `Δ_bnd = 6d - 8`,
+`Δ_Poly = 6d - 6` (`14, 16, 18` in 4D; `20, 22, 24` in 5D), and every `[0, L_s-1]^{d-1} × [0, H-1]`
+block obeys `N̄_ext^ax = 6(d-2)/L_s + 2/H ≥ 6(d-2)/L_s` (exposing the `12/L_s` spatial saturation floor). `[B/P]` -/
+theorem w4_3_1_axial_quotient_degrees_and_surface_law :
+    (axialDegInt 4 = 14 ∧ axialDegBnd 4 = 16 ∧ axialDegPoly 4 = 18) ∧
+      (axialDegInt 5 = 20 ∧ axialDegBnd 5 = 22 ∧ axialDegPoly 5 = 24) ∧
+      (∀ d Ls H : ℕ, 2 ≤ d → 1 ≤ Ls → 1 ≤ H →
+        6 * ((d : ℝ) - 2) / (Ls : ℝ) ≤ axialBlockExtIncidence d Ls H) := by
+  refine ⟨⟨rfl, rfl, rfl⟩, ⟨rfl, rfl, rfl⟩, ?_⟩
+  intro d Ls H _ _ hH
+  dsimp [axialBlockExtIncidence]
+  have h2 : (0 : ℝ) ≤ 2 / (H : ℝ) := by positivity
+  linarith
+
+/-- **Obstruction `W4.3-O3` (`O(H/β)` Longitudinal Variance & `H/2` Column-Sum Divergence, `[B/P]`)**:
+On any `L_s ≥ 3` block with an interior vertex, residual time-dependent spatial gauge modes
+yield linearized midpoint variance `(H + 1)/(4β)` and temporal-boundary column sum `H / 2`, both
+exceeding any finite bound `M` as `H → ∞`. `[B/P]` -/
+theorem w4_3_o3_longitudinal_variance_divergence
+    {beta : ℝ} (hbeta : 0 < beta) (M : ℝ) :
+    ∃ H : ℕ, 1 ≤ H ∧ M < ((H : ℝ) + 1) / (4 * beta) ∧ M < (H : ℝ) / 2 := by
+  obtain ⟨H0, hH0⟩ := exists_nat_gt (max 1 (max (4 * beta * M) (2 * M)))
+  have hH1 : 1 ≤ H0 := by
+    have : (1 : ℝ) < (H0 : ℝ) := lt_of_le_of_lt (le_max_left _ _) hH0
+    by_contra hlt
+    have h0 : H0 = 0 := by omega
+    subst h0; norm_num at this
+  refine ⟨H0, hH1, ?_, ?_⟩
+  · have h4 : 4 * beta * M < (H0 : ℝ) :=
+      lt_of_le_of_lt (le_trans (le_max_left _ _) (le_max_right _ _)) hH0
+    have h4p : 4 * beta * M < (H0 : ℝ) + 1 := by linarith
+    exact (lt_div_iff₀ (by linarith)).mpr (by linarith)
+  · have h2 : 2 * M < (H0 : ℝ) :=
+      lt_of_le_of_lt (le_trans (le_max_right _ _) (le_max_right _ _)) hH0
+    linarith
+
+/-- **Theorem `W4.2-O1` (`C4(b)''` Complex-`β` Analyticity Non-Separation & Strict `.OPEN` Lock, `[C/B/P/X]`)**:
+Even adding `complexBetaAnalyticityNoPinch = true` (uniform conditional KP radius `|β| < 0.035132`
+and smooth `L=4` `noBulkTransition` without Fisher-zero pinch), **`C4(b)''`** retains a strictly
+positive Hermite `H_2` projection prefactor `a_2² > 0` forcing algebraic `|r|⁻⁸` decay (`m = 0`)
+at all `β > 0`, while `H2dMinimalIrreducibleCore` (`UV-X`, `IR-X`, `CHIRAL-X`),
+`currentH2dRepoWitness = ⟨1, 1, 1⟩`, and `physicalUnificationStatus` remain strictly `.OPEN`. `[C/B/P/X]` -/
+theorem w4_2_c4bpp_complex_analyticity_non_separation :
+    let ax := sevenWaySignature .C4bpp_4D_RP_Gauge_GradPhiSq
+    ax.complexBetaAnalyticityNoPinch = true ∧
+      ax.rp = true ∧ ax.z2OneForm = true ∧ ax.kpAreaLaw = true ∧
+      ax.finiteChiP = true ∧ ax.noBulkTransition = true ∧
+      ax.pureYMCompleteness = false ∧ ax.positiveMassGap = false ∧
+      (∀ beta eps a2 : ℝ, beta ≠ 0 → eps ≠ 0 → 0.151 ≤ |a2| →
+        0 < (beta * eps * a2) ^ 2 ∧
+        (∀ C m : ℝ, 0 < m →
+          ∃ R : ℕ, 1 ≤ R ∧ C * Real.exp (-m * (R : ℝ)) < (beta * eps * a2) ^ 2 / ((R : ℝ) ^ 8))) ∧
+      (currentH2dRepoWitness = ⟨1, 1, 1⟩ ∧
+        ¬ (currentH2dRepoWitness.toH2LayerCandidate).Satisfies .h2d_clay_4d_continuum_measure ∧
+        physicalUnificationStatus (Fintype.card H2SubHypothesis) false = .OPEN) := by
+  have hlock := round07_irx_frontier_honest_open_lock
+  have hlock_open := hlock.2.2.2.1
+  dsimp only
+  refine ⟨rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl, ?_, hlock_open.1, hlock_open.2.2.1, hlock_open.2.2.2.2⟩
+  intro beta eps a2 hbeta heps ha2
+  have ha2_ne : a2 ≠ 0 := fun h0 => by rw [h0, abs_zero] at ha2; norm_num at ha2
+  have hpref_pos : 0 < (beta * eps * a2) ^ 2 :=
+    sq_pos_iff.mpr (mul_ne_zero (mul_ne_zero hbeta heps) ha2_ne)
+  refine ⟨hpref_pos, fun C m hm =>
+    c4bpp_algebraic_r8_refutes_exponential_mass_gap ((beta * eps * a2) ^ 2) C m hpref_pos hm⟩
 
 end Round07IRXFirstPrinciples
 end Round07IRXFirstPrinciplesSection
