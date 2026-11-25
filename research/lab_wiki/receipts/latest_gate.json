@@ -1,7 +1,7 @@
 {
   "schema": "ueot.lab_wiki.gate_receipt.v1",
-  "timestamp_utc": "2026-11-24T19:12:38Z",
-  "git_head": "31c814d1",
+  "timestamp_utc": "2026-11-25T02:18:31Z",
+  "git_head": "14df0735",
   "mode": "full",
   "overall_status": "PASS",
   "checks": [
@@ -10,9 +10,9 @@
       "status": "PASS",
       "duration_sec": 0.002,
       "stats": {
-        "open_specs": 7,
-        "verified_lemmas": 36,
-        "dead_ends": 22
+        "open_specs": 8,
+        "verified_lemmas": 41,
+        "dead_ends": 31
       },
       "errors": []
     },
@@ -22,7 +22,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.021,
+      "duration_sec": 0.019,
       "output_tail": [
         "PASS: exact Core + QM toolchain and dependency revisions inherited"
       ]
@@ -33,7 +33,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.171,
+      "duration_sec": 0.161,
       "output_tail": [
         "PASS: zero syntactic proof escapes in UEOTPhysicsUnification"
       ]
@@ -44,7 +44,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 6.098,
+      "duration_sec": 5.021,
       "output_tail": [
         "  letI̵",
         "",
@@ -53,7 +53,7 @@
         "But this is not relevant for proofs because of proof irrelevance.",
         "",
         "Note: This linter can be disabled with `set_option linter.style.haveILetI false`",
-        "⚠ [9178/9186] Replayed UEOTQM.QuantumTraceDistance",
+        "⚠ [9180/9186] Replayed UEOTQM.QuantumTraceDistance",
         "warning: UEOTQM/QuantumTraceDistance.lean:165:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumTraceDistance.difference_parts_mass_eq`:",
         "  [DecidableEq ι]",
         "consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:",
@@ -69,18 +69,18 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 144.273,
+      "duration_sec": 96.025,
       "output_tail": [
-        "UNIFICATION_AXIOM_AUDIT modules=39 constants=3708 theorems=1739 defs=1689 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
+        "UNIFICATION_AXIOM_AUDIT modules=39 constants=3879 theorems=1809 defs=1772 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
       ]
     },
     {
       "name": "physics_unification_verification",
-      "command": "/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/ueot-core-upgrade/physics/unification/run_verification.py --check",
+      "command": "/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round07-irx/physics/unification/run_verification.py --check",
       "cwd": ".",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 211.652,
+      "duration_sec": 198.423,
       "output_tail": [
         "PASS: philosophy_v31_omega_bridge (P-PHIL31-OMEGA-01, P-PHIL31-REALIZ-02, P-PHIL31-LAKATOS-03)",
         "PASS: lorentzian_causal_qg_limit P-LORENTZ-QG-07",

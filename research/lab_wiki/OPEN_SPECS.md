@@ -1,6 +1,6 @@
 # UEOT Open Specifications Registry (`OPEN_SPECS.md`)
 
-本表直接对齐 Wave 11 + Round 03–06 综合工作树（基线 `origin/main` `e824ef0b` 之上已合入 `M1..M3`、`M4` `SYNTH-11` 与 Round 03–06 `H2d` 障碍、构造性归约、深化桥接及收敛统一制品：`39` Lean 模块 / `1,739` 定理 / `3,708` 常数 / `1,689` 定义、`38` Python 验证套件 + `345` 条 PR #468 回归 + `33,477` 项 Round 04 + `153` 项 Round 05 + `121` 项 Round 06 40 位检验、`101` 条 `VALIDATION_LEDGER.json` 记录，含 `P-H2D-OBSTRUCT-01`、`P-H2D-R4-*`、`*-H2D-R5-*` 与 `*-H2D-R6-*`）。  
+本表直接对齐 Wave 11 + Round 03–07 综合工作树（基线 `c2aa41e6` 之上合入 Round 07 `IR-X` Waves 1–4 第一性原理攻关制品：`39` Lean 模块 / `1,809` 定理 / `3,879` 常数 / `1,772` 定义、`38` Python 验证套件 + `345` 条 PR #468 回归 + `33,477` 项 Round 04 + `153` 项 Round 05 + `121` 项 Round 06 + `122` 项 Round 07 40 位检验、`111` 条 `VALIDATION_LEDGER.json` 记录，含 `P-H2D-OBSTRUCT-01`、`P-H2D-R4-*`、`*-H2D-R5-*`、`*-H2D-R6-*` 与 `*-H2D-R7-*`）。  
 新增条目请严格遵循下方模板；必须拆解为可机器判定的 Lean 签名或数值证伪阈值，严禁偷渡未声明物理前提。
 
 ---
@@ -16,6 +16,7 @@
 | `SPEC-20261124-05` | `CLOSED` | Wave 11 / `H4` (Bell-CHSH, Blind Holdout & Portfolio Contracts; `H4d` `OPEN`) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/BellCHSHAndBlindHoldoutContractH4.lean` | `C/B/E/O` | `M3` (`a95d3c69`) / Round 2 |
 | `SPEC-20261124-06` | `CLOSED` | Wave 11 / `SYNTH-11` (Cross-Sector Synthesis, Ledger & Monograph Sync; `OPEN` governance) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/CrossSectorPostWave10UnificationSynthesis.lean` | `C/B/P/E/O/X` | `M4` (`wt-wave11-synth`) / Round 2 |
 | `SPEC-20261124-07` | `OPEN` | Round 03–06 / `H2d` (Clay 4D Continuum Chiral YM Measure & Unconditional Mass Gap — **`H2d` itself remains `OPEN`**) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` | `C/B/S/P/O/X` | Round 03–06 Swarm (`9` R4 + `6` R5 + `1` R6 Convergence Subnamespace, `33,477+153+121` Py Checks) / Converged to `{UV-X, IR-X, CHIRAL-X}` |
+| `SPEC-20261125-01` | `OPEN` | Round 07 / `IR-X` First-Principles Attack (Waves 1–4: `W3.1`–`W3.3`, `W4-1`–`W4-3`, `C4(b)''` 7-Way Separation — **`IR-X` & `H2d` remain `OPEN`**) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` | `C/B/P/O/X` | Round 07 Swarm (`Round07IRXFirstPrinciples` `70` top decls + `122` 40-digit Py Checks) / Sharp Obstruction Isolation & Honest `[0.73, 20..175]` Corridor |
 
 ---
 
@@ -134,3 +135,22 @@
   2. `verify_nonabelian_lattice_h2.py --check`、`verify_cross_sector_post_wave10.py --check` 与 `run_verification.py --check`（含 345 条 PR #468 回归、`33,477` 项 Round 04、`153` 项 Round 05 与 `121` 项 Round 06 40 位检验）确定性返回 `PASS`。
   3. 独立 Reviewers / Challengers / Forensic Auditor 给出明确 `PASS`/`APPROVE`/`CLEAN` 裁决，且 `H2d` 在三大 `H2dCoreObligation` 未全部无条件卸下前诚实保持 `OPEN`。
 - **Falsification Criterion**: 若任何新声明存在空洞前提（如 `Round04ChiralHodge` `∀ V`、`P → P` 同义反复、`V_blk = 0` 伪倾斜、缺 `J.map conj = J`、缺 `Θ`-RP 因子化、或 `U(1)` 硬球负傅里叶模态未拦截）、将 `H2d` 误标为已无条件闭合、遗漏 `[X]` 标记、触发 `DEAD-20261124-09..21` 任一反例、或修改任何冻结路径，则判定 `BLOCKED` / `FALSIFIED` 并记入 [DEAD_ENDS.md](DEAD_ENDS.md)。
+
+### `SPEC-20261125-01` — Round 07 `IR-X` First-Principles Attack (Waves 1–4: `W3.1`–`W3.3`, `W4-1`–`W4-3` & 7-Way Separation)
+- **Status**: `OPEN`
+- **Target Artifacts**:
+  - `formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` (`Round07IRXFirstPrinciples`, `L27574..L28825`, `70` top decls)
+  - `physics/unification/nonabelian_lattice_massgap_h2/verify_nonabelian_lattice_h2.py` (`compute_h2d_round07_irx_frontier()`, `122` checks) & `certificate.json`
+  - `validation/physics_unification/VALIDATION_LEDGER.json` (`P-H2D-R7-BE-01..W4-2-10`)
+- **Round 07 Verified Progress (`Waves 1–4`)**:
+  1. **Track 1 & `W3.1-2` (`T1.1`, `W3.1-2`)**: 形式化 O'Neill–Faddeev–Popov `-1 + 1 + ‖T‖²` 抵消后商空间 Bakry–Émery 非负性（`t1_1_quotient_bakry_emery_nonneg`）、`L=2` 奇异模 `(0,π,π,0)` 精确有理指数 `α_st = 3/4` vs `1/2`（`w3_1_2_alpha_st_exact_and_sharp`）、以及 4D Bianchi 最小作用量 `S_min = 2 ε_adm`（`w3_1_2_bianchi_4d_smin_eq_two_eps_adm`）。
+  2. **Track 2 & Routes A–C (`T2-2`, `T2-3`, `LA.1–4`, `B-1`, `C-1`, `C-2`, `C4(a)`)**: 形式化梯度流拓扑磁化率界（`π² c⁴ √χ_t L² ≤ g_GF² · 8 N √κ_4`）、UEOT KL/Hellinger 变分谱隙结构、扭转扇区 TV `sinh(ΔF)` 二元判别地板、Litmus 6 解析分离 `8 ln 2 > 6π²/11`、及 `C4(a)` 伴随 Higgs 零交换子。
+  3. **Wave 3 `W3-1..W3-3` & 7 路分离**：形式化 mod-2 Plücker `Pf(n) ≡ 0`（`w3_1_1_twistPfaffian_mod2_eq_zero_of_twistEater` vs `tw_inst`）与 `tw1/3/4` 零稳定子、对角 RP 链 `w_bent6 ≥ |w_{1×2}| ≥ w_{1×1}²`（`w3_2_1_diagrp_cauchy_schwarz_chain`）、离散 Stieltjes 峰值界 `(t-1)^{t-1}/t^t (χ_P - C(0))` 彻底打破 `O-B1`（`w3_2_2_stieltjes_moment_tail_bound`）、`HasDerivAt` 二阶分数阶 Doob 耗散恒等式（`w3_3_1_fractional_doob_lyapunov_identity`）与 `O-T2-4` 单方格负曲率见证（`κ_BE(-I) = -51.891` at `g²=0.05`）、以及 **`C4(b)''`** 梯度标量 `r⁻⁸` 反例与 7 路分离矩阵（`round07_irx_frontier_honest_open_lock`）。
+  4. **Wave 4 (`W4-1`, `W4-2`, `W4-3` & `W4.1-O2` Refutation)**:
+     - **`W4-1` (`DEAD-20261125-07`)**：形式化 4D 6-平面反对称本征值放大因子 `(√2 + 1)δ > 2.414 δ`（`w4_1_o2_six_plane_skew_eigenvalue_amp`）并彻底证伪 Wave 3 条件走廊 `45°–57° / 18..37`（`W4.1-O2`），证明 `30°` vs `45°` 将 `OA.3` 零松弛壁垒加倍至 **`20`**（`w4_1_o2_oa3_wall_doubling`, `K_2L[20 → 0.73] = 72.93194`），经验 6-平面 `30°` 上限为 `64..79`、体积一致非阿贝尔 `18.00°` 下限为 **`β_UV^min = 175`**（`K_2L = 673.53133`），且 `L=3,4` Schur 奇点呈 `ε_adm(L) ∝ L⁻⁴` 坍缩（`w4_1_2_l_step_collapse`）；**诚实未闭合走廊为 `β ∈ [0.73, 20..175]`**。
+     - **`W4-3` (`DEAD-20261125-08`)**：形式化轴向商空间精确配位数 `14,16,18`（4D）/ `20,22,24`（5D）与边界表面律 `6(d-2)/L_s + 2/H`（`w4_3_1_axial_quotient_degrees_and_surface_law`），40 位认证 TV（`0.168579, 0.147449, 0.131031, 0.117905`）与 `W_1`（`16/(21π), 2/(3π), 16/(27π), 8/(15π)`）、`vdBM` Bethe 坍缩 `[0.0301, 0.0303]`、以及纵向方差/列和 `O(H/β)` 发散（`w4_3_o3_longitudinal_variance_divergence`）。
+     - **`W4-2` (`DEAD-20261125-09`)**：40 位闭合复形 KP 收敛半径 `0.0351318`（4D `SU(2)`）/ `0.0278902`（4D `U(1)`）/ `0.0233161`（5D `SU(2)`），Hermite `a_2² = 0.022832 > 0` 在 Lean 形式化中锁定 `C4(b)''` 即使加 `complexBetaAnalyticityNoPinch = true` 仍无能隙（`w4_2_c4bpp_complex_analyticity_non_separation`），并认证 `L_max=10` Coarse `2×2` FDT（4D `SU(2) β=2.5` `w11 ∈ [0.428330, 0.777589]`）与通用 `O-W3.2-1` Beta-Stieltjes 幂律障碍。
+- **Irreducible Remaining Gap & Wave 5 Focus (`IR-X` stays `OPEN`)**:
+  - 诚实大场交叉走廊 **`β ∈ [0.73, 20..175]`** 的非微扰无体相变与一致 RG 桥接（克服 `W4.1-O2` 6-平面 `√2+1` 耦合放大、`ε_adm ∝ L⁻⁴` 与 `W4-3` 轴向纵向发散）；
+  - 超越 `O-W3.2-1` 幂律标度障碍的多尺度物理尺度 `ℓ_phys` Zegarlinski–Dobrushin–Shlosman 弱混合 `γ_DS(ℓ_phys) < 1`，在 `C4(b)''` 与复-`β` 无钉扎判据之外实现真正的谱隙分离。
+- **Acceptance Gate**: `gatekeeper.py --mode full --write-receipt` 返回 `0`，`39` 模块 `ExhaustiveAxiomAudit.lean` `0` 警告 `0` 非标准公理，`run_verification.py --check` 返回 `PASS`，且 `H2dMinimalIrreducibleCore` / `irx_status` / `physical_unification` 保持 `.OPEN`、`device_certified: false`。
