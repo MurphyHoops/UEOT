@@ -49,7 +49,7 @@ While PR #468 (`codex/physics-source-response-20261119`) advances inside `physic
 
 Companion formalization and validation layers:
 - Three-volume traceability synthesis (Philosophy v3.1 ↔ Mathematics v4.2 ↔ Unified Physics): [../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md](../interfaces/PHILOSOPHY_MATHEMATICS_PHYSICS_UNIFICATION_MATRIX.md)
-- Pure-kernel Lean 4 package (`40` modules, `1,834` theorems, `3,921` constants, `1,786` definitions, `0 sorryAx`): [../../formalization/ueot-physics-unification/README.md](../../formalization/ueot-physics-unification/README.md)
+- Pure-kernel Lean 4 package (`41` modules, `1,883` theorems, `4,024` constants, `1,824` definitions, `0 sorryAx`): [../../formalization/ueot-physics-unification/README.md](../../formalization/ueot-physics-unification/README.md)
 - Chapter 71 observed `main` integration receipt: [../qm/kernel/evidence/v31.15/integration-verification.json](../qm/kernel/evidence/v31.15/integration-verification.json)
 - PR #468 merged `all_harmonic_horizon` 345-entry chain (continuously regression-checked read-only by `run_verification.py`): [../qm/null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md](../qm/null_source/timelike/finite_stress/lapse_boundary/all_harmonic_horizon/README.md)
 - Hardware certification contract & validation ledger: [../../validation/physics_unification/HARDWARE_CERTIFICATION_CONTRACT.md](../../validation/physics_unification/HARDWARE_CERTIFICATION_CONTRACT.md)
