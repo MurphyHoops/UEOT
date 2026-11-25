@@ -209,6 +209,7 @@ def main() -> int:
             "UEOTPhysicsUnification.CrossSectorPostWave10UnificationSynthesis",
             "UEOTPhysicsUnification.DiscretePreferenceCochainObstruction",
             "UEOTPhysicsUnification.IRXWaves5To8Consolidation",
+            "UEOTPhysicsUnification.IRXWave9Sqrt2RGAndBianchi",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {

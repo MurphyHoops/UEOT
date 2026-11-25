@@ -1,6 +1,6 @@
 # UEOT Open Specifications Registry (`OPEN_SPECS.md`)
 
-本表直接对齐 Wave 11 + Round 03–08 综合工作树（基线 `18a0ddaf` 之上合入 Round 08 `IR-X` Waves 5–8 巩固制品 + `#130/#133` 修复 + `O-W9.A1-Univ`：`40` Lean 模块 / `1,834` 定理 / `3,921` 常数 / `1,786` 定义、`38` Python 验证套件 + `345` 条 PR #468 回归 + `33,477` 项 Round 04 + `153` 项 Round 05 + `121` 项 Round 06 + `122` 项 Round 07 + `109` 项 Round 08 40 位检验、`119` 条 `VALIDATION_LEDGER.json` 记录，含 `P-H2D-OBSTRUCT-01`、`P-H2D-R4-*`、`*-H2D-R5-*`、`*-H2D-R6-*`、`*-H2D-R7-*` 与 `P-H2D-R8-*`）。  
+本表直接对齐 Wave 11 + Round 03–08 综合工作树（基线 `18a0ddaf` 之上合入 Round 08 `IR-X` Waves 5–8 巩固制品 + `#130/#133` 修复 + `O-W9.A1-Univ`：`41` Lean 模块 / `1,883` 定理 / `4,024` 常数 / `1,824` 定义、`38` Python 验证套件 + `345` 条 PR #468 回归 + `33,477` 项 Round 04 + `153` 项 Round 05 + `121` 项 Round 06 + `122` 项 Round 07 + `109` 项 Round 08 40 位检验、`119` 条 `VALIDATION_LEDGER.json` 记录，含 `P-H2D-OBSTRUCT-01`、`P-H2D-R4-*`、`*-H2D-R5-*`、`*-H2D-R6-*`、`*-H2D-R7-*` 与 `P-H2D-R8-*`）。  
 新增条目请严格遵循下方模板；必须拆解为可机器判定的 Lean 签名或数值证伪阈值，严禁偷渡未声明物理前提。
 
 ---
@@ -18,6 +18,7 @@
 | `SPEC-20261124-07` | `OPEN` | Round 03–06 / `H2d` (Clay 4D Continuum Chiral YM Measure & Unconditional Mass Gap — **`H2d` itself remains `OPEN`**) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` | `C/B/S/P/O/X` | Round 03–06 Swarm (`9` R4 + `6` R5 + `1` R6 Convergence Subnamespace, `33,477+153+121` Py Checks) / Converged to `{UV-X, IR-X, CHIRAL-X}` |
 | `SPEC-20261125-01` | `OPEN` | Round 07 / `IR-X` First-Principles Attack (Waves 1–4: `W3.1`–`W3.3`, `W4-1`–`W4-3`, `C4(b)''` 7-Way Separation — **`IR-X` & `H2d` remain `OPEN`**) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` | `C/B/P/O/X` | Round 07 Swarm (`Round07IRXFirstPrinciples` `70` top decls + `122` 40-digit Py Checks) / Sharp Obstruction Isolation & Honest `[0.73, 20..175]` Corridor |
 | `SPEC-20261125-02` | `OPEN` | Round 08 / `IR-X` Waves 5–8 Consolidation + `#130/#133` + `O-W9.A1-Univ` (**Honest Corridor `[1.8684, 271..428]`, Conditional KP `[5077, 9896]`, `IR-X` & `H2d` stay `OPEN`**) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/IRXWaves5To8Consolidation.lean` | `C/B/P/O/X` | Round 08 (`IRXWaves5To8Consolidation` `#40` + `109` 40-digit Py Checks) / `O-W9.A1-Univ` & Honest `[1.8684, 271..428]` Corridor |
+| `SPEC-20261125-03` | `OPEN` | Round 09 / `IR-X` Wave 9 (`W9-1` $R_{\sqrt{2}}$, `W9-3A` $S^3$ Bianchi, `O-W9.A1-Univ`, `W9-2b` `m=1`/BKAR, `W9-4` IMS/Helical `c_4 > 0` & 5-Zone `[49, 102..154]` — **`IR-X` & `H2d` stay `OPEN`**) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/IRXWave9Sqrt2RGAndBianchi.lean` | `C/B/P/X` | `W9-1`–`W9-4` + `39` Pure-Arith Checks / Zone 2–3 `[49, 102..154]` & BKAR Tree Open |
 
 ---
 
@@ -171,3 +172,14 @@
   - 跨越诚实中间耦合走廊 **`β ∈ [1.8684, 271..428]`** 的多尺度非微扰连续统理论构造与无体相变证明（单尺度 `W6-2`/`W7-2`/`W8-1`/`W8-3` 与单方格类函数 `O-W9.A1-Univ` 已全面封闭）；
   - 仅在同时无条件满足 `H2dMinimalIrreducibleCore` 三支柱（`UV-X`, `IR-X`, `CHIRAL-X`）时方可关闭 `H2d`。
 - **Acceptance Gate**: `gatekeeper.py --mode full --write-receipt` 返回 `0`，`40` 模块 `ExhaustiveAxiomAudit.lean` `0` 警告 `0` 非标准公理，`run_verification.py --check` 返回 `PASS`，`H2dMinimalIrreducibleCore` / `h2d_status` / `irx_status` / `physical_unification` 严格保持 `.OPEN`、`device_certified: false`。
+
+### `SPEC-20261125-03` — Round 09 `IR-X` Wave 9 (`W9-1`, `W9-3A`, `O-W9.A1-Univ`, `W9-2b`, `W9-4` & 5-Zone Open Corridor)
+- **Status**: `OPEN`
+- **Target Artifacts**:
+  - `formalization/ueot-physics-unification/UEOTPhysicsUnification/IRXWave9Sqrt2RGAndBianchi.lean` (Module `#41`: `r1_sqrt2_orth_det_and_fiber_dof`, `r1_sqrt2_diag_rp_and_six_step_8I4`, `w9_1_ray_scaling_monotonicity_and_uv_leap`, `o_w9_p1a_u_sheet_survives_bianchi`, `w9_3a_s3_geodesic_bianchi_wilson_and_manton_min`, `w9_3a_4hypercube_coboundary_closed_loops`, `w9_3a_o_w9_a1_univ_class_function_adapter`, `w9_2b_s3_haar_quadratic_boost_vs_u1`, `w9_2b_m1_kp_compression_and_cubic_wall`, `w9_4_discrete_ims_localization_identity`, `w9_4a2a_gauge_term_necessity`, `w9_4_helical_quartic_commutator_strict_pos`, `w9_4_five_zone_corridor_and_retirements`, `round09_irx_wave9_honest_open_lock`)
+  - `physics/unification/nonabelian_lattice_massgap_h2/verify_nonabelian_lattice_h2.py` (`compute_h2d_round09_wave9_sqrt2_bianchi()`, `39` pure-arithmetic 40d/SymPy/`Fraction` checks) & `certificate.json`
+  - `validation/physics_unification/VALIDATION_LEDGER.json` (`P-H2D-R9-W9-1-01..OPEN-08`, `127` entries)
+- **Wave 9 5-Zone Map & Open Corridors**:
+  - Zone 0 Strong Coupling `[0, 1.8684]` (`O-W9.3B` Bessel termination), Zone 1 3-Cube Monopole `[1.8684, 15]` (`15`-DOF `β_mon^*`), Zone 2 `W9-1` Weak-Coupling Gap `[43, 49]`, Zone 3 `W9-2b` `m=1` KP Compression `[101..102, 139, 154..674]`, Zone 4 Infinite-Tree `BKAR` `O(β^{-1/2})` Wall (`613,671` flat / `24,269,827` nonflat).
+  - Unbridged open corridors remain: Zone 2–3 `[49, 102..154]`, paired `m >= 2` infinite-tree `BKAR` `O(β^{-1})` closure, gauge-fixed `W9-4` IMS patch bootstrap, `IR-X`, `UV-X`, `CHIRAL-X`, `noBulkTransition`, and `H2dMinimalIrreducibleCore`.
+- **Acceptance Gate**: `gatekeeper.py --mode full --write-receipt` exits `0`, `41` modules `ExhaustiveAxiomAudit.lean` (`4,024` constants, `1,883` theorems, `1,824` definitions, `0` nonstandard axioms, `0` escapes), `run_verification.py --check` passes (`38` suites + `345` regressions), zero banned imports (`numpy|scipy|iv.acos|float(`), and all `.OPEN` locks preserved (`device_certified = false`).
