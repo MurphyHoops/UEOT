@@ -1,6 +1,6 @@
 # UEOT Open Specifications Registry (`OPEN_SPECS.md`)
 
-本表直接对齐 Wave 11 + Round 03–07 综合工作树（基线 `c2aa41e6` 之上合入 Round 07 `IR-X` Waves 1–4 第一性原理攻关制品：`39` Lean 模块 / `1,809` 定理 / `3,879` 常数 / `1,772` 定义、`38` Python 验证套件 + `345` 条 PR #468 回归 + `33,477` 项 Round 04 + `153` 项 Round 05 + `121` 项 Round 06 + `122` 项 Round 07 40 位检验、`111` 条 `VALIDATION_LEDGER.json` 记录，含 `P-H2D-OBSTRUCT-01`、`P-H2D-R4-*`、`*-H2D-R5-*`、`*-H2D-R6-*` 与 `*-H2D-R7-*`）。  
+本表直接对齐 Wave 11 + Round 03–08 综合工作树（基线 `18a0ddaf` 之上合入 Round 08 `IR-X` Waves 5–8 巩固制品 + `#130/#133` 修复 + `O-W9.A1-Univ`：`40` Lean 模块 / `1,834` 定理 / `3,921` 常数 / `1,786` 定义、`38` Python 验证套件 + `345` 条 PR #468 回归 + `33,477` 项 Round 04 + `153` 项 Round 05 + `121` 项 Round 06 + `122` 项 Round 07 + `109` 项 Round 08 40 位检验、`119` 条 `VALIDATION_LEDGER.json` 记录，含 `P-H2D-OBSTRUCT-01`、`P-H2D-R4-*`、`*-H2D-R5-*`、`*-H2D-R6-*`、`*-H2D-R7-*` 与 `P-H2D-R8-*`）。  
 新增条目请严格遵循下方模板；必须拆解为可机器判定的 Lean 签名或数值证伪阈值，严禁偷渡未声明物理前提。
 
 ---
@@ -17,6 +17,7 @@
 | `SPEC-20261124-06` | `CLOSED` | Wave 11 / `SYNTH-11` (Cross-Sector Synthesis, Ledger & Monograph Sync; `OPEN` governance) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/CrossSectorPostWave10UnificationSynthesis.lean` | `C/B/P/E/O/X` | `M4` (`wt-wave11-synth`) / Round 2 |
 | `SPEC-20261124-07` | `OPEN` | Round 03–06 / `H2d` (Clay 4D Continuum Chiral YM Measure & Unconditional Mass Gap — **`H2d` itself remains `OPEN`**) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` | `C/B/S/P/O/X` | Round 03–06 Swarm (`9` R4 + `6` R5 + `1` R6 Convergence Subnamespace, `33,477+153+121` Py Checks) / Converged to `{UV-X, IR-X, CHIRAL-X}` |
 | `SPEC-20261125-01` | `OPEN` | Round 07 / `IR-X` First-Principles Attack (Waves 1–4: `W3.1`–`W3.3`, `W4-1`–`W4-3`, `C4(b)''` 7-Way Separation — **`IR-X` & `H2d` remain `OPEN`**) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean` | `C/B/P/O/X` | Round 07 Swarm (`Round07IRXFirstPrinciples` `70` top decls + `122` 40-digit Py Checks) / Sharp Obstruction Isolation & Honest `[0.73, 20..175]` Corridor |
+| `SPEC-20261125-02` | `OPEN` | Round 08 / `IR-X` Waves 5–8 Consolidation + `#130/#133` + `O-W9.A1-Univ` (**Honest Corridor `[1.8684, 271..428]`, Conditional KP `[5077, 9896]`, `IR-X` & `H2d` stay `OPEN`**) | `formalization/ueot-physics-unification/UEOTPhysicsUnification/IRXWaves5To8Consolidation.lean` | `C/B/P/O/X` | Round 08 (`IRXWaves5To8Consolidation` `#40` + `109` 40-digit Py Checks) / `O-W9.A1-Univ` & Honest `[1.8684, 271..428]` Corridor |
 
 ---
 
@@ -154,3 +155,19 @@
   - 诚实大场交叉走廊 **`β ∈ [0.73, 20..175]`** 的非微扰无体相变与一致 RG 桥接（克服 `W4.1-O2` 6-平面 `√2+1` 耦合放大、`ε_adm ∝ L⁻⁴` 与 `W4-3` 轴向纵向发散）；
   - 超越 `O-W3.2-1` 幂律标度障碍的多尺度物理尺度 `ℓ_phys` Zegarlinski–Dobrushin–Shlosman 弱混合 `γ_DS(ℓ_phys) < 1`，在 `C4(b)''` 与复-`β` 无钉扎判据之外实现真正的谱隙分离。
 - **Acceptance Gate**: `gatekeeper.py --mode full --write-receipt` 返回 `0`，`39` 模块 `ExhaustiveAxiomAudit.lean` `0` 警告 `0` 非标准公理，`run_verification.py --check` 返回 `PASS`，且 `H2dMinimalIrreducibleCore` / `irx_status` / `physical_unification` 保持 `.OPEN`、`device_certified: false`。
+
+### `SPEC-20261125-02` — Round 08 `IR-X` Waves 5–8 Consolidation + `#130/#133` + `Theorem O-W9.A1-Univ`
+- **Status**: `OPEN`
+- **Target Artifacts**:
+  - `formalization/ueot-physics-unification/UEOTPhysicsUnification/IRXWaves5To8Consolidation.lean` (新模块 `#40`；全库 `40` 模块、`3,921` 常数、`1,834` 定理、`1,786` 定义、`0` 非标准公理、`0` 警告)
+  - `physics/unification/nonabelian_lattice_massgap_h2/verify_nonabelian_lattice_h2.py` (`compute_h2d_round08_waves5to8_consolidation()`, `109` 项 40 位纯算术检验) & `certificate.json`
+  - `validation/physics_unification/VALIDATION_LEDGER.json` (`119` 条记录，含 `P-H2D-R8-W5-2-01..OPEN-08`)
+- **Round 08 Verified Progress (`Waves 5–8` + `#130/#133` + `#135`)**:
+  1. **Wave 5–6 (`W5-2`, `W6-2`, `NP-B-O1`)**: `w5_2_pure_ym_algebra_completeness_c4bpp_divergence` 与 `w6_2_nogo_and_np_b_o1_single_scale_p8_barrier` 形式化纯杨–米尔斯微观 `CMI = 0` vs `C4(b)''` 2 点 SD `|R_SD|/C_{11} = Θ(β) → +∞`、单尺度 `p > 2(k+1)`（`p ≥ 9`）与 `E^4` 劈裂、`2×2` `SU(2)` Casimir 恒等式（vs `C1` 消失）、长度-12 哑铃 IBP（`|u_1| = 2.538897e-5 ≤ 12`）、及 `C5` 强迫多尺度渐近自由 RG（`6π²/11 < 8 ln 2`）。
+  2. **Wave 7–8 (`W7-2`, `W8-1`, `O-W8.Q1`)**: `w7_2_non_mk_character_foam_and_w8_1_st_plus_floor` 与 40 位证书锁定非 MK 特征泡沫交叉全部严格 `< 1.98`（`19*(Z_6-1)=1/e` 于 `1.868434`，`64*(Z_6-1)` 于 `1.623797`，`6*(Z_4-1)+178*(Z_6-1)` 于 `1.247070`）、显式撤回 `W5.1-1` `41.76°/151`（exact-`s` 亏格 `-0.39739015 < 0`）、建立诚实 `(c_0 - c_s)` `St_+` UV 走廊 **`b_{7e} ∈ [271, 428]`**、并证明离散 Bochner 曲率分离（`R_origin^{U(1)} = 0` vs `O-W8.Q1` `6p_Ab` `30.28°/285` 与乐观 `17.30°/869`）。
+  3. **Wave 8 (`W8-2`, `NP-A`, `#130/#133`, `Theorem O-W9.A1-Univ`)**: `w8_2_covariant_exp_zero_u1_tadpole_and_o_w9_a1_univ` 与 `theorem_o_w9_a1_univ` 形式化协变 `exp` 阻塞零 `U(1)` 径向蝌蚪图（vs `Polar` `1/r_c²`）、Dashen–Gross `5/12 - 1/3 = 1/12`（`Λ_HK/Λ_W = 1.251458`）、显式 `|k| > 12` Poisson 余项 `< 2.33e-2674 < 10^{-2600}`、`bloch_40d`（`4D` `0.971792 / 0.963775` vs `C5` `1.505845`）、显式标注条件的 `O-W8.2-KP`（`5077..9896`）、以及普适锁定定理 **`Theorem O-W9.A1-Univ`**（`f_p^Φ / c_⊥^Φ = tan θ_HK` 对**所有**单方格类函数 `Φ` 成立，彻底排除 `W9-A1` 扫参路线）。
+  4. **Wave 8 (`W8-3 O-W8.1`, `NP-C/D`, `#130/#133` `31.68`)**: `w8_3_ow81_monopole_frustration_and_fisher_zero_lock` 与 `round08_irx_waves5to8_honest_open_lock` 锁定有理 `[0,1]^3` 单极子立方体 `q = (4/5,0,0,3/5)`（`J_6 = -(527/625) β_F < 0`，`Cov_cube(β_F=1) = -0.08944331 < 0`）、`O-W6.1-2` RP Fisher 零点 `y_k(L) → 0` 与 `SU(5)` `β_0 = 55/(48π²) > 0`、修复 `Polar(0.60, 16)` 在 `β=1.98` 的精确值 `u_{1/2}(31.68) = 0.95303747 > (e-1)/e`、条件 `NP-C`（`1.1839e74` at `β_0=160`）与 `NP-D`（`1 - 2/d_sp`）、及 **`IR-X` 诚实开放走廊 `[1.8684, 271..428]`**。
+- **Irreducible Remaining Gap (`IR-X`, `noBulkTransition`, `H2d` stay `OPEN`)**:
+  - 跨越诚实中间耦合走廊 **`β ∈ [1.8684, 271..428]`** 的多尺度非微扰连续统理论构造与无体相变证明（单尺度 `W6-2`/`W7-2`/`W8-1`/`W8-3` 与单方格类函数 `O-W9.A1-Univ` 已全面封闭）；
+  - 仅在同时无条件满足 `H2dMinimalIrreducibleCore` 三支柱（`UV-X`, `IR-X`, `CHIRAL-X`）时方可关闭 `H2d`。
+- **Acceptance Gate**: `gatekeeper.py --mode full --write-receipt` 返回 `0`，`40` 模块 `ExhaustiveAxiomAudit.lean` `0` 警告 `0` 非标准公理，`run_verification.py --check` 返回 `PASS`，`H2dMinimalIrreducibleCore` / `h2d_status` / `irx_status` / `physical_unification` 严格保持 `.OPEN`、`device_certified: false`。

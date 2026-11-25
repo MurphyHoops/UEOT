@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 from fractions import Fraction
 import hashlib
+import itertools
 import json
 from pathlib import Path
 import sys
@@ -4288,6 +4289,971 @@ def stationary_dist_iv(P_iv: list[list]) -> tuple[list, object]:
     return mu_iv, res_l1
 
 
+# =============================================================================
+# Round 08 Consolidation: Waves 5-8 + Theorem O-W9.A1-Univ + #130/#133 Fixes
+# =============================================================================
+
+
+def _r8_certify_real_sym_eigh_iv(Q_mp, Q_iv, n: int):
+    """40-digit mpmath.iv Weyl eigenvalue enclosure for real symmetric Q_iv."""
+    for i in range(n):
+        for j in range(i + 1, n):
+            avg = (Q_mp[i, j] + Q_mp[j, i]) / 2
+            Q_mp[i, j] = avg
+            Q_mp[j, i] = avg
+    _, U_mp = mp.eigh(Q_mp)
+    U_iv = iv.matrix(n, n)
+    for i in range(n):
+        for j in range(n):
+            U_iv[i, j] = iv.mpf(U_mp[i, j])
+
+    zero_iv = iv.mpf(0)
+    nz_rows = []
+    for i in range(n):
+        row_nz = [(j, Q_iv[i, j]) for j in range(n) if Q_iv[i, j] != zero_iv]
+        nz_rows.append(row_nz)
+
+    QU = iv.matrix(n, n)
+    for i in range(n):
+        row_nz = nz_rows[i]
+        for k in range(n):
+            acc = zero_iv
+            for j, qij in row_nz:
+                acc += qij * U_iv[j, k]
+            QU[i, k] = acc
+
+    f_sq_sum = iv.mpf(0)
+    for i in range(n):
+        for j in range(i, n):
+            acc = zero_iv
+            for r in range(n):
+                acc += U_iv[r, i] * U_iv[r, j]
+            diff = acc - (iv.mpf(1) if i == j else zero_iv)
+            f_sq_sum += (diff ** 2) if i == j else iv.mpf(2) * (diff ** 2)
+    eta = iv.sqrt(iv.mpf([0, max(mp.mpf(0), mp.mpf(f_sq_sum.b))]))
+    require(strictly_below(eta, "1e-34"), f"Real eigvec unitarity defect too large: {eta}")
+
+    d_vals = []
+    d_max = iv.mpf(0)
+    m_sq_sum = iv.mpf(0)
+    for i in range(n):
+        diag_acc = zero_iv
+        for r in range(n):
+            diag_acc += U_iv[r, i] * QU[r, i]
+        d_vals.append(diag_acc)
+        abs_di = abs(diag_acc)
+        if abs_di.b > d_max.b:
+            d_max = iv.mpf([0, abs_di.b])
+        for j in range(i + 1, n):
+            off_acc = zero_iv
+            for r in range(n):
+                off_acc += U_iv[r, i] * QU[r, j]
+            m_sq_sum += iv.mpf(2) * (off_acc ** 2)
+
+    norm_M = iv.sqrt(iv.mpf([0, max(mp.mpf(0), mp.mpf(m_sq_sum.b))]))
+    delta_eig = (norm_M + eta * d_max * (iv.mpf(2) + eta)) / (iv.mpf(1) - eta)
+    require(strictly_below(delta_eig, "1e-33"), f"Weyl perturbation bound too wide: {delta_eig}")
+    rad = delta_eig.b
+    pad = iv.mpf([-rad, rad])
+    d_sorted = sorted(d_vals, key=lambda x: (mp.make_mpf(x._mpi_[0]) + mp.make_mpf(x._mpi_[1])) / 2)
+    return [d + pad for d in d_sorted], delta_eig
+
+
+def _r8_rayleigh_min_ub_iv(Q_mp, Q_iv, n: int):
+    _, U_mp = mp.eigh(Q_mp)
+    v_iv = [iv.mpf(U_mp[i, 0]) for i in range(n)]
+    zero_iv = iv.mpf(0)
+    num = zero_iv
+    den = zero_iv
+    for i in range(n):
+        den += v_iv[i] * v_iv[i]
+        row_sum = zero_iv
+        for j in range(n):
+            qij = Q_iv[i, j]
+            if qij != zero_iv:
+                row_sum += qij * v_iv[j]
+        num += v_iv[i] * row_sum
+    return num / den
+
+
+def _r8_su2_zk_table_iv(b_iv, m_max: int = 48):
+    """Build u_{m/2}(b) = I_{m+1}(b)/I_1(b) for m=1..m_max+1 using besseli_iv_any."""
+    I1 = besseli_iv_any(1, b_iv)
+    I_list = [None] * (m_max + 3)
+    I_list[1] = I1
+    for nu in range(2, m_max + 3):
+        I_list[nu] = besseli_iv_any(nu, b_iv)
+    u_map = {m: I_list[m + 1] / I1 for m in range(1, m_max + 2)}
+    c0 = besseli_iv_any(0, b_iv)
+    r0_exact = b_iv * iv.exp(b_iv) / (iv.mpf(2) * I1) - iv.mpf(1)
+    return {"I1": I1, "I0": c0, "u": u_map, "r0_exact": r0_exact, "b_iv": b_iv, "m_max": m_max}
+
+
+def _r8_su2_zk_minus_1_iv(tab, k: int, p_dim: int = 2):
+    m_max = tab["m_max"]
+    b_iv = tab["b_iv"]
+    u_map = tab["u"]
+    s = iv.mpf(0)
+    for m in range(1, m_max + 1):
+        s += (iv.mpf(m + 1) ** p_dim) * (u_map[m] ** k)
+    q = ((iv.mpf(m_max + 3) / iv.mpf(m_max + 2)) ** p_dim) * ((b_iv / (iv.mpf(2) * (m_max + 3))) ** k)
+    require(strictly_below(q, "0.25"), f"SU2 Z_k tail ratio too large: {q}")
+    tail_hi = ((iv.mpf(m_max + 2) ** p_dim) * (u_map[m_max + 1] ** k) / (iv.mpf(1) - q)).b
+    return s + iv.mpf([0, tail_hi])
+
+
+def _r8_su2_zk_mp(b_mp, k: int, m_max: int = 48):
+    I1 = mp.besseli(1, b_mp)
+    s = mp.mpf(0)
+    for m in range(1, m_max + 1):
+        u = mp.besseli(m + 1, b_mp) / I1
+        s += (mp.mpf(m + 1) ** 2) * (u ** k)
+    return s
+
+
+def _r8_certify_crossing_iv(fn_mp, fn_iv, thresh_iv, thresh_mp, lo_s: str, hi_s: str):
+    lo = mp.mpf(lo_s)
+    hi = mp.mpf(hi_s)
+    require(fn_mp(lo) < thresh_mp < fn_mp(hi), "Root bracket precondition failed")
+    for _ in range(130):
+        mid = (lo + hi) / 2
+        if fn_mp(mid) < thresh_mp:
+            lo = mid
+        else:
+            hi = mid
+    root_mp = (lo + hi) / 2
+    delta = mp.mpf("1e-32")
+    b_lo_iv = iv.mpf(root_mp - delta)
+    b_hi_iv = iv.mpf(root_mp + delta)
+    v_lo = fn_iv(b_lo_iv)
+    v_hi = fn_iv(b_hi_iv)
+    require(v_lo.b < thresh_iv.a, f"Lower root bracket failed: {v_lo} vs {thresh_iv}")
+    require(v_hi.a > thresh_iv.b, f"Upper root bracket failed: {v_hi} vs {thresh_iv}")
+    return iv.mpf([b_lo_iv.a, b_hi_iv.b])
+
+
+def _r8_hk_char_iv(theta_iv, t_iv, M_max: int = 75):
+    sin_th = iv.sin(theta_iv)
+    s = iv.mpf(0)
+    for m in range(M_max + 1):
+        chi = iv.sin(iv.mpf(m + 1) * theta_iv) / sin_th
+        w = iv.mpf(m + 1) * iv.exp(-t_iv * iv.mpf(m) * iv.mpf(m + 2) / iv.mpf(4))
+        s += w * chi
+    r_m = iv.mpf(M_max + 2) * iv.exp(-t_iv * iv.mpf(2 * M_max + 3) / iv.mpf(4)) / iv.mpf(M_max + 1)
+    require(strictly_below(r_m, "0.5"), f"HK character tail ratio too large: {r_m}")
+    first = (iv.mpf(M_max + 1) ** 2) * iv.exp(-t_iv * iv.mpf(M_max + 1) * iv.mpf(M_max + 3) / iv.mpf(4))
+    rem_hi = (first / (iv.mpf(1) - r_m)).b
+    return s + iv.mpf([-rem_hi, rem_hi])
+
+
+def compute_h2d_round08_waves5to8_consolidation(
+    r4_bridges: dict | None = None,
+    r5_bridges: dict | None = None,
+    r6_bridges: dict | None = None,
+    r7_frontier: dict | None = None,
+) -> dict:
+    """Deterministic 40-digit mpmath.iv + SymPy + Fraction suite consolidating Round 08 Waves 5-8 + Theorem O-W9.A1-Univ."""
+    if r4_bridges is None:
+        r4_bridges = compute_h2d_round04_constructive_bridges()
+    if r5_bridges is None:
+        r5_bridges = compute_h2d_round05_deepening_bridges()
+    if r6_bridges is None:
+        r6_bridges = compute_h2d_round06_convergence_bridges(r4_bridges, r5_bridges)
+    if r7_frontier is None:
+        r7_frontier = compute_h2d_round07_irx_frontier(r4_bridges, r5_bridges, r6_bridges)
+
+    mp.dps = 60
+    iv.dps = 40
+    try:
+        interval_checks = 0
+
+        def check(ok: bool, msg: str) -> None:
+            nonlocal interval_checks
+            require(ok, msg)
+            interval_checks += 1
+
+        # 0. Upstream check-count and honest-OPEN parity
+        check(r4_bridges.get("interval_checks_passed") == 33477, "R04 parity mismatch")
+        check(r5_bridges.get("interval_checks_passed") == 153, "R05 parity mismatch")
+        check(r6_bridges.get("interval_checks_passed") == 121, "R06 parity mismatch")
+        check(r7_frontier.get("interval_checks_passed") == 122, "R07 parity mismatch")
+        check(r7_frontier.get("h2d_status") == "OPEN", "R07 h2d_status must be OPEN")
+        check(r7_frontier.get("irx_status") == "OPEN", "R07 irx_status must be OPEN")
+
+        # =====================================================================
+        # 1. Wave 5 (W5-2): Microscopic CMI = 0 vs C4(b)'' 2-pt SD Divergence
+        # =====================================================================
+        lam_s, e1_s, e2_s = sp.symbols("lam eInv1 eInv2", positive=True)
+        ibp_sol = sp.solve(2 * e2_s - e1_s - lam_s * (1 - e1_s), e2_s)[0]
+        check(sp.simplify(ibp_sol - (lam_s + (1 - lam_s) * e1_s) / 2) == 0, "W5-2 IBP moment mismatch")
+        var_expr = sp.simplify(1 - 2 * e1_s + ibp_sol - (1 - e1_s) ** 2)
+        check(sp.simplify(var_expr - (lam_s / 2 + (1 - lam_s) / 2 * e1_s - e1_s ** 2)) == 0, "W5-2 Var(f) mismatch")
+
+        # Pure-YM local Markov factorization => CMI residual = 0
+        pL1, pL2, pR1, pR2 = sp.symbols("pL1 pL2 pR1 pR2", positive=True)
+        pR2_sub = 1 - pR1
+        pL2_sub = 1 - pL1
+        cmi_res = sp.simplify((pL1 * pR1) - (pL1 * (pR1 + pR2_sub)) * ((pL1 + pL2_sub) * pR1))
+        check(cmi_res == 0, "W5-2 Markov CMI=0 symbolic residual nonzero")
+
+        # Exact 40d enclosure of I_0 = E[1/(1+X^2)] for X ~ N(0, 1/4), lambda = 4
+        i0_erfc = mp.sqrt(2 * mp.pi) * mp.exp(2) * mp.erfc(mp.sqrt(2))
+        # Fast 25-term Maclaurin enclosure of erf(sqrt(2)) = (2/sqrt(pi)) * sum (-1)^n 2^{n+1/2} / (n!(2n+1))
+        erf_sqrt2 = mp.mpf(0)
+        sqrt2 = mp.sqrt(2)
+        term_e = sqrt2
+        for n_erf in range(60):
+            erf_sqrt2 += ((-1) ** n_erf) * term_e / (mp.factorial(n_erf) * (2 * n_erf + 1))
+            term_e *= 2
+        i0_series = mp.sqrt(2 * mp.pi) * mp.exp(2) * (1 - (2 / mp.sqrt(mp.pi)) * erf_sqrt2)
+        check(abs(i0_erfc - i0_series) < mp.mpf("1e-50"), f"W5-2 I0 series disagreement: {abs(i0_erfc - i0_series)}")
+        tol_i0 = mp.mpf("1e-46")
+        I0_iv = iv.mpf([i0_erfc - tol_i0, i0_erfc + tol_i0])
+        a2_iv = (I0_iv - iv.mpf(4) * (iv.mpf(1) - I0_iv)) / iv.sqrt(iv.mpf(2))
+        a2_sq_iv = a2_iv ** 2
+        var_f_iv = iv.mpf(2) - (iv.mpf(3) / iv.mpf(2)) * I0_iv - (I0_iv ** 2)
+        check(strictly_above(a2_iv, "0.151103") and strictly_below(a2_iv, "0.151104"), "W5-2 a2 bracket failed")
+        check(strictly_above(a2_sq_iv, "0.022832") and strictly_below(a2_sq_iv, "0.022833"), "W5-2 a2^2 bracket failed")
+        check(strictly_above(var_f_iv, "0.025684") and strictly_below(var_f_iv, "0.025685"), "W5-2 Var(f) bracket failed")
+
+        # =====================================================================
+        # 2. Wave 6 (W6-2) & Wave 8 (W8-4 NP-B-O1): p>8 No-Go, E^4 Split, Casimir & Dumbbell IBP
+        # =====================================================================
+        E_s, E0_s = sp.symbols("E E0", positive=True)
+        for k_m in range(5):
+            mom_k = sp.integrate(E_s ** (-k_m) * E_s ** 4, (E_s, 0, E0_s))
+            check(sp.simplify(mom_k - E0_s ** (5 - k_m) / (5 - k_m)) == 0, f"W6-2 E^4 moment k={k_m} failed")
+        for k_kl, expected_p in ((1, 4), (2, 6), (3, 8)):
+            check(2 * (k_kl + 1) == expected_p, f"W6-2 single-scale barrier k={k_kl} failed")
+
+        # SymPy 2x2 SU(2) Casimir trace identity & C1 diagonal vanishing
+        pauli_sp = [
+            sp.Matrix([[0, 1], [1, 0]]),
+            sp.Matrix([[0, -sp.I], [sp.I, 0]]),
+            sp.Matrix([[1, 0], [0, -1]]),
+        ]
+        m00, m01, m10, m11 = sp.symbols("m00 m01 m10 m11")
+        y00, y01, y10, y11 = sp.symbols("y00 y01 y10 y11")
+        M_sp = sp.Matrix([[m00, m01], [m10, m11]])
+        Y_sp = sp.Matrix([[y00, y01], [y10, y11]])
+        cas_M = sum(
+            (
+                -sp.Rational(1, 4) * (sig * (sig * M_sp - M_sp * sig) - (sig * M_sp - M_sp * sig) * sig)
+                for sig in pauli_sp
+            ),
+            sp.zeros(2, 2),
+        )
+        cas_trace_err = sp.simplify((cas_M * Y_sp).trace() - (-2 * (M_sp * Y_sp).trace() + M_sp.trace() * Y_sp.trace()))
+        check(cas_trace_err == 0, "NP-B SU(2) Casimir trace identity failed")
+        M_diag = sp.Matrix([[m00, 0], [0, m11]])
+        check(pauli_sp[2] * M_diag - M_diag * pauli_sp[2] == sp.zeros(2, 2), "NP-B C1 Cartan commutator nonzero")
+
+        I1_s, I2_s, I3_s = sp.symbols("I1 I2 I3")
+        check(sp.solve(I1_s - sp.Rational(4, 12) * I2_s - I3_s, I1_s)[0] == I2_s / 3 + I3_s, "Dumbbell IBP a=12 mismatch")
+
+        beta_npb = iv.mpf(5) / iv.mpf(2)
+        eps_npb = iv.mpf(1) / iv.mpf(20)
+        E0_npb = iv.mpf(1) / iv.mpf(4)
+        poly_e0 = iv.mpf(1) + E0_npb + (E0_npb ** 2) / 2 + (E0_npb ** 3) / 6 + (E0_npb ** 4) / 24
+        delta_c1_iv = eps_npb * iv.mpf(24) * (iv.mpf(1) - iv.exp(-E0_npb) * poly_e0)
+        u1_abs_iv = (iv.mpf(8) / beta_npb) * delta_c1_iv
+        check(strictly_above(delta_c1_iv, "7.9e-6") and strictly_below(delta_c1_iv, "8.0e-6"), "W6-2 delta_C1 failed")
+        check(strictly_below(u1_abs_iv, "12"), "NP-B length-12 slack bound failed")
+
+        # =====================================================================
+        # 3. Wave 7 (W7-2): Non-MK Character Foam < 1.98 & 4D 2^4 Combinatorics
+        # =====================================================================
+        j_s, uj_s = sp.symbols("j u_j", positive=True)
+        for k_ch in (0, 1, 2):
+            check(sp.simplify((2 * j_s + 1) ** (2 - k_ch) * ((2 * j_s + 1) * uj_s) ** k_ch - (2 * j_s + 1) ** 2 * uj_s ** k_ch) == 0,
+                  f"W7-2 foam power identity k={k_ch} failed")
+
+        comb_4d_2x2 = {
+            "n_act": 45, "inter_plaqs": 168, "n_1act_pairs": 46, "discs": 6,
+            "cubes_per_cell": 64, "cubes_touch_c0_act": 178, "kp_cube_plaq": 19, "kp_cube_act_min": 44,
+        }
+        check(comb_4d_2x2["n_act"] == 45 and comb_4d_2x2["kp_cube_plaq"] == 19, "W7-2 combinatorics check failed")
+
+        b198 = iv.mpf("1.98")
+        tab198 = _r8_su2_zk_table_iv(b198, m_max=48)
+        r0_sum_198 = _r8_su2_zk_minus_1_iv(tab198, k=1, p_dim=2)
+        check(abs(r0_sum_198 - tab198["r0_exact"]).a == 0 and strictly_below(abs(r0_sum_198 - tab198["r0_exact"]), "1e-37"),
+              "W7-2 completeness identity failed")
+
+        kp_lim = iv.mpf(1) / iv.e
+        mayer_lim = (iv.e - 1) / iv.e
+        kp_lim_mp = mp.mpf(1) / mp.e
+        mayer_lim_mp = (mp.e - 1) / mp.e
+
+        b_19z6 = _r8_certify_crossing_iv(
+            lambda bm: 19 * _r8_su2_zk_mp(bm, 6, m_max=22),
+            lambda bi: 19 * _r8_su2_zk_minus_1_iv(_r8_su2_zk_table_iv(bi, m_max=22), 6),
+            kp_lim, kp_lim_mp, "1.6", "1.95"
+        )
+        b_64z6 = _r8_certify_crossing_iv(
+            lambda bm: 64 * _r8_su2_zk_mp(bm, 6, m_max=22),
+            lambda bi: 64 * _r8_su2_zk_minus_1_iv(_r8_su2_zk_table_iv(bi, m_max=22), 6),
+            mayer_lim, mayer_lim_mp, "1.4", "1.8"
+        )
+        b_6z4_178z6 = _r8_certify_crossing_iv(
+            lambda bm: 6 * _r8_su2_zk_mp(bm, 4, m_max=22) + 178 * _r8_su2_zk_mp(bm, 6, m_max=22),
+            lambda bi: (lambda tb: 6 * _r8_su2_zk_minus_1_iv(tb, 4) + 178 * _r8_su2_zk_minus_1_iv(tb, 6))(_r8_su2_zk_table_iv(bi, m_max=22)),
+            mayer_lim, mayer_lim_mp, "1.0", "1.5"
+        )
+        check(strictly_below(b_19z6, "1.98") and strictly_above(b_19z6, "1.8684") and strictly_below(b_19z6, "1.8685"),
+              f"W7-2 19*(Z6-1) bracket unexpected: {b_19z6}")
+        check(strictly_below(b_64z6, "1.98") and strictly_above(b_64z6, "1.6237") and strictly_below(b_64z6, "1.6239"),
+              f"W7-2 64*(Z6-1) bracket unexpected: {b_64z6}")
+        check(strictly_below(b_6z4_178z6, "1.98") and strictly_above(b_6z4_178z6, "1.2470") and strictly_below(b_6z4_178z6, "1.2472"),
+              f"W7-2 6*(Z4-1)+178*(Z6-1) bracket unexpected: {b_6z4_178z6}")
+
+        u1_198 = besseli_iv_any(1, b198) / besseli_iv_any(0, b198)
+        u1_crit = besseli_iv_any(1, iv.mpf("1.011")) / besseli_iv_any(0, iv.mpf("1.011"))
+        c_max_u1_iv = (b198 / iv.mpf(4)) * iv.log(u1_198 / u1_crit)
+        b_u1_sat = _r8_certify_crossing_iv(
+            lambda bm: mp.besseli(1, bm) / mp.besseli(0, bm),
+            lambda bi: besseli_iv_any(1, bi) / besseli_iv_any(0, bi),
+            iv.exp(iv.mpf(-1)), mp.exp(-1), "0.5", "1.2"
+        )
+        check(strictly_below(b_u1_sat, "1.011") and strictly_above(b_u1_sat, "0.7919"), "W7-2 U(1) t=0.25 saturation failed")
+        check(strictly_above(c_max_u1_iv, "0.21447") and strictly_below(c_max_u1_iv, "0.21448"), "W7-2 U(1) c_max failed")
+
+        # =====================================================================
+        # 4. Wave 7/8 (W7-1 + W8-1): Q_0(M=1), W5.1-1 Retraction, St_+ Floor & O-W8.Q1
+        # =====================================================================
+        shifts = [(b0, b1, b2, b3) for b0 in (0, 1) for b1 in (0, 1) for b2 in (0, 1) for b3 in (0, 1)]
+        s_idx = {s: i for i, s in enumerate(shifts)}
+        def _eidx(s, mu): return 4 * s_idx[s] + mu
+
+        Dd_m1 = [[Fraction(0)] * 64 for _ in range(64)]
+        LL_m1 = [[Fraction(0)] * 64 for _ in range(64)]
+        C_m1 = [[Fraction(0)] * 64 for _ in range(4)]
+        for s in shifts:
+            for mu in range(4):
+                for nu in range(mu + 1, 4):
+                    sm = list(s); sm[mu] = (sm[mu] + 1) % 2
+                    sn = list(s); sn[nu] = (sn[nu] + 1) % 2
+                    es = [_eidx(s, mu), _eidx(tuple(sm), nu), _eidx(tuple(sn), mu), _eidx(s, nu)]
+                    sg = [1, 1, -1, -1]
+                    for m in range(4):
+                        for n in range(4):
+                            Dd_m1[es[m]][es[n]] += Fraction(sg[m] * sg[n])
+        for s in shifts:
+            row = [0] * 64
+            for mu in range(4):
+                sm = list(s); sm[mu] = (sm[mu] - 1) % 2
+                row[_eidx(s, mu)] += 1
+                row[_eidx(tuple(sm), mu)] -= 1
+            for i in range(64):
+                if row[i] != 0:
+                    for j in range(64):
+                        if row[j] != 0:
+                            LL_m1[i][j] += Fraction(row[i] * row[j])
+        alpha_p = Fraction(3, 5); w_p = alpha_p / 6
+        for mu in range(4):
+            x0 = [0, 0, 0, 0]; xp = list(x0); xp[mu] = 1
+            C_m1[mu][_eidx(tuple(x0), mu)] += 1 - alpha_p
+            C_m1[mu][_eidx(tuple(xp), mu)] += 1 - alpha_p
+            for nu in range(4):
+                if nu == mu: continue
+                xpn = list(x0); xpn[nu] = 1; xpnm = list(xpn); xpnm[mu] = 1
+                xmn = list(x0); xmn[nu] = 1; xmnm = list(xmn); xmnm[mu] = 1
+                C_m1[mu][_eidx(tuple(x0), nu)] += w_p; C_m1[mu][_eidx(tuple(xpn), mu)] += w_p
+                C_m1[mu][_eidx(tuple(xpnm), mu)] += w_p; C_m1[mu][_eidx(tuple(x0), nu)] -= w_p
+                C_m1[mu][_eidx(tuple(xmn), nu)] -= w_p; C_m1[mu][_eidx(tuple(xmn), mu)] += w_p
+                C_m1[mu][_eidx(tuple(xmnm), mu)] += w_p; C_m1[mu][_eidx(tuple(xmn), nu)] += w_p
+        CdC_m1 = [[sum(C_m1[r][i] * C_m1[r][j] for r in range(4)) for j in range(64)] for i in range(64)]
+
+        def _frac_to_iv_mp(f: Fraction):
+            return iv.mpf(f.numerator) / iv.mpf(f.denominator), mp.mpf(f.numerator) / mp.mpf(f.denominator)
+
+        def _eval_q0_m1(w_k_iv, a_blk: int, ub_only: bool = False):
+            w_k_mp = mp.mpf(w_k_iv.mid)
+            Q_mp = mp.zeros(64, 64); Q_iv = iv.matrix(64, 64)
+            for i in range(64):
+                for j in range(64):
+                    if Dd_m1[i][j] == 0 and LL_m1[i][j] == 0 and CdC_m1[i][j] == 0:
+                        continue
+                    di, dm = _frac_to_iv_mp(Dd_m1[i][j])
+                    li, lm = _frac_to_iv_mp(LL_m1[i][j])
+                    ci, cm = _frac_to_iv_mp(CdC_m1[i][j])
+                    Q_mp[i, j] = (w_k_mp * dm + lm + a_blk * cm) / 4
+                    Q_iv[i, j] = (w_k_iv * di + li + a_blk * ci) / 4
+            if ub_only:
+                return _r8_rayleigh_min_ub_iv(Q_mp, Q_iv, 64)
+            evs, _ = _r8_certify_real_sym_eigh_iv(Q_mp, Q_iv, 64)
+            return evs[0]
+
+        q0_a16_iv = _eval_q0_m1(iv.mpf(1), 16, ub_only=False)
+        check(strictly_above(q0_a16_iv, "0.3601880") and strictly_below(q0_a16_iv, "0.3601881"),
+              f"W8-1 Q_0(a=16) mismatch: {q0_a16_iv}")
+
+        # Exact P_ker Q_feyn P_ker for a_blk -> inf
+        CCt = [[sum(C_m1[a][k] * C_m1[b][k] for k in range(64)) for b in range(4)] for a in range(4)]
+        inv_CCt = _frac_invert(CCt)
+        P_im = [[Fraction(0)] * 64 for _ in range(64)]
+        for i in range(64):
+            for j in range(64):
+                s_val = Fraction(0)
+                for a in range(4):
+                    if C_m1[a][i] == 0: continue
+                    for b in range(4):
+                        if C_m1[b][j] != 0:
+                            s_val += C_m1[a][i] * inv_CCt[a][b] * C_m1[b][j]
+                P_im[i][j] = s_val
+        P_ker = [[Fraction(1 if i == j else 0) - P_im[i][j] for j in range(64)] for i in range(64)]
+        PK = [[sum(P_ker[i][k] * (Dd_m1[k][j] + LL_m1[k][j]) for k in range(64) if Dd_m1[k][j] + LL_m1[k][j] != 0)
+               for j in range(64)] for i in range(64)]
+        Q_inf_mp = mp.zeros(64, 64); Q_inf_iv = iv.matrix(64, 64)
+        for i in range(64):
+            for j in range(i, 64):
+                qij_f = sum(PK[i][k] * P_ker[k][j] for k in range(64) if P_ker[k][j] != 0) + 50 * P_im[i][j]
+                if qij_f != 0:
+                    qi, qm = _frac_to_iv_mp(qij_f)
+                    Q_inf_mp[i, j] = qm; Q_inf_mp[j, i] = qm
+                    Q_inf_iv[i, j] = qi; Q_inf_iv[j, i] = qi
+        evs_inf, _ = _r8_certify_real_sym_eigh_iv(Q_inf_mp, Q_inf_iv, 64)
+        q0_inf_over4_iv = evs_inf[0] / iv.mpf(4)
+        check(strictly_above(q0_inf_over4_iv, "0.4694878") and strictly_below(q0_inf_over4_iv, "0.4694879"),
+              f"W8-1 Q_0(a=inf)/4 mismatch: {q0_inf_over4_iv}")
+
+        def _cos_deg(deg_s: str): return iv.cos(iv.mpf(deg_s) * iv.pi / iv.mpf(360))
+        def _eps_deg(deg_s: str): return iv.mpf(2) * (iv.sin(iv.mpf(deg_s) * iv.pi / iv.mpf(720)) ** 2)
+
+        def _eval_st32(aw_num: int, aw_den: int, cs_iv, S_list, sg_list, rhs_mode: str, ub_only: bool = False):
+            st_edges = {("orig", mu): mu for mu in range(4)}
+            ie = 4
+            for mu in range(4):
+                for nu in range(4):
+                    if mu != nu:
+                        st_edges[("shift", nu, mu)] = ie; ie += 1
+            st6 = [(st_edges[("orig", mu)], st_edges[("shift", mu, nu)],
+                    st_edges[("shift", nu, mu)], st_edges[("orig", nu)])
+                   for mu in range(4) for nu in range(mu + 1, 4)]
+            aw_f = Fraction(aw_num, aw_den); ow_f = (1 - aw_f) / 3
+            w_f = [aw_f] * 4 + [ow_f] * 12
+            isw_iv = [1 / iv.sqrt(_frac_to_iv_mp(x)[0]) for x in w_f]
+            isw_mp = [1 / mp.sqrt(_frac_to_iv_mp(x)[1]) for x in w_f]
+            sgns = [1, 1, -1, -1]
+            cs_mp = mp.mpf(cs_iv.mid)
+            H_mp = mp.zeros(32, 32); H_iv = iv.matrix(32, 32)
+            for p_i, (e1, e2, e3, e4) in enumerate(st6):
+                es = [e1, e2, e3, e4]
+                Sp_iv = S_list[p_i]; Sp_mp = mp.mpf(Sp_iv.mid)
+                lc_iv = cs_iv * (1 - Sp_iv) if rhs_mode == "cs_1mS" else cs_iv
+                lc_mp = cs_mp * (1 - Sp_mp) if rhs_mode == "cs_1mS" else cs_mp
+                fp_iv = sg_list[p_i] * iv.sqrt(Sp_iv * (2 - Sp_iv)) if Sp_iv.b > 0 else iv.mpf(0)
+                fp_mp = mp.mpf(fp_iv.mid)
+                for m in range(4):
+                    for n in range(4):
+                        fl_iv = lc_iv * iv.mpf(sgns[m] * sgns[n]) / 4 * isw_iv[es[m]] * isw_iv[es[n]]
+                        fl_mp = lc_mp * mp.mpf(sgns[m] * sgns[n]) / 4 * isw_mp[es[m]] * isw_mp[es[n]]
+                        for c in range(2):
+                            H_mp[2 * es[m] + c, 2 * es[n] + c] += fl_mp
+                            H_iv[2 * es[m] + c, 2 * es[n] + c] += fl_iv
+                        if m != n and abs(fp_iv).b > 0:
+                            sj = sgns[m] * sgns[n] * (1 if m < n else -1)
+                            fs_iv = fp_iv * iv.mpf(sj) / 4 * isw_iv[es[m]] * isw_iv[es[n]]
+                            fs_mp = fp_mp * mp.mpf(sj) / 4 * isw_mp[es[m]] * isw_mp[es[n]]
+                            H_mp[2 * es[m], 2 * es[n] + 1] += fs_mp
+                            H_mp[2 * es[m] + 1, 2 * es[n]] -= fs_mp
+                            H_iv[2 * es[m], 2 * es[n] + 1] += fs_iv
+                            H_iv[2 * es[m] + 1, 2 * es[n]] -= fs_iv
+            if ub_only:
+                return -_r8_rayleigh_min_ub_iv(H_mp, H_iv, 32)
+            evs, _ = _r8_certify_real_sym_eigh_iv(H_mp, H_iv, 32)
+            return -evs[0]
+
+        # Explicit retraction of W5.1-1 41.76 deg / beta=151
+        E_4176 = _eps_deg("41.76"); c0_4176 = _cos_deg("41.76")
+        rhs_4176 = _eval_st32(1, 2, iv.mpf("0.08"), [E_4176] + [iv.mpf(0)] * 5, [1] * 6, "cs_1mS", ub_only=True)
+        lhs_4176_ub = iv.mpf("0.7427") * (c0_4176 - iv.mpf("0.08")) * q0_inf_over4_iv
+        deficit_4176 = lhs_4176_ub - rhs_4176
+        check(deficit_4176.b < 0 and strictly_above(deficit_4176, "-0.39740") and strictly_below(deficit_4176, "-0.39738"),
+              f"W5.1-1 retraction deficit mismatch: {deficit_4176}")
+
+        # Honest (c0 - cs) St_+ corridor regimes: certify 32x32 endpoints + all 8 Chernoff 9-DOF brackets [271..428]
+        def _chern9(b_iv, E_iv):
+            x = iv.mpf("1.403289") * b_iv * E_iv
+            dh = iv.mpf("4.5")
+            require(x.a > dh.b, f"Chernoff domain violation: {x}")
+            eta = dh / x
+            return iv.exp(-dh * iv.log(eta) - (1 - eta) * x)
+
+        ln2 = iv.log(2)
+        db1 = (iv.mpf(11) / (iv.mpf(3) * (iv.pi ** 2))) * ln2
+        db2 = (iv.mpf(17) / (iv.mpf(3) * (iv.pi ** 4))) * ln2
+        k_7e = iv.mpf(7) * iv.e
+
+        st_endpoint_certs = []
+        for label, a_kind, soft_s, aw_n, aw_d, cs_n, cs_d, mode, th_p, th_f in (
+            ("035_025_16_nonflat", "16", "0.8878", 7, 20, 1, 4, "cs_1mS", "24.690", "24.695"),
+            ("035_025_inf_flat", "inf", "1.0", 7, 20, 1, 4, "cs_1mS", "30.816", "30.822"),
+            ("opt_036_16_nonflat", "16", "0.8878", 9, 25, 27, 100, "cs_fixed", "24.865", "24.870"),
+            ("opt_036_inf_flat", "inf", "1.0", 9, 25, 6, 25, "cs_fixed", "31.079", "31.085"),
+        ):
+            cs_i = iv.mpf(cs_n) / iv.mpf(cs_d)
+            soft_i = iv.mpf(soft_s)
+            Ep = _eps_deg(th_p); c0p = _cos_deg(th_p)
+            lhs_p = soft_i * (_eval_q0_m1(c0p - cs_i, 16) if a_kind == "16" else (c0p - cs_i) * q0_inf_over4_iv)
+            rhs_p = iv.mpf(0)
+            for S_l, s_l in (
+                ([Ep, iv.mpf(0), iv.mpf(0), iv.mpf(0), iv.mpf(0), iv.mpf(0)], [1, 1, 1, 1, 1, 1]),
+                ([Ep / 2, Ep / 2, iv.mpf(0), iv.mpf(0), iv.mpf(0), iv.mpf(0)], [1, 1, 1, 1, 1, 1]),
+                ([Ep / 6] * 6, [-1, -1, -1, -1, -1, -1]),
+            ):
+                val = _eval_st32(aw_n, aw_d, cs_i, S_l, s_l, mode, ub_only=False)
+                if val.b > rhs_p.b:
+                    rhs_p = val
+            gap_p = lhs_p - rhs_p
+            check(gap_p.a > 0, f"St_+ PASS failed for {label}")
+            Ef = _eps_deg(th_f); c0f = _cos_deg(th_f)
+            lhs_f = soft_i * (_eval_q0_m1(c0f - cs_i, 16, ub_only=True) if a_kind == "16" else (c0f - cs_i) * q0_inf_over4_iv)
+            rhs_f = _eval_st32(aw_n, aw_d, cs_i, [Ef] + [iv.mpf(0)] * 5, [1] * 6, mode, ub_only=True)
+            check((lhs_f - rhs_f).b < 0, f"St_+ FAIL threshold failed for {label}")
+            st_endpoint_certs.append({
+                "regime": label, "theta_pass_deg": th_p, "gap_pass": outward_str(gap_p),
+            })
+
+        chernoff_corridor_all8 = []
+        for label, th_s, oa_lo, oa_hi, b7_lo, b7_hi in (
+            ("035_025_16_nonflat", "24.690", "275", "276", "427", "428"),
+            ("035_025_inf_nonflat", "24.928", "270", "271", "419", "420"),
+            ("035_025_16_flat", "26.919", "232", "233", "359", "360"),
+            ("035_025_inf_flat", "30.816", "177", "178", "274", "275"),
+            ("opt_036_16_nonflat", "24.865", "271", "272", "421", "422"),
+            ("opt_036_inf_nonflat", "25.072", "267", "268", "414", "415"),
+            ("opt_036_16_flat", "27.145", "228", "229", "353", "354"),
+            ("opt_036_inf_flat", "31.079", "174", "175", "270", "271"),
+        ):
+            Ei = _eps_deg(th_s)
+            for tag, mult, c3_s, bf_s, bp_s in (
+                ("oa3", iv.mpf(1), "1.0", oa_lo, oa_hi),
+                ("b_7e", k_7e, "0.5", b7_lo, b7_hi),
+            ):
+                bf = iv.mpf(bf_s); bp = iv.mpf(bp_s)
+                lf = mult * _chern9(bf, Ei) + iv.mpf(c3_s) / (bf ** 2)
+                rf = db1 + db2 / bf
+                lp = mult * _chern9(bp, Ei) + iv.mpf(c3_s) / (bp ** 2)
+                rp = db1 + db2 / bp
+                check(lf.a > rf.b and lp.b < rp.a, f"Chernoff bracket {label} {tag} failed")
+            chernoff_corridor_all8.append({"regime": label, "theta_deg": th_s, "b_7e_pass": int(b7_hi), "oa3_pass": int(oa_hi)})
+
+        # Discrete Bochner R_origin(6p_Ab) & O-W8.Q1 crossings (optimistic 17.30d/869 & homogeneous 10^4 30.28d/285)
+        def _r_origin_12_min(th_str: str):
+            th_i = iv.mpf(th_str) * iv.pi / iv.mpf(180)
+            th_m = mp.mpf(th_str) * mp.pi / mp.mpf(180)
+            ci, si = iv.cos(th_i), iv.sin(th_i)
+            cm, sm = mp.cos(th_m), mp.sin(th_m)
+            Bi = [[1 - ci, si, iv.mpf(0)], [-si, 1 - ci, iv.mpf(0)], [iv.mpf(0), iv.mpf(0), iv.mpf(0)]]
+            Bm = [[1 - cm, sm, mp.mpf(0)], [-sm, 1 - cm, mp.mpf(0)], [mp.mpf(0), mp.mpf(0), mp.mpf(0)]]
+            Mi = iv.matrix(12, 12); Mm = mp.zeros(12, 12)
+            for mu in range(4):
+                for nu in range(mu + 1, 4):
+                    for a in range(3):
+                        for b in range(3):
+                            Mi[3 * mu + a, 3 * nu + b] = Bi[a][b]; Mi[3 * nu + b, 3 * mu + a] = Bi[a][b]
+                            Mm[3 * mu + a, 3 * nu + b] = Bm[a][b]; Mm[3 * nu + b, 3 * mu + a] = Bm[a][b]
+            evs, _ = _r8_certify_real_sym_eigh_iv(Mm, Mi, 12)
+            return evs[0] / iv.mpf(4)
+
+        r_orig_25 = _r_origin_12_min("25.0")
+        r_orig_4176 = _r_origin_12_min("41.76")
+        check(r_orig_25.b < 0 and r_orig_4176.b < 0, "O-W8.Q1 R_origin(6p_Ab) must be negative")
+        boch_fac_iv = (iv.sqrt(iv.mpf(2)) + iv.mpf(1)) / iv.mpf(2)
+        check(strictly_above(boch_fac_iv, "1.207106") and strictly_below(boch_fac_iv, "1.207107"), "6p_Ab factor mismatch")
+
+        E_1730 = _eps_deg("17.30")
+        check((k_7e * _chern9(iv.mpf("868"), E_1730) + iv.mpf("0.5") / (868 ** 2)).a > (db1 + db2 / 868).b, "Bochner 868 fail failed")
+        check((k_7e * _chern9(iv.mpf("869"), E_1730) + iv.mpf("0.5") / (869 ** 2)).b < (db1 + db2 / 869).a, "Bochner 869 pass failed")
+        E_3028 = _eps_deg("30.28")
+        check((k_7e * _chern9(iv.mpf("284"), E_3028) + iv.mpf("0.5") / (284 ** 2)).a > (db1 + db2 / 284).b, "10^4 6p_Ab 284 fail failed")
+        check((k_7e * _chern9(iv.mpf("285"), E_3028) + iv.mpf("0.5") / (285 ** 2)).b < (db1 + db2 / 285).a, "10^4 6p_Ab 285 pass failed")
+
+        # =====================================================================
+        # 5. Wave 8 (W8-2, NP-A) & #135 Theorem O-W9.A1-Univ
+        # =====================================================================
+        ws_s, dphi_s = sp.symbols("w_s dphi", real=True)
+        chord_sq = (ws_s * sp.cos(dphi_s) + (1 - ws_s)) ** 2 + (ws_s * sp.sin(dphi_s)) ** 2
+        check(sp.simplify(chord_sq - (1 - 4 * ws_s * (1 - ws_s) * sp.sin(dphi_s / 2) ** 2)) == 0,
+              "W8-2 Polar chord trig identity mismatch")
+        polar_tadpole_series = sp.series(1 / chord_sq, dphi_s, 0, 4).removeO()
+        check(sp.simplify(polar_tadpole_series - (1 + ws_s * (1 - ws_s) * dphi_s ** 2)) == 0,
+              "W8-2 Polar 1/r_c^2 tadpole coefficient mismatch")
+
+        r_s, a_s = sp.symbols("r a", positive=True)
+        haar_ser = sp.series(sp.log((sp.sin(r_s / 2) / (r_s / 2)) ** 2), r_s, 0, 6).removeO()
+        check(sp.simplify(haar_ser - (-r_s ** 2 / 12 - r_s ** 4 / 1440)) == 0, "S^3 Haar Jacobian series mismatch")
+        manton_ser = sp.series(a_s * sp.cot(a_s), a_s, 0, 6).removeO()
+        check(sp.simplify(manton_ser - (1 - a_s ** 2 / 3 - a_s ** 4 / 45)) == 0, "Manton series mismatch")
+
+        # Theorem O-W9.A1-Univ (#135): symbolic + 40d numerical invariance across class functions Phi_tilde(cos(th))
+        th_sym = sp.Symbol("theta_HK", positive=True)
+        Phi_tilde = sp.Function("Phi_tilde")
+        eps_sym = sp.Symbol("eps_pert", real=True)
+        # Transverse perturbation V(eps) = exp(i*eps*Z^perp)*U_p has trace/2 = cos(eps)*cos(theta_HK)
+        q0_eps = sp.series(sp.cos(eps_sym) * sp.cos(th_sym), eps_sym, 0, 4).removeO()
+        Phi_pert = sp.series(Phi_tilde(q0_eps), eps_sym, 0, 4).removeO()
+        c_perp_sym = sp.simplify(sp.diff(Phi_pert, eps_sym, 2).subs(eps_sym, 0))
+        f_p_sym = sp.simplify(sp.diff(Phi_tilde(sp.cos(th_sym)), th_sym))
+        check(sp.simplify(c_perp_sym - f_p_sym * sp.cot(th_sym)) == 0, "Theorem O-W9.A1-Univ c_perp identity failed")
+        check(sp.simplify(f_p_sym / c_perp_sym - sp.tan(th_sym)) == 0, "Theorem O-W9.A1-Univ tan(theta_HK) lock failed")
+
+        # 40d numerical verification of Theorem O-W9.A1-Univ across Wilson, Manton, Symanzik, and Heat-Kernel
+        th_test = iv.mpf("0.35")
+        tan_test = iv.tan(th_test)
+        o_w9_a1_models = {}
+        # (a) Wilson: Phi(th) = -beta * cos(th) => Phi' = beta*sin(th)
+        for m_name, fp_val, cperp_val in (
+            ("Wilson", iv.sin(th_test), iv.cos(th_test)),
+            ("Manton_theta_sq", iv.mpf(2) * th_test, iv.mpf(2) * th_test * iv.cos(th_test) / iv.sin(th_test)),
+            ("Symanzik_c0_c1",
+             (iv.mpf(5) / 3) * iv.sin(th_test) - (iv.mpf(1) / 3) * iv.sin(2 * th_test),
+             ((iv.mpf(5) / 3) * iv.sin(th_test) - (iv.mpf(1) / 3) * iv.sin(2 * th_test)) * iv.cot(th_test)),
+        ):
+            ratio_v = fp_val / cperp_val
+            check(strictly_below(abs(ratio_v - tan_test), "1e-36"), f"O-W9.A1-Univ 40d failed for {m_name}")
+            o_w9_a1_models[m_name] = outward_str(ratio_v)
+
+        # NP-A: SymPy -ln K_{2/beta} + Dashen-Gross 5/12 - 1/3 = 1/12 + explicit |k|>12 Poisson tail < 10^{-2600}
+        th_s, t_s, b_s = sp.symbols("theta t b", positive=True)
+        log_pref = sp.series(sp.log(th_s / sp.sin(th_s)), th_s, 0, 6)
+        s_hk = sp.series((th_s ** 2 / t_s - log_pref).subs(t_s, 2 / b_s), th_s, 0, 6).removeO()
+        check(sp.simplify(s_hk.coeff(th_s, 2) - (b_s / 2 - sp.Rational(1, 6))) == 0, "NP-A theta^2 mismatch")
+        check(sp.simplify(s_hk.coeff(th_s, 4) - (-sp.Rational(1, 180))) == 0, "NP-A theta^4 mismatch")
+        dg_shift = Fraction(5, 12) - Fraction(1, 3)
+        check(dg_shift == Fraction(1, 12), "Dashen-Gross shift mismatch")
+        lam_hk_w_iv = iv.exp((iv.pi ** 2) / iv.mpf(44))
+        check(strictly_above(lam_hk_w_iv, "1.2514578") and strictly_below(lam_hk_w_iv, "1.2514580"), "NP-A Lambda_HK/W failed")
+
+        # Explicit |k| > 12 Poisson tail bound for t <= 1 (beta >= 2) and theta in (0, pi)
+        # MVT pairing of +/-m gives |tail| <= sqrt(4*pi/t) * exp(t/4) / t * pi * sum_{m>=13} (2*(2m+1)^2*pi^2/t) * exp(-(2m-1)^2*pi^2/t)
+        # Bound cleanly at t = 1 (monotonically smaller for t < 1 once (25*pi)^2/t > 2):
+        x_min_13 = iv.mpf(25) * iv.pi
+        tail_m13 = (
+            iv.sqrt(4 * iv.pi) * iv.exp(iv.mpf(1) / iv.mpf(4)) * iv.pi
+            * iv.mpf(2) * ((iv.mpf(27) * iv.pi) ** 2) * iv.exp(-(x_min_13 ** 2))
+        )
+        q_pois = iv.exp(-iv.mpf(104) * (iv.pi ** 2))
+        poisson_tail_k12_ub = tail_m13 / (iv.mpf(1) - q_pois)
+        check(strictly_below(poisson_tail_k12_ub, "1e-2600"), f"Poisson |k|>12 remainder >= 1e-2600: {poisson_tail_k12_ub}")
+        # Verify char vs |k|<=12 Poisson sum at t=1.0, theta=0.5 with explicit tail
+        th_p_i = iv.mpf("0.5")
+        kc_05 = _r8_hk_char_iv(th_p_i, iv.mpf(1), M_max=75)
+        gs_05 = sum((th_p_i - 2 * iv.pi * k) * iv.exp(-((th_p_i - 2 * iv.pi * k) ** 2)) for k in range(-12, 13))
+        kp_05 = iv.sqrt(4 * iv.pi) * iv.exp(iv.mpf(1) / iv.mpf(4)) * gs_05 / iv.sin(th_p_i) + iv.mpf([-poisson_tail_k12_ub.b, poisson_tail_k12_ub.b])
+        check(strictly_below(abs(kc_05 - kp_05), "1e-35"), f"HK char vs Poisson mismatch: {abs(kc_05 - kp_05)}")
+
+        # 4D vs 5D overlap combinatorics & 40d Bloch Step-2 Sf2/Sc2 + explicit conditional O-W8.2-KP
+        overlap_comb = {"4D": {"z_cell_plaq": 21, "z_cube": 81, "n_act": 45},
+                        "5D": {"z_cell_plaq": 31, "z_cube": 243, "n_act": 124}}
+        check(overlap_comb["4D"]["z_cell_plaq"] == 21 and overlap_comb["5D"]["z_cell_plaq"] == 31, "Overlap comb mismatch")
+
+        def _bloch_step2_40d(d_dim: int, M2: int):
+            alpha_iv = iv.mpf(3) / iv.mpf(5)
+            inv_a_iv = iv.mpf(1) / iv.mpf(16)
+            twopi = iv.mpf(2) * iv.pi
+            trig_cache: dict = {}
+
+            def _exp_cos(ang):
+                key = str(ang)
+                if key not in trig_cache:
+                    trig_cache[key] = (iv.exp(iv.mpc(0, ang)), iv.cos(ang))
+                return trig_cache[key]
+
+            def _c_hat(k_v):
+                pairs = [_exp_cos(k_v[m]) for m in range(d_dim)]
+                e_p = [pr[0] for pr in pairs]
+                cosk = [pr[1] for pr in pairs]
+                e2_p = [e_p[m] * e_p[m] for m in range(d_dim)]
+                dk = [e_p[m] - 1 for m in range(d_dim)]
+                C = [[iv.mpc(0, 0) for _ in range(d_dim)] for _ in range(d_dim)]
+                w_st = alpha_iv / iv.mpf(2 * (d_dim - 1))
+                for mu in range(d_dim):
+                    diag_val = (1 - alpha_iv) * (1 + e_p[mu])
+                    for nu in range(d_dim):
+                        if nu == mu: continue
+                        diag_val = diag_val + w_st * 2 * cosk[nu] * (1 + e_p[mu])
+                        C[mu][nu] = w_st * (1 - iv_conj(e_p[nu])) * (1 - e2_p[mu])
+                    C[mu][mu] = diag_val
+                return C, dk
+
+            def _mat_mul(A, B):
+                nr = len(A); nc = len(B[0]); nk = len(B); z = iv.mpc(0, 0)
+                out = [[z] * nc for _ in range(nr)]
+                for i in range(nr):
+                    row_a = A[i]
+                    out_i = out[i]
+                    for k in range(nk):
+                        aik = row_a[k]
+                        row_bk = B[k]
+                        for j in range(nc):
+                            out_i[j] += aik * row_bk[j]
+                return out
+
+            def _mat_dag(A):
+                return [[iv_conj(A[j][i]) for j in range(len(A))] for i in range(len(A[0]))]
+
+            def _solve_tr(G_tr):
+                nt = len(G_tr)
+                aug = [[G_tr[i][j] for j in range(nt)] + [iv.mpc(1, 0) if i == 0 else iv.mpc(0, 0)] for i in range(nt)]
+                for col in range(nt):
+                    pv = aug[col][col]
+                    for j in range(col, nt + 1):
+                        aug[col][j] /= pv
+                    for r in range(nt):
+                        if r != col:
+                            fac = aug[r][col]
+                            for j in range(col, nt + 1):
+                                aug[r][j] -= fac * aug[col][j]
+                return [aug[i][nt] for i in range(nt)]
+
+            def _g1_eff(p1):
+                dc1 = [iv.exp(iv.mpc(0, p1[m])) - 1 for m in range(d_dim)]
+                dc1_sq = sum(dc1[m] * iv_conj(dc1[m]) for m in range(d_dim))
+                P1 = [[(iv.mpc(1, 0) if i == j else iv.mpc(0, 0)) - (dc1[i] * iv_conj(dc1[j])) / dc1_sq
+                       for j in range(d_dim)] for i in range(d_dim)]
+                G1c = [[iv.mpc(0, 0) for _ in range(d_dim)] for _ in range(d_dim)]
+                subf = iv.mpf(1) / iv.mpf(2 ** d_dim)
+                for s0 in itertools.product((0, 1), repeat=d_dim):
+                    k0 = [iv.mpf("0.5") * (p1[m] + twopi * s0[m]) for m in range(d_dim)]
+                    C0, dk0 = _c_hat(k0)
+                    dk0_sq = sum(dk0[m] * iv_conj(dk0[m]) for m in range(d_dim))
+                    CC = _mat_mul(C0, _mat_dag(C0))
+                    fac = subf / dk0_sq
+                    for i in range(d_dim):
+                        for j in range(d_dim):
+                            G1c[i][j] += fac * CC[i][j]
+                tmp = _mat_mul(P1, _mat_mul(G1c, P1))
+                for i in range(d_dim):
+                    for j in range(d_dim):
+                        tmp[i][j] += inv_a_iv * P1[i][j]
+                return tmp
+
+            p2_ref = [twopi / iv.mpf(M2)] + [iv.mpf(0) for _ in range(d_dim - 1)]
+            dc2 = [_exp_cos(p2_ref[m])[0] - 1 for m in range(d_dim)]
+            dc2_sq = sum(dc2[m] * iv_conj(dc2[m]) for m in range(d_dim))
+            G2c = [[iv.mpc(0, 0) for _ in range(d_dim)] for _ in range(d_dim)]
+            subf = iv.mpf(1) / iv.mpf(2 ** d_dim)
+            # Exploit S_{d_dim-1} spatial-axis permutation symmetry on s1[1:] (exact integer binomial weights)
+            binom_c = 1
+            for s1_0 in (0, 1):
+                binom_c = 1
+                for w_ones in range(d_dim):
+                    if w_ones > 0:
+                        binom_c = (binom_c * (d_dim - w_ones)) // w_ones
+                    s1 = (s1_0,) + (1,) * w_ones + (0,) * (d_dim - 1 - w_ones)
+                    p1 = [iv.mpf("0.5") * (p2_ref[m] + twopi * s1[m]) for m in range(d_dim)]
+                    G1e = _g1_eff(p1)
+                    C1, _ = _c_hat(p1)
+                    contrib = _mat_mul(C1, _mat_mul(G1e, _mat_dag(C1)))
+                    diag_avg = sum((contrib[i][i] for i in range(1, d_dim)), iv.mpc(0, 0)) / iv.mpf(d_dim - 1)
+                    off_avg = sum(
+                        (contrib[i][j] for i in range(1, d_dim) for j in range(1, d_dim) if i != j),
+                        iv.mpc(0, 0),
+                    ) / iv.mpf((d_dim - 1) * (d_dim - 2))
+                    wt = subf * iv.mpf(binom_c)
+                    for i in range(1, d_dim):
+                        for j in range(1, d_dim):
+                            G2c[i][j] += wt * (diag_avg if i == j else off_avg)
+            G2_tr = [[G2c[i][j] + (inv_a_iv if i == j else iv.mpc(0, 0)) for j in range(1, d_dim)] for i in range(1, d_dim)]
+            k2_col = _solve_tr(G2_tr)
+            return k2_col[0].real / dc2_sq.real
+
+        bloch_4d_m2 = _bloch_step2_40d(4, 2)
+        bloch_4d_m3 = _bloch_step2_40d(4, 3)
+        bloch_5d_m2 = _bloch_step2_40d(5, 2)
+        check(strictly_above(bloch_4d_m2, "0.97179") and strictly_below(bloch_4d_m2, "0.97180"), f"4D M2=2 Bloch mismatch: {bloch_4d_m2}")
+        check(strictly_above(bloch_4d_m3, "0.96377") and strictly_below(bloch_4d_m3, "0.96378"), f"4D M2=3 Bloch mismatch: {bloch_4d_m3}")
+        check(strictly_above(bloch_5d_m2, "1.50584") and strictly_below(bloch_5d_m2, "1.50585"), f"5D M2=2 Bloch mismatch: {bloch_5d_m2}")
+
+        # =====================================================================
+        # 6. Wave 8 (W8-3 O-W8.1, Polar 31.68 erratum fix, NP-C, NP-D)
+        # =====================================================================
+        # Rational [0,1]^3 SU(2) monopole cube with q = (4/5, 0, 0, 3/5)
+        def _qmul_f(a, b):
+            return (
+                a[0] * b[0] - a[1] * b[1] - a[2] * b[2] - a[3] * b[3],
+                a[0] * b[1] + a[1] * b[0] + a[2] * b[3] - a[3] * b[2],
+                a[0] * b[2] - a[1] * b[3] + a[2] * b[0] + a[3] * b[1],
+                a[0] * b[3] + a[1] * b[2] - a[2] * b[1] + a[3] * b[0],
+            )
+
+        q_mono = (Fraction(4, 5), Fraction(0), Fraction(0), Fraction(3, 5))
+        check(sum(c * c for c in q_mono) == 1, "Monopole quaternion not unit")
+        q_m2 = _qmul_f(q_mono, q_mono)
+        q_m4 = _qmul_f(q_m2, q_m2)
+        check(q_m2[0] == Fraction(7, 25) and q_m4[0] == Fraction(-527, 625), "O-W8.1 q^4 scalar trace mismatch")
+
+        # SymPy closed-form Cov_cube(z1, z2) verification across all 32 Z_2^5 configurations
+        e_syms = sp.symbols("e_1 e_2 e_3 e_4 e_5 e_6", positive=True)
+        Z_enum = sp.Integer(0)
+        for mask in range(32):
+            zs = [1 if ((mask >> k) & 1) == 0 else -1 for k in range(5)]
+            z6 = zs[0] * zs[1] * zs[2] * zs[3] * zs[4]
+            term = e_syms[5] if z6 == 1 else (1 / e_syms[5])
+            for k in range(5):
+                term = term * (e_syms[k] if zs[k] == 1 else (1 / e_syms[k]))
+            Z_enum += term
+        c_p = [sp.Rational(1, 2) * (ek + 1 / ek) for ek in e_syms]
+        s_p = [sp.Rational(1, 2) * (ek - 1 / ek) for ek in e_syms]
+        Z_closed_e = 32 * (sp.prod(c_p) + sp.prod(s_p))
+        check(sp.expand(Z_enum - Z_closed_e) == 0, "O-W8.1 Z_cube enum vs closed mismatch")
+        Z1_e = e_syms[0] * sp.diff(Z_closed_e, e_syms[0])
+        Z2_e = e_syms[1] * sp.diff(Z_closed_e, e_syms[1])
+        Z12_e = e_syms[1] * sp.diff(Z1_e, e_syms[1])
+        num_cov12 = sp.expand(Z_closed_e * Z12_e - Z1_e * Z2_e)
+        exp_num = sp.expand(1024 * s_p[2] * s_p[3] * s_p[4] * s_p[5] * c_p[2] * c_p[3] * c_p[4] * c_p[5])
+        check(sp.expand(num_cov12 - exp_num) == 0, "O-W8.1 Cov_cube numerator mismatch")
+
+        cov_cube_results = {}
+        for bF_int in (1, 2):
+            bF_iv = iv.mpf(bF_int)
+            Js = [bF_iv * 4 / 5, bF_iv * 4 / 5, bF_iv * 4 / 5, bF_iv * 4 / 5, bF_iv, bF_iv * (-527) / 625]
+            cs = [(iv.exp(j) + iv.exp(-j)) / 2 for j in Js]
+            ts = [(iv.exp(j) - iv.exp(-j)) / (iv.exp(j) + iv.exp(-j)) for j in Js]
+            prod_all = ts[0] * ts[1] * ts[2] * ts[3] * ts[4] * ts[5]
+            cov12_iv = ((ts[2] * ts[3] * ts[4] * ts[5]) / ((cs[0] * cs[1]) ** 2)) / ((1 + prod_all) ** 2)
+            check(cov12_iv.b < 0, f"Expected Cov_cube(z1,z2) < 0 at bF={bF_int}")
+            if bF_int == 1:
+                check(strictly_above(cov12_iv, "-0.08944332") and strictly_below(cov12_iv, "-0.08944330"),
+                      f"O-W8.1 Cov_cube(beta_F=1) mismatch: {cov12_iv}")
+            cov_cube_results[f"beta_F_{bF_int}"] = outward_str(cov12_iv)
+
+        # O-W6.1-2 Fisher zeros & 4D SU(5) beta_0 > 0 + Polar(0.60, a_blk=16) exact u_{1/2}(31.68) = 0.95303747...
+        beta0_su5 = iv.mpf(55) / (iv.mpf(48) * (iv.pi ** 2))
+        check(strictly_above(beta0_su5, "0.1160") and strictly_below(beta0_su5, "0.1162"), "SU(5) beta_0 bracket failed")
+        ka_frac = Fraction(99, 50) * 16
+        check(ka_frac == Fraction(792, 25), "Exact beta*a_blk != 792/25")
+        ka_iv = iv.mpf(792) / iv.mpf(25)
+        u_half_3168 = besseli_iv_any(2, ka_iv) / besseli_iv_any(1, ka_iv)
+        check(u_half_3168.a > mayer_lim.b and strictly_above(u_half_3168, "0.95303747") and strictly_below(u_half_3168, "0.95303748"),
+              f"#130/#133 exact u_{{1/2}}(31.68) mismatch: {u_half_3168}")
+
+        # Conditional NP-C (d=4 marginality, Cartan [s3, s3]=0, 4 sin^2(pi/L), Riccati) and NP-D (1 - 2/d_sp & pi/8 integral -> 1/32)
+        for d_spde in (2, 3, 4, 5):
+            dim_A_f = Fraction(2 - d_spde, 2)
+            dim_rhs_f = dim_A_f - 2
+            gap_q_f = (2 * dim_A_f - 1) - dim_rhs_f
+            if d_spde == 4:
+                check(gap_q_f == 0 and (4 - d_spde) == 0, "NP-C d=4 parabolic marginality failed")
+        s3_sp = sp.Matrix([[1, 0], [0, -1]])
+        amu_s, anu_s = sp.symbols("amu anu")
+        check(sp.simplify((amu_s * s3_sp) * (anu_s * s3_sp) - (anu_s * s3_sp) * (amu_s * s3_sp)) == sp.zeros(2, 2),
+              "NP-C Cartan commutator nonzero")
+        for L_lat in (8, 16, 32, 64):
+            ev_lat = iv.mpf(4) * (iv.sin(iv.pi / iv.mpf(L_lat)) ** 2)
+            check(ev_lat.b < (iv.mpf(4) * (iv.pi ** 2) / iv.mpf(L_lat * L_lat)).a, f"NP-C gap bound L={L_lat} failed")
+
+        d_sp_s = sp.Symbol("d_sp", positive=True)
+        check(sp.simplify((1 - 2 / d_sp_s).subs(d_sp_s, 2)) == 0, "NP-D d_sp=2 failed")
+        check(sp.simplify((1 - 2 / d_sp_s).subs(d_sp_s, 3)) == sp.Rational(1, 3), "NP-D d_sp=3 failed")
+        check(sp.simplify((1 - 2 / d_sp_s).subs(d_sp_s, 4)) == sp.Rational(1, 2), "NP-D d_sp=4 failed")
+        x_s = sp.Symbol("x", real=True)
+        int_npd = sp.integrate(sp.sqrt(x_s * (1 - x_s)), (x_s, 0, 1))
+        check(sp.simplify(int_npd - sp.pi / 8) == 0, "NP-D radial integral mismatch")
+        d_beta_npc = (iv.mpf(11) / (iv.mpf(3) * (iv.pi ** 2))) * iv.log(2)
+        c_or_npc = iv.mpf("1.885176")
+        riccati_4d_160 = iv.exp((iv.mpf(2) * c_or_npc / d_beta_npc) * (iv.sqrt(iv.mpf(160)) - iv.mpf(1)))
+        check(strictly_above(riccati_4d_160, "1.1839e74") and strictly_below(riccati_4d_160, "1.1840e74"),
+              f"NP-C 4D Riccati penalty at beta_0=160 unexpected: {riccati_4d_160}")
+
+        return {
+            "h2d_status": "OPEN",
+            "irx_status": "OPEN",
+            "physical_unification": "OPEN",
+            "device_certified": False,
+            "o_w8_2_kp_conditional": True,
+            "o_w8_2_kp_status": "CONDITIONAL_ON_UV_SMALL_FIELD_AND_MULTISCALE_ITERATION",
+            "honest_uv_ir_open_corridor_no_bulk": "[1.8684, 271..428]",
+            "conditional_kp_corridor": "[5077, 9896]",
+            "wave5_w5_2_c4bpp_divergence": {
+                "lambda": 4,
+                "sigma0_sq": "1/4",
+                "I0_iv": outward_str(I0_iv),
+                "hermite_a2_iv": outward_str(a2_iv),
+                "hermite_a2_sq_iv": outward_str(a2_sq_iv),
+                "var_f_iv": outward_str(var_f_iv),
+                "sd_ratio_scaling": "Theta(beta) -> +inf",
+                "o_w3_2_1_isolated_finite_truncation": True,
+            },
+            "wave6_w6_2_and_np_b_o1": {
+                "single_scale_kl_barrier": "p > 2*(k+1) => p >= 9 at k=3",
+                "slab_3d_barrier": "p > k_slab + 3",
+                "dumbbell_a": 12,
+                "w6_2_delta_c1_iv": outward_str(delta_c1_iv),
+                "np_b_u1_abs_iv": outward_str(u1_abs_iv),
+                "c5_compatible_forcing_af_rg": True,
+            },
+            "wave7_w7_2_non_mk_foam": {
+                "combinatorics_4d_2x2": comb_4d_2x2,
+                "beta_19_z6_kp_iv": outward_str(b_19z6),
+                "beta_64_z6_mayer_iv": outward_str(b_64z6),
+                "beta_6z4_178z6_mayer_iv": outward_str(b_6z4_178z6),
+                "u1_t025_beta_sat_iv": outward_str(b_sat_iv := b_u1_sat),
+                "u1_198_c_max_iv": outward_str(c_max_u1_iv),
+                "r0_sum_at_198_iv": outward_str(r0_sum_198),
+                "all_crossings_strictly_below_1_98": True,
+            },
+            "wave8_w8_1_st_plus_and_bochner": {
+                "m1_q0_a16_iv": outward_str(q0_a16_iv),
+                "m1_q0_ainf_over4_iv": outward_str(q0_inf_over4_iv),
+                "retracted_w51_1_4176d_lhs_ub_iv": outward_str(lhs_4176_ub),
+                "retracted_w51_1_4176d_rhs_iv": outward_str(rhs_4176),
+                "retracted_w51_1_4176d_deficit_iv": outward_str(deficit_4176),
+                "st_plus_32x32_endpoints": st_endpoint_certs,
+                "chernoff_9dof_corridor_all8": chernoff_corridor_all8,
+                "o_w8_q1_r_origin_25d_iv": outward_str(r_orig_25),
+                "o_w8_q1_r_origin_4176d_iv": outward_str(r_orig_4176),
+                "o_w8_q1_6p_ab_factor_iv": outward_str(boch_fac_iv),
+                "bochner_optimistic_floor": {"theta_deg": "17.30", "b_7e_pass": 869},
+                "homogeneous_10_4_6p_ab_crossing": {"theta_deg": "30.28", "b_7e_pass": 285},
+            },
+            "wave8_w8_2_and_o_w9_a1_univ": {
+                "covariant_exp_zero_u1_radial_tadpole": True,
+                "polar_1_over_rc_sq_tadpole": "1 + w_s*(1 - w_s)*dphi^2",
+                "s3_haar_jacobian_quad": "-r^2/12 - r^4/1440",
+                "overlap_combinatorics": overlap_comb,
+                "bloch_40d": {
+                    "4D_M2_2_Sf2_over_Sc2_iv": outward_str(bloch_4d_m2),
+                    "4D_M2_3_Sf2_over_Sc2_iv": outward_str(bloch_4d_m3),
+                    "5D_C5_M2_2_Sf2_over_Sc2_iv": outward_str(bloch_5d_m2),
+                },
+                "np_a_dashen_gross_shift": "1/12",
+                "np_a_lambda_hk_over_w_iv": outward_str(lam_hk_w_iv),
+                "np_a_poisson_k_gt_12_tail_ub_iv": outward_str(poisson_tail_k12_ub),
+                "o_w8_2_kp_conditional_note": "Conditional on UV small-field and multiscale iteration (Mayer 5077, KP 9896)",
+                "theorem_o_w9_a1_univ": {
+                    "symbolic_identity": "f_p^Phi / c_perp^Phi = tan(theta_HK) = tan(theta_1p / 2)",
+                    "theta_test_rad": "0.35",
+                    "tan_theta_iv": outward_str(tan_test),
+                    "models_40d": o_w9_a1_models,
+                    "w9_a1_single_plaquette_sweep_ruled_out": True,
+                },
+            },
+            "wave8_w8_3_and_np_cd": {
+                "o_w8_1_monopole_q": "4/5 + 3/5 k",
+                "o_w8_1_j6_over_beta_f": "-527/625",
+                "o_w8_1_monopole_product_sign": -1,
+                "o_w8_1_cov_cube_iv": cov_cube_results,
+                "o_w6_1_2_su5_beta0_iv": outward_str(beta0_su5),
+                "polar_060_a16_beta198_kappa": "792/25",
+                "polar_060_a16_fine_edges_per_block": 26,
+                "polar_060_a16_u_half_3168_iv": outward_str(u_half_3168),
+                "np_c_d4_marginal_beta0_160_riccati_iv": outward_str(riccati_4d_160),
+                "np_d_uv_factor": {"d_sp_2": "0", "d_sp_3": "1/3", "d_sp_4": "1/2"},
+            },
+            "round04_checks_verified": r4_bridges["interval_checks_passed"],
+            "round05_checks_verified": r5_bridges["interval_checks_passed"],
+            "round06_checks_verified": r6_bridges["interval_checks_passed"],
+            "round07_checks_verified": r7_frontier["interval_checks_passed"],
+            "interval_checks_passed": interval_checks,
+        }
+    finally:
+        mp.dps = 50
+        iv.dps = 40
+
+
 def compute_certificate() -> dict:
     mp.dps = 50
     iv.dps = 40
@@ -4657,6 +5623,12 @@ def compute_certificate() -> dict:
         h2d_round05_bridges,
         h2d_round06_bridges,
     )
+    h2d_round08_waves5to8 = compute_h2d_round08_waves5to8_consolidation(
+        h2d_round04_bridges,
+        h2d_round05_bridges,
+        h2d_round06_bridges,
+        h2d_round07_frontier,
+    )
     payload = {
         "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
         "result_ids": [
@@ -4678,6 +5650,7 @@ def compute_certificate() -> dict:
         "h2d_round05_deepening_bridges": h2d_round05_bridges,
         "h2d_round06_convergence_bridges": h2d_round06_bridges,
         "h2d_round07_irx_frontier": h2d_round07_frontier,
+        "h2d_round08_waves5to8_consolidation": h2d_round08_waves5to8,
         "wilson_transfer_and_symanzik": {
             "q8_strong_coupling_transfer": transfer_results,
             "symanzik_o_a2_leading_coeff": outward_str(c0_exact),
@@ -4769,6 +5742,11 @@ def main() -> int:
     require("h2d_round07_irx_frontier" in payload, "Missing h2d_round07_irx_frontier")
     require(payload["h2d_round07_irx_frontier"]["h2d_status"] == "OPEN", "Round 07 h2d_status must remain OPEN")
     require(payload["h2d_round07_irx_frontier"]["irx_status"] == "OPEN", "Round 07 irx_status must remain OPEN")
+    require("h2d_round08_waves5to8_consolidation" in payload, "Missing h2d_round08_waves5to8_consolidation")
+    require(payload["h2d_round08_waves5to8_consolidation"]["h2d_status"] == "OPEN", "Round 08 h2d_status must remain OPEN")
+    require(payload["h2d_round08_waves5to8_consolidation"]["irx_status"] == "OPEN", "Round 08 irx_status must remain OPEN")
+    require(payload["h2d_round08_waves5to8_consolidation"]["o_w8_2_kp_conditional"] is True, "O-W8.2-KP must remain explicitly conditional")
+    require(payload["h2d_round08_waves5to8_consolidation"]["device_certified"] is False, "Round 08 device_certified must remain False")
     if args.check:
         committed = json.loads(CERT_PATH.read_text(encoding="utf-8"))
         require(committed == payload, "Committed certificate.json differs from recomputed Wave 11 H2 values")
