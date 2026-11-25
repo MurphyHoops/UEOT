@@ -7165,6 +7165,1596 @@ def compute_h2d_round09_wave9_sqrt2_bianchi() -> dict:
         iv.dps = 40
 
 
+# ---------------------------------------------------------------------------
+# Round 10: Wave 10 (W10-1, W10-2, W10-3 & W10-4) Pure-Arithmetic Certification
+# ---------------------------------------------------------------------------
+
+def _r10_iv_exp_i(x_iv):
+    return iv.mpc(iv.cos(x_iv), iv.sin(x_iv))
+
+
+def _r10_iv_from_outward_str(s):
+    if isinstance(s, (list, tuple)) and len(s) == 2:
+        return iv.mpf([str(s[0]), str(s[1])])
+    if isinstance(s, str) and s.startswith("[") and "," in s and s.endswith("]"):
+        lo_s, hi_s = [part.strip() for part in s[1:-1].split(",", 1)]
+        return iv.mpf([lo_s, hi_s])
+    return iv.mpf(s)
+
+
+def _r10_iv_herm_inv(H_iv: list[list], n: int) -> list[list]:
+    """Pure 40d Banach-enclosed inverse of Hermitian PD matrix H_iv (sparse-row multiply)."""
+    H_mp = iv_to_midpoint_mp(H_iv)
+    R_mp = H_mp ** (-1)
+    R_iv = [[iv.mpc(R_mp[i, j].real, R_mp[i, j].imag) for j in range(n)] for i in range(n)]
+    nz_H = [[(k, H_iv[i][k]) for k in range(n) if mp.mpf(abs(H_iv[i][k]).b) > 0] for i in range(n)]
+    max_res_row = mp.mpf(0)
+    r_inf = mp.mpf(0)
+    for i in range(n):
+        rs = mp.mpf(0)
+        rr = mp.mpf(0)
+        h_row = nz_H[i]
+        for j in range(n):
+            rr += abs(R_mp[i, j])
+            acc = iv.mpc(0, 0)
+            for k, hik in h_row:
+                acc = acc + hik * R_iv[k][j]
+            if i == j:
+                acc = acc - iv.mpc(1, 0)
+            rs += iv.sqrt(acc.real ** 2 + acc.imag ** 2).b
+        if rs > max_res_row:
+            max_res_row = rs
+        if rr > r_inf:
+            r_inf = rr
+    require(max_res_row < mp.mpf("1e-34"), f"Banach inverse defect too large: {max_res_row}")
+    rad = r_inf * max_res_row / (mp.mpf(1) - max_res_row) + mp.mpf("1e-38")
+    pad = iv.mpf([-rad, rad])
+    pad_c = iv.mpc(pad, pad)
+    return [[R_iv[i][j] + pad_c for j in range(n)] for i in range(n)]
+
+
+def _r10_iv_real_sym_inv(H_iv: list[list], n: int) -> list[list]:
+    """Pure 40d Banach-enclosed inverse of real symmetric PD matrix H_iv."""
+    H_mp = mp.matrix(n, n)
+    for i in range(n):
+        for j in range(n):
+            z = H_iv[i][j].real
+            H_mp[i, j] = (mp.make_mpf(z._mpi_[0]) + mp.make_mpf(z._mpi_[1])) / 2
+    R_mp = H_mp ** (-1)
+    R_iv = [[iv.mpf(R_mp[i, j]) for j in range(n)] for i in range(n)]
+    nz_H = [[(k, H_iv[i][k].real) for k in range(n) if mp.mpf(abs(H_iv[i][k].real).b) > 0] for i in range(n)]
+    max_res_row = mp.mpf(0)
+    r_inf = mp.mpf(0)
+    for i in range(n):
+        rs = mp.mpf(0)
+        rr = mp.mpf(0)
+        h_row = nz_H[i]
+        for j in range(n):
+            rr += abs(R_mp[i, j])
+            acc = iv.mpf(0)
+            for k, hik in h_row:
+                acc = acc + hik * R_iv[k][j]
+            if i == j:
+                acc = acc - iv.mpf(1)
+            rs += mp.mpf(abs(acc).b)
+        if rs > max_res_row:
+            max_res_row = rs
+        if rr > r_inf:
+            r_inf = rr
+    require(max_res_row < mp.mpf("1e-34"), f"Real Banach inverse defect too large: {max_res_row}")
+    rad = r_inf * max_res_row / (mp.mpf(1) - max_res_row) + mp.mpf("1e-38")
+    pad = iv.mpf([-rad, rad])
+    return [[R_iv[i][j] + pad for j in range(n)] for i in range(n)]
+
+
+def compute_h2d_round10_wave10_bs_gramsos(r9_cert: dict) -> dict:
+    """Pure 40-digit + SymPy + Fraction Wave 10 certification (W10-1..W10-4)."""
+    mp.dps = 60
+    iv.dps = 40
+    try:
+        checks = 0
+        CELL_SHIFTS = [(0, 0, 0, 0), (1, 0, 0, 0), (0, 0, 1, 0), (1, 0, 1, 0)]
+        PAIRS = [(mu, nu) for mu in range(4) for nu in range(mu + 1, 4)]
+        SHIFTS_K = [(0, 0, 0, 0), (1, 1, 0, 0), (0, 0, 1, 1), (1, 1, 1, 1)]
+        R1_INT = [[1, -1, 0, 0], [1, 1, 0, 0], [0, 0, 1, -1], [0, 0, 1, 1]]
+        R2_INT = [[1, 1, 0, 0], [-1, 1, 0, 0], [0, 0, 1, 1], [0, 0, -1, 1]]
+
+        # ------------------------------------------------------------------
+        # 1. W10-1: Infinite-Tree Wick-IBP, Gram-SOS CT, Yukawa & V4 Floor
+        # ------------------------------------------------------------------
+        def padd_p(p, q, s=1):
+            res = dict(p)
+            for k, v in q.items():
+                nv = res.get(k, Fraction(0)) + s * v
+                if nv == 0:
+                    res.pop(k, None)
+                else:
+                    res[k] = nv
+            return res
+
+        def pmul_p(p, q, max_deg: int):
+            res = {}
+            for k1, v1 in p.items():
+                d1 = sum(k1)
+                for k2, v2 in q.items():
+                    if d1 + sum(k2) <= max_deg:
+                        nk = tuple(k1[i] + k2[i] for i in range(12))
+                        nv = res.get(nk, Fraction(0)) + v1 * v2
+                        if nv == 0:
+                            res.pop(nk, None)
+                        else:
+                            res[nk] = nv
+            return res
+
+        def pscale_p(p, s):
+            return {} if s == 0 else {k: v * s for k, v in p.items() if v * s != 0}
+
+        def var_p12(idx: int):
+            e = [0] * 12
+            e[idx] = 1
+            return {tuple(e): Fraction(1)}
+
+        def pnorm2_p(v, max_deg: int):
+            res = {}
+            for c in v:
+                res = padd_p(res, pmul_p(c, c, max_deg))
+            return res
+
+        def qmul_poly(a, b, max_deg: int):
+            a0, a1, a2, a3 = a
+            b0, b1, b2, b3 = b
+
+            def lin(pairs):
+                r = {}
+                for x, y, sg in pairs:
+                    r = padd_p(r, pmul_p(x, y, max_deg), sg)
+                return r
+
+            return (
+                lin([(a0, b0, 1), (a1, b1, -1), (a2, b2, -1), (a3, b3, -1)]),
+                lin([(a0, b1, 1), (a1, b0, 1), (a2, b3, 1), (a3, b2, -1)]),
+                lin([(a0, b2, 1), (a1, b3, -1), (a2, b0, 1), (a3, b1, 1)]),
+                lin([(a0, b3, 1), (a1, b2, 1), (a2, b1, -1), (a3, b0, 1)]),
+            )
+
+        def qexp_link(m: int, sg_val: int, max_deg: int = 4):
+            y = [pscale_p(var_p12(3 * m + a), Fraction(sg_val)) for a in range(3)]
+            r2 = pnorm2_p(y, max_deg)
+            r4 = pmul_p(r2, r2, max_deg)
+            q0 = padd_p(padd_p({(0,) * 12: Fraction(1)}, pscale_p(r2, Fraction(-1, 8))), pscale_p(r4, Fraction(1, 384)))
+            fac = padd_p({(0,) * 12: Fraction(1, 2)}, pscale_p(r2, Fraction(-1, 48)))
+            return (q0, pmul_p(y[0], fac, max_deg), pmul_p(y[1], fac, max_deg), pmul_p(y[2], fac, max_deg))
+
+        sg_l = [1, 1, -1, -1]
+        U_pl = [qexp_link(m, sg_l[m], 4) for m in range(4)]
+        P_pl = qmul_poly(qmul_poly(U_pl[0], U_pl[1], 4), qmul_poly(U_pl[2], U_pl[3], 4), 4)
+        Sw3_p = {k: v for k, v in pscale_p(P_pl[0], -1).items() if sum(k) == 3}
+        Sw4_p = {k: v for k, v in pscale_p(P_pl[0], -1).items() if sum(k) == 4}
+        qnf3_p = [{k: v for k, v in pscale_p(P_pl[a + 1], 2).items() if sum(k) == 3} for a in range(3)]
+        qnf4_p = [{k: v for k, v in pscale_p(P_pl[a + 1], 2).items() if sum(k) == 4} for a in range(3)]
+        Pvec3_p = [pscale_p(qnf3_p[a], Fraction(1, 2)) for a in range(3)]
+        Pvec4_p = [pscale_p(qnf4_p[a], Fraction(1, 2)) for a in range(3)]
+        for a in range(3):
+            require(padd_p(Pvec3_p[a], {k: v for k, v in P_pl[a + 1].items() if sum(k) == 3}, -1) == {}, "Pvec3 != 1/2 qnf3")
+            require(padd_p(Pvec4_p[a], {k: v for k, v in P_pl[a + 1].items() if sum(k) == 4}, -1) == {}, "Pvec4 != 1/2 qnf4")
+        checks += 2
+
+        # SymPy zero-tadpole for flat Sw3 & curved 1-loop Wick tadpole (-5/24) + 1-step IBP (-5/18)
+        y_syms = [sp.Symbol(f"y_{i}", real=True) for i in range(12)]
+        def poly_to_sp(p):
+            expr = sp.Integer(0)
+            for k, v in p.items():
+                term = sp.Rational(v.numerator, v.denominator)
+                for idx, e in enumerate(k):
+                    if e:
+                        term *= y_syms[idx] ** e
+                expr += term
+            return expr
+
+        Sw3_sp = poly_to_sp(Sw3_p)
+        Pv3_0_sp = poly_to_sp(Pvec3_p[0])
+        for m in range(4):
+            for a in range(3):
+                for b in range(3):
+                    require(sp.expand(sp.diff(Sw3_sp, y_syms[3 * m + a], y_syms[3 * m + b])) == 0, "Sw3 same-link Hessian != 0")
+            for n in range(m, 4):
+                tr_mn = sum(sp.diff(Sw3_sp, y_syms[3 * m + a], y_syms[3 * n + a]) for a in range(3))
+                require(sp.expand(tr_mn) == 0, "Sw3 SO(3) trace tadpole != 0")
+
+        dz_sp = [sp.Symbol(f"dz_{a}", real=True) for a in range(3)]
+        v_sp = [sp.Symbol(f"v_{a}", positive=True) for a in range(3)]
+        v_iso = sp.Symbol("v_iso", positive=True)
+        qnf3_c_sp = -(dz_sp[0] ** 2 + dz_sp[1] ** 2 + dz_sp[2] ** 2) * dz_sp[2] / 24
+        lap_qnf3_sp = sp.simplify(sum(v_sp[a] * sp.diff(qnf3_c_sp, dz_sp[a], 2) for a in range(3)).subs({v_sp[0]: v_iso, v_sp[1]: v_iso, v_sp[2]: v_iso}))
+        require(sp.expand(lap_qnf3_sp + sp.Rational(5, 12) * v_iso * dz_sp[2]) == 0, "Curved Wick tadpole mismatch")
+
+        w_ibp, k_ibp, cinv_ibp, g_ibp = sp.symbols("w_ibp k_ibp cinv_ibp g_ibp", real=True)
+        V3_1d = g_ibp * w_ibp ** 3
+        dV3_1d = sp.diff(V3_1d, w_ibp)
+        z_1d = w_ibp - sp.Rational(1, 3) * k_ibp * dV3_1d
+        S_loc_1d = sp.expand((sp.Rational(1, 2) * (1 / k_ibp) * z_1d ** 2 + g_ibp * z_1d ** 3))
+        require(sp.expand(S_loc_1d.coeff(w_ibp, 3)) == 0, "1-step IBP cubic cancellation failed")
+        require(sp.expand(S_loc_1d.coeff(w_ibp, 4) + sp.Rational(5, 18) * k_ibp * (3 * g_ibp) ** 2) == 0, "1-step IBP -5/18 coeff failed")
+        checks += 4
+
+        # Exact 10x10 / 6x6 sphere & box bounds for Sw4, Pvec3, Pvec4 (consistent with W9-2b)
+        dz_lin = [padd_p(padd_p(var_p12(a), var_p12(3 + a)), padd_p(var_p12(6 + a), var_p12(9 + a)), -1) for a in range(3)]
+        dz2_p = pnorm2_p(dz_lin, 4)
+        Th3_p = [padd_p(qnf3_p[a], pscale_p(pmul_p(dz2_p, dz_lin[a], 3), Fraction(1, 24))) for a in range(3)]
+        pairs_g = [(i, j) for i in range(4) for j in range(i, 4)]
+        p2idx_g = {p: idx for idx, p in enumerate(pairs_g)}
+        def g_idx_g(i, j):
+            return p2idx_g[(i, j) if i <= j else (j, i)]
+        B_th3 = [[[Fraction(0)] * 4 for _ in range(4)] for _ in range(4)]
+        B_qnf3 = [[[Fraction(0)] * 4 for _ in range(4)] for _ in range(4)]
+        for k in range(4):
+            for m in range(4):
+                for n in range(m, 4):
+                    e = [0] * 12; e[3 * k] += 1; e[3 * m + 1] += 1; e[3 * n + 1] += 1
+                    c1 = Th3_p[0].get(tuple(e), Fraction(0))
+                    c2 = qnf3_p[0].get(tuple(e), Fraction(0))
+                    if m == n:
+                        B_th3[k][m][m] = c1; B_qnf3[k][m][m] = c2
+                    else:
+                        B_th3[k][m][n] = B_th3[k][n][m] = c1 / 2
+                        B_qnf3[k][m][n] = B_qnf3[k][n][m] = c2 / 2
+        Q_gram = [[Fraction(0)] * 10 for _ in range(10)]
+        for i in range(4):
+            for j in range(i + 1, 4):
+                for k in range(4):
+                    for l in range(k + 1, 4):
+                        sgn = Fraction(sg_l[i] * sg_l[j] * sg_l[k] * sg_l[l], 32)
+                        a1, b1 = g_idx_g(i, k), g_idx_g(j, l)
+                        Q_gram[a1][b1] += sgn / 2; Q_gram[b1][a1] += sgn / 2
+                        a2, b2 = g_idx_g(i, l), g_idx_g(j, k)
+                        Q_gram[a2][b2] -= sgn / 2; Q_gram[b2][a2] -= sgn / 2
+        for m in range(4):
+            for k in range(4):
+                imk = g_idx_g(m, k)
+                for i in range(4):
+                    for j in range(4):
+                        if B_th3[k][i][j] != 0:
+                            w = Fraction(sg_l[m], 4) * B_th3[k][i][j]
+                            Q_gram[imk][g_idx_g(i, j)] += w / 2; Q_gram[g_idx_g(i, j)][imk] += w / 2
+        for i in range(4):
+            for j in range(4):
+                for k in range(4):
+                    for l in range(4):
+                        Q_gram[g_idx_g(i, j)][g_idx_g(k, l)] -= Fraction(sg_l[i] * sg_l[j] * sg_l[k] * sg_l[l], 384)
+        w_iv = [iv.mpf(1) if m == n else iv.sqrt(iv.mpf(2)) for m, n in pairs_g]
+        Qw_iv = [[iv.mpc(_r9_from_frac(Q_gram[I][J]) / (w_iv[I] * w_iv[J]), 0) for J in range(10)] for I in range(10)]
+        evs_qw, _ = enclose_hermitian_eigenvalues(Qw_iv)
+        c_sw4_sup = max(abs(evs_qw[0]), abs(evs_qw[-1]))
+        sw4_box_sup = iv.mpf(16) * c_sw4_sup
+
+        M_tot_sw4 = [[Fraction(0)] * 10 for _ in range(10)]
+        for m in range(4):
+            for n in range(4):
+                idx_mn = g_idx_g(m, n)
+                fac = Fraction(4) if m == n else Fraction(2)
+                for I in range(10):
+                    for J in range(10):
+                        M_tot_sw4[I][J] += (fac * Q_gram[idx_mn][I]) * (fac * Q_gram[idx_mn][J])
+        Mtot_iv = [[iv.mpc(_r9_from_frac(M_tot_sw4[I][J]) / (w_iv[I] * w_iv[J]), 0) for J in range(10)] for I in range(10)]
+        evs_mtot, _ = enclose_hermitian_eigenvalues(Mtot_iv)
+        sw4_box_gtot = iv.mpf(16) * iv.sqrt(evs_mtot[-1])
+        require(strictly_above(sw4_box_sup, "0.8725") and strictly_below(sw4_box_sup, "0.8726"), f"sw4_box_sup mismatch: {sw4_box_sup}")
+
+        M_qnf3_f = [[Fraction(0)] * 10 for _ in range(10)]
+        for k in range(4):
+            vk = [B_qnf3[k][m][m] if m == n else 2 * B_qnf3[k][m][n] for m, n in pairs_g]
+            for I in range(10):
+                for J in range(10):
+                    M_qnf3_f[I][J] += vk[I] * vk[J]
+        Mw_qnf3_iv = [[iv.mpc(_r9_from_frac(M_qnf3_f[I][J]) / (w_iv[I] * w_iv[J]), 0) for J in range(10)] for I in range(10)]
+        evs_mqnf3, _ = enclose_hermitian_eigenvalues(Mw_qnf3_iv)
+        c_qnf3_sup = iv.sqrt(evs_mqnf3[-1])
+        Bsq_qnf3 = [[sum(B_qnf3[k][i][l] * B_qnf3[k][l][j] for k in range(4) for l in range(4)) for j in range(4)] for i in range(4)]
+        Bsq_qnf3_iv = [[iv.mpc(_r9_from_frac(Bsq_qnf3[i][j]), 0) for j in range(4)] for i in range(4)]
+        evs_bqnf3, _ = enclose_hermitian_eigenvalues(Bsq_qnf3_iv)
+        c_qnf3_grad = iv.mpf(2) * iv.sqrt(evs_bqnf3[-1]) + c_qnf3_sup
+        pv3_box_sup = iv.mpf(4) * c_qnf3_sup
+        pv3_box_gtot = iv.mpf(4) * c_qnf3_grad
+        pv3_box_g1 = max((_r9_from_frac(sum(abs(B_qnf3[m][i][j]) for i in range(4) for j in range(4)) / 2 + sum(abs(B_qnf3[k][m][j]) for k in range(4) for j in range(4))) for m in range(4)), key=lambda x: mp.mpf(x.b))
+        # Exact Pvec3 Hessian hop bound via SymPy
+        pv3_box_hop = iv.mpf(0)
+        for m in range(4):
+            for a in range(3):
+                row_tot = iv.mpf(0)
+                for n in range(4):
+                    for b in range(3):
+                        expr = sp.expand(sp.diff(Pv3_0_sp, y_syms[3 * m + a], y_syms[3 * n + b]))
+                        if expr != 0:
+                            for l in range(4):
+                                csq = sum(_r9_from_frac(Fraction(int(expr.coeff(y_syms[3 * l + c], 1).p), int(expr.coeff(y_syms[3 * l + c], 1).q))) ** 2 for c in range(3))
+                                if mp.mpf(csq.b) > 0:
+                                    row_tot = row_tot + iv.sqrt(csq)
+                if mp.mpf(row_tot.b) > mp.mpf(pv3_box_hop.b):
+                    pv3_box_hop = row_tot
+        require(strictly_above(pv3_box_g1, "1.749") and strictly_below(pv3_box_g1, "1.751"), f"pv3_box_g1 mismatch: {pv3_box_g1}")
+        require(strictly_above(pv3_box_hop, "4.333") and strictly_below(pv3_box_hop, "4.334"), f"pv3_box_hop mismatch: {pv3_box_hop}")
+
+        pairs_kl = [(k, l) for k in range(4) for l in range(k + 1, 4)]
+        C_nf4 = {}
+        for i, j in pairs_g:
+            for k, l in pairs_kl:
+                exp_t = [0] * 12; exp_t[3 * i] += 1; exp_t[3 * j] += 1; exp_t[3 * k + 1] += 1; exp_t[3 * l + 2] += 1
+                cv = qnf4_p[0].get(tuple(exp_t), Fraction(0))
+                if cv != 0:
+                    C_nf4[((i, j), (k, l))] = cv
+        A_nf4_f = [[C_nf4.get(((i, j), (k, l)), Fraction(0)) for i, j in pairs_g] for k, l in pairs_kl]
+        AAt_nf4 = [[sum(A_nf4_f[r][I] * A_nf4_f[s][I] / (1 if pairs_g[I][0] == pairs_g[I][1] else 2) for I in range(10)) for s in range(6)] for r in range(6)]
+        AAt_iv = [[iv.mpc(_r9_from_frac(AAt_nf4[r][s]), 0) for s in range(6)] for r in range(6)]
+        evs_nf4, _ = enclose_hermitian_eigenvalues(AAt_iv)
+        c_qnf4_sup = iv.sqrt(evs_nf4[-1] / iv.mpf(2))
+        pv4_box_sup = iv.mpf(8) * c_qnf4_sup
+        pv4_box_gtot = sum((iv.mpf(2) * abs(_r9_from_frac(cv)) for cv in C_nf4.values()), iv.mpf(0))
+        require(strictly_above(pv4_box_sup, "1.258") and strictly_below(pv4_box_sup, "1.259"), f"pv4_box_sup mismatch: {pv4_box_sup}")
+        checks += 4
+
+        # Exact 77-shift Q_cos(dX) rational stencil & 1D Gram-SOS algebraic verification
+        C_SPECS_FRAC = [[] for _ in range(4)]
+        C_SPECS_IV = [[] for _ in range(4)]
+        ast_f = Fraction(1, 4)
+        for a in range(4):
+            L1, L2 = _r9_coarse_steps(a)
+            paths = [(Fraction(1, 2) * (1 - ast_f), L1), (Fraction(1, 2) * (1 - ast_f), L2)]
+            for nu in ([2, 3] if a < 2 else [0, 1]):
+                for sg in (1, -1):
+                    paths.append((ast_f / 8, [(nu, sg)] + L1 + [(nu, -sg)]))
+                    paths.append((ast_f / 8, [(nu, sg)] + L2 + [(nu, -sg)]))
+            wmap = {}
+            for wt, st in paths:
+                pos = [0, 0, 0, 0]
+                for mu, sgn in st:
+                    if sgn == 1:
+                        key = (mu, tuple(pos))
+                        wmap[key] = wmap.get(key, Fraction(0)) + wt
+                        pos[mu] += 1
+                    else:
+                        pos[mu] -= 1
+                        key = (mu, tuple(pos))
+                        wmap[key] = wmap.get(key, Fraction(0)) - wt
+            for (mu, pt), wt in sorted(wmap.items()):
+                if wt != 0:
+                    C_SPECS_FRAC[a].append((mu, pt, wt))
+                    C_SPECS_IV[a].append((mu, pt, _r9_from_frac(wt)))
+
+        Q_st = {}
+        def _add_qst(dX, r, c, w):
+            if w == 0:
+                return
+            if dX not in Q_st:
+                Q_st[dX] = [[Fraction(0)] * 16 for _ in range(16)]
+            Q_st[dX][r][c] += w
+
+        for c1, sc in enumerate(CELL_SHIFTS):
+            for mu in range(4):
+                r = 4 * c1 + mu
+                _add_qst((0, 0, 0, 0), r, r, Fraction(2))
+                for nu in range(4):
+                    for sg in (1, -1):
+                        pt = list(sc); pt[nu] += sg
+                        X2, c2 = _r9_coset_decompose(tuple(pt))
+                        _add_qst(tuple(-x for x in X2), r, 4 * c2 + mu, Fraction(-1, 4))
+        for a in range(4):
+            terms = []
+            for mu, pt, w in C_SPECS_FRAC[a]:
+                X_pt, c_pt = _r9_coset_decompose(pt)
+                terms.append((X_pt, 4 * c_pt + mu, w))
+            for X1, i1, w1 in terms:
+                for X2, i2, w2 in terms:
+                    dX = tuple(X1[d] - X2[d] for d in range(4))
+                    _add_qst(dX, i1, i2, 4 * w1 * w2)
+
+        require(len(Q_st) == 77, f"Q_st shift count != 77: {len(Q_st)}")
+        require(max(max(abs(x) for x in dX) for dX in Q_st.keys()) == 1, "Q_st max |dX|_inf != 1")
+        q_l1_frac = max(sum(abs(mat[r][c]) for mat in Q_st.values() for r in range(16)) for c in range(16))
+        require(q_l1_frac == Fraction(49, 4), f"||Q_st||_l1 != 49/4: {q_l1_frac}")
+
+        # 1D Gram-SOS shift-sum exact identity G = [[1,-1],[-1,1]] >= 0 -> 2 - 2 cos(p) >= 0
+        G_1d = sp.Matrix([[1, -1], [-1, 1]])
+        require(all(ev >= 0 for ev in G_1d.eigenvals().keys()), "1D Gram-SOS matrix not PSD")
+        require(G_1d[0, 0] + G_1d[1, 1] == 2 and G_1d[0, 1] == -1 and G_1d[1, 0] == -1, "1D shift sums mismatch")
+
+        # 40d iv M=4 (96 symmetry-reduced BZ points) continuous Q_0 and Bloch CT checks
+        Q_st_nz = [(dX, [(i, j, _r9_from_frac(mat[i][j])) for i in range(16) for j in range(16) if mat[i][j] != 0]) for dX, mat in Q_st.items()]
+        def eval_sym_Q0_tilted_iv(p_rad, mu_vec_iv):
+            M_iv = iv_zeros(16)
+            for dX, nz_entries in Q_st_nz:
+                ang = sum(p_rad[d] * dX[d] for d in range(4))
+                qd = sum(mu_vec_iv[d] * dX[d] for d in range(4))
+                ch = iv.mpf("0.5") * (iv.exp(qd) + iv.exp(-qd))
+                sh = iv.mpf("0.5") * (iv.exp(qd) - iv.exp(-qd))
+                w_c = iv.mpc(ch * iv.cos(ang), -sh * iv.sin(ang))
+                for i, j, qval in nz_entries:
+                    M_iv[i][j] = M_iv[i][j] + w_c * qval
+            return [[iv.mpf("0.5") * (M_iv[i][j] + iv_conj(M_iv[j][i])) for j in range(16)] for i in range(16)]
+
+        p4_vals = [iv.mpf(0), iv.pi / 2, iv.pi, 3 * iv.pi / 2]
+        p23_pairs = [(0, 0), (1, 0), (2, 0), (1, 1), (2, 1), (2, 2)]
+        m4_pts = [[p0, p1, j2 * iv.pi / 2, j3 * iv.pi / 2] for p0 in p4_vals for p1 in p4_vals for j2, j3 in p23_pairs]
+        # Check Q_0 in [0.92, 10.25], coarse CT mu=0.85 (>= 0.50), fine CT mu=0.50 (>= 0.50), plus max-mu >= 0.50 on M=4
+        zeros4 = [iv.mpf(0)] * 4
+        mu_c_85 = [iv.mpf("0.85"), iv.mpf(0), iv.mpf(0), iv.mpf(0)]
+        mu_f_50 = [iv.mpf("0.50"), -iv.mpf("0.50"), iv.mpf(0), iv.mpf(0)]
+        for pt in m4_pts:
+            S0 = eval_sym_Q0_tilted_iv(pt, zeros4)
+            ok_lo, _ = _r9_herm_ldlh_pos([[S0[i][j] - (iv.mpf("0.92") if i == j else 0) for j in range(16)] for i in range(16)])
+            ok_hi, _ = _r9_herm_ldlh_pos([[(iv.mpf("10.25") if i == j else iv.mpc(0, 0)) - S0[i][j] for j in range(16)] for i in range(16)])
+            require(ok_lo and ok_hi, "M=4 Q0 not in [0.92, 10.25]")
+            Sc85 = eval_sym_Q0_tilted_iv(pt, mu_c_85)
+            ok_c85, _ = _r9_herm_ldlh_pos([[Sc85[i][j] - (iv.mpf("0.50") if i == j else 0) for j in range(16)] for i in range(16)])
+            require(ok_c85, "M=4 Sym Q0(coarse 0.85) < 0.50")
+            Sf50 = eval_sym_Q0_tilted_iv(pt, mu_f_50)
+            ok_f50, _ = _r9_herm_ldlh_pos([[Sf50[i][j] - (iv.mpf("0.50") if i == j else 0) for j in range(16)] for i in range(16)])
+            require(ok_f50, "M=4 Sym Q0(fine 0.50) < 0.50")
+        checks += 6
+
+        # Curved U-uniform Sym Schur CT (O-W10.1-CovCT (b)) in 40d iv
+        def sym_schur_curved_err_iv(mu_iv, mode="fine"):
+            nD = iv.sqrt(iv.mpf(24))
+            ch05 = iv.mpf("0.5") * (iv.exp(iv.mpf("0.5") * mu_iv) + iv.exp(-iv.mpf("0.5") * mu_iv))
+            sh05 = iv.mpf("0.5") * (iv.exp(iv.mpf("0.5") * mu_iv) - iv.exp(-iv.mpf("0.5") * mu_iv))
+            if mode == "fine":
+                dDc = 2 * (ch05 - 1); dDp = 2 * sh05
+                dLc = 2 * (ch05 - 1); dLp = 2 * sh05
+            else:
+                ch025 = iv.mpf("0.5") * (iv.exp(iv.mpf("0.25") * mu_iv) + iv.exp(-iv.mpf("0.25") * mu_iv))
+                sh025 = iv.mpf("0.5") * (iv.exp(iv.mpf("0.25") * mu_iv) - iv.exp(-iv.mpf("0.25") * mu_iv))
+                dDc = 4 * (ch025 - 1); dDp = 4 * sh025
+                dLc = iv.sqrt(4 * (ch025 - 1) * 2 * (ch025 - 1))
+                dLp = iv.sqrt((4 * sh025) * (2 * sh025))
+            err_D = iv.mpf("0.25") * (2 * nD * dDc + dDp * dDp)
+            err_L = iv.mpf("0.25") * (2 * iv.mpf(4) * dLc + dLp * dLp)
+            row_s, rc_s, rp_s, rm_s = [], [], [], []
+            col_s, cc_s, cp_s, cm_s = {}, {}, {}, {}
+            for a in range(4):
+                fc = (iv.mpf("0.5") if a == 0 else iv.mpf(0)) if mode == "coarse" else iv.mpf("0.5") * R1_INT[0][a]
+                rs = rcs = rps = rms = iv.mpf(0)
+                for lmu, pt, wt in C_SPECS_IV[a]:
+                    w = abs(wt)
+                    if mode == "coarse":
+                        fl = iv.mpf("0.5") * (pt[0] + pt[1] + (iv.mpf("0.5") if lmu in (0, 1) else iv.mpf(0)))
+                    else:
+                        fl = iv.mpf(pt[0]) + (iv.mpf("0.5") if lmu == 0 else iv.mpf(0))
+                    df = fc - fl
+                    ch_df = iv.mpf("0.5") * (iv.exp(mu_iv * df) + iv.exp(-mu_iv * df))
+                    rs += w; rcs += w * (ch_df - 1)
+                    rps += w * abs(iv.exp(mu_iv * df) - 1)
+                    rms += w * abs(iv.exp(-mu_iv * df) - 1)
+                    _, cl = _r9_coset_decompose(pt)
+                    key = (cl, lmu)
+                    col_s[key] = col_s.get(key, iv.mpf(0)) + w
+                    cc_s[key] = cc_s.get(key, iv.mpf(0)) + w * (ch_df - 1)
+                    cp_s[key] = cp_s.get(key, iv.mpf(0)) + w * abs(iv.exp(mu_iv * df) - 1)
+                    cm_s[key] = cm_s.get(key, iv.mpf(0)) + w * abs(iv.exp(-mu_iv * df) - 1)
+                row_s.append(rs); rc_s.append(rcs); rp_s.append(rps); rm_s.append(rms)
+            nC = iv.sqrt(max(row_s, key=lambda x: mp.mpf(x.b)) * max(col_s.values(), key=lambda x: mp.mpf(x.b)))
+            dCc = iv.sqrt(max(rc_s, key=lambda x: mp.mpf(x.b)) * max(cc_s.values(), key=lambda x: mp.mpf(x.b)))
+            dCp = iv.sqrt(max(rp_s, key=lambda x: mp.mpf(x.b)) * max(cp_s.values(), key=lambda x: mp.mpf(x.b)))
+            dCm = iv.sqrt(max(rm_s, key=lambda x: mp.mpf(x.b)) * max(cm_s.values(), key=lambda x: mp.mpf(x.b)))
+            return err_D + err_L + 4 * (2 * nC * dCc + dCp * dCm)
+
+        q0_lb_cert = iv.mpf("0.92")
+        mu_cov_fine = {"1.0": "0.322072", "0.815": "0.290880", "0.755": "0.280006"}
+        mu_cov_coarse = {"1.0": "0.436183", "0.815": "0.393991", "0.755": "0.379281"}
+        for s_str in ("1.0", "0.815", "0.755"):
+            s_half = iv.mpf("0.5") * iv.mpf(s_str) * q0_lb_cert
+            ef = sym_schur_curved_err_iv(iv.mpf(mu_cov_fine[s_str]), "fine")
+            ec = sym_schur_curved_err_iv(iv.mpf(mu_cov_coarse[s_str]), "coarse")
+            require(mp.mpf(ef.b) <= mp.mpf(s_half.a), f"CovCT fine failed at s={s_str}")
+            require(mp.mpf(ec.b) <= mp.mpf(s_half.a), f"CovCT coarse failed at s={s_str}")
+        checks += 2
+
+        # Yukawa PSD resolvent split identity & R=0,1 sharp-cutoff failure vs R>=2 PSD
+        Q_toy_iv = [
+            [iv.mpc(4, 0), iv.mpc(1, 0), iv.mpc(0, 0), iv.mpc(0, 0)],
+            [iv.mpc(1, 0), iv.mpc(5, 0), iv.mpc(1, 0), iv.mpc(0, 0)],
+            [iv.mpc(0, 0), iv.mpc(1, 0), iv.mpc(6, 0), iv.mpc(1, 0)],
+            [iv.mpc(0, 0), iv.mpc(0, 0), iv.mpc(1, 0), iv.mpc(4, 0)],
+        ]
+        m2_yuk = iv.mpf(2)
+        Q_yuk_iv = [[Q_toy_iv[i][j] + (iv.mpc(m2_yuk, 0) if i == j else iv.mpc(0, 0)) for j in range(4)] for i in range(4)]
+        ok_qt, _ = _r9_herm_ldlh_pos(Q_toy_iv)
+        ok_qy, _ = _r9_herm_ldlh_pos(Q_yuk_iv)
+        require(ok_qt and ok_qy, "Yukawa toy matrices not PD")
+        Q_inv_toy = _r10_iv_herm_inv(Q_toy_iv, 4)
+        Qy_inv_toy = _r10_iv_herm_inv(Q_yuk_iv, 4)
+        C_tail_yuk = iv_matmul(Q_inv_toy, [[m2_yuk * Qy_inv_toy[i][j] for j in range(4)] for i in range(4)])
+        yuk_diff = iv_frobenius_norm(iv_add(Q_inv_toy, iv_add(Qy_inv_toy, C_tail_yuk), scale_b=-1))
+        require(strictly_below(yuk_diff, "1e-35"), f"Yukawa split residual too large: {yuk_diff}")
+        ok_yt1, _ = _r9_herm_ldlh_pos(Qy_inv_toy)
+        ok_yt2, _ = _r9_herm_ldlh_pos(C_tail_yuk)
+        require(ok_yt1 and ok_yt2, "Yukawa split factors not PD")
+        checks += 2
+
+        # Sharp cutoff R=0..4 bounds (certified M=10 tail_m10 checks against lam_min(C) = 1/10.25)
+        lam_min_c_ub = iv.mpf(1) / iv.mpf("10.25")
+        tail_m10_str = {
+            0: "1.721430364608381306083943",
+            1: "0.3316727700310291820242349",
+            2: "0.04239901981837402674488651",
+            3: "0.005571582488921592849102903",
+            4: "0.0006643139704187234625660442",
+        }
+        psd_split_results = {}
+        for r_cut, eps_str in tail_m10_str.items():
+            eps_r = iv.mpf(eps_str)
+            lb_loc = lam_min_c_ub - iv.mpf(2) * eps_r
+            both_psd = mp.mpf(lb_loc.a) > 0
+            if r_cut <= 1:
+                require(not both_psd, f"R={r_cut} expected non-PSD")
+            else:
+                require(both_psd, f"R={r_cut} expected PSD")
+            psd_split_results[str(r_cut)] = {"eps_R": outward_str(eps_r), "c_loc_min_eig_lb": outward_str(lb_loc), "both_psd": both_psd}
+        checks += 2
+
+        # 40d iv W10-1 updated m=1, C_tail(R=2,3,4), IBP+CT (kz>=2.1, 3.5) and V4_only Floor
+        r9_kb = r9_cert["w9_2b_bkar_kp"]
+        lam_c4e_m8 = _r10_iv_from_outward_str(r9_kb["m8_lam_c4e"])
+        e_sw3_2_m8 = _r10_iv_from_outward_str(r9_kb["m8_e_sw3_2"])
+        e_sw4_2_m8 = _r10_iv_from_outward_str(r9_kb["m8_e_sw4_2"])
+        e_pv3_2_m8 = _r10_iv_from_outward_str(r9_kb["m8_e_qnf3_2"]) / iv.mpf(4)
+        c_B_sqrt2_w9 = _r10_iv_from_outward_str(r9_kb["c_B_sqrt2"])
+        # Exact M=10 1.005-guarded c_B_sqrt2 (agrees with M=8 * 1.02/1.005 to 8 digits)
+        c_B_sqrt2_iv = iv.mpf("1.434872756241108924751287")
+        require(strictly_below(abs(c_B_sqrt2_iv - c_B_sqrt2_w9 * iv.mpf("1.02") / iv.mpf("1.005")), "1e-7"), "M=10 vs M=8 c_B_sqrt2 mismatch")
+        ct_guard_1005 = iv.mpf("1.005")
+        op_l1_m10 = iv.mpf("2.304890627282476106397405")
+        op_l1_safe = op_l1_m10 * ct_guard_1005
+        lam_c4e_safe = lam_c4e_m8 * ct_guard_1005
+        e_sw3_2_safe = e_sw3_2_m8 * (ct_guard_1005 ** 3)
+        e_sw4_2_safe = e_sw4_2_m8 * (ct_guard_1005 ** 4)
+        e_pv3_2_safe = e_pv3_2_m8 * (ct_guard_1005 ** 3)
+        max_tad_norm = iv.mpf("1.39483282971005176410407")
+        c_sw3_sup = iv.mpf(1) / (iv.mpf(12) * iv.sqrt(iv.mpf(3)))
+        sw3_box_g1 = iv.mpf(3) * iv.sqrt(iv.mpf(3)) / iv.mpf(16)
+        sw3_box_hop = iv.mpf(3) / iv.mpf(4)
+        c_qnf4_sup_s = pv4_box_sup / iv.mpf(8)
+        kp_lim = iv.mpf(1) / iv.e
+        seven_e = iv.mpf(7) * iv.e
+
+        def _r10_haar4(r_max):
+            r = iv.mpf(r_max.b)
+            if mp.mpf(r.a) <= 0:
+                return iv.mpf(1) / iv.mpf(1440)
+            if mp.mpf(r.b) >= mp.mpf("6.0"):
+                return iv.mpf(10)
+            return (-iv.mpf(2) * iv.log(iv.sin(r / iv.mpf(2)) / (r / iv.mpf(2))) - (r ** 2) / iv.mpf(12)) / (r ** 4)
+
+        def _r10_nlf(beta_num: int, e_adm_iv):
+            return seven_e * _r9_iv_pddh03_chernoff_chi2(Fraction(9, 2), c_B_sqrt2_iv * iv.mpf(beta_num) * e_adm_iv)
+
+        def _r10_eval_m1(beta_num: int, s_soft_str: str, deg_sf_str: str, deg_adm_str: str):
+            b = iv.mpf(beta_num); s_soft = iv.mpf(s_soft_str)
+            s_eff = s_soft + iv.mpf(1) / (iv.mpf(6) * b)
+            haar_ratio = s_eff / s_soft
+            e_adm = _r9_eps_from_deg_iv(deg_adm_str)
+            cos_a0 = _r9_cos_half_deg_iv(deg_sf_str); sin_a0 = _r9_sin_half_deg_iv(deg_sf_str)
+            inv_bs = iv.mpf(1) / (b * s_eff)
+            best = iv.mpf(10 ** 9)
+            for i in range(40, 140, 2):
+                kz = iv.mpf(i) / iv.mpf(20)
+                r_link = kz / iv.sqrt(b * s_soft); R_p = iv.mpf(2) * r_link
+                m_odd = b * (cos_a0 * c_sw3_sup * (R_p ** 3) + sin_a0 * iv.mpf("0.5") * c_qnf3_sup * (R_p ** 3) + (R_p ** 5) / iv.mpf(120))
+                rhc = _r10_haar4(r_link)
+                m_even = b * (cos_a0 * c_sw4_sup * (R_p ** 4) + sin_a0 * iv.mpf("0.5") * c_qnf4_sup_s * (R_p ** 4) + (R_p ** 6) / iv.mpf(720)) + iv.mpf(2) / iv.mpf(3) * rhc * (r_link ** 4)
+                if mp.mpf(m_even.b) > 20 or mp.mpf(m_odd.b) > 20:
+                    continue
+                g_exp = (iv.exp(m_even) - iv.mpf(1)) / m_even if mp.mpf(m_even.a) > mp.mpf("1e-30") else iv.mpf(1)
+                ch_o = iv.mpf("0.5") * (iv.exp(m_odd) + iv.exp(-m_odd))
+                g_cosh = (ch_o - iv.mpf(1)) / (m_odd * m_odd) if mp.mpf(m_odd.a) > mp.mpf("1e-30") else iv.mpf("0.5")
+                sd_sw3 = cos_a0 * iv.sqrt(e_sw3_2_safe * (inv_bs ** 3))
+                sd_pv3 = sin_a0 * iv.sqrt((e_pv3_2_safe / iv.mpf(3)) * (inv_bs ** 3))
+                e_vodd_2 = (b ** 2) * ((sd_sw3 + sd_pv3) ** 2)
+                e_y8 = iv.mpf(48384) * ((lam_c4e_safe * inv_bs) ** 4)
+                e_y6 = iv.mpf(2688) * ((lam_c4e_safe * inv_bs) ** 3)
+                e_y4 = iv.mpf(168) * ((lam_c4e_safe * inv_bs) ** 2)
+                e_y5 = iv.sqrt(e_y4 * e_y6)
+                e_vev = b * (cos_a0 * iv.sqrt(e_sw4_2_safe * (inv_bs ** 4)) + sin_a0 * iv.mpf("0.5") * c_qnf4_sup_s * iv.sqrt(e_y8) + e_y5 / iv.mpf(120)) + iv.mpf(2) / iv.mpf(3) * rhc * (e_y4 / iv.mpf(4))
+                w_sf = g_exp * e_vev + iv.exp(m_even) * g_cosh * e_vodd_2
+                x12 = (iv.mpf(4) * (kz ** 2) * haar_ratio) / (iv.mpf(2) * lam_c4e_safe)
+                tot = iv.mpf(21) * w_sf + _r10_nlf(beta_num, e_adm) + iv.mpf(21) * _r9_iv_gamma_upper_q_half_int(12, x12)
+                if mp.mpf(tot.a) < mp.mpf(best.a):
+                    best = tot
+            return best
+
+        def _r10_eval_ibp_bkar(beta_num: int, s_soft_str: str, deg_sf_str: str, deg_adm_str: str, kz_min="2.1", v4_only=False, c_tail_only_r=None):
+            b = iv.mpf(beta_num); s_soft = iv.mpf(s_soft_str)
+            s_eff = s_soft + iv.mpf(1) / (iv.mpf(6) * b); haar_ratio = s_eff / s_soft
+            cos_a0 = _r9_cos_half_deg_iv(deg_sf_str); sin_a0 = _r9_sin_half_deg_iv(deg_sf_str)
+            e_adm = _r9_eps_from_deg_iv(deg_adm_str); sqrt3 = iv.sqrt(iv.mpf(3))
+            prop_l1 = (iv.mpf(2) * iv.mpf(tail_m10_str[c_tail_only_r])) if (c_tail_only_r is not None) else op_l1_safe
+            v3_sup = iv.mpf(0) if v4_only else (cos_a0 * (iv.mpf(8) * c_sw3_sup) + sin_a0 * pv3_box_sup)
+            v4_sup = cos_a0 * sw4_box_sup + sin_a0 * pv4_box_sup
+            g1_3 = iv.mpf(0) if v4_only else (cos_a0 * sw3_box_g1 + sin_a0 * pv3_box_g1)
+            gtot_3 = iv.mpf(0) if v4_only else (cos_a0 * (iv.mpf(2) / sqrt3) + sin_a0 * pv3_box_gtot)
+            gtot_4 = cos_a0 * sw4_box_gtot + sin_a0 * pv4_box_gtot
+            hop_3 = iv.mpf(0) if v4_only else (cos_a0 * sw3_box_hop + sin_a0 * pv3_box_hop)
+            tad_shift = iv.mpf(0) if v4_only else (iv.mpf(6) * op_l1_safe * sin_a0 * max_tad_norm / (b * (s_eff ** 2)))
+            a1_table = [(iv.mpf(s_a), iv.exp(iv.mpf(s_a)), iv.mpf(s_a) * iv.e) for s_a in ("0.15", "0.35", "0.70", "1.0")]
+            best_tot = iv.mpf(10 ** 9); best_y = iv.mpf(0)
+            kz_start = 35 if mp.mpf(iv.mpf(kz_min).a) >= mp.mpf("3.49") else 21
+            t4_iv = iv.mpf(tail_m10_str[4]); ql1_iv = _r9_from_frac(q_l1_frac)
+            w_edge = iv.mpf(6) * prop_l1 / (b * s_eff)
+            bs_sqrt = iv.sqrt(b * s_soft)
+            for kz_i in range(kz_start, 45, 3):
+                kz = iv.mpf(kz_i) / iv.mpf(10)
+                rw = kz / bs_sqrt
+                d_max = tad_shift + iv.mpf(2) * op_l1_safe * g1_3 * (rw ** 2) / s_eff
+                r_in = rw - d_max
+                if mp.mpf(r_in.a) <= 0:
+                    continue
+                k_in = r_in * bs_sqrt
+                norm_A = iv.mpf(2) * op_l1_safe * hop_3 * rw / s_eff
+                if mp.mpf(norm_A.b) >= mp.mpf("0.85"):
+                    continue
+                x12 = (iv.mpf(4) * (k_in ** 2) * haar_ratio) / (iv.mpf(2) * lam_c4e_safe)
+                n_lf = _r10_nlf(beta_num, e_adm) + iv.mpf(21) * _r9_iv_gamma_upper_q_half_int(12, x12)
+                if mp.mpf(n_lf.a) >= mp.mpf("0.35"):
+                    continue
+                rhc = _r10_haar4(rw + d_max)
+                eta_4_r = b * (v4_sup * ((rw + d_max) ** 4) + ((iv.mpf(2) * (rw + d_max)) ** 5) / iv.mpf(120)) + iv.mpf(2) / iv.mpf(3) * rhc * ((rw + d_max) ** 4)
+                eta_pair_r = iv.mpf(5) / iv.mpf(18) * (b * gtot_3 * iv.mpf(6) * op_l1_safe * g1_3 * (rw ** 4)) / s_eff
+                jac_cyc = -iv.log(iv.mpf(1) - norm_A) - norm_A
+                m1_sf = iv.mpf(21) * (eta_4_r + eta_pair_r) + jac_cyc
+                for kr_i in (4, 6, 9, 13, 18, 25):
+                    rho = (iv.mpf(kr_i) / iv.mpf(10)) / bs_sqrt
+                    rc_l = rw + sqrt3 * rho
+                    d_rc = tad_shift + iv.mpf(2) * op_l1_safe * g1_3 * (rc_l ** 2) / s_eff
+                    rc_z = rc_l + d_rc
+                    rhcz = _r10_haar4(rc_z) if mp.mpf(rc_z.b) < 3 else iv.mpf(1)
+                    eta_4 = b * (v4_sup * (rc_z ** 4) + ((iv.mpf(2) * rc_z) ** 5) / iv.mpf(120)) + iv.mpf(2) / iv.mpf(3) * rhcz * (rc_z ** 4)
+                    eta_pair = iv.mpf(5) / iv.mpf(18) * (b * gtot_3 * iv.mpf(6) * op_l1_safe * g1_3 * (rc_l ** 4)) / s_eff
+                    eta_rem3 = b * (iv.mpf(2) * hop_3 * rc_l * (d_rc ** 2) + v3_sup * (d_rc ** 3))
+                    eta_odd_tail = (iv.mpf(1) / iv.mpf(3)) * rc_l * ql1_iv * t4_iv * iv.mpf(6) * g1_3 * b * (rc_l ** 2)
+                    eta_tot = eta_4 + eta_pair + eta_rem3 + eta_odd_tail
+                    if mp.mpf(eta_tot.b) > 5:
+                        continue
+                    g_4 = b * (gtot_4 * (rc_z ** 3) + iv.mpf(2) * ((iv.mpf(2) * rc_z) ** 4) / iv.mpf(48)) * (iv.mpf(1) + norm_A) + iv.mpf(8) / iv.mpf(3) * rhcz * (rc_z ** 3) * (iv.mpf(1) + norm_A)
+                    g_pair = (iv.mpf(5) / iv.mpf(9)) * iv.mpf(2) * (hop_3 * rc_l) * (iv.mpf(12) * op_l1_safe * b * g1_3 * (rc_l ** 2)) / s_eff
+                    g_rem3 = iv.mpf(3) * eta_rem3 / rc_l
+                    g_odd_tail = iv.mpf(3) * eta_odd_tail / rc_l
+                    g_tot = g_4 + g_pair + g_rem3 + g_odd_tail
+                    g_exp_eta = g_tot * iv.exp(eta_tot)
+                    w_sq3_r = w_edge * (sqrt3 / rho)
+                    for a1, ea1, a1_e in a1_table:
+                        phi_ea1 = ea1 * g_exp_eta
+                        y_ex = w_sq3_r * phi_ea1
+                        if mp.mpf(y_ex.b) >= mp.mpf("0.98"):
+                            continue
+                        n_trees = iv.mpf(42) * w_edge * (phi_ea1 ** 2) / (iv.mpf(1) - y_ex)
+                        kp_sc = (m1_sf * ea1 + n_trees + n_lf) / a1_e
+                        if mp.mpf(kp_sc.a) < mp.mpf(best_tot.a):
+                            best_tot = kp_sc; best_y = y_ex
+            return best_tot, best_y
+
+        w10_1_regimes = [
+            ("flat_1.000_cs_1mS", "1.0", "0.0", "51.855", (98, 99), (10258, 10259), (32809, 32810), (38666, 38667), (116265, 116266), 613671),
+            ("nonflat_0.815_6p_avg", "0.815", "18.42", "45.130", (183, 184), (17776, 17777), (57032, 57033), (200451, 200452), (580620, 580621), 7056652),
+            ("nonflat_0.815_1p_worst", "0.815", "45.130", "45.130", (323, 324), (20350, 20351), (65512, 65513), (507467, 507468), (1442487, 1442488), 24269827),
+            ("staglong_0.755_1p_w5", "0.755", "42.842", "42.842", (363, 364), (23501, 23502), (75638, 75639), (597921, 597922), (1700868, 1700869), 28240838),
+        ]
+        w10_1_brackets = {}
+        for rname, s_str, d_sf, d_adm, br_m1, br_v4_21, br_v4_35, br_21, br_35, w9_wall in w10_1_regimes:
+            w_m1_lo = _r10_eval_m1(br_m1[0], s_str, d_sf, d_adm)
+            w_m1_hi = _r10_eval_m1(br_m1[1], s_str, d_sf, d_adm)
+            require(mp.mpf(w_m1_lo.a) >= mp.mpf(kp_lim.b) and mp.mpf(w_m1_hi.b) < mp.mpf(kp_lim.a), f"W10-1 m=1 bracket fail: {rname}")
+            v4_21_lo, _ = _r10_eval_ibp_bkar(br_v4_21[0], s_str, d_sf, d_adm, "2.1", v4_only=True)
+            v4_21_hi, _ = _r10_eval_ibp_bkar(br_v4_21[1], s_str, d_sf, d_adm, "2.1", v4_only=True)
+            require(mp.mpf(v4_21_lo.a) >= mp.mpf(kp_lim.b) and mp.mpf(v4_21_hi.b) < mp.mpf(kp_lim.a), f"V4 floor kz21 fail: {rname}")
+            v4_35_lo, _ = _r10_eval_ibp_bkar(br_v4_35[0], s_str, d_sf, d_adm, "3.5", v4_only=True)
+            v4_35_hi, _ = _r10_eval_ibp_bkar(br_v4_35[1], s_str, d_sf, d_adm, "3.5", v4_only=True)
+            require(mp.mpf(v4_35_lo.a) >= mp.mpf(kp_lim.b) and mp.mpf(v4_35_hi.b) < mp.mpf(kp_lim.a), f"V4 floor kz35 fail: {rname}")
+            ibp_21_lo, _ = _r10_eval_ibp_bkar(br_21[0], s_str, d_sf, d_adm, "2.1", v4_only=False)
+            ibp_21_hi, y_21 = _r10_eval_ibp_bkar(br_21[1], s_str, d_sf, d_adm, "2.1", v4_only=False)
+            require(mp.mpf(ibp_21_lo.a) >= mp.mpf(kp_lim.b) and mp.mpf(ibp_21_hi.b) < mp.mpf(kp_lim.a), f"IBP kz21 bracket fail: {rname}")
+            ibp_35_lo, _ = _r10_eval_ibp_bkar(br_35[0], s_str, d_sf, d_adm, "3.5", v4_only=False)
+            ibp_35_hi, y_35 = _r10_eval_ibp_bkar(br_35[1], s_str, d_sf, d_adm, "3.5", v4_only=False)
+            require(mp.mpf(ibp_35_lo.a) >= mp.mpf(kp_lim.b) and mp.mpf(ibp_35_hi.b) < mp.mpf(kp_lim.a), f"IBP kz35 bracket fail: {rname}")
+            speedup_21 = iv.mpf(w9_wall) / iv.mpf(br_21[1])
+            require(mp.mpf(speedup_21.a) > 15, f"Speedup < 15x on {rname}: {speedup_21}")
+            w10_1_brackets[rname] = {
+                "m1_updated": list(br_m1),
+                "v4_floor_kz21": list(br_v4_21),
+                "v4_floor_kz35": list(br_v4_35),
+                "ibp_ct_kz21": list(br_21),
+                "ibp_ct_kz35": list(br_35),
+                "y_kz21": outward_str(y_21),
+                "y_kz35": outward_str(y_35),
+                "speedup_vs_w9_2b_kz21": outward_str(speedup_21),
+            }
+        c_tail_brackets = {}
+        for r_cut, b_lo, b_hi in ((2, 27322, 27323), (3, 22180, 22181), (4, 21400, 21401)):
+            ct_lo, _ = _r10_eval_ibp_bkar(b_lo, "1.0", "0.0", "51.855", "3.5", c_tail_only_r=r_cut)
+            ct_hi, _ = _r10_eval_ibp_bkar(b_hi, "1.0", "0.0", "51.855", "3.5", c_tail_only_r=r_cut)
+            require(mp.mpf(ct_lo.a) >= mp.mpf(kp_lim.b) and mp.mpf(ct_hi.b) < mp.mpf(kp_lim.a), f"C_tail R={r_cut} fail")
+            c_tail_brackets[f"flat_R{r_cut}"] = [b_lo, b_hi]
+        checks += 12
+
+        # ------------------------------------------------------------------
+        # 2. W10-2: Birman-Schwinger Duality, Parametrix, Curved 2^4 & BS
+        # ------------------------------------------------------------------
+        # SymPy 4x4 Zeeman, Taylor S_W, Variational Parametrix & U(1) W_p <= 0
+        th_sym = sp.Symbol("th_sym", real=True)
+        eps_sym = sp.Symbol("eps_sym", real=True)
+        sig_mats = [sp.Matrix([[0, 1], [1, 0]]), sp.Matrix([[0, -sp.I], [sp.I, 0]]), sp.Matrix([[1, 0], [0, -1]])]
+        I2_sp = sp.eye(2)
+        z_sym = [[sp.Symbol(f"zb_{k}_{a}", real=True) for a in range(3)] for k in range(4)]
+        def _exp_su2_2(vec):
+            M = (vec[0] * sig_mats[0] + vec[1] * sig_mats[1] + vec[2] * sig_mats[2]) / 2
+            return I2_sp + sp.I * eps_sym * M - (eps_sym ** 2) * (M * M) / 2
+        P_p_sp = sp.cos(th_sym / 2) * I2_sp + sp.I * sp.sin(th_sym / 2) * sig_mats[2]
+        prod_sp = P_p_sp
+        for k in range(4):
+            prod_sp = prod_sp * _exp_su2_2(z_sym[k])
+        quad_1x = sp.expand(-sp.simplify(sp.expand(sp.trace(prod_sp) / 2).coeff(eps_sym, 2)))
+        target_dTd4 = sum(sum(z_sym[k][a] for k in range(4)) ** 2 for a in range(3)) / 4
+        require(sp.simplify(2 * quad_1x.subs(th_sym, 0) - target_dTd4) == 0, "Flat 2*S_W != d^T d / 4")
+        vars_12 = [z_sym[k][0] for k in range(4)] + [z_sym[k][1] for k in range(4)]
+        H_1x = sp.hessian(quad_1x, vars_12)
+        K_1x = sp.Matrix(4, 4, lambda i, j: sp.simplify(H_1x[i, 4 + j].coeff(sp.sin(th_sym / 2))))
+        eigs_k1x = sorted(list((sp.I * K_1x).eigenvals().keys()), key=lambda x: mp.mpf(sp.N(x, 20)))
+        require(len(eigs_k1x) == 4 and sp.simplify(eigs_k1x[-1] - (sp.sqrt(2) + 1) / 4) == 0, "K_1x max eig != (sqrt2+1)/4")
+        require(sp.simplify(sum(ev for ev in eigs_k1x if mp.mpf(sp.N(ev, 20)) > 0) - 1 / sp.sqrt(2)) == 0, "Tr(Zp+) != 1/sqrt2")
+
+        # 4x4 Variational Dual Parametrix symbolic check
+        Q_p4 = sp.Matrix([[5, 1, 0, 0], [1, 4, 1, 0], [0, 1, 5, 1], [0, 0, 1, 4]])
+        t0_a, t0_b = sp.symbols("t0_a t0_b", real=True)
+        F_p4 = sp.Matrix([[1, sp.I, 0, 0], [0, 0, 1, -sp.I]])
+        T0_p4 = sp.Matrix([[t0_a, 0], [sp.I * t0_b, 0], [0, t0_a], [0, -sp.I * t0_b]])
+        Q_inv4 = Q_p4.inv()
+        K_ex4 = F_p4 * Q_inv4 * F_p4.H
+        FT0_4 = F_p4 * T0_p4
+        M_loc4 = FT0_4 + FT0_4.H - T0_p4.H * Q_p4 * T0_p4
+        R_par4 = F_p4.H - Q_p4 * T0_p4
+        require(sp.simplify(K_ex4 - (M_loc4 + R_par4.H * Q_inv4 * R_par4)) == sp.zeros(2, 2), "4x4 Parametrix identity failed")
+
+        # SoftFloor box_w=3 exact Fraction null witness (216 links, 216 plaqs=0, div=0, 8 C_b=0, u_core=1)
+        verts3 = list(itertools.product((0, 1, 2), repeat=4))
+        phi3 = {v: Fraction(0) for v in verts3}
+        phi3[(2, 1, 1, 1)] = Fraction(1); phi3[(0, 1, 1, 1)] = Fraction(-1)
+        edges3 = [(v, mu) for v in verts3 for mu in range(4) if v[mu] < 2]
+        require(len(edges3) == 216, "box3 edge count != 216")
+        u3 = {}
+        for v, mu in edges3:
+            vp = list(v); vp[mu] += 1
+            u3[(v, mu)] = phi3[tuple(vp)] - phi3[v]
+        require(u3[((1, 1, 1, 1), 0)] == Fraction(1) and u3[((0, 1, 1, 1), 0)] == Fraction(1), "u_core != 1")
+        n_plaq3 = 0
+        for v in verts3:
+            for mu, nu in PAIRS:
+                if v[mu] < 2 and v[nu] < 2:
+                    xm = list(v); xm[mu] += 1; xn = list(v); xn[nu] += 1
+                    curl = u3[(v, mu)] + u3[(tuple(xm), nu)] - u3[(tuple(xn), mu)] - u3[(v, nu)]
+                    require(curl == 0, "SoftFloor plaquette != 0")
+                    n_plaq3 += 1
+        require(n_plaq3 == 216, "SoftFloor plaq count != 216")
+        div_int3 = Fraction(0)
+        for mu in range(4):
+            vm = [1, 1, 1, 1]; vm[mu] -= 1
+            div_int3 += u3[((1, 1, 1, 1), mu)] - u3[(tuple(vm), mu)]
+        require(div_int3 == 0, "SoftFloor interior divergence != 0")
+        emap3 = set(edges3); n_cb3 = 0
+        for x0 in verts3:
+            if (x0[0] + x0[1]) % 2 == 0 and (x0[2] + x0[3]) % 2 == 0:
+                for a in range(4):
+                    L1, L2 = _r9_coarse_steps(a)
+                    paths3 = [(Fraction(3, 8), L1), (Fraction(3, 8), L2)]
+                    for nu in ([2, 3] if a < 2 else [0, 1]):
+                        for sg_s in (1, -1):
+                            for Lp in (L1, L2):
+                                paths3.append((Fraction(1, 32), [(nu, sg_s)] + Lp + [(nu, -sg_s)]))
+                    fits = True; cb_val = Fraction(0)
+                    for wt, steps in paths3:
+                        pos = list(x0)
+                        for mu, sgn in steps:
+                            if sgn == 1:
+                                key = (tuple(pos), mu)
+                                if key not in emap3:
+                                    fits = False; break
+                                cb_val += wt * u3[key]; pos[mu] += 1
+                            else:
+                                pos[mu] -= 1; key = (tuple(pos), mu)
+                                if key not in emap3:
+                                    fits = False; break
+                                cb_val -= wt * u3[key]
+                        if not fits:
+                            break
+                    if fits:
+                        require(cb_val == 0, "SoftFloor C_b != 0")
+                        n_cb3 += 1
+        require(n_cb3 == 8, f"SoftFloor interior C_b count != 8: {n_cb3}")
+        checks += 4
+
+        # 40d iv O-W10.2-{AbelianBlock, NeumannPatch, SoftFloor IMS, TreeHolonomyLip}
+        c_p_ab = _r9_cos_half_deg_iv("45.0")
+        s_p_ab = iv.sqrt(iv.mpf(1) - c_p_ab * c_p_ab)
+        E_ab = iv.mpf(6) * (iv.mpf(1) - c_p_ab); c0_ab = iv.mpf(1) - E_ab
+        sg4 = [1, 1, -1, -1]
+        W_ab = [[(c0_ab - c_p_ab) * iv.mpf(sg4[r] * sg4[c]) / 4 - s_p_ab * (iv.mpc(0, iv.mpf(sg4[r] * sg4[c]) / 4) if r < c else (iv.mpc(0, -iv.mpf(sg4[r] * sg4[c]) / 4) if r > c else iv.mpc(0, 0))) for c in range(4)] for r in range(4)]
+        evs_ab, _ = enclose_hermitian_eigenvalues(W_ab)
+        require(strictly_above(evs_ab[-1], "0.143") and strictly_below(evs_ab[-1], "0.144"), f"AbelianBlock mismatch: {evs_ab[-1]}")
+        require(mp.mpf((c0_ab - c_p_ab).b) <= 0, "U(1) W_p > 0 unexpected")
+
+        # O-W10.2-NeumannPatch (16x16 St_+ at 55d, s_soft=0.815)
+        st_edges = {("orig", mu): mu for mu in range(4)}
+        ie = 4
+        for mu in range(4):
+            for nu in range(4):
+                if mu != nu:
+                    st_edges[("shift", nu, mu)] = ie; ie += 1
+        st6_e = [(st_edges[("orig", mu)], st_edges[("shift", mu, nu)], st_edges[("shift", nu, mu)], st_edges[("orig", nu)]) for mu, nu in PAIRS]
+        aw_s = iv.mpf("0.36"); ow_s = (iv.mpf(1) - aw_s) / iv.mpf(3)
+        inv_sw16 = [iv.mpf(1) / iv.sqrt(aw_s if i < 4 else ow_s) for i in range(16)]
+        E55_iv = _r9_eps_from_deg_iv("55.0"); c0_55_iv = iv.mpf(1) - E55_iv
+        s1p_55_iv = iv.sqrt(E55_iv * (iv.mpf(2) - E55_iv))
+        H_np_iv = [[iv.mpc(iv.mpf("0.815") * (c0_55_iv - iv.mpf("0.20")) if i == j else 0, 0) for j in range(16)] for i in range(16)]
+        for p_idx_s, es in enumerate(st6_e):
+            coeff = iv.mpf("0.20") * (iv.mpf(1) - E55_iv if p_idx_s == 0 else iv.mpf(1))
+            for m in range(4):
+                for n in range(4):
+                    fac = inv_sw16[es[m]] * inv_sw16[es[n]]
+                    H_np_iv[es[m]][es[n]] = H_np_iv[es[m]][es[n]] + fac * coeff * (iv.mpf(sg4[m] * sg4[n]) / iv.mpf(4))
+                    if p_idx_s == 0 and m != n:
+                        sg_mn = iv.mpf(sg4[m] * sg4[n]) / iv.mpf(4)
+                        H_np_iv[es[m]][es[n]] = H_np_iv[es[m]][es[n]] + iv.mpc(0, (s1p_55_iv * sg_mn * fac) if m < n else (-s1p_55_iv * sg_mn * fac))
+        evs_np, _ = enclose_hermitian_eigenvalues(H_np_iv)
+        require(mp.mpf(evs_np[0].b) < 0, f"NeumannPatch St_+ at 55d should be < 0: {evs_np[0]}")
+
+        # Shared 16x16 Q_cos(p; alpha_D, c_gf=0.25) evaluator for IMS & M=8 BS checks
+        def _r10_eval_C_hat_iv(k_vec):
+            ei = [_r10_iv_exp_i(k_vec[d]) for d in range(4)]
+            einv = [iv_conj(z) for z in ei]
+            pows = [{0: iv.mpc(1, 0), 1: ei[d], -1: einv[d], 2: ei[d] * ei[d], -2: einv[d] * einv[d]} for d in range(4)]
+            C = [[iv.mpc(0, 0) for _ in range(4)] for _ in range(4)]
+            for a in range(4):
+                for mu, pt, w in C_SPECS_IV[a]:
+                    C[a][mu] = C[a][mu] + w * pows[0][pt[0]] * pows[1][pt[1]] * pows[2][pt[2]] * pows[3][pt[3]]
+            return C, ei
+
+        def _r10_Q_cos_iv(p_vec, alpha_D):
+            k0 = [iv.mpf("0.5") * sum(R1_INT[i][j] * p_vec[j] for j in range(4)) for i in range(4)]
+            Q = iv_zeros(16); Cb = [[iv.mpc(0, 0)] * 16 for _ in range(4)]; U = [[iv.mpc(0, 0)] * 4 for _ in range(4)]
+            c_gf = iv.mpf("0.25")
+            for si, s in enumerate(SHIFTS_K):
+                k = [k0[i] + iv.pi * s[i] for i in range(4)]
+                Ck, ei = _r10_eval_C_hat_iv(k)
+                ksq = sum((iv.mpf(2) - iv.mpf(2) * ei[mu].real) for mu in range(4))
+                dk = [ei[mu] - iv.mpc(1, 0) for mu in range(4)]
+                c_diag = iv.mpf("0.25") * alpha_D * ksq
+                c_ll = c_gf - iv.mpf("0.25") * alpha_D
+                for mu in range(4):
+                    Q[4 * si + mu][4 * si + mu] = Q[4 * si + mu][4 * si + mu] + c_diag
+                    for nu in range(4):
+                        Q[4 * si + mu][4 * si + nu] = Q[4 * si + mu][4 * si + nu] + c_ll * dk[mu] * iv_conj(dk[nu])
+                for a in range(4):
+                    for mu in range(4):
+                        Cb[a][4 * si + mu] = iv.mpf("0.5") * Ck[a][mu]
+                for c_i, sc in enumerate(CELL_SHIFTS):
+                    ph = iv.mpc(1, 0)
+                    for d in range(4):
+                        if sc[d] == 1:
+                            ph = ph * ei[d]
+                    U[c_i][si] = iv.mpf("0.5") * ph
+            for i in range(16):
+                for j in range(16):
+                    Q[i][j] = Q[i][j] + iv.mpf(4) * sum(iv_conj(Cb[a][i]) * Cb[a][j] for a in range(4))
+            Q_cos = iv_zeros(16)
+            for nu in range(4):
+                for mu in range(4):
+                    tmp = [[sum(U[cp][s] * Q[4 * s + nu][4 * t + mu] for s in range(4)) for t in range(4)] for cp in range(4)]
+                    for cp in range(4):
+                        for c in range(4):
+                            Q_cos[4 * cp + nu][4 * c + mu] = sum(tmp[cp][t] * iv_conj(U[c][t]) for t in range(4))
+            return Q_cos
+
+        # O-W10.2-SoftFloor IMS error norm at L_B in {4, 6, 8}
+        ims_norms = {}
+        Q0_c55 = _r10_Q_cos_iv([iv.mpf(0)] * 4, c0_55_iv)
+        for L_B in (4, 6, 8):
+            Q_avg = iv_zeros(16)
+            step_k = iv.pi / iv.mpf(L_B)
+            for eps_b in itertools.product((1, -1), repeat=4):
+                p_sh = [step_k * sum(R2_INT[i][j] * eps_b[j] for j in range(4)) for i in range(4)]
+                Q_sh = _r10_Q_cos_iv(p_sh, c0_55_iv)
+                for i in range(16):
+                    for j in range(16):
+                        Q_avg[i][j] = Q_avg[i][j] + Q_sh[i][j] / iv.mpf(16)
+            E_ims = iv_add(Q0_c55, Q_avg, scale_b=-1)
+            evs_ims, _ = enclose_hermitian_eigenvalues(E_ims)
+            nrm_ims = max(abs(evs_ims[0]), abs(evs_ims[-1]), key=lambda x: mp.mpf(x.b))
+            ims_norms[f"L_{L_B}"] = outward_str(nrm_ims)
+        require(strictly_above(_r10_iv_from_outward_str(ims_norms["L_4"]), "0.999"), "IMS L_B=4 < 0.999")
+        dev_d1 = iv.mpf(2) * _r9_sin_half_deg_iv("55.0")
+        dev_d2 = iv.mpf(2) * _r9_sin_half_deg_iv("110.0")
+        require(strictly_above(dev_d1, "0.923") and strictly_above(dev_d2, "1.638"), "TreeHolonomyLip mismatch")
+        checks += 4
+
+        # Exact 1p Birman-Schwinger with W9-2b C4e across {65, 120, 180} deg
+        c4e_ref = iv.mpf("0.627595"); kp_max_bs = (iv.sqrt(iv.mpf(2)) + iv.mpf(1)) / iv.mpf(4)
+        bs_1p_map = {}
+        for deg in (65, 120, 180):
+            th_d = iv.mpf(deg) * iv.pi / iv.mpf(180)
+            b_half = c4e_ref * (kp_max_bs * iv.sin(th_d / iv.mpf(2)) + (iv.mpf(1) - iv.cos(th_d / iv.mpf(2))) / iv.mpf(2))
+            b_full = c4e_ref * (kp_max_bs * iv.sin(th_d / iv.mpf(2)) + (iv.mpf(1) - iv.cos(th_d / iv.mpf(2))))
+            require(mp.mpf(b_half.b) < 1, f"1p half-sym BS >= 1 at {deg}")
+            bs_1p_map[f"deg_{deg}"] = {"half_sym": outward_str(b_half), "full_sym": outward_str(b_full)}
+
+        # Extremal M=8 16x16 Birman-Schwinger Schur-complement checks (exact argmax momenta from W10-2)
+        def _r10_bs_m8_point(th_str: str, mode: str, p_idx: tuple[int, ...]):
+            E_v = _r9_eps_from_deg_iv(th_str); c0_v = iv.mpf(1) - E_v
+            s1p_v = iv.sqrt(E_v * (iv.mpf(2) - E_v))
+            E6_v = E_v / iv.mpf(6)
+            s6p_v = iv.sqrt(E6_v * (iv.mpf(2) - E6_v))
+            Lp4 = [[iv.mpf(sg4[r] * sg4[c]) / iv.mpf(4) for c in range(4)] for r in range(4)]
+            Zp4 = [[iv.mpc(0, iv.mpf(sg4[r] * sg4[c]) / iv.mpf(4)) if r < c else (iv.mpc(0, -iv.mpf(sg4[r] * sg4[c]) / iv.mpf(4)) if r > c else iv.mpc(0, 0)) for c in range(4)] for r in range(4)]
+            if mode == "ALL6p":
+                W4 = [[-s1p_v * Zp4[r][c] for c in range(4)] for r in range(4)]
+                active_t = list(range(24))
+            else:
+                W4 = [[-(iv.mpf(5) * E_v / iv.mpf(6)) * Lp4[r][c] - s6p_v * Zp4[r][c] for c in range(4)] for r in range(4)]
+                active_t = list(range(24))
+            evs4, _ = enclose_hermitian_eigenvalues(W4)
+            H_w4 = iv_to_midpoint_mp(W4)
+            _, V_w4 = mp.eighe(H_w4)
+            V_iv = [[iv.mpc(V_w4[r, c].real, V_w4[r, c].imag) for c in range(4)] for r in range(4)]
+            pos_idx = [i for i in range(4) if mp.mpf(evs4[i].a) > mp.mpf("1e-20")]
+            pad_w = iv.mpf("1e-30")
+            F4 = [[iv.sqrt(iv.mpf(evs4[idx].b) + pad_w) * iv_conj(V_iv[c][idx]) for c in range(4)] for idx in pos_idx]
+            p_vec = [iv.mpf(2) * iv.pi * iv.mpf(p_idx[d]) / iv.mpf(8) for d in range(4)]
+            Qp = _r10_Q_cos_iv(p_vec, c0_v)
+            Qp_inv = _r10_iv_herm_inv(Qp, 16)
+            W16 = iv_zeros(16)
+            ei_p = [_r10_iv_exp_i(p_vec[d]) for d in range(4)]
+            einv_p = [iv_conj(z) for z in ei_p]
+            def _ph_dx(dX):
+                val = iv.mpc(1, 0)
+                for d in range(4):
+                    if dX[d] > 0:
+                        val = val * (ei_p[d] ** dX[d])
+                    elif dX[d] < 0:
+                        val = val * (einv_p[d] ** (-dX[d]))
+                return val
+            for sc in CELL_SHIFTS:
+                for mu, nu in PAIRS:
+                    xm, xn = list(sc), list(sc); xm[mu] += 1; xn[nu] += 1
+                    es = [_r9_coset_decompose(pt) + (dmu,) for pt, dmu in ((sc, mu), (tuple(xm), nu), (tuple(xn), mu), (sc, nu))]
+                    for r in range(len(F4)):
+                        vec16 = [iv.mpc(0, 0)] * 16
+                        for a in range(4):
+                            Xa, ca, da = es[a]
+                            vec16[4 * ca + da] = vec16[4 * ca + da] + F4[r][a] * _ph_dx(Xa)
+                        for i in range(16):
+                            for j in range(16):
+                                W16[i][j] = W16[i][j] + iv_conj(vec16[i]) * vec16[j]
+            K_16 = iv_matmul(Qp_inv, W16)
+            H_kmp = iv_to_midpoint_mp(K_16)
+            # Hermitianize via similarity K_sym = F_big Q_inv F_big^H via eigenvalues of Q^{-1/2} W Q^{-1/2} or direct Schur:
+            vals_k = mp.eig(H_kmp)[0]
+            lam_est = max(v.real for v in vals_k)
+            lam_lo = mp.floor(lam_est * mp.mpf("1e8")) / mp.mpf("1e8") - mp.mpf("1e-7")
+            lam_hi = mp.ceil(lam_est * mp.mpf("1e8")) / mp.mpf("1e8") + mp.mpf("1e-7")
+            ok_hi, _ = _r9_herm_ldlh_pos([[Qp[i][j] - (iv.mpf(1) / iv.mpf(lam_hi)) * W16[i][j] for j in range(16)] for i in range(16)])
+            ok_lo, _ = _r9_herm_ldlh_pos([[Qp[i][j] - (iv.mpf(1) / iv.mpf(lam_lo)) * W16[i][j] for j in range(16)] for i in range(16)])
+            require(ok_hi and (not ok_lo), f"BS M8 bracket check failed at {th_str} {mode}: {lam_est}")
+            return iv.mpf([lam_lo, lam_hi])
+
+        bs_all6p_52 = _r10_bs_m8_point("52.0", "ALL6p", (1, 0, 7, 4))
+        bs_all6p_55 = _r10_bs_m8_point("55.0", "ALL6p", (1, 0, 7, 4))
+        bs_6p_55 = _r10_bs_m8_point("55.0", "6p", (0, 0, 7, 4))
+        bs_6p_70 = _r10_bs_m8_point("70.0", "6p", (0, 0, 7, 4))
+        bs_6p_90 = _r10_bs_m8_point("90.0", "6p", (0, 0, 7, 4))
+        require(strictly_below(bs_all6p_52 * iv.mpf("1.02"), "0.95"), "ALL6p 52d guarded >= 0.95")
+        require(strictly_below(bs_all6p_55, "1.0"), "ALL6p 55d M=8 >= 1")
+        checks += 5
+
+        # Curved 2^4 Stag_01 (64x64 charged sector in 40d iv) at 55d R=1 (and 65d R=2)
+        def _r10_certify_2pow4_stag01(th_str: str, param_R: int, w1_str: str):
+            E_iv = _r9_eps_from_deg_iv(th_str); c0_iv = iv.mpf(1) - E_iv
+            th_rad = iv.mpf(th_str) * iv.pi / iv.mpf(180)
+            pts2 = list(itertools.product((0, 1), repeat=4))
+            p2_idx = {pt: i for i, pt in enumerate(pts2)}
+            u_ph = [iv.mpc(1, 0)] * 64
+            for vi, pt in enumerate(pts2):
+                ang = (th_rad / iv.mpf(2)) * (1 if pt[0] == 0 else -1)
+                u_ph[4 * vi + 1] = _r10_iv_exp_i(ang)
+            D_64 = iv_zeros(64); L_64 = [[iv.mpc(0, 0)] * 16 for _ in range(64)]
+            Fp_rows = []; Fp_pts = []
+            for vi, pt in enumerate(pts2):
+                for mu, nu in PAIRS:
+                    xm = list(pt); xm[mu] = (xm[mu] + 1) % 2; xn = list(pt); xn[nu] = (xn[nu] + 1) % 2
+                    e1 = 4 * vi + mu; e2 = 4 * p2_idx[tuple(xm)] + nu; e3 = 4 * p2_idx[tuple(xn)] + mu; e4 = 4 * vi + nu
+                    es = [e1, e2, e3, e4]
+                    u123i = u_ph[e1] * u_ph[e2] * iv_conj(u_ph[e3])
+                    up = u123i * iv_conj(u_ph[e4])
+                    Ms = [iv.mpc(1, 0), u_ph[e1], -u123i, -up]
+                    if (mu, nu) == (0, 1):
+                        c_p = _r9_cos_half_deg_iv(th_str); fp_ang = (1 if pt[0] == 0 else -1) * iv.sin(th_rad / iv.mpf(2))
+                    else:
+                        c_p = iv.mpf(1); fp_ang = iv.mpf(0)
+                    for m in range(4):
+                        for n in range(4):
+                            D_64[es[m]][es[n]] = D_64[es[m]][es[n]] + iv.mpf("0.25") * iv_conj(Ms[m]) * Ms[n]
+                    if (mu, nu) == (0, 1):
+                        Wp4 = iv_zeros(4)
+                        for m in range(4):
+                            for n in range(4):
+                                blk = iv.mpf("0.25") * (c0_iv - c_p) * iv_conj(Ms[m]) * Ms[n]
+                                if m < n:
+                                    blk = blk - iv.mpc(0, iv.mpf("0.25") * fp_ang) * iv_conj(Ms[m]) * Ms[n]
+                                elif m > n:
+                                    blk = blk + iv.mpc(0, iv.mpf("0.25") * fp_ang) * iv_conj(Ms[m]) * Ms[n]
+                                Wp4[m][n] = blk
+                        evs_w, _ = enclose_hermitian_eigenvalues(Wp4)
+                        _, V_w = mp.eighe(iv_to_midpoint_mp(Wp4))
+                        for idx in range(4):
+                            if mp.mpf(evs_w[idx].a) > mp.mpf("1e-20"):
+                                row64 = [iv.mpc(0, 0)] * 64
+                                sc_w = iv.sqrt(iv.mpf(evs_w[idx].b) + iv.mpf("1e-30"))
+                                for m in range(4):
+                                    v_cm = iv.mpc(V_w[m, idx].real, -V_w[m, idx].imag)
+                                    row64[es[m]] = row64[es[m]] + sc_w * v_cm
+                                Fp_rows.append(row64); Fp_pts.append(pt)
+            for vi, pt in enumerate(pts2):
+                for mu in range(4):
+                    xm = list(pt); xm[mu] = (xm[mu] - 1) % 2; vm = p2_idx[tuple(xm)]
+                    L_64[4 * vi + mu][vi] = L_64[4 * vi + mu][vi] + iv.mpc(1, 0)
+                    e_in = 4 * vm + mu
+                    L_64[e_in][vi] = L_64[e_in][vi] - iv_conj(u_ph[e_in])
+            C_rows = []; ast_f = iv.mpf("0.25")
+            for vi, pt in enumerate(pts2):
+                if (pt[0] + pt[1]) % 2 == 0 and (pt[2] + pt[3]) % 2 == 0:
+                    for a in range(4):
+                        L1, L2 = _r9_coarse_steps(a)
+                        paths_c = [(iv.mpf("0.5") * (iv.mpf(1) - ast_f), L1), (iv.mpf("0.5") * (iv.mpf(1) - ast_f), L2)]
+                        for nu in ([2, 3] if a < 2 else [0, 1]):
+                            for sg_s in (1, -1):
+                                for Lp in (L1, L2):
+                                    paths_c.append((ast_f / iv.mpf(8), [(nu, sg_s)] + Lp + [(nu, -sg_s)]))
+                        crow = [iv.mpc(0, 0)] * 64
+                        for wt, steps in paths_c:
+                            cur_pt = list(pt); p_tr = iv.mpc(1, 0)
+                            for mu, sgn in steps:
+                                if sgn == 1:
+                                    e_idx = 4 * p2_idx[tuple(cur_pt)] + mu
+                                    crow[e_idx] = crow[e_idx] + wt * p_tr
+                                    p_tr = p_tr * u_ph[e_idx]; cur_pt[mu] = (cur_pt[mu] + 1) % 2
+                                else:
+                                    cur_pt[mu] = (cur_pt[mu] - 1) % 2
+                                    e_idx = 4 * p2_idx[tuple(cur_pt)] + mu
+                                    p_tr = p_tr * iv_conj(u_ph[e_idx])
+                                    crow[e_idx] = crow[e_idx] - wt * p_tr
+                        C_rows.append(crow)
+            A_64 = [[c0_iv * D_64[i][j] for j in range(64)] for i in range(64)]
+            for vi in range(16):
+                nz_l = [(i, L_64[i][vi]) for i in range(64) if mp.mpf(abs(L_64[i][vi]).b) > 0]
+                for i, li in nz_l:
+                    for j, lj in nz_l:
+                        A_64[i][j] = A_64[i][j] + iv.mpf("0.25") * li * iv_conj(lj)
+            for crow in C_rows:
+                nz_c = [(i, crow[i]) for i in range(64) if mp.mpf(abs(crow[i]).b) > 0]
+                for i, ci in nz_c:
+                    ci_c = iv_conj(ci)
+                    for j, cj in nz_c:
+                        A_64[i][j] = A_64[i][j] + iv.mpf(4) * ci_c * cj
+
+            # Fast rigorous 40d iv LDLH spectral enclosures (avoids 64x64 mp.eighe / mp.inv)
+            if th_str == "55.0":
+                s_lo_target, s_hi_target = iv.mpf("0.564331"), iv.mpf("0.564332")
+                k_lo_target, k_hi_target = iv.mpf("0.344451"), iv.mpf("0.344452")
+            else:
+                s_lo_target, s_hi_target = iv.mpf("0.493200"), iv.mpf("0.493202")
+                k_lo_target, k_hi_target = iv.mpf("0.416964"), iv.mpf("0.416966")
+            ok_s_lo, _ = _r9_herm_ldlh_pos([[A_64[i][j] - (s_lo_target if i == j else iv.mpc(0, 0)) for j in range(64)] for i in range(64)])
+            require(ok_s_lo, f"2^4 Stag_01 s_soft < {s_lo_target}")
+            s_soft_2 = s_lo_target
+
+            nf = len(Fp_rows)
+            nz_Fp = [[(b, Fp_rows[r][b]) for b in range(64) if mp.mpf(abs(Fp_rows[r][b]).b) > 0] for r in range(nf)]
+            FH_F_iv = iv_zeros(64)
+            for r in range(nf):
+                for i, fri in nz_Fp[r]:
+                    fric = iv_conj(fri)
+                    for j, frj in nz_Fp[r]:
+                        FH_F_iv[i][j] = FH_F_iv[i][j] + fric * frj
+            ok_k_hi, _ = _r9_herm_ldlh_pos([[A_64[i][j] - (iv.mpf(1) / k_hi_target) * FH_F_iv[i][j] for j in range(64)] for i in range(64)])
+            require(ok_k_hi, f"2^4 Stag_01 op_K > {k_hi_target}")
+            op_K_2 = k_hi_target
+
+            A_id64 = iv_zeros(64); L_id64 = [[0] * 16 for _ in range(64)]
+            for vi, pt in enumerate(pts2):
+                for mu, nu in PAIRS:
+                    xm = list(pt); xm[mu] = (xm[mu] + 1) % 2; xn = list(pt); xn[nu] = (xn[nu] + 1) % 2
+                    es = [4 * vi + mu, 4 * p2_idx[tuple(xm)] + nu, 4 * p2_idx[tuple(xn)] + mu, 4 * vi + nu]
+                    for m in range(4):
+                        for n in range(4):
+                            A_id64[es[m]][es[n]] = A_id64[es[m]][es[n]] + c0_iv * iv.mpc(sg4[m] * sg4[n], 0) / iv.mpf(4)
+                for mu in range(4):
+                    xm = list(pt); xm[mu] = (xm[mu] - 1) % 2
+                    L_id64[4 * vi + mu][vi] += 1; L_id64[4 * p2_idx[tuple(xm)] + mu][vi] -= 1
+            C_id_rows = []
+            for vi, pt in enumerate(pts2):
+                if (pt[0] + pt[1]) % 2 == 0 and (pt[2] + pt[3]) % 2 == 0:
+                    for a in range(4):
+                        L1, L2 = _r9_coarse_steps(a)
+                        paths_id = [(iv.mpf("0.5") * (iv.mpf(1) - ast_f), L1), (iv.mpf("0.5") * (iv.mpf(1) - ast_f), L2)]
+                        for nu in ([2, 3] if a < 2 else [0, 1]):
+                            for sg_s in (1, -1):
+                                for Lp in (L1, L2):
+                                    paths_id.append((ast_f / iv.mpf(8), [(nu, sg_s)] + Lp + [(nu, -sg_s)]))
+                        crow = [iv.mpf(0)] * 64
+                        for wt, steps in paths_id:
+                            cpt = list(pt)
+                            for mu, sgn in steps:
+                                if sgn == 1:
+                                    crow[4 * p2_idx[tuple(cpt)] + mu] = crow[4 * p2_idx[tuple(cpt)] + mu] + wt; cpt[mu] = (cpt[mu] + 1) % 2
+                                else:
+                                    cpt[mu] = (cpt[mu] - 1) % 2; crow[4 * p2_idx[tuple(cpt)] + mu] = crow[4 * p2_idx[tuple(cpt)] + mu] - wt
+                        C_id_rows.append(crow)
+            for i in range(64):
+                for j in range(i, 64):
+                    ll = sum(L_id64[i][v] * L_id64[j][v] for v in range(16) if L_id64[i][v] != 0 and L_id64[j][v] != 0)
+                    cc = sum(C_id_rows[r][i] * C_id_rows[r][j] for r in range(len(C_id_rows)) if mp.mpf(abs(C_id_rows[r][i]).b) > 0 and mp.mpf(abs(C_id_rows[r][j]).b) > 0)
+                    v_ij = A_id64[i][j] + iv.mpc(iv.mpf("0.25") * ll + iv.mpf(4) * cc, 0)
+                    A_id64[i][j] = v_ij; A_id64[j][i] = v_ij
+            G_id64 = _r10_iv_real_sym_inv(A_id64, 64)
+            def _tr_iv(v_r, v_e):
+                cur = list(v_r); ph = iv.mpc(1, 0)
+                for d in range(4):
+                    if cur[d] != v_e[d]:
+                        ph = ph * u_ph[4 * p2_idx[tuple(cur)] + d]; cur[d] = v_e[d]
+                return ph
+            w1_iv = iv.mpf(w1_str); T0_64 = [[iv.mpc(0, 0) for _ in range(nf)] for _ in range(64)]
+            for r in range(nf):
+                vr = Fp_pts[r]
+                phi_v = [_tr_iv(vr, pts2[e // 4]) for e in range(64)]
+                supp = [b for b in range(64) if mp.mpf(abs(Fp_rows[r][b]).b) > 0]
+                for e in range(64):
+                    ve = pts2[e // 4]; dist_e = sum(1 for d in range(4) if ve[d] != vr[d])
+                    if dist_e > param_R:
+                        continue
+                    wt_e = iv.mpf(1) if dist_e == 0 else (w1_iv ** dist_e)
+                    val = sum(G_id64[e][b] * iv_conj(phi_v[b]) * iv_conj(Fp_rows[r][b]) for b in supp)
+                    T0_64[e][r] = wt_e * phi_v[e] * val
+            nz_A64 = [[(b, A_64[i][b]) for b in range(64) if mp.mpf(abs(A_64[i][b]).b) > 0] for i in range(64)]
+            AT0 = [[sum(a_ib * T0_64[b][c] for b, a_ib in nz_A64[i]) for c in range(nf)] for i in range(64)]
+            FT0 = [[sum(frb * T0_64[b][c] for b, frb in nz_Fp[r]) for c in range(nf)] for r in range(nf)]
+            M_loc = iv_zeros(nf)
+            for r in range(nf):
+                for c in range(r, nf):
+                    v_rc = FT0[r][c] + iv_conj(FT0[c][r]) - sum(iv_conj(T0_64[b][r]) * AT0[b][c] for b in range(64))
+                    M_loc[r][c] = v_rc; M_loc[c][r] = iv_conj(v_rc)
+            R_64 = [[iv_conj(Fp_rows[c][i]) - AT0[i][c] for c in range(nf)] for i in range(64)]
+            RtR = iv_zeros(nf)
+            for r in range(nf):
+                for c in range(r, nf):
+                    v_rc = sum(iv_conj(R_64[i][r]) * R_64[i][c] for i in range(64))
+                    RtR[r][c] = v_rc; RtR[c][r] = iv_conj(v_rc)
+            ev_M = enclose_hermitian_eigenvalues(M_loc)[0][-1]
+            ev_R = enclose_hermitian_eigenvalues(RtR)[0][-1]
+            bnd_2 = ev_M + ev_R / s_soft_2
+            require(mp.mpf(bnd_2.b) < 1, f"Parametrix bound >= 1 at {th_str}: {bnd_2}")
+            return {"theta_deg": th_str, "param_R": param_R, "s_soft": outward_str(s_soft_2), "op_K": outward_str(op_K_2), "M_loc_max": outward_str(ev_M), "R2_max": outward_str(ev_R), "parametrix_bound": outward_str(bnd_2)}
+
+        stag55_cert = _r10_certify_2pow4_stag01("55.0", 1, "0.5")
+        stag65_cert = _r10_certify_2pow4_stag01("65.0", 2, "0.5")
+        checks += 4
+
+        # Zone IIIa 8 Chernoff brackets (b_fail, b_pass) matching W10-2 Part 4 (cB=1.403289 vs db1 + db2/b)
+        c_B_w10_2 = iv.mpf("1.403289")
+        ln2_w10 = iv.log(iv.mpf(2))
+        db1_h = (iv.mpf(11) / (iv.mpf(6) * (iv.pi ** 2))) * ln2_w10
+        db2_h = (iv.mpf(17) / (iv.mpf(6) * (iv.pi ** 4))) * ln2_w10
+        z3a_brackets = {}
+        for z_name, d_str, b_lo, b_hi in [
+            ("BS_ALL6p_at_E_52d", "52.0", 104, 105),
+            ("BS_ALL6p_M8_55d", "55.0", 93, 94),
+            ("BS_K2_Schur_65d", "65.0", 67, 68),
+            ("BS_K2_Schur_c0_c3_70d", "70.0", 58, 59),
+            ("BS_MIX2x2_90d", "90.0", 36, 37),
+            ("W9_1_flat_cs1mS", "51.855", 105, 106),
+            ("W9_1_nonflat_0.815", "45.130", 138, 139),
+            ("W9_1_staglong_0.755", "42.842", 153, 154),
+        ]:
+            e_v = _r9_eps_from_deg_iv(d_str)
+            p_lo = seven_e * _r9_iv_pddh03_chernoff_chi2(Fraction(9, 2), c_B_w10_2 * iv.mpf(b_lo) * e_v) + iv.mpf("0.5") / (iv.mpf(b_lo) ** 2)
+            p_hi = seven_e * _r9_iv_pddh03_chernoff_chi2(Fraction(9, 2), c_B_w10_2 * iv.mpf(b_hi) * e_v) + iv.mpf("0.5") / (iv.mpf(b_hi) ** 2)
+            r_lo = db1_h + db2_h / iv.mpf(b_lo)
+            r_hi = db1_h + db2_h / iv.mpf(b_hi)
+            require(mp.mpf(p_lo.a) > mp.mpf(r_lo.b) and mp.mpf(p_hi.b) < mp.mpf(r_hi.a), f"Z3a Chernoff bracket fail: {z_name}")
+            z3a_brackets[z_name] = [b_lo, b_hi]
+        checks += 2
+
+        # ------------------------------------------------------------------
+        # 3. W10-3 & W10-4: Anderson-Higgs, R2R1 vs Lb2, S^3 W1 & Convergence
+        # ------------------------------------------------------------------
+        # Minimal 2-plaq Anderson-Higgs SymPy + 40d iv Sylvester H3
+        ah_th, ah_phi, ah_r, ah_dr, ah_dal = sp.symbols("ah_th ah_phi ah_r ah_dr ah_dal", real=True)
+        def _qax(ang, n1, n2, n3):
+            c, s = sp.cos(ang / 2), sp.sin(ang / 2)
+            return (c, s * n1, s * n2, s * n3)
+        def _qmul_ah(p, q):
+            return (
+                p[0] * q[0] - p[1] * q[1] - p[2] * q[2] - p[3] * q[3],
+                p[0] * q[1] + p[1] * q[0] - p[2] * q[3] + p[3] * q[2],
+                p[0] * q[2] + p[2] * q[0] - p[3] * q[1] + p[1] * q[3],
+                p[0] * q[3] + p[3] * q[0] - p[1] * q[2] + p[2] * q[1],
+            )
+        def _s1_ah(ph, rv, dal):
+            U1 = _qmul_ah(_qax(ah_th + ph, 0, 0, 1), _qax(rv, sp.cos(dal), sp.sin(dal), 0))
+            W = _qmul_ah(_qmul_ah(U1, _qax(rv, 0, 1, 0)), _qmul_ah(_qax(-rv, 1, 0, 0), _qax(-rv, 0, 1, 0)))
+            return sp.expand(1 - W[0])
+        S2_ah = sp.expand(_s1_ah(ah_phi, ah_r + ah_dr, ah_dal) + _s1_ah(-ah_phi, ah_r - ah_dr, -ah_dal))
+        dS_dr_ah = sp.simplify(sp.diff(S2_ah, ah_r).subs({ah_dr: 0, ah_phi: 0, ah_dal: 0}))
+        sin2_rs_h = sp.sin(ah_th / 2) / (2 * (sp.sin(ah_th / 2) + sp.cos(ah_th / 2)))
+        s_h_sym, c_h_sym = sp.symbols("s_h_sym c_h_sym")
+        require(sp.simplify(dS_dr_ah.subs({sp.sin(ah_r / 2): s_h_sym, sp.cos(ah_r / 2): c_h_sym}).subs(c_h_sym ** 2, 1 - s_h_sym ** 2).subs(s_h_sym ** 2, sin2_rs_h)) == 0, "Anderson-Higgs saddle != 0")
+        H3_ah = sp.hessian(S2_ah, [ah_phi, ah_dr, ah_dal]).subs({ah_dr: 0, ah_phi: 0, ah_dal: 0})
+        H_dal_tgt = 2 * sp.cos(ah_r) * (sp.sin(ah_r / 2) ** 2) * sp.cos(ah_th / 2)
+        require(sp.simplify(H3_ah[2, 2] - H_dal_tgt) == 0, "H_dal exact mismatch")
+        require(sp.simplify(H3_ah[2, 2].subs(ah_r, 0)) == 0, "U(1) H_dal collapse != 0")
+
+        def _r10_iv_asin_mono(s_iv):
+            y_mid = mp.asin(s_iv.mid); eps_r = mp.mpf("1e-35")
+            y_lo = y_mid - eps_r; y_hi = y_mid + eps_r
+            require(y_lo >= 0 and y_hi <= mp.pi / 2, "asin out of domain")
+            require(iv.sin(iv.mpf(y_lo)).b <= s_iv.a and iv.sin(iv.mpf(y_hi)).a >= s_iv.b, "asin enclosure fail")
+            return iv.mpf([y_lo, y_hi])
+
+        ah_sylvester = []
+        for deg in (75, 80, 85, 90, 100):
+            tv = iv.mpf(deg) * iv.pi / iv.mpf(180)
+            sth = iv.sin(tv / iv.mpf(2)); cth = iv.cos(tv / iv.mpf(2))
+            r_ex = iv.mpf(2) * _r10_iv_asin_mono(iv.sqrt(sth / (iv.mpf(2) * (sth + cth))))
+            sr = iv.sin(r_ex / iv.mpf(2)); cr = iv.cos(r_ex / iv.mpf(2))
+            sr2 = sr * sr; s2r = iv.sin(r_ex); cr_f = iv.cos(r_ex); sq2 = iv.sqrt(iv.mpf(2))
+            h00 = -sr2 * cth + sq2 * (s2r * s2r) * iv.sin(tv / iv.mpf(2) + iv.pi / iv.mpf(4)) / iv.mpf(4) + cth / iv.mpf(2)
+            h01 = iv.mpf(2) * (iv.mpf(2) * sq2 * sr2 * iv.cos(tv / iv.mpf(2) + iv.pi / iv.mpf(4)) - cth) * sr * cr
+            h02 = -sr2 * cr_f * cth
+            h11 = -iv.mpf(4) * sq2 * (sr2 * sr2) * iv.sin(tv / iv.mpf(2) + iv.pi / iv.mpf(4)) + iv.mpf(4) * sr2 * sth + iv.mpf(3) * sq2 * (s2r * s2r) * iv.sin(tv / iv.mpf(2) + iv.pi / iv.mpf(4)) - iv.mpf(2) * sth
+            h12 = iv.mpf(2) * (iv.mpf(1) - iv.mpf(2) * cr_f) * sr * sth * cr
+            h22 = iv.mpf(2) * cr_f * sr2 * cth
+            d1 = h00; d2 = h00 * h11 - h01 * h01
+            d3 = h00 * (h11 * h22 - h12 * h12) - h01 * (h01 * h22 - h12 * h02) + h02 * (h01 * h12 - h11 * h02)
+            require(mp.mpf(d1.a) > 0 and mp.mpf(d2.a) > 0 and mp.mpf(d3.a) > 0 and mp.mpf(h22.a) > 0, f"Sylvester PD fail at {deg}")
+            ah_sylvester.append({"deg": deg, "r_s": outward_str(r_ex), "H_dal": outward_str(h22), "Delta3": outward_str(d3)})
+        checks += 3
+
+        # Exact Fraction R2R1 vs Lb2 coarse-plaquette L2 variance ratio (32768/13815) & tree c4_0, c5_0
+        alpha_r = Fraction(1, 4); alpha_l = Fraction(3, 5)
+        u_r1 = [(1, 1, 0, 0), (-1, 1, 0, 0), (0, 0, 1, 1), (0, 0, -1, 1)]
+        def _build_lin_4d(paths):
+            ew = {}
+            for wt, st in paths:
+                pos = [0, 0, 0, 0]
+                for mu, sgn in st:
+                    if sgn == 1:
+                        k = (tuple(pos), mu); ew[k] = ew.get(k, Fraction(0)) + wt; pos[mu] += 1
+                    else:
+                        pos[mu] -= 1; k = (tuple(pos), mu); ew[k] = ew.get(k, Fraction(0)) - wt
+            return {k: v for k, v in ew.items() if v != 0}
+        def _r1_ew(xb, a_s):
+            L1, L2 = _r9_coarse_steps(a_s)
+            ps = [(Fraction(1, 2) * (1 - alpha_r), L1), (Fraction(1, 2) * (1 - alpha_r), L2)]
+            for nu in ([2, 3] if a_s < 2 else [0, 1]):
+                for sg in (1, -1):
+                    ps.append((alpha_r / 8, [(nu, sg)] + L1 + [(nu, -sg)]))
+                    ps.append((alpha_r / 8, [(nu, sg)] + L2 + [(nu, -sg)]))
+            return {((k[0][0] + xb[0], k[0][1] + xb[1], k[0][2] + xb[2], k[0][3] + xb[3]), k[1]): v for k, v in _build_lin_4d(ps).items()}
+        def _r2r1_ew(xb, muc):
+            if muc == 0: L1, L2, orth = [(0, 1), (1, -1)], [(1, -1), (0, 1)], [2, 3]
+            elif muc == 1: L1, L2, orth = [(0, 1), (1, 1)], [(1, 1), (0, 1)], [2, 3]
+            elif muc == 2: L1, L2, orth = [(2, 1), (3, -1)], [(3, -1), (2, 1)], [0, 1]
+            else: L1, L2, orth = [(2, 1), (3, 1)], [(3, 1), (2, 1)], [0, 1]
+            ps = [(Fraction(1, 2) * (1 - alpha_r), L1), (Fraction(1, 2) * (1 - alpha_r), L2)]
+            for nu in orth:
+                for sg in (1, -1):
+                    ps.append((alpha_r / 8, [(nu, sg)] + L1 + [(nu, -sg)]))
+                    ps.append((alpha_r / 8, [(nu, sg)] + L2 + [(nu, -sg)]))
+            acc = {}
+            for wt, st in ps:
+                pos = list(xb)
+                for a_st, sgn in st:
+                    if sgn == 1:
+                        for k, v in _r1_ew(tuple(pos), a_st).items():
+                            acc[k] = acc.get(k, Fraction(0)) + wt * v
+                        for i in range(4): pos[i] += u_r1[a_st][i]
+                    else:
+                        for i in range(4): pos[i] -= u_r1[a_st][i]
+                        for k, v in _r1_ew(tuple(pos), a_st).items():
+                            acc[k] = acc.get(k, Fraction(0)) - wt * v
+            return {k: v for k, v in acc.items() if v != 0}
+        def _lb2_ew(xb, mu):
+            L0 = [(mu, 1), (mu, 1)]
+            ps = [(1 - alpha_l, L0)]
+            for nu in range(4):
+                if nu != mu:
+                    for sg in (1, -1):
+                        ps.append((alpha_l / 6, [(nu, sg)] + L0 + [(nu, -sg)]))
+            return {((k[0][0] + xb[0], k[0][1] + xb[1], k[0][2] + xb[2], k[0][3] + xb[3]), k[1]): v for k, v in _build_lin_4d(ps).items()}
+        def _plaq_l2_stats(lfn):
+            ew_l = lfn((0, 0, 0, 0), 0); ew_p = {}
+            for xb, mu, sc in [((0, 0, 0, 0), 0, 1), ((2, 0, 0, 0), 1, 1), ((0, 2, 0, 0), 0, -1), ((0, 0, 0, 0), 1, -1)]:
+                for k, v in lfn(xb, mu).items():
+                    nv = ew_p.get(k, Fraction(0)) + sc * v
+                    if nv == 0: ew_p.pop(k, None)
+                    else: ew_p[k] = nv
+            return len(ew_l), sum(v * v for v in ew_l.values()), len(ew_p), sum(v * v for v in ew_p.values())
+
+        r2r1_el, r2r1_l2_l, r2r1_ep, r2r1_l2_p = _plaq_l2_stats(_r2r1_ew)
+        lb2_el, lb2_l2_l, lb2_ep, lb2_l2_p = _plaq_l2_stats(_lb2_ew)
+        require(r2r1_ep == 408 and lb2_ep == 56, "Fine edges/plaq mismatch")
+        require(r2r1_l2_l == Fraction(7359, 16384) and lb2_l2_l == Fraction(14, 25), "Link L2 mismatch")
+        require(r2r1_l2_p == Fraction(8289, 16384) and lb2_l2_p == Fraction(6, 5), "Plaq L2 mismatch")
+        ratio_link = lb2_l2_l / r2r1_l2_l; ratio_plaq = lb2_l2_p / r2r1_l2_p
+        require(ratio_link == Fraction(229376, 183975) and ratio_plaq == Fraction(32768, 13815), "Variance ratio mismatch")
+        require(Fraction(1, 4) - Fraction(1, 4 * (8 ** 4)) == Fraction(4095, 16384), "c4_0 mismatch")
+        require(Fraction(1, 5) - Fraction(1, 5 * (8 ** 5)) == Fraction(32767, 163840), "c5_0 mismatch")
+        checks += 3
+
+        # 40d iv S^3 vs S^1 W_1 Dobrushin hypergeometric bounds on [E] s=2 inputs
+        def _iv_perp_su2(b_iv, r_iv, K=120):
+            kap = b_iv * r_iv; k2 = kap * kap
+            k2_hi = mp.mpf(k2.b); k2_4_hi = mp.mpf((k2 / iv.mpf(4)).b)
+            require(k2_hi / mp.mpf((2 * K + 3) ** 2) < mp.mpf("0.5"), "Increase K")
+            num = iv.mpf(0); tn = iv.mpf(1)
+            for k in range(K):
+                num = num + tn / iv.mpf(k + 2); tn = tn * k2 / iv.mpf((2 * k + 3) ** 2)
+            tail_n = mp.mpf(tn.b) / (mp.mpf(K + 2) * (mp.mpf(1) - k2_hi / mp.mpf((2 * K + 3) ** 2)))
+            num_iv = (num + iv.mpf([0, tail_n])) / iv.pi
+            den = iv.mpf(0); td = iv.mpf(1); k2_4 = k2 / iv.mpf(4)
+            for k in range(K):
+                den = den + td; td = td * k2_4 / iv.mpf((k + 1) * (k + 2))
+            tail_d = mp.mpf(td.b) / (mp.mpf(1) - k2_4_hi / mp.mpf((K + 1) * (K + 2)))
+            return b_iv * (num_iv / ((den + iv.mpf([0, tail_d])) / iv.mpf(2)))
+
+        def _iv_u1_s1(b_iv, r_iv, K=120):
+            kap = b_iv * r_iv; k2 = kap * kap
+            k2_hi = mp.mpf(k2.b); k2_4_hi = mp.mpf((k2 / iv.mpf(4)).b)
+            l0 = iv.mpf(0); tl = iv.mpf(1)
+            for k in range(K):
+                l0 = l0 + tl; tl = tl * k2 / iv.mpf((2 * k + 3) ** 2)
+            tail_l = mp.mpf(tl.b) / (mp.mpf(1) - k2_hi / mp.mpf((2 * K + 3) ** 2))
+            l0_k = (iv.mpf(2) / iv.pi) * (l0 + iv.mpf([0, tail_l]))
+            i0 = iv.mpf(0); ti = iv.mpf(1); k2_4 = k2 / iv.mpf(4)
+            for k in range(K):
+                i0 = i0 + ti; ti = ti * k2_4 / iv.mpf((k + 1) ** 2)
+            tail_i = mp.mpf(ti.b) / (mp.mpf(1) - k2_4_hi / mp.mpf((K + 1) ** 2))
+            return b_iv * (l0_k / (i0 + iv.mpf([0, tail_i])))
+
+        w1_hk_rows = []
+        for bkey, bcal_s, rst_s, exp_pass in [
+            ("b_1.87", "0.14880226857372017", "2.3835415299997416", True),
+            ("b_2.00", "0.15898428721904678", "2.4603369273034756", True),
+            ("b_2.25", "0.3474015231021786", "4.360258428109051", False),
+            ("b_2.50", "0.5336759089805561", "4.917361132650968", False),
+        ]:
+            gp = iv.mpf(18) * _iv_perp_su2(iv.mpf(bcal_s), iv.mpf(rst_s))
+            require((mp.mpf(gp.b) < 1) if exp_pass else (mp.mpf(gp.a) > 1), f"W1 HK contrast mismatch {bkey}")
+            w1_hk_rows.append({"beta_key": bkey, "gamma_perp": outward_str(gp), "contracts_lt_1": exp_pass})
+        gp_w187 = iv.mpf(18) * _iv_perp_su2(iv.mpf("0.14769055681159737"), iv.mpf("2.33962168254078"))
+        require(mp.mpf(gp_w187.b) < 1, "Wilson 1.87 W1 contraction failed")
+        w1_c1 = [outward_str(iv.mpf(18) * _iv_u1_s1(iv.mpf(bc), iv.mpf(rs))) for bc, rs in [("0.7955978315247236", "5.770136820782587"), ("1.5377500752311777", "5.878597639367941"), ("1.4542221191615685", "5.867358626142772")]]
+        w1_c5 = [outward_str(iv.mpf(24) * _iv_perp_su2(iv.mpf(br), iv.mpf(rs))) for br, rs in [("1.07818764273781", "4.769706278288823"), ("1.8145905223919079", "6.139644721798927"), ("3.4288932666937453", "7.0263716694893965")]]
+        for s_g in w1_c1 + w1_c5:
+            require(strictly_above(_r10_iv_from_outward_str(s_g), "3.0"), "Control C1/C5 W1 failed >= 3")
+        checks += 4
+
+        # W10-4 Convergence: c4(theta) in [1/8, 5/24], 6p_Ab S_cell > 5.88 (15*S > 88.2), uniform Schur CT & HK/Wilson cut
+        th_c4 = sp.Symbol("th_c4", real=True)
+        c4_exact_sp = sp.Rational(1, 8) * sp.cos(th_c4 / 2) + sp.Rational(1, 6) * sp.sin(th_c4 / 2)
+        require(sp.simplify(c4_exact_sp.subs(th_c4, 0) - sp.Rational(1, 8)) == 0 and sp.simplify(c4_exact_sp.subs(th_c4, sp.pi) - sp.Rational(1, 6)) == 0, "c4 endpoints mismatch")
+        c4_sq_max_sp = sp.Rational(1, 8) ** 2 + sp.Rational(1, 6) ** 2
+        require(c4_sq_max_sp == sp.Rational(25, 576), "c4 peak^2 != (5/24)^2")
+        s_cell_41 = iv.mpf(24) * (iv.mpf(1) - iv.cos(iv.mpf(41) * iv.pi / iv.mpf(180)))
+        beta15_scell = iv.mpf(15) * s_cell_41
+        require(strictly_above(s_cell_41, "5.88") and strictly_above(beta15_scell, "88.2"), "6p_Ab large-field bound fail")
+
+        # Uniform U Schur CT Phi_Schur_U(mu) across mu in {0.0117566, 0.15, 0.20, 0.25, 0.30}
+        def _iv_coshm1(x):
+            return iv.mpf("0.5") * (iv.exp(x) + iv.exp(-x)) - iv.mpf(1)
+        all_c_u = {}
+        for a in range(4):
+            L1, L2 = _r9_coarse_steps(a)
+            ps = [(iv.mpf("0.5") * iv.mpf("0.75"), L1), (iv.mpf("0.5") * iv.mpf("0.75"), L2)]
+            for nu in ([2, 3] if a < 2 else [0, 1]):
+                for sg in (1, -1):
+                    ps.append((iv.mpf(1) / iv.mpf(32), [(nu, sg)] + L1 + [(nu, -sg)]))
+                    ps.append((iv.mpf(1) / iv.mpf(32), [(nu, sg)] + L2 + [(nu, -sg)]))
+            wm = {}
+            for wt, st in ps:
+                cur = [0, 0, 0, 0]
+                for rho, sgn in st:
+                    if sgn == 1:
+                        k = (tuple(cur), rho); wm[k] = wm.get(k, iv.mpf(0)) + wt / iv.mpf(2); cur[rho] += 1
+                    else:
+                        cur[rho] -= 1; k = (tuple(cur), rho); wm[k] = wm.get(k, iv.mpf(0)) - wt / iv.mpf(2)
+            all_c_u[a] = wm
+        yc_list_u = []
+        for y0 in range(-3, 4):
+            for y1 in range(-3, 4):
+                for y2 in range(-3, 4):
+                    for y3 in range(-3, 4):
+                        fx = [sum(R1_INT[i][j] * [y0, y1, y2, y3][j] for j in range(4)) for i in range(4)]
+                        if all(abs(c) <= 4 for c in fx):
+                            yc_list_u.append(tuple(fx))
+        def _x0_f(edge):
+            return Fraction(edge[0][0]) + (Fraction(1, 2) if edge[1] == 0 else Fraction(0))
+        all_c_f = {}
+        for a in range(4):
+            L1, L2 = _r9_coarse_steps(a)
+            ps = [(Fraction(3, 8), L1), (Fraction(3, 8), L2)]
+            for nu in ([2, 3] if a < 2 else [0, 1]):
+                for sg in (1, -1):
+                    ps.append((Fraction(1, 32), [(nu, sg)] + L1 + [(nu, -sg)]))
+                    ps.append((Fraction(1, 32), [(nu, sg)] + L2 + [(nu, -sg)]))
+            wm = {}
+            for wt, st in ps:
+                cur = [0, 0, 0, 0]
+                for rho, sgn in st:
+                    if sgn == 1:
+                        k = (tuple(cur), rho); wm[k] = wm.get(k, Fraction(0)) + wt / 2; cur[rho] += 1
+                    else:
+                        cur[rho] -= 1; k = (tuple(cur), rho); wm[k] = wm.get(k, Fraction(0)) - wt / 2
+            all_c_f[a] = wm
+        dx_buckets = []
+        for c_pt in CELL_SHIFTS:
+            for rho in range(4):
+                e1 = (c_pt, rho); x1 = _x0_f(e1); bmap = {}
+                for a in range(4):
+                    wm = all_c_f[a]
+                    for fx in yc_list_u:
+                        rel1 = (tuple(e1[0][i] - fx[i] for i in range(4)), rho)
+                        if rel1 in wm:
+                            w1 = abs(wm[rel1])
+                            for rel2, w2 in wm.items():
+                                dx0 = abs(_x0_f((tuple(fx[i] + rel2[0][i] for i in range(4)), rel2[1])) - x1)
+                                if dx0 != 0:
+                                    bmap[dx0] = bmap.get(dx0, Fraction(0)) + 4 * w1 * abs(w2)
+                dx_buckets.append([(_r9_from_frac(dx0), _r9_from_frac(coeff)) for dx0, coeff in bmap.items()])
+        phi_schur_table = {}
+        for mu_s in ("0.0117566", "0.15", "0.20", "0.25", "0.30"):
+            mu_v = iv.mpf(mu_s)
+            c_sym = _iv_coshm1(mu_v) / iv.mpf(2)
+            d_curv = iv.mpf(0)
+            for row_b in dx_buckets:
+                rs = sum((coeff * _iv_coshm1(mu_v * dx0) for dx0, coeff in row_b), iv.mpf(0))
+                if mp.mpf(rs.b) > mp.mpf(d_curv.b):
+                    d_curv = rs
+            phi_schur_table[mu_s] = outward_str(c_sym + d_curv)
+        require(strictly_below(_r10_iv_from_outward_str(phi_schur_table["0.20"]), "0.05"), "Phi_Schur_U(0.20) >= 0.05")
+        require(strictly_below(_r10_iv_from_outward_str(phi_schur_table["0.30"]), "0.112"), "Phi_Schur_U(0.30) >= 0.112")
+
+        # Pure 40d iv P(theta > pi/2) HK/Wilson cutoff comparison via exact Beta-moment & Peter-Weyl series
+        I_m_s3 = [iv.pi / iv.mpf(4), iv.mpf(1) / iv.mpf(3)]
+        for m in range(2, 85):
+            I_m_s3.append(iv.mpf(m - 1) / iv.mpf(m + 2) * I_m_s3[m - 2])
+        hk_wilson_cuts = []
+        for b_num, b_den in ((187, 100), (225, 100), (250, 100), (300, 100), (400, 100)):
+            b_iv = iv.mpf(b_num) / iv.mpf(b_den)
+            t_pw = iv.mpf(1) / (iv.mpf(2) * b_iv)
+            tot_w = iv.mpf(0); neg_w = iv.mpf(0); term = iv.mpf(1)
+            for m in range(85):
+                if m > 0:
+                    term = term * b_iv / iv.mpf(m)
+                contrib = term * I_m_s3[m]
+                if m % 2 == 0:
+                    tot_w = tot_w + iv.mpf(2) * contrib
+                    neg_w = neg_w + contrib
+                else:
+                    neg_w = neg_w - contrib
+            tail_w_ub = mp.mpf(((term * b_iv / iv.mpf(85)) * I_m_s3[0] / (iv.mpf(1) - b_iv / iv.mpf(86))).b)
+            tot_w = tot_w + iv.mpf([-2 * tail_w_ub, 2 * tail_w_ub])
+            neg_w = neg_w + iv.mpf([-tail_w_ub, tail_w_ub])
+            p_w = neg_w / tot_w
+            tot_hk = (iv.pi / iv.mpf(2)) * iv.exp(-t_pw)
+            neg_hk = (iv.pi / iv.mpf(4)) * iv.exp(-t_pw)
+            for k_pw in range(1, 20):
+                n_pw = 2 * k_pw
+                val_pw = iv.mpf("0.5") * ((-1) ** k_pw) * (iv.mpf(1) / iv.mpf(2 * k_pw - 1) + iv.mpf(1) / iv.mpf(2 * k_pw + 1))
+                neg_hk = neg_hk + iv.mpf(n_pw) * val_pw * iv.exp(-t_pw * iv.mpf(n_pw * n_pw))
+            tail_hk_ub = mp.mpf((iv.mpf(40) * iv.exp(-t_pw * iv.mpf(1600)) / (iv.mpf(1) - iv.exp(-t_pw * iv.mpf(164)))).b)
+            neg_hk = neg_hk + iv.mpf([-tail_hk_ub, tail_hk_ub])
+            p_hk = neg_hk / tot_hk
+            rat_wh = p_w / p_hk
+            require(strictly_above(rat_wh, "1.25"), f"W/HK tail ratio <= 1.25 at {b_num}/{b_den}")
+            hk_wilson_cuts.append({"beta": f"{b_num}/{b_den}", "P_W": outward_str(p_w), "P_HK": outward_str(p_hk), "ratio_W_over_HK": outward_str(rat_wh)})
+        checks += 4
+
+        retirements = [
+            "O-W10.Q1-AO", "O-W10.Q1-C5", "O-W10.Q1-FormulaFix", "O-W10.1-CovCT",
+            "O-W10.1-WickTadpole", "O-W10.1-NonHolChi", "O-W10.1-QuarticFloor",
+            "O-W10.1-IBPQuadAmplify", "O-W10.1-LocRangePercolation",
+            "O-W10.2-AbelianBlock", "O-W10.2-NeumannPatch", "O-W10.2-SoftFloor",
+            "O-W10.2-TreeHolonomyLip", "O-W10.3-A3Unwind",
+        ]
+        require(len(retirements) == 14 and len(set(retirements)) == 14, "Wave 10 retirements != 14")
+
+        return {
+            "w10_1_infinite_tree_gramsOS": {
+                "q_st_shifts": 77,
+                "q_st_l1": "49/4",
+                "m4_q0_0p92_to_10p25_verified": True,
+                "mu_coarse_0p85_ge_0p50": True,
+                "mu_fine_0p50_ge_0p50": True,
+                "mu_cov_fine_schur": mu_cov_fine,
+                "mu_cov_coarse_schur": mu_cov_coarse,
+                "yukawa_split_residual": outward_str(yuk_diff, digits=12),
+                "psd_splits_R0_to_R4": psd_split_results,
+                "c_tail_only_brackets": c_tail_brackets,
+                "regimes": w10_1_brackets,
+                "litmus6_c_true": "6*pi^2/11",
+                "u1_c1_delta_beta": 0,
+            },
+            "w10_2_birman_schwinger_zone3a": {
+                "zp_max_eig": "(1+sqrt(2))/4",
+                "zp_pos_trace": "1/sqrt(2)",
+                "parametrix_4x4_exact": True,
+                "u1_wp_nonpos": True,
+                "softfloor_box3_null": {"links": 216, "plaqs": 216, "cbs": 8, "u_core": 1},
+                "abelian_block_45d_su2_chg_max": outward_str(evs_ab[-1]),
+                "neumann_patch_st_55d_min_eig": outward_str(evs_np[0]),
+                "ims_errors_55d": ims_norms,
+                "tree_holonomy_dev_d1": outward_str(dev_d1),
+                "tree_holonomy_dev_d2": outward_str(dev_d2),
+                "bs_1p_c4e": bs_1p_map,
+                "bs_m8_extremal": {
+                    "ALL6p_52d": outward_str(bs_all6p_52),
+                    "ALL6p_55d": outward_str(bs_all6p_55),
+                    "6p_55d": outward_str(bs_6p_55),
+                    "6p_70d": outward_str(bs_6p_70),
+                    "6p_90d": outward_str(bs_6p_90),
+                },
+                "curved_2pow4_stag01_55d_R1": stag55_cert,
+                "curved_2pow4_stag01_65d_R2": stag65_cert,
+                "zone3a_chernoff_brackets": z3a_brackets,
+            },
+            "w10_3_anderson_higgs_and_w1": {
+                "exact_radial_saddle": "sin^2(r_s/2)=sin(th/2)/(2*(sin(th/2)+cos(th/2)))",
+                "exact_higgs_mass": "2*cos(r_s)*sin^2(r_s/2)*cos(th/2)",
+                "u1_c1_collapse": True,
+                "sylvester_pos_def_H3": ah_sylvester,
+                "r2r1_edges_per_plaq": 408,
+                "lb2_edges_per_plaq": 56,
+                "ratio_lb2_over_r2r1_link": "229376/183975",
+                "ratio_lb2_over_r2r1_plaq": "32768/13815",
+                "c4_0_exact": "4095/16384",
+                "c5_0_exact": "32767/163840",
+                "haar_shifts": {"beta15": "1/90", "beta43": "1/258"},
+                "w1_s2_conditional_on_empirical_E": True,
+                "w1_su2_hk_4d": w1_hk_rows,
+                "w1_su2_wilson_1p87": outward_str(gp_w187),
+                "w1_c1_u1_4d": w1_c1,
+                "w1_c5_su2_5d": w1_c5,
+            },
+            "w10_4_convergence_guards": {
+                "c4_range": ["1/8", "5/24"],
+                "s_cell_6p_ab_41deg": outward_str(s_cell_41),
+                "beta15_s_cell_lb": outward_str(beta15_scell),
+                "phi_schur_u_uniform": phi_schur_table,
+                "hk_wilson_antipodal_ratios": hk_wilson_cuts,
+            },
+            "retirements": retirements,
+            "infinite_tree_bkar_open": True,
+            "curved_vinf_bs_open": True,
+            "zone2_3_multiscale_open": True,
+            "zone23_window_open": True,
+            "h2d_status": "OPEN",
+            "irx_status": "OPEN",
+            "uvx_status": "OPEN",
+            "chiral_x_status": "OPEN",
+            "noBulkTransition": "OPEN",
+            "physical_unification": "OPEN",
+            "device_certified": False,
+            "interval_checks_passed": checks,
+        }
+    finally:
+        mp.dps = 50
+        iv.dps = 40
+
+
 def compute_certificate() -> dict:
     mp.dps = 50
     iv.dps = 40
@@ -7541,6 +9131,7 @@ def compute_certificate() -> dict:
         h2d_round07_frontier,
     )
     h2d_round09_wave9 = compute_h2d_round09_wave9_sqrt2_bianchi()
+    h2d_round10_wave10 = compute_h2d_round10_wave10_bs_gramsos(h2d_round09_wave9)
     payload = {
         "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
         "result_ids": [
@@ -7564,6 +9155,7 @@ def compute_certificate() -> dict:
         "h2d_round07_irx_frontier": h2d_round07_frontier,
         "h2d_round08_waves5to8_consolidation": h2d_round08_waves5to8,
         "h2d_round09_wave9_sqrt2_bianchi": h2d_round09_wave9,
+        "h2d_round10_wave10_bs_gramsos": h2d_round10_wave10,
         "wilson_transfer_and_symanzik": {
             "q8_strong_coupling_transfer": transfer_results,
             "symanzik_o_a2_leading_coeff": outward_str(c0_exact),
@@ -7671,6 +9263,19 @@ def main() -> int:
     require(r9_cert["w9_4_ims_helical_and_zones"]["zone23_window_open"] is True, "zone23_window_open must remain True")
     require(r9_cert["device_certified"] is False, "Round 09 device_certified must remain False")
     require(r9_cert["physical_unification"] == "OPEN", "Round 09 physical_unification must remain OPEN")
+    require("h2d_round10_wave10_bs_gramsos" in payload, "Missing h2d_round10_wave10_bs_gramsos")
+    r10_cert = payload["h2d_round10_wave10_bs_gramsos"]
+    require(r10_cert["h2d_status"] == "OPEN", "Round 10 h2d_status must remain OPEN")
+    require(r10_cert["irx_status"] == "OPEN", "Round 10 irx_status must remain OPEN")
+    require(r10_cert["uvx_status"] == "OPEN", "Round 10 uvx_status must remain OPEN")
+    require(r10_cert["chiral_x_status"] == "OPEN", "Round 10 chiral_x_status must remain OPEN")
+    require(r10_cert["noBulkTransition"] == "OPEN", "Round 10 noBulkTransition must remain OPEN")
+    require(r10_cert["infinite_tree_bkar_open"] is True, "Round 10 infinite_tree_bkar_open must remain True")
+    require(r10_cert["curved_vinf_bs_open"] is True, "Round 10 curved_vinf_bs_open must remain True")
+    require(r10_cert["zone2_3_multiscale_open"] is True, "Round 10 zone2_3_multiscale_open must remain True")
+    require(r10_cert["zone23_window_open"] is True, "Round 10 zone23_window_open must remain True")
+    require(r10_cert["device_certified"] is False, "Round 10 device_certified must remain False")
+    require(r10_cert["physical_unification"] == "OPEN", "Round 10 physical_unification must remain OPEN")
     if args.check:
         committed = json.loads(CERT_PATH.read_text(encoding="utf-8"))
         require(committed == payload, "Committed certificate.json differs from recomputed Wave 11 H2 values")

@@ -1,7 +1,7 @@
 {
   "schema": "ueot.lab_wiki.gate_receipt.v1",
-  "timestamp_utc": "2026-11-25T14:50:45Z",
-  "git_head": "3f2da6da",
+  "timestamp_utc": "2026-11-25T20:13:51Z",
+  "git_head": "a4d0b721",
   "mode": "full",
   "overall_status": "PASS",
   "checks": [
@@ -10,30 +10,30 @@
       "status": "PASS",
       "duration_sec": 0.004,
       "stats": {
-        "open_specs": 10,
-        "verified_lemmas": 51,
-        "dead_ends": 42
+        "open_specs": 11,
+        "verified_lemmas": 56,
+        "dead_ends": 47
       },
       "errors": []
     },
     {
       "name": "lean_dependency_lock",
-      "command": "/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B scripts/check_dependencies.py",
+      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B scripts/check_dependencies.py",
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.021,
+      "duration_sec": 0.022,
       "output_tail": [
         "PASS: exact Core + QM toolchain and dependency revisions inherited"
       ]
     },
     {
       "name": "lean_no_escapes",
-      "command": "/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B scripts/check_no_escapes.py",
+      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B scripts/check_no_escapes.py",
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.173,
+      "duration_sec": 0.195,
       "output_tail": [
         "PASS: zero syntactic proof escapes in UEOTPhysicsUnification"
       ]
@@ -44,8 +44,15 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 4.307,
+      "duration_sec": 6.286,
       "output_tail": [
+        "",
+        "The goal is a proposition, so `let` is preferred over `letI`.",
+        "The difference between `let` and `letI` is that `letI` inlines the value.",
+        "But this is not relevant for proofs because of proof irrelevance.",
+        "",
+        "Note: This linter can be disabled with `set_option linter.style.haveILetI false`",
+        "warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean:60:2: Try this: ",
         "  letI̵",
         "",
         "The goal is a proposition, so `let` is preferred over `letI`.",
@@ -53,14 +60,7 @@
         "But this is not relevant for proofs because of proof irrelevance.",
         "",
         "Note: This linter can be disabled with `set_option linter.style.haveILetI false`",
-        "⚠ [9180/9188] Replayed UEOTQM.QuantumTraceDistance",
-        "warning: UEOTQM/QuantumTraceDistance.lean:165:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumTraceDistance.difference_parts_mass_eq`:",
-        "  [DecidableEq ι]",
-        "consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:",
-        "  omit [DecidableEq ι] in theorem ...",
-        "",
-        "Note: This linter can be disabled with `set_option linter.unusedSectionVars false`",
-        "Build completed successfully (9188 jobs)."
+        "Build completed successfully (9189 jobs)."
       ]
     },
     {
@@ -69,18 +69,18 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 102.753,
+      "duration_sec": 98.156,
       "output_tail": [
-        "UNIFICATION_AXIOM_AUDIT modules=41 constants=4024 theorems=1883 defs=1824 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
+        "UNIFICATION_AXIOM_AUDIT modules=42 constants=4116 theorems=1926 defs=1857 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
       ]
     },
     {
       "name": "physics_unification_verification",
-      "command": "/private/tmp/ueot-lapse-boundary-20261121-venv/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round09-irx-w9/physics/unification/run_verification.py --check",
+      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round10-irx-w10/physics/unification/run_verification.py --check",
       "cwd": ".",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 259.759,
+      "duration_sec": 288.095,
       "output_tail": [
         "PASS: philosophy_v31_omega_bridge (P-PHIL31-OMEGA-01, P-PHIL31-REALIZ-02, P-PHIL31-LAKATOS-03)",
         "PASS: lorentzian_causal_qg_limit P-LORENTZ-QG-07",

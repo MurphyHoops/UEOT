@@ -1,7 +1,7 @@
 # `ueot-physics-unification` — Pure-Kernel Lean 4 Formalization of UEOT Physics Unification Gates
 
 Toolchain: `leanprover/lean4:v4.33.1` (exact byte match to `formalization/ueot-core` and `formalization/ueot-qm`).  
-Kernel audit: **41 modules, 4024 constants, 1883 theorems, 1824 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
+Kernel audit: **42 modules, 4116 constants, 1926 theorems, 1857 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
 
 This package extends formal machine-checked coverage across all non-`PR #468` sectors of the UEOT Physics responsibility matrix (`PREMISES_AND_RESPONSIBILITIES.md` & `CORE_PHYSICS_CONTRACT.md`) without modifying any historical file in `formalization/ueot-core` or `formalization/ueot-qm`.
 
@@ -50,6 +50,7 @@ This package extends formal machine-checked coverage across all non-`PR #468` se
 | `UEOTPhysicsUnification.CrossSectorPostWave10UnificationSynthesis` | `C-UNIFIED-SYNTH-11` | `post_wave10_frontier_status_and_honest_open_governance`, `post_wave10_unified_cross_sector_closure`, `exists_admissible_post_wave10_unified_system` |
 | `UEOTPhysicsUnification.IRXWaves5To8Consolidation` | `P-H2D-R8-W5..W8` | `w5_2_pure_ym_algebra_completeness_c4bpp_divergence`, `w6_2_nogo_and_np_b_o1_single_scale_p8_barrier`, `w7_2_non_mk_character_foam_and_w8_1_st_plus_floor`, `w8_2_covariant_exp_zero_u1_tadpole_and_o_w9_a1_univ`, `theorem_o_w9_a1_univ`, `w8_3_ow81_monopole_frustration_and_fisher_zero_lock`, `round08_irx_waves5to8_honest_open_lock` |
 | `UEOTPhysicsUnification.IRXWave9Sqrt2RGAndBianchi` | `P-H2D-R9-W9-1-01..OPEN-08` | `r1_sqrt2_orth_det_and_fiber_dof`, `r1_sqrt2_diag_rp_and_six_step_8I4`, `w9_1_ray_scaling_monotonicity_and_uv_leap`, `o_w9_p1a_u_sheet_survives_bianchi`, `w9_3a_s3_geodesic_bianchi_wilson_and_manton_min`, `w9_3a_4hypercube_coboundary_closed_loops`, `w9_3a_o_w9_a1_univ_class_function_adapter`, `w9_2b_s3_haar_quadratic_boost_vs_u1`, `w9_2b_m1_kp_compression_and_cubic_wall`, `w9_4_discrete_ims_localization_identity`, `w9_4a2a_gauge_term_necessity`, `w9_4_helical_quartic_commutator_strict_pos`, `w9_4_five_zone_corridor_and_retirements`, `round09_irx_wave9_honest_open_lock` |
+| `UEOTPhysicsUnification.IRXWave10BirmanSchwingerAndGramSOS` | `P-H2D-R10-W10-1-01..OPEN-08` | `w10_1_gram_sos_torus_positivity_criterion`, `w10_1_covariant_schur_ct_and_yukawa_psd_split`, `w10_1_infinite_tree_compression_and_quartic_floor`, `w10_2_birman_schwinger_duality_positivity`, `w10_2_variational_dual_parametrix_identity`, `w10_2_zeeman_u1_vanishing_and_zone3a_brackets`, `w10_3_anderson_higgs_two_plaq_saddle_and_mass`, `w10_4_r2r1_vs_lb2_variance_ratio_and_large_field_action`, `w10_retirements_and_five_zone_update`, `round10_irx_wave10_honest_open_lock` |
 
 ## Local Build & Exhaustive Kernel Audit
 
