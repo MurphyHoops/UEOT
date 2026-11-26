@@ -6397,6 +6397,140 @@
       "O-W14.4-QuotientStratum"
     ]
   },
+  "h2d_round15_wave15_hinge_score_manton_and_slab": {
+    "chiral_x_status": "OPEN",
+    "device_certified": false,
+    "h2d_status": "OPEN",
+    "interval_checks_passed": 36,
+    "irx_status": "OPEN",
+    "lean_module": "UEOTPhysicsUnification.IRXWave15HingeCoareaScoreDescentMantonAndSlab",
+    "lean_theorem": "UEOTPhysicsUnification.IRXWave15HingeCoareaScoreDescentMantonAndSlab.round15_irx_wave15_honest_open_lock",
+    "litmus6": [
+      "5.38342058241",
+      "5.38342058242"
+    ],
+    "noBulkTransition": "OPEN",
+    "physical_unification": "OPEN",
+    "schema": "ueot-physics-unification-irx-wave15/1",
+    "uv_x_status": "OPEN",
+    "w15_1_collective_hinge_and_savvidy": {
+      "adv_a8_75d_pos_above_0p101": true,
+      "bl_4x4_stiffness_4d": "9/4",
+      "bl_4x4_stiffness_5d": "11/4",
+      "collective_4core_psi25_lt_40": true,
+      "collective_4core_psi32_gt_42p3539": true,
+      "det_21p_blowup_lb": [
+        "2317223491070.1",
+        "2317223491070.2"
+      ],
+      "uc_a6_74d_neg_eig": [
+        "-0.1154256389",
+        "-0.1154256388"
+      ],
+      "uc_a6_75d_neg_eig": [
+        "-0.1522276843",
+        "-0.1522276842"
+      ]
+    },
+    "w15_2_score_descent_and_fierz": {
+      "braw_s3_at_15": [
+        "67.11587396",
+        "67.11612725"
+      ],
+      "fierz_bare_wilson": "3249/1360",
+      "fierz_zero_offdiag": "3249/680",
+      "jensen_threshold": "1083/1060",
+      "phi_s3_19_34": [
+        "1.212580595",
+        "1.212580596"
+      ],
+      "phi_s3_1_2": [
+        "0.910309819",
+        "0.9103098191"
+      ],
+      "phi_s3_9_20": [
+        "0.7057294344",
+        "0.7057294345"
+      ],
+      "u1_gamma6_b1": [
+        "1.23113392",
+        "1.231133921"
+      ]
+    },
+    "w15_3_renorm_manton_and_bz": {
+      "alpha_hs_true_2p4": [
+        "-0.08443205069",
+        "-0.08442408764"
+      ],
+      "alpha_stiff_artifact_2p4": [
+        "2.856430192",
+        "2.856434076"
+      ],
+      "cos_quartic_su2_over_u1": "5/3",
+      "m0_ward_1p4_pi2": [
+        "0",
+        "1.239142217E-35"
+      ]
+    },
+    "w15_4_5staple_dobrushin_and_bc140": {
+      "bc140_u2_over_u1sq": [
+        "1.269871911",
+        "1.292695886"
+      ],
+      "cw_box3p4_rho": [
+        [
+          "13.11684096",
+          "13.11684097"
+        ],
+        [
+          "13.11684608",
+          "13.11684609"
+        ]
+      ],
+      "gamma_1L_4d_5staple_03800_ub": [
+        "0.9905974804",
+        "0.9905974805"
+      ],
+      "gamma_1L_5d_7staple_03800_ub": [
+        "1.564395578",
+        "1.564395579"
+      ],
+      "m_ds_4d_03800_lb": [
+        "0.00944700227",
+        "0.009447002271"
+      ],
+      "pauli_twist_eater_minus_I2": true,
+      "su5_entropy_ratio": [
+        "1.011474528E+14",
+        "1.011474529E+14"
+      ],
+      "tv_haar_187": [
+        "0.7366772545",
+        "0.7366772546"
+      ],
+      "xi_15": [
+        "3.42707726E+17",
+        "3.427077261E+17"
+      ]
+    },
+    "wave15_retirements": [
+      "O-W15.1-ExactZeroConditionalBarrier",
+      "O-W15.1-FrozenCapTwistObstruction",
+      "O-W15.1-FluxSheetExteriorObstruction",
+      "O-W15.1-HingeDeterminantBlowup",
+      "O-W15.1-BaselineA6_74DegConvexityFail",
+      "O-W15.2-VariationalMarginalScoreFloor",
+      "O-W15.2-GeneralizedThermalScoreNoiseTrap",
+      "O-W15.2-DiagonalVsWilsonFierzFactor2",
+      "O-W15.3-TadpoleTelescopingTrap",
+      "O-W15.3-IncommensurateBlochAndTransverseWeissTrap",
+      "O-W15.3-WilsonCosineUVTadpoleWall",
+      "O-W15.3-SymanzikIrrelevantRemainder",
+      "O-W15.4-FiniteBlockDobrushinCeiling",
+      "O-W15.4-SinglePlaquetteCharacterBlindness",
+      "O-W15.4-FiniteVolumeTwistFreezing"
+    ]
+  },
   "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean",
   "lean_theorems": [
     "UEOTPhysicsUnification.NonAbelianLatticeMassGapAndChiralIntegrabilityH2.wilson_plaquette_transfer_positivity_and_strong_coupling_area_law",
@@ -6491,7 +6625,7 @@
     "C-H2-OPER-04"
   ],
   "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
-  "source_sha256": "5aed3b81d4a762ea01ab915506c789217d43cbfe1547951f4564a1b3c0edac3a",
+  "source_sha256": "1b112dac7645c187e7a96d72de55eda6feffb6cf0d0e1f4a956c17cf26f47658",
   "status": "PASS",
   "wilson_transfer_and_symanzik": {
     "q8_strong_coupling_transfer": {
