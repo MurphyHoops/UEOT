@@ -61,6 +61,14 @@ ALLOWED_CH72_PREFIXES = (
     '../../interfaces/',
 )
 
+# Living post-3.13 unification artifacts evolve across Rounds 1-16+; Edition 3.13
+# verifies their sealed RESEARCH_BASELINE snapshot rather than blocking append-only updates.
+EVOLVING_UNIFICATION_PREFIXES = (
+    'physics/unification/',
+    'formalization/ueot-physics-unification/',
+    'validation/physics_unification/',
+)
+
 
 def require(ok, message):
     if not ok:
@@ -75,12 +83,18 @@ def git_show(commit, rel_path):
     return subprocess.check_output(['git', 'show', f'{commit}:{rel_path}'], cwd=ROOT)
 
 
-def check_identity(record):
+def check_identity(record, commit=None):
     path = Path(record['path'])
     require(not path.is_absolute() and '..' not in path.parts, f'Invalid source path {path}')
-    blob = (ROOT / path).read_bytes()
+    if commit is None:
+        blob = (ROOT / path).read_bytes()
+        label = str(path)
+    else:
+        require((ROOT / path).is_file(), f'Evolving evidence file missing from working tree: {path}')
+        blob = git_show(commit, path.as_posix())
+        label = f'{commit}:{path.as_posix()}'
     require(len(blob) == record['bytes'] and hashlib.sha256(blob).hexdigest() == record['sha256'],
-            f'Source identity changed at {path}')
+            f'Source identity changed at {label}')
 
 
 def blocks(text):
@@ -240,7 +254,22 @@ def main():
                 'Incorrect claim scope for ' + r['id'])
         require(len(r['proof_and_evidence']) >= 2, 'Missing result evidence for ' + r['id'])
         for item in r['proof_and_evidence']:
-            check_identity(item)
+            is_evolving = item['path'].startswith(EVOLVING_UNIFICATION_PREFIXES)
+            check_identity(item, commit=RESEARCH_BASELINE if is_evolving else None)
+
+    ledger_path = 'validation/physics_unification/VALIDATION_LEDGER.json'
+    baseline_unif_ledger = json.loads(git_show(RESEARCH_BASELINE, ledger_path))
+    live_unif_ledger = read_json(ledger_path)
+    require(live_unif_ledger.get('schema') == baseline_unif_ledger.get('schema'),
+            'Live VALIDATION_LEDGER.json schema mismatch')
+    baseline_entries = baseline_unif_ledger['entries']
+    live_entries = live_unif_ledger.get('entries')
+    require(isinstance(live_entries, list) and len(live_entries) >= len(baseline_entries),
+            'Live VALIDATION_LEDGER.json truncated relative to Edition 3.13 baseline')
+    baseline_keys = {(e['result_id'], e['lean_theorem']) for e in baseline_entries}
+    live_keys = {(e.get('result_id'), e.get('lean_theorem')) for e in live_entries if isinstance(e, dict)}
+    require(baseline_keys <= live_keys,
+            'Live VALIDATION_LEDGER.json missing Edition 3.13 baseline result entries')
 
     # 3. Verify manuscripts, byte-identical unchanged chapters, publication_3_13 hashes, and Ch. 72 parity
     chapters = {}
