@@ -1,7 +1,7 @@
 {
   "schema": "ueot.lab_wiki.gate_receipt.v1",
-  "timestamp_utc": "2026-11-26T04:12:03Z",
-  "git_head": "8cc8f66e",
+  "timestamp_utc": "2026-11-26T08:34:19Z",
+  "git_head": "4e978583",
   "mode": "full",
   "overall_status": "PASS",
   "checks": [
@@ -10,9 +10,9 @@
       "status": "PASS",
       "duration_sec": 0.004,
       "stats": {
-        "open_specs": 13,
-        "verified_lemmas": 68,
-        "dead_ends": 59
+        "open_specs": 14,
+        "verified_lemmas": 75,
+        "dead_ends": 65
       },
       "errors": []
     },
@@ -22,7 +22,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.02,
+      "duration_sec": 0.019,
       "output_tail": [
         "PASS: exact Core + QM toolchain and dependency revisions inherited"
       ]
@@ -33,7 +33,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.193,
+      "duration_sec": 0.182,
       "output_tail": [
         "PASS: zero syntactic proof escapes in UEOTPhysicsUnification"
       ]
@@ -44,23 +44,23 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 6.214,
+      "duration_sec": 6.107,
       "output_tail": [
         "",
         "Hint: Omit it from the simp argument list.",
-        "  [apply] simp [historyMassAt, historyIntegral, mergeA, mergeB, rootWrite, rootIdle, childIdle, initial, observe, step,",
-        "    effective, address, packedObserve, packedNext, packedLookup, postBit, childBit, primitiveWeight,",
-        "    Fintype.sum_prod_type]",
+        "  [apply] simp only [separationTable, packedExecute, prepend, PrepaidHistory, idle_charge_zero, cap, effective,",
+        "    Bool.false_eq_true, if_false, Option.getD_some, Option.isSome_some, Option.isSome_none, if_true, mul_one, mul_zero,",
+        "    sub_zero]",
         "",
         "Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
-        "warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean:239:31: This simp argument is unused:",
-        "  Fintype.sum_bool",
+        "⚠ [9174/9192] Replayed UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment",
+        "warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationPayment.lean:36:0: automatically included section variable(s) unused in theorem `UEOT.V3.Compression.TheoryCompletion.UnifiedClosure.RegisterDecisionRepresentationPayment.graphPrepaid_eq`:",
+        "  [Fintype Theta]",
+        "consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:",
+        "  omit [Fintype Theta] in theorem ...",
         "",
-        "Hint: Omit it from the simp argument list.",
-        "  [apply] simp [Fintype.sum_prod_type]",
-        "",
-        "Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
-        "Build completed successfully (9191 jobs)."
+        "Note: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+        "Build completed successfully (9192 jobs)."
       ]
     },
     {
@@ -69,18 +69,18 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 97.849,
+      "duration_sec": 101.029,
       "output_tail": [
-        "UNIFICATION_AXIOM_AUDIT modules=44 constants=4363 theorems=1999 defs=1980 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
+        "UNIFICATION_AXIOM_AUDIT modules=45 constants=4499 theorems=2042 defs=2043 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
       ]
     },
     {
       "name": "physics_unification_verification",
-      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round12-irx-w12/physics/unification/run_verification.py --check",
+      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round13-irx-w13/physics/unification/run_verification.py --check",
       "cwd": ".",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 311.111,
+      "duration_sec": 304.069,
       "output_tail": [
         "PASS: philosophy_v31_omega_bridge (P-PHIL31-OMEGA-01, P-PHIL31-REALIZ-02, P-PHIL31-LAKATOS-03)",
         "PASS: lorentzian_causal_qg_limit P-LORENTZ-QG-07",

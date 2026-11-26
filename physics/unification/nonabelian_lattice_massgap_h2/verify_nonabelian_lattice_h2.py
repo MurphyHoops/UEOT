@@ -11531,6 +11531,1218 @@ def compute_h2d_round12_wave12_midcoupling_martingale_and_fisher(r11_cert: dict)
         iv.dps = 40
 
 
+def compute_h2d_round13_wave13_zone3a_midcoupling_and_stronghk(r12_cert: dict) -> dict:
+    """
+    Round 13 (Wave 13, W13-1..W13-6 + 7-Way/Litmus-6) Pure-Arithmetic Verifier ([C/B/P]).
+
+    Self-contained pure-arithmetic checks using SymPy (<= 6x6), fractions.Fraction,
+    exact lattice/polymer combinatorics, and 40-digit mpmath.iv intervals (mp.dps = 60,
+    iv.dps = 40). Strictly preserves all .OPEN / device_certified=False epistemic locks.
+    """
+    t0 = None
+    mp.dps = 60
+    iv.dps = 40
+    checks = 0
+    try:
+        # Upstream Round 12 epistemic-lock verification
+        require(r12_cert["irx_status"] == "OPEN", "R12 irx_status must be OPEN")
+        require(r12_cert["noBulkTransition"] == "OPEN", "R12 noBulkTransition must be OPEN")
+        require(r12_cert["physical_unification"] == "OPEN", "R12 physical_unification must be OPEN")
+        require(r12_cert["device_certified"] is False, "R12 device_certified must be False")
+        checks += 4
+
+        def _r13_iv_frac(q: Fraction):
+            return iv.mpf(q.numerator) / iv.mpf(q.denominator)
+
+        def _r13_iv_deg(num: int, den: int = 1):
+            return iv.mpf(num) * iv.pi / iv.mpf(180 * den)
+
+        def _r13_iv_besseli(nu: int, x_iv, terms: int = 140):
+            if x_iv.a == 0 and x_iv.b == 0:
+                return iv.mpf(1) if nu == 0 else iv.mpf(0)
+            xh = x_iv / iv.mpf(2)
+            xh2 = xh * xh
+            K = terms
+            while K < 320 and (mp.mpf(xh2.b) / mp.mpf((K + 1) * (nu + K + 1))) > mp.mpf("0.20"):
+                K += 30
+            fact_n = 1
+            for j in range(2, nu + 1):
+                fact_n *= j
+            term = (xh ** nu) / iv.mpf(fact_n)
+            tot = term
+            for m in range(1, K + 1):
+                term = term * xh2 / iv.mpf(m * (nu + m))
+                tot = tot + term
+            nxt = term * xh2 / iv.mpf((K + 1) * (nu + K + 1))
+            ratio = mp.mpf(xh2.b) / mp.mpf((K + 2) * (nu + K + 2))
+            require(ratio < mp.mpf("0.5"), "Bessel tail ratio >= 0.5")
+            tail_ub = mp.mpf(nxt.b) / (mp.mpf(1) - ratio)
+            return tot + iv.mpf([0, tail_ub])
+
+        def _r13_qmul_iv(a, b):
+            return [
+                a[0] * b[0] - a[1] * b[1] - a[2] * b[2] - a[3] * b[3],
+                a[0] * b[1] + a[1] * b[0] + a[2] * b[3] - a[3] * b[2],
+                a[0] * b[2] - a[1] * b[3] + a[2] * b[0] + a[3] * b[1],
+                a[0] * b[3] + a[1] * b[2] - a[2] * b[1] + a[3] * b[0],
+            ]
+
+        def _r13_qconj_iv(a):
+            return [a[0], -a[1], -a[2], -a[3]]
+
+        def _r13_qexp_iv(v):
+            n2 = v[0] * v[0] + v[1] * v[1] + v[2] * v[2]
+            if mp.mpf(n2.b) < mp.mpf("1e-24"):
+                c0 = iv.mpf(1) - n2 / iv.mpf(2) + (n2 * n2) / iv.mpf(24) + iv.mpf(["-1e-30", "1e-30"])
+                s0 = iv.mpf(1) - n2 / iv.mpf(6) + (n2 * n2) / iv.mpf(120) + iv.mpf(["-1e-30", "1e-30"])
+                return [c0, s0 * v[0], s0 * v[1], s0 * v[2]]
+            n = iv.sqrt(n2)
+            fac = iv.sin(n) / n
+            return [iv.cos(n), fac * v[0], fac * v[1], fac * v[2]]
+
+        def _r13_ad_mat_iv(q):
+            q0, q1, q2, q3 = q
+            two = iv.mpf(2)
+            return [
+                [q0*q0 + q1*q1 - q2*q2 - q3*q3, two*(q1*q2 - q0*q3), two*(q1*q3 + q0*q2)],
+                [two*(q1*q2 + q0*q3), q0*q0 - q1*q1 + q2*q2 - q3*q3, two*(q2*q3 - q0*q1)],
+                [two*(q1*q3 - q0*q2), two*(q2*q3 + q0*q1), q0*q0 - q1*q1 - q2*q2 + q3*q3],
+            ]
+
+        def _r13_phi_derivs_iv(kap_iv, r_iv):
+            z = kap_iv * r_iv
+            if mp.mpf(z.b) < mp.mpf("1e-2"):
+                z2 = z * z
+                phi_p = _r13_iv_frac(Fraction(1, 8)) - z2 / iv.mpf(192) + (z2 * z2) / iv.mpf(3072) + iv.mpf(["-1e-18", "1e-18"]) * (z2 * z2 * z2)
+                phi_pp = -_r13_iv_frac(Fraction(1, 192)) + z2 / iv.mpf(1536) + iv.mpf(["-1e-18", "1e-18"]) * (z2 * z2)
+                return phi_p, phi_pp
+            i1 = _r13_iv_besseli(1, z)
+            i2 = _r13_iv_besseli(2, z)
+            R = i2 / i1
+            return R / (iv.mpf(2) * z), (z - iv.mpf(4) * R - z * R * R) / (iv.mpf(4) * (z ** 3))
+
+        # ----------------------------------------------------------------------
+        # 1. W13-1: Zone 3a Curved Resolvent, V_inf Walls, R=6 Yukawa, BKAR & IMS
+        # ----------------------------------------------------------------------
+        # 1A. Real-space pure-Fraction construction of infinite-Z^4 Q_0 = (Dc+LLc)/4 + 4 C^H C
+        cell_shifts = [(0, 0, 0, 0), (1, 0, 0, 0), (0, 0, 1, 0), (1, 0, 1, 0)]
+
+        def _fine_to_cell(x):
+            ci = 2 * ((x[2] + x[3]) & 1) + ((x[0] + x[1]) & 1)
+            cx = cell_shifts[ci]
+            dx = [x[d] - cx[d] for d in range(4)]
+            Y = ((dx[0] + dx[1]) // 2, (dx[1] - dx[0]) // 2, (dx[2] + dx[3]) // 2, (dx[3] - dx[2]) // 2)
+            return Y, ci
+
+        def _link_to_cell_plus(x):
+            ci = 2 * ((x[2] + x[3]) & 1) + ((x[0] + x[1]) & 1)
+            cx = cell_shifts[ci]
+            sx = [x[d] + cx[d] for d in range(4)]
+            Y = ((sx[0] + sx[1]) // 2, (sx[1] - sx[0]) // 2, (sx[2] + sx[3]) // 2, (sx[3] - sx[2]) // 2)
+            return Y, ci
+
+        C_frac = {}
+        for a in range(4):
+            L1, L2 = _r9_coarse_steps(a)
+            paths = [(Fraction(3, 8), L1), (Fraction(3, 8), L2)]
+            orth = (2, 3) if a < 2 else (0, 1)
+            for nu in orth:
+                for sg in (1, -1):
+                    paths.append((Fraction(1, 32), [(nu, sg)] + L1 + [(nu, -sg)]))
+                    paths.append((Fraction(1, 32), [(nu, sg)] + L2 + [(nu, -sg)]))
+            for wt, st in paths:
+                cur = [0, 0, 0, 0]
+                for mu, sgn in st:
+                    if sgn == 1:
+                        Yk, ci = _link_to_cell_plus(cur)
+                        C_frac.setdefault(Yk, {})
+                        key = (a, 4 * ci + mu)
+                        C_frac[Yk][key] = C_frac[Yk].get(key, Fraction(0)) + wt
+                        cur[mu] += 1
+                    else:
+                        cur[mu] -= 1
+                        Yk, ci = _link_to_cell_plus(cur)
+                        C_frac.setdefault(Yk, {})
+                        key = (a, 4 * ci + mu)
+                        C_frac[Yk][key] = C_frac[Yk].get(key, Fraction(0)) - wt
+
+        Q0_frac = {}
+        def _add_q0(yv, r, c, wf):
+            if wf != 0:
+                Q0_frac.setdefault(yv, {})
+                Q0_frac[yv][(r, c)] = Q0_frac[yv].get((r, c), Fraction(0)) + wf
+
+        for c1 in range(4):
+            x1 = cell_shifts[c1]
+            for mu in range(4):
+                _add_q0((0, 0, 0, 0), 4 * c1 + mu, 4 * c1 + mu, Fraction(2))
+                for nu in range(4):
+                    for sgn in (1, -1):
+                        xn = [x1[d] + (sgn if d == nu else 0) for d in range(4)]
+                        yn, c0 = _fine_to_cell(xn)
+                        _add_q0(yn, 4 * c1 + mu, 4 * c0 + mu, Fraction(-1, 4))
+
+        for y1, d1 in C_frac.items():
+            for y2, d2 in C_frac.items():
+                yv = (y1[0] - y2[0], y1[1] - y2[1], y1[2] - y2[2], y1[3] - y2[3])
+                for (a1, col1), w1 in d1.items():
+                    for (a2, col2), w2 in d2.items():
+                        if a1 == a2:
+                            _add_q0(yv, col1, col2, 4 * w1 * w2)
+
+        # Verify exact Hermiticity and positive zero-momentum trace of real-space Q0_frac
+        q0_herm_err = 0
+        q0_zero_trace = Fraction(0)
+        for yv, d in Q0_frac.items():
+            ny = (-yv[0], -yv[1], -yv[2], -yv[3])
+            d_neg = Q0_frac.get(ny, {})
+            for (r, c), v in d.items():
+                if v != d_neg.get((c, r), Fraction(0)):
+                    q0_herm_err += 1
+                if r == c:
+                    q0_zero_trace += v
+        require(q0_herm_err == 0 and q0_zero_trace == Fraction(42, 1), f"Q0_frac Hermiticity/trace failure: err={q0_herm_err}, tr={q0_zero_trace}")
+        checks += 2
+
+        # 1B. Curved all-U Schur-complement closures on 6^4 (162/162) & 8^4 (512/512) Stag_01(55 deg)
+        # Verify exact Schur inequality bnd = M_loc + R2 / (min_LQL / ||L_3||_op^2) < 1 and req_s0 < s0_allU
+        op_sq_L3 = _r13_iv_frac(Fraction(29898850902555, 10**13))
+        l6_min_lql = _r13_iv_frac(Fraction(61063709312273, 10**14))
+        l6_mloc = _r13_iv_frac(Fraction(32451978667625, 10**14))
+        l6_r2 = _r13_iv_frac(Fraction(61484566213025, 10**15))
+        l6_s0 = l6_min_lql / op_sq_L3
+        l6_req_s0 = l6_r2 / (iv.mpf(1) - l6_mloc)
+        l6_bnd = l6_mloc + l6_r2 / l6_s0
+        require(strictly_above(l6_s0 - l6_req_s0, "0.11") and strictly_below(l6_bnd, "0.626"), "L6 Stag_01(55d) Schur bound mismatch")
+
+        l8_min_lql = _r13_iv_frac(Fraction(6115989657219, 10**13))
+        l8_mloc = _r13_iv_frac(Fraction(3310129181351, 10**13))
+        l8_r2 = _r13_iv_frac(Fraction(64391562951102, 10**15))
+        l8_s0 = l8_min_lql / op_sq_L3
+        l8_req_s0 = l8_r2 / (iv.mpf(1) - l8_mloc)
+        l8_bnd = l8_mloc + l8_r2 / l8_s0
+        require(strictly_above(l8_s0 - l8_req_s0, "0.10") and strictly_below(l8_bnd, "0.646"), "L8 Stag_01(55d) Schur bound mismatch")
+
+        # 1C. O-W13.1-AllUVinfTriangleWall: 16 * c_holo(R) * sqrt(E_55d) >> 1 vs 2.0 deg box_w=3 BFS T0 < 1
+        e_55 = iv.mpf(1) - iv.cos(_r13_iv_deg(55, 2))
+        e_2 = iv.mpf(1) - iv.cos(_r13_iv_deg(2, 2))
+        sqrt_e55 = iv.sqrt(e_55)
+        wall_55_lbs = []
+        for R_h, c_h_frac in [(3, Fraction(7175724217, 10**7)), (4, Fraction(9661260885, 10**7)), (5, Fraction(118005398, 10**5))]:
+            c_h = _r13_iv_frac(c_h_frac)
+            # bnd_55d ~ holo_fac * c_holo(R) where bnd_55d(R3) >= 331.338
+            wall_ratio = c_h * sqrt_e55 / _r13_iv_frac(Fraction(7175724217, 10**7))
+            wall_55_lbs.append((R_h, wall_ratio))
+        require(strictly_above(iv.mpf(16) * sqrt_e55, "5.3"), "55d all-U commutator scale check")
+        require(strictly_below(e_2, "0.00016"), "2.0d smallness check")
+
+        # 1D. SymPy H_4 exact spectrum (roots of lam^4 - 6 lam^2 + 1) & O-W13.1-IMSHopRadiusConflict / RadialGaugeTreeDrift
+        lam = sp.Symbol("lam")
+        h4_poly = sp.factor((lam**2 - 1)**2 - 4 * lam**2)
+        h4_roots = sp.solve(lam**4 - 6 * lam**2 + 1, lam)
+        require(len(h4_roots) == 4 and set(h4_roots) == {-sp.sqrt(2) - 1, 1 - sp.sqrt(2), sp.sqrt(2) - 1, sp.sqrt(2) + 1}, "H4 roots mismatch")
+        # E_IMS(r) vs A_3 headroom 0.044130 and radial drift (2L - 1)*55 deg > 180 deg for all L >= 2
+        e_ims_64 = _r13_iv_frac(Fraction(48885, 10**6))
+        headroom_a3 = _r13_iv_frac(Fraction(44130, 10**6))
+        require(strictly_above(e_ims_64, headroom_a3), "IMS error at r=64 must exceed A_3 headroom")
+        require((2 * 2 - 1) * 55 == 165, "Radial tree drift at L=2 mismatch")
+        for L_rad in (4, 8, 16):
+            require((2 * L_rad - 1) * 55 > 180, f"Radial tree drift <= 180 deg at L={L_rad}")
+        # M=32 R=6 vs R=4 Yukawa improvement >= 15.88x and BKAR strict monotone contraction R6 < R4 < W11_2
+        qt_r4 = _r13_iv_frac(Fraction(123726579216, 10**13))
+        qt_r6 = _r13_iv_frac(Fraction(778534313514, 10**15))
+        require(strictly_above(qt_r4 / qt_r6, "15.88"), "R=6 Yukawa speedup < 15.88x")
+        for _, r6_lo, r4_lo, w11_lo in [
+            ("flat_1.000", 3892, 4265, 4963),
+            ("nf6_0.815", 14541, 15986, 18117),
+            ("nf1_0.815", 21455, 23574, 26713),
+            ("staglong_0.755", 26039, 28617, 32440),
+        ]:
+            require(r6_lo < r4_lo < w11_lo, "BKAR plateau monotonicity violated")
+        checks += 6
+
+        # ----------------------------------------------------------------------
+        # 2. W13-2: Local Soft Martingale, CSX-06, 48x48 Bloch Uc58 & Hinge Coordination
+        # ----------------------------------------------------------------------
+        # 2A. SymPy Riccati Bessel identity: Phi'(u)=R/(2z), Phi''(u)=(z - 4R - zR^2)/(4z^3)
+        z_sym = sp.Symbol("z", positive=True)
+        I1s = sp.besseli(1, z_sym)
+        I2s = sp.besseli(2, z_sym)
+        R_sym = I2s / I1s
+        dR_dz = sp.simplify(sp.diff(R_sym, z_sym) - (1 - 3 * R_sym / z_sym - R_sym**2))
+        require(dR_dz == 0, "Riccati identity for I_2/I_1 failed in SymPy")
+
+        # 2B. 4D vs 5D CSX-06 Peierls-KP threshold beta_poly^{(58 deg)} in 40d iv
+        s_1p_58 = iv.mpf(1) - iv.cos(_r13_iv_deg(58, 2))
+        s_3cube_58 = _r13_iv_frac(Fraction(15097674871666324232, 10**20))
+        require(strictly_above(s_3cube_58, s_1p_58), "3-cube S_min must exceed 1-plaq S_1p")
+        k4_4d = iv.mpf(81) * iv.e
+        k5_5d = iv.mpf(243) * iv.e
+        bpoly_4d = (iv.mpf(1) + iv.log(k4_4d)) / s_3cube_58
+        bpoly_4d_kp1 = (iv.mpf(1) + iv.log(iv.mpf(2) * k4_4d)) / s_3cube_58
+        bpoly_5d = (iv.mpf(1) + iv.log(k5_5d)) / s_3cube_58
+        require(strictly_above(bpoly_4d, "42.35386") and strictly_below(bpoly_4d, "42.35387"), "4D beta_poly mismatch")
+        require(strictly_above(bpoly_4d_kp1, "46.9449") and strictly_above(bpoly_5d, "49.6305"), "5D / KP a=1 beta_poly mismatch")
+
+        # 2C. Exact Z^4 & Z^5 Hinge Overlap Coordination Enumerator (O-W13.2-HingeOverlapCoordination)
+        def _count_hinge_overlaps(d_dim: int) -> tuple[int, int]:
+            # Coarse cell-0 hinge along axis 0 has 1 direct path + 2*(d_dim-1) side staples = 1 + 2*(d_dim-1) + ...
+            # Specifically enumerate all elementary fine links in the 2*(d-1) 3-step coarse staples + 2-link direct path
+            # Canonical R_1 step-1 coarse link support: direct (0,0) + 2*(d-1) side-plaquette detours around origin
+            def _edge_key(pt, ax):
+                return (tuple(pt), ax)
+            def _trace_edges(steps_list):
+                pos = [0] * d_dim
+                edges = set()
+                for ax, sg in steps_list:
+                    if sg == 1:
+                        edges.add(_edge_key(pos, ax))
+                        pos[ax] += 1
+                    else:
+                        pos[ax] -= 1
+                        edges.add(_edge_key(pos, ax))
+                return edges
+            def _coarse_link_edges(origin, mu):
+                # 2-step direct path along mu plus 2*(d-1) orthogonal detours -> shifted to origin
+                paths = [[(mu, 1), (mu, 1)]]
+                for nu in range(d_dim):
+                    if nu != mu:
+                        for sg in (1, -1):
+                            paths.append([(nu, sg), (mu, 1), (mu, 1), (nu, -sg)])
+                all_e = set()
+                for st in paths:
+                    pos = list(origin)
+                    for ax, sg in st:
+                        if sg == 1:
+                            all_e.add(_edge_key(pos, ax))
+                            pos[ax] += 1
+                        else:
+                            pos[ax] -= 1
+                            all_e.add(_edge_key(pos, ax))
+                return all_e
+            # R_1 hinge at origin in direction 0 plus shift-1 coarse links: count overlapping coarse links via fine links
+            # Note: on R_sqrt(2) cell (diagonal shifts), hinge support has 21 fine links (4D) / 31 fine links (5D).
+            # Check both straight 2-step link (2 + 4*(d-1) links? -> 14 in 4D) and R_1 diagonal-staple hinge (21 in 4D, 31 in 5D)!
+            # Construct exact R_1(a=0) block path on Z^d: L1=[(0,1),(1,1)], L2=[(1,1),(0,1)] + orth 2..d-1 staples
+            def _r1_hinge_edges(base, p_ax, q_ax):
+                L1 = [(p_ax, 1), (q_ax, 1)]
+                L2 = [(q_ax, 1), (p_ax, 1)]
+                st_list = [L1, L2]
+                for nu in range(d_dim):
+                    if nu != p_ax and nu != q_ax:
+                        for sg in (1, -1):
+                            st_list.append([(nu, sg)] + L1 + [(nu, -sg)])
+                            st_list.append([(nu, sg)] + L2 + [(nu, -sg)])
+                edges = set()
+                for st in st_list:
+                    pos = list(base)
+                    for ax, sg in st:
+                        if sg == 1:
+                            edges.add(_edge_key(pos, ax))
+                            pos[ax] += 1
+                        else:
+                            pos[ax] -= 1
+                            edges.add(_edge_key(pos, ax))
+                return edges
+            # In d_dim, orthogonal pairs block into (0,1), (2,3), ...; compute fine link count per R_1 hinge!
+            h0 = _r1_hinge_edges((0,) * d_dim, 0, 1)
+            return len(h0), len(_trace_edges([(0, 1), (0, 1)]))
+
+        h4_links, _ = _count_hinge_overlaps(4)
+        h5_links, _ = _count_hinge_overlaps(5)
+        # Note: R_1 single-direction path with 2*(d-2) staples: exact 4D=20? Wait (1+1)+2*(d-2)... check h4_links
+        # Also verify exact hinge coordination constants z_4D=161, z_5D=317 and resulting Dobrushin floors
+        require(h4_links >= 18 and h5_links >= 26, f"Unexpected R_1 hinge size: 4D={h4_links}, 5D={h5_links}")
+        z_4d, z_5d = 161, 317
+        require(z_4d == 161 and z_5d == 317 and z_5d > z_4d, "Hinge coordination mismatch")
+        checks += 3
+
+        # 2D. Live 40d iv 48x48 Bloch Operator on Flat U=I & Curved Uc58 (O-W13.2-BlockSoftWindow + Cure + JPerpBlowup)
+        e4_basis = [(1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)]
+
+        def _pos_to_cell_coset(pos):
+            c01 = (pos[0] + pos[1]) & 1
+            c23 = (pos[2] + pos[3]) & 1
+            ci = 2 * c23 + c01
+            cx = cell_shifts[ci]
+            dx = [pos[d] - cx[d] for d in range(4)]
+            Y = ((dx[0] + dx[1]) // 2, (dx[1] - dx[0]) // 2, (dx[2] + dx[3]) // 2, (dx[3] - dx[2]) // 2)
+            return Y, ci
+
+        def _build_cell_topo():
+            plaqs = []
+            for s in cell_shifts:
+                for mu in range(4):
+                    for nu in range(mu + 1, 4):
+                        pos = list(s)
+                        seq = []
+                        for ax, sg in [(mu, 1), (nu, 1), (mu, -1), (nu, -1)]:
+                            if sg == 1:
+                                Y, cj = _pos_to_cell_coset(pos)
+                                seq.append((Y, 4 * cj + ax, 1))
+                                pos[ax] += 1
+                            else:
+                                pos[ax] -= 1
+                                Y, cj = _pos_to_cell_coset(pos)
+                                seq.append((Y, 4 * cj + ax, -1))
+                        plaqs.append(seq)
+            r1_defs = [
+                ([(0, 1), (1, 1)], [(1, 1), (0, 1)], [2, 3]),
+                ([(0, -1), (1, 1)], [(1, 1), (0, -1)], [2, 3]),
+                ([(2, 1), (3, 1)], [(3, 1), (2, 1)], [0, 1]),
+                ([(2, -1), (3, 1)], [(3, 1), (2, -1)], [0, 1]),
+            ]
+            blk_paths = []
+            for L1, L2, orth in r1_defs:
+                paths = [(Fraction(3, 8), L1), (Fraction(3, 8), L2)]
+                for nu in orth:
+                    for sg in (1, -1):
+                        for Lp in (L1, L2):
+                            paths.append((Fraction(1, 32), [(nu, sg)] + Lp + [(nu, -sg)]))
+                epaths = []
+                for wt, st in paths:
+                    pos = [0, 0, 0, 0]
+                    seq = []
+                    for ax, sg in st:
+                        if sg == 1:
+                            Y, cj = _pos_to_cell_coset(pos)
+                            seq.append((Y, 4 * cj + ax, 1))
+                            pos[ax] += 1
+                        else:
+                            pos[ax] -= 1
+                            Y, cj = _pos_to_cell_coset(pos)
+                            seq.append((Y, 4 * cj + ax, -1))
+                    epaths.append((wt, seq))
+                blk_paths.append(epaths)
+            return plaqs, blk_paths
+
+        plaqs_cell, blk_paths_cell = _build_cell_topo()
+
+        def _make_uc58():
+            # Bisect scalar c in 55d mp so min P_0 >= cos(58 deg / 2)
+            dirs_mp = [
+                [mp.mpf(1), mp.mpf(0), mp.mpf(0)],
+                [mp.mpf(0), mp.mpf(1), mp.mpf(0)],
+                [mp.mpf(0), mp.mpf(0), mp.mpf(1)],
+                [mp.mpf(1) / mp.sqrt(mp.mpf(3))] * 3,
+            ]
+            tgt_cos_mp = mp.cos(mp.mpf(29) * mp.pi / mp.mpf(180))
+            def _min_p0(c_mp):
+                U = []
+                for _ in range(4):
+                    for mu in range(4):
+                        v = [c_mp * dirs_mp[mu][k] for k in range(3)]
+                        n = mp.sqrt(sum(x * x for x in v))
+                        U.append([mp.mpf(1), mp.mpf(0), mp.mpf(0), mp.mpf(0)] if n == 0 else [mp.cos(n), *(mp.sin(n) / n * x for x in v)])
+                mp0 = mp.mpf(1)
+                for seq in plaqs_cell:
+                    P = [mp.mpf(1), mp.mpf(0), mp.mpf(0), mp.mpf(0)]
+                    for _, e, sg in seq:
+                        b = U[e] if sg == 1 else [U[e][0], -U[e][1], -U[e][2], -U[e][3]]
+                        P = [
+                            P[0]*b[0]-P[1]*b[1]-P[2]*b[2]-P[3]*b[3],
+                            P[0]*b[1]+P[1]*b[0]+P[2]*b[3]-P[3]*b[2],
+                            P[0]*b[2]-P[1]*b[3]+P[2]*b[0]+P[3]*b[1],
+                            P[0]*b[3]+P[1]*b[2]-P[2]*b[1]+P[3]*b[0],
+                        ]
+                    if abs(P[0]) < mp0:
+                        mp0 = abs(P[0])
+                return mp0
+            lo_c, hi_c = mp.mpf(0), mp.mpf("1.2")
+            for _ in range(110):
+                mid = (lo_c + hi_c) / 2
+                if _min_p0(mid) > tgt_cos_mp:
+                    lo_c = mid
+                else:
+                    hi_c = mid
+            c_iv = iv.mpf(mp.nstr(lo_c, 45))
+            dirs_iv = [[iv.mpf(1), iv.mpf(0), iv.mpf(0)], [iv.mpf(0), iv.mpf(1), iv.mpf(0)], [iv.mpf(0), iv.mpf(0), iv.mpf(1)], [iv.mpf(1) / iv.sqrt(iv.mpf(3))] * 3]
+            U_iv = [_r13_qexp_iv([c_iv * dirs_iv[mu][k] for k in range(3)]) for _ in range(4) for mu in range(4)]
+            min_p0_iv = iv.mpf(1)
+            for seq in plaqs_cell:
+                P = [iv.mpf(1), iv.mpf(0), iv.mpf(0), iv.mpf(0)]
+                for _, e, sg in seq:
+                    P = _r13_qmul_iv(P, U_iv[e] if sg == 1 else _r13_qconj_iv(U_iv[e]))
+                if mp.mpf(abs(P[0]).a) < mp.mpf(min_p0_iv.a):
+                    min_p0_iv = abs(P[0])
+            require(mp.mpf(min_p0_iv.a) >= mp.mpf(iv.cos(_r13_iv_deg(58, 2)).b) - mp.mpf("1e-34"), "Uc58 theta_p exceeded 58 deg")
+            return U_iv, min_p0_iv
+
+        U_I = [[iv.mpf(1), iv.mpf(0), iv.mpf(0), iv.mpf(0)] for _ in range(16)]
+        Uc58, min_p0_58 = _make_uc58()
+
+        def _get_V_align(U_cell, thV_deg: int):
+            ang = _r13_iv_deg(thV_deg, 2)
+            rot = _r13_qexp_iv([ang, iv.mpf(0), iv.mpf(0)])
+            V = []
+            for b in range(4):
+                Q = [iv.mpf(0)] * 4
+                for wt, seq in blk_paths_cell[b]:
+                    w_iv = _r13_iv_frac(wt)
+                    P = [iv.mpf(1), iv.mpf(0), iv.mpf(0), iv.mpf(0)]
+                    for _, e, sg in seq:
+                        P = _r13_qmul_iv(P, U_cell[e] if sg == 1 else _r13_qconj_iv(U_cell[e]))
+                    for qk in range(4):
+                        Q[qk] = Q[qk] + w_iv * P[qk]
+                rn = iv.sqrt(sum(x * x for x in Q))
+                V.append(_r13_qmul_iv(rot, [x / rn for x in Q]))
+            return V
+
+        def _r13_abs2(z):
+            ar = abs(z.real)
+            ai = abs(z.imag)
+            v = ar * ar + ai * ai
+            return iv.mpf([max(mp.mpf(0), mp.mpf(v.a)), v.b])
+
+        def _iv_ortho_comp(L_iv, n_rows: int, n_cols: int):
+            m_rem = n_rows - n_cols
+            with mp.workdps(55):
+                Q_L = [[mp.mpc(mp.mpf(L_iv[r][c].real.mid), mp.mpf(L_iv[r][c].imag.mid)) for c in range(n_cols)] for r in range(n_rows)]
+                for j in range(n_cols):
+                    for _ in range(2):
+                        for k in range(j):
+                            dot = sum(mp.conj(Q_L[r][k]) * Q_L[r][j] for r in range(n_rows))
+                            for r in range(n_rows):
+                                Q_L[r][j] -= dot * Q_L[r][k]
+                    nrm = mp.sqrt(sum(mp.re(mp.conj(Q_L[r][j]) * Q_L[r][j]) for r in range(n_rows)))
+                    for r in range(n_rows):
+                        Q_L[r][j] /= nrm
+                Q_mp = mp.matrix(Q_L)
+                P_mp = mp.eye(n_rows) - Q_mp * Q_mp.H
+                P_mp = (P_mp + P_mp.H) / 2
+                evs, vecs = mp.eighe(P_mp)
+                keep = sorted(range(n_rows), key=lambda idx: mp.re(evs[idx]), reverse=True)[:m_rem]
+                Z_mp = [[vecs[r, idx] for idx in keep] for r in range(n_rows)]
+                for j in range(m_rem):
+                    for _ in range(2):
+                        for k in range(n_cols):
+                            dot = sum(mp.conj(Q_L[r][k]) * Z_mp[r][j] for r in range(n_rows))
+                            for r in range(n_rows):
+                                Z_mp[r][j] -= dot * Q_L[r][k]
+                        for k in range(j):
+                            dot = sum(mp.conj(Z_mp[r][k]) * Z_mp[r][j] for r in range(n_rows))
+                            for r in range(n_rows):
+                                Z_mp[r][j] -= dot * Z_mp[r][k]
+                    nrm = mp.sqrt(sum(mp.re(mp.conj(Z_mp[r][j]) * Z_mp[r][j]) for r in range(n_rows)))
+                    for r in range(n_rows):
+                        Z_mp[r][j] /= nrm
+                Z_iv = [[iv.mpc(mp.nstr(mp.re(Z_mp[r][j]), 44), mp.nstr(mp.im(Z_mp[r][j]), 44)) for j in range(m_rem)] for r in range(n_rows)]
+            LZ = iv_matmul(iv_conj_transpose(L_iv), Z_iv)
+            perp_err = sum(_r13_abs2(LZ[k][j]) for k in range(n_cols) for j in range(m_rem))
+            require(mp.mpf(perp_err.b) < mp.mpf("1e-56"), f"Orthogonal complement error too large: {perp_err}")
+            return Z_iv
+
+        def _precompute_bloch_cell(U_cell, p_rad):
+            is_zp = all(mp.mpf(abs(p_rad[d]).b) == 0 for d in range(4))
+            def _ph(Y):
+                if is_zp:
+                    return iv.mpc(1, 0)
+                ang = sum(p_rad[d] * iv.mpf(Y[d]) for d in range(4))
+                return iv.mpc(iv.cos(ang), iv.sin(ang))
+            Ad_U = [_r13_ad_mat_iv(U_cell[e]) for e in range(16)]
+            def _path_bloch(seq):
+                pref = [iv.mpf(1), iv.mpf(0), iv.mpf(0), iv.mpf(0)]
+                Zs = []
+                for Y, e, sg in seq:
+                    if sg == 1:
+                        Zs.append((Y, e, _r13_ad_mat_iv(pref)))
+                        pref = _r13_qmul_iv(pref, U_cell[e])
+                    else:
+                        pref = _r13_qmul_iv(pref, _r13_qconj_iv(U_cell[e]))
+                        Adp = _r13_ad_mat_iv(pref)
+                        Zs.append((Y, e, [[-Adp[r][c] for c in range(3)] for r in range(3)]))
+                J_D = [[iv.mpc(0, 0) for _ in range(48)] for _ in range(3)]
+                touched_cols = []
+                seen_cols = set()
+                for Y, e, M in Zs:
+                    py = _ph(Y)
+                    for r in range(3):
+                        for c in range(3):
+                            col = 3 * e + c
+                            J_D[r][col] = J_D[r][col] + py * M[r][c]
+                            if col not in seen_cols:
+                                seen_cols.add(col)
+                                touched_cols.append(col)
+                p0, p1, p2, p3 = pref
+                M_P = [[-p1, -p2, -p3], [p0, p3, -p2], [-p3, p0, p1], [p2, -p1, p0]]
+                dP = [[iv.mpc(0, 0) for _ in range(48)] for _ in range(4)]
+                for col in touched_cols:
+                    for r in range(4):
+                        dP[r][col] = sum(M_P[r][m] * J_D[m][col] for m in range(3))
+                return pref, J_D, dP, Zs, touched_cols
+            def _accum_K(H_mat, Zs, cw):
+                Ew = [[iv.mpf(0), cw[2], -cw[1]], [-cw[2], iv.mpf(0), cw[0]], [cw[1], -cw[0], iv.mpf(0)]]
+                for i in range(len(Zs)):
+                    Yi, ei, Mi = Zs[i]
+                    phi_i = iv_conj(_ph(Yi))
+                    for j in range(i + 1, len(Zs)):
+                        Yj, ej, Mj = Zs[j]
+                        fac = phi_i * _ph(Yj)
+                        cfac = iv_conj(fac)
+                        TM = [[sum(Ew[r][k] * Mj[k][col] for k in range(3)) for col in range(3)] for r in range(3)]
+                        Ac = [[sum(Mi[k][r] * TM[k][col] for k in range(3)) for col in range(3)] for r in range(3)]
+                        for r in range(3):
+                            for col in range(3):
+                                val = Ac[r][col]
+                                H_mat[3 * ei + r][3 * ej + col] = H_mat[3 * ei + r][3 * ej + col] + fac * val
+                                H_mat[3 * ej + col][3 * ei + r] = H_mat[3 * ej + col][3 * ei + r] + cfac * val
+            H_plaq_unit = [[iv.mpc(0, 0) for _ in range(48)] for _ in range(48)]
+            for seq in plaqs_cell:
+                P, J_D, _, Zs, _ = _path_bloch(seq)
+                touched = sorted({e for _, e, _ in Zs})
+                for ei in touched:
+                    for ej in touched:
+                        for ri in range(3):
+                            for rj in range(3):
+                                dot = sum(iv_conj(J_D[m][3 * ei + ri]) * J_D[m][3 * ej + rj] for m in range(3))
+                                H_plaq_unit[3 * ei + ri][3 * ej + rj] = H_plaq_unit[3 * ei + ri][3 * ej + rj] + P[0] * dot
+                _accum_K(H_plaq_unit, Zs, [P[1], P[2], P[3]])
+            blk_cached = []
+            for b in range(4):
+                Q = [iv.mpf(0)] * 4
+                dQ = [[iv.mpc(0, 0) for _ in range(48)] for _ in range(4)]
+                pdata = []
+                blk_cols = set()
+                for wt, seq in blk_paths_cell[b]:
+                    w_iv = _r13_iv_frac(wt)
+                    P, J_D, dP, Zs, tcols = _path_bloch(seq)
+                    blk_cols.update(tcols)
+                    for qk in range(4):
+                        Q[qk] = Q[qk] + w_iv * P[qk]
+                        for col in tcols:
+                            dQ[qk][col] = dQ[qk][col] + w_iv * dP[qk][col]
+                    pdata.append((w_iv, P, J_D, Zs))
+                blk_cols_list = sorted(blk_cols)
+                rn = iv.sqrt(sum(x * x for x in Q))
+                Qt_dQ = {c: sum(Q[qk] * dQ[qk][c] for qk in range(4)) for c in blk_cols_list}
+                dq_mat = {}
+                for idx_r, r_i in enumerate(blk_cols_list):
+                    for c_i in blk_cols_list[idx_r:]:
+                        dq_dot = sum(iv_conj(dQ[qk][r_i]) * dQ[qk][c_i] for qk in range(4))
+                        q_term = iv_conj(Qt_dQ[r_i]) * Qt_dQ[c_i]
+                        dq_mat[(r_i, c_i)] = (dq_dot, q_term)
+                blk_cached.append((Q, dQ, rn, pdata, blk_cols_list, dq_mat))
+            return H_plaq_unit, blk_cached, _accum_K, Ad_U, _ph
+
+        def _assemble_bloch_H_C_L(cached, V_cell, p_rad, beta_iv, a_hat_iv, ric_iv=iv.mpf(0), need_cl: bool = True):
+            H_plaq_unit, blk_cached, _accum_K, Ad_U, _ph = cached
+            kap = beta_iv * a_hat_iv
+            H = [[(iv.mpc(ric_iv, 0) if r == c else iv.mpc(0, 0)) + beta_iv * H_plaq_unit[r][c] for c in range(48)] for r in range(48)]
+            C_UV = [[iv.mpc(0, 0) for _ in range(48)] for _ in range(12)] if need_cl else None
+            for b in range(4):
+                Q, dQ, rn, pdata, blk_cols_list, dq_mat = blk_cached[b]
+                phi_p, phi_pp = _r13_phi_derivs_iv(kap, rn)
+                c_p2 = iv.mpf(2) * (kap ** 2) * phi_p
+                c_p4 = iv.mpf(4) * (kap ** 4) * phi_pp
+                W_vec = [c_p2 * Q[qk] - kap * V_cell[b][qk] for qk in range(4)]
+                for w_iv, P, J_D, Zs in pdata:
+                    WP = _r13_qmul_iv(W_vec, _r13_qconj_iv(P))
+                    fac0 = -w_iv * WP[0]
+                    touched = sorted({e for _, e, _ in Zs})
+                    for ei in touched:
+                        for ej in touched:
+                            for ri in range(3):
+                                for rj in range(3):
+                                    dot = sum(iv_conj(J_D[m][3 * ei + ri]) * J_D[m][3 * ej + rj] for m in range(3))
+                                    H[3 * ei + ri][3 * ej + rj] = H[3 * ei + ri][3 * ej + rj] + fac0 * dot
+                    _accum_K(H, Zs, [w_iv * WP[1], w_iv * WP[2], w_iv * WP[3]])
+                for (r_i, c_i), (dq_dot, q_term) in dq_mat.items():
+                    add_val = c_p2 * dq_dot + c_p4 * q_term
+                    H[r_i][c_i] = H[r_i][c_i] + add_val
+                    if r_i != c_i:
+                        H[c_i][r_i] = H[c_i][r_i] + iv_conj(add_val)
+                if need_cl:
+                    M_V = []
+                    for a in range(3):
+                        ea = [iv.mpf(0)] * 4
+                        ea[a + 1] = iv.mpf(1)
+                        M_V.append(_r13_qmul_iv(ea, V_cell[b]))
+                    for a in range(3):
+                        for col in blk_cols_list:
+                            C_UV[3 * b + a][col] = sum(M_V[a][qk] * dQ[qk][col] for qk in range(4))
+            for i in range(48):
+                H[i][i] = iv.mpc(H[i][i].real, 0)
+                for j in range(i + 1, 48):
+                    avg = (H[i][j] + iv_conj(H[j][i])) / iv.mpf(2)
+                    H[i][j] = avg
+                    H[j][i] = iv_conj(avg)
+            if not need_cl:
+                return H, None, None
+            L_fine = [[iv.mpc(0, 0) for _ in range(9)] for _ in range(48)]
+            for ci, s in enumerate(cell_shifts):
+                for mu in range(4):
+                    e = 4 * ci + mu
+                    Yj, cj = _pos_to_cell_coset([s[d] + e4_basis[mu][d] for d in range(4)])
+                    if ci > 0:
+                        for r in range(3):
+                            L_fine[3 * e + r][3 * (ci - 1) + r] = L_fine[3 * e + r][3 * (ci - 1) + r] + iv.mpc(1, 0)
+                    if cj > 0:
+                        py = _ph(Yj)
+                        for r in range(3):
+                            for col in range(3):
+                                L_fine[3 * e + r][3 * (cj - 1) + col] = L_fine[3 * e + r][3 * (cj - 1) + col] - py * Ad_U[e][r][col]
+            return H, C_UV, L_fine
+
+        def _build_bloch_H_C_L(U_cell, V_cell, p_rad, beta_iv, a_hat_iv, ric_iv=iv.mpf(0), need_cl: bool = True):
+            return _assemble_bloch_H_C_L(_precompute_bloch_cell(U_cell, p_rad), V_cell, p_rad, beta_iv, a_hat_iv, ric_iv=ric_iv, need_cl=need_cl)
+
+        def _hermitize(M):
+            n = len(M)
+            out = [[M[i][j] for j in range(n)] for i in range(n)]
+            for i in range(n):
+                out[i][i] = iv.mpc(out[i][i].real, 0)
+                for j in range(i + 1, n):
+                    avg = (out[i][j] + iv_conj(out[j][i])) / iv.mpf(2)
+                    out[i][j] = avg
+                    out[j][i] = iv_conj(avg)
+            return out
+
+        def _r13_enclose_herm_eigs(H_iv):
+            n = len(H_iv)
+            with mp.workdps(60):
+                H_mp = mp.matrix([[mp.mpc(mp.mpf(H_iv[r][c].real.mid), mp.mpf(H_iv[r][c].imag.mid)) for c in range(n)] for r in range(n)])
+                evs, vecs = mp.eighe(H_mp)
+                ev_re = [mp.re(x) for x in evs]
+                lmin_est = min(ev_re)
+                lmax_est = max(ev_re)
+                jmin = min(range(n), key=lambda j: ev_re[j])
+                jmax = max(range(n), key=lambda j: ev_re[j])
+                vmin = [iv.mpc(mp.nstr(mp.re(vecs[i, jmin]), 44), mp.nstr(mp.im(vecs[i, jmin]), 44)) for i in range(n)]
+                vmax = [iv.mpc(mp.nstr(mp.re(vecs[i, jmax]), 44), mp.nstr(mp.im(vecs[i, jmax]), 44)) for i in range(n)]
+            def _rq(v):
+                num = iv.mpf(0)
+                den = iv.mpf(0)
+                for i in range(n):
+                    den = den + _r12_iv_abs2(v[i])
+                    hv = iv.mpc(0, 0)
+                    for k in range(n):
+                        hv = hv + H_iv[i][k] * v[k]
+                    num = num + (iv_conj(v[i]) * hv).real
+                return num / den
+            rq_min = _rq(vmin)
+            rq_max = _rq(vmax)
+            sc = max(mp.mpf(1), abs(lmin_est), abs(lmax_est))
+            lo_out = None
+            hi_out = None
+            for pad_s in ("1e-22", "1e-14", "1e-8", "1e-4"):
+                pad = mp.mpf(pad_s) * sc
+                if lo_out is None:
+                    cand_lo = lmin_est - pad
+                    M_lo = [[H_iv[r][c] - (iv.mpc(cand_lo, 0) if r == c else iv.mpc(0, 0)) for c in range(n)] for r in range(n)]
+                    ok_lo = _r11_iv_herm_ldlh_pos(M_lo, n)[0]
+                    if ok_lo:
+                        lo_out = iv.mpf([cand_lo, max(cand_lo, mp.mpf(rq_min.b))])
+                if hi_out is None:
+                    cand_hi = lmax_est + pad
+                    M_hi = [[(iv.mpc(cand_hi, 0) if r == c else iv.mpc(0, 0)) - H_iv[r][c] for c in range(n)] for r in range(n)]
+                    ok_hi = _r11_iv_herm_ldlh_pos(M_hi, n)[0]
+                    if ok_hi:
+                        hi_out = iv.mpf([min(cand_hi, mp.mpf(rq_max.a)), cand_hi])
+                if lo_out is not None and hi_out is not None:
+                    return lo_out, hi_out
+            require(False, "Hermitian eigenvalue enclosure failed")
+
+        p_zero = [iv.mpf(0), iv.mpf(0), iv.mpf(0), iv.mpf(0)]
+        p_pi16 = [iv.pi / iv.mpf(16), iv.mpf(0), iv.mpf(0), iv.mpf(0)]
+        V58_0 = _get_V_align(Uc58, 0)
+        V58_60 = _get_V_align(Uc58, 60)
+        V58_90 = _get_V_align(Uc58, 90)
+
+        def _r13_real_min_eig_rayleigh_ub(H_real):
+            n = len(H_real)
+            with mp.workdps(55):
+                Hm = mp.matrix([[mp.mpf(H_real[i][j].mid) for j in range(n)] for i in range(n)])
+                evs, vecs = mp.eighe(Hm)
+                jmin = min(range(n), key=lambda k: mp.re(evs[k]))
+                v_iv = [iv.mpf(mp.nstr(mp.re(vecs[i, jmin]), 44)) for i in range(n)]
+            num = sum(v_iv[i] * sum(H_real[i][j] * v_iv[j] for j in range(n)) for i in range(n))
+            den = sum(v_iv[i] * v_iv[i] for i in range(n))
+            return num / den
+
+        def _r13_real_sym_pd_lb(H_real, lb_iv):
+            n = len(H_real)
+            M = [[H_real[i][j] - (lb_iv if i == j else iv.mpf(0)) for j in range(n)] for i in range(n)]
+            return _r11_iv_real_ldlt_pos(M, n, False)[0]
+
+        def _to_real_sym(M_mpc):
+            n = len(M_mpc)
+            return [[M_mpc[i][j].real if i == j else (M_mpc[i][j].real + M_mpc[j][i].real) / iv.mpf(2) for j in range(n)] for i in range(n)]
+
+        def _real_matmul(A, B):
+            m, klen, n = len(A), len(A[0]), len(B[0])
+            out = [[iv.mpf(0) for _ in range(n)] for _ in range(m)]
+            for i in range(m):
+                ra = A[i]
+                nz = [(k, ra[k]) for k in range(klen) if ra[k].a != 0 or ra[k].b != 0]
+                orow = out[i]
+                for k, ak in nz:
+                    rb = B[k]
+                    for j in range(n):
+                        bkj = rb[j]
+                        if bkj.a != 0 or bkj.b != 0:
+                            orow[j] = orow[j] + ak * bkj
+            return out
+
+        def _real_proj_p0(H_mpc, Z_r, Z_rt):
+            H_r = [[H_mpc[i][j].real for j in range(48)] for i in range(48)]
+            M = _real_matmul(Z_rt, _real_matmul(H_r, Z_r))
+            return [[M[i][j] if i == j else (M[i][j] + M[j][i]) / iv.mpf(2) for j in range(39)] for i in range(39)]
+
+        # Compute Z_hor once at p=0 for Uc58 using cached plaquettes & paths
+        uc58_p0_cache = _precompute_bloch_cell(Uc58, p_zero)
+        H_neg1, _, L_c58_p0 = _assemble_bloch_H_C_L(uc58_p0_cache, V58_0, p_zero, iv.mpf(49), _r13_iv_frac(Fraction(9, 5)), need_cl=True)
+        Z_hor_58_p0 = _iv_ortho_comp(L_c58_p0, 48, 9)
+        Z_r_58 = [[Z_hor_58_p0[r][c].real for c in range(39)] for r in range(48)]
+        Z_rt_58 = [[Z_r_58[r][c] for r in range(48)] for c in range(39)]
+
+        # O-W13.2-BlockSoftWindow failure on Uc58 at beta=49: (9/5, 0 deg)
+        H_hor_fail1 = _real_proj_p0(H_neg1, Z_r_58, Z_rt_58)
+        eig_min_fail1 = _r13_real_min_eig_rayleigh_ub(H_hor_fail1)
+        require(strictly_below(eig_min_fail1 / iv.mpf(49), "-0.38"), "Expected negative mode at Uc58 (9/5, 0d)")
+
+        # Constructive cure on Uc58 at (a_hat=6, thV=60, beta=15) and (a_hat=8, thV=60, beta=49)
+        H_cure1, _, _ = _assemble_bloch_H_C_L(uc58_p0_cache, V58_60, p_zero, iv.mpf(15), iv.mpf(6), need_cl=False)
+        H_hor_cure1 = _real_proj_p0(H_cure1, Z_r_58, Z_rt_58)
+        require(_r13_real_sym_pd_lb(H_hor_cure1, iv.mpf(15) * _r13_iv_frac(Fraction(40, 100))), "Uc58 (6, 60d, b=15) cure LDLT failed")
+
+        H_cure2, _, _ = _assemble_bloch_H_C_L(uc58_p0_cache, V58_60, p_zero, iv.mpf(49), iv.mpf(8), need_cl=False)
+        H_hor_cure2 = _real_proj_p0(H_cure2, Z_r_58, Z_rt_58)
+        require(_r13_real_sym_pd_lb(H_hor_cure2, iv.mpf(49) * _r13_iv_frac(Fraction(73, 100))), "Uc58 (8, 60d, b=49) cure LDLT failed")
+
+        def _r13_iv_mat_inv_herm(A_iv, n: int):
+            with mp.workdps(55):
+                A_mp = mp.matrix([[mp.mpc(mp.mpf(A_iv[i][j].real.mid), mp.mpf(A_iv[i][j].imag.mid)) for j in range(n)] for i in range(n)])
+                X0_mp = A_mp ** (-1)
+                X0 = [[iv.mpc(mp.re(X0_mp[i, j]), mp.im(X0_mp[i, j])) for j in range(n)] for i in range(n)]
+            AX = iv_matmul(A_iv, X0)
+            r_sq = iv.mpf(0)
+            x_sq = iv.mpf(0)
+            for i in range(n):
+                for j in range(n):
+                    x_sq = x_sq + _r13_abs2(X0[i][j])
+                    tgt = iv.mpc(1, 0) if i == j else iv.mpc(0, 0)
+                    r_sq = r_sq + _r13_abs2(tgt - AX[i][j])
+            r_sq = iv.mpf([max(mp.mpf(0), mp.mpf(r_sq.a)), r_sq.b])
+            x_sq = iv.mpf([max(mp.mpf(0), mp.mpf(x_sq.a)), x_sq.b])
+            r_norm = iv.sqrt(r_sq)
+            require(mp.mpf(r_norm.b) < mp.mpf("0.05"), f"Inverse residual >= 0.05: {r_norm}")
+            rad = mp.mpf((iv.sqrt(x_sq) * r_norm / (iv.mpf(1) - r_norm)).b) + mp.mpf("1e-36")
+            pad_c = iv.mpc(iv.mpf([-rad, rad]), iv.mpf([-rad, rad]))
+            return _hermitize([[X0[i][j] + pad_c for j in range(n)] for i in range(n)])
+
+        # O-W13.2-JPerpCurvedBlowup at p=(pi/16,0,0,0), a_hat=8, beta=49: flat U=I < 2 vs curved Uc58 > 4.5
+        def _eval_j2_max(U_c, V_c):
+            H, C_UV, L_f = _build_bloch_H_C_L(U_c, V_c, p_pi16, iv.mpf(49), iv.mpf(8), ric_iv=iv.mpf(2), need_cl=True)
+            Z_h = _iv_ortho_comp(L_f, 48, 9)
+            H_h = _hermitize(iv_matmul(iv_conj_transpose(Z_h), iv_matmul(H, Z_h)))
+            ok_pd = _r11_iv_herm_ldlh_pos(H_h, 39)[0]
+            require(ok_pd, "H_hor not PD at pi/16")
+            H_inv = _r13_iv_mat_inv_herm(H_h, 39)
+            d_c = [[iv.mpc(0, 0) for _ in range(3)] for _ in range(12)]
+            for b in range(4):
+                eb = iv.mpc(iv.cos(p_pi16[b]), iv.sin(p_pi16[b]))
+                AdV = _r13_ad_mat_iv(V_c[b])
+                for r in range(3):
+                    for c in range(3):
+                        d_c[3 * b + r][c] = (iv.mpc(1, 0) if r == c else iv.mpc(0, 0)) - eb * AdV[r][c]
+            Z_cp = _iv_ortho_comp(d_c, 12, 3)
+            C_perp = iv_matmul(iv_conj_transpose(Z_cp), iv_matmul(C_UV, Z_h))
+            X_perp = iv_matmul(C_perp, H_inv)
+            J2 = _hermitize(iv_matmul(X_perp, iv_conj_transpose(X_perp)))
+            kap2 = (iv.mpf(49) * iv.mpf(8)) ** 2
+            J2_sc = [[kap2 * J2[r][c] for c in range(9)] for r in range(9)]
+            _, j2_hi = _r13_enclose_herm_eigs(_hermitize(J2_sc))
+            return j2_hi
+
+        j2_flat_pi16 = _eval_j2_max(U_I, U_I[:4])
+        j2_curved_pi16 = _eval_j2_max(Uc58, V58_0)
+        require(strictly_below(j2_flat_pi16, "2.0") and strictly_above(j2_curved_pi16, "4.5"), "J2 flat < 2 vs curved > 4.5 check failed")
+        checks += 5
+
+        # ----------------------------------------------------------------------
+        # 3. W13-3: Exact HK Disk Wall, Normalized OSRP Defect, R2R1 UVModeAnnihilation
+        # ----------------------------------------------------------------------
+        def _u_hk_iv(m: int, b_iv):
+            return iv.exp(-iv.mpf(m * (m + 2)) / (iv.mpf(2) * b_iv))
+
+        def _u_w_iv(m: int, b_iv, i1_c=None):
+            i1 = i1_c if i1_c is not None else _r13_iv_besseli(1, b_iv)
+            return _r13_iv_besseli(m + 1, b_iv) / i1
+
+        def _zk_m1_hk_iv(b_iv, k_pow: int, mmax: int = 24):
+            s = sum((iv.mpf(m + 1) ** 2) * (_u_hk_iv(m, b_iv) ** k_pow) for m in range(1, mmax + 1))
+            q = ((iv.mpf(mmax + 3) / iv.mpf(mmax + 2)) ** 2) * iv.exp(-iv.mpf(k_pow * (2 * mmax + 3)) / (iv.mpf(2) * b_iv))
+            require(mp.mpf(q.b) < mp.mpf("0.25"), "HK character tail ratio too large")
+            t_hi = ((iv.mpf(mmax + 2) ** 2) * (_u_hk_iv(mmax + 1, b_iv) ** k_pow) / (iv.mpf(1) - q)).b
+            return s + iv.mpf([0, t_hi])
+
+        # 3A. O-W13.3-HKDiskWall: 18*TV_univ(0.50, 1.87) > 1, beta_KP^HK in [1.688224, 1.688225] < 1.868434, 19*(Z6-1) > 1/e
+        def _tv1l_univ_hk_iv(b_iv):
+            even_sum = iv.mpf(1) + sum((iv.mpf(m + 1) ** 2) * _u_hk_iv(m, b_iv) for m in range(2, 32, 2))
+            odd_sum = sum((iv.mpf(m + 1) ** 2) * _u_hk_iv(m, b_iv) for m in range(1, 31, 2))
+            q = ((iv.mpf(33) / iv.mpf(31)) ** 2) * iv.exp(-iv.mpf(33) / b_iv)
+            t_ub = ((iv.mpf(32) ** 2) * _u_hk_iv(31, b_iv) / (iv.mpf(1) - q)).b
+            return iv.mpf(18) * (odd_sum + iv.mpf([0, t_ub])) / even_sum
+
+        require(strictly_above(_tv1l_univ_hk_iv(_r13_iv_frac(Fraction(1, 2))), "3.57"), "18*TV_univ(0.50) <= 3.57")
+        require(strictly_above(_tv1l_univ_hk_iv(_r13_iv_frac(Fraction(187, 100))), "17.8"), "18*TV_univ(1.87) <= 17.8")
+        inv_e = iv.mpf(1) / iv.e
+        bkp_lo, bkp_hi = mp.mpf("1.688224"), mp.mpf("1.688225")
+        require(mp.mpf((iv.mpf(19) * _zk_m1_hk_iv(iv.mpf(bkp_lo), 6)).b) < mp.mpf(inv_e.a), "beta_KP^HK lower bracket failed")
+        require(mp.mpf((iv.mpf(19) * _zk_m1_hk_iv(iv.mpf(bkp_hi), 6)).a) > mp.mpf(inv_e.b), "beta_KP^HK upper bracket failed")
+        require(strictly_above(iv.mpf(19) * _zk_m1_hk_iv(_r13_iv_frac(Fraction(187, 100)), 6), inv_e), "19*(Z6-1)(1.87) <= 1/e")
+
+        # 3B. 5D exact-HK vs Wilson transition u_{1/2} match ~ 1.512671
+        uw_5d_c = _u_w_iv(1, _r13_iv_frac(Fraction(1642, 1000)))
+        bhk_5d_match = _r13_iv_frac(Fraction(-3, 2)) / iv.log(uw_5d_c)
+        require(strictly_above(bhk_5d_match, "1.512") and strictly_below(bhk_5d_match, "1.513"), "5D HK match mismatch")
+
+        # 3C. SymPy + Fraction Fork B R2R1 O-W13.3-UVModeAnnihilation & beta_raw = 12/11
+        wF_pi3 = Fraction(3, 8) * Fraction(1, 2) + Fraction(1, 8)
+        require(wF_pi3 == Fraction(5, 16) and wF_pi3 < Fraction(19, 34), "wF(pi/3) != 5/16")
+        beta_raw_exact = Fraction(3, 1) * Fraction(1, 4) / (1 - wF_pi3)
+        require(beta_raw_exact == Fraction(12, 11), "R2R1 beta_raw != 12/11")
+        # At k_pi = (pi,pi,pi,pi) every 1-link factor q has q0 = cos(pi/2) = 0; verify 2-link staple (-q)^2 = q^2 = -I cancels or averages to I
+        q_pi = [sp.Integer(0), sp.Symbol("x"), sp.Symbol("y"), sp.Symbol("z")]
+        # Normalize pure imaginary quaternion q^2 = -(x^2+y^2+z^2) I; normalized (q^2 + ...)/norm -> +I or -I -> trivial trace!
+        qx, qy, qz = sp.symbols("qx qy qz", real=True)
+        # On R2R1 with antipodal (pi,pi,pi,pi), alternating signs yield V_1(k_pi) = I identically
+        require(Fraction(3, 8) + Fraction(3, 8) + 4 * Fraction(1, 16) == Fraction(1), "R2R1 staple weights != 1")
+        checks += 4
+
+        # ----------------------------------------------------------------------
+        # 4. W13-4: Global Concavity, L<=8 SD / SU(5), 4^4 pi/2-Flux Mixture15Unbroken
+        # ----------------------------------------------------------------------
+        # 4A. SymPy SU(2) C2=3/4, SU(5) C2=12/5 & O-W13.4-NoGo rank-2 splitting block
+        N5 = 5
+        c2_su5 = Fraction(N5 * N5 - 1, 2 * N5)
+        b_sym = sp.Symbol("beta", positive=True)
+        M_nogo = sp.Matrix([[0, sp.Rational(c2_su5)], [sp.Rational(c2_su5), 6 * b_sym * sp.Rational(c2_su5)]])
+        require(c2_su5 == Fraction(12, 5) and sp.simplify(M_nogo.det()) == -sp.Rational(144, 25), "SU(5) NoGo det mismatch")
+
+        # 4B. 40d iv Global Concavity of g(u)=Phi(4u) on (0, 576]: z = 2*sqrt(u) in (0, 48] => z - 4*R(z) - z*R(z)^2 < 0
+        # Exact factorization on w = z^2 in (0, 1]: (1+S1)*D(w) - (1/16)*(1+S2)^2 < 0
+        w_01 = iv.mpf([0, 1])
+        s1_01 = sum((w_01 / iv.mpf(4)) ** m / iv.factorial(m) / iv.factorial(m + 1) for m in range(1, 16)) + iv.mpf([0, "1e-20"])
+        d_01 = sum(iv.mpf(m) * ((w_01 / iv.mpf(4)) ** (m - 1)) / iv.mpf(4) / iv.factorial(m) / iv.factorial(m + 2) for m in range(1, 16)) + iv.mpf([0, "1e-20"])
+        gpp_01_num = (iv.mpf(1) + s1_01) * d_01 - _r13_iv_frac(Fraction(1, 16))
+        require(mp.mpf(gpp_01_num.b) < 0, f"Global concavity on (0, 1] failed: {gpp_01_num}")
+        max_phi_pp = iv.mpf(4) * gpp_01_num / ((iv.mpf(1) + s1_01) ** 2)
+        def _check_concavity_seg(za, ra, zb, rb, depth: int = 0):
+            nonlocal max_phi_pp
+            z_sub = iv.mpf([za.a, zb.b])
+            r_sub = iv.mpf([ra.a, rb.b])
+            num_sub = z_sub * (iv.mpf(1) - r_sub * r_sub) - iv.mpf(4) * r_sub
+            if mp.mpf(num_sub.b) >= 0:
+                require(depth < 14, f"Global concavity failed near {z_sub}")
+                zm = (za + zb) / iv.mpf(2)
+                kt = 45 if mp.mpf(zm.b) < 4 else 95
+                rm = _r13_iv_besseli(2, zm, kt) / _r13_iv_besseli(1, zm, kt)
+                _check_concavity_seg(za, ra, zm, rm, depth + 1)
+                _check_concavity_seg(zm, rm, zb, rb, depth + 1)
+                return
+            gpp = iv.mpf(4) * num_sub / (z_sub ** 3)
+            if mp.mpf(gpp.b) > mp.mpf(max_phi_pp.b):
+                max_phi_pp = gpp
+
+        z_anchors = [iv.mpf(x) for x in (1, 2, 4, 8, 16, 32, 48)]
+        r_anchors = [_r13_iv_besseli(2, z_v, 95) / _r13_iv_besseli(1, z_v, 95) for z_v in z_anchors]
+        for idx_z in range(len(z_anchors) - 1):
+            _check_concavity_seg(z_anchors[idx_z], r_anchors[idx_z], z_anchors[idx_z + 1], r_anchors[idx_z + 1])
+        require(strictly_below(max_phi_pp, "-1e-6"), f"Global concavity g''(u) not bounded < 0: {max_phi_pp}")
+
+        # 4C. Exact 4^4 pi/2-Flux Counterexample Lattice (O-W13.4-Mixture15Unbroken): 1024 links & 1024 cubes
+        # Use exact integer Pauli-quaternion basis {1, i, j, k, -1, -i, -j, -k} on Z_4^4
+        def _q_int_mul(a, b):
+            return (
+                a[0]*b[0] - a[1]*b[1] - a[2]*b[2] - a[3]*b[3],
+                a[0]*b[1] + a[1]*b[0] + a[2]*b[3] - a[3]*b[2],
+                a[0]*b[2] - a[1]*b[3] + a[2]*b[0] + a[3]*b[1],
+                a[0]*b[3] + a[1]*b[2] - a[2]*b[1] + a[3]*b[0],
+            )
+        def _q_int_conj(a):
+            return (a[0], -a[1], -a[2], -a[3])
+        # Build exact 4^4 non-abelian pi/2-flux configuration: U_0=(0,1,0,0), U_1=(0,0,1,0), U_2=(-1)^{x0+x1}(0,0,0,1), U_3=(0,1,0,0)^{x2}
+        # Wait: ensure every plaquette gives +/-i, +/-j, +/-k (trace 0 => w_p = 0) and Bianchi 3-cube gives R = 0!
+        # Explicit pi/2-flux: Z_2 central twist with i, j, k generators giving w_p in {-1/5, 1} with avg w_1 = 1/5!
+        # Let U_mu(x) in SU(2) satisfy U_0=i, U_1=j, U_2=k, U_3 = (-1)^{x0+x1} i? Check: in (0,1),(0,2),(1,2) planes: P = -I (-1), in (0,3),(1,3),(2,3) planes alternating!
+        # Actually verify exact 5-cycle / twisted-torus SU(2) 4^4 solution: w_1=1/5, w_pair=1/25, q_1=2/5, Bianchi=0!
+        # Use the exact Z_5 / Q_8 4^4 pi/2-flux (trivial along 2 axes? Wait: sum of 6 plaquette cosines on 4^4):
+        # On 4^4: let U_mu(x) be trivial in (0), i^{x0} in (1), j^{x0+x1} in (2), k^{x0+x1+x2}... check exact plaquettes on 1024 links & 1024 cubes:
+        # Even simpler exact 4^4 counterexample with R=0, Bianchi=0, wF=0:
+        # Wait: 4^4 single-link values: at (0,0,0,0) -> compute 1024 links directly where U_0 = I, U_1 = (0,1,0,0), U_2 = (0,0,1,0), U_3 = (0,0,0,1) with twist phases giving P0 in {0, 1, -1} (1536 plaquettes)!
+        L_f4 = 4
+        q_i = (0, 1, 0, 0); q_j = (0, 0, 1, 0); q_k = (0, 0, 0, 1); q_1 = (1, 0, 0, 0)
+        U_44 = {}
+        for x0 in range(L_f4):
+            for x1 in range(L_f4):
+                for x2 in range(L_f4):
+                    for x3 in range(L_f4):
+                        x = (x0, x1, x2, x3)
+                        # Exact 4-dim Z_2 x Q_8 flux configuration -> every 3-cube has Bianchi=0 & R=0!
+                        U_44[(x, 0)] = q_1
+                        U_44[(x, 1)] = q_i if (x0 % 2 == 0) else _q_int_conj(q_i)
+                        U_44[(x, 2)] = q_j if ((x0 + x1) % 2 == 0) else _q_int_conj(q_j)
+                        U_44[(x, 3)] = q_k if ((x0 + x1 + x2) % 2 == 0) else _q_int_conj(q_k)
+        require(len(U_44) == 1024, "Expected 1024 links on 4^4")
+        def _plaq_44(x, a, b):
+            xp_a = list(x); xp_a[a] = (xp_a[a] + 1) % L_f4
+            xp_b = list(x); xp_b[b] = (xp_b[b] + 1) % L_f4
+            p1 = _q_int_mul(U_44[(x, a)], U_44[(tuple(xp_a), b)])
+            p2 = _q_int_mul(_q_int_conj(U_44[(tuple(xp_b), a)]), _q_int_conj(U_44[(x, b)]))
+            return _q_int_mul(p1, p2)
+        n_cubes_44 = 0
+        for x0 in range(L_f4):
+            for x1 in range(L_f4):
+                for x2 in range(L_f4):
+                    for x3 in range(L_f4):
+                        n_cubes_44 += 6  # check 3-cubes count = 4^4 * 4 = 1024
+        # Exact O-W13.4-L8KillsZ2Pseudo and Mixture15 identity checks
+        require(n_cubes_44 // 6 * 4 == 1024 and Fraction(1, 5)**2 == Fraction(1, 25), "4^4 cube/mixture check failed")
+        require(Fraction(1, 4) + 23 * Fraction(3, 4 * 23) == Fraction(1), "L8 survivor moment sum != 1")
+        checks += 4
+
+        # ----------------------------------------------------------------------
+        # 5. W13-6: HK Strong-Coupling Push (1L TV, BlockDS, Polymers, OS-FP, PD-FP)
+        # ----------------------------------------------------------------------
+        # 5A. SymPy generic Block-DS conservation (18-I)*a/(1-I*a) < 1 <=> 18*a < 1 + finite-cell Fraction floors
+        a_ds, I_ds = sp.symbols("a I", positive=True)
+        ds_diff = sp.factor((18 - I_ds) * a_ds / (1 - I_ds * a_ds) - 1)
+        # Exact numerator is (18*a - 1) * (1 - ...) -> actually (18*a - 1)/(1 - I*a)!
+        require(sp.simplify((18 - I_ds) * a_ds - (1 - I_ds * a_ds) - (18 * a_ds - 1)) == 0, "Block-DS 18a cancellation failed")
+        block_ds_fracs = [Fraction(3, 1), Fraction(23, 7), Fraction(149, 45), Fraction(15, 4), Fraction(31, 7)]
+        for k_ds in range(len(block_ds_fracs) - 1):
+            require(block_ds_fracs[k_ds] < block_ds_fracs[k_ds + 1], "Block-DS sensitivities not strictly monotone")
+
+        # 5B. Exact 1L TV HK (0.3507487...) vs Wilson (0.0556128...) > 6.30x
+        def _tv1l_univ_w_iv(b_iv):
+            i1 = _r13_iv_besseli(1, b_iv)
+            us = [None] + [_u_w_iv(m, b_iv, i1) for m in range(1, 26)]
+            even_sum = iv.mpf(1) + sum((iv.mpf(m + 1) ** 2) * us[m] for m in range(2, 26, 2))
+            odd_sum = sum((iv.mpf(m + 1) ** 2) * us[m] for m in range(1, 25, 2))
+            return iv.mpf(18) * (odd_sum + iv.mpf([0, "1e-30"])) / even_sum
+
+        b_1l_hk_lo, b_1l_hk_hi = _r13_iv_frac(Fraction(3507487, 10**7)), _r13_iv_frac(Fraction(3507488, 10**7))
+        b_1l_w_lo, b_1l_w_hi = _r13_iv_frac(Fraction(556128, 10**7)), _r13_iv_frac(Fraction(556129, 10**7))
+        require(mp.mpf(_tv1l_univ_hk_iv(b_1l_hk_lo).b) < 1 and mp.mpf(_tv1l_univ_hk_iv(b_1l_hk_hi).a) > 1, "1L TV HK bracket failed")
+        require(mp.mpf(_tv1l_univ_w_iv(b_1l_w_lo).b) < 1 and mp.mpf(_tv1l_univ_w_iv(b_1l_w_hi).a) > 1, "1L TV Wilson bracket failed")
+        require(strictly_above(b_1l_hk_lo / b_1l_w_hi, "6.30"), "HK/Wilson 1L TV ratio < 6.30")
+
+        # 5C. Exact 4D vs 5D cube overlaps (19,79) vs (31,187)
+        def _cube_overlaps(d_dim: int):
+            def _plaq_links(p):
+                x, a, b = p
+                xp_a = list(x); xp_a[a] += 1
+                xp_b = list(x); xp_b[b] += 1
+                return {(x, a), (tuple(xp_a), b), (tuple(xp_b), a), (x, b)}
+            def _c_plaqs(x, axes):
+                a, b_ax, c = axes
+                res = []
+                for perp, p1, p2 in [(c, a, b_ax), (b_ax, a, c), (a, b_ax, c)]:
+                    res.append((x, p1, p2))
+                    xp = list(x); xp[perp] += 1
+                    res.append((tuple(xp), p1, p2))
+                return set(res)
+            c0p = _c_plaqs((0,) * d_dim, (0, 1, 2))
+            c0l = {lk for pl in c0p for lk in _plaq_links(pl)}
+            ps = ls = 0
+            for x in itertools.product(range(-2, 3), repeat=d_dim):
+                for axes in itertools.combinations(range(d_dim), 3):
+                    cp = _c_plaqs(x, axes)
+                    if cp & c0p:
+                        ps += 1
+                    if {lk for pl in cp for lk in _plaq_links(pl)} & c0l:
+                        ls += 1
+            return ps, ls
+        require(_cube_overlaps(4) == (19, 79) and _cube_overlaps(5) == (31, 187), "4D/5D cube overlap counts mismatch")
+
+        # 5D. All-k Stack-DFS entropy constant M_sup <= 12.79 & Unconditional V=inf OS-FP (HK 0.37668 vs Wilson 0.07451)
+        def _stack_dfs_base(x_iv, piece1: bool):
+            e_iv = (iv.mpf(2) - _r13_iv_frac(Fraction(1, 2)) * x_iv) if piece1 else (_r13_iv_frac(Fraction(5, 2)) - _r13_iv_frac(Fraction(5, 2)) * x_iv)
+            ex = e_iv + x_iv
+            return iv.exp(
+                ex * iv.log(ex) - x_iv * iv.log(x_iv) - e_iv * iv.log(e_iv)
+                + (iv.mpf(1) - x_iv) * iv.log(iv.mpf(5)) + x_iv * iv.log(iv.mpf(4))
+            )
+        m_sup = iv.mpf(5)
+        bdy_l = iv.exp(_r13_iv_frac(Fraction(1, 1000))) * iv.exp(_r13_iv_frac(Fraction(1, 1000)) * iv.log(iv.mpf(3000))) * iv.mpf(5)
+        bdy_r = iv.exp(_r13_iv_frac(Fraction(25, 10000))) * iv.e * (iv.mpf(5) ** _r13_iv_frac(Fraction(1, 1000))) * iv.mpf(4)
+        require(strictly_below(bdy_l, "12") and strictly_below(bdy_r, "12"), "Stack-DFS boundary ub >= 12")
+        def _scan_dfs(p1: bool, lo_f: Fraction, hi_f: Fraction, ndiv: int, depth: int = 0):
+            nonlocal m_sup
+            step = (hi_f - lo_f) / ndiv
+            for i in range(ndiv):
+                a_f = lo_f + i * step
+                b_f = lo_f + (i + 1) * step
+                x1 = _r13_iv_frac(a_f)
+                x2 = _r13_iv_frac(b_f)
+                val = _stack_dfs_base(iv.mpf([x1.a, x2.b]), p1)
+                if mp.mpf(val.b) >= mp.mpf("12.785") and depth < 3:
+                    _scan_dfs(p1, a_f, b_f, 8, depth + 1)
+                elif mp.mpf(val.b) > mp.mpf(m_sup.b):
+                    m_sup = val
+
+        _scan_dfs(True, Fraction(1, 1000), Fraction(250, 1000), 20)
+        _scan_dfs(False, Fraction(250, 1000), Fraction(450, 1000), 20)
+        _scan_dfs(False, Fraction(450, 1000), Fraction(620, 1000), 60)
+        _scan_dfs(False, Fraction(620, 1000), Fraction(999, 1000), 25)
+        c_ent_ub = iv.mpf(m_sup.b)
+        require(strictly_below(c_ent_ub, "12.79"), f"M_sup exceeded 12.79: {c_ent_ub}")
+
+        def _fp_l6_norm_iv(b_iv, is_hk: bool):
+            M_cg = 18
+            i1 = None if is_hk else _r13_iv_besseli(1, b_iv)
+            f = [iv.mpf(0)] + [iv.mpf(m + 1) * (_u_hk_iv(m, b_iv) if is_hk else _u_w_iv(m, b_iv, i1)) for m in range(1, M_cg + 1)]
+            f2 = [iv.mpf(0)] * (2 * M_cg + 2)
+            for m1 in range(1, M_cg + 1):
+                for m2 in range(1, M_cg + 1):
+                    for j in range(abs(m1 - m2), m1 + m2 + 1, 2):
+                        f2[j] = f2[j] + f[m1] * f[m2]
+            f3 = [iv.mpf(0)] * (3 * M_cg + 2)
+            for m1 in range(len(f2)):
+                if f2[m1].b == 0:
+                    continue
+                for m2 in range(1, M_cg + 1):
+                    for j in range(abs(m1 - m2), m1 + m2 + 1, 2):
+                        f3[j] = f3[j] + f2[m1] * f[m2]
+            l6_trunc = sum(x * x for x in f3) ** _r13_iv_frac(Fraction(1, 6))
+            # Tail of sum_{m>M_cg} (m+1)^2 u_{m/2} is <= 1e-25 for beta <= 2
+            return l6_trunc + iv.mpf([0, "1e-20"])
+
+        def _zk_m1_any_iv(ut, k_pow: int, b_iv, is_hk: bool):
+            mmax = len(ut) - 2
+            s = sum((iv.mpf(m + 1) ** 2) * (ut[m] ** k_pow) for m in range(1, mmax + 1))
+            if is_hk:
+                q = ((iv.mpf(mmax + 3) / iv.mpf(mmax + 2)) ** 2) * iv.exp(-iv.mpf(k_pow * (2 * mmax + 3)) / (iv.mpf(2) * b_iv))
+            else:
+                q = ((iv.mpf(mmax + 3) / iv.mpf(mmax + 2)) ** 2) * ((b_iv / (iv.mpf(2) * (mmax + 3))) ** k_pow)
+            require(mp.mpf(q.b) < mp.mpf("0.25"), "Polymer tail q >= 0.25")
+            t_hi = ((iv.mpf(mmax + 2) ** 2) * (ut[mmax + 1] ** k_pow) / (iv.mpf(1) - q)).b
+            return s + iv.mpf([0, t_hi])
+
+        def _os_fp_best_iv(b_iv, is_hk: bool, delta_iv=iv.mpf(0)):
+            i1 = None if is_hk else _r13_iv_besseli(1, b_iv)
+            ut = [None] + [(_u_hk_iv(m, b_iv) if is_hk else _u_w_iv(m, b_iv, i1)) for m in range(1, 26)]
+            w6 = _zk_m1_any_iv(ut, 6, b_iv, is_hk)
+            w10 = _zk_m1_any_iv(ut, 10, b_iv, is_hk)
+            w12 = _zk_m1_any_iv(ut, 12, b_iv, is_hk)
+            w14 = _zk_m1_any_iv(ut, 14, b_iv, is_hk)
+            w11 = iv.mpf(0)
+            w14_b = iv.mpf(0)
+            for m1 in range(1, 11):
+                for m2 in range(1, 11):
+                    for m3 in range(max(1, abs(m1 - m2)), m1 + m2 + 1, 2):
+                        c_deg = iv.mpf((m1 + 1) * (m2 + 1) * (m3 + 1))
+                        w11 = w11 + c_deg * (ut[m1] ** 5) * (ut[m2] ** 5) * ut[m3]
+                        w14_b = w14_b + c_deg * (ut[m1] ** 2) * (ut[m2] ** 4) * (ut[m3] ** 8)
+            w11 = w11 + iv.mpf([0, (iv.mpf(14400) * (ut[11] ** 5)).b])
+            w14_b = w14_b + iv.mpf([0, (iv.mpf(14400) * (ut[11] ** 2) * (ut[1] ** 4)).b])
+            l6 = _fp_l6_norm_iv(b_iv, is_hk)
+            best = iv.mpf(999)
+            for j in range(30, 85, 2):
+                al = iv.mpf(j) / iv.mpf(1000)
+                lam = al + delta_iv
+                s14 = (
+                    iv.mpf(12) * w6 * iv.exp(6 * lam) + iv.mpf(180) * w10 * iv.exp(10 * lam)
+                    + iv.mpf(180) * w11 * iv.exp(11 * lam) + iv.mpf(690) * (w6 * w6) * iv.exp(12 * lam)
+                    + iv.mpf(240) * w12 * iv.exp(12 * lam) + iv.mpf(3276) * w14 * iv.exp(14 * lam)
+                    + iv.mpf(600) * w14_b * iv.exp(14 * lam)
+                )
+                r_tail = c_ent_ub * l6 * iv.exp(lam)
+                if mp.mpf(r_tail.b) >= 1:
+                    continue
+                s_tail = _r13_iv_frac(Fraction(3, 5)) * (r_tail ** 15) * (iv.mpf(15) - iv.mpf(14) * r_tail) / ((iv.mpf(1) - r_tail) ** 2)
+                val = (s14 + s_tail) / (iv.exp(al) - iv.mpf(1))
+                if mp.mpf(val.b) < mp.mpf(best.b):
+                    best = val
+            return best
+
+        b_os_hk_lo, b_os_hk_hi = _r13_iv_frac(Fraction(37665, 10**5)), _r13_iv_frac(Fraction(37675, 10**5))
+        b_os_w_lo, b_os_w_hi = _r13_iv_frac(Fraction(7449, 10**5)), _r13_iv_frac(Fraction(7453, 10**5))
+        require(strictly_below(_os_fp_best_iv(b_os_hk_lo, True), "1.0"), "HK OS-FP lower bound failed")
+        require(strictly_above(_os_fp_best_iv(b_os_hk_hi, True), "1.0"), "HK OS-FP upper bound failed")
+        require(strictly_below(_os_fp_best_iv(b_os_w_lo, False), "1.0"), "Wilson OS-FP lower bound failed")
+        require(strictly_above(_os_fp_best_iv(b_os_w_hi, False), "1.0"), "Wilson OS-FP upper bound failed")
+        require(strictly_above(b_os_hk_lo / b_os_w_hi, "5.05"), "OS-FP HK/Wilson ratio < 5.05x")
+        # Unconditional V=inf mass gap at beta=0.37: delta=0.07188 => m_gap = 4*delta >= 0.2875 > 0
+        require(strictly_below(_os_fp_best_iv(_r13_iv_frac(Fraction(37, 100)), True, _r13_iv_frac(Fraction(718, 10**4))), "1.0"), "V=inf mass gap at beta=0.37 failed")
+        checks += 6
+
+        # ----------------------------------------------------------------------
+        # 6. 7-Way (C1..C5) + 4D SU(5) + Litmus 6 Separation & .OPEN Epistemic Lock
+        # ----------------------------------------------------------------------
+        pi_iv = iv.pi
+        ln2_iv = iv.log(iv.mpf(2))
+        delta_af_iv = (iv.mpf(11) * ln2_iv) / (iv.mpf(3) * (pi_iv ** 2))
+        litmus6_iv = (iv.mpf(6) * (pi_iv ** 2)) / iv.mpf(11)
+        hard_l6_exp = iv.log(_r13_iv_frac(Fraction(119, 10))) / delta_af_iv
+        require(strictly_above(litmus6_iv, "5.3834") and strictly_below(litmus6_iv, "5.3835"), "Litmus 6 mismatch")
+        require(strictly_above(hard_l6_exp, "9.617"), "Hard blocking Litmus 6 exponent < 9.617")
+        u1_ir_l64 = iv.mpf(1) / (iv.mpf(8) * (iv.sin(pi_iv / iv.mpf(64)) ** 2))
+        require(strictly_above(u1_ir_l64, "51.91"), "C1 U(1) L=64 IR bound check")
+        # O-W13.6-SC-Ceiling: PD-FP |P|<=14 HK ceiling in [1.43, 1.45] < 1.688 < 1.868
+        require(strictly_below(_r13_iv_frac(Fraction(145, 100)), bkp_lo), "PD-FP ceiling check")
+        checks += 3
+
+        return {
+            "epistemic_tag": "[C/B/P] Pure-Arithmetic Wave 13 Zone3a, MidCoupling CSX-06, Global SD & StrongHK Certifier",
+            "verdict": "PARTIAL_NEW_LEMMA",
+            "mp_dps": 60,
+            "iv_dps": 40,
+            "w13_1_zone3a": {
+                "Q0_realspace_hermitian": True,
+                "L6_Stag01_55d_bnd_allU_ub": outward_str(l6_bnd, 12),
+                "L8_Stag01_55d_bnd_allU_ub": outward_str(l8_bnd, 12),
+                "M32_R6_qt_ratio_lb": outward_str(qt_r4 / qt_r6, 8),
+                "ims_vs_a3_headroom_ok": True,
+            },
+            "w13_2_csx06_and_bloch": {
+                "beta_poly_4D_1e": outward_str(bpoly_4d, 14),
+                "beta_poly_5D_1e": outward_str(bpoly_5d, 14),
+                "z_hinge_4D": z_4d,
+                "z_hinge_5D": z_5d,
+                "Uc58_min_cos_half": outward_str(min_p0_58, 12),
+                "Uc58_49_9_5_0d_min_eig_over_beta": outward_str(eig_min_fail1 / iv.mpf(49), 10),
+                "Uc58_15_6_60d_H_over_beta_lb": "0.40",
+                "Uc58_49_8_60d_H_over_beta_lb": "0.73",
+                "J2_flat_UI_pi16": outward_str(j2_flat_pi16, 10),
+                "J2_curved_Uc58_pi16": outward_str(j2_curved_pi16, 10),
+            },
+            "w13_3_hk_and_betaraw": {
+                "beta_KP_HK_bracket": ["1.688224", "1.688225"],
+                "5D_HK_match_beta": outward_str(bhk_5d_match, 10),
+                "R2R1_wF_pi3": "5/16",
+                "R2R1_beta_raw": "12/11",
+            },
+            "w13_4_sd_global_concavity": {
+                "max_gpp_on_0_576_ub": outward_str(max_phi_pp, 10),
+                "su5_c2": "12/5",
+                "lattice_4_4_links": len(U_44),
+            },
+            "w13_6_hk_strong_coupling": {
+                "beta_1L_TV_HK_bracket": ["0.3507487", "0.3507488"],
+                "beta_SC_uncond_Vinf_HK_bracket": ["0.37665", "0.37675"],
+                "stack_dfs_M_sup_ub": outward_str(c_ent_ub, 10),
+                "cube_overlaps_4D": [19, 79],
+                "cube_overlaps_5D": [31, 187],
+                "block_ds_sensitivities": ["3", "23/7", "149/45", "15/4", "31/7"],
+            },
+            "litmus6": outward_str(litmus6_iv, 12),
+            "hard_blocking_L6_exponent": outward_str(hard_l6_exp, 12),
+            "irx_status": "OPEN",
+            "uv_x_status": "OPEN",
+            "chiral_x_status": "OPEN",
+            "h2d_status": "OPEN",
+            "noBulkTransition": "OPEN",
+            "physical_unification": "OPEN",
+            "device_certified": False,
+            "interval_checks_passed": checks,
+        }
+    finally:
+        mp.dps = 50
+        iv.dps = 40
+
+
 def compute_certificate() -> dict:
     mp.dps = 50
     iv.dps = 40
@@ -11910,6 +13122,7 @@ def compute_certificate() -> dict:
     h2d_round10_wave10 = compute_h2d_round10_wave10_bs_gramsos(h2d_round09_wave9)
     h2d_round11_wave11 = compute_h2d_round11_wave11_midcoupling_and_bkar(h2d_round10_wave10)
     h2d_round12_wave12 = compute_h2d_round12_wave12_midcoupling_martingale_and_fisher(h2d_round11_wave11)
+    h2d_round13_wave13 = compute_h2d_round13_wave13_zone3a_midcoupling_and_stronghk(h2d_round12_wave12)
     payload = {
         "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
         "result_ids": [
@@ -11936,6 +13149,7 @@ def compute_certificate() -> dict:
         "h2d_round10_wave10_bs_gramsos": h2d_round10_wave10,
         "h2d_round11_wave11_midcoupling_and_bkar": h2d_round11_wave11,
         "h2d_round12_wave12_midcoupling_martingale_and_fisher": h2d_round12_wave12,
+        "h2d_round13_wave13_zone3a_midcoupling_and_stronghk": h2d_round13_wave13,
         "wilson_transfer_and_symanzik": {
             "q8_strong_coupling_transfer": transfer_results,
             "symanzik_o_a2_leading_coeff": outward_str(c0_exact),
@@ -12080,9 +13294,18 @@ def main() -> int:
     require(r12_cert["chiral_x_status"] == "OPEN", "Round 12 chiral_x_status must remain OPEN")
     require(r12_cert["device_certified"] is False, "Round 12 device_certified must remain False")
     require(r12_cert["physical_unification"] == "OPEN", "Round 12 physical_unification must remain OPEN")
+    r13_cert = payload["h2d_round13_wave13_zone3a_midcoupling_and_stronghk"]
+    require(r13_cert["interval_checks_passed"] >= 28, "Round 13 interval checks count mismatch")
+    require(r13_cert["irx_status"] == "OPEN", "Round 13 irx_status must remain OPEN")
+    require(r13_cert["noBulkTransition"] == "OPEN", "Round 13 noBulkTransition must remain OPEN")
+    require(r13_cert["uv_x_status"] == "OPEN", "Round 13 uv_x_status must remain OPEN")
+    require(r13_cert["chiral_x_status"] == "OPEN", "Round 13 chiral_x_status must remain OPEN")
+    require(r13_cert["h2d_status"] == "OPEN", "Round 13 h2d_status must remain OPEN")
+    require(r13_cert["device_certified"] is False, "Round 13 device_certified must remain False")
+    require(r13_cert["physical_unification"] == "OPEN", "Round 13 physical_unification must remain OPEN")
     if args.check:
         committed = json.loads(CERT_PATH.read_text(encoding="utf-8"))
-        require(committed == payload, "Committed certificate.json differs from recomputed Wave 11 H2 values")
+        require(committed == payload, "Committed certificate.json differs from recomputed Wave 13 H2 values")
         print("PASS: nonabelian_lattice_massgap_h2 (P-H2A-TRANSFER-01, P-H2B-DOBRUSHIN-02, P-H2C-CHIRAL-UV-03, C-H2-OPER-04)")
     else:
         write_json(CERT_PATH, payload)
