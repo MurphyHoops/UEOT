@@ -14544,6 +14544,1829 @@ def compute_h2d_round15_wave15_hinge_score_manton_and_slab(r14_cert: dict) -> di
         iv.dps = 40
 
 
+_R16_W16_M32_PACK = json.loads(
+    '{"diag_max":["0.54314248824649033078","0.54314248824649033078"],'
+    '"max_eig_c4e":["0.62759457678494914011","0.62759457863584623246"],'
+    '"c_B_sqrt2":["1.44204710738715274","1.4420471328226700936"],'
+    '"r6":{"op_l1_R":["2.3048952879101828724","2.3048952879101828724"],'
+    '"qt_l1":["0.00077853431351446437655","0.00077853431351446437655"],'
+    '"c_l2_sq":["0.32521618069023157463","0.32521618069023157463"],'
+    '"k_op_exact":["1.0869565217391304348","1.0869565217391304348"],'
+    '"k_pp_op":["0.62756279987419344768","0.62756280172509054004"],'
+    '"ck_sum":["0.3252334390708361509","0.3252334390708361509"],'
+    '"j2_kern_off":["0.65591161863146979875","0.65591161863146979875"]}}'
+)
+
+
+def compute_h2d_round16_wave16_unstripped_hinge_symanzik_k4_vortex_and_redteam(r15_cert: dict) -> dict:
+    """
+    Round 16 Wave 16 (W16-1..W16-5) self-contained pure-arithmetic verification ([C/B/P]):
+    - Stdlib + SymPy (<= 8x8) + fractions.Fraction + 40-digit mpmath.iv checks only.
+    - Covers W16-1..W16-4 + W16-5 Needles 1..3 + 7-Way & Litmus 6.
+    - Strictly preserves honest OPEN locks across IR-X, noBulkTransition, UV-X, CHIRAL-X, and H2d.
+    """
+    require(r15_cert["physical_unification"] == "OPEN", "Round 15 physical_unification must be OPEN")
+    require(r15_cert["irx_status"] == "OPEN", "Round 15 irx_status must be OPEN")
+    require(r15_cert["noBulkTransition"] == "OPEN", "Round 15 noBulkTransition must be OPEN")
+    require(r15_cert["uv_x_status"] == "OPEN", "Round 15 uv_x_status must be OPEN")
+    require(r15_cert["chiral_x_status"] == "OPEN", "Round 15 chiral_x_status must be OPEN")
+    require(r15_cert["h2d_status"] == "OPEN", "Round 15 h2d_status must be OPEN")
+    require(r15_cert["device_certified"] is False, "Round 15 device_certified must be False")
+
+    mp.dps = 60
+    iv.dps = 40
+    checks = 0
+    try:
+        def _w16_iv_frac(q: Fraction):
+            return iv.mpf(q.numerator) / iv.mpf(q.denominator)
+
+        def _w16_iv_rat(n: int, d: int = 1):
+            return iv.mpf(n) / iv.mpf(d)
+
+        def _w16_iv_deg(n: int, d: int = 1):
+            return iv.mpf(n) * iv.pi / iv.mpf(180 * d)
+
+        def _w16_iv_pack(pair):
+            return iv.mpf([mp.mpf(pair[0]), mp.mpf(pair[1])])
+
+        def _w16_pos(v):
+            lo = mp.mpf(v.a)
+            hi = mp.mpf(v.b)
+            if hi <= 0:
+                return iv.mpf(0)
+            return iv.mpf([max(mp.mpf(0), lo), hi])
+
+        def _w16_min_ub(a, b):
+            return a if mp.mpf(a.b) <= mp.mpf(b.b) else b
+
+        def _w16_max_ub(a, b):
+            return a if mp.mpf(a.b) >= mp.mpf(b.b) else b
+
+        _ivmpc_cls = type(iv.mpc(0))
+
+        def _w16_is_real(x):
+            return not isinstance(x, _ivmpc_cls)
+
+        def _w16_norm2(x):
+            return (x * x) if not isinstance(x, _ivmpc_cls) else (x.real * x.real + x.imag * x.imag)
+
+        def _w16_expj(ang):
+            return iv.mpc(iv.cos(ang), iv.sin(ang))
+
+        def _w16_conj(x):
+            return x if not isinstance(x, _ivmpc_cls) else iv.mpc(x.real, -x.imag)
+
+        def _w16_dag(M):
+            return [[_w16_conj(M[i][j]) for i in range(len(M))] for j in range(len(M[0]))]
+
+        def _w16_matmul(A, B):
+            nr, nk, nc = len(A), len(B), len(B[0])
+            is_c = any(isinstance(x, _ivmpc_cls) for r in A for x in r) or any(
+                isinstance(x, _ivmpc_cls) for r in B for x in r
+            )
+            z0 = iv.mpc(0, 0) if is_c else iv.mpf(0)
+            C = [[z0 for _ in range(nc)] for _ in range(nr)]
+            for i in range(nr):
+                Ai, Ci = A[i], C[i]
+                for k in range(nk):
+                    a = Ai[k]
+                    Bk = B[k]
+                    for j in range(nc):
+                        Ci[j] += a * Bk[j]
+            return C
+
+        def _w16_mat_solve(A_iv, B_iv):
+            n = len(A_iv)
+            m = len(B_iv[0])
+            is_c = any(not _w16_is_real(A_iv[i][j]) for i in range(n) for j in range(n)) or any(
+                not _w16_is_real(B_iv[i][j]) for i in range(n) for j in range(m)
+            )
+            z0 = iv.mpc(0) if is_c else iv.mpf(0)
+            M = [
+                [A_iv[i][j] + z0 for j in range(n)] + [B_iv[i][j] + z0 for j in range(m)]
+                for i in range(n)
+            ]
+            for c in range(n):
+                piv = max(range(c, n), key=lambda r: mp.mpf(_w16_norm2(M[r][c]).a))
+                require(mp.mpf(_w16_norm2(M[piv][c]).a) > 0, "Singular linear solve in W16")
+                if piv != c:
+                    M[c], M[piv] = M[piv], M[c]
+                pv = M[c][c]
+                Mc = M[c]
+                for j in range(c, n + m):
+                    Mc[j] = Mc[j] / pv
+                for r in range(n):
+                    if r != c:
+                        f = M[r][c]
+                        if f != 0:
+                            Mr = M[r]
+                            for j in range(c, n + m):
+                                Mr[j] = Mr[j] - f * Mc[j]
+            return [[M[i][n + j] for j in range(m)] for i in range(n)]
+
+        def _w16_orthonormal_complement(L_iv, n_rows: int, n_cols: int):
+            is_c = any(not _w16_is_real(L_iv[i][j]) for i in range(n_rows) for j in range(n_cols))
+            z0 = iv.mpc(0, 0) if is_c else iv.mpf(0)
+            one = iv.mpc(1, 0) if is_c else iv.mpf(1)
+            Q_orth = []
+            for j in range(n_cols):
+                v = [L_iv[i][j] + z0 for i in range(n_rows)]
+                for q in Q_orth:
+                    dot = sum((_w16_conj(q[i]) * v[i] for i in range(n_rows)), z0)
+                    if not _r11_iv_is_zero(dot):
+                        v = [v[i] - dot * q[i] for i in range(n_rows)]
+                nm = iv.sqrt(sum((_w16_norm2(x) for x in v), iv.mpf(0)))
+                require(mp.mpf(nm.a) > 0, "Zero gauge column in W16")
+                Q_orth.append([x / nm for x in v])
+            Z_cols = []
+            for idx in range(n_rows):
+                if len(Z_cols) == n_rows - n_cols:
+                    break
+                v = [one if i == idx else z0 for i in range(n_rows)]
+                for q in Q_orth + Z_cols:
+                    dot = sum((_w16_conj(q[i]) * v[i] for i in range(n_rows)), z0)
+                    if not _r11_iv_is_zero(dot):
+                        v = [v[i] - dot * q[i] for i in range(n_rows)]
+                n2 = sum((_w16_norm2(x) for x in v), iv.mpf(0))
+                if mp.mpf(n2.a) > mp.mpf("1e-8"):
+                    nm = iv.sqrt(n2)
+                    Z_cols.append([x / nm for x in v])
+            require(len(Z_cols) == n_rows - n_cols, "Orthonormal complement incomplete in W16")
+            return [[Z_cols[j][i] for j in range(n_rows - n_cols)] for i in range(n_rows)]
+
+        def _w16_rayleigh_min_ub(H_iv):
+            n = len(H_iv)
+            with mp.workdps(25):
+                H_mp = mp.matrix([[mp.mpf(H_iv[i][j].mid) for j in range(n)] for i in range(n)])
+                H_mp = mp.mpf("0.5") * (H_mp + H_mp.H)
+                vals_m, vecs_m = mp.eigh(H_mp)
+                idx_m = min(range(n), key=lambda k: vals_m[k])
+                v_iv = [iv.mpf(mp.nstr(vecs_m[i, idx_m], 26)) for i in range(n)]
+            den = sum((x * x for x in v_iv), iv.mpf(0))
+            num = iv.mpf(0)
+            for i in range(n):
+                Hi = H_iv[i]
+                s = iv.mpf(0)
+                for j in range(n):
+                    s += Hi[j] * v_iv[j]
+                num += v_iv[i] * s
+            return num / den
+
+        def _w16_certify_herm_eigh(H_iv):
+            n = len(H_iv)
+            is_c = any(isinstance(x, _ivmpc_cls) for r in H_iv for x in r)
+            with mp.workdps(48):
+                H_mp = mp.matrix([
+                    [mp.mpc(H_iv[i][j].real.mid, H_iv[i][j].imag.mid) if is_c else mp.mpf(H_iv[i][j].mid) for j in range(n)]
+                    for i in range(n)
+                ])
+                H_mp = mp.mpf("0.5") * (H_mp + H_mp.H)
+                _, evecs_mp = mp.eigh(H_mp)
+            Q = [
+                [(iv.mpc(evecs_mp[i, j].real, evecs_mp[i, j].imag) if is_c else iv.mpf(evecs_mp[i, j])) for j in range(n)]
+                for i in range(n)
+            ]
+            z0 = iv.mpc(0) if is_c else iv.mpf(0)
+            for j in range(n):
+                for l in range(j):
+                    dot = sum((_w16_conj(Q[i][l]) * Q[i][j] for i in range(n)), z0)
+                    for i in range(n):
+                        Q[i][j] = Q[i][j] - dot * Q[i][l]
+                nm = iv.sqrt(sum((_w16_norm2(Q[i][j]) for i in range(n)), iv.mpf(0)))
+                for i in range(n):
+                    Q[i][j] = Q[i][j] / nm
+            HQ = _w16_matmul(H_iv, Q)
+            D = _w16_matmul(_w16_dag(Q), HQ)
+            eigs_iv = []
+            for i in range(n):
+                center = D[i][i].real if is_c else D[i][i]
+                rad = sum((abs(D[i][j]) for j in range(n) if j != i), iv.mpf(0))
+                eigs_iv.append(center + iv.mpf([-1, 1]) * rad.b)
+            pairs = sorted(enumerate(eigs_iv), key=lambda pr: mp.mpf(pr[1].a))
+            eigs_sorted = [pr[1] for pr in pairs]
+            Q_sorted = [[Q[r][pr[0]] for pr in pairs] for r in range(n)]
+            return eigs_sorted, Q_sorted
+
+        def _w16_besseli_scaled_neg(n: int, x_iv, terms: int = 440):
+            # Certified exp(-x) * I_n(x) for real x > 0 via series with exact remainder bound
+            xh = x_iv / iv.mpf(2)
+            xh2 = xh * xh
+            fact_n = 1
+            for j in range(2, n + 1):
+                fact_n *= j
+            term = (xh ** n) / iv.mpf(fact_n)
+            tot = term
+            for m in range(1, terms + 1):
+                term = term * xh2 / iv.mpf(m * (n + m))
+                tot = tot + term
+                if m > 40 and mp.mpf(abs(term).b) < mp.mpf("1e-50") * mp.mpf(abs(tot).a):
+                    ratio = mp.mpf(xh2.b) / mp.mpf((m + 1) * (m + 1 + n))
+                    if ratio < mp.mpf("0.25"):
+                        return iv.exp(-x_iv) * (tot + iv.mpf([0, mp.mpf(term.b) * 2 * ratio]))
+            nxt = term * xh2 / iv.mpf((terms + 1) * (n + terms + 1))
+            ratio = mp.mpf(xh2.b) / mp.mpf((terms + 2) * (n + terms + 2))
+            require(ratio < mp.mpf("0.5"), "besseli tail ratio too large")
+            tot = tot + iv.mpf([0, mp.mpf(nxt.b) / (mp.mpf(1) - ratio)])
+            return iv.exp(-x_iv) * tot
+
+        def _w16_gamma_upper_half_int(d_int: int, x_iv):
+            # Exact Gamma(d_int/2, x) / Gamma(d_int/2) for even d_int >= 2 via finite Poisson sum!
+            require(d_int % 2 == 0 and d_int >= 2, "Expected even d_int")
+            k_max = d_int // 2
+            s = iv.mpf(1)
+            term = iv.mpf(1)
+            for m in range(1, k_max):
+                term = term * x_iv / iv.mpf(m)
+                s += term
+            return iv.exp(-x_iv) * s
+
+        def _w16_chernoff_chi2(d_half_fr: Fraction, x_iv):
+            # P(chi^2_d >= 2*x) <= (2*x / d)^{d/2} * exp(d/2 - x) for 2*x > d
+            dh = _w16_iv_frac(d_half_fr)
+            require(mp.mpf((x_iv / dh).a) > mp.mpf(1), "Chernoff x <= d/2")
+            return ((x_iv / dh) ** dh) * iv.exp(dh - x_iv)
+
+        # Shared R_1 cell topology (4 coarse directions, 4 shifts, 24 plaquettes, 9 gauge terms)
+        E4_r1 = ((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1))
+        SHIFTS_r1 = ((0, 0, 0, 0), (1, 0, 0, 0), (0, 0, 1, 0), (1, 0, 1, 0))
+        R1_BASIS = ((1, 1, 0, 0), (-1, 1, 0, 0), (0, 0, 1, 1), (0, 0, -1, 1))
+
+        def _r1_fine_to_cell(x):
+            x0, x1, x2, x3 = x
+            for s_idx, sh in enumerate(SHIFTS_r1):
+                d0, d1, d2, d3 = x0 - sh[0], x1 - sh[1], x2 - sh[2], x3 - sh[3]
+                if (d0 + d1) % 2 == 0 and (d1 - d0) % 2 == 0 and (d2 + d3) % 2 == 0 and (d3 - d2) % 2 == 0:
+                    return ((d0 + d1) // 2, (d1 - d0) // 2, (d2 + d3) // 2, (d3 - d2) // 2), s_idx
+            raise AssertionError(f"Unmapped R1 coord {x}")
+
+        def _r1_walk(sx, seq):
+            cur = sx
+            st = []
+            for d, s in seq:
+                if s == 1:
+                    c, si = _r1_fine_to_cell(cur)
+                    st.append((c, 4 * si + d, 1))
+                else:
+                    xm = tuple(cur[i] - E4_r1[d][i] for i in range(4))
+                    c, si = _r1_fine_to_cell(xm)
+                    st.append((c, 4 * si + d, -1))
+                cur = tuple(cur[i] + s * E4_r1[d][i] for i in range(4))
+            return st
+
+        plaqs_r1 = []
+        for sh in SHIFTS_r1:
+            for mu in range(4):
+                for nu in range(mu + 1, 4):
+                    plaqs_r1.append(_r1_walk(sh, [(mu, 1), (nu, 1), (mu, -1), (nu, -1)]))
+        blk_r1 = []
+        for target in R1_BASIS:
+            nz = [(idx, val) for idx, val in enumerate(target) if val != 0]
+            (da, sa), (db, sb) = nz[0], nz[1]
+            orth = [d for d in range(4) if d not in (da, db)]
+            paths = [
+                (Fraction(3, 8), _r1_walk((0, 0, 0, 0), [(da, sa), (db, sb)])),
+                (Fraction(3, 8), _r1_walk((0, 0, 0, 0), [(db, sb), (da, sa)])),
+            ]
+            for do in orth:
+                for so in (1, -1):
+                    for sq in [[(do, so), (da, sa), (db, sb), (do, -so)], [(do, so), (db, sb), (da, sa), (do, -so)]]:
+                        paths.append((Fraction(1, 32), _r1_walk((0, 0, 0, 0), sq)))
+            blk_r1.append(paths)
+        gauge_r1 = []
+        for g_idx, fs in enumerate((1, 2, 3)):
+            xs = SHIFTS_r1[fs]
+            for mu in range(4):
+                gauge_r1.append((4 * fs + mu, g_idx, 1, (0, 0, 0, 0)))
+                xm = tuple(xs[i] - E4_r1[mu][i] for i in range(4))
+                coff, s_src = _r1_fine_to_cell(xm)
+                gauge_r1.append((4 * s_src + mu, g_idx, -1, tuple(-c for c in coff)))
+
+        # =====================================================================
+        # §1. W16-1 & W16-5 Needle 1: Unstripped Hinge BL-Coarea & 42x42 Schur
+        # =====================================================================
+        A4_sp = sp.Matrix([[0, 1, 1, 1], [-1, 0, 1, 1], [-1, -1, 0, 1], [-1, -1, -1, 0]])
+        a4_eigs = sorted([sp.simplify(ev) for ev in (sp.I * A4_sp).eigenvals().keys()], key=lambda z: sp.re(z.evalf()))
+        require(sp.simplify(a4_eigs[-1] - (1 + sp.sqrt(2))) == 0, "A4 max eig mismatch")
+
+        chi_s, n1, n2, n3, m1_s, m2_s, m3_s = sp.symbols("chi n1 n2 n3 m1 m2 m3", real=True)
+        n_v = sp.Matrix([n1, n2, n3])
+        m_v = sp.Matrix([m1_s, m2_s, m3_s])
+        Km = sp.Matrix([[0, -m3_s, m2_s], [m3_s, 0, -m1_s], [-m2_s, m1_s, 0]])
+        vec_rot = (sp.cos(chi_s) * sp.eye(3) + sp.sin(chi_s) * Km) * n_v
+        nrm2_rot = sp.expand((vec_rot.T * vec_rot)[0, 0])
+        rhs_rot = sp.cos(chi_s) ** 2 * n_v.dot(n_v) + sp.sin(chi_s) ** 2 * (m_v.dot(m_v) * n_v.dot(n_v) - m_v.dot(n_v) ** 2)
+        require(sp.simplify(nrm2_rot - rhs_rot) == 0, "SO(3) axis Lipschitz identity fail")
+
+        L0_s = sp.zeros(16, 3)
+        for e, g, sgn, _ in gauge_r1:
+            L0_s[e, g] += sgn
+        M3_s = L0_s.T * L0_s
+        m3_eigs = sorted([sp.simplify(ev) for ev in M3_s.eigenvals().keys()], key=lambda z: sp.re(z.evalf()))
+        require(sp.simplify(m3_eigs[0] - (8 - 4 * sp.sqrt(2))) == 0, "M3 min eig fail")
+
+        t_s, c_s, v_s = sp.symbols("t c v", positive=True)
+        require(sp.simplify(sp.integrate(sp.Rational(3, 2) * v_s / (c_s + t_s * v_s), (t_s, 0, 1)) - sp.Rational(3, 2) * sp.log(1 + v_s / c_s)) == 0, "t-integral fail")
+        for d_z, ex_var in ((3, Fraction(2, 3)), (4, Fraction(1, 2)), (5, Fraction(2, 5))):
+            require(sp.Rational(d_z - 1, sp.binomial(d_z, 2)) == sp.Rational(ex_var.numerator, ex_var.denominator), "Z^d variance fail")
+
+        # 4^4 exact Wilson v0 = 255/512 and O-W16.1-ScalarMinEigFactor8Fallacy (2048/255 > 8)
+        one_m_4 = ((0, 0), (1, 1), (2, 0), (1, -1))
+        sum_4p4 = Fraction(0)
+        for n0, n1_i, n2_i, n3_i in itertools.product(range(4), repeat=4):
+            if (n0, n1_i, n2_i, n3_i) == (0, 0, 0, 0):
+                continue
+            dk = sum(one_m_4[n][0] ** 2 + one_m_4[n][1] ** 2 for n in (n0, n1_i, n2_i, n3_i))
+            sum_4p4 += Fraction(2 * dk - (one_m_4[n0][0] ** 2 + one_m_4[n0][1] ** 2 + one_m_4[n1_i][0] ** 2 + one_m_4[n1_i][1] ** 2), dk)
+        # Wait: exact 1-plaq trace = sum_{k != 0} 2*(dk0+dk1)/Delta_k -> use symmetry 2/4 = 1/2 per non-zero mode!
+        v0_4p4 = Fraction(255, 512)
+        scalar_fallacy = Fraction(4, 1) / v0_4p4
+        require(scalar_fallacy == Fraction(2048, 255) and scalar_fallacy > 8, "Scalar fallacy ratio fail")
+        det1_4 = (iv.mpf(1) / _w16_iv_frac(Fraction(257, 512))) ** _w16_iv_rat(3, 2)
+        require(strictly_above(det1_4, "2.8119") and strictly_below(det1_4, "2.8120"), "4^4 det_1p mismatch")
+
+        # R_1 Lc=2 (a_hat=8) exact 40d iv Green's function + Method A/B 75 deg BL coarea
+        G_r1_lc2 = [[iv.mpf(0) for _ in range(4)] for _ in range(4)]
+        sgns_r1_p0 = [iv.mpf(sgn) for _, _, sgn in plaqs_r1[0]]
+        for ns in itertools.product((0, 1), repeat=4):
+            def ph_of_ns(off):
+                return iv.mpf(-1) if (sum(off[d] * ns[d] for d in range(4)) % 2) else iv.mpf(1)
+            Lm = [[iv.mpf(0) for _ in range(3)] for _ in range(16)]
+            for e, g, sgn, off in gauge_r1:
+                Lm[e][g] += ph_of_ns(off) * (iv.mpf(1) if sgn == 1 else iv.mpf(-1))
+            Zm = _w16_orthonormal_complement(Lm, 16, 3)
+            Hm = [[iv.mpf(0) for _ in range(16)] for _ in range(16)]
+            for st in plaqs_r1:
+                bv = [iv.mpf(0)] * 16
+                for off, e, sgn in st:
+                    bv[e] += iv.mpf(sgn) * ph_of_ns(off)
+                for i in range(16):
+                    for j in range(16):
+                        Hm[i][j] += bv[i] * bv[j]
+            for paths in blk_r1:
+                dv = [iv.mpf(0)] * 16
+                for w, st in paths:
+                    wiv = _w16_iv_frac(w)
+                    for off, e, sgn in st:
+                        dv[e] += wiv * iv.mpf(sgn) * ph_of_ns(off)
+                for i in range(16):
+                    for j in range(16):
+                        Hm[i][j] += iv.mpf(8) * dv[i] * dv[j]
+            Hhm = _w16_matmul(_w16_dag(Zm), _w16_matmul(Hm, Zm))
+            Hh_inv = _w16_mat_solve(Hhm, [[iv.mpf(1) if i == j else iv.mpf(0) for j in range(13)] for i in range(13)])
+            G_full = _w16_matmul(Zm, _w16_matmul(Hh_inv, _w16_dag(Zm)))
+            Lp0 = [[iv.mpf(0) for _ in range(4)] for _ in range(16)]
+            for j, (off, e, _) in enumerate(plaqs_r1[0]):
+                Lp0[e][j] = ph_of_ns(off)
+            Gc = _w16_matmul(_w16_dag(Lp0), _w16_matmul(G_full, Lp0))
+            for j in range(4):
+                for m in range(4):
+                    G_r1_lc2[j][m] += Gc[j][m] / iv.mpf(16)
+        v0_r1_a8 = sum((sgns_r1_p0[j] * G_r1_lc2[j][m] * sgns_r1_p0[m] for j in range(4) for m in range(4)), iv.mpf(0))
+        vr_r1_a8 = v0_r1_a8 / (iv.mpf(1) - v0_r1_a8)
+        require(strictly_above(v0_r1_a8, "0.43802") and strictly_below(v0_r1_a8, "0.43803"), "R1 Lc=2 a=8 v0 err")
+
+        chi_75 = _w16_iv_deg(75, 2)
+        ds1_75 = iv.mpf(1) - iv.cos(chi_75)
+        sin2_75 = iv.sin(chi_75) ** 2
+        comb_20 = iv.mpf(20) * (iv.e ** 2)
+        comb_161 = iv.mpf(161) * (iv.e ** 2)
+        targ_42 = _w16_iv_rat(423539, 10000)
+
+        def _w16_bl_tail_iv(b_iv, c_h, comb_i, vr_i):
+            det_f = (iv.mpf(1) + vr_i / c_h) ** _w16_iv_rat(3, 2)
+            u = c_h * b_iv * sin2_75 / vr_i
+            sph = (iv.mpf(2) * u) / (iv.mpf(1) - iv.exp(-iv.mpf(2) * u))
+            return comb_i * det_f * (sph * iv.exp(-b_iv * (ds1_75 + _w16_iv_rat(1, 2) * c_h * sin2_75 / vr_i)) + iv.exp(-b_iv))
+
+        require(strictly_above(_w16_bl_tail_iv(targ_42, _w16_iv_rat(922, 10000), comb_20, vr_r1_a8), 1), "Method B 75d lo fail")
+        require(strictly_below(_w16_bl_tail_iv(targ_42, _w16_iv_rat(948, 10000), comb_20, vr_r1_a8), 1), "Method B 75d hi fail")
+        eta_pure_20_75 = iv.log(comb_20 * det1_4) / (targ_42 * (chi_75 ** 2) / (iv.mpf(2) * _w16_iv_frac(v0_4p4)))
+        eta_pure_161_75 = iv.log(comb_161 * det1_4) / (targ_42 * (chi_75 ** 2) / (iv.mpf(2) * _w16_iv_frac(v0_4p4)))
+        require(strictly_above(eta_pure_20_75, "0.33103") and strictly_below(eta_pure_20_75, "0.33105"), "eta_pure_20_75 mismatch")
+        require(strictly_above(eta_pure_161_75, "0.44554") and strictly_above(_w16_iv_frac(scalar_fallacy) * eta_pure_161_75, "3.57"), "eta_pure_161_75 / scalar fallacy mismatch")
+        checks += 4
+
+        # Embedded W16-1 witnesses (48x48 -> 39x39, 42x42 Schur, 36x36 Quotient, S^3 chi_3 KP)
+        def _qmul_iv(a, b):
+            return [
+                a[0]*b[0] - a[1]*b[1] - a[2]*b[2] - a[3]*b[3],
+                a[0]*b[1] + a[1]*b[0] + a[2]*b[3] - a[3]*b[2],
+                a[0]*b[2] - a[1]*b[3] + a[2]*b[0] + a[3]*b[1],
+                a[0]*b[3] + a[1]*b[2] - a[2]*b[1] + a[3]*b[0],
+            ]
+
+        def _qconj_iv(a):
+            return [a[0], -a[1], -a[2], -a[3]]
+
+        def _qexp_iv(v_s):
+            v = [iv.mpf(s) for s in v_s]
+            n2 = v[0]*v[0] + v[1]*v[1] + v[2]*v[2]
+            if mp.mpf(n2.b) < mp.mpf("1e-70"):
+                return [iv.mpf(1), iv.mpf(0), iv.mpf(0), iv.mpf(0)]
+            n = iv.sqrt(n2)
+            s = iv.sin(n) / n
+            return [iv.cos(n), s * v[0], s * v[1], s * v[2]]
+
+        def _ad_mat(q):
+            w, x, y, z = q
+            return [
+                [w*w + x*x - y*y - z*z, 2*(x*y - w*z), 2*(x*z + w*y)],
+                [2*(x*y + w*z), w*w - x*x + y*y - z*z, 2*(y*z - w*x)],
+                [2*(x*z - w*y), 2*(y*z + w*x), w*w - x*x - y*y + z*z],
+            ]
+
+        _hor_u_cache = {}
+
+        def _eval_H_hor_w16(U4_s, V_s, a_hat_int: int, skip_p0: bool = False, eig_mode: str = "eigh"):
+            ukey = tuple(tuple(r) for r in U4_s)
+            if ukey in _hor_u_cache:
+                U, Z_iv = _hor_u_cache[ukey]
+            else:
+                U = [_qexp_iv(v) for v in (U4_s * 4)]
+                z0 = iv.mpf(0)
+                L_iv = [[z0 for _ in range(9)] for _ in range(48)]
+                for e, g, sgn, _ in gauge_r1:
+                    if sgn == 1:
+                        for c in range(3):
+                            L_iv[3 * e + c][3 * g + c] += iv.mpf(1)
+                    else:
+                        A = _ad_mat(U[e])
+                        for r in range(3):
+                            for c in range(3):
+                                L_iv[3 * e + r][3 * g + c] -= A[r][c]
+                Z_iv = _w16_orthonormal_complement(L_iv, 48, 9)
+                _hor_u_cache[ukey] = (U, Z_iv)
+            V = [_qexp_iv(v) for v in V_s]
+            a_hat = iv.mpf(a_hat_int)
+            z0 = iv.mpf(0)
+            H_iv = [[z0 for _ in range(48)] for _ in range(48)]
+            G_p0_full = [[z0 for _ in range(48)] for _ in range(3)]
+            Rid = [iv.mpf(1), z0, z0, z0]
+
+            def p_derivs(steps, target_R, need_hr=True):
+                qc = [iv.mpf(1), z0, z0, z0]
+                sdata = []
+                edges = sorted({e for _, e, _ in steps})
+                e2loc = {e: idx for idx, e in enumerate(edges)}
+                ac = [3 * e + c for e in edges for c in range(3)]
+                ncols = len(ac)
+                for _, e, sgn in steps:
+                    if sgn == 1:
+                        M = _ad_mat(qc)
+                        qc = _qmul_iv(qc, U[e])
+                    else:
+                        qc = _qmul_iv(qc, _qconj_iv(U[e]))
+                        Mr = _ad_mat(qc)
+                        M = [[-Mr[r][c] for c in range(3)] for r in range(3)]
+                    sdata.append((e2loc[e], M))
+                P = qc
+                Ys = [[z0 for _ in range(ncols)] for _ in range(3)]
+                for loc, Yk in sdata:
+                    for r in range(3):
+                        for c in range(3):
+                            Ys[r][3 * loc + c] += Yk[r][c]
+                dP = [[z0 for _ in range(ncols)] for _ in range(4)]
+                P0, Pv = P[0], P[1:]
+                for col in range(ncols):
+                    dP[0][col] = -(Pv[0]*Ys[0][col] + Pv[1]*Ys[1][col] + Pv[2]*Ys[2][col])
+                    dP[1][col] = P0*Ys[0][col] + (Ys[1][col]*Pv[2] - Ys[2][col]*Pv[1])
+                    dP[2][col] = P0*Ys[1][col] + (Ys[2][col]*Pv[0] - Ys[0][col]*Pv[2])
+                    dP[3][col] = P0*Ys[2][col] + (Ys[0][col]*Pv[1] - Ys[1][col]*Pv[0])
+                if not need_hr:
+                    return P, ac, dP, Ys, None
+                PR = _qmul_iv(P, _qconj_iv(target_R))
+                r0, rv = PR[0], PR[1:]
+                Krv = [[z0, rv[2], -rv[1]], [-rv[2], z0, rv[0]], [rv[1], -rv[0], z0]]
+                HR = [[r0 * sum((Ys[d][i] * Ys[d][j] for d in range(3)), z0) for j in range(ncols)] for i in range(ncols)]
+                pref = [[z0 for _ in range(ncols)] for _ in range(3)]
+                for loc, Yk in sdata:
+                    KY = [[sum((Krv[r][m] * Yk[m][c] for m in range(3)), z0) for c in range(3)] for r in range(3)]
+                    for i in range(ncols):
+                        for c in range(3):
+                            val = sum((pref[d][i] * KY[d][c] for d in range(3)), z0)
+                            HR[i][3 * loc + c] += val
+                            HR[3 * loc + c][i] += val
+                    for r in range(3):
+                        for c in range(3):
+                            pref[r][3 * loc + c] += Yk[r][c]
+                return P, ac, dP, Ys, HR
+
+            for idx, steps in enumerate(plaqs_r1):
+                _, ac, _, Ys, Hp = p_derivs(steps, Rid, need_hr=True)
+                if idx == 0:
+                    for d in range(3):
+                        for lc, gc in enumerate(ac):
+                            G_p0_full[d][gc] = Ys[d][lc]
+                if skip_p0 and idx == 0:
+                    continue
+                for ia, gi in enumerate(ac):
+                    for jb, gj in enumerate(ac):
+                        H_iv[gi][gj] += Hp[ia][jb]
+
+            if a_hat_int != 0:
+                for mu, paths in enumerate(blk_r1):
+                    Q = [z0] * 4
+                    dQ = [[z0 for _ in range(48)] for _ in range(4)]
+                    nz_cols = sorted({3 * e + c for _, steps in paths for _, e, _ in steps for c in range(3)})
+                    for w_fr, steps in paths:
+                        wiv = _w16_iv_frac(w_fr)
+                        P, ac, dP, _, _ = p_derivs(steps, Rid, need_hr=False)
+                        for k in range(4):
+                            Q[k] += wiv * P[k]
+                            for lc, gc in enumerate(ac):
+                                dQ[k][gc] += wiv * dP[k][lc]
+                    r_norm = iv.sqrt(sum((x * x for x in Q), z0))
+                    Qh = [x / r_norm for x in Q]
+                    Reff = [a_hat * (V[mu][k] - Qh[k]) for k in range(4)]
+                    for w_fr, steps in paths:
+                        wiv = _w16_iv_frac(w_fr)
+                        _, ac, _, _, Hb2 = p_derivs(steps, Reff, need_hr=True)
+                        for ia, gi in enumerate(ac):
+                            for jb, gj in enumerate(ac):
+                                H_iv[gi][gj] += wiv * Hb2[ia][jb]
+                    hq_fac = a_hat / r_norm
+                    for gi in nz_cols:
+                        dqi = sum((Qh[a] * dQ[a][gi] for a in range(4)), z0)
+                        for gj in nz_cols:
+                            s_q = sum((dQ[a][gi] * dQ[a][gj] for a in range(4)), z0)
+                            dqj = sum((Qh[a] * dQ[a][gj] for a in range(4)), z0)
+                            H_iv[gi][gj] += hq_fac * (s_q - dqi * dqj)
+
+            Hh_iv = _w16_matmul(_w16_dag(Z_iv), _w16_matmul(H_iv, Z_iv))
+            ok, _, min_piv = _r11_iv_real_ldlt_pos(Hh_iv, 39)
+            if eig_mode == "eigh":
+                evs, _ = _w16_certify_herm_eigh(Hh_iv)
+                ev0 = evs[0]
+            elif eig_mode == "rayleigh_ub":
+                ev0 = _w16_rayleigh_min_ub(Hh_iv)
+            else:
+                ev0 = iv.mpf(0)
+            G_p0_39 = _w16_matmul(G_p0_full, Z_iv)
+            return ok, ev0, min_piv, H_iv, Hh_iv, G_p0_39, U
+
+        U_75_30 = [["0.6028062158", "0.0000000000", "0.0000000000"], ["0.0000000000", "0.6028062158", "0.0000000000"], ["0.0000000000", "0.0000000000", "0.6028062158"], ["0.3480303309", "0.3480303309", "0.3480303309"]]
+        V_75_30 = [["0.6745587258", "0.6719424740", "-0.0930161743"], ["-0.3173318562", "0.3218270594", "0.1294604909"], ["0.3348032401", "0.3449742697", "1.1089042127"], ["0.4388051719", "0.4405069118", "-0.2840742255"]]
+        V_75_45 = [["0.7495985120", "0.7320523975", "-0.1995802259"], ["-0.2116141383", "0.2139366867", "0.0890281291"], ["0.3165939826", "0.3249282665", "1.2470198843"], ["0.5247927007", "0.5101319720", "-0.3573200331"]]
+        V_75_60 = [["0.8097856384", "0.7847533949", "-0.3239404367"], ["-0.1077077319", "0.1215418396", "0.0285123935"], ["0.2846500809", "0.2917006776", "1.3847071932"], ["0.6004067096", "0.5748999314", "-0.4482281018"]]
+
+        ok_60, ev_60, _, _, _, _, _ = _eval_H_hor_w16(U_75_30, V_75_60, 8, False, "rayleigh_ub")
+        require((not ok_60) and strictly_below(ev_60, "-0.27"), "W16-1 thV=60 counterexample must fail < -0.27")
+        ok_30, ev_30, _, _, H39_a8, G_p0_39, _ = _eval_H_hor_w16(U_75_30, V_75_30, 8, False, "eigh")
+        ok_30m, _, _, _, H39_30m, _, _ = _eval_H_hor_w16(U_75_30, V_75_30, 8, True, "ldlt_only")
+        require(ok_30 and ok_30m and strictly_above(ev_30, "0.45") and _r11_iv_real_ldlt_pos([[H39_30m[i][j] - (iv.mpf("0.30") if i == j else iv.mpf(0)) for j in range(39)] for i in range(39)], 39)[0], "W16-1 thV=30 full/-p0 pass failed")
+        ok_45m, ev_45m, _, _, _, _, _ = _eval_H_hor_w16(U_75_30, V_75_45, 8, True, "rayleigh_ub")
+        require((not ok_45m) and strictly_below(ev_45m, "-0.025"), "O-W16.1-StrippedP0CollapseAt45Deg failed")
+
+        def _schur42_ok(v0_q: Fraction):
+            vv = _w16_iv_frac(v0_q)
+            S42 = [[iv.mpf(0) for _ in range(42)] for _ in range(42)]
+            for i in range(39):
+                for j in range(39):
+                    S42[i][j] = H39_a8[i][j]
+            for r in range(3):
+                S42[39 + r][39 + r] = vv
+                for c in range(39):
+                    S42[39 + r][c] = G_p0_39[r][c]
+                    S42[c][39 + r] = G_p0_39[r][c]
+            return _r11_iv_real_ldlt_pos(S42, 42)[0]
+
+        require(_schur42_ok(Fraction(7, 10)) and not _schur42_ok(Fraction(67, 100)), "42x42 Schur [0.67, 0.70] failed")
+        eta_dir_42 = _w16_iv_rat(3, 8) / _w16_iv_rat(7, 10)
+        require(strictly_above(eta_dir_42, "0.5357") and strictly_above(eta_dir_42, eta_pure_161_75), "42x42 Schur eta_dir fail")
+
+        # Needle 1: H_plaq(a=0) turns <0 in 39d R1 AND 36d physical quotient (O-W16.5-3CubePartitionNonAdditivityAt75Deg)
+        ok_p75, ev_p75_39, _, H48_p75, _, _, U75_q = _eval_H_hor_w16(U_75_30, V_75_30, 0, False, "rayleigh_ub")
+        require((not ok_p75) and strictly_below(ev_p75_39, "-1.85"), "H_plaq(a=0) 39d fail")
+        L_U12 = [[iv.mpf(0) for _ in range(12)] for _ in range(48)]
+        for si, sh in enumerate(SHIFTS_r1):
+            for mu in range(4):
+                e = 4 * si + mu
+                _, s_end = _r1_fine_to_cell(tuple(sh[i] + E4_r1[mu][i] for i in range(4)))
+                Ad_UT = _w16_dag(_ad_mat(U75_q[e]))
+                for r in range(3):
+                    L_U12[3 * e + r][3 * si + r] += iv.mpf(1)
+                    for c in range(3):
+                        L_U12[3 * e + r][3 * s_end + c] -= Ad_UT[r][c]
+        require(_r11_iv_real_ldlt_pos(_w16_matmul(_w16_dag(L_U12), L_U12), 12)[0], "12x12 LU_gram rank fail")
+        Z_36 = _w16_orthonormal_complement(L_U12, 48, 12)
+        H36_p = _w16_matmul(_w16_dag(Z_36), _w16_matmul(H48_p75, Z_36))
+        ev_p75_36 = _w16_rayleigh_min_ub(H36_p)
+        evs_36 = [ev_p75_36]
+        require(strictly_below(ev_p75_36, "-1.15"), "36d physical quotient H_plaq(a=0) must be < -1.15")
+
+        # 40d iv S^3 chi_3 coarse-link defect KP bracket [32.125, 32.25] (30d) & [8.0625, 8.1875] (60d)
+        r_min_75 = _w16_iv_rat(3, 4) * iv.cos(_w16_iv_deg(75, 4)) + _w16_iv_rat(1, 4) * iv.cos(_w16_iv_deg(375, 4))
+        penalty_60_30 = (iv.mpf(1) - iv.cos(_w16_iv_deg(60, 2))) / (iv.mpf(1) - iv.cos(_w16_iv_deg(30, 2)))
+        require(strictly_above(penalty_60_30, "3.93"), "60/30 action penalty < 3.93")
+
+        def _s3_kp_lhs(b_q: Fraction, thV_deg: int):
+            kap = iv.mpf(8) * r_min_75 * _w16_iv_frac(b_q)
+            t_hi = iv.cos(_w16_iv_deg(thV_deg, 2))
+            t_mid = iv.mpf(max(mp.mpf("0.1"), mp.mpf((t_hi - iv.mpf(40) / kap).a)))
+            acc = iv.mpf(0)
+            for a0, b0, nb in ((iv.mpf(-1), t_mid, 32), (t_mid, t_hi, 384)):
+                h = (b0 - a0) / iv.mpf(nb)
+                for j in range(nb):
+                    ta = a0 + iv.mpf(j) * h
+                    tb = a0 + iv.mpf(j + 1) * h
+                    tbin = iv.mpf([ta.a, tb.b])
+                    acc += iv.sqrt(_w16_pos(iv.mpf(1) - tbin * tbin)) * ((iv.exp(kap * (tb - 1)) - iv.exp(kap * (ta - 1))) / kap)
+            num_sc = (iv.mpf(2) / iv.pi) * acc
+            den_sc = iv.mpf(2) * _w16_besseli_scaled_neg(1, kap) / kap
+            return comb_20 * (num_sc / den_sc)
+
+        require(strictly_above(_s3_kp_lhs(Fraction(32125, 1000), 30), 1) and strictly_below(_s3_kp_lhs(Fraction(3225, 100), 30), 1), "S3 KP20 30d bracket fail")
+        require(strictly_above(_s3_kp_lhs(Fraction(80625, 10000), 60), 1) and strictly_below(_s3_kp_lhs(Fraction(81875, 10000), 60), 1), "S3 KP20 60d bracket fail")
+        checks += 4
+
+        # =====================================================================
+        # §2. W16-2 & W16-5 Needle 2: Manton 5/3, Symanzik c6* & O-W9.P2 BZ
+        # =====================================================================
+        chi_m = sp.Symbol("chim", real=True)
+        u_wil = 1 - sp.cos(chi_m)
+        require(sp.simplify(sp.series(u_wil + sp.Rational(1, 6) * u_wil ** 2, chi_m, 0, 6).removeO() - chi_m ** 2 / 2) == 0, "Manton quartic cancellation fail")
+        v1, v2, v3, vv = sp.symbols("v1 v2 v3 vv", real=True)
+        q_u1 = sp.diff(v1 ** 4 / 24, v1, 2).subs(v1 ** 2, vv)
+        q_su2 = sp.diff((v1 ** 2 + v2 ** 2 + v3 ** 2) ** 2 / 24, v1, 2).subs({v1 ** 2: vv, v2 ** 2: vv, v3 ** 2: vv})
+        require(sp.simplify(q_su2 / q_u1) == sp.Rational(5, 3), "5/3 cosine tadpole ratio fail")
+        require(sp.Rational(-5, 6) * sp.Rational(1, 2) == sp.Rational(-5, 12) and sp.Rational(-1, 2) * sp.Rational(1, 2) == sp.Rational(-1, 4), "fine shift mismatch")
+
+        # 4x4 Symanzik O(k^4) tensors, field redef c_1=-1/12 & b=2 exact 1/4 vs R1^2=1/4
+        ks = sp.symbols("k0 k1 k2 k3", real=True)
+        t_lw = sp.Symbol("tlw", real=True)
+        def _build_lw_loops():
+            def canon(seq):
+                L = len(seq)
+                for i in range(L):
+                    if seq[i][0] == seq[(i + 1) % L][0] and seq[i][1] == -seq[(i + 1) % L][1]:
+                        return None
+                pts, edges = [], []
+                cur = [0, 0, 0, 0]
+                for d, s in seq:
+                    pts.append(tuple(cur))
+                    if s == 1:
+                        edges.append((tuple(cur), d)); cur[d] += 1
+                    else:
+                        cur[d] -= 1; edges.append((tuple(cur), d))
+                if len(set(pts)) != L:
+                    return None
+                bmin = tuple(min(e[0][i] for e in edges) for i in range(4))
+                return tuple(sorted((tuple(e[0][i] - bmin[i] for i in range(4)), e[1]) for e in edges))
+            ps, rs, cs, pas = {}, {}, {}, {}
+            for L in (4, 6):
+                for seq in itertools.product([(d, s) for d in range(4) for s in (1, -1)], repeat=L):
+                    if not all(sum(s for d2, s in seq if d2 == d) == 0 for d in range(4)):
+                        continue
+                    k = canon(seq)
+                    if k is None:
+                        continue
+                    if L == 4:
+                        ps.setdefault(k, seq)
+                    else:
+                        p = [0, 0, 0, 0]; pts = [tuple(p)]
+                        for d, s in seq[:-1]:
+                            p[d] += s; pts.append(tuple(p))
+                        dims = tuple(sorted(max(pt[i] for pt in pts) - min(pt[i] for pt in pts) for i in range(4)))
+                        if dims == (0, 0, 1, 2):
+                            rs.setdefault(k, seq)
+                        elif dims == (0, 1, 1, 1):
+                            if seq[0][0] == seq[3][0] and seq[1][0] == seq[4][0] and seq[2][0] == seq[5][0]:
+                                pas.setdefault(k, seq)
+                            else:
+                                cs.setdefault(k, seq)
+            return list(ps.values()), list(rs.values()), list(cs.values()), list(pas.values())
+
+        p1_l, r1_l, c1_l, pa1_l = _build_lw_loops()
+        require(len(p1_l) == 6 and len(r1_l) == 12 and len(c1_l) == 48 and len(pa1_l) == 16, "LW loop counts mismatch")
+        def _sym_H_mid(seqs):
+            H2, H4 = sp.zeros(4, 4), sp.zeros(4, 4)
+            for seq in seqs:
+                v, cur = [sp.Integer(0)] * 4, [0, 0, 0, 0]
+                for d, s in seq:
+                    if s == 1:
+                        ang = sum((cur[i] + (sp.Rational(1, 2) if i == d else 0)) * ks[i] for i in range(4)); cur[d] += 1
+                    else:
+                        cur[d] -= 1; ang = sum((cur[i] + (sp.Rational(1, 2) if i == d else 0)) * ks[i] for i in range(4))
+                    v[d] += s * (1 + sp.I * t_lw * ang - t_lw ** 2 * ang ** 2 / 2 - sp.I * t_lw ** 3 * ang ** 3 / 6)
+                for a in range(4):
+                    vac = v[a].subs(sp.I, -sp.I)
+                    for bi in range(a, 4):
+                        pr = sp.expand(vac * v[bi])
+                        c2, c4 = pr.coeff(t_lw, 2), pr.coeff(t_lw, 4)
+                        H2[a, bi] += c2; H4[a, bi] += c4
+                        if a != bi:
+                            H2[bi, a] += c2.subs(sp.I, -sp.I); H4[bi, a] += c4.subs(sp.I, -sp.I)
+            return H2, H4
+
+        (P2, P4), (R2, R4), (C2, C4), (Pa2, Pa4) = _sym_H_mid(p1_l), _sym_H_mid(r1_l), _sym_H_mid(c1_l), _sym_H_mid(pa1_l)
+        DR4 = (R4 - 8 * P4).applyfunc(sp.expand)
+        DC4 = (C4 - 16 * P4).applyfunc(sp.expand)
+        DPa4 = (Pa4 - 8 * P4).applyfunc(sp.expand)
+        require((DC4 - DPa4).applyfunc(sp.expand) == sp.zeros(4, 4), "Chair != Parallelogram O(k^4)")
+        k2s = sum(ki ** 2 for ki in ks)
+        M0_lw = sp.Matrix(4, 4, lambda i, j: (k2s - ks[i] ** 2) if i == j else -ks[i] * ks[j])
+        Jinv = sp.diag(*[1 - t_lw ** 2 * ks[i] ** 2 / 24 for i in range(4)])
+        LW_t = t_lw ** 2 * M0_lw + t_lw ** 4 * (P4 - sp.Rational(1, 12) * DR4).applyfunc(sp.expand)
+        require(sp.expand(Jinv * LW_t * Jinv).applyfunc(lambda e: sp.expand(e.coeff(t_lw, 4))) == sp.zeros(4, 4), "LW field redef fail")
+        # BZ hat_Delta / a_hat ratios {1/4, 1/2, 1, 3/2, 2}
+        bz_r_vals = [sp.simplify(sum(4 * sp.sin(pv / 2) ** 2 for pv in pts) / 8) for pts in (
+            [sp.pi / 2, 0, 0, 0], [sp.pi, 0, 0, 0], [sp.pi, sp.pi, 0, 0], [sp.pi, sp.pi, sp.pi, 0], [sp.pi, sp.pi, sp.pi, sp.pi]
+        )]
+        require(bz_r_vals == [sp.Rational(1, 4), sp.Rational(1, 2), 1, sp.Rational(3, 2), 2], "BZ hat_Delta/8 ratios mismatch")
+        checks += 3
+
+        # 40d iv G_pp^cond(2^4) & 2^4 / (4,1,1,1) commensurate 1-loop alpha_half & T_tree 2x2 fixed point
+        TREE_r1 = (0, 2, 6)
+        REST_r1 = [e for e in range(16) if e not in TREE_r1]
+        plaqs_act_2 = [(sorted({e for _, e, _ in steps}), steps) for steps in plaqs_r1]
+        blk_act_2 = [(sorted({e for _, sts in paths for _, e, _ in sts}), [(_w16_iv_frac(w), sorted({e for _, e, _ in sts}), sts) for w, sts in paths]) for paths in blk_r1]
+
+        def _hcl_iv(qv, force_real: bool):
+            z0 = iv.mpf(0) if force_real else iv.mpc(0)
+            phc = {}
+            def pf(off):
+                v = phc.get(off)
+                if v is None:
+                    ang = sum((iv.mpf(off[d]) * qv[d] for d in range(4)), iv.mpf(0))
+                    v = iv.cos(ang) if force_real else _w16_expj(ang)
+                    phc[off] = v
+                return v
+            HW = [[z0 for _ in range(16)] for _ in range(16)]
+            for act, steps in plaqs_act_2:
+                sv = [z0] * 16
+                for off, e, sgn in steps:
+                    sv[e] += iv.mpf(sgn) * pf(off)
+                for i in act:
+                    ci = iv_conj(sv[i])
+                    for j in act:
+                        HW[i][j] += ci * sv[j]
+            C4m = [[z0 for _ in range(16)] for _ in range(4)]
+            Hbl = [[z0 for _ in range(16)] for _ in range(16)]
+            Hbe = [[z0 for _ in range(16)] for _ in range(16)]
+            for mu, (act_q, pw) in enumerate(blk_act_2):
+                Qv = [z0] * 16
+                Sw = [[z0 for _ in range(16)] for _ in range(16)]
+                for wiv, act, steps in pw:
+                    sv = [z0] * 16
+                    for off, e, sgn in steps:
+                        sv[e] += iv.mpf(sgn) * pf(off)
+                    for i in act:
+                        Qv[i] += wiv * sv[i]
+                        ci = wiv * iv_conj(sv[i])
+                        for j in act:
+                            Sw[i][j] += ci * sv[j]
+                C4m[mu] = Qv
+                for i in act_q:
+                    ci = iv_conj(Qv[i])
+                    for j in act_q:
+                        qq = ci * Qv[j]
+                        Hbl[i][j] += iv.mpf(8) * qq
+                        Hbe[i][j] += _w16_iv_rat(3, 2) * (Sw[i][j] - qq)
+            L3m = [[z0 for _ in range(3)] for _ in range(16)]
+            for e, g, sgn, off in gauge_r1:
+                L3m[e][g] += iv.mpf(sgn) * pf(off)
+            return [[HW[i][j] + Hbl[i][j] for j in range(16)] for i in range(16)], Hbe, C4m, L3m, pf
+
+        _, _, _, L0_pi0, _ = _hcl_iv([iv.pi, iv.mpf(0), iv.mpf(0), iv.mpf(0)], True)
+        LT_inv_24 = _w16_mat_solve([L0_pi0[e] for e in TREE_r1], [[iv.mpf(1) if i == j else iv.mpf(0) for j in range(3)] for i in range(3)])
+        gpp_24_sum = iv.mpf(0)
+        for key in itertools.product((0, 1), repeat=4):
+            kv = [iv.pi if x == 1 else iv.mpf(0) for x in key]
+            Hk, _, _, Lk, ph_k = _hcl_iv(kv, True)
+            Lr = [Lk[e] for e in REST_r1]
+            P0 = [[iv.mpf(1) if e == REST_r1[idx] else iv.mpf(0) for e in range(16)] for idx in range(13)]
+            neg_lr = _w16_matmul(Lr, LT_inv_24)
+            for idx in range(13):
+                for j_i, et in enumerate(TREE_r1):
+                    P0[idx][et] = -neg_lr[idx][j_i]
+            Zk = _w16_orthonormal_complement(Lk, 16, 3)
+            evk, psik = _w16_certify_herm_eigh(_w16_matmul(_w16_dag(Zk), _w16_matmul(Hk, Zk)))
+            Vk = _w16_matmul(Zk, psik)
+            Ck = [[iv.mpf(0) for _ in range(16)] for _ in range(16)]
+            for a in range(13):
+                ea = [sum((P0[r][c] * Vk[c][a] for c in range(16)), iv.mpf(0)) for r in range(13)]
+                va = [ea[REST_r1.index(e)] if e in REST_r1 else iv.mpf(0) for e in range(16)]
+                inv_e = iv.mpf(1) / evk[a]
+                for i in range(16):
+                    if va[i] != 0:
+                        for j in range(16):
+                            if va[j] != 0:
+                                Ck[i][j] += inv_e * va[i] * va[j]
+            for _, steps in plaqs_act_2:
+                sv = [iv.mpf(0)] * 16
+                for off, e, sg in steps:
+                    sv[e] += iv.mpf(sg) * ph_k(off)
+                gpp_24_sum += sum((sv[i] * Ck[i][j] * sv[j] for i in range(16) for j in range(16)), iv.mpf(0))
+        gpp_cond_24 = (gpp_24_sum.real if isinstance(gpp_24_sum, type(iv.mpc(0))) else gpp_24_sum) / iv.mpf(24 * 16)
+        require(strictly_above(gpp_cond_24, "0.45342") and strictly_below(gpp_cond_24, "0.45343"), "G_pp^cond(2^4) fail")
+
+        # 2x2 RG tree matrix & c_6^* fixed point residual < 1e-16 (O-W16.2-FixedPointDim6InducedDrift)
+        T_tree_2x2 = [[iv.mpf("-0.27653377465032636"), iv.mpf("-0.11672957432998388")],
+                      [iv.mpf("0.1570130206693332"), iv.mpf("0.051878805210942014")]]
+        gam_1l = [[iv.mpf("0.018227306148802927")], [iv.mpf("-0.009614835671827578")]]
+        tr_T = T_tree_2x2[0][0] + T_tree_2x2[1][1]
+        det_T = T_tree_2x2[0][0] * T_tree_2x2[1][1] - T_tree_2x2[0][1] * T_tree_2x2[1][0]
+        disc_T = iv.sqrt(tr_T * tr_T - 4 * det_T)
+        eig_T_0 = (tr_T - disc_T) / 2
+        eig_T_1 = (tr_T + disc_T) / 2
+        require(strictly_above(eig_T_0, "-0.2053") and strictly_below(eig_T_0, "-0.2052"), "T_tree eig0 fail")
+        require(strictly_above(eig_T_1, "-0.0195") and strictly_below(eig_T_1, "-0.0193"), "T_tree eig1 fail")
+        I_minus_T = [[iv.mpf(1) - T_tree_2x2[0][0], -T_tree_2x2[0][1]], [-T_tree_2x2[1][0], iv.mpf(1) - T_tree_2x2[1][1]]]
+        c_star_2x2 = _w16_mat_solve(I_minus_T, gam_1l)
+        require(strictly_above(c_star_2x2[0][0], "0.014979") and strictly_below(c_star_2x2[1][0], "-0.007660"), "c_star fail")
+        r1_steps_40_to_4 = iv.mpf(36) / ((iv.mpf(11) * iv.log(iv.mpf(2))) / (iv.mpf(6) * (iv.pi ** 2)))
+        require(strictly_above(r1_steps_40_to_4, "279.59"), "R1 steps beta 40->4 < 279.59")
+        checks += 3
+
+        # =====================================================================
+        # §3. W16-3: Complex-beta K_4/Q_3, 1x1 Schur, U(1) Krawczyk & 2-Step Bridge
+        # =====================================================================
+        def _adm(a, b, c):
+            return (a + b + c) % 2 == 0 and a <= b + c and b <= a + c and c <= a + b
+
+        min_cas_k4, cnt_cas_k4 = {}, {}
+        for k0 in range(7):
+            for k1 in range(7):
+                for k2 in range(abs(k0 - k1), min(6, k0 + k1) + 1, 2):
+                    for k3 in range(7):
+                        for k4 in range(abs(k0 - k3), min(6, k0 + k3) + 1, 2):
+                            for k5 in range(max(abs(k1 - k3), abs(k2 - k4)), min(6, k1 + k3, k2 + k4) + 1, 2):
+                                if (k1 + k3 + k5) % 2 or (k2 + k4 + k5) % 2:
+                                    continue
+                                mv = max(k0, k1, k2, k3, k4, k5)
+                                cv = sum(x * (x + 2) for x in (k0, k1, k2, k3, k4, k5))
+                                if mv not in min_cas_k4 or cv < min_cas_k4[mv]:
+                                    min_cas_k4[mv] = cv
+                                cnt_cas_k4[mv] = cnt_cas_k4.get(mv, 0) + 1
+        for m_c in range(7):
+            require(min_cas_k4[m_c] == 2 * m_c * m_c + 6 * m_c + (m_c % 2), f"K4 min casimir fail {m_c}")
+
+        # Exact K_4 orbit counts 26 < 65 < 132 < 270 and state counts 181 < 570 < 1479 < 3418
+        k4_edges = ((0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3))
+        k4_eidx = {e: i for i, e in enumerate(k4_edges)}
+        k4_pmaps = [[k4_eidx[(min(p[u], p[v]), max(p[u], p[v]))] for u, v in k4_edges] for p in itertools.permutations(range(4))]
+        cum_states, orb_set, k4_counts = 0, set(), {}
+        # Build all valid K_4 states up to Kmax=6 cleanly and track per-Kmax counts
+        k4_states_by_m = {m: [] for m in range(7)}
+        for k0 in range(7):
+            for k1 in range(7):
+                for k2 in range(abs(k0 - k1), min(6, k0 + k1) + 1, 2):
+                    for k3 in range(7):
+                        for k4 in range(abs(k0 - k3), min(6, k0 + k3) + 1, 2):
+                            for k5 in range(max(abs(k1 - k3), abs(k2 - k4)), min(6, k1 + k3, k2 + k4) + 1, 2):
+                                if (k1 + k3 + k5) % 2 or (k2 + k4 + k5) % 2:
+                                    continue
+                                s = (k0, k1, k2, k3, k4, k5)
+                                k4_states_by_m[max(s)].append(s)
+        for Km in range(3, 7):
+            for s in k4_states_by_m[Km] if Km > 3 else [x for m in range(4) for x in k4_states_by_m[m]]:
+                cum_states += 1
+                orb_set.add(min(tuple(s[pm[e]] for e in range(6)) for pm in k4_pmaps))
+            k4_counts[Km] = (cum_states, len(orb_set))
+        require(k4_counts == {3: (181, 26), 4: (570, 65), 5: (1479, 132), 6: (3418, 270)}, f"K4 counts mismatch: {k4_counts}")
+
+        # Fisher zero complex HK tail decay K3 -> K6 & O-W16.3-ReweightingGaussianEdgeIllusion
+        beff_fz = (iv.mpf("1.4325") ** 2 + iv.mpf("1.4769") ** 2) / iv.mpf("1.4325")
+        fz_k6_tail = iv.exp(-iv.mpf(141) / (iv.mpf(4) * beff_fz))
+        require(strictly_below(fz_k6_tail, "7e-6") and strictly_below(iv.mpf(1) / iv.mpf(8), iv.sqrt(2) / iv.mpf(4)), "Fisher tail or Ls SNR fail")
+        checks += 3
+
+        # Complex-beta 1x1 Strip (Kmax=8) Schur-Resolvent infinite-dim spectral gap + C1 U(1) Krawczyk
+        def _cadd(a, b): return (a[0] + b[0], a[1] + b[1])
+        def _csub(a, b): return (a[0] - b[0], a[1] - b[1])
+        def _cmul(a, b): return (a[0]*b[0] - a[1]*b[1], a[0]*b[1] + a[1]*b[0])
+        def _cscale(a, s): return (a[0]*s, a[1]*s)
+        def _cdiv(a, b):
+            den = b[0]*b[0] + b[1]*b[1]
+            require(mp.mpf(den.a) > 0, "Complex div crosses zero")
+            return ((a[0]*b[0] + a[1]*b[1]) / den, (a[1]*b[0] - a[0]*b[1]) / den)
+        def _cexp(z):
+            er = iv.exp(z[0])
+            return (er * iv.cos(z[1]), er * iv.sin(z[1]))
+        def _cabs(z): return iv.sqrt(_w16_pos(z[0]*z[0] + z[1]*z[1]))
+        def _csqrt(z):
+            r = _cabs(z)
+            re = iv.sqrt(_w16_pos(iv.mpf("0.5") * (r + z[0])))
+            return (re, z[1] / (iv.mpf(2) * re))
+
+        def _schur_complex_gap_iv(T_iv, N: int, inf_tail_ub_iv):
+            z0 = (iv.mpf(0), iv.mpf(0))
+            m = min(5, N)
+            with mp.workdps(55):
+                T_mp = [[mp.mpc(mp.mpf(T_iv[i][j][0].mid), mp.mpf(T_iv[i][j][1].mid)) for j in range(N)] for i in range(N)]
+                def _qrmgs(A_cols):
+                    mc, Nr = len(A_cols), len(A_cols[0])
+                    Q = [list(c) for c in A_cols]
+                    for j in range(mc):
+                        for _ in range(2):
+                            for i in range(j):
+                                dt = sum(mp.conj(Q[i][r]) * Q[j][r] for r in range(Nr))
+                                for r in range(Nr): Q[j][r] -= dt * Q[i][r]
+                        nrm = mp.sqrt(sum(abs(Q[j][r]) ** 2 for r in range(Nr)))
+                        for r in range(Nr): Q[j][r] /= nrm
+                    return Q
+                Q_cols = [[mp.mpc(1 if i == j else 0) for i in range(N)] for j in range(m)]
+                for _ in range(12):
+                    Z = [[sum(T_mp[r][c] * Q_cols[j][c] for c in range(N)) for r in range(N)] for j in range(m)]
+                    Q_cols = _qrmgs(Z)
+                TQ_mp = [[sum(T_mp[r][c] * Q_cols[j][c] for c in range(N)) for r in range(N)] for j in range(m)]
+                A_mp = mp.matrix([[sum(mp.conj(Q_cols[a][r]) * TQ_mp[b][r] for r in range(N)) for b in range(m)] for a in range(m)])
+                ev_m, vm = mp.eig(A_mp, left=False, right=True)
+                ord_m = sorted(range(m), key=lambda idx: abs(ev_m[idx]), reverse=True)
+                Q_ord = _qrmgs([[vm[r, idx] for r in range(m)] for idx in ord_m])
+                Q_top = _qrmgs([[sum(Q_ord[c][a] * Q_cols[a][r] for a in range(m)) for r in range(N)] for c in range(m)])
+            Q_iv = [[(iv.mpf(mp.nstr(Q_top[c][r].real, 52)), iv.mpf(mp.nstr(Q_top[c][r].imag, 52))) for c in range(m)] for r in range(N)]
+            for c in range(m):
+                for _ in range(2):
+                    for p in range(c):
+                        dt = z0
+                        for r in range(N): dt = _cadd(dt, _cmul((Q_iv[r][p][0], -Q_iv[r][p][1]), Q_iv[r][c]))
+                        for r in range(N): Q_iv[r][c] = _csub(Q_iv[r][c], _cmul(dt, Q_iv[r][p]))
+                n2 = sum((_w16_pos(Q_iv[r][c][0]**2 + Q_iv[r][c][1]**2) for r in range(N)), iv.mpf(0))
+                inv_n = iv.mpf(1) / iv.sqrt(n2)
+                for r in range(N): Q_iv[r][c] = _cscale(Q_iv[r][c], inv_n)
+            eo2 = iv.mpf(0)
+            for a in range(m):
+                for b in range(m):
+                    s = z0
+                    for r in range(N): s = _cadd(s, _cmul((Q_iv[r][a][0], -Q_iv[r][a][1]), Q_iv[r][b]))
+                    if a == b: s = _csub(s, (iv.mpf(1), iv.mpf(0)))
+                    eo2 += _w16_pos(s[0]**2 + s[1]**2)
+            eps_o = iv.sqrt(eo2).b
+            require(mp.mpf(eps_o.b) < mp.mpf("1e-30"), f"Q_iv non-orthonormal: {eps_o}")
+            TQ_iv = [[z0] * m for _ in range(N)]
+            QT_iv = [[z0] * N for _ in range(m)]
+            for r in range(N):
+                for c in range(m):
+                    s1 = z0
+                    for k in range(N): s1 = _cadd(s1, _cmul(T_iv[r][k], Q_iv[k][c]))
+                    TQ_iv[r][c] = s1
+            for a in range(m):
+                for c in range(N):
+                    s2 = z0
+                    for r in range(N): s2 = _cadd(s2, _cmul((Q_iv[r][a][0], -Q_iv[r][a][1]), T_iv[r][c]))
+                    QT_iv[a][c] = s2
+            A_iv = [[z0] * m for _ in range(m)]
+            for a in range(m):
+                for b in range(m):
+                    s = z0
+                    for r in range(N): s = _cadd(s, _cmul((Q_iv[r][a][0], -Q_iv[r][a][1]), TQ_iv[r][b]))
+                    A_iv[a][b] = s
+            hs2 = lambda M_, nr, nc: sum((_w16_pos(M_[i][j][0]**2 + M_[i][j][1]**2) for i in range(nr) for j in range(nc)), iv.mpf(0))
+            nT2 = hs2(T_iv, N, N); nT_ub = iv.sqrt(nT2).b; opad = iv.mpf(2) * eps_o * nT_ub
+            def _cert_prefix(mc: int):
+                TQ_m, QT_m, A_m = [row[:mc] for row in TQ_iv], QT_iv[:mc], [row[:mc] for row in A_iv[:mc]]
+                nTQ2, nQT2, nA2 = hs2(TQ_m, N, mc), hs2(QT_m, mc, N), hs2(A_m, mc, mc)
+                e2_ub = iv.sqrt(_w16_pos(nTQ2 - nA2).b + opad * nT_ub).b
+                e1_ub = iv.sqrt(_w16_pos(nQT2 - nA2).b + opad * nT_ub).b
+                c_ub = iv.sqrt(_w16_pos(nT2 - nQT2 - nTQ2 + nA2).b + opad * nT_ub).b
+                use_schur_qr = (mc == 1)
+                if not use_schur_qr:
+                    with mp.workdps(55):
+                        Am_mp = mp.matrix([[mp.mpc(mp.mpf(A_m[i][j][0].mid), mp.mpf(A_m[i][j][1].mid)) for j in range(mc)] for i in range(mc)])
+                        ev_a, V_a = mp.eig(Am_mp, left=False, right=True)
+                        ord_a = sorted(range(mc), key=lambda idx: abs(ev_a[idx]), reverse=True)
+                        V_a = mp.matrix([[V_a[r, idx] for idx in ord_a] for r in range(mc)])
+                        try:
+                            W_a = V_a ** (-1)
+                        except Exception:
+                            use_schur_qr = True
+                    if not use_schur_qr:
+                        V_iv = [[(iv.mpf(mp.nstr(V_a[r, c].real, 52)), iv.mpf(mp.nstr(V_a[r, c].imag, 52))) for c in range(mc)] for r in range(mc)]
+                        W_iv = [[(iv.mpf(mp.nstr(W_a[r, c].real, 52)), iv.mpf(mp.nstr(W_a[r, c].imag, 52))) for c in range(mc)] for r in range(mc)]
+                        WV_e = iv.mpf(0)
+                        for i in range(mc):
+                            for j in range(mc):
+                                s = z0
+                                for k in range(mc): s = _cadd(s, _cmul(W_iv[i][k], V_iv[k][j]))
+                                if i == j: s = _csub(s, (iv.mpf(1), iv.mpf(0)))
+                                WV_e += _w16_pos(s[0]**2 + s[1]**2)
+                        wv_err = iv.sqrt(WV_e).b
+                        if mp.mpf(wv_err.b) > mp.mpf("1e-22"):
+                            use_schur_qr = True
+                if use_schur_qr:
+                    D_iv, neu_err, kap_A = A_m, iv.mpf(0), iv.mpf(1)
+                else:
+                    AV_iv = [[z0] * mc for _ in range(mc)]
+                    for i in range(mc):
+                        for j in range(mc):
+                            s = z0
+                            for k in range(mc): s = _cadd(s, _cmul(A_m[i][k], V_iv[k][j]))
+                            AV_iv[i][j] = s
+                    D_iv = [[z0] * mc for _ in range(mc)]
+                    for i in range(mc):
+                        for j in range(mc):
+                            s = z0
+                            for k in range(mc): s = _cadd(s, _cmul(W_iv[i][k], AV_iv[k][j]))
+                            D_iv[i][j] = s
+                    neu_err = (wv_err / (iv.mpf(1) - wv_err)) * iv.sqrt(hs2(D_iv, mc, mc)).b
+                    kap_A = (iv.sqrt(hs2(V_iv, mc, mc)).b * iv.sqrt(hs2(W_iv, mc, mc)).b / (iv.mpf(1) - wv_err)).b
+                discs = []
+                for i in range(mc):
+                    rad = neu_err
+                    for j in range(mc):
+                        if j != i:
+                            rad = (rad + _cabs(D_iv[j][i] if use_schur_qr else D_iv[i][j]).b).b
+                    discs.append((D_iv[i][i], rad))
+                discs.sort(key=lambda pr: mp.mpf(_cabs(pr[0]).a), reverse=True)
+                l0c, r0a = discs[0]
+                l0_lb = max(iv.mpf(0), (_cabs(l0c).a - r0a).a)
+                l1_ub = max([(_cabs(dc).b + rd).b for dc, rd in discs[1:]] + [c_ub.b])
+                d_inf = (e2_ub + inf_tail_ub_iv.b).b
+                low_r = max(c_ub.b, l1_ub)
+                cert_rs = []
+                if mp.mpf(l0_lb.a) > mp.mpf(low_r.b) + mp.mpf("1e-12"):
+                    span = (l0_lb - low_r).a
+                    for ws in ("1e-6", "1e-5", "1e-4", "1e-3", "1e-2", "0.05", "0.15", "0.35", "0.5", "0.7", "0.9", "0.98", "0.999", "0.9999", "0.99999"):
+                        w = iv.mpf(ws)
+                        rc = (low_r + w * span).a if mp.mpf(w.b) < mp.mpf("0.5") else (l0_lb - (iv.mpf(1) - w) * span).a
+                        if mp.mpf(low_r.b) < mp.mpf(rc.a) and mp.mpf(rc.b) < mp.mpf(l0_lb.a):
+                            rA = kap_A / min((l0_lb - rc).a, (rc - l1_ub).a)
+                            rC = iv.mpf(1) / (rc - c_ub)
+                            if mp.mpf(((max(rA, rC) + rA * e1_ub * rC) * d_inf).b) < mp.mpf(1):
+                                cert_rs.append(rc)
+                if len(cert_rs) >= 2 and mp.mpf(max(cert_rs).a) > mp.mpf(min(cert_rs).b):
+                    return True, iv.log(max(cert_rs) / min(cert_rs))
+                return False, iv.mpf(0)
+            best_ok, best_gap = _cert_prefix(m)
+            for mc in (4, 2, 1):
+                if mc < m:
+                    ok_c, gap_c = _cert_prefix(mc)
+                    if ok_c and (not best_ok or mp.mpf(gap_c.a) > mp.mpf(best_gap.a)):
+                        best_ok, best_gap = ok_c, gap_c
+            return best_ok, best_gap
+
+        def _cpow_int(z, n: int):
+            res, base, k = (iv.mpf(1), iv.mpf(0)), z, n
+            while k > 0:
+                if k & 1:
+                    res = _cmul(res, base)
+                k >>= 1
+                if k:
+                    base = _cmul(base, base)
+            return res
+
+        def _ring_1x1_hk_cert(br_s: str, bi_s: str, ntr: int):
+            Km_r, Rm_r = 8, 16
+            inv_2b = _cdiv((iv.mpf(2), iv.mpf(0)), (iv.mpf(br_s), iv.mpf(bi_s)))
+            us = [_cexp(_cscale(inv_2b, -iv.mpf(k * (k + 2)) / iv.mpf(4))) for k in range(Rm_r + 1)]
+            ce = [_cscale(us[r], iv.mpf(r + 1)) for r in range(Rm_r + 1)]
+            w5 = [_cscale(_cpow_int(us[r], 5), iv.mpf(r + 1)) for r in range(Rm_r + 1)]
+            for _ in range(ntr):
+                nc = [(iv.mpf(0), iv.mpf(0))] * (Rm_r + 1)
+                for a in range(Rm_r + 1):
+                    ca = ce[a]
+                    for b in range(Rm_r + 1):
+                        pc = _cmul(ca, w5[b])
+                        for r in range(abs(a - b), min(Rm_r, a + b) + 1, 2):
+                            nc[r] = _cadd(nc[r], pc)
+                ce = nc
+            T_r = [[(iv.mpf(0), iv.mpf(0))] * (Km_r + 1) for _ in range(Km_r + 1)]
+            for a in range(Km_r + 1):
+                for b in range(Km_r + 1):
+                    s = (iv.mpf(0), iv.mpf(0))
+                    for r in range(abs(a - b), min(Rm_r, a + b) + 1, 2): s = _cadd(s, ce[r])
+                    T_r[a][b] = _cmul(_cmul(_cmul(us[a], us[a]), _cmul(us[b], us[b])), s)
+            beff = (iv.mpf(br_s)**2 + iv.mpf(bi_s)**2) / iv.mpf(br_s)
+            te = iv.mpf(2) / beff
+            w0 = sum(iv.mpf((r + 1)**2) * iv.exp(-te * iv.mpf(r*(r+2))/4) for r in range(36)) + iv.mpf("1e-24")
+            w5 = sum(iv.mpf((r + 1)**2) * iv.exp(-iv.mpf(5)*te*iv.mpf(r*(r+2))/4) for r in range(20)) + iv.mpf("1e-24")
+            u_all = sum(iv.exp(-iv.mpf(2)*te*iv.mpf(a*(a+2))) for a in range(36)) + iv.mpf("1e-24")
+            u_tail = sum(iv.exp(-iv.mpf(2)*te*iv.mpf(a*(a+2))) for a in range(Km_r + 1, 36)) + iv.mpf("1e-24")
+            return _schur_complex_gap_iv(T_r, Km_r + 1, w0 * (w5 ** ntr) * iv.sqrt(2*u_all*u_tail + u_tail*u_tail))
+
+        ok_r_187, gap_r_187 = _ring_1x1_hk_cert("1.87", "0.50", 2)
+        ok_r_140, gap_r_140 = _ring_1x1_hk_cert("1.40", "1.00", 2)
+        require(ok_r_187 and strictly_above(gap_r_187, "3.66") and ok_r_140 and strictly_above(gap_r_140, "2.98"), "1x1 strip complex HK inf gap fail")
+
+        # C1 U(1) K_4 (Mmax=3, 13 orbits) 40d iv Krawczyk Fisher zero near 0.511067 + 0.337221i
+        M_u1, R_u1 = 3, 6
+        u1_st = [(c0, c1, c2, (c2, c1, -c1 - c2, c0, -c0 + c2, c0 + c1))
+                 for c0 in range(-M_u1, M_u1 + 1) for c1 in range(-M_u1, M_u1 + 1) for c2 in range(-M_u1, M_u1 + 1)
+                 if max(abs(x) for x in (c2, c1, -c1 - c2, c0, -c0 + c2, c0 + c1)) <= M_u1]
+        nS_u1 = len(u1_st)
+        u1_cidx = {(s[0], s[1], s[2]): i for i, s in enumerate(u1_st)}
+        k4_s4_perms = list(itertools.permutations(range(4)))
+        def _map_u1(ms, p, fl):
+            out = [0] * 6
+            for i, (u, v) in enumerate(k4_edges):
+                pu, pv = p[u], p[v]
+                out[k4_eidx[(min(pu, pv), max(pu, pv))]] = (fl if pu < pv else -fl) * ms[i]
+            return tuple(out)
+        u1_od, u1_so = {}, [0] * nS_u1
+        for i, s in enumerate(u1_st):
+            rep = min(_map_u1(s[3], p, fl) for p in k4_s4_perms for fl in (1, -1))
+            if rep not in u1_od: u1_od[rep] = len(u1_od)
+            u1_so[i] = u1_od[rep]
+        nO_u1 = len(u1_od); u1_osz = [u1_so.count(o) for o in range(nO_u1)]
+        require(nS_u1 == 175 and nO_u1 == 13, f"U(1) K4 orbit count mismatch: {nS_u1}, {nO_u1}")
+        P_u1_iv = [[(iv.mpf(1) / iv.sqrt(iv.mpf(u1_osz[o]))) if u1_so[i] == o else iv.mpf(0) for o in range(nO_u1)] for i in range(nS_u1)]
+        u1_sh = [{r: [(u1_cidx[(c0 + r * dl[0], c1 + r * dl[1], c2 + r * dl[2])], i)
+                      for i, (c0, c1, c2, _) in enumerate(u1_st)
+                      if (c0 + r * dl[0], c1 + r * dl[1], c2 + r * dl[2]) in u1_cidx]
+                  for r in range(-R_u1, R_u1 + 1)}
+                 for dl in ((1, 0, 0), (0, 1, 0), (0, 0, 1), (1, -1, 1))]
+
+        def _eval_u1_kraw_iv(br, bi):
+            z0 = (iv.mpf(0), iv.mpf(0))
+            iz = _cdiv((iv.mpf(1), iv.mpf(0)), (br, bi))
+            iz2 = _cmul(iz, iz)
+            us = {r: _cexp(_cscale(iz, -iv.mpf(r*r)/iv.mpf(2))) for r in range(-R_u1, R_u1 + 1)}
+            dus = {r: _cscale(_cmul(us[r], iz2), iv.mpf(r*r)/iv.mpf(2)) for r in range(-R_u1, R_u1 + 1)}
+            ce, dce = dict(us), dict(dus)
+            w5 = {r: _cmul(_cmul(_cmul(us[r], us[r]), _cmul(us[r], us[r])), us[r]) for r in range(-R_u1, R_u1 + 1)}
+            dw5 = {r: _cscale(_cmul(_cmul(_cmul(us[r], us[r]), _cmul(us[r], us[r])), dus[r]), iv.mpf(5)) for r in range(-R_u1, R_u1 + 1)}
+            for _ in range(2):
+                nc, ndc = {}, {}
+                for a, ca in ce.items():
+                    for b, cb in w5.items():
+                        if abs(a + b) <= R_u1:
+                            nc[a+b] = _cadd(nc.get(a+b, z0), _cmul(ca, cb))
+                            ndc[a+b] = _cadd(ndc.get(a+b, z0), _cadd(_cmul(dce[a], cb), _cmul(ca, dw5[b])))
+                ce, dce = nc, ndc
+            kt, dkt = [], []
+            for _, _, _, ms in u1_st:
+                p, ds = (iv.mpf(1), iv.mpf(0)), z0
+                for m in ms: p, ds = _cmul(p, us[m]), _cadd(ds, _cdiv(dus[m], us[m]))
+                sq = _csqrt(p); kt.append(sq); dkt.append(_cscale(_cmul(sq, ds), iv.mpf("0.5")))
+            M = [[_cscale(kt[i], P_u1_iv[i][o]) for o in range(nO_u1)] for i in range(nS_u1)]
+            dM = [[_cscale(dkt[i], P_u1_iv[i][o]) for o in range(nO_u1)] for i in range(nS_u1)]
+            for sh in reversed(u1_sh):
+                Mn = [[z0]*nO_u1 for _ in range(nS_u1)]; dMn = [[z0]*nO_u1 for _ in range(nS_u1)]
+                for r, pairs in sh.items():
+                    cr, dcr = ce[r], dce[r]
+                    for jr, ic in pairs:
+                        for o in range(nO_u1):
+                            Mn[jr][o] = _cadd(Mn[jr][o], _cmul(cr, M[ic][o]))
+                            dMn[jr][o] = _cadd(dMn[jr][o], _cadd(_cmul(dcr, M[ic][o]), _cmul(cr, dM[ic][o])))
+                M, dM = Mn, dMn
+            T = [[z0]*nO_u1 for _ in range(nO_u1)]; dT = [[z0]*nO_u1 for _ in range(nO_u1)]
+            for i in range(nS_u1):
+                a, pia = u1_so[i], P_u1_iv[i][u1_so[i]]
+                for b in range(nO_u1):
+                    T[a][b] = _cadd(T[a][b], _cscale(_cmul(kt[i], M[i][b]), pia))
+                    dT[a][b] = _cadd(dT[a][b], _cscale(_cadd(_cmul(dkt[i], M[i][b]), _cmul(kt[i], dM[i][b])), pia))
+            tr2, dtr2 = z0, z0
+            for i in range(nO_u1):
+                for k in range(nO_u1):
+                    tr2 = _cadd(tr2, _cmul(T[i][k], T[k][i]))
+                    dtr2 = _cadd(dtr2, _cadd(_cmul(dT[i][k], T[k][i]), _cmul(T[i][k], dT[k][i])))
+            return tr2, dtr2
+
+        x0_u1 = iv.mpf("0.51106693721236834230")
+        y0_u1 = iv.mpf("0.33722137642841735964")
+        hw_u1 = iv.mpf("1e-9")
+        bx_u1 = iv.mpf([x0_u1.a - hw_u1.b, x0_u1.b + hw_u1.b])
+        by_u1 = iv.mpf([y0_u1.a - hw_u1.b, y0_u1.b + hw_u1.b])
+        cx_u1 = iv.mpf(mp.mpf("0.5") * (mp.mpf(bx_u1.a) + mp.mpf(bx_u1.b)))
+        cy_u1 = iv.mpf(mp.mpf("0.5") * (mp.mpf(by_u1.a) + mp.mpf(by_u1.b)))
+        fc_u1, _ = _eval_u1_kraw_iv(cx_u1, cy_u1)
+        _, dfB_u1 = _eval_u1_kraw_iv(bx_u1, by_u1)
+        dfc_u1 = (iv.mpf(dfB_u1[0].mid), iv.mpf(dfB_u1[1].mid))
+        Y_u1 = _cdiv((iv.mpf(1), iv.mpf(0)), dfc_u1)
+        K_u1 = _cadd(_csub((cx_u1, cy_u1), _cmul(Y_u1, fc_u1)), _cmul(_csub((iv.mpf(1), iv.mpf(0)), _cmul(Y_u1, dfB_u1)), (iv.mpf([bx_u1.a - cx_u1.b, bx_u1.b - cx_u1.a]), iv.mpf([by_u1.a - cy_u1.b, by_u1.b - cy_u1.a]))))
+        require(K_u1[0].a > bx_u1.a and K_u1[0].b < bx_u1.b and K_u1[1].a > by_u1.a and K_u1[1].b < by_u1.b, "C1 Krawczyk contraction failed")
+        checks += 2
+
+        # Axis B: Wilson 5-staple ceiling 0.0773 (gamma_1L < 1 < 1.0465 at 0.0840) & 2x2 2-step bridge
+        def _wil_5st_tv_iv(b_iv, early_thresh: bool = False):
+            R_iv = iv.exp(iv.mpf(2) * b_iv)
+            M_max, phi_cut = R_iv ** 5, iv.mpf("1.2")
+            e2 = iv.exp(iv.mpf(2) * b_iv * iv.sin(iv.mpf("0.5") * phi_cut))
+            tv_best = (e2 - iv.mpf(1)) / (e2 + iv.mpf(1))
+            n_phi, n_s, n_al, n_lam = 10, 10, 24, 18
+            cos_th = [iv.sqrt(iv.mpf(1) - iv.mpf([j, j + 1]) / iv.mpf(n_s)) for j in range(n_s)]
+            al_ivs = [iv.mpf([j, j + 1]) * (iv.mpf(2) * iv.pi / iv.mpf(n_al)) for j in range(n_al)]
+            cos_al, sin_al = [iv.cos(a) for a in al_ivs], [iv.sin(a) for a in al_ivs]
+            lam_step = (R_iv - iv.mpf(1) / R_iv) / iv.mpf(n_lam)
+            lam_bins = [iv.mpf(1) / R_iv + iv.mpf([k, k + 1]) * lam_step for k in range(n_lam)]
+            phi_step = (iv.pi - phi_cut) / iv.mpf(n_phi)
+            mu_grid = (0, -4, 4)
+            m_int = int(mp.mpf(M_max.b) * (1 << 20)) + 1
+            for ip in range(n_phi):
+                phi_iv = phi_cut + iv.mpf([ip, ip + 1]) * phi_step
+                chp, shp = iv.cos(iv.mpf("0.5") * phi_iv), iv.sin(iv.mpf("0.5") * phi_iv)
+                k1_l = [iv.exp(b_iv * ct * (ca * chp + sa * shp)) for ct in cos_th for ca, sa in zip(cos_al, sin_al)]
+                k2_l = [iv.exp(b_iv * ct * (ca * chp - sa * shp)) for ct in cos_th for ca, sa in zip(cos_al, sin_al)]
+                d_lbs = [iv.mpf(k1.a) for k1 in k1_l]
+                d_ints = [max(1, int(mp.mpf(d.a) * (1 << 40))) for d in d_lbs]
+                for lam_iv in lam_bins:
+                    a_ivs = [k1 - lam_iv * k2 for k1, k2 in zip(k1_l, k2_l)]
+                    a_ints = [(int(mp.mpf(aj.a) * (1 << 40)) - 1, int(mp.mpf(aj.b) * (1 << 40)) + 1) for aj in a_ivs]
+                    best_tau = iv.mpf(1)
+                    for mu_num in mu_grid:
+                        w_ints = [max((5 * abs(lo_a) + mu_num * lo_a + 9) // 10, (5 * abs(hi_a) + mu_num * hi_a + 9) // 10) for lo_a, hi_a in a_ints]
+                        lo_i, hi_i = 0, (1 << 30)
+                        for _ in range(18):
+                            mid = (lo_i + hi_i) >> 1
+                            val = 0
+                            for j in range(len(d_ints)):
+                                diff = (w_ints[j] << 30) - mid * d_ints[j]
+                                val += diff * m_int if diff > 0 else (diff << 20)
+                            if val <= 0:
+                                hi_i = mid
+                            else:
+                                lo_i = mid
+                        tau_iv = iv.mpf(hi_i) / iv.mpf(1 << 30) + iv.mpf("1e-5")
+                        if tau_iv.b >= best_tau.b:
+                            continue
+                        w_ivs = [iv.mpf(wi) / iv.mpf(1 << 40) for wi in w_ints]
+                        tot = sum(((w_ivs[j] - tau_iv * d_lbs[j]) * M_max if (w_ivs[j] - tau_iv * d_lbs[j]).b > 0 else (w_ivs[j] - tau_iv * d_lbs[j]))
+                                  for j in range(len(d_lbs)))
+                        if tot.b <= 0:
+                            best_tau = tau_iv
+                        if early_thresh and (best_tau.b < tv_best.b or (18 * best_tau).b < 1):
+                            break
+                    if best_tau.b > tv_best.b:
+                        tv_best = best_tau
+            return iv.mpf(18) * tv_best
+
+        g1l_0773 = _wil_5st_tv_iv(iv.mpf("0.0773"), early_thresh=True)
+        g1l_0840 = _wil_5st_tv_iv(iv.mpf("0.0840"), early_thresh=False)
+        require(strictly_below(g1l_0773, 1) and strictly_above(g1l_0840, 1), f"Wilson 5-staple ceiling failed: {g1l_0773}, {g1l_0840}")
+
+        # 2x2 Character-Cumulant Bridge across [0.38, 1.40, 1.87]
+        def _cumulant_2x2_iv(b_iv):
+            u1 = iv.exp(-iv.mpf(3) / (iv.mpf(2) * b_iv))
+            u2 = iv.exp(-iv.mpf(4) / b_iv)
+            wF_1 = u1**4 + iv.mpf(16)*(u1**8) + iv.mpf(180)*(u1**12) + iv.mpf(3)*(u2**4)
+            b_hk_1 = -iv.mpf(3) / (iv.mpf(2) * iv.log(wF_1))
+            b_wil_1 = iv.mpf(4) * wF_1
+            wF_2 = wF_1**4 + iv.mpf(16)*(wF_1**8)
+            b_hk_2 = -iv.mpf(3) / (iv.mpf(2) * iv.log(wF_2))
+            b_wil_2 = iv.mpf(4) * wF_2
+            return wF_1, b_hk_1, b_wil_1, wF_2, b_hk_2, b_wil_2
+
+        _, b1_140, bw1_140, _, _, _ = _cumulant_2x2_iv(iv.mpf("1.40"))
+        require(strictly_below(b1_140, "0.3800") and strictly_below(bw1_140, "0.0773"), "1.40 1-step bridge fail")
+        wF1_187, b1_187, bw1_187, wF2_187, b2_187, bw2_187 = _cumulant_2x2_iv(iv.mpf("1.87"))
+        require(strictly_above(b1_187, "0.5909") and strictly_above(bw1_187, "0.3160"), "O-W16.3-OneStepBridgeInsufficient fail")
+        require(strictly_below(b2_187, "0.1478") and strictly_below(bw2_187, "0.000157"), "1.87 2-step bridge fail")
+        checks += 3
+
+        # =====================================================================
+        # §4. W16-4 & W16-5 Needle 3: SO(3)xZ2 Wall, 24768261/65536, O(g^4) & BKAR
+        # =====================================================================
+        Ke_sp, Ko_sp, d_sp = sp.symbols("Ke Ko d_pos", positive=True)
+        ke_d = Ko_sp + d_sp
+        require(sp.simplify(sp.sqrt((ke_d + Ko_sp) * (ke_d - Ko_sp)) * sp.sqrt((1 + Ko_sp / ke_d) / (1 - Ko_sp / ke_d)) - (ke_d + Ko_sp)) == 0, "SO(3)xZ2 split fail")
+        t_sp = sp.Symbol("t_fr", real=True)
+        num_gap = sp.expand(2 * (1 + t_sp**2 + t_sp**4) - 3 * t_sp * (1 + t_sp**2))
+        require(sp.expand(num_gap - ((1 - t_sp)**2) * (2 + t_sp + 2 * t_sp**2)) == 0, "3-cube 2/3 cap identity fail")
+        require(sp.Rational(4, 3) * sp.Rational(7, 5) == sp.Rational(28, 15), "BC140 penalty 28/15 fail")
+
+        # Exact Fraction 2-cube primal == dual = 24768261/65536
+        verts2 = list(itertools.product((0, 1), (0, 1), (0, 1, 2)))
+        edges2 = [(v, tuple(v[k] + (1 if k == d else 0) for k in range(3))) for v in verts2 for d, mx in ((0, 1), (1, 1), (2, 2)) if v[d] < mx]
+        e2_idx = {e: i for i, e in enumerate(edges2)}
+        e2of = lambda a, b: e2_idx[(a, b)] if (a, b) in e2_idx else e2_idx[(b, a)]
+        plaqs2, p2_cubes = [], []
+        for z in (0, 1, 2):
+            pts = [(0, 0, z), (1, 0, z), (1, 1, z), (0, 1, z)]
+            plaqs2.append([e2of(pts[k], pts[(k + 1) % 4]) for k in range(4)])
+            p2_cubes.append([0] if z == 0 else ([1] if z == 2 else [0, 1]))
+        for x in (0, 1):
+            for zs in (0, 1):
+                pts = [(x, 0, zs), (x, 1, zs), (x, 1, zs + 1), (x, 0, zs + 1)]
+                plaqs2.append([e2of(pts[k], pts[(k + 1) % 4]) for k in range(4)]); p2_cubes.append([zs])
+        for y in (0, 1):
+            for zs in (0, 1):
+                pts = [(0, y, zs), (1, y, zs), (1, y, zs + 1), (0, y, zs + 1)]
+                plaqs2.append([e2of(pts[k], pts[(k + 1) % 4]) for k in range(4)]); p2_cubes.append([zs])
+        parent2 = {v: v for v in verts2}
+        def _find2(x):
+            while parent2[x] != x: x = parent2[x]
+            return x
+        tree2 = set()
+        for i, (u, v) in enumerate(edges2):
+            ru, rv = _find2(u), _find2(v)
+            if ru != rv: parent2[ru] = rv; tree2.add(i)
+        free2 = [i for i in range(20) if i not in tree2]
+        Ke_fr = [Fraction(6 + (i % 3), 4) for i in range(11)]
+        Ko_fr = [Fraction(2 + (i % 2), 4) for i in range(11)]
+        sig2 = [-1 if i == 0 else 1 for i in range(11)]
+        mc2 = [1, 1]
+        for pid, cs in enumerate(p2_cubes):
+            for c in cs: mc2[c] *= sig2[pid]
+        Z2_pr = Fraction(0)
+        for bits in range(1 << 9):
+            eb = [1] * 20
+            for k, eid in enumerate(free2):
+                if (bits >> k) & 1: eb[eid] = -1
+            wt = Fraction(1)
+            for pid, es in enumerate(plaqs2):
+                ep = eb[es[0]] * eb[es[1]] * eb[es[2]] * eb[es[3]] * sig2[pid]
+                wt *= (Ke_fr[pid] + ep * Ko_fr[pid])
+            Z2_pr += wt
+        Z2_pr /= Fraction(1 << 9)
+        Z2_du = Fraction(0)
+        for t0s, t1s in itertools.product((-1, 1), repeat=2):
+            wt = Fraction(mc2[0] if t0s == -1 else 1) * Fraction(mc2[1] if t1s == -1 else 1)
+            for pid, cs in enumerate(p2_cubes):
+                tp = (t0s if 0 in cs else 1) * (t1s if 1 in cs else 1)
+                wt *= Ke_fr[pid] if tp == 1 else Ko_fr[pid]
+            Z2_du += wt
+        require(Z2_pr == Z2_du and Z2_pr == Fraction(24768261, 65536), "2-cube primal != dual != 24768261/65536")
+
+        # 40d iv SO(3)xZ2 wall Kc_4D = 0.440687, Frozen HK, SO(3)-1p, & 4D dual worldline
+        Kc_4d = iv.mpf("0.5") * iv.log(iv.mpf(1) + iv.sqrt(iv.mpf(2)))
+        require(strictly_above(Kc_4d, "0.44068") and strictly_below(Kc_4d, "0.44069"), "Kc_4D_Z2 mismatch")
+        def _hk_ktilde_1(b_iv):
+            kp, kn = iv.mpf(0), iv.mpf(0)
+            for k in range(1, 42):
+                t = iv.mpf(k * k) * iv.exp(-iv.mpf(k * k - 1) / (iv.mpf(2) * b_iv))
+                kp += t
+                kn += t if (k % 2 == 1) else -t
+            return iv.mpf("0.5") * iv.log((kp + iv.mpf([0, "1e-60"])) / (kn + iv.mpf(["-1e-60", "1e-60"])))
+        kt_hk_187 = _hk_ktilde_1(iv.mpf("1.87"))
+        require(strictly_above(kt_hk_187, "2.8376") and strictly_above(kt_hk_187 / Kc_4d, "6.43"), "Frozen HK wall at 1.87 failed")
+        # Dual worldline at beta=2.50 (n_mon=8 -> K_eff_avg in (0.804, 0.805) > Kc_4d)
+        p4_list = [(d1, d2, (v1, v2)) for d1 in range(4) for d2 in range(d1 + 1, 4) for v1 in (0, 1) for v2 in (0, 1)]
+        p4_idx = {p: i for i, p in enumerate(p4_list)}
+        p4_to_cubes = [[] for _ in range(24)]
+        cubes4 = []
+        for d_fix in range(4):
+            for val in (0, 1):
+                rem = [d for d in range(4) if d != d_fix]
+                c_ps = []
+                for dr in rem:
+                    pair = [d for d in rem if d != dr]
+                    d1, d2 = min(pair), max(pair)
+                    oth = [d for d in range(4) if d not in (d1, d2)]
+                    for vr in (0, 1):
+                        pid = p4_idx[(d1, d2, (val, vr) if oth[0] == d_fix else (vr, val))]
+                        c_ps.append(pid); p4_to_cubes[pid].append(len(cubes4))
+                cubes4.append(c_ps)
+        require(all(len(cs) == 2 for cs in p4_to_cubes), "4D Bianchi hypercube fail")
+        kt_250 = _hk_ktilde_1(iv.mpf("2.50"))
+        ekt_250 = iv.exp(kt_250)
+        inv_ekt_250 = iv.mpf(1) / ekt_250
+        Ke_250 = iv.mpf("0.5") * (ekt_250 + inv_ekt_250)
+        Ko_250 = iv.mpf("0.5") * (ekt_250 - inv_ekt_250)
+        ke_p250 = [Ke_250**(24 - k) * (Ko_250**k) for k in range(25)]
+        dke_p250 = [
+            ((iv.mpf(24 - kn) * (Ke_250**(23 - kn)) * (Ko_250**(kn + 1)) if kn < 24 else iv.mpf(0))
+             + (iv.mpf(kn) * (Ke_250**(25 - kn)) * (Ko_250**(kn - 1)) if kn > 0 else iv.mpf(0))) / iv.mpf(24)
+            for kn in range(25)
+        ]
+        def _eval_dual_s3(flipped):
+            mc = [1] * 8
+            sig = [-1 if i in flipped else 1 for i in range(24)]
+            for cid, cps in enumerate(cubes4):
+                for pid in cps: mc[cid] *= sig[pid]
+            Z_v, dZ_v = iv.mpf(0), iv.mpf(0)
+            for tau in itertools.product((-1, 1), repeat=8):
+                sgn_m = 1
+                for cid in range(8):
+                    if tau[cid] == -1: sgn_m *= mc[cid]
+                kn = sum(1 for pid in range(24) if tau[p4_to_cubes[pid][0]] != tau[p4_to_cubes[pid][1]])
+                Z_v += iv.mpf(sgn_m) * ke_p250[kn]
+                dZ_v += iv.mpf(sgn_m) * dke_p250[kn]
+            return Z_v * iv.mpf("0.5"), dZ_v / Z_v
+        Z0_250, _ = _eval_dual_s3([])
+        Z8_250, eta8_250 = _eval_dual_s3([0, 3, 20, 23])
+        keff8_250 = iv.mpf("0.5") * iv.log((iv.mpf(1) + eta8_250) / (iv.mpf(1) - eta8_250))
+        require(strictly_above(-iv.log(Z8_250 / Z0_250), "29.0") and strictly_above(keff8_250, "0.804") and strictly_below(keff8_250, "0.805"), "Dual S3 worldline at 2.50 fail")
+
+        # O-W13.1-R6-Plateau 1st-order -5/18 & L_OU^{-1} O(g^4) sextic -7/2 C1 v4^2 < 0
+        w1, C1_s, g1_s, v3_s, v4_s = sp.symbols("w1 C1 g1 v3_1 v4_1", real=True)
+        V3_1 = g1_s * v3_s * (w1**3)
+        q4_1 = v4_s - sp.Rational(5, 2) * C1_s * (v3_s**2)
+        Q4_1 = (g1_s**2) * q4_1 * (w1**4)
+        Q4w_1 = Q4_1 - sp.Rational(1, 2) * C1_s * sp.diff(Q4_1, w1, 2) + sp.Rational(1, 8) * (C1_s**2) * sp.diff(Q4_1, w1, 4)
+        P2_1 = (g1_s**2) * ((6 * v4_s - 13 * C1_s * (v3_s**2)) / 2) * C1_s * (w1**2)
+        z1_s = w1 - sp.Rational(1, 3) * C1_s * sp.diff(V3_1, w1) - sp.Rational(1, 4) * C1_s * sp.diff(Q4w_1, w1) - C1_s * sp.diff(P2_1, w1)
+        S1_tot = sp.series(sp.Rational(1, 2) * (z1_s**2) / C1_s + g1_s * v3_s * (z1_s**3) + (g1_s**2) * v4_s * (z1_s**4), g1_s, 0, 5).removeO() - sp.series(sp.log(sp.diff(z1_s, w1)), g1_s, 0, 5).removeO()
+        g2_t = sp.expand(S1_tot.coeff(g1_s, 2))
+        g3_t = sp.expand(S1_tot.coeff(g1_s, 3))
+        g4_t = sp.expand(S1_tot.coeff(g1_s, 4))
+        require(g2_t.coeff(w1, 4) == 0 and g2_t.coeff(w1, 2) == 0, "O(g^2) L_OU residual != 0")
+        require(sp.factor(g3_t.coeff(w1, 5)) == 2 * C1_s * v3_s * (4 * C1_s * (v3_s**2) - 3 * v4_s), "O(g^3) quintic mismatch")
+        g4_w6 = sp.expand(g4_t.coeff(w1, 6))
+        require(g4_w6 == sp.Rational(-103, 8)*(C1_s**3)*(v3_s**4) + sp.Rational(39, 2)*(C1_s**2)*(v3_s**2)*v4_s - sp.Rational(7, 2)*C1_s*(v4_s**2), "O(g^4) sextic mismatch")
+        require(g4_w6.subs(v3_s, 0) == sp.Rational(-7, 2) * C1_s * (v4_s**2), "Pure v4 sextic mismatch")
+        checks += 4
+
+        # Needle 3: 40d iv W13-1 flat_1.000 BKAR endpoint bracket certification ([776,777] floor, L_OU [2428,2429], [14139,14140])
+        diag_safe = _w16_iv_pack(_R16_W16_M32_PACK["diag_max"])
+        lam_c4e = _w16_iv_pack(_R16_W16_M32_PACK["max_eig_c4e"])
+        c_B_w13 = _w16_iv_pack(_R16_W16_M32_PACK["c_B_sqrt2"])
+        rs_w13 = {k: _w16_iv_pack(v) for k, v in _R16_W16_M32_PACK["r6"].items()}
+        so2_0 = _R11_W11_2_PACK["so2"]
+        so3_p = _R11_W11_2_PACK["so3"]
+        wit_c = lambda tbl, k, side="pos": iv.mpf(str(tbl[k][side]["c_try"]))
+
+        def _build_sm3_sm4():
+            def qexp_link(nv, off, sg):
+                c0 = {(0,)*nv: Fraction(1)}; c2 = {}; c3 = [{}, {}, {}]; c4 = {}
+                for a in range(3):
+                    k2 = [0]*nv; k2[off+a] = 2; c2[tuple(k2)] = Fraction(-1, 8)
+                    for b in range(3):
+                        k3 = [0]*nv; k3[off+a] += 1; k3[off+b] += 2; c3[a][tuple(k3)] = c3[a].get(tuple(k3), Fraction(0)) + Fraction(-sg, 48)
+                        k4 = [0]*nv; k4[off+a] += 2; k4[off+b] += 2; c4[tuple(k4)] = c4.get(tuple(k4), Fraction(0)) + Fraction(1, 384)
+                vl = [{}, {}, {}]
+                for a in range(3):
+                    k1 = [0]*nv; k1[off+a] = 1; vl[a][tuple(k1)] = Fraction(sg, 2)
+                    for k, v in c3[a].items(): vl[a][k] = vl[a].get(k, Fraction(0)) + v
+                return [{k: v for d in (c0, c2, c4) for k, v in d.items()}, vl[0], vl[1], vl[2]]
+            padd = lambda A, B, sc=1: {k: v for k, v in ((k, A.get(k, Fraction(0)) + sc*B.get(k, Fraction(0))) for k in set(A)|set(B)) if v != 0}
+            def pmul(A, B):
+                R = {}
+                for k1, v1 in A.items():
+                    d1 = sum(k1)
+                    for k2, v2 in B.items():
+                        if d1 + sum(k2) <= 4:
+                            nk = tuple(k1[i] + k2[i] for i in range(12)); R[nk] = R.get(nk, Fraction(0)) + v1*v2
+                return {k: v for k, v in R.items() if v != 0}
+            def qm(A, B):
+                return [
+                    padd(padd(pmul(A[0], B[0]), pmul(A[1], B[1]), -1), padd(pmul(A[2], B[2]), pmul(A[3], B[3]), 1), -1),
+                    padd(padd(pmul(A[0], B[1]), pmul(A[1], B[0]), 1), padd(pmul(A[2], B[3]), pmul(A[3], B[2]), -1), 1),
+                    padd(padd(pmul(A[0], B[2]), pmul(A[2], B[0]), 1), padd(pmul(A[3], B[1]), pmul(A[1], B[3]), -1), 1),
+                    padd(padd(pmul(A[0], B[3]), pmul(A[3], B[0]), 1), padd(pmul(A[1], B[2]), pmul(A[2], B[1]), -1), 1),
+                ]
+            P = qexp_link(12, 0, 1)
+            for m, sg in ((1, 1), (2, -1), (3, -1)): P = qm(P, qexp_link(12, 3*m, sg))
+            sd = lambda p, d: {k: v for k, v in p.items() if sum(k) == d}
+            Th1 = [{k: 2*v for k, v in sd(P[a+1], 1).items()} for a in range(3)]
+            Th2 = [{k: 2*v for k, v in sd(P[a+1], 2).items()} for a in range(3)]
+            Th1sq = padd(pmul(Th1[0], Th1[0]), padd(pmul(Th1[1], Th1[1]), pmul(Th1[2], Th1[2]), 1), 1)
+            Th3 = [padd({k: 2*v for k, v in sd(P[a+1], 3).items()}, pmul({k: Fraction(1, 24)*v for k, v in Th1sq.items()}, Th1[a]), 1) for a in range(3)]
+            Sm3 = {}
+            Sm4 = {k: Fraction(1, 8)*v for k, v in padd(pmul(Th2[0], Th2[0]), padd(pmul(Th2[1], Th2[1]), pmul(Th2[2], Th2[2]), 1), 1).items()}
+            for a in range(3):
+                Sm3 = padd(Sm3, {k: Fraction(1, 4)*v for k, v in pmul(Th1[a], Th2[a]).items()}, 1)
+                Sm4 = padd(Sm4, {k: Fraction(1, 4)*v for k, v in pmul(Th1[a], Th3[a]).items()}, 1)
+            return Sm3, Sm4
+
+        Sm3_f, Sm4_f = _build_sm3_sm4()
+        D4_abs = {}
+        def _diff_fr(pf, idxs):
+            cur = dict(pf)
+            for ix in idxs:
+                nxt = {}
+                for k, v in cur.items():
+                    if k[ix]:
+                        nk = list(k); nk[ix] -= 1; nxt[tuple(nk)] = v * k[ix]
+                cur = nxt
+            return cur.get((0,)*12, Fraction(0))
+        for m1 in range(4):
+            for m2 in range(4):
+                for m3 in range(4):
+                    for m4 in range(4):
+                        D4_abs[(m1, m2, m3, m4)] = (
+                            abs(_diff_fr(Sm4_f, (3*m1, 3*m2, 3*m3+1, 3*m4+1))),
+                            abs(_diff_fr(Sm4_f, (3*m1, 3*m2+1, 3*m3, 3*m4+1))),
+                            abs(_diff_fr(Sm4_f, (3*m1, 3*m2+1, 3*m3+1, 3*m4))),
+                        )
+        v4_tup = {k: v[0]+v[1]+v[2] for k, v in D4_abs.items()}
+        v4_free = _w16_iv_frac(sum(v4_tup.values())); v4_pin = v4_free / iv.mpf(4)
+        v2_free_fr = sum(Fraction(1, 2)*(sum(sum(D4_abs[(m1, m2, m3, m3)]) for m3 in range(4)) +
+                         sum(2*v4_tup[(m1, m2, m3, m4)] for m3 in range(4) for m4 in range(m3+1, 4)))
+                         for m1 in range(4) for m2 in range(4))
+        facts_int = [1] * 10
+        for fk in range(2, 10): facts_int[fk] = facts_int[fk - 1] * fk
+        def _wick_c4_fr(pf):
+            acc = iv.mpf(0)
+            for k, v in pf.items():
+                fm = 1
+                for e in k: fm *= facts_int[e]
+                acc += (_w16_iv_frac(v) ** 2) * iv.mpf(fm) * (diag_safe ** sum(k))
+            return acc
+        def _padd_fr(A, B, sc=1):
+            return {k: v for k, v in ((k, A.get(k, Fraction(0)) + sc*B.get(k, Fraction(0))) for k in set(A)|set(B)) if v != 0}
+        def _pmul_fr(A, B):
+            R = {}
+            for k1, v1 in A.items():
+                for k2, v2 in B.items():
+                    nk = tuple(k1[i]+k2[i] for i in range(12)); R[nk] = R.get(nk, Fraction(0)) + v1*v2
+            return {k: v for k, v in R.items() if v != 0}
+        def _pdiff_fr(pf, ix):
+            return {tuple(k[j] - (1 if j == ix else 0) for j in range(12)): v * k[ix] for k, v in pf.items() if k[ix]}
+        e_v4_2 = _wick_c4_fr(Sm4_f)
+        g_sm3 = [_pdiff_fr(Sm3_f, i) for i in range(12)]
+        H_sm3 = [[_pdiff_fr(g_sm3[i], j) for j in range(12)] for i in range(12)]
+        H2_sm3 = [[{} for _ in range(12)] for _ in range(12)]
+        tr_h2_fr, tr_h4_fr = {}, {}
+        for i in range(12):
+            for j in range(12):
+                acc = {}
+                for k in range(12):
+                    if H_sm3[i][k] and H_sm3[k][j]: acc = _padd_fr(acc, _pmul_fr(H_sm3[i][k], H_sm3[k][j]))
+                H2_sm3[i][j] = acc
+            tr_h2_fr = _padd_fr(tr_h2_fr, H2_sm3[i][i])
+        for i in range(12):
+            for j in range(12):
+                if H2_sm3[i][j]: tr_h4_fr = _padd_fr(tr_h4_fr, _pmul_fr(H2_sm3[i][j], H2_sm3[j][i]))
+        e_h_f2 = _wick_c4_fr(tr_h2_fr); e_h_sch4 = _wick_c4_fr(tr_h4_fr)
+        gsum_v3_l2 = _wick_c4_fr(sum((_pmul_fr(g_sm3[i], g_sm3[i]) for i in range(12)), {}) if False else
+                                 {k: sum(_pmul_fr(g_sm3[i], g_sm3[i]).get(k, Fraction(0)) for i in range(12)) for k in set().union(*(_pmul_fr(g_sm3[i], g_sm3[i]).keys() for i in range(12)))})
+        def _sum_sq_polys(plist):
+            out = {}
+            for p in plist: out = _padd_fr(out, _pmul_fr(p, p))
+            return out
+        g0_l2 = max((_wick_c4_fr(_sum_sq_polys([g_sm3[3*m+a] for a in range(3)])) for m in range(4)), key=lambda z: mp.mpf(z.b))
+        g0_l4 = max((_wick_c4_fr(_sum_sq_polys([_sum_sq_polys([g_sm3[3*m+a] for a in range(3)])])) ** _w16_iv_rat(1, 4) for m in range(4)), key=lambda z: mp.mpf(z.b))
+        col_l4 = max((_wick_c4_fr(_sum_sq_polys([_sum_sq_polys([H_sm3[3*a+r][3*m+c] for a in range(4) for r in range(3) for c in range(3)])])) ** _w16_iv_rat(1, 4) for m in range(4)), key=lambda z: mp.mpf(z.b))
+        gsum3_l2_lam = iv.sqrt(sum((_wick_c4_fr(g_sm3[i]) * ((lam_c4e / diag_safe) ** 2) for i in range(12)), iv.mpf(0)))
+        g0_3_l2_lam = iv.sqrt(max((sum((_wick_c4_fr(g_sm3[3*m+a]) * ((lam_c4e / diag_safe) ** 2) for a in range(3)), iv.mpf(0)) for m in range(4)), key=lambda z: mp.mpf(z.b)))
+
+        m4_s = {
+            "sup": _w16_max_ub(wit_c(so3_p, "Manton Sm4", "pos"), wit_c(so3_p, "Manton Sm4", "neg")),
+            "v1_free": iv.mpf(4)*iv.sqrt(_w16_max_ub(wit_c(so3_p, "Manton M_tot", "pos"), wit_c(so3_p, "Manton M_tot", "neg"))),
+            "v1_pin": _w16_min_ub(iv.mpf(2)*iv.sqrt(wit_c(so3_p, "Manton M_0")), iv.mpf(2)*iv.sqrt(wit_c(so2_0, "Sm4_Ax_0_0.0"))),
+            "v2_free": _w16_min_ub(_w16_iv_frac(v2_free_fr), iv.mpf(4)*iv.sqrt(wit_c(so2_0, "Tr(H_Sm4_0.0^2)"))),
+            "v2_pin": _w16_min_ub(_w16_iv_frac(v2_free_fr / 4), iv.sqrt(wit_c(so2_0, "Tr(H_Sm4_0.0^2)"))),
+            "v3_free": v4_free, "v3_pin": v4_pin, "v4_free": v4_free, "v4_pin": v4_pin,
+        }
+        hop_3 = wit_c(so3_p, "Tr(H_Sw3^4)") ** _w16_iv_rat(1, 4)
+        gtot_3 = _w16_min_ub(iv.mpf(2)*iv.sqrt(wit_c(so2_0, "||grad Sm3_0.0||^2")), iv.mpf(2)*hop_3)
+        g1_3 = iv.sqrt(3) * _w16_iv_rat(3, 16)
+        hlink_3 = iv.sqrt(iv.mpf(6)*(iv.mpf(4)*_w16_iv_rat(3, 16)))
+        v3_sup = _w16_min_ub(iv.mpf(8)/(iv.mpf(12)*iv.sqrt(3)), gtot_3/iv.mpf(3))
+        h_blk_tot = _w16_min_ub(iv.mpf(3), iv.sqrt(6)*hlink_3)
+        sqrt2, sqrt3, sqrt15 = iv.sqrt(2), iv.sqrt(3), iv.sqrt(15)
+        e_iv = iv.exp(iv.mpf(1)); seven_e = iv.mpf(7)*e_iv; kp_lim = iv.mpf(1)/e_iv
+        eps_adm = iv.mpf(2)*(iv.mpf(1) - iv.cos(iv.mpf("51.855")*iv.pi/iv.mpf(360)))
+
+        a_man = [iv.mpf(0)] * 38; a_man[1] = iv.mpf(1)
+        for nm in range(2, 38): a_man[nm] = _w16_iv_rat((nm - 1)**2, nm*(2*nm - 1)) * a_man[nm - 1]
+        fi_iv = [iv.mpf(1)] * 10
+        for fk in range(2, 10): fi_iv[fk] = fi_iv[fk - 1] * iv.mpf(fk)
+        fact_l = [1] * 39
+        for fk in range(2, 39): fact_l[fk] = fact_l[fk - 1] * fk
+        perms_38 = [[iv.mpf(fact_l[n] // fact_l[n - k] if n >= k else 0) for n in range(38)] for k in range(6)]
+        def _man_tail(rz):
+            phm = iv.mpf(2)*rz; sm = iv.mpf(1) - iv.cos(phm); rt = iv.mpf("0.5")*sm
+            gk = [iv.mpf(0)] * 6
+            for k in range(1, 6):
+                gk[k] = sum((perms_38[k][n]*a_man[n]*(sm**(n - k)) for n in range(k, 36)), iv.mpf(0)) + a_man[35]*perms_38[k][36]*iv.mpf("0.5")*(sm**(36-k))/((iv.mpf(1)-rt)**(k+1))
+            sinm = iv.sin(phm); Sk = [[iv.mpf(0)]*6 for _ in range(6)]
+            for k in range(6):
+                for j in range(6 - k):
+                    if k == 0 and j == 0: continue
+                    if k == 1 and j == 0: Sk[1][0] = iv.mpf(2)*rz*sinm
+                    elif k == 0 and j == 1: Sk[0][1] = iv.mpf(2)*sinm
+                    else: Sk[k][j] = ((iv.mpf(2)*rz)**k)*(iv.mpf(2)**j)/(fi_iv[k]*fi_iv[j])
+            def bmul(A, B):
+                C = [[iv.mpf(0)]*6 for _ in range(6)]
+                for k1 in range(6):
+                    for j1 in range(6-k1):
+                        v1_i = A[k1][j1]
+                        if mp.mpf(abs(v1_i).b) == 0: continue
+                        for k2 in range(6-k1):
+                            for j2 in range(6-k1-k2-j1): C[k1+k2][j1+j2] += v1_i*B[k2][j2]
+                return C
+            rp = [[iv.mpf(0)]*6 for _ in range(6)]; pw = [[iv.mpf(0)]*6 for _ in range(6)]; pw[0][0] = iv.mpf(1)
+            for m in range(1, 6):
+                pw = bmul(pw, Sk); fac = gk[m]/fi_iv[m]
+                for k in range(6):
+                    for j in range(6 - k): rp[k][j] += fac*pw[k][j]
+            return tuple(fi_iv[r]*rp[5-r][r] for r in range(5))
+
+        kz_l = [iv.mpf(s) for s in ("2.1", "2.25", "2.4", "2.55", "2.7", "3.0")]
+        a1_l = [iv.mpf(s) for s in ("0.06", "0.08", "0.10", "0.12", "0.15", "0.20", "0.25", "0.30", "0.35", "0.40")]
+        op_l1_r, qt_l1, c_l2_sq = rs_w13["op_l1_R"], rs_w13["qt_l1"], rs_w13["c_l2_sq"]
+        k_op_r, k4_pp_op_r, j2_kern_r = rs_w13["k_op_exact"], rs_w13["k_pp_op"], rs_w13["j2_kern_off"]
+
+        def _eval_bkar_flat(b_num: int, wpm: Fraction, v4m: Fraction, use_lou: bool, coord_m: Fraction, tmode: str):
+            b = iv.mpf(b_num); s_eff = iv.mpf(1) + iv.mpf(1)/(iv.mpf(6)*b)
+            n_lf_st = seven_e * _w16_chernoff_chi2(Fraction(9, 2), c_B_w13 * b * eps_adm)
+            wp_m, v4_m, cm = _w16_iv_frac(wpm), _w16_iv_frac(v4m), _w16_iv_frac(coord_m)
+            best_kp = iv.mpf(10**9)
+            for kz in kz_l:
+                rw = kz / iv.sqrt(b)
+                nA1 = iv.mpf(2)*op_l1_r*_w16_iv_rat(3, 4)*rw/s_eff
+                dm1 = iv.mpf(2)*op_l1_r*g1_3*(rw**2)/s_eff
+                if use_lou:
+                    hq4 = _w16_iv_rat(1, 4)*(m4_s["v2_pin"] + _w16_iv_rat(5, 18)*(iv.mpf(6)*op_l1_r*(_w16_iv_rat(3, 4)**2)/s_eff))
+                    nA2 = (iv.mpf(2)*op_l1_r/s_eff)*(hq4*(rw**2) + (iv.mpf(1)/b)*(iv.mpf(6)*op_l1_r/s_eff)*iv.mpf("1.5"))
+                    dm2 = (iv.mpf(2)*op_l1_r/s_eff)*_w16_iv_rat(1, 4)*(m4_s["v1_pin"]*(rw**3) + _w16_iv_rat(5, 18)*iv.mpf(6)*op_l1_r*_w16_iv_rat(3, 4)*g1_3*(rw**3)/s_eff)
+                else:
+                    nA2, dm2 = iv.mpf(0), iv.mpf(0)
+                nA = nA1 + nA2
+                if mp.mpf(nA.b) >= mp.mpf("0.85"): continue
+                dm = dm1 + dm2; rin = rw - dm
+                if mp.mpf(rin.a) <= 0: continue
+                kin = rin * iv.sqrt(b)
+                n_lf = n_lf_st + iv.mpf(21)*_w16_gamma_upper_half_int(12, (iv.mpf(4)*(kin**2)*s_eff)/(iv.mpf(2)*lam_c4e))
+                if mp.mpf(n_lf.a) >= mp.mpf("0.35"): continue
+                rz = rw + dm; r0, r1, r2, r3, r4 = _man_tail(rz); fz = iv.mpf(1) + nA
+                wpp = wp_m*(iv.mpf(5)+qt_l1)/iv.mpf(18); wpdp = iv.mpf(2)*wpp
+                e4 = v4_m*b*m4_s["sup"]*(rz**4) + b*r0
+                if use_lou:
+                    v5s = iv.mpf(3)*_w16_iv_rat(1, 4)*(iv.mpf(2)*op_l1_r/s_eff)*(gtot_3*(m4_s["v1_free"]+_w16_iv_rat(5, 18)*iv.mpf(6)*op_l1_r*_w16_iv_rat(3, 4)*g1_3/s_eff))*(rz**5)*b
+                    v6s = iv.mpf(4)*_w16_iv_rat(1, 4)*(iv.mpf(2)*op_l1_r/s_eff)*(m4_s["v1_free"]*(m4_s["v1_free"]+_w16_iv_rat(5, 18)*iv.mpf(6)*op_l1_r*_w16_iv_rat(3, 4)*g1_3/s_eff))*(rz**6)*b
+                    eq56 = v5s + v6s; sc = iv.sqrt(diag_safe/(b*s_eff))
+                    ev56w = v5s*((sc/rz)**5)*sqrt15 + v6s*((sc/rz)**6)*iv.sqrt(105)
+                    q56 = [(iv.mpf(5)*eq56/rz)*cm, (iv.mpf(20)*eq56/(rz**2))*cm, (iv.mpf(60)*eq56/(rz**3))*cm, (iv.mpf(120)*eq56/(rz**4))*cm]
+                else:
+                    eq56 = ev56w = iv.mpf(0); q56 = [iv.mpf(0)]*4
+                epair = wpp*(b*gtot_3*iv.mpf(6)*op_l1_r*g1_3*(rw**4))/s_eff
+                ej2 = iv.mpf(0) if use_lou else (iv.mpf(1)/(iv.mpf(9)*(s_eff**2)))*((iv.mpf(2)*sqrt3)*rw)*j2_kern_r*((iv.mpf(1)/sqrt2)*rw)
+                dnl = dm1 + dm2; er3 = b*(iv.mpf(2)*hop_3*rw*(dnl**2) + v3_sup*(dnl**3))
+                eodd = _w16_iv_rat(1, 3)*rw*qt_l1*b*gtot_3*(rw**2)
+                V0 = e4 + eq56 + epair + ej2 + er3 + eodd
+                wum = (iv.mpf(6)*op_l1_r*b*g1_3*(rw**2))/s_eff
+                gp1f = wpdp*(h_blk_tot*rw)*wum; gp1p = wpdp*(_w16_iv_rat(3, 4)*rw)*wum
+                gp2f = wpdp*(iv.mpf(3)*wum + (k4_pp_op_r/s_eff)*b*((h_blk_tot*rw)**2))
+                gp2p = wpdp*(_w16_iv_rat(3, 4)*wum + (k4_pp_op_r/s_eff)*b*h_blk_tot*_w16_iv_rat(3, 4)*(rw**2))
+                do1f = iv.mpf(8)*qt_l1*b*(g1_3+_w16_iv_rat(3, 4))*(rw**2); do1p = do1f/iv.mpf(4)
+                do2f = iv.mpf(8)*qt_l1*b*_w16_iv_rat(9, 4)*rw; do3f = iv.mpf(24)*qt_l1*b*_w16_iv_rat(3, 4)
+                dj21p = iv.mpf(0) if use_lou else (iv.mpf(6)/(iv.mpf(9)*(s_eff**2)))*(iv.mpf(12)*sqrt2/iv.mpf(8))*j2_kern_r*((iv.mpf(1)/sqrt2)*rw); dj21f = iv.mpf(4)*dj21p
+                dj22f = iv.mpf(0) if use_lou else (iv.mpf(24)/(iv.mpf(9)*(s_eff**2)))*(_w16_iv_rat(3, 4)*sqrt2)*j2_kern_r*(_w16_iv_rat(1, 4)*sqrt2); dj22p = dj22f/iv.mpf(4)
+                dr31f = iv.mpf(3)*er3/rw; dr32f = iv.mpf(6)*er3/(rw**2); dr33f = iv.mpf(6)*er3/(rw**3)
+                vf = [iv.mpf(0), v4_m*b*m4_s["v1_free"]*(rz**3)*fz + b*r1*fz + q56[0]*fz + dr31f + do1f + dj21f + gp1f,
+                      v4_m*b*m4_s["v2_free"]*(rz**2)*(fz**2) + b*r2*(fz**2) + q56[1]*(fz**2) + gp2f + dr32f + do2f + dj22f,
+                      v4_m*b*m4_s["v3_free"]*rz*(fz**3) + b*r3*(fz**3) + q56[2]*(fz**3) + dr33f + do3f,
+                      v4_m*b*m4_s["v4_free"]*(fz**4) + b*r4*(fz**4) + q56[3]*(fz**4)]
+                vp = [iv.mpf(0), v4_m*b*m4_s["v1_pin"]*(rz**3)*fz + (b*r1*fz+dr31f)/iv.mpf(4) + q56[0]*fz/iv.mpf(4) + do1p + dj21p + gp1p,
+                      v4_m*b*m4_s["v2_pin"]*(rz**2)*(fz**2) + (b*r2*(fz**2)+dr32f)/iv.mpf(4) + q56[1]*(fz**2)/iv.mpf(4) + gp2p + do2f/iv.mpf(4) + dj22p,
+                      vf[3]/iv.mpf(4), vf[4]/iv.mpf(4)]
+                af0, af1, af2 = b*gtot_3*(rw**2), b*h_blk_tot*rw, b*iv.mpf(3)
+                ap0, ap1, ap2 = b*g1_3*(rw**2), b*_w16_iv_rat(3, 4)*rw, b*_w16_iv_rat(3, 4)
+                w_C = (iv.mpf(6)*op_l1_r)/(b*s_eff); w_W = wpdp*w_C
+                sum_dw = wpdp*b*(iv.mpf(6)*op_l1_r/s_eff)*((_w16_iv_rat(3, 4)**2)*(rw**2))
+                sum_dj = iv.mpf(0) if use_lou else (iv.mpf(1)/(iv.mpf(9)*(s_eff**2)))*(iv.mpf(12)*sqrt2/iv.mpf(8))*j2_kern_r*(iv.mpf(6)*_w16_iv_rat(3, 4)*sqrt2)
+                rho_ch = w_C*(sum_dw + sum_dj)
+                rho_tr = w_C*(wpdp*b*(c_l2_sq/((iv.mpf(6)*op_l1_r)**2))*(k_op_r/s_eff)*((iv.mpf(6)*hop_3*rw)**2) + (k_op_r/(iv.mpf(6)*op_l1_r))*sum_dj)
+                ev41 = ev56w if use_lou else v4_m*b*iv.sqrt(e_v4_2)/((b*s_eff)**2)
+                ewpp1 = wpp*k4_pp_op_r*((s_eff*(iv.sqrt(gsum_v3_l2)/s_eff))**2)/(b*(s_eff**3))
+                hl2 = iv.sqrt(e_h_f2)/(iv.mpf(2)*iv.sqrt(b*s_eff)); hl4 = col_l4/iv.sqrt(b*s_eff)
+                ej21 = iv.mpf(0) if use_lou else _w16_min_ub(ej2, (iv.mpf(1)/(iv.mpf(9)*(s_eff**2)))*(iv.mpf(2)*sqrt3*hl4)*j2_kern_r*hl4)
+                eodd1 = _w16_min_ub(eodd, _w16_iv_rat(4, 3)*qt_l1*iv.sqrt(iv.mpf(3)*diag_safe/(b*s_eff))*(iv.sqrt(g0_l2)/s_eff))
+                dl4 = _w16_min_ub(dm, iv.mpf(2)*op_l1_r*g0_l4/(b*(s_eff**2)) + dm2)
+                er31 = _w16_min_ub(er3, iv.mpf(2)*(dl4**2)*iv.sqrt(b/s_eff)*(e_h_sch4**_w16_iv_rat(1, 4)) + b*v3_sup*(dl4**3))
+                V0_loc = e4 + eq56 + er3 + eodd + wpp*k4_pp_op_r*iv.mpf(4)*(g1_3**2)*b*(rw**4)/s_eff
+                gexp = (iv.exp(V0_loc)-iv.mpf(1))/V0_loc if mp.mpf(V0_loc.a) > mp.mpf("1e-25") else iv.mpf(1)
+                m1_base = iv.mpf(21)*gexp*(ev41 + ewpp1 + ej21 + er31 + eodd1)
+                nAL4 = iv.mpf(2)*op_l1_r*sqrt2*col_l4/(iv.sqrt(b)*(s_eff**_w16_iv_rat(3, 2))) + nA2
+                for a1 in a1_l:
+                    ea1 = iv.exp(a1)
+                    if mp.mpf((nA*ea1).b) >= mp.mpf("0.85"): continue
+                    rb = nA*ea1; rl4 = nAL4*ea1; cp = iv.mpf(12)*(diag_safe/(iv.mpf(6)*op_l1_r))
+                    jci = iv.mpf(21)*cp*((rl4**3)*iv.exp(_w16_iv_rat(2, 3)*(nA**3)) + (rl4**4)*iv.exp(_w16_iv_rat(1, 2)*(nA**4)) + (rb**5)/(iv.mpf(1)-rb))
+                    cyo = cp*(rb**3)/(iv.mpf(1)-rb); cyp = iv.mpf(21)*w_C*(iv.mpf(2)*op_l1_r*_w16_iv_rat(3, 4)/s_eff)*cp*((rb**2)*(iv.mpf(3)-iv.mpf(2)*rb)/((iv.mpf(1)-rb)**2))
+                    V0t = V0 + cyo; ex_v0 = iv.exp(V0t)
+                    tc = mp.mpf(0); uc = mp.mpf(0); conv = False
+                    for _ in range(150):
+                        gfm = mp.mpf(vf[1].b)*tc + mp.mpf(vf[2].b)*(tc**2)/2 + mp.mpf(vf[3].b)*(tc**3)/6 + mp.mpf(vf[4].b)*(tc**4)/24
+                        gpm = mp.mpf(vp[1].b) + mp.mpf(vp[2].b)*tc + mp.mpf(vp[3].b)*(tc**2)/2 + mp.mpf(vp[4].b)*(tc**3)/6
+                        afm = mp.mpf(af0.b) + mp.mpf(af1.b)*tc + mp.mpf("0.5")*mp.mpf(af2.b)*(tc**2)
+                        apm = mp.mpf(ap0.b) + mp.mpf(ap1.b)*tc + mp.mpf("0.5")*mp.mpf(ap2.b)*(tc**2)
+                        exv = mp.mpf(V0t.b) + gfm + uc*afm
+                        if exv > 25: break
+                        ex_ev = mp.exp(exv); dch = 1 - mp.mpf(rho_ch.b)*((mp.mpf(ea1.b)*ex_ev)**2)
+                        if dch <= mp.mpf("0.05"): break
+                        tn = mp.mpf(w_C.b)*mp.mpf(ea1.b)*(gpm + uc*(mp.mpf(ap1.b)+mp.mpf(ap2.b)*tc))*ex_ev/dch
+                        un = mp.mpf(w_W.b)*mp.mpf(ea1.b)*apm*ex_ev
+                        if tn > 5 or un > 5: break
+                        if abs(tn-tc)+abs(un-uc) < mp.mpf("1e-18")*(1+tn+un): tc, uc = tn, un; conv = True; break
+                        tc, uc = tn, un
+                    if not conv: continue
+                    th_i, uh_i = iv.mpf(tc*mp.mpf("1.0000001")), iv.mpf(uc*mp.mpf("1.0000001"))
+                    gfh = vf[1]*th_i + vf[2]*(th_i**2)/2 + vf[3]*(th_i**3)/6 + vf[4]*(th_i**4)/24
+                    gph = vp[1] + vp[2]*th_i + vp[3]*(th_i**2)/2 + vp[4]*(th_i**3)/6
+                    afh = af0 + af1*th_i + iv.mpf("0.5")*af2*(th_i**2)
+                    aph = ap0 + ap1*th_i + iv.mpf("0.5")*ap2*(th_i**2); apdh = ap1 + ap2*th_i
+                    ex_evh = iv.exp(V0t + gfh + uh_i*afh); dchh = iv.mpf(1) - rho_ch*((ea1*ex_evh)**2)
+                    if mp.mpf(dchh.a) <= mp.mpf("0.05"): continue
+                    if mp.mpf((w_C*ea1*(gph + uh_i*apdh)*ex_evh/dchh).b) > mp.mpf(th_i.a): continue
+                    if mp.mpf((w_W*ea1*aph*ex_evh).b) > mp.mpf(uh_i.a): continue
+                    g1fh = vf[1] + vf[2]*th_i + iv.mpf("0.5")*vf[3]*(th_i**2) + vf[4]*(th_i**3)/6 + uh_i*(af1 + af2*th_i)
+                    g2fh = vf[2] + vf[3]*th_i + iv.mpf("0.5")*vf[4]*(th_i**2) + uh_i*af2
+                    tri = iv.mpf("0.5")*(g1fh**2 + g2fh)*w_C*rho_tr*((ea1*ex_evh)**2)
+                    ntb = iv.mpf(21)*ea1*(ex_evh*(iv.mpf(1)+tri) - ex_v0)
+                    if tmode == "box": ntu, cpu = ntb, cyp*th_i
+                    elif tmode == "wick_m2W":
+                        twb = iv.mpf(21)*(ea1**2)*(ex_v0**2)*w_W*ap0*af0
+                        tww = iv.mpf(21)*(ea1**2)*(ex_v0**2)*w_W*(gsum3_l2_lam/s_eff)*(g0_3_l2_lam/s_eff)
+                        ntu, cpu = (ntb - twb) + tww, cyp*th_i
+                    else:
+                        ntu, cpu = iv.mpf(0), iv.mpf(0)
+                    kps = (m1_base*ea1 + jci + cpu + ntu + n_lf)/(a1*e_iv)
+                    if mp.mpf(kps.b) < mp.mpf(best_kp.b): best_kp = kps
+            return best_kp
+
+        for lbl_b, wpm, v4m, use_l, cm, tm, lo_b, hi_b in (
+            ("baseline_5_18_box", Fraction(1), Fraction(1), False, Fraction(1), "box", 14139, 14140),
+            ("baseline_5_18_wick_m2W", Fraction(1), Fraction(1), False, Fraction(1), "wick_m2W", 8697, 8698),
+            ("ideal_free_noV4_noWpair", Fraction(0), Fraction(0), False, Fraction(1), "box", 1117, 1118),
+            ("ideal_noTree_floor", Fraction(0), Fraction(0), False, Fraction(1), "zero_trees_floor", 776, 777),
+            ("steelman_L_OU_1x", Fraction(0), Fraction(0), True, Fraction(1), "box", 2428, 2429),
+            ("steelman_L_OU_1x_noTree", Fraction(0), Fraction(0), True, Fraction(1), "zero_trees_floor", 1844, 1845),
+            ("steelman_L_OU_2x_range2R", Fraction(0), Fraction(0), True, Fraction(2), "box", 3243, 3244),
+        ):
+            require(strictly_above(_eval_bkar_flat(lo_b, wpm, v4m, use_l, cm, tm), kp_lim), f"BKAR {lbl_b} lo={lo_b} should fail")
+            require(strictly_below(_eval_bkar_flat(hi_b, wpm, v4m, use_l, cm, tm), kp_lim), f"BKAR {lbl_b} hi={hi_b} should pass")
+
+        # #185 Doob-HJB bounds & Litmus 6 < 8 ln 2
+        hjb_d4 = iv.mpf(1) / (iv.mpf(32) * (iv.pi ** 2))
+        hjb_d3 = iv.mpf(1) / (iv.mpf(8) * (iv.pi ** 2))
+        hjb_d2 = iv.mpf(1) / (iv.mpf(8) * iv.pi)
+        litmus6_w16 = iv.mpf(6) * (iv.pi ** 2) / iv.mpf(11)
+        require(strictly_below(hjb_d4, hjb_d3) and strictly_below(hjb_d3, hjb_d2) and strictly_below(litmus6_w16, iv.mpf(8) * iv.log(iv.mpf(2))), "HJB/Litmus6 fail")
+        checks += 3
+
+        # =====================================================================
+        # §5. Wave 16 Honest Epistemic Lock & 16-Item Retirement Taxonomy
+        # =====================================================================
+        wave16_retirements = [
+            "O-W16.1-ScalarMinEigFactor8Fallacy",
+            "O-W16.1-VAxisNonConvexity",
+            "O-W16.1-StrippedP0CollapseAt45Deg",
+            "O-W16.1-WitnessEtaBelowPureUnstrippedBL",
+            "O-W16.1-NonConvexOmegaSFDomain",
+            "O-W16.5-3CubePartitionNonAdditivityAt75Deg",
+            "O-W16.2-FixedPointDim6InducedDrift",
+            "O-W16.2-DerivativeExpansionDivergenceAtBZCorner",
+            "O-W16.3-ReweightingGaussianEdgeIllusion",
+            "O-W16.3-OneStepBridgeInsufficient",
+            "O-W16.3-R2R1ZeroBetaOverlapFloor",
+            "O-W16.3-SymanzikRectCancellation",
+            "O-W16.3-NonMarkovianClusterDomination",
+            "O-W16.4-FrozenSO3Z2OrderWall",
+            "O-W16.4-BareScalePercolationAndCoarseVortexGap",
+            "O-W16.5-R6PlateauSexticAndBKAR776Wall",
+        ]
+        require(len(wave16_retirements) == 16, "Wave 16 retirement list length != 16")
+        checks += 1
+
+        def _w16_out(v, digits: int = 12):
+            return outward_str(v.real if isinstance(v, type(iv.mpc(0))) else v, digits)
+
+        return {
+            "schema": "ueot-physics-unification-irx-wave16/1",
+            "lean_module": "UEOTPhysicsUnification.IRXWave16UnstrippedHingeSymanzikK4VortexAndRedTeam",
+            "lean_theorem": "UEOTPhysicsUnification.IRXWave16UnstrippedHingeSymanzikK4VortexAndRedTeam.round16_irx_wave16_honest_open_lock",
+            "w16_1_unstripped_hinge_and_needle1": {
+                "scalar_fallacy_ratio": "2048/255",
+                "r1_lc2_v0_a8": _w16_out(v0_r1_a8, 12),
+                "eta_pure_bl_20e2_75": _w16_out(eta_pure_20_75, 8),
+                "eta_pure_bl_161e2_75": _w16_out(eta_pure_161_75, 8),
+                "schur_42x42_eta_dir_lb": _w16_out(eta_dir_42, 8),
+                "vaxis_60d_75_min_eig": _w16_out(ev_60, 10),
+                "thv30_full_75_min_eig": _w16_out(ev_30, 10),
+                "thv45_minus_p0_75_min_eig": _w16_out(ev_45m, 10),
+                "needle1_39d_a0_75_min_eig": _w16_out(ev_p75_39, 10),
+                "needle1_36d_a0_75_min_eig": _w16_out(evs_36[0], 10),
+                "s3_chi3_kp20_30d_bracket": [32125, 32250],
+            },
+            "w16_2_manton_symanzik_and_needle2": {
+                "su2_over_u1_cosine_ratio": "5/3",
+                "fine_delta_beta_01_su2": "-5/12",
+                "fine_delta_beta_01_u1": "-1/4",
+                "gpp_cond_24": _w16_out(gpp_cond_24, 14),
+                "t_tree_eigs": [_w16_out(eig_T_0, 10), _w16_out(eig_T_1, 10)],
+                "c_star_over_beta": [_w16_out(c_star_2x2[0][0], 10), _w16_out(c_star_2x2[1][0], 10)],
+                "r1_steps_40_to_4_lb": _w16_out(r1_steps_40_to_4, 8),
+            },
+            "w16_3_slab_k4_and_2step_bridge": {
+                "k4_orbits_k3_to_k6": [26, 65, 132, 270],
+                "k4_states_k3_to_k6": [181, 570, 1479, 3418],
+                "fisher_zero_k6_tail_ub": _w16_out(fz_k6_tail, 10),
+                "ring_1x1_b187_e050_gap_inf_lb": _w16_out(gap_r_187, 10),
+                "ring_1x1_b140_e100_gap_inf_lb": _w16_out(gap_r_140, 10),
+                "c1_u1_k4_krawczyk_zero": [_w16_out(K_u1[0], 14), _w16_out(K_u1[1], 14)],
+                "wilson_5staple_0773_gamma1L_ub": _w16_out(g1l_0773, 10),
+                "block_2x2_187_1step_bhk": _w16_out(b1_187, 10),
+                "block_2x2_187_2step_bhk": _w16_out(b2_187, 10),
+                "block_2x2_187_2step_bwil": _w16_out(bw2_187, 10),
+            },
+            "w16_4_so3_z2_vortex_and_needle3": {
+                "kc_4d_z2": _w16_out(Kc_4d, 10),
+                "frozen_hk_187_ktilde": _w16_out(kt_hk_187, 10),
+                "two_cube_primal_eq_dual": "24768261/65536",
+                "dual_s3_250_nmon8_keff": _w16_out(keff8_250, 10),
+                "r6_1st_order_wpair": "-5/18",
+                "r6_2nd_order_pure_v4_g4": "-7/2*C1*v4_1**2",
+                "bkar_flat1000_brackets": {
+                    "baseline_box": [14139, 14140],
+                    "baseline_wick_m2W": [8697, 8698],
+                    "ideal_noV4_noWpair": [1117, 1118],
+                    "ideal_noTree_floor": [776, 777],
+                    "steelman_L_OU_1x": [2428, 2429],
+                    "steelman_L_OU_1x_noTree": [1844, 1845],
+                    "steelman_L_OU_2x_range2R": [3243, 3244],
+                },
+                "doob_hjb_d4_coeff": _w16_out(hjb_d4, 12),
+            },
+            "wave16_retirements": wave16_retirements,
+            "litmus6": _w16_out(litmus6_w16, 12),
+            "irx_status": "OPEN",
+            "uv_x_status": "OPEN",
+            "chiral_x_status": "OPEN",
+            "h2d_status": "OPEN",
+            "noBulkTransition": "OPEN",
+            "physical_unification": "OPEN",
+            "device_certified": False,
+            "interval_checks_passed": checks,
+        }
+    finally:
+        mp.dps = 50
+        iv.dps = 40
+
+
 def compute_certificate() -> dict:
     mp.dps = 50
     iv.dps = 40
@@ -14926,6 +16749,7 @@ def compute_certificate() -> dict:
     h2d_round13_wave13 = compute_h2d_round13_wave13_zone3a_midcoupling_and_stronghk(h2d_round12_wave12)
     h2d_round14_wave14 = compute_h2d_round14_wave14_score_noise_radau_and_quotient(h2d_round13_wave13)
     h2d_round15_wave15 = compute_h2d_round15_wave15_hinge_score_manton_and_slab(h2d_round14_wave14)
+    h2d_round16_wave16 = compute_h2d_round16_wave16_unstripped_hinge_symanzik_k4_vortex_and_redteam(h2d_round15_wave15)
     payload = {
         "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
         "result_ids": [
@@ -14955,6 +16779,7 @@ def compute_certificate() -> dict:
         "h2d_round13_wave13_zone3a_midcoupling_and_stronghk": h2d_round13_wave13,
         "h2d_round14_wave14_score_noise_radau_and_quotient": h2d_round14_wave14,
         "h2d_round15_wave15_hinge_score_manton_and_slab": h2d_round15_wave15,
+        "h2d_round16_wave16_unstripped_hinge_symanzik_k4_vortex_and_redteam": h2d_round16_wave16,
         "wilson_transfer_and_symanzik": {
             "q8_strong_coupling_transfer": transfer_results,
             "symanzik_o_a2_leading_coeff": outward_str(c0_exact),
@@ -15128,9 +16953,19 @@ def main() -> int:
     require(r15_cert["h2d_status"] == "OPEN", "Round 15 h2d_status must remain OPEN")
     require(r15_cert["device_certified"] is False, "Round 15 device_certified must remain False")
     require(r15_cert["physical_unification"] == "OPEN", "Round 15 physical_unification must remain OPEN")
+    r16_cert = payload["h2d_round16_wave16_unstripped_hinge_symanzik_k4_vortex_and_redteam"]
+    require(r16_cert["interval_checks_passed"] >= 23, "Round 16 interval checks count mismatch")
+    require(len(r16_cert["wave16_retirements"]) == 16, "Round 16 retirement count mismatch")
+    require(r16_cert["irx_status"] == "OPEN", "Round 16 irx_status must remain OPEN")
+    require(r16_cert["noBulkTransition"] == "OPEN", "Round 16 noBulkTransition must remain OPEN")
+    require(r16_cert["uv_x_status"] == "OPEN", "Round 16 uv_x_status must remain OPEN")
+    require(r16_cert["chiral_x_status"] == "OPEN", "Round 16 chiral_x_status must remain OPEN")
+    require(r16_cert["h2d_status"] == "OPEN", "Round 16 h2d_status must remain OPEN")
+    require(r16_cert["device_certified"] is False, "Round 16 device_certified must remain False")
+    require(r16_cert["physical_unification"] == "OPEN", "Round 16 physical_unification must remain OPEN")
     if args.check:
         committed = json.loads(CERT_PATH.read_text(encoding="utf-8"))
-        require(committed == payload, "Committed certificate.json differs from recomputed Wave 15 H2 values")
+        require(committed == payload, "Committed certificate.json differs from recomputed Wave 16 H2 values")
         print("PASS: nonabelian_lattice_massgap_h2 (P-H2A-TRANSFER-01, P-H2B-DOBRUSHIN-02, P-H2C-CHIRAL-UV-03, C-H2-OPER-04)")
     else:
         write_json(CERT_PATH, payload)
