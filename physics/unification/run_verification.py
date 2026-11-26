@@ -133,7 +133,7 @@ def main() -> int:
         if args.check:
             cmd.append("--check")
         t0 = time.monotonic()
-        proc = subprocess.run(cmd, cwd=REPO, env=env, capture_output=True, text=True, timeout=480)
+        proc = subprocess.run(cmd, cwd=REPO, env=env, capture_output=True, text=True, timeout=900)
         dur = round(time.monotonic() - t0, 3)
         if proc.returncode != 0:
             sys.stderr.write(f"FAIL [{name}]:\n{proc.stdout}\n{proc.stderr}\n")
@@ -219,6 +219,7 @@ def main() -> int:
             "UEOTPhysicsUnification.IRXWave16UnstrippedHingeSymanzikK4VortexAndRedTeam",
             "UEOTPhysicsUnification.IRXWave17SignedK6PairedB2OTSliceAndDobrushin",
             "UEOTPhysicsUnification.IRXWave18L2SpecNonGaussB2HodgeWallAndMultiStepDobrushin",
+            "UEOTPhysicsUnification.IRXWave19SmoothUVLandauZSchurPeelAndCorrelatedCoexistence",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
