@@ -1,7 +1,7 @@
 {
   "schema": "ueot.lab_wiki.gate_receipt.v1",
-  "timestamp_utc": "2026-11-26T11:14:00Z",
-  "git_head": "9d95cee6",
+  "timestamp_utc": "2026-11-26T12:39:57Z",
+  "git_head": "174ce0f5",
   "mode": "full",
   "overall_status": "PASS",
   "checks": [
@@ -10,9 +10,9 @@
       "status": "PASS",
       "duration_sec": 0.005,
       "stats": {
-        "open_specs": 16,
-        "verified_lemmas": 87,
-        "dead_ends": 73
+        "open_specs": 17,
+        "verified_lemmas": 93,
+        "dead_ends": 77
       },
       "errors": []
     },
@@ -22,7 +22,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.02,
+      "duration_sec": 0.023,
       "output_tail": [
         "PASS: exact Core + QM toolchain and dependency revisions inherited"
       ]
@@ -33,7 +33,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.206,
+      "duration_sec": 0.208,
       "output_tail": [
         "PASS: zero syntactic proof escapes in UEOTPhysicsUnification"
       ]
@@ -44,8 +44,15 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 6.909,
+      "duration_sec": 4.94,
       "output_tail": [
+        "",
+        "The goal is a proposition, so `let` is preferred over `letI`.",
+        "The difference between `let` and `letI` is that `letI` inlines the value.",
+        "But this is not relevant for proofs because of proof irrelevance.",
+        "",
+        "Note: This linter can be disabled with `set_option linter.style.haveILetI false`",
+        "warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/FiniteObservationEscape.lean:60:2: Try this: ",
         "  letI̵",
         "",
         "The goal is a proposition, so `let` is preferred over `letI`.",
@@ -53,14 +60,7 @@
         "But this is not relevant for proofs because of proof irrelevance.",
         "",
         "Note: This linter can be disabled with `set_option linter.style.haveILetI false`",
-        "⚠ [9180/9194] Replayed UEOTQM.QuantumTraceDistance",
-        "warning: UEOTQM/QuantumTraceDistance.lean:165:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumTraceDistance.difference_parts_mass_eq`:",
-        "  [DecidableEq ι]",
-        "consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:",
-        "  omit [DecidableEq ι] in theorem ...",
-        "",
-        "Note: This linter can be disabled with `set_option linter.unusedSectionVars false`",
-        "Build completed successfully (9194 jobs)."
+        "Build completed successfully (9195 jobs)."
       ]
     },
     {
@@ -69,18 +69,18 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 105.068,
+      "duration_sec": 94.494,
       "output_tail": [
-        "UNIFICATION_AXIOM_AUDIT modules=47 constants=4759 theorems=2113 defs=2188 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
+        "UNIFICATION_AXIOM_AUDIT modules=48 constants=4910 theorems=2154 defs=2277 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
       ]
     },
     {
       "name": "physics_unification_verification",
-      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round15-irx-w15/physics/unification/run_verification.py --check",
+      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round16-irx-w16/physics/unification/run_verification.py --check",
       "cwd": ".",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 331.408,
+      "duration_sec": 335.441,
       "output_tail": [
         "PASS: philosophy_v31_omega_bridge (P-PHIL31-OMEGA-01, P-PHIL31-REALIZ-02, P-PHIL31-LAKATOS-03)",
         "PASS: lorentzian_causal_qg_limit P-LORENTZ-QG-07",
