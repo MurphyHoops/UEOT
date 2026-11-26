@@ -1,18 +1,18 @@
 {
   "schema": "ueot.lab_wiki.gate_receipt.v1",
-  "timestamp_utc": "2026-11-26T02:17:35Z",
-  "git_head": "58d9fb0c",
+  "timestamp_utc": "2026-11-26T04:12:03Z",
+  "git_head": "8cc8f66e",
   "mode": "full",
   "overall_status": "PASS",
   "checks": [
     {
       "name": "wiki_integrity",
       "status": "PASS",
-      "duration_sec": 0.006,
+      "duration_sec": 0.004,
       "stats": {
-        "open_specs": 12,
-        "verified_lemmas": 62,
-        "dead_ends": 53
+        "open_specs": 13,
+        "verified_lemmas": 68,
+        "dead_ends": 59
       },
       "errors": []
     },
@@ -33,7 +33,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.189,
+      "duration_sec": 0.193,
       "output_tail": [
         "PASS: zero syntactic proof escapes in UEOTPhysicsUnification"
       ]
@@ -44,7 +44,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 6.351,
+      "duration_sec": 6.214,
       "output_tail": [
         "",
         "Hint: Omit it from the simp argument list.",
@@ -60,7 +60,7 @@
         "  [apply] simp [Fintype.sum_prod_type]",
         "",
         "Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
-        "Build completed successfully (9190 jobs)."
+        "Build completed successfully (9191 jobs)."
       ]
     },
     {
@@ -69,18 +69,18 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 94.733,
+      "duration_sec": 97.849,
       "output_tail": [
-        "UNIFICATION_AXIOM_AUDIT modules=43 constants=4236 theorems=1961 defs=1918 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
+        "UNIFICATION_AXIOM_AUDIT modules=44 constants=4363 theorems=1999 defs=1980 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
       ]
     },
     {
       "name": "physics_unification_verification",
-      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round11-irx-w11/physics/unification/run_verification.py --check",
+      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round12-irx-w12/physics/unification/run_verification.py --check",
       "cwd": ".",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 291.271,
+      "duration_sec": 311.111,
       "output_tail": [
         "PASS: philosophy_v31_omega_bridge (P-PHIL31-OMEGA-01, P-PHIL31-REALIZ-02, P-PHIL31-LAKATOS-03)",
         "PASS: lorentzian_causal_qg_limit P-LORENTZ-QG-07",
