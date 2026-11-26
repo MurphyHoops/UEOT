@@ -1,7 +1,7 @@
 # `ueot-physics-unification` — Pure-Kernel Lean 4 Formalization of UEOT Physics Unification Gates
 
 Toolchain: `leanprover/lean4:v4.33.1` (exact byte match to `formalization/ueot-core` and `formalization/ueot-qm`).  
-Kernel audit: **52 modules, 5850 constants, 2516 theorems, 2752 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
+Kernel audit: **53 modules, 6006 constants, 2571 theorems, 2828 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
 
 This package extends formal machine-checked coverage across all non-`PR #468` sectors of the UEOT Physics responsibility matrix (`PREMISES_AND_RESPONSIBILITIES.md` & `CORE_PHYSICS_CONTRACT.md`) without modifying any historical file in `formalization/ueot-core` or `formalization/ueot-qm`.
 
@@ -61,6 +61,7 @@ This package extends formal machine-checked coverage across all non-`PR #468` se
 | `UEOTPhysicsUnification.IRXWave18L2SpecNonGaussB2HodgeWallAndMultiStepDobrushin` | `P-H2D-R18-W18-1-01..OPEN-07` | `w18_1_savvidy_ward_similarity_and_cross_product_l2spec`, `w18_2_cbh_r3_curvature_stokes_and_joint_exit`, `w18_3_bianchi_hodge_koff_and_hk_inertia`, `w18_4_c13_c14_abshadow_mandelstam_riccati_and_mix15`, `w18_canonical_witness_margins`, `round18_irx_wave18_honest_open_lock` |
 | `UEOTPhysicsUnification.IRXWave19SmoothUVLandauZSchurPeelAndCorrelatedCoexistence` | `P-H2D-R19-W19-1-01..OPEN-07` | `w19_1_smooth_pou_hsm3_sos_wick_and_strang`, `w19_2_landau_gribov_cell_mfp_cbh_and_su5`, `w19_3_hodge_1overmu_and_c16_schur_peeling`, `w19_3_c15_s2_c17_o4_and_c18_redblack`, `w19_4_elitzur_sm_kcomm_sd_and_litmus6`, `w19_canonical_witness_margins`, `round19_irx_wave19_honest_open_lock` |
 | `UEOTPhysicsUnification.IRXWave20NonBoxUVContinuumCoarseStiffnessRelTiltAndMultiPlaq` | `P-H2D-R20-W20-1-01..OPEN-07` | `w20_1_nonbox_uv_bkar_nelson_qf_and_strang`, `w20_1_strang_b2_exact_matrix_o2_and_trace_o3`, `w20_2_continuum_peter_weyl_6d_stiffness_q2_and_gribov`, `w20_3_moving_cap_leibniz_ward_rb_and_frustrated_saddle`, `w20_4_riccati_4link_umax_kcomm_and_mi13_separation`, `cycles19_to_28_pure_math_synthesis_and_maxwell_wick`, `w20_canonical_witness_margins`, `round20_irx_wave20_honest_open_lock` |
+| `UEOTPhysicsUnification.IRXWave21CovariantDelta2MixMGFLebnizWardAndBeltMaxwell` | `P-H2D-R21-W21-1-01..OPEN-07` | `w21_1_covariant_delta2_pperp_sos_nelson_and_strang`, `w21_2_so3_pythagorean_all_lambda_mgf_gribov_and_cont6d`, `w21_3_q3a_s3_leibniz_o4_ward_48x48_and_rb_order`, `w21_4_cycles29_to_32_belt_maxwell_kcomm_and_infz2`, `w21_canonical_witness_margins`, `round21_irx_wave21_honest_open_lock` |
 
 ## Local Build & Exhaustive Kernel Audit
 
