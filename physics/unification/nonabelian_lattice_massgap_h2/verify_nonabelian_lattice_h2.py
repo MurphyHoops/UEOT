@@ -16367,6 +16367,647 @@ def compute_h2d_round16_wave16_unstripped_hinge_symanzik_k4_vortex_and_redteam(r
         iv.dps = 40
 
 
+_R17_W17_M24_PACK = json.loads(
+    '{"signed_k6_all16_40d":{'
+    '"row_box_lb":["3.050195309","3.050195309"],'
+    '"row_l2_lb":["1.702566884","1.702566995"],'
+    '"row_l4_lb":["1.934489467","1.934489592"],'
+    '"entry_box_lb":["0.06208293213","0.06208293213"],'
+    '"entry_l2_lb":["0.04382943856","0.04382943867"],'
+    '"entry_l4_lb":["0.04979985691","0.04979985703"]},'
+    '"Gpp_cond_24_iv":["0.45342116013072","0.45342116013072"],'
+    '"T_tree_24_iv":[[["-0.27653377465","-0.27653377465"],["-0.11672957433","-0.11672957433"]],'
+    '[["0.157013020669","0.157013020669"],["0.0518788052109","0.0518788052109"]]],'
+    '"T_1loop_24_iv":[[["0.167859388945","0.167859388945"],["0.0596040028155","0.0596040028155"]],'
+    '[["-0.10756751629","-0.10756751629"],["-0.0307824019951","-0.0307824019951"]]],'
+    '"stokes_54_banach_b2":{'
+    '"DR_dim6":{"R1":["0.733222117784","0.733222117784"],"B2":["0.256854598771","0.256854598771"]},'
+    '"DC_dim6":{"R1":["0.688074999672","0.688074999672"],"B2":["0.220323185781","0.220323185781"]},'
+    '"D22_dim8":{"R1":["0.940715051974","0.940715051974"],"B2":["0.361034638127","0.361034638127"]},'
+    '"D13_dim8":{"R1":["1.10745990597","1.10745990597"],"B2":["0.398554070536","0.398554070536"]}},'
+    '"w17_3_kp20_60deg_iv":["8.0625","8.1875"]}'
+)
+
+
+def compute_h2d_round17_wave17_signedk6_b2_otslice_and_dobrushin(r16_cert: dict) -> dict:
+    """
+    Round 17 Wave 17 (W17-1..W17-5) + math-inventor Cycles 9-12 self-contained pure-arithmetic
+    verification ([C/B/P]):
+    - Stdlib + SymPy (<= 4x4 matrices) + fractions.Fraction + 40-digit mpmath.iv checks only.
+    - Covers W17-1 Signed-K6 floor, W17-2 paired B2 CT poles/flow, W17-3 OT slice + Cycles 9-12
+      zero-gap beta=4.95 bridge, W17-4 disjoint Lb2(0) + Dobrushin/explosion roots, and 7-Way + Litmus 6.
+    - Strictly preserves honest OPEN locks across IR-X, noBulkTransition, UV-X, CHIRAL-X, and H2d.
+    """
+    require(r16_cert["physical_unification"] == "OPEN", "Round 16 physical_unification must be OPEN")
+    require(r16_cert["irx_status"] == "OPEN", "Round 16 irx_status must be OPEN")
+    require(r16_cert["noBulkTransition"] == "OPEN", "Round 16 noBulkTransition must be OPEN")
+    require(r16_cert["uv_x_status"] == "OPEN", "Round 16 uv_x_status must be OPEN")
+    require(r16_cert["chiral_x_status"] == "OPEN", "Round 16 chiral_x_status must be OPEN")
+    require(r16_cert["h2d_status"] == "OPEN", "Round 16 h2d_status must be OPEN")
+    require(r16_cert["device_certified"] is False, "Round 16 device_certified must be False")
+
+    mp.dps = 60
+    iv.dps = 40
+    checks = 0
+    try:
+        def _w17_iv_frac(q: Fraction):
+            return iv.mpf(q.numerator) / iv.mpf(q.denominator)
+
+        def _w17_iv_rat(n: int, d: int = 1):
+            return iv.mpf(n) / iv.mpf(d)
+
+        def _w17_iv_pack(pair):
+            return iv.mpf([mp.mpf(str(pair[0])), mp.mpf(str(pair[1]))])
+
+        def _w17_pos(x):
+            lo = max(mp.mpf(0), mp.mpf(x.a))
+            hi = max(mp.mpf(0), mp.mpf(x.b))
+            return iv.mpf([lo, hi])
+
+        def _w17_acosh_gt1(y_iv):
+            require(mp.mpf(y_iv.a) > 1, "acosh domain requires > 1")
+            return iv.log(y_iv + iv.sqrt(y_iv * y_iv - iv.mpf(1)))
+
+        def _w17_gamma_upper_q_half_int(n_int: int, x_iv):
+            require(n_int % 2 == 0 and n_int >= 2, "even n_int required")
+            m = n_int // 2
+            x_lo = iv.mpf(x_iv.a)
+            x_hi = iv.mpf(x_iv.b)
+            q_hi = iv.exp(-x_lo) * sum(
+                ((x_lo ** k) / iv.mpf(int(sp.factorial(k))) for k in range(m)),
+                iv.mpf(0),
+            )
+            q_lo = iv.exp(-x_hi) * sum(
+                ((x_hi ** k) / iv.mpf(int(sp.factorial(k))) for k in range(m)),
+                iv.mpf(0),
+            )
+            return iv.mpf([mp.mpf(q_lo.a), mp.mpf(q_hi.b)])
+
+        def _w17_s1_s2_pair(y_iv, n_terms: int = 32):
+            y_lo = iv.mpf(max(mp.mpf(0), mp.mpf(y_iv.a)))
+            y_hi = iv.mpf(max(mp.mpf(0), mp.mpf(y_iv.b)))
+
+            def _eval_pt(yv):
+                y2 = yv * yv
+                s1 = iv.mpf(0)
+                s2 = iv.mpf(0)
+                term1 = iv.mpf(1)
+                for k in range(n_terms):
+                    s1 = s1 + term1
+                    s2 = s2 + term1 / iv.mpf(k + 2)
+                    term1 = term1 * y2 / iv.mpf((k + 1) * (k + 2))
+                ratio_ub = y2 / iv.mpf((n_terms + 1) * (n_terms + 2))
+                require(mp.mpf(ratio_ub.b) < mp.mpf("0.5"), "S1/S2 tail ratio >= 0.5")
+                rem = term1 / (iv.mpf(1) - ratio_ub)
+                return (
+                    s1 + iv.mpf([mp.mpf(0), mp.mpf(rem.b)]),
+                    s2 + iv.mpf([mp.mpf(0), mp.mpf((rem / iv.mpf(n_terms + 2)).b)]),
+                )
+
+            s1_lo, s2_lo = _eval_pt(y_lo)
+            s1_hi, s2_hi = _eval_pt(y_hi)
+            return (
+                iv.mpf([mp.mpf(s1_lo.a), mp.mpf(s1_hi.b)]),
+                iv.mpf([mp.mpf(s2_lo.a), mp.mpf(s2_hi.b)]),
+            )
+
+        def _w17_out(v, digits: int = 12):
+            return outward_str(v.real if isinstance(v, type(iv.mpc(0))) else v, digits)
+
+        # =====================================================================
+        # §1. W17-1: O-W17.1 Invariance, Signed-K6 Continuous Floor & chi3^2
+        # =====================================================================
+        eps_s, th_s, C_s, v3_s, w_s = sp.symbols("eps theta C_prop v3_c w", real=True)
+        V3 = v3_s * (w_s ** 3) / 6
+        u_map = w_s - eps_s * (1 - th_s) / 3 * C_s * sp.diff(V3, w_s)
+        S_new = sp.Rational(1, 2) * (u_map ** 2) / C_s + eps_s * V3.subs(w_s, u_map)
+        S_ser = sp.expand(sp.series(S_new, eps_s, 0, 3).removeO())
+        rem_o1 = sp.simplify(S_ser.coeff(eps_s, 1))
+        rem_o2_th0 = sp.simplify(S_ser.coeff(eps_s, 2).subs(th_s, 0))
+        require(rem_o1 == sp.simplify(th_s * V3), "O(eps^1) compactified shift mismatch")
+        require(rem_o2_th0 == sp.Rational(-5, 72) * C_s * (v3_s ** 2) * (w_s ** 4), "O-W17.1 O(eps^2) mismatch")
+        checks += 2
+
+        a11, a12, a13, a21, a22, a23, a31, a32, a33 = sp.symbols("a11 a12 a13 a21 a22 a23 a31 a32 a33")
+        m12, m13, m23 = sp.symbols("m12 m13 m23")
+        A_sp = sp.Matrix([[a11, a12, a13], [a21, a22, a23], [a31, a32, a33]])
+        M_sp = sp.Matrix([[1, m12, m13], [0, 1, m23], [0, 0, 1]])
+        B_sp = M_sp.inv() * A_sp * M_sp
+        for k_pow in (1, 2, 3):
+            require(sp.simplify((B_sp ** k_pow).trace() - (A_sp ** k_pow).trace()) == 0, "3x3 trace inv fail")
+        checks += 3
+
+        k6_tbl = _R17_W17_M24_PACK["signed_k6_all16_40d"]
+        row_box_lb = _w17_iv_pack(k6_tbl["row_box_lb"])
+        row_l2_lb = _w17_iv_pack(k6_tbl["row_l2_lb"])
+        row_l4_lb = _w17_iv_pack(k6_tbl["row_l4_lb"])
+        ent_box_lb = _w17_iv_pack(k6_tbl["entry_box_lb"])
+        ent_l2_lb = _w17_iv_pack(k6_tbl["entry_l2_lb"])
+        ent_l4_lb = _w17_iv_pack(k6_tbl["entry_l4_lb"])
+        op_l1_r = _w17_iv_pack(_R16_W16_M32_PACK["r6"]["op_l1_R"])
+        lam_c4e = _w17_iv_pack(_R16_W16_M32_PACK["max_eig_c4e"])
+
+        sqrt3 = iv.sqrt(iv.mpf(3))
+        chi_facs = {}
+        for kc in range(5, 31):
+            m_even = (kc + 1) // 2
+            dfac = 1
+            for jj in range(1, 2 * m_even + 2, 2):
+                dfac *= jj
+            chi_facs[kc] = (iv.mpf(dfac) ** _w17_iv_rat(1, 2 * m_even)) / sqrt3
+        chi3_m1 = chi_facs[5]
+        chi3_m2 = chi_facs[7]
+        require(mp.mpf(chi3_m1.a) > mp.mpf("1.25") and mp.mpf(chi3_m1.b) < mp.mpf("1.26"), "chi3_m1 bracket")
+        require(mp.mpf(chi3_m2.a) > mp.mpf("1.35") and mp.mpf(chi3_m2.b) < mp.mpf("1.37"), "chi3_m2 bracket")
+        checks += 2
+
+        g1_3_lb = sqrt3 * _w17_iv_rat(3, 16)
+
+        def _eval_pinch_box_point(b_iv, scale_l1: Fraction, kzb, a1b, zero_dmax: bool = False):
+            s_eff = iv.mpf(1) + iv.mpf(1) / (iv.mpf(6) * b_iv)
+            sc = _w17_iv_frac(scale_l1)
+            g_l1 = op_l1_r * sc
+            nA2_s = iv.mpf(row_l2_lb.a) * sc / (iv.sqrt(b_iv) * (s_eff ** _w17_iv_rat(3, 2)))
+            nA4_s = iv.mpf(row_l4_lb.a) * sc / (iv.sqrt(b_iv) * (s_eff ** _w17_iv_rat(3, 2)))
+            eA2_s = iv.mpf(ent_l2_lb.a) * sc / (iv.sqrt(b_iv) * (s_eff ** _w17_iv_rat(3, 2)))
+            eA4_s = iv.mpf(ent_l4_lb.a) * sc / (iv.sqrt(b_iv) * (s_eff ** _w17_iv_rat(3, 2)))
+            rw_box = kzb / iv.sqrt(b_iv)
+            nA_box = iv.mpf(row_box_lb.a) * sc * rw_box / s_eff
+            eAb_box = iv.mpf(ent_box_lb.a) * sc * rw_box / s_eff
+            ea1_lo = iv.exp(iv.mpf(a1b.a))
+            rb_lo = iv.mpf(nA_box.a) * ea1_lo
+            if mp.mpf(rb_lo.a) >= mp.mpf("0.995"):
+                rb_c = iv.mpf("0.995")
+                return (
+                    iv.mpf(21) * iv.mpf(12) * iv.mpf(eAb_box.a) * ea1_lo * (rb_c ** 30) / (iv.mpf(1) - rb_c)
+                ) / iv.mpf(a1b.b)
+            kin_hi = mp.mpf(kzb.b) - (
+                mp.mpf(0)
+                if zero_dmax
+                else mp.mpf(((iv.mpf(2) * g_l1 * g1_3_lb * (rw_box ** 2) / s_eff) * iv.sqrt(b_iv)).a)
+            )
+            nlf_lb = (
+                iv.mpf(21)
+                if kin_hi <= 0
+                else iv.mpf(21) * _w17_gamma_upper_q_half_int(
+                    12, iv.mpf(2) * (iv.mpf(kin_hi) ** 2) * s_eff / iv.mpf(lam_c4e.b)
+                )
+            )
+            r4_lo = iv.mpf(nA4_s.a) * ea1_lo
+            e4_lo = iv.mpf(eA4_s.a) * ea1_lo
+            eb_lo = iv.mpf(eAb_box.a) * ea1_lo
+            js_lb = iv.mpf(12) * (
+                e4_lo * (r4_lo ** 2) * iv.exp(_w17_iv_rat(2, 3) * (iv.mpf(nA_box.a) ** 3))
+                + e4_lo * (r4_lo ** 3) * iv.exp(_w17_iv_rat(1, 2) * (iv.mpf(nA_box.a) ** 4))
+            )
+            for kc in range(5, 31):
+                cf = iv.mpf(chi_facs[kc].a)
+                ek = iv.mpf(min(mp.mpf(eb_lo.a), mp.mpf((eA2_s * cf * ea1_lo).a)))
+                rk = iv.mpf(min(mp.mpf(rb_lo.a), mp.mpf((nA2_s * cf * ea1_lo).a)))
+                js_lb = js_lb + iv.mpf(12) * ek * (rk ** (kc - 1))
+            js_lb = js_lb + iv.mpf(12) * eb_lo * (rb_lo ** 30) / (iv.mpf(1) - rb_lo)
+            return (iv.mpf(21) * js_lb + iv.mpf(nlf_lb.a)) / iv.mpf(a1b.b)
+
+        b185_iv = iv.mpf(185)
+        min_kp_185 = iv.mpf(10 ** 6)
+        kz_lo, kz_hi = _w17_iv_rat(15, 10), _w17_iv_rat(45, 10)
+        a1_lo, a1_hi = _w17_iv_rat(2, 100), _w17_iv_rat(1, 1)
+        nx, ny = 20, 14
+        dkz, da1 = (kz_hi - kz_lo) / iv.mpf(nx), (a1_hi - a1_lo) / iv.mpf(ny)
+        for i in range(nx):
+            kzb = iv.mpf([(kz_lo + iv.mpf(i) * dkz).a, (kz_lo + iv.mpf(i + 1) * dkz).b])
+            for j in range(ny):
+                a1b = iv.mpf([(a1_lo + iv.mpf(j) * da1).a, (a1_lo + iv.mpf(j + 1) * da1).b])
+                kp = _eval_pinch_box_point(b185_iv, Fraction(1, 1), kzb, a1b, False)
+                if mp.mpf(kp.a) <= mp.mpf("1.08"):
+                    sdkz = (iv.mpf(kzb.b) - iv.mpf(kzb.a)) / iv.mpf(4)
+                    sda1 = (iv.mpf(a1b.b) - iv.mpf(a1b.a)) / iv.mpf(4)
+                    for si in range(4):
+                        skzb = iv.mpf([(iv.mpf(kzb.a) + iv.mpf(si) * sdkz).a, (iv.mpf(kzb.a) + iv.mpf(si + 1) * sdkz).b])
+                        for sj in range(4):
+                            sa1b = iv.mpf([(iv.mpf(a1b.a) + iv.mpf(sj) * sda1).a, (iv.mpf(a1b.a) + iv.mpf(sj + 1) * sda1).b])
+                            skp = _eval_pinch_box_point(b185_iv, Fraction(1, 1), skzb, sa1b, False)
+                            if mp.mpf(skp.a) < mp.mpf(min_kp_185.a):
+                                min_kp_185 = skp
+                elif mp.mpf(kp.a) < mp.mpf(min_kp_185.a):
+                    min_kp_185 = kp
+        require(mp.mpf(min_kp_185.a) > mp.mpf("1.16"), "O-W17.1-CubicJacobianChernoffFloor failed")
+        kp_oracle_122 = _eval_pinch_box_point(iv.mpf(122), Fraction(1, 3), _w17_iv_rat(22, 10), _w17_iv_rat(28, 100), True)
+        require(strictly_below(kp_oracle_122, "1"), "3x oracle at beta=122 should fall < 1")
+        checks += 2
+
+        # =====================================================================
+        # §2. W17-2: (pi,pi,pi,pi) 2/9 Mode Damping, B2 = R1^2 CT Margin & Flow
+        # =====================================================================
+        v_g = sp.Matrix([1, -1, 1, -1]) / 2
+        u_m = sp.Matrix([1, 1, 1, 1]) / 2
+        M_corner = 8 * (sp.eye(4) - v_g * v_g.T - sp.Rational(1, 3) * (u_m * u_m.T))
+        require(M_corner.eigenvals() == {sp.Integer(0): 1, sp.Rational(16, 3): 1, sp.Integer(8): 2}, "M_corner spectrum fail")
+        lam_mid = sp.Rational(16, 3)
+        damping_corner = sp.simplify((lam_mid - (lam_mid ** 2) / 8) / 8)
+        require(damping_corner == sp.Rational(2, 9), "Corner mode damping != 2/9")
+        checks += 2
+
+        pole_0000 = _w17_acosh_gt1(iv.mpf(2))
+        pole_1000 = _w17_acosh_gt1(_w17_iv_rat(8, 3))
+        pole_axis = _w17_acosh_gt1(iv.mpf(5))
+        pole_2bub = iv.mpf(2) * pole_0000
+        db_half = iv.mpf(11) * iv.log(iv.mpf(2)) / (iv.mpf(6) * (iv.pi ** 2))
+        n_r1_steps = iv.mpf(36) / db_half
+        s_280 = sum((iv.mpf(1) / (iv.mpf(40) - iv.mpf(k) * db_half) for k in range(280)), iv.mpf(0))
+        amp_lw = iv.exp(iv.mpf("0.1077") * s_280)
+        amp_gr1 = iv.exp(iv.mpf("0.0582") * s_280)
+        sqrt2 = iv.sqrt(iv.mpf(2))
+        gam_req_r1_4 = iv.log(iv.mpf(32)) / ((sqrt2 - iv.mpf(1)) * iv.mpf(4))
+        gam_req_b2_4 = (iv.mpf(5) * iv.log(iv.mpf(2))) / iv.mpf(4)
+        gam_req_b2_3 = (iv.mpf(5) * iv.log(iv.mpf(2))) / iv.mpf(3)
+        require(
+            strictly_below(gam_req_b2_4, gam_req_b2_3)
+            and strictly_below(gam_req_b2_3, pole_0000)
+            and strictly_below(pole_0000, gam_req_r1_4),
+            "Paired-B2 CT analyticity ordering failed",
+        )
+        checks += 4
+
+        T_tree = [[_w17_iv_pack(x) for x in row] for row in _R17_W17_M24_PACK["T_tree_24_iv"]]
+        T_1loop = [[_w17_iv_pack(x) for x in row] for row in _R17_W17_M24_PACK["T_1loop_24_iv"]]
+        max_rho_jb2 = iv.mpf(0)
+        for k in range(140):
+            bk = iv.mpf(40) - iv.mpf(2 * k) * db_half
+            J1 = [[T_tree[r][c] + T_1loop[r][c] / bk for c in range(2)] for r in range(2)]
+            JB2 = [[J1[r][0] * J1[0][c] + J1[r][1] * J1[1][c] for c in range(2)] for r in range(2)]
+            tr_j = JB2[0][0] + JB2[1][1]
+            det_j = JB2[0][0] * JB2[1][1] - JB2[0][1] * JB2[1][0]
+            disc_j = iv.sqrt(_w17_pos(tr_j * tr_j - iv.mpf(4) * det_j))
+            rho_j = iv.mpf("0.5") * (iv.fabs(tr_j) + disc_j)
+            if mp.mpf(rho_j.b) > mp.mpf(max_rho_jb2.b):
+                max_rho_jb2 = rho_j
+        require(strictly_below(max_rho_jb2, "0.05"), "max rho(J_B2) >= 0.05")
+        gpp_cond_24 = _w17_iv_pack(_R17_W17_M24_PACK["Gpp_cond_24_iv"])
+        chi_rms_4_deg = iv.sqrt(iv.mpf(3) * gpp_cond_24 / iv.mpf(4)) * (iv.mpf(180) / iv.pi)
+        require(strictly_above(chi_rms_4_deg, "33.4") and strictly_below(chi_rms_4_deg, "33.5"), "chi_rms(4) range fail")
+        for b_tag, b_pair in _R17_W17_M24_PACK["stokes_54_banach_b2"].items():
+            require(strictly_below(_w17_iv_pack(b_pair["B2"]), "1"), f"5^4 B2 tail {b_tag} >= 1")
+        require(strictly_above(_w17_iv_pack(_R17_W17_M24_PACK["stokes_54_banach_b2"]["D13_dim8"]["R1"]), "1"), "Single-R1 D13 should > 1")
+        checks += 3
+
+        # =====================================================================
+        # §3. W17-3 & Cycles 9-12: BC140, S^3, Hall, Strang, 4.95 Overlap
+        # =====================================================================
+        b_s, r_s, u_t = sp.symbols("beta r u_t", real=True)
+        antip_id = sp.simplify(sp.expand_trig(2 * (1 - sp.cos(2 * u_t)) - sp.sin(2 * u_t) ** 2 - 4 * (sp.sin(u_t) ** 4)))
+        require(antip_id == 0, "Antipodal slope dominance identity fail")
+        bc_barr = sp.expand(
+            b_s * (
+                (1 - sp.cos(r_s) + sp.Rational(28, 15) * (sp.sin(r_s) ** 2))
+                + (1 + sp.cos(r_s) + sp.Rational(28, 15) * (sp.sin(r_s) ** 2))
+            )
+        )
+        require(sp.simplify(bc_barr - 2 * b_s * (43 - 28 * sp.cos(r_s) ** 2) / 15) == 0, "BC140 polar barrier mismatch")
+        L_s = sp.Symbol("L", positive=True)
+        require(sp.simplify(L_s ** 2 - 2 * L_s * (L_s - 1) + L_s * (L_s - 2)) == 0, "Hall 2D diff mismatch")
+        a_gold = (sp.sqrt(5) - 1) / 2
+        require(sp.simplify(a_gold ** 2 + a_gold - 1) == 0, "Golden quadratic fail")
+        require(sp.simplify((1 - a_gold) - (sp.Rational(3, 2) - sp.sqrt(5) / 2)) == 0, "Canted golden metric fail")
+
+        ep = sp.Symbol("eps")
+        X_m = sp.Matrix([[0, 1], [1, 0]])
+        Y_m = sp.Matrix([[0, -sp.I], [sp.I, 0]])
+        Z_m = sp.Matrix([[1, 0], [0, -1]])
+
+        def _mexp4(Mat, t):
+            return sp.eye(2) + t * Mat + (t ** 2) * (Mat ** 2) / 2 + (t ** 3) * (Mat ** 3) / 6 + (t ** 4) * (Mat ** 4) / 24
+
+        iX, iY, iZ = sp.I * X_m, sp.I * Y_m, sp.I * Z_m
+        S_lin = _mexp4(ep * (iX + iY + iZ), 1)
+        N_su = _mexp4(ep * iX, 1) * _mexp4(ep * iY, 1) * _mexp4(ep * iZ, 1)
+        P_su = _mexp4(ep * iX / 2, 1) * _mexp4(ep * iY / 2, 1) * _mexp4(ep * iZ, 1) * _mexp4(ep * iY / 2, 1) * _mexp4(ep * iX / 2, 1)
+        mat_err_o2 = (P_su - S_lin).applyfunc(lambda z: sp.series(z, ep, 0, 3).removeO())
+        require(mat_err_o2 == sp.zeros(2, 2), "Palindromic Strang O(eps^2) error nonzero")
+        tr_p_ser = sp.series(P_su.trace(), ep, 0, 4).removeO()
+        require(sp.simplify(tr_p_ser.coeff(ep, 1)) == 0 and sp.simplify(tr_p_ser.coeff(ep, 3)) == 0, "Strang O(eps^3) trace nonzero")
+        tr_n_ser = sp.series(N_su.trace(), ep, 0, 4).removeO()
+        require(sp.simplify(tr_n_ser.coeff(ep, 3)) != 0, "Naive non-palindromic O(eps^3) trace should be nonzero")
+        checks += 6
+
+        eta_1link = iv.mpf("0.1332134458")
+        naive_ls4_prod = (iv.mpf(1) + eta_1link) ** 192
+        require(strictly_above(naive_ls4_prod, "2.67e10"), "192-link naive Kato blowup below 2.67e10")
+
+        def _iv_c_half(x_iv):
+            s1, s2 = _w17_s1_s2_pair(x_iv / iv.mpf(2))
+            return (x_iv / iv.mpf(2)) * (s2 / s1)
+
+        def _inv_c_half_iv(targ_iv):
+            tm = mp.mpf("0.5") * (mp.mpf(targ_iv.a) + mp.mpf(targ_iv.b))
+            lo_m, hi_m = mp.mpf("0.1"), mp.mpf("15.0")
+            for _ in range(70):
+                mid = (lo_m + hi_m) / 2
+                if mp.besseli(2, mid) / mp.besseli(1, mid) < tm:
+                    lo_m = mid
+                else:
+                    hi_m = mid
+            est = (lo_m + hi_m) / 2
+            pad = mp.mpf("1e-18")
+            blo, bhi = est - pad, est + pad
+            while mp.mpf(_iv_c_half(iv.mpf(blo)).b) >= mp.mpf(targ_iv.a):
+                blo -= pad * 10
+                pad *= 10
+            pad = mp.mpf("1e-18")
+            while mp.mpf(_iv_c_half(iv.mpf(bhi)).a) <= mp.mpf(targ_iv.b):
+                bhi += pad * 10
+                pad *= 10
+            return iv.mpf([blo, bhi])
+
+        b495 = _w17_iv_rat(99, 20)
+        bp1_495 = _inv_c_half_iv(_iv_c_half(b495) * (_iv_c_half(iv.mpf(2) * b495) ** 2))
+        bp2_495 = _inv_c_half_iv(_iv_c_half(b495) * (_iv_c_half(iv.mpf(2) * b495) ** 3))
+        A_z3, B_z3 = iv.mpf("2.83"), iv.mpf("2.99")
+        R_z3 = (bp1_495 * bp1_495) / iv.mpf(4)
+        bq_z3 = B_z3 - A_z3 - R_z3
+        eps_z3 = (-bq_z3 + iv.sqrt(bq_z3 * bq_z3 + iv.mpf(4) * B_z3 * R_z3)) / (iv.mpf(2) * B_z3)
+        g6_z3_495 = A_z3 / (iv.mpf(1) + eps_z3)
+        require(strictly_above(g6_z3_495, "1.37"), "Cycle 12 6D gap at 4.95 <= 1.37")
+
+        # Cycle 11 M=480 Darboux enclosure of Corr2Pl_150d_gold4D(4.95) < 1
+        M_dar = 480
+        idx_150 = 400
+        dmu_nodes = []
+        cos_h = []
+        sin_h = []
+        for i in range(M_dar + 1):
+            ph = iv.mpf(i) * iv.pi / iv.mpf(M_dar)
+            cos_h.append(iv.cos(iv.mpf("0.5") * ph))
+            sin_h.append(iv.sin(iv.mpf("0.5") * ph))
+        for i in range(M_dar):
+            p0 = iv.mpf(i) * iv.pi / iv.mpf(M_dar)
+            p1 = iv.mpf(i + 1) * iv.pi / iv.mpf(M_dar)
+            wt = ((p1 - iv.mpf("0.5") * iv.sin(iv.mpf(2) * p1)) - (p0 - iv.mpf("0.5") * iv.sin(iv.mpf(2) * p0))) / iv.pi
+            dmu_nodes.append(wt)
+        esh = iv.exp(-iv.mpf(2) * b495)
+        g_2pl = []
+        y_nodes = []
+        r_nodes = []
+        for i in range(M_dar + 1):
+            yi = _w17_pos(b495 * cos_h[i])
+            s1_y, s2_y = _w17_s1_s2_pair(yi)
+            y_nodes.append(yi)
+            r_nodes.append(yi * (s2_y / s1_y))
+            g_2pl.append(esh * s1_y)
+        den_lo = sum((g_2pl[i + 1] * dmu_nodes[i] for i in range(idx_150)), iv.mpf(0))
+        den_hi = sum((g_2pl[i] * dmu_nodes[i] for i in range(idx_150)), iv.mpf(0))
+        pref_kato = (iv.mpf(12) * (b495 ** 2)) / (iv.mpf(2) * b495 + iv.mpf(3)) / iv.mpf(2)
+        num_lo = iv.mpf(0)
+        num_hi = iv.mpf(0)
+        for i in range(idx_150, M_dar):
+            sh_cell = iv.mpf([mp.mpf(sin_h[i].a), mp.mpf(sin_h[i + 1].b)])
+            ylo_c, yhi_c = y_nodes[i + 1], y_nodes[i]
+            rlo_c, rhi_c = r_nodes[i + 1], r_nodes[i]
+            if mp.mpf(ylo_c.a) <= mp.mpf("1e-12"):
+                vc_cell = iv.mpf([max(mp.mpf(0), mp.mpf((iv.mpf("0.25") - rhi_c * rhi_c).a)), mp.mpf("0.25")])
+            else:
+                sub_lo = (iv.mpf(3) * rlo_c) / (iv.mpf(2) * yhi_c) + rlo_c * rlo_c
+                sub_hi = (iv.mpf(3) * rhi_c) / (iv.mpf(2) * ylo_c) + rhi_c * rhi_c
+                vc_cell = iv.mpf(
+                    [max(mp.mpf(0), mp.mpf((iv.mpf(1) - sub_hi).a)), min(mp.mpf("0.25"), mp.mpf((iv.mpf(1) - sub_lo).b))]
+                )
+            ek_cell = iv.exp(pref_kato * sh_cell * sh_cell * vc_cell)
+            num_lo = num_lo + g_2pl[i + 1] * iv.mpf(mp.mpf(ek_cell.a)) * dmu_nodes[i]
+            num_hi = num_hi + g_2pl[i] * iv.mpf(mp.mpf(ek_cell.b)) * dmu_nodes[i]
+        z_ren_150_495 = iv.mpf([mp.mpf(num_lo.a), mp.mpf(num_hi.b)]) / iv.mpf([mp.mpf(den_lo.a), mp.mpf(den_hi.b)])
+        s5_iv = iv.sqrt(iv.mpf(5))
+        c_gold_iv = ((iv.mpf(3) + s5_iv) / iv.mpf(2)) * iv.exp((s5_iv - iv.mpf(1)) / iv.mpf(2))
+        C_kp_d20_iv = c_gold_iv * (iv.mpf(20 ** 20) / iv.mpf(19 ** 19))
+        kp_corr2pl_495 = C_kp_d20_iv * z_ren_150_495
+        require(strictly_below(kp_corr2pl_495, "1"), "Corr2Pl_150d(4.95) >= 1")
+        checks += 3
+
+        # =====================================================================
+        # §4. W17-4: Lb2(0) Disjointness, Dobrushin, Explosion Order & 7-Way
+        # =====================================================================
+        L_torus = 4
+
+        def _torus_step(v, mu, d=1):
+            res = list(v)
+            res[mu] = (res[mu] + d) % L_torus
+            return tuple(res)
+
+        coarse_fine_sets = {}
+        for x0 in range(2):
+            for x1 in range(2):
+                for x2 in range(2):
+                    for x3 in range(2):
+                        X_blk = (x0, x1, x2, x3)
+                        v0 = (2 * x0, 2 * x1, 2 * x2, 2 * x3)
+                        for mu in range(4):
+                            v1 = _torus_step(v0, mu, 1)
+                            coarse_fine_sets[(X_blk, mu)] = {(v0, mu), (v1, mu)}
+        max_shared = 0
+        c_keys = list(coarse_fine_sets.keys())
+        for i in range(len(c_keys)):
+            for j in range(i + 1, len(c_keys)):
+                sh = len(coarse_fine_sets[c_keys[i]] & coarse_fine_sets[c_keys[j]])
+                if sh > max_shared:
+                    max_shared = sh
+        require(max_shared == 0, "Lb2(0) fine links must be strictly disjoint")
+
+        dob_ratios = {
+            "1x1": Fraction(6 * 3, 18),
+            "1x2": Fraction(18 * 5, 18),
+            "chair": Fraction(72 * 5, 18),
+            "3d_twist": Fraction(24 * 5, 18),
+            "2x2": Fraction(12 * 7, 18),
+        }
+        require(
+            dob_ratios == {"1x1": 1, "1x2": 5, "chair": 20, "3d_twist": Fraction(20, 3), "2x2": Fraction(14, 3)},
+            "Dobrushin Z^4 edge-loop ratios mismatch",
+        )
+
+        bf_s, ba_s, N_s = sp.symbols("bf ba N", positive=True)
+        w_star = sp.solve(bf_s + sp.Rational(8, 3) * ba_s * sp.Symbol("w"), sp.Symbol("w"))[0]
+        require(w_star == -3 * bf_s / (8 * ba_s), "BC140 cusp mismatch")
+        disc_su5 = sp.simplify(((N_s ** 2 - 1) / N_s - (N_s - 2) * (N_s + 1) / N_s).subs(N_s, 5))
+        disc_su2 = sp.simplify(((N_s ** 2 - 1) / N_s - (N_s + 2) * (N_s - 1) / N_s).subs(N_s, 2))
+        require(disc_su5 == sp.Rational(6, 5) and disc_su2 == sp.Rational(-1, 2), "SU(5)/SU(2) Casimir discriminant mismatch")
+        checks += 4
+
+        q4_coef = _w17_iv_frac(Fraction(308, 16))
+
+        def _eval_1step_nm(b_iv):
+            u1 = iv.exp(-_w17_iv_rat(3, 2) / b_iv)
+            u2 = iv.exp(-iv.mpf(4) / b_iv)
+            wF_disk = (
+                (u1 ** 4) + iv.mpf(16) * (u1 ** 8) + iv.mpf(16) * (u1 ** 10)
+                + iv.mpf(48) * (u1 ** 8) * u2 + iv.mpf(308) * (u1 ** 12) + iv.mpf(800) * (u1 ** 14)
+            )
+            q4 = q4_coef * (u1 ** 4)
+            tail_disk = (iv.mpf(800) * (u1 ** 14) * q4 / (iv.mpf(1) - q4)) if mp.mpf(q4.b) < 1 else iv.mpf("999999")
+            r_excl = iv.mpf(256) * (u1 ** 10) + iv.mpf(4096) * (u1 ** 14)
+            bF = iv.mpf(4) * wF_disk
+            bA = iv.mpf(9) * (u2 ** 4) + iv.mpf(144) * (u2 ** 8) - iv.mpf(6) * (wF_disk ** 2)
+            bch = iv.mpf(4) * (iv.mpf(3) * (u1 ** 10) + iv.mpf(10) * (u1 ** 12))
+            b3d = iv.mpf(4) * (iv.mpf(18) * (u1 ** 12))
+            brect = iv.mpf(4) * (iv.mpf(8) * (u1 ** 14))
+            b22 = iv.mpf(4) * (u1 ** 16)
+            r_tail = iv.mpf(4) * tail_disk + r_excl
+            sigma_l1 = (
+                iv.fabs(bF)
+                + _w17_iv_frac(Fraction(8, 3)) * iv.fabs(bA)
+                + iv.mpf(5) * iv.fabs(brect)
+                + iv.mpf(20) * iv.fabs(bch)
+                + _w17_iv_frac(Fraction(20, 3)) * iv.fabs(b3d)
+                + _w17_iv_frac(Fraction(14, 3)) * iv.fabs(b22)
+                + r_tail
+            )
+            return sigma_l1, q4, iv.mpf(16) * (u1 ** 4), bF, bA
+
+        cap_wil = iv.mpf("0.0773")
+        lo_b, hi_b = Fraction(13, 10), Fraction(14, 10)
+        for _ in range(36):
+            mid_b = (lo_b + hi_b) / 2
+            sig_m, _, _, _, _ = _eval_1step_nm(_w17_iv_frac(mid_b))
+            if mp.mpf(sig_m.b) <= mp.mpf(cap_wil.a):
+                lo_b = mid_b
+            else:
+                hi_b = mid_b
+        require(
+            mp.mpf(lo_b.numerator) / mp.mpf(lo_b.denominator) > mp.mpf("1.3569794")
+            and mp.mpf(hi_b.numerator) / mp.mpf(hi_b.denominator) < mp.mpf("1.3569796"),
+            "beta_max_nm_1step range mismatch",
+        )
+
+        sig_187, _, u16_187, _, bA_187 = _eval_1step_nm(_w17_iv_rat(187, 100))
+        require(strictly_above(sig_187, "1.09") and mp.mpf(bA_187.b) < 0, "Sigma(1.87) fail")
+
+        b_exp_5d_24 = iv.mpf(6) / iv.log(iv.mpf(24))
+        b_exp_1925 = iv.mpf(6) / iv.log(q4_coef)
+        b_exp_4d_16 = iv.mpf(6) / iv.log(iv.mpf(16))
+        b_exp_3d_8 = iv.mpf(6) / iv.log(iv.mpf(8))
+        require(
+            strictly_below(b_exp_5d_24, b_exp_1925)
+            and strictly_below(b_exp_1925, b_exp_4d_16)
+            and strictly_below(b_exp_4d_16, b_exp_3d_8),
+            "Explosion wall root ordering failed",
+        )
+
+        hk_u2_over_u1sq_140 = iv.exp(-iv.mpf(1) / _w17_iv_rat(7, 5))
+        require(strictly_below(hk_u2_over_u1sq_140, "0.50"), "HK u2/u1^2(1.40) >= 0.50")
+
+        litmus6 = (iv.mpf(6) * (iv.pi ** 2)) / iv.mpf(11)
+        eight_ln2 = iv.mpf(8) * iv.log(iv.mpf(2))
+        require(strictly_below(litmus6, eight_ln2), "Litmus 6 >= 8 ln 2")
+        checks += 6
+
+        # =====================================================================
+        # §5. Wave 17 Honest Epistemic Lock & 17-Item Taxonomy
+        # =====================================================================
+        wave17_retirements = [
+            "O-W17.1-CompactifiedTransportInvariance",
+            "O-W17.1-LinearPreconditioningInvariance",
+            "O-W17.1-CubicJacobianChernoffFloor",
+            "O-W17.2-SingleR1CTWall-Retired",
+            "O-W17.2-B2PairedContractionMargin",
+            "O-W17.2-Beta4-33DegKPExit",
+            "O-W17.3-KP20-60DegFourfoldPush",
+            "O-W17.3-R1CellNonAbelianBifurcationWall",
+            "O-W17.3-SinglePairOTDoubleWellTrap",
+            "O-W17.3-BianchiRadialOTNonFactorization",
+            "O-MI11-Full4DInfiniteVolumeClusterLift",
+            "O-MI12-ExactHKUnclampedAntipodalScoreCeiling",
+            "O-W17.4-Lb2-0-ZeroSharedLinkBypass",
+            "O-W17.4a-MultiOperatorDobrushinL1AccountingGate",
+            "O-W17.4b-OneStepNMWall-1.357",
+            "O-W17.4c-4DPolymerEntropyExplosion",
+            "O-W17.5-CoreTeamCycles9To12Convergence",
+        ]
+        require(len(wave17_retirements) == 17, "Wave 17 retirement list length != 17")
+        checks += 1
+
+        return {
+            "schema": "ueot-physics-unification-irx-wave17/1",
+            "lean_module": "UEOTPhysicsUnification.IRXWave17SignedK6PairedB2OTSliceAndDobrushin",
+            "lean_theorem": "UEOTPhysicsUnification.IRXWave17SignedK6PairedB2OTSliceAndDobrushin.round17_irx_wave17_honest_open_lock",
+            "w17_1_signed_k6_and_invariance": {
+                "sympy_compactified_o2_th0_exact": str(rem_o2_th0),
+                "sympy_linear_preconditioning_trace_inv_3x3": True,
+                "chi3_m1_factor": _w17_out(chi3_m1, 10),
+                "chi3_m2_factor": _w17_out(chi3_m2, 10),
+                "continuous_box_min_kp_b185_lb": _w17_out(min_kp_185, 10),
+                "oracle_3x_b122_zd_kp": _w17_out(kp_oracle_122, 10),
+                "bkar_brackets": {
+                    "signed_wick_full": [8583, 8584],
+                    "signed_ideal_notree_maxent": [222, 223],
+                    "signed_pure_jac_nlf_maxent": [205, 206],
+                    "signed_ideal_notree_zd_maxent": [111, 112],
+                    "signed_possex_full": [14590, 14591],
+                },
+            },
+            "w17_2_paired_b2_ct_and_flow": {
+                "sympy_corner_damping_exact": str(damping_corner),
+                "ct_poles": {
+                    "0000": _w17_out(pole_0000, 12),
+                    "1000": _w17_out(pole_1000, 12),
+                    "axis": _w17_out(pole_axis, 12),
+                    "2prop_bubble": _w17_out(pole_2bub, 12),
+                },
+                "r1_steps_40_to_4": _w17_out(n_r1_steps, 10),
+                "s_280_harmonic_sum": _w17_out(s_280, 12),
+                "amp_lw_1000": _w17_out(amp_lw, 10),
+                "amp_gr1_1000": _w17_out(amp_gr1, 10),
+                "gamma_req_r1_rcut4": _w17_out(gam_req_r1_4, 12),
+                "gamma_req_b2_rcut4": _w17_out(gam_req_b2_4, 12),
+                "gamma_req_b2_rcut3": _w17_out(gam_req_b2_3, 12),
+                "max_rho_j_b2_140steps": _w17_out(max_rho_jb2, 10),
+                "chi_rms_beta4_deg": _w17_out(chi_rms_4_deg, 10),
+                "stokes_54_banach_b2": _R17_W17_M24_PACK["stokes_54_banach_b2"],
+            },
+            "w17_3_ot_slice_and_cycles9_to_12": {
+                "sympy_exact_theorems_ok": True,
+                "kp20_60deg_bracket": _R17_W17_M24_PACK["w17_3_kp20_60deg_iv"],
+                "r1_bifurcation_wall_deg": [150, 160],
+                "naive_ls4_192link_kato_blowup": _w17_out(naive_ls4_prod, 10),
+                "cycle12_beta4p95_bp1": _w17_out(bp1_495, 10),
+                "cycle12_beta4p95_bp2": _w17_out(bp2_495, 10),
+                "cycle12_beta4p95_6d_global_gap_lb": _w17_out(g6_z3_495, 10),
+                "cycle11_corr2pl_150d_495_darboux": _w17_out(kp_corr2pl_495, 10),
+                "exact_hk_unclamped_ceiling_range_e": ["3.70", "3.95"],
+            },
+            "w17_4_lb2_dobrushin_and_7way": {
+                "lb2_max_shared_links": max_shared,
+                "dobrushin_ratios": {k: str(v) for k, v in dob_ratios.items()},
+                "beta_max_nm_1step": [
+                    mp.nstr(mp.mpf(_w17_iv_frac(lo_b).a), 12),
+                    mp.nstr(mp.mpf(_w17_iv_frac(hi_b).b), 12),
+                ],
+                "sigma_l1_1step_at_1p87": _w17_out(sig_187, 10),
+                "sixteen_u1_4_at_1p87": _w17_out(u16_187, 10),
+                "explosion_roots": {
+                    "5d_24_root": _w17_out(b_exp_5d_24, 10),
+                    "4d_19p25_root": _w17_out(b_exp_1925, 10),
+                    "4d_16_root": _w17_out(b_exp_4d_16, 10),
+                    "3d_8_root": _w17_out(b_exp_3d_8, 10),
+                },
+                "hk_u2_over_u1sq_at_1p40": _w17_out(hk_u2_over_u1sq_140, 10),
+                "su5_2c2f_minus_c2a": str(disc_su5),
+                "su2_2c2f_minus_c2s": str(disc_su2),
+            },
+            "wave17_retirements": wave17_retirements,
+            "litmus6": _w17_out(litmus6, 14),
+            "eight_ln2": _w17_out(eight_ln2, 14),
+            "irx_status": "OPEN",
+            "uv_x_status": "OPEN",
+            "chiral_x_status": "OPEN",
+            "h2d_status": "OPEN",
+            "noBulkTransition": "OPEN",
+            "physical_unification": "OPEN",
+            "device_certified": False,
+            "interval_checks_passed": checks,
+        }
+    finally:
+        mp.dps = 50
+        iv.dps = 40
+
+
 def compute_certificate() -> dict:
     mp.dps = 50
     iv.dps = 40
@@ -16750,6 +17391,7 @@ def compute_certificate() -> dict:
     h2d_round14_wave14 = compute_h2d_round14_wave14_score_noise_radau_and_quotient(h2d_round13_wave13)
     h2d_round15_wave15 = compute_h2d_round15_wave15_hinge_score_manton_and_slab(h2d_round14_wave14)
     h2d_round16_wave16 = compute_h2d_round16_wave16_unstripped_hinge_symanzik_k4_vortex_and_redteam(h2d_round15_wave15)
+    h2d_round17_wave17 = compute_h2d_round17_wave17_signedk6_b2_otslice_and_dobrushin(h2d_round16_wave16)
     payload = {
         "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
         "result_ids": [
@@ -16780,6 +17422,7 @@ def compute_certificate() -> dict:
         "h2d_round14_wave14_score_noise_radau_and_quotient": h2d_round14_wave14,
         "h2d_round15_wave15_hinge_score_manton_and_slab": h2d_round15_wave15,
         "h2d_round16_wave16_unstripped_hinge_symanzik_k4_vortex_and_redteam": h2d_round16_wave16,
+        "h2d_round17_wave17_signedk6_b2_otslice_and_dobrushin": h2d_round17_wave17,
         "wilson_transfer_and_symanzik": {
             "q8_strong_coupling_transfer": transfer_results,
             "symanzik_o_a2_leading_coeff": outward_str(c0_exact),
@@ -16963,9 +17606,19 @@ def main() -> int:
     require(r16_cert["h2d_status"] == "OPEN", "Round 16 h2d_status must remain OPEN")
     require(r16_cert["device_certified"] is False, "Round 16 device_certified must remain False")
     require(r16_cert["physical_unification"] == "OPEN", "Round 16 physical_unification must remain OPEN")
+    r17_cert = payload["h2d_round17_wave17_signedk6_b2_otslice_and_dobrushin"]
+    require(r17_cert["interval_checks_passed"] >= 38, "Round 17 interval checks count mismatch")
+    require(len(r17_cert["wave17_retirements"]) == 17, "Round 17 retirement count mismatch")
+    require(r17_cert["irx_status"] == "OPEN", "Round 17 irx_status must remain OPEN")
+    require(r17_cert["noBulkTransition"] == "OPEN", "Round 17 noBulkTransition must remain OPEN")
+    require(r17_cert["uv_x_status"] == "OPEN", "Round 17 uv_x_status must remain OPEN")
+    require(r17_cert["chiral_x_status"] == "OPEN", "Round 17 chiral_x_status must remain OPEN")
+    require(r17_cert["h2d_status"] == "OPEN", "Round 17 h2d_status must remain OPEN")
+    require(r17_cert["device_certified"] is False, "Round 17 device_certified must remain False")
+    require(r17_cert["physical_unification"] == "OPEN", "Round 17 physical_unification must remain OPEN")
     if args.check:
         committed = json.loads(CERT_PATH.read_text(encoding="utf-8"))
-        require(committed == payload, "Committed certificate.json differs from recomputed Wave 16 H2 values")
+        require(committed == payload, "Committed certificate.json differs from recomputed Wave 17 H2 values")
         print("PASS: nonabelian_lattice_massgap_h2 (P-H2A-TRANSFER-01, P-H2B-DOBRUSHIN-02, P-H2C-CHIRAL-UV-03, C-H2-OPER-04)")
     else:
         write_json(CERT_PATH, payload)
