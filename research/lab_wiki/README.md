@@ -12,6 +12,7 @@
 | 文件 / 目录 | 角色 | 谁来维护 |
 | :--- | :--- | :--- |
 | [AGENT_PLAYBOOK.md](AGENT_PLAYBOOK.md) | **AI 维护手册（必读）**：角色分工、组会流程、写入规范与 Prompt 模板 | 架构维护者 / 协调者 |
+| [MULTI_TEAM_CHARTER.md](MULTI_TEAM_CHARTER.md) | **多团队防冲突公约（必读）**：`origin/main` 唯一事实源、Lane A–E 分区互斥、热点文件 PR 协议、错峰算力与 `/teamwork` 开线模板 | 多团队总协调 / 所有赛道 Lead |
 | [OPEN_SPECS.md](OPEN_SPECS.md) | **开放规格清单**：直接对齐 `main` 当前未闭合前沿（如 Wave 10 `H1d4`）的 Lean 签名、数值阈值与证伪标准 | 协调者 / 探索 Agent |
 | [VERIFIED_LEMMAS.md](VERIFIED_LEMMAS.md) | **已验证引理库**：仅收录通过 `gatekeeper.py` 的 Lean 4 引理与数值证书 | 仅限门禁通过后追加 |
 | [DEAD_ENDS.md](DEAD_ENDS.md) | **死胡同与反例库**：被证伪、发散、或隐含额外公设的路线（只追加，不删除） | 所有 Agent / 红队审稿 |
