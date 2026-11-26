@@ -218,6 +218,7 @@ def main() -> int:
             "UEOTPhysicsUnification.IRXWave15HingeCoareaScoreDescentMantonAndSlab",
             "UEOTPhysicsUnification.IRXWave16UnstrippedHingeSymanzikK4VortexAndRedTeam",
             "UEOTPhysicsUnification.IRXWave17SignedK6PairedB2OTSliceAndDobrushin",
+            "UEOTPhysicsUnification.IRXWave18L2SpecNonGaussB2HodgeWallAndMultiStepDobrushin",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {

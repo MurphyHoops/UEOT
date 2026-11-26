@@ -1,7 +1,7 @@
 # `ueot-physics-unification` — Pure-Kernel Lean 4 Formalization of UEOT Physics Unification Gates
 
 Toolchain: `leanprover/lean4:v4.33.1` (exact byte match to `formalization/ueot-core` and `formalization/ueot-qm`).  
-Kernel audit: **49 modules, 5097 constants, 2195 theorems, 2395 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
+Kernel audit: **50 modules, 5329 constants, 2280 theorems, 2517 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
 
 This package extends formal machine-checked coverage across all non-`PR #468` sectors of the UEOT Physics responsibility matrix (`PREMISES_AND_RESPONSIBILITIES.md` & `CORE_PHYSICS_CONTRACT.md`) without modifying any historical file in `formalization/ueot-core` or `formalization/ueot-qm`.
 
@@ -58,6 +58,7 @@ This package extends formal machine-checked coverage across all non-`PR #468` se
 | `UEOTPhysicsUnification.IRXWave15HingeCoareaScoreDescentMantonAndSlab` | `P-H2D-R15-W15-1-01..OPEN-06` | `w15_1_collective_4core_bl_scaling_and_below40_kp`, `w15_1_exact_zero_conditional_barrier_and_hinge_det_blowup`, `w15_2_4link_transported_ibp_and_jensen_1083_1060`, `w15_2_s3_variational_floor_and_thermal_noise_trap`, `w15_3_nontautological_renorm_and_manton_5_3_tadpole`, `w15_3_2p772_decomposition_bz_and_commensurate_trap`, `w15_4_5staple_dobrushin_push_and_block_ceiling`, `w15_4_hk_log_concavity_bc140_su5_and_twist_eater`, `w15_canonical_witness_margins`, `round15_irx_wave15_honest_open_lock` |
 | `UEOTPhysicsUnification.IRXWave16UnstrippedHingeSymanzikK4VortexAndRedTeam` | `P-H2D-R16-W16-1-01..OPEN-06` | `w16_1_fourier_green_and_scalar_fallacy`, `w16_1_nonabelian_lipschitz_and_t_integral`, `w16_1_unstripped_omega_sf_schur_and_needle1`, `w16_2_manton_5_3_tadpole_and_fine_shift`, `w16_2_symanzik_rg_c6_drift_and_bz_break`, `w16_3_slab_casimir_orbits_and_ls_snr`, `w16_3_axis_b_5staple_and_2step_bridge`, `w16_4_so3_z2_split_and_frustrated_cap`, `w16_4_r6_plateau_sextic_bkar_floor_and_hjb`, `w16_canonical_witness_margins`, `round16_irx_wave16_honest_open_lock` |
 | `UEOTPhysicsUnification.IRXWave17SignedK6PairedB2OTSliceAndDobrushin` | `P-H2D-R17-W17-1-01..OPEN-07` | `w17_1_compactified_transport_invariance`, `w17_1_linear_preconditioning_trace_invariance`, `w17_1_signed_k6_floor_and_chi3_resummation`, `w17_2_corner_mode_damping_exact`, `w17_2_paired_b2_ct_analyticity_margin`, `w17_2_five4_contraction_and_exit_margin`, `w17_3_bc140_polar_barrier_and_kp20_margin`, `w17_3_s3_antipodal_slope_and_cycle11_12_identities`, `w17_3_hall_allocation_and_palindromic_strang`, `w17_3_palindromic_strang_cubic_trace_zero`, `w17_4_lb2_zero_shared_links_and_dobrushin_ratios`, `w17_4_explosion_roots_and_7way_litmus6`, `w17_canonical_witness_margins`, `round17_irx_wave17_honest_open_lock` |
+| `UEOTPhysicsUnification.IRXWave18L2SpecNonGaussB2HodgeWallAndMultiStepDobrushin` | `P-H2D-R18-W18-1-01..OPEN-07` | `w18_1_savvidy_ward_similarity_and_cross_product_l2spec`, `w18_2_cbh_r3_curvature_stokes_and_joint_exit`, `w18_3_bianchi_hodge_koff_and_hk_inertia`, `w18_4_c13_c14_abshadow_mandelstam_riccati_and_mix15`, `w18_canonical_witness_margins`, `round18_irx_wave18_honest_open_lock` |
 
 ## Local Build & Exhaustive Kernel Audit
 

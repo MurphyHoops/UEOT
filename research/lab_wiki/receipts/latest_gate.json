@@ -1,18 +1,18 @@
 {
   "schema": "ueot.lab_wiki.gate_receipt.v1",
-  "timestamp_utc": "2026-11-26T14:16:44Z",
-  "git_head": "3811bd25",
+  "timestamp_utc": "2026-11-26T15:51:18Z",
+  "git_head": "9d91ab45",
   "mode": "full",
   "overall_status": "PASS",
   "checks": [
     {
       "name": "wiki_integrity",
       "status": "PASS",
-      "duration_sec": 0.005,
+      "duration_sec": 0.007,
       "stats": {
-        "open_specs": 18,
-        "verified_lemmas": 100,
-        "dead_ends": 81
+        "open_specs": 19,
+        "verified_lemmas": 107,
+        "dead_ends": 86
       },
       "errors": []
     },
@@ -22,7 +22,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.02,
+      "duration_sec": 0.021,
       "output_tail": [
         "PASS: exact Core + QM toolchain and dependency revisions inherited"
       ]
@@ -33,7 +33,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.204,
+      "duration_sec": 0.207,
       "output_tail": [
         "PASS: zero syntactic proof escapes in UEOTPhysicsUnification"
       ]
@@ -44,23 +44,23 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 5.547,
+      "duration_sec": 6.802,
       "output_tail": [
-        "warning: UEOT/V3/Compression/TheoryCompletion/UnifiedClosure/RegisterDecisionRepresentationWitnesses.lean:239:31: This simp argument is unused:",
-        "  Fintype.sum_bool",
+        "⚠ [9180/9197] Replayed UEOTQM.QuantumTraceDistance",
+        "warning: UEOTQM/QuantumTraceDistance.lean:165:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumTraceDistance.difference_parts_mass_eq`:",
+        "  [DecidableEq ι]",
+        "consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:",
+        "  omit [DecidableEq ι] in theorem ...",
         "",
-        "Hint: Omit it from the simp argument list.",
-        "  [apply] simp [Fintype.sum_prod_type]",
-        "",
-        "Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`",
-        "ℹ [9194/9196] Replayed UEOTPhysicsUnification.IRXWave17SignedK6PairedB2OTSliceAndDobrushin",
+        "Note: This linter can be disabled with `set_option linter.unusedSectionVars false`",
+        "ℹ [9194/9197] Replayed UEOTPhysicsUnification.IRXWave17SignedK6PairedB2OTSliceAndDobrushin",
         "info: UEOTPhysicsUnification/IRXWave17SignedK6PairedB2OTSliceAndDobrushin.lean:378:4: Try this:",
         "  [apply] ring_nf",
         "  ",
         "  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.",
         "    ",
         "  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
-        "Build completed successfully (9196 jobs)."
+        "Build completed successfully (9197 jobs)."
       ]
     },
     {
@@ -69,18 +69,18 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 131.897,
+      "duration_sec": 94.452,
       "output_tail": [
-        "UNIFICATION_AXIOM_AUDIT modules=49 constants=5097 theorems=2195 defs=2395 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
+        "UNIFICATION_AXIOM_AUDIT modules=50 constants=5329 theorems=2280 defs=2517 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
       ]
     },
     {
       "name": "physics_unification_verification",
-      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round17-irx-w17/physics/unification/run_verification.py --check",
+      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round18-irx-w18/physics/unification/run_verification.py --check",
       "cwd": ".",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 343.172,
+      "duration_sec": 373.338,
       "output_tail": [
         "PASS: philosophy_v31_omega_bridge (P-PHIL31-OMEGA-01, P-PHIL31-REALIZ-02, P-PHIL31-LAKATOS-03)",
         "PASS: lorentzian_causal_qg_limit P-LORENTZ-QG-07",

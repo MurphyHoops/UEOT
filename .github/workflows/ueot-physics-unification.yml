@@ -23,7 +23,7 @@ concurrency:
 jobs:
   intervals-and-holdouts:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     env:
       OPENBLAS_NUM_THREADS: "1"
       OMP_NUM_THREADS: "1"
@@ -52,7 +52,7 @@ jobs:
 
   lean-unification:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
     defaults:
       run:
         working-directory: formalization/ueot-physics-unification
@@ -85,6 +85,14 @@ jobs:
         with:
           path: formalization/ueot-physics-unification/.lake/packages
           key: ${{ steps.deps.outputs.cache-primary-key }}
+      - name: Restore upstream Core + QM Lean build cache
+        id: upstream_build
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            formalization/ueot-core/.lake/build
+            formalization/ueot-qm/.lake/build
+          key: ueot-unif-core-qm-build-${{ runner.os }}-${{ hashFiles('formalization/ueot-core/UEOT/**', 'formalization/ueot-core/UEOT.lean', 'formalization/ueot-core/lakefile.lean', 'formalization/ueot-core/lake-manifest.json', 'formalization/ueot-core/lean-toolchain', 'formalization/ueot-qm/UEOTQM/**', 'formalization/ueot-qm/UEOTQM.lean', 'formalization/ueot-qm/lakefile.lean', 'formalization/ueot-qm/lake-manifest.json', 'formalization/ueot-qm/lean-toolchain', 'formalization/ueot-physics-unification/lake-manifest.json', 'formalization/ueot-physics-unification/lean-toolchain') }}
       - name: Reject syntactic proof escapes (comment-aware)
         run: python3 scripts/check_no_escapes.py
       - name: Build UEOTPhysicsUnification
@@ -92,6 +100,14 @@ jobs:
         run: |
           set -o pipefail
           lake build UEOTPhysicsUnification 2>&1 | tee lean-build.log
+      - name: Save upstream Core + QM Lean build cache
+        if: steps.upstream_build.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            formalization/ueot-core/.lake/build
+            formalization/ueot-qm/.lake/build
+          key: ${{ steps.upstream_build.outputs.cache-primary-key }}
       - name: Run exhaustive pure-kernel axiom audit
         shell: bash
         run: |
