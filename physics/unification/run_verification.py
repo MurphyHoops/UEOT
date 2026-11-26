@@ -214,6 +214,7 @@ def main() -> int:
             "UEOTPhysicsUnification.IRXWave11PostQuarticCurvedAndMidCoupling",
             "UEOTPhysicsUnification.IRXWave12MidCouplingMartingaleFlowAndFisher",
             "UEOTPhysicsUnification.IRXWave13Zone3aCurvedResolventMidCouplingAndStrongHK",
+            "UEOTPhysicsUnification.IRXWave14ScoreNoiseIntertwiningRadauAndQuotient",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
