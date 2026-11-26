@@ -6141,6 +6141,123 @@
     "zone2_3_multiscale_open": true,
     "zone3a_curved_all_u_open": true
   },
+  "h2d_round13_wave13_zone3a_midcoupling_and_stronghk": {
+    "chiral_x_status": "OPEN",
+    "device_certified": false,
+    "epistemic_tag": "[C/B/P] Pure-Arithmetic Wave 13 Zone3a, MidCoupling CSX-06, Global SD & StrongHK Certifier",
+    "h2d_status": "OPEN",
+    "hard_blocking_L6_exponent": [
+      "9.61718388983",
+      "9.61718388984"
+    ],
+    "interval_checks_passed": 37,
+    "irx_status": "OPEN",
+    "iv_dps": 40,
+    "litmus6": [
+      "5.38342058241",
+      "5.38342058242"
+    ],
+    "mp_dps": 60,
+    "noBulkTransition": "OPEN",
+    "physical_unification": "OPEN",
+    "uv_x_status": "OPEN",
+    "verdict": "PARTIAL_NEW_LEMMA",
+    "w13_1_zone3a": {
+      "L6_Stag01_55d_bnd_allU_ub": [
+        "0.625568952983",
+        "0.625568952984"
+      ],
+      "L8_Stag01_55d_bnd_allU_ub": [
+        "0.645799869709",
+        "0.64579986971"
+      ],
+      "M32_R6_qt_ratio_lb": [
+        "15.892244",
+        "15.892245"
+      ],
+      "Q0_realspace_hermitian": true,
+      "ims_vs_a3_headroom_ok": true
+    },
+    "w13_2_csx06_and_bloch": {
+      "J2_curved_Uc58_pi16": [
+        "4.759819986",
+        "4.759819987"
+      ],
+      "J2_flat_UI_pi16": [
+        "1.938560551",
+        "1.938560552"
+      ],
+      "Uc58_15_6_60d_H_over_beta_lb": "0.40",
+      "Uc58_49_8_60d_H_over_beta_lb": "0.73",
+      "Uc58_49_9_5_0d_min_eig_over_beta": [
+        "-0.3886110007",
+        "-0.3886110006"
+      ],
+      "Uc58_min_cos_half": [
+        "0.874619707139",
+        "0.87461970714"
+      ],
+      "beta_poly_4D_1e": [
+        "42.353867128724",
+        "42.353867128725"
+      ],
+      "beta_poly_5D_1e": [
+        "49.630565680035",
+        "49.630565680036"
+      ],
+      "z_hinge_4D": 161,
+      "z_hinge_5D": 317
+    },
+    "w13_3_hk_and_betaraw": {
+      "5D_HK_match_beta": [
+        "1.512671295",
+        "1.512671296"
+      ],
+      "R2R1_beta_raw": "12/11",
+      "R2R1_wF_pi3": "5/16",
+      "beta_KP_HK_bracket": [
+        "1.688224",
+        "1.688225"
+      ]
+    },
+    "w13_4_sd_global_concavity": {
+      "lattice_4_4_links": 1024,
+      "max_gpp_on_0_576_ub": [
+        "-0.0001844207044",
+        "-0.00001129643744"
+      ],
+      "su5_c2": "12/5"
+    },
+    "w13_6_hk_strong_coupling": {
+      "beta_1L_TV_HK_bracket": [
+        "0.3507487",
+        "0.3507488"
+      ],
+      "beta_SC_uncond_Vinf_HK_bracket": [
+        "0.37665",
+        "0.37675"
+      ],
+      "block_ds_sensitivities": [
+        "3",
+        "23/7",
+        "149/45",
+        "15/4",
+        "31/7"
+      ],
+      "cube_overlaps_4D": [
+        19,
+        79
+      ],
+      "cube_overlaps_5D": [
+        31,
+        187
+      ],
+      "stack_dfs_M_sup_ub": [
+        "12.7849322",
+        "12.78493221"
+      ]
+    }
+  },
   "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean",
   "lean_theorems": [
     "UEOTPhysicsUnification.NonAbelianLatticeMassGapAndChiralIntegrabilityH2.wilson_plaquette_transfer_positivity_and_strong_coupling_area_law",
@@ -6235,7 +6352,7 @@
     "C-H2-OPER-04"
   ],
   "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
-  "source_sha256": "349a7e227799caf6cf968478c90e0103183ad8e238aa019a005bc991cd97912a",
+  "source_sha256": "c1556f29326ad359eca062648d93aab68a0bfa37ae22ecf21c98295450f08f51",
   "status": "PASS",
   "wilson_transfer_and_symanzik": {
     "q8_strong_coupling_transfer": {
