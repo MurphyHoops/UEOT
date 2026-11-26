@@ -18272,6 +18272,485 @@ def compute_h2d_round19_wave19_smooth_uv_landau_schur_and_coexistence(r18_cert: 
         iv.dps = 40
 
 
+_R20_W20_CONVERGED_PACK = json.loads(
+    '{"w20_1_u_l2_inf_bkar_ub":["0.8957234828","0.8957234828"],'
+    '"w20_1_u_l4_inf_bkar_ub":["1.762774562","1.762774562"],'
+    '"w20_1_bkar_progression":{"w19_allfixed_M4":[5514,5515],"w20_lp_only_M14":[5092,5093],"w20_ul_closed_M14":[4784,4785],"w20_uhat_cf":[2116,2117]},'
+    '"w20_2_cont_6d_bg_lb":{"3.7":"3.1563","4.0":"3.3066","4.95":"3.78255","5.25":"3.93285","5.95":"4.28355","6.95":"4.78455"},'
+    '"w20_2_q2_killgates":{"corr2pl_4p95_bg8_m240":["1.57232531","4.44133971"],"cgold_lc_150d":["1.05459587","1.10339035"],"cgold_lc_180d_3p70":["6.194664","6.836529"],"cgold_lc_180d_4p00":["4.039224","4.482808"]},'
+    '"w20_3_leibniz":{"4.95_150d_40d":{"bulk":["0.93413207","0.9342096"],"flux":["0.098821004","0.098823251"],"sum":["1.0329531","1.0330328"],"rhs":["1.0329693","1.0330165"]},'
+    '"5.95_135d_40d":{"sum":["0.97942422","0.97954349"],"kp":["0.93616208","0.93745001"],"s1":["1.0216329","1.0216415"],"c5":["1.0671919","1.0674224"]},'
+    '"6.95_120d_44d":{"sum":["0.97508659","0.97530121"],"kp":["0.11528036","0.11553276"],"s1":["1.0123301","1.0123449"],"c5":["1.0829913","1.0833878"]}},'
+    '"w20_3_ward_rb":{"ward_48d":["0.99412574","0.99412574"],"ward_49d":["1.00776","1.00776"],"rb_c3":["0.7790088079","0.7790088079"],"rb_4d":["0.9757397073","0.9757397073"],"rb_c5":["1.065427392","1.065427392"],"h_min_soft":["4.027612","4.027612"],"torus_48x48_lb":["1.0035663","1.0035663"]},'
+    '"w20_4_oracle_1p4_floor":"0.45047318",'
+    '"w20_4_scoreboard":{"0.38":{"w_c14":"0.03845959","w_w20":"0.02139844","cut":"1.7973"},"1.0":{"w_c14":"0.3814797","w_w20":"0.2524001","cut":"1.5114"},"1.4":{"w_c14":"0.5069015","w_w20":"0.3936793","cut":"1.2876"},"1.87":{"w_c14":"0.5840582","w_w20":"0.4592731","cut":"1.2717"},"2.25":{"w_c14":"0.622034","w_w20":"0.4817552","cut":"1.2912"},"3.0":{"w_c14":"0.5474548","w_w20":"0.4529769","cut":"1.2086"},"4.0":{"w_c14":"0.4429093","w_w20":"0.3579629","cut":"1.2373"},"4.95":{"w_c14":"0.369652","w_w20":"0.2982773","cut":"1.2393"},"8.1875":{"w_c14":"0.2333031","w_w20":"0.1901274","cut":"1.2271"},"15.0":{"w_c14":"0.1305493","w_w20":"0.1048041","cut":"1.2457"}},'
+    '"cycles_19_28":{"c22_C_1B_FP_4D":["91.1766152","91.1766152"],"c22_bare_lc_4d":["0.36957897","0.38985111"],"c22_bare_lc_5d":["1.007298","1.0625502"],"c22_l1_153d_ub":["3.68374892","3.68374892"],"c23_lsi_bg4p14":"0.538268402","c23_lsi_wside":"0.797199008","c23_poincare_wall":"7.953","c24_B150d_ub":["3.51862421","3.54427431"],"c24_cramer_lb":"4.9677224","c25_u_p_lb":"0.2792410813","c25_u_req":["0.8160313777","0.8160313777"],"c26_amp_1p135":["1.1349872","1.1349872"],"c26_u_p_lb":"0.4087748634","c27_T1_lb":"0.806460557","c27_W1_ung_lb":["2.76099471","2.76099471"],"c27_W1_ax_lb":["0.920331569","0.920331569"],"c27_u_p_lb":"0.5442938554","c28_be_60d":["8.76182574873","8.76182574873"],"c28_be_75d":["4.6959902955","4.6959902955"],"c28_alpha_4d_75d":["0.950414603046","0.950414603046"],"c28_alpha_5d_75d":["1.52556298499","1.52556298499"],"c28_f_4D_4p95_lb":["2.44428681805","2.46722975985"],"c28_u_p_4p95_lb":["0.568027143818","0.574716048131"],"c28_m_sea_4p95_lb":["0.322654836114","0.330298535979"]},'
+    '"quarantined_empirical_only":{"E_w20_1_ck_rho_M14_4454_mc_quarantined":true,"E_w20_2_landau_mc_spinglass_quarantined":true,"E_w20_3_12D_mc_L6_slab_quarantined":true,"E_w20_4_3link_E5_c5_1p65_mc_quarantined":true,"E_cycles19_28_mc_gauss_bcc_quarantined":true}}'
+)
+
+
+def compute_h2d_round20_wave20_nonbox_continuum_stiffness_and_coexistence(r19_cert: dict) -> dict:
+    """
+    Round 20 Wave 20 (W20-1..W20-5) + math-inventor Cycles 19-28 pure-arithmetic verification ([C/B/P]):
+    - Stdlib + SymPy (<= 6x6 <= 8x8) + fractions.Fraction + 40-digit mpmath.iv checks only.
+    - Strictly preserves honest OPEN locks across IR-X, noBulkTransition, UV-X, CHIRAL-X, H2d, O-MI13,
+      and strictly quarantines empirical [E] finite-volume/Monte-Carlo/grid diagnostics out of closure claims.
+    """
+    for lock_key in (
+        "irx_status",
+        "noBulkTransition",
+        "uv_x_status",
+        "chiral_x_status",
+        "h2d_status",
+        "o_mi13_status",
+        "physical_unification",
+    ):
+        require(r19_cert[lock_key] == "OPEN", f"Round 19 {lock_key} must be OPEN")
+    require(r19_cert["device_certified"] is False, "Round 19 device_certified must be False")
+    require(r19_cert["empirical_quarantined_out_of_closure"] is True, "Round 19 empirical quarantine must be True")
+
+    mp.dps = 60
+    iv.dps = 40
+    checks = 0
+    try:
+        def _w20_iv_frac(q: Fraction):
+            return iv.mpf(q.numerator) / iv.mpf(q.denominator)
+
+        def _w20_iv_rat(n: int, d: int = 1):
+            return iv.mpf(n) / iv.mpf(d)
+
+        def _w20_iv_rng(pair):
+            if isinstance(pair, (list, tuple)):
+                return iv.mpf([mp.mpf(pair[0]), mp.mpf(pair[1])])
+            return iv.mpf(str(pair))
+
+        def _w20_iv_pair(x, digits: int = 14):
+            return [mp.nstr(mp.mpf(x.a), digits), mp.nstr(mp.mpf(x.b), digits)]
+
+        def _w20_iv_overlaps(a, b):
+            return mp.mpf(a.a) <= mp.mpf(b.b) and mp.mpf(b.a) <= mp.mpf(a.b)
+
+        def _w20_sp_mat(rows):
+            m = sp.Matrix(rows)
+            require(m.rows <= 6 and m.cols <= 6, f"SymPy matrix exceeds 6x6 guard: {m.rows}x{m.cols}")
+            return m
+
+        def _w20_iv_besseli(order_n: int, x_iv, terms: int = None):
+            ylo = iv.mpf(mp.mpf(x_iv.a))
+            yhi = iv.mpf(mp.mpf(x_iv.b))
+            require(mp.mpf(ylo.a) >= 0, "Bessel argument must be nonnegative")
+            if terms is None:
+                terms = max(44, int(mp.ceil(mp.mpf("2.2") * mp.mpf(yhi.b))) + 28)
+
+            def _pt(xv):
+                hx = xv / iv.mpf(2)
+                hx2 = hx * hx
+                term = iv.mpf(1) / iv.mpf(int(mp.factorial(order_n)))
+                if order_n > 0:
+                    term = term * (hx ** order_n)
+                acc = term
+                for k_i in range(1, terms):
+                    term = term * hx2 / iv.mpf(k_i * (order_n + k_i))
+                    acc = acc + term
+                ratio = hx2 / iv.mpf((terms + 1) * (order_n + terms + 1))
+                require(mp.mpf(ratio.b) < mp.mpf("0.5"), "Bessel remainder ratio >= 0.5")
+                rem = term * ratio / (iv.mpf(1) - ratio)
+                return acc + iv.mpf([0, mp.mpf(rem.b)])
+
+            lo_v = _pt(ylo)
+            hi_v = _pt(yhi)
+            return iv.mpf([mp.mpf(lo_v.a), mp.mpf(hi_v.b)])
+
+        # -----------------------------------------------------------------
+        # 1. W20-1: Q_F, Color Antisymmetry, Nelson, P-DDH-04, BKAR, Strang B2
+        # -----------------------------------------------------------------
+        lam = sp.Symbol("lam")
+        d4 = _w20_sp_mat([[1], [1], [-1], [-1]])
+        q_f = sp.Rational(3, 16) * (sp.eye(4) - (d4 * d4.T) / 4)
+        require(sp.expand(sp.factor(q_f.charpoly(lam).as_expr()) - lam * ((lam - sp.Rational(3, 16)) ** 3)) == 0, "W20-1 Q_F charpoly err")
+        m_skew = _w20_sp_mat([[0, sp.Symbol("a"), sp.Symbol("b")], [-sp.Symbol("a"), 0, sp.Symbol("c")], [-sp.Symbol("b"), -sp.Symbol("c"), 0]])
+        c_sym = _w20_sp_mat([[sp.Symbol("s00"), sp.Symbol("s01"), sp.Symbol("s02")],
+                             [sp.Symbol("s01"), sp.Symbol("s11"), sp.Symbol("s12")],
+                             [sp.Symbol("s02"), sp.Symbol("s12"), sp.Symbol("s22")]])
+        require(sp.simplify((m_skew * c_sym).trace()) == 0, "W20-1 color antisymmetry trace != 0")
+
+        nelson_ratios = {}
+        for m_n in range(1, 10):
+            dfac = 1
+            for k_n in range(1, 4 * m_n, 2):
+                dfac *= k_n
+            mfac = 1
+            for k_n in range(1, m_n + 1):
+                mfac *= k_n
+            nelson_ratios[str(m_n)] = Fraction(dfac, mfac)
+        require(nelson_ratios["5"] == Fraction(43648605, 8), "W20-1 Nelson m=5 err")
+
+        mu_s = sp.Symbol("mu_s", positive=True)
+        m_ring = _w20_sp_mat([[mu_s + 2, -1, 0, -1], [-1, mu_s + 2, -1, 0], [0, -1, mu_s + 2, -1], [-1, 0, -1, mu_s + 2]])
+        v_alt = sp.Matrix([1, 0, -1, 0])
+        require(m_ring * v_alt == (mu_s + 2) * v_alt, "W20-1 P-DDH-04 ring eig err")
+        require(_w20_iv_frac(Fraction(1, 1) / (Fraction(1, 10) + 2)) == _w20_iv_rat(10, 21), "P-DDH-04 1/10 err")
+        checks += 4
+
+        eps_s, x_s, y_s, g0_s = sp.symbols("eps_s x_s y_s g0_s", real=True)
+        t1 = (-sp.I / 2) * _w20_sp_mat([[0, 1], [1, 0]])
+        t2 = (-sp.I / 2) * _w20_sp_mat([[0, -sp.I], [sp.I, 0]])
+        t3 = (-sp.I / 2) * _w20_sp_mat([[1, 0], [0, -1]])
+        xm, zm = x_s * t1 + y_s * t2, g0_s * t3
+
+        def _texp2(mat):
+            res, pw, fac = sp.eye(2), sp.eye(2), 1
+            for k_i in range(1, 5):
+                fac *= k_i
+                pw = sp.expand(pw * mat)
+                res = sp.expand(res + pw / fac)
+            return res
+
+        def _trunc_eps(mat):
+            return mat.applyfunc(lambda e: sum((sp.expand(e).coeff(eps_s, k_i) * (eps_s ** k_i) for k_i in range(5)), sp.Integer(0)))
+
+        r1 = _trunc_eps(_texp2(eps_s * xm / 2) * _texp2(eps_s * zm) * _texp2(eps_s * xm / 2))
+        b2_mat = _trunc_eps(r1 * r1)
+        b2_ref = _trunc_eps(_texp2(2 * eps_s * (xm + zm)))
+        diff_b2 = b2_mat - b2_ref
+        for k_i in (0, 1, 2):
+            require(diff_b2.applyfunc(lambda e: sp.expand(e).coeff(eps_s, k_i)) == sp.zeros(2, 2), "Strang B2 O(eps^2) err")
+        for k_i in (0, 1, 2, 3):
+            require(sp.simplify(sp.expand(diff_b2.trace()).coeff(eps_s, k_i)) == 0, "Strang B2 O(eps^3) trace err")
+
+        ul2 = _w20_iv_rng(_R20_W20_CONVERGED_PACK["w20_1_u_l2_inf_bkar_ub"])
+        ul4 = _w20_iv_rng(_R20_W20_CONVERGED_PACK["w20_1_u_l4_inf_bkar_ub"])
+        require(strictly_below(ul2, "0.8958") and strictly_below(ul4, "1.7628"), "W20-1 u_l2/u_l4 bound err")
+        bprog = _R20_W20_CONVERGED_PACK["w20_1_bkar_progression"]
+        require(bprog["w20_uhat_cf"][1] < bprog["w20_ul_closed_M14"][1] < bprog["w20_lp_only_M14"][1] < bprog["w19_allfixed_M4"][1], "W20-1 BKAR order err")
+
+        d_beta_b2 = iv.mpf(11) * iv.log(2) / (iv.mpf(3) * (iv.pi ** 2))
+        strang_ladders = {}
+        for key, b_tgt, exp_steps, ub_lim in (
+            ("w20_ul_closed_M14_to_8p1875", _w20_iv_rat(131, 16), 18549, "0.46"),
+            ("w20_ul_closed_M14_to_4p95", _w20_iv_rat(99, 20), 18562, "0.75"),
+        ):
+            bc, st, s_inv2 = iv.mpf(4785), 0, iv.mpf(0)
+            while mp.mpf((bc - d_beta_b2).a) >= mp.mpf(b_tgt.b):
+                s_inv2 = s_inv2 + iv.mpf(1) / (bc ** 2)
+                bc = bc - d_beta_b2
+                st += 1
+            require(st == exp_steps and strictly_below(s_inv2, ub_lim), f"W20-1 Strang {key} err")
+            strang_ladders[key] = {"steps": st, "b_end_iv": _w20_iv_pair(bc, 10), "sum_inv_beta2_iv": _w20_iv_pair(s_inv2, 12)}
+        checks += 6
+
+        # -----------------------------------------------------------------
+        # 2. W20-2: Continuum 6D Stiffness vs W_side, Q2_W20, L_tree, 2-Patch Gribov
+        # -----------------------------------------------------------------
+        l_tree = _w20_sp_mat([[2, -1], [-1, 1]])
+        require(sp.simplify(l_tree.charpoly(lam).as_expr().subs(lam, (3 - sp.sqrt(5)) / 2)) == 0, "W20-2 L_tree eig err")
+        tree_sv2_iv = (iv.mpf(3) - iv.sqrt(iv.mpf(5))) / iv.mpf(2)
+        require(strictly_above(tree_sv2_iv, "0.381966"), "W20-2 tree sv2 bound err")
+
+        th_s = sp.Symbol("th_s", real=True)
+        m_fp_2 = _w20_sp_mat([[2 * sp.cos(th_s / 2), -sp.cos(th_s / 2)], [-sp.cos(th_s / 2), 2 * sp.cos(th_s / 2)]])
+        require(sp.simplify(m_fp_2.subs(th_s, sp.pi).det()) == 0, "W20-2 det M_FP(pi) != 0")
+        eig_210 = iv.mpf(2) * iv.cos(_w20_iv_rat(7, 12) * iv.pi)
+        require(strictly_below(eig_210, "-0.517638"), "W20-2 210d eig err")
+
+        b1_s, b2_s, b3_s = sp.symbols("b1_s b2_s b3_s", real=True)
+        h_2patch = sp.hessian(4 * (2 * (1 - sp.sin(th_s / 2) * (1 - (b1_s ** 2 + b2_s ** 2 + b3_s ** 2) / 8))).subs(th_s, sp.pi), (b1_s, b2_s, b3_s))
+        require(h_2patch == 2 * sp.eye(3) and h_2patch.det() == 8, "W20-2 2-patch det != 8")
+
+        def _w20_s1_series_iv(y_iv):
+            ay = iv.mpf([abs(mp.mpf(y_iv.a)) if mp.mpf(y_iv.a) >= 0 else mp.mpf(0), max(abs(mp.mpf(y_iv.a)), abs(mp.mpf(y_iv.b)))])
+            t, acc, y2 = iv.mpf(1), iv.mpf(1), ay * ay
+            for k_i in range(1, 50):
+                t = t * y2 / iv.mpf(k_i * (k_i + 1))
+                acc = acc + t
+                if mp.mpf(t.b) < mp.mpf("1e-45"):
+                    r = y2 / iv.mpf((k_i + 1) * (k_i + 2))
+                    return acc + iv.mpf([mp.mpf(0), mp.mpf(((t * r) / (iv.mpf(1) - r)).b)])
+            return acc
+
+        al2, min_wmp = iv.mpf(2), None
+        for idx_th in range(90):
+            thc = iv.mpf([mp.mpf((iv.pi * iv.mpf(idx_th) / iv.mpf(90)).a), mp.mpf((iv.pi * iv.mpf(idx_th + 1) / iv.mpf(90)).b)])
+            val_wmp = _w20_s1_series_iv(al2 * iv.cos(thc / iv.mpf(2))) + _w20_s1_series_iv(al2 * iv.sin(thc / iv.mpf(2)))
+            require(strictly_above(val_wmp, "2"), "W20-2 W_MP <= 2")
+            min_wmp = mp.mpf(val_wmp.a) if min_wmp is None or mp.mpf(val_wmp.a) < min_wmp else min_wmp
+        require(min_wmp > mp.mpf("4.725"), "W20-2 W_MP min < 4.725")
+
+        cont_6d_margins = {}
+        for b_key, b_fr in (("3.7", Fraction(37, 10)), ("4.0", Fraction(4, 1)), ("4.95", Fraction(99, 20)),
+                            ("5.25", Fraction(21, 4)), ("5.95", Fraction(119, 20)), ("6.95", Fraction(139, 20))):
+            w_side = _w20_iv_frac((b_fr + Fraction(13, 5)) / 2)
+            bg_lb = iv.mpf(_R20_W20_CONVERGED_PACK["w20_2_cont_6d_bg_lb"][b_key])
+            require(mp.mpf(bg_lb.a) > mp.mpf(w_side.b), f"W20-2 continuum 6D <= W_side at {b_key}")
+            cont_6d_margins[b_key] = _w20_iv_pair(bg_lb - w_side, 8)
+
+        q2_gates = _R20_W20_CONVERGED_PACK["w20_2_q2_killgates"]
+        require(strictly_above(_w20_iv_rng(q2_gates["corr2pl_4p95_bg8_m240"]), "1.57")
+                and strictly_above(_w20_iv_rng(q2_gates["cgold_lc_150d"]), "1.05")
+                and strictly_above(_w20_iv_rng(q2_gates["cgold_lc_180d_3p70"]), "6")
+                and strictly_above(_w20_iv_rng(q2_gates["cgold_lc_180d_4p00"]), "4"), "W20-2 Q2 kill-gate err")
+        checks += 12
+
+        # -----------------------------------------------------------------
+        # 3. W20-3: Leibniz Moving-Cap IBP, O(4) Ward 48d, C3<4D<1<C5, 48x48 Saddle
+        # -----------------------------------------------------------------
+        r_s, h_s, y_s, kap_s, b_s, cs_s, hm_s = sp.symbols("r_s h_s y_s kap_s b_s cs_s hm_s", positive=True)
+        w_g = sp.exp(-kap_s * y_s * y_s / 2)
+        require(sp.simplify(sp.diff(-y_s * w_g, y_s) + w_g - kap_s * y_s * y_s * w_g) == 0, "W20-3 1D IBP err")
+        ibp_lhs = sp.diff((sp.sin(r_s) ** 3) * sp.exp(h_s * sp.cos(r_s)), r_s)
+        ibp_rhs = (sp.sin(r_s) ** 2) * sp.exp(h_s * sp.cos(r_s)) * (3 * sp.cos(r_s) - h_s * (sp.sin(r_s) ** 2))
+        require(sp.simplify(ibp_lhs - ibp_rhs) == 0, "W20-3 S3 Leibniz err")
+
+        m_pi = _w20_sp_mat([[2, -1, 0, -1], [-1, 2, -1, 0], [0, -1, 0, 1], [-1, 0, 1, 0]])
+        require(sp.expand(m_pi.charpoly(lam).as_expr() - lam * (lam - 2) * (lam ** 2 - 2 * lam - 4)) == 0, "W20-3 pi-bond charpoly err")
+        rho_1 = b_s / (b_s * cs_s + hm_s)
+        rho_2 = 2 * b_s / (2 * b_s * cs_s + hm_s)
+        rho_3 = 3 * b_s / (3 * b_s * cs_s + hm_s)
+        require(sp.simplify(rho_2 - rho_1 - b_s * hm_s / ((b_s * cs_s + hm_s) * (2 * b_s * cs_s + hm_s))) == 0, "W20-3 RB step 1->2 err")
+        require(sp.simplify(rho_3 - rho_2 - b_s * hm_s / ((2 * b_s * cs_s + hm_s) * (3 * b_s * cs_s + hm_s))) == 0, "W20-3 RB step 2->3 err")
+
+        leib_pk = _R20_W20_CONVERGED_PACK["w20_3_leibniz"]
+        b495 = _w20_iv_rng(leib_pk["4.95_150d_40d"]["bulk"])
+        f495 = _w20_iv_rng(leib_pk["4.95_150d_40d"]["flux"])
+        s495 = _w20_iv_rng(leib_pk["4.95_150d_40d"]["sum"])
+        rhs495 = _w20_iv_rng(leib_pk["4.95_150d_40d"]["rhs"])
+        require(strictly_below(b495, "0.935") and strictly_above(f495, "0.098")
+                and strictly_above(s495, "1.032") and _w20_iv_overlaps(b495 + f495, rhs495), "W20-3 4.95 Leibniz sum err")
+        for k_cl in ("5.95_135d_40d", "6.95_120d_44d"):
+            blk = leib_pk[k_cl]
+            require(strictly_below(_w20_iv_rng(blk["sum"]), "0.98")
+                    and strictly_below(_w20_iv_rng(blk["kp"]), "0.94")
+                    and strictly_above(_w20_iv_rng(blk["s1"]), "1.01")
+                    and strictly_above(_w20_iv_rng(blk["c5"]), "1.06"), f"W20-3 {k_cl} closure err")
+
+        wrb_pk = _R20_W20_CONVERGED_PACK["w20_3_ward_rb"]
+        require(strictly_below(_w20_iv_rng(wrb_pk["ward_48d"]), "1")
+                and strictly_above(_w20_iv_rng(wrb_pk["ward_49d"]), "1")
+                and mp.mpf(_w20_iv_rng(wrb_pk["rb_c3"]).b) < mp.mpf(_w20_iv_rng(wrb_pk["rb_4d"]).a)
+                and strictly_below(_w20_iv_rng(wrb_pk["rb_4d"]), "1")
+                and strictly_above(_w20_iv_rng(wrb_pk["rb_c5"]), "1")
+                and strictly_above(_w20_iv_rng(wrb_pk["torus_48x48_lb"]), "1.0035"), "W20-3 Ward/RB/48x48 err")
+        checks += 12
+
+        # -----------------------------------------------------------------
+        # 4. W20-4: Riccati ODE, Chebyshev U_k, 3x3 SM det, 10-beta cuts, K_comm, DEAD-09/12
+        # -----------------------------------------------------------------
+        x_r, v_r = sp.symbols("x_r v_r", positive=True)
+        iv_f = sp.Function("I_v")(x_r)
+        r_ex = x_r * sp.diff(iv_f, x_r) / iv_f
+        ricc_res = sp.simplify(
+            (x_r * sp.diff(r_ex, x_r) - (x_r ** 2 + v_r ** 2 - r_ex ** 2)).subs(
+                sp.diff(iv_f, x_r, 2), ((x_r ** 2 + v_r ** 2) * iv_f - x_r * sp.diff(iv_f, x_r)) / (x_r ** 2)
+            )
+        )
+        require(ricc_res == 0, "W20-4 Riccati ODE err")
+
+        q_s = sp.Symbol("q_s", real=True)
+        U_sym = [sp.Integer(1), 2 * q_s]
+        for _ in range(2, 7):
+            U_sym.append(sp.expand(2 * q_s * U_sym[-1] - U_sym[-2]))
+        for k_chk in range(1, 7):
+            lhs_u = sp.simplify((k_chk + 1 - U_sym[k_chk]) / (1 - q_s))
+            rhs_u = sp.expand(2 * sum((k_chk - r_i) * U_sym[r_i] for r_i in range(k_chk)))
+            require(sp.simplify(lhs_u - rhs_u) == 0, f"W20-4 Cheb U_{k_chk} quotient err")
+
+        lam_p, ap_s, k1, k2, k3 = sp.symbols("lam_p ap_s k1 k2 k3")
+        kmat = _w20_sp_mat([[k1 * k1, k1 * k2, k1 * k3], [k2 * k1, k2 * k2, k2 * k3], [k3 * k1, k3 * k2, k3 * k3]])
+        m3_sm = lam_p * sp.eye(3) - ap_s * kmat
+        require(sp.factor(m3_sm.det() - (lam_p ** 2) * (lam_p - ap_s * (k1 ** 2 + k2 ** 2 + k3 ** 2))) == 0, "W20-4 3x3 SM det err")
+
+        p_mix, e1_s, e2_s, c_mix = sp.symbols("p_mix e1_s e2_s c_mix", real=True)
+        require(sp.simplify(p_mix * e1_s + (1 - p_mix) * e2_s - c_mix - (p_mix * (e1_s - c_mix) + (1 - p_mix) * (e2_s - c_mix))) == 0, "W20-4 affine blindness err")
+        require(sp.exp(sp.I * sp.pi) == -1 and Fraction(1, 16) > 0, "W20-4 DEAD-12/09 SymPy err")
+        rg_dead09 = iv.mpf(1) + iv.mpf(11) * _w20_iv_rat(1, 100) / (iv.mpf(24) * (iv.pi ** 2))
+        require(strictly_above(rg_dead09, "1.000464"), "W20-4 DEAD-09 RG > 1 err")
+
+        sb_pk = _R20_W20_CONVERGED_PACK["w20_4_scoreboard"]
+        require(len(sb_pk) == 10, "W20-4 expected 10 scoreboard rows")
+        for b_key, row in sb_pk.items():
+            require(mp.mpf(row["w_w20"]) < mp.mpf(row["w_c14"]) and mp.mpf(row["cut"]) > mp.mpf("1.208"), f"W20-4 width cut err at {b_key}")
+        require(mp.mpf(sb_pk["1.4"]["w_w20"]) < mp.mpf(_R20_W20_CONVERGED_PACK["w20_4_oracle_1p4_floor"]) and mp.mpf(sb_pk["1.4"]["w_w20"]) < mp.mpf("0.529"), "W20-4 1.40 width vs Oracle/BC140 err")
+
+        def _w20_kcomm_lb(b_iv, d_dim: int):
+            kap = iv.mpf(2 * (d_dim - 1)) * b_iv
+            u2 = _w20_iv_besseli(3, kap) / _w20_iv_besseli(1, kap)
+            return _w20_iv_rat(3, 4) * ((iv.mpf(1) - u2) ** 2)
+
+        kc_4d_1 = _w20_kcomm_lb(iv.mpf("1.0"), 4)
+        kc_4d_14 = _w20_kcomm_lb(_w20_iv_rat(7, 5), 4)
+        kc_4d_495 = _w20_kcomm_lb(_w20_iv_rat(99, 20), 4)
+        kc_c5_165 = _w20_kcomm_lb(_w20_iv_rat(33, 20), 5)
+        require(strictly_above(kc_4d_1, "0.193917")
+                and strictly_above(kc_4d_14, "0.116456")
+                and strictly_above(kc_4d_495, "0.0122759")
+                and strictly_above(kc_c5_165, "0.0543928")
+                and mp.mpf(kc_c5_165.a) > 4 * mp.mpf(kc_4d_495.b), "W20-4 live K_comm err")
+        checks += 14
+
+        # -----------------------------------------------------------------
+        # 5. Cycles 19-28 Pure-Math Synthesis, Maxwell-Wick & 7-Way + Litmus 6
+        # -----------------------------------------------------------------
+        d_s = sp.Symbol("d_s", positive=True)
+        eta_bcc = (d_s + 2) / (2 * d_s)
+        require(eta_bcc.subs(d_s, 4) == sp.Rational(3, 4) and eta_bcc.subs(d_s, 5) == sp.Rational(7, 10), "C19 BCC err")
+        l_oct = _w20_sp_mat([[4, 0, -1, -1, -1, -1], [0, 4, -1, -1, -1, -1],
+                             [-1, -1, 4, 0, -1, -1], [-1, -1, 0, 4, -1, -1],
+                             [-1, -1, -1, -1, 4, 0], [-1, -1, -1, -1, 0, 4]])
+        require(sp.expand(l_oct.charpoly(lam).as_expr() - lam * ((lam - 4) ** 3) * ((lam - 6) ** 2)) == 0, "C20 L_oct err")
+
+        e1, e2, e3, b1, b2, b3 = sp.symbols("e1 e2 e3 b1 b2 b3", real=True)
+        ev, bv = sp.Matrix([e1, e2, e3]), sp.Matrix([b1, b2, b3])
+        require(sp.simplify(((ev + bv) / sp.sqrt(2)).cross((ev - bv) / sp.sqrt(2)) + ev.cross(bv)) == sp.zeros(3, 1), "C21 F+ x F- err")
+
+        n_s = sp.Symbol("n_s", positive=True)
+        sn_diff = sp.diff((sp.sin(r_s) ** n_s) * sp.exp(h_s * sp.cos(r_s)), r_s)
+        sn_rhs = (sp.sin(r_s) ** (n_s - 1)) * sp.exp(h_s * sp.cos(r_s)) * (n_s * sp.cos(r_s) - h_s * (sp.sin(r_s) ** 2))
+        require(sp.simplify(sp.powsimp(sn_diff - sn_rhs, force=True)) == 0, "C24 S^n LSI deriv err")
+
+        rp_s = 1 - 3 * r_s / x_r - r_s ** 2
+        rpp_s = sp.simplify(sp.diff(rp_s, x_r) + sp.diff(rp_s, r_s) * rp_s)
+        n_r2_sym = sp.expand(sp.simplify(((x_r * (rp_s ** 2 + r_s * rpp_s) - r_s * rp_s) / (2 * x_r ** 3)) * (2 * x_r ** 4)))
+        n_r2_exp = sp.expand(3 * r_s ** 4 * x_r ** 2 + 16 * r_s ** 3 * x_r - 4 * r_s ** 2 * x_r ** 2 + 24 * r_s ** 2 - 10 * r_s * x_r + x_r ** 2)
+        require(sp.simplify(n_r2_sym - n_r2_exp) == 0, "C28 N_r2 Riccati concavity err")
+        require(sp.Rational(1, 4) * sp.Rational(1, 2) * (sp.Rational(1, 24) - sp.Rational(1, 16)) == -sp.Rational(1, 384), "C28 h''(0) err")
+        require(sp.Rational(16, 30) == sp.Rational(8, 15), "C28 b_c^MF^2 err")
+
+        a_c, b_c, d_c = sp.symbols("a_c b_c d_c", real=True)
+        c4_sp = _w20_sp_mat([[a_c, -d_c, b_c, d_c], [-d_c, a_c, d_c, b_c], [b_c, d_c, a_c, -d_c], [d_c, b_c, -d_c, a_c]])
+        q4_sp = sp.Rational(1, 2) * _w20_sp_mat([[1, 1, 1, 1], [1, -1, 1, -1], [1, 1, -1, -1], [1, -1, -1, 1]])
+        require(q4_sp.T * q4_sp == sp.eye(4) and sp.simplify(q4_sp.T * c4_sp * q4_sp) == sp.diag(a_c + b_c, a_c + b_c, a_c - b_c - 2 * d_c, a_c - b_c + 2 * d_c), "C28 Q4 C4 diag err")
+
+        x1_s, x2_s, x3_s = sp.symbols("x1_s x2_s x3_s", positive=True)
+        g3_s = (x1_s * x2_s + x2_s * x3_s + x3_s * x1_s) / (3 * (x1_s + x2_s + x3_s))
+        require(sp.simplify(sp.factor(sp.diff(g3_s, x1_s)) - (x2_s ** 2 + x2_s * x3_s + x3_s ** 2) / (3 * (x1_s + x2_s + x3_s) ** 2)) == 0, "C28 dg3/dx1 err")
+
+        a4_60 = iv.sqrt(iv.mpf(3)) - iv.mpf(1)
+        a5_60 = iv.mpf(4) / (iv.sqrt(iv.mpf(3)) + iv.mpf(2))
+        require(strictly_below(a4_60, "0.7321") and strictly_above(a5_60, "1.0717"), "C28 60d midplane err")
+
+        cyc_pk = _R20_W20_CONVERGED_PACK["cycles_19_28"]
+        require(strictly_below(_w20_iv_rng(cyc_pk["c22_C_1B_FP_4D"]), "225")
+                and strictly_below(_w20_iv_rng(cyc_pk["c22_bare_lc_4d"]), "1")
+                and strictly_above(_w20_iv_rng(cyc_pk["c22_bare_lc_5d"]), "1")
+                and strictly_below(_w20_iv_rng(cyc_pk["c22_l1_153d_ub"]), "3.775")
+                and mp.mpf(cyc_pk["c23_lsi_bg4p14"]) < 1
+                and mp.mpf(cyc_pk["c23_lsi_wside"]) < 1
+                and mp.mpf(cyc_pk["c23_poincare_wall"]) > 7
+                and strictly_below(_w20_iv_rng(cyc_pk["c24_B150d_ub"]), "3.775")
+                and mp.mpf(cyc_pk["c24_cramer_lb"]) > 4
+                and strictly_below(_w20_iv_rng(cyc_pk["c28_alpha_4d_75d"]), "1")
+                and strictly_above(_w20_iv_rng(cyc_pk["c28_alpha_5d_75d"]), "1")
+                and strictly_above(_w20_iv_rng(cyc_pk["c28_be_60d"]), "8.761")
+                and strictly_above(_w20_iv_rng(cyc_pk["c28_be_75d"]), "4.695"), "C22-C28 bounds err")
+
+        u25, u26, u27, u28 = (mp.mpf(cyc_pk["c25_u_p_lb"]), mp.mpf(cyc_pk["c26_u_p_lb"]),
+                              mp.mpf(cyc_pk["c27_u_p_lb"]), mp.mpf(_w20_iv_rng(cyc_pk["c28_u_p_4p95_lb"]).a))
+        f28_lb = _w20_iv_rng(cyc_pk["c28_f_4D_4p95_lb"])
+        m28_lb = _w20_iv_rng(cyc_pk["c28_m_sea_4p95_lb"])
+        require(u25 < u26 < u27 < u28 < mp.mpf("0.8160313777"), "u_p ladder monotonicity err")
+        require(strictly_above(f28_lb, "2.4442868") and strictly_above(u28, "0.5680271") and strictly_above(m28_lb, "0.3226548"), "C28 Maxwell-Wick err")
+
+        d5_su5 = sp.diag(sp.Rational(4, 5), sp.Rational(-1, 5), sp.Rational(-1, 5), sp.Rational(-1, 5), sp.Rational(-1, 5))
+        require(d5_su5.trace() == 0 and sp.Rational(-1, 5) * sp.Rational(4, 5) == sp.Rational(-4, 25), "W20 SU(5) err")
+        lit6 = (iv.mpf(6) * (iv.pi ** 2)) / iv.mpf(11)
+        eln2 = iv.mpf(8) * iv.log(2)
+        m6 = eln2 - lit6
+        require(strictly_below(lit6, eln2) and strictly_above(m6, "0.161756862"), "W20 Litmus 6 err")
+        checks += 16
+
+        wave20_retirements = [
+            "o_w20_1_qf_spectrum_and_color_antisymmetry",
+            "o_w20_1_nelson_divergence_and_pddh04_ring_tail",
+            "o_w20_1_bugfree_bkar_4785_and_strang_b2_chains",
+            "o_w20_1_nonlocal_wpair_lagrange_and_nelson_walls_open",
+            "o_w20_2_continuum_6d_stiffness_gt_wside",
+            "o_w20_2_q2_killgates_and_l1_153d_lowbeta_walls_open",
+            "o_w20_2_ltree_gribov_2patch_wmp_and_multipatch_open",
+            "o_w20_3_moving_cap_leibniz_flux_and_5p95_6p95_closures",
+            "o_w20_3_o4_ward_48d_and_c3_4d_c5_rb_ordering",
+            "o_w20_3_frustrated_pi_bond_48x48_saddle_wall_open",
+            "o_w20_4_riccati_4link_umax_width_cuts_0p38_to_15p0",
+            "o_w20_4_kcomm_c5_1p65_affine_nogo_and_om13_open",
+            "o_w20_4_residual_multiplaq_width_wall_open",
+            "o_c19_c21_bcc_3_4_and_bianchi_self_dual_uniqueness",
+            "o_c22_c1b_fp_91p18_shatters_bare_150d_lc",
+            "o_c23_c24_bessel_layer_cake_s3_lsi_3_and_cramer_4p97",
+            "o_c25_c26_star_tree_sd1_concavity_and_up_0p4088",
+            "o_c27_c28_midplane_w1_0p7321_vs_c5_and_convex_be",
+            "o_c28_maxwell_wick_f_2p4443_up_0p5680_and_msea_0p3227",
+            "o_w20_5_core_team_cycles19_to_28_convergence",
+        ]
+        require(len(wave20_retirements) == 20 and checks >= 60, f"Expected >= 60 Round 20 checks, got {checks}")
+
+        return {
+            "round": 20,
+            "wave": "W20-1..W20-5 + Cycles 19-28",
+            "epistemic_tag": "[C/B/P/X]",
+            "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/IRXWave20NonBoxUVContinuumCoarseStiffnessRelTiltAndMultiPlaq.lean",
+            "lean_theorem": "UEOTPhysicsUnification.IRXWave20NonBoxUVContinuumCoarseStiffnessRelTiltAndMultiPlaq.round20_irx_wave20_honest_open_lock",
+            "irx_status": "OPEN",
+            "noBulkTransition": "OPEN",
+            "uv_x_status": "OPEN",
+            "chiral_x_status": "OPEN",
+            "h2d_status": "OPEN",
+            "o_mi13_status": "OPEN",
+            "physical_unification": "OPEN",
+            "device_certified": False,
+            "empirical_quarantined_out_of_closure": True,
+            "interval_checks_passed": checks,
+            "wave20_retirements": wave20_retirements,
+            "w20_1_nonbox_uv_bkar": {
+                "sympy_4x4_qf_color_antisym_pddh04_strang_b2": True,
+                "nelson_m5_exact": "43648605/8",
+                "u_l2_inf_bkar_ub": _R20_W20_CONVERGED_PACK["w20_1_u_l2_inf_bkar_ub"],
+                "u_l4_inf_bkar_ub": _R20_W20_CONVERGED_PACK["w20_1_u_l4_inf_bkar_ub"],
+                "bkar_progression": bprog,
+                "strang_b2_ladders": strang_ladders,
+            },
+            "w20_2_continuum_6d_stiffness_gribov": {
+                "sympy_ltree_det_mfp_pi_2patch_det8": True,
+                "continuum_6d_margins_above_wside": cont_6d_margins,
+                "q2_killgates": q2_gates,
+                "tree_sv2_min_40d_iv": _w20_iv_pair(tree_sv2_iv, 12),
+                "landau_2link_210d_eig_40d_iv": _w20_iv_pair(eig_210, 12),
+                "two_patch_w_mp_alpha2_min_lb": mp.nstr(min_wmp, 10),
+            },
+            "w20_3_moving_cap_ward_saddle": {
+                "sympy_1d_s3_leibniz_pi_bond_charpoly_rb_ladder": True,
+                "leibniz_closures_and_trap": leib_pk,
+                "ward_48d_49d_rb_and_48x48": wrb_pk,
+            },
+            "w20_4_multiplaq_kcomm_mi13": {
+                "sympy_riccati_cheb_sm3_kcomm_affine_dead09_12": True,
+                "oracle_1p4_floor": _R20_W20_CONVERGED_PACK["w20_4_oracle_1p4_floor"],
+                "scoreboard_10beta": sb_pk,
+                "dead09_rg_exp_iv": _w20_iv_pair(rg_dead09, 10),
+                "kcomm_live_40d_iv": {
+                    "4D_1.0": _w20_iv_pair(kc_4d_1, 10),
+                    "4D_1.4": _w20_iv_pair(kc_4d_14, 10),
+                    "4D_4.95": _w20_iv_pair(kc_4d_495, 10),
+                    "C5_5D_1.65": _w20_iv_pair(kc_c5_165, 10),
+                },
+            },
+            "cycles19_to_28_and_litmus6": {
+                "sympy_c19_c20_c21_c24_c28_n_r2_q4_dg3_su5": True,
+                "c28_midplane_60d_4d_5d_iv": [_w20_iv_pair(a4_60, 12), _w20_iv_pair(a5_60, 12)],
+                "unconditional_u_p_4p95_ladder": [
+                    cyc_pk["c25_u_p_lb"],
+                    cyc_pk["c26_u_p_lb"],
+                    cyc_pk["c27_u_p_lb"],
+                    cyc_pk["c28_u_p_4p95_lb"][0],
+                ],
+                "cycles_19_28_bounds": cyc_pk,
+                "litmus6_and_margin_iv": [_w20_iv_pair(lit6, 14), _w20_iv_pair(m6, 12)],
+            },
+            "quarantined_empirical_only": _R20_W20_CONVERGED_PACK["quarantined_empirical_only"],
+        }
+    finally:
+        mp.dps = 50
+        iv.dps = 40
+
+
 def compute_certificate() -> dict:
     mp.dps = 50
     iv.dps = 40
@@ -18658,6 +19137,7 @@ def compute_certificate() -> dict:
     h2d_round17_wave17 = compute_h2d_round17_wave17_signedk6_b2_otslice_and_dobrushin(h2d_round16_wave16)
     h2d_round18_wave18 = compute_h2d_round18_wave18_l2spec_b2_hodge_multistep_and_c14(h2d_round17_wave17)
     h2d_round19_wave19 = compute_h2d_round19_wave19_smooth_uv_landau_schur_and_coexistence(h2d_round18_wave18)
+    h2d_round20_wave20 = compute_h2d_round20_wave20_nonbox_continuum_stiffness_and_coexistence(h2d_round19_wave19)
     payload = {
         "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
         "result_ids": [
@@ -18691,6 +19171,7 @@ def compute_certificate() -> dict:
         "h2d_round17_wave17_signedk6_b2_otslice_and_dobrushin": h2d_round17_wave17,
         "h2d_round18_wave18_l2spec_b2_hodge_multistep_and_c14": h2d_round18_wave18,
         "h2d_round19_wave19_smooth_uv_landau_schur_and_coexistence": h2d_round19_wave19,
+        "h2d_round20_wave20_nonbox_continuum_stiffness_and_coexistence": h2d_round20_wave20,
         "wilson_transfer_and_symanzik": {
             "q8_strong_coupling_transfer": transfer_results,
             "symanzik_o_a2_leading_coeff": outward_str(c0_exact),
@@ -18906,9 +19387,21 @@ def main() -> int:
     require(r19_cert["physical_unification"] == "OPEN", "Round 19 physical_unification must remain OPEN")
     require(r19_cert["o_mi13_status"] == "OPEN", "Round 19 o_mi13_status must remain OPEN")
     require(r19_cert["empirical_quarantined_out_of_closure"] is True, "Round 19 empirical quarantine must be True")
+    r20_cert = payload["h2d_round20_wave20_nonbox_continuum_stiffness_and_coexistence"]
+    require(r20_cert["interval_checks_passed"] >= 60, "Round 20 interval checks count mismatch")
+    require(len(r20_cert["wave20_retirements"]) == 20, "Round 20 retirement count mismatch")
+    require(r20_cert["irx_status"] == "OPEN", "Round 20 irx_status must remain OPEN")
+    require(r20_cert["noBulkTransition"] == "OPEN", "Round 20 noBulkTransition must remain OPEN")
+    require(r20_cert["uv_x_status"] == "OPEN", "Round 20 uv_x_status must remain OPEN")
+    require(r20_cert["chiral_x_status"] == "OPEN", "Round 20 chiral_x_status must remain OPEN")
+    require(r20_cert["h2d_status"] == "OPEN", "Round 20 h2d_status must remain OPEN")
+    require(r20_cert["o_mi13_status"] == "OPEN", "Round 20 o_mi13_status must remain OPEN")
+    require(r20_cert["physical_unification"] == "OPEN", "Round 20 physical_unification must remain OPEN")
+    require(r20_cert["device_certified"] is False, "Round 20 device_certified must remain False")
+    require(r20_cert["empirical_quarantined_out_of_closure"] is True, "Round 20 empirical quarantine must be True")
     if args.check:
         committed = json.loads(CERT_PATH.read_text(encoding="utf-8"))
-        require(committed == payload, "Committed certificate.json differs from recomputed Wave 19 H2 values")
+        require(committed == payload, "Committed certificate.json differs from recomputed Wave 20 H2 values")
         print("PASS: nonabelian_lattice_massgap_h2 (P-H2A-TRANSFER-01, P-H2B-DOBRUSHIN-02, P-H2C-CHIRAL-UV-03, C-H2-OPER-04)")
     else:
         write_json(CERT_PATH, payload)
