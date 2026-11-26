@@ -6258,6 +6258,145 @@
       ]
     }
   },
+  "h2d_round14_wave14_score_noise_radau_and_quotient": {
+    "chiral_x_status": "OPEN",
+    "device_certified": false,
+    "h2d_status": "OPEN",
+    "interval_checks_passed": 29,
+    "irx_status": "OPEN",
+    "lean_module": "UEOTPhysicsUnification.IRXWave14ScoreNoiseIntertwiningRadauAndQuotient",
+    "lean_theorem": "UEOTPhysicsUnification.IRXWave14ScoreNoiseIntertwiningRadauAndQuotient.round14_irx_wave14_honest_open_lock",
+    "litmus6": [
+      "5.38342058241",
+      "5.38342058242"
+    ],
+    "noBulkTransition": "OPEN",
+    "physical_unification": "OPEN",
+    "schema": "ueot-physics-unification-irx-wave14/1",
+    "uv_x_status": "OPEN",
+    "w14_1_intertwining_and_hinge": {
+      "ds_4d_58": [
+        "0.227766116284",
+        "0.227766116285"
+      ],
+      "ds_5d_58": [
+        "0.278959027996",
+        "0.278959027997"
+      ],
+      "hinge_4d": {
+        "cap": 32,
+        "core": 4,
+        "interior": 0,
+        "links": 36,
+        "plaq": 21,
+        "verts": 20,
+        "z_hinge_incl": 161,
+        "z_link_excl": 20
+      },
+      "hinge_5d": {
+        "cap": 48,
+        "core": 4,
+        "interior": 0,
+        "links": 52,
+        "plaq": 31,
+        "verts": 28,
+        "z_hinge_incl": 317,
+        "z_link_excl": 28
+      },
+      "kp_4d_161e2_5pct_contains_36_to_38p5": true,
+      "kp_4d_161e2_zvac6b_72p055_to_72p056": true,
+      "metric_rescale_tautology_exact": true
+    },
+    "w14_2_radau_and_vinf": {
+      "radau_t4_3state_a2": [
+        "0.00018858712753",
+        "0.000188587127531"
+      ],
+      "radau_t4_glue3_a2": [
+        "0.000114043505776",
+        "0.000114043505777"
+      ],
+      "scalar_and_2x2_radau_t2_exact": true,
+      "su5_casimir": "12/5",
+      "temporal_t1_t2_disjoint_shared_plaq": 0
+    },
+    "w14_3_spatial_hk_and_score_noise": {
+      "bare_s3_hk_fisher_187": [
+        "0.6396905806",
+        "0.7896512653"
+      ],
+      "bare_s3_hk_fisher_195": [
+        "0.7452603783",
+        "0.788304868"
+      ],
+      "bare_s3_hk_fisher_250": [
+        "0.9370271012",
+        "1.464632266"
+      ],
+      "noise_trap_gamma_crit": [
+        "0.8923696147",
+        "0.8923696148"
+      ],
+      "repaired_corner_beta_raw": "17/10",
+      "repaired_link_fisher_crit": "1083/1360",
+      "ring_1x1_4d_b1p60_gap": [
+        "4.257816843",
+        "4.257816844"
+      ],
+      "ring_1x1_5d_b1p60_gap": [
+        "4.281376621",
+        "4.281376622"
+      ],
+      "u_pi0_pi3_6staple": "9/8"
+    },
+    "w14_4_tomboulis_and_quotient": {
+      "b2_warped_charpoly": "(310472*lam_cp - 1149069)*(89415936*lam_cp**2 - 470045272*lam_cp + 608446475)/27761144481792",
+      "c1_L64_spectral_gap": [
+        "0.009630546655",
+        "0.009630546656"
+      ],
+      "kovacs_slack_L2_L4_L8": [
+        [
+          "10.3565546",
+          "10.35655461"
+        ],
+        [
+          "165.7048737",
+          "165.7048738"
+        ],
+        [
+          "2651.277979",
+          "2651.27798"
+        ]
+      ],
+      "rstar_deriv_gap": [
+        "0.161756862",
+        "0.1617568621"
+      ],
+      "su5_golden_root_exact": true
+    },
+    "wave14_retirements": [
+      "O-W14.1-AsymptoticFreedomSofteningObstacle",
+      "O-W14.1-LogContinuumCollapse",
+      "O-W14.1-JensenCasimirPositivity",
+      "O-W14.1-MetricRescaleTautology",
+      "O-W14.1-HingeZeroInterior",
+      "O-W14.1-HaarKPGapTo1Link",
+      "O-W14.2-MarkovKreinRadauNoGo",
+      "O-W14.2-ConvexCoexistencePlateau",
+      "O-W14.3-ScoreDeficitFactor4Slip",
+      "O-W14.3-ThermalScoreNoiseTrap",
+      "O-W14.3-UVModeDestruction",
+      "O-W14.3-TubeVsSlab",
+      "O-W14.3-ComplexBetaTruncationAndExponentialHilbertScaling",
+      "O-W14.3-FiniteCrossSectionPerronGap",
+      "O-W14.4-HKFractionalOSRP",
+      "O-W14.4-RStarDerivativeGap",
+      "O-W14.4-TomboulisKovacsSlack",
+      "O-W14.4-ExtensiveBetaZeeman",
+      "O-W14.4-QuotientStratum"
+    ]
+  },
   "lean_module": "formalization/ueot-physics-unification/UEOTPhysicsUnification/NonAbelianLatticeMassGapAndChiralIntegrabilityH2.lean",
   "lean_theorems": [
     "UEOTPhysicsUnification.NonAbelianLatticeMassGapAndChiralIntegrabilityH2.wilson_plaquette_transfer_positivity_and_strong_coupling_area_law",
@@ -6352,7 +6491,7 @@
     "C-H2-OPER-04"
   ],
   "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
-  "source_sha256": "c1556f29326ad359eca062648d93aab68a0bfa37ae22ecf21c98295450f08f51",
+  "source_sha256": "5aed3b81d4a762ea01ab915506c789217d43cbfe1547951f4564a1b3c0edac3a",
   "status": "PASS",
   "wilson_transfer_and_symanzik": {
     "q8_strong_coupling_transfer": {
