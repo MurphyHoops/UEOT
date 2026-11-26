@@ -220,6 +220,7 @@ def main() -> int:
             "UEOTPhysicsUnification.IRXWave17SignedK6PairedB2OTSliceAndDobrushin",
             "UEOTPhysicsUnification.IRXWave18L2SpecNonGaussB2HodgeWallAndMultiStepDobrushin",
             "UEOTPhysicsUnification.IRXWave19SmoothUVLandauZSchurPeelAndCorrelatedCoexistence",
+            "UEOTPhysicsUnification.IRXWave20NonBoxUVContinuumCoarseStiffnessRelTiltAndMultiPlaq",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
