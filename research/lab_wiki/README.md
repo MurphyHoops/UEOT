@@ -16,6 +16,7 @@
 | [OPEN_SPECS.md](OPEN_SPECS.md) | **开放规格清单**：直接对齐 `main` 当前未闭合前沿（如 Wave 10 `H1d4`）的 Lean 签名、数值阈值与证伪标准 | 协调者 / 探索 Agent |
 | [VERIFIED_LEMMAS.md](VERIFIED_LEMMAS.md) | **已验证引理库**：仅收录通过 `gatekeeper.py` 的 Lean 4 引理与数值证书 | 仅限门禁通过后追加 |
 | [DEAD_ENDS.md](DEAD_ENDS.md) | **死胡同与反例库**：被证伪、发散、或隐含额外公设的路线（只追加，不删除） | 所有 Agent / 红队审稿 |
+| [EXTERNAL_LANDSCAPE.md](EXTERNAL_LANDSCAPE.md) | **外部前沿与可复用备忘（只读参考）**：记录 OpenAI 4D YM 存在性 Lean 4 发布、学界审计进展与未来 UEOT 复用准入门禁（严禁未经复核直接晋升） | 协调者 / 前沿调研 |
 | [MEETING_MINUTES/TEMPLATE.md](MEETING_MINUTES/TEMPLATE.md) | **组会纪要模板**：每轮多智能体交叉质询与任务重分配的标准记录格式 | 组会主持人（Chair） |
 | [gatekeeper.py](gatekeeper.py) | **自动门禁检查入口**：一键校验 Wiki 规范、Lean 依赖、无逃逸扫描、内核公理审计与数值验证 | CI / 所有 Agent |
 
