@@ -1,7 +1,7 @@
 {
   "schema": "ueot.lab_wiki.gate_receipt.v1",
-  "timestamp_utc": "2026-11-27T02:58:51Z",
-  "git_head": "e871d526",
+  "timestamp_utc": "2026-11-27T04:34:06Z",
+  "git_head": "05a3b223",
   "mode": "full",
   "overall_status": "PASS",
   "checks": [
@@ -10,9 +10,9 @@
       "status": "PASS",
       "duration_sec": 0.009,
       "stats": {
-        "open_specs": 23,
-        "verified_lemmas": 138,
-        "dead_ends": 109
+        "open_specs": 24,
+        "verified_lemmas": 146,
+        "dead_ends": 115
       },
       "errors": []
     },
@@ -22,7 +22,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.021,
+      "duration_sec": 0.022,
       "output_tail": [
         "PASS: exact Core + QM toolchain and dependency revisions inherited"
       ]
@@ -33,7 +33,7 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 0.233,
+      "duration_sec": 0.232,
       "output_tail": [
         "PASS: zero syntactic proof escapes in UEOTPhysicsUnification"
       ]
@@ -44,23 +44,23 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 5.707,
+      "duration_sec": 6.545,
       "output_tail": [
-        "⚠ [9180/9201] Replayed UEOTQM.QuantumTraceDistance",
+        "⚠ [9180/9202] Replayed UEOTQM.QuantumTraceDistance",
         "warning: UEOTQM/QuantumTraceDistance.lean:165:0: automatically included section variable(s) unused in theorem `UEOTQM.QuantumTraceDistance.difference_parts_mass_eq`:",
         "  [DecidableEq ι]",
         "consider restructuring your `variable` declarations so that the variables are not in scope or explicitly omit them:",
         "  omit [DecidableEq ι] in theorem ...",
         "",
         "Note: This linter can be disabled with `set_option linter.unusedSectionVars false`",
-        "ℹ [9194/9201] Replayed UEOTPhysicsUnification.IRXWave17SignedK6PairedB2OTSliceAndDobrushin",
+        "ℹ [9194/9202] Replayed UEOTPhysicsUnification.IRXWave17SignedK6PairedB2OTSliceAndDobrushin",
         "info: UEOTPhysicsUnification/IRXWave17SignedK6PairedB2OTSliceAndDobrushin.lean:378:4: Try this:",
         "  [apply] ring_nf",
         "  ",
         "  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.",
         "    ",
         "  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.",
-        "Build completed successfully (9201 jobs)."
+        "Build completed successfully (9202 jobs)."
       ]
     },
     {
@@ -69,18 +69,18 @@
       "cwd": "formalization/ueot-physics-unification",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 97.495,
+      "duration_sec": 195.954,
       "output_tail": [
-        "UNIFICATION_AXIOM_AUDIT modules=54 constants=6147 theorems=2614 defs=2901 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
+        "UNIFICATION_AXIOM_AUDIT modules=55 constants=6275 theorems=2644 defs=2974 axiomDecls=0 opaque=0 unsafe=0 nonstandard_users=0 sorryAx_users=0"
       ]
     },
     {
       "name": "physics_unification_verification",
-      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round22-irx-w22/physics/unification/run_verification.py --check",
+      "command": "/Users/murphyhoops/Documents/ChatGPT/UEOTCORE/.venv-ueot/bin/python -B /Users/murphyhoops/Documents/ChatGPT/UEOTCORE/wt-round23-irx-w23/physics/unification/run_verification.py --check",
       "cwd": ".",
       "status": "PASS",
       "returncode": 0,
-      "duration_sec": 404.152,
+      "duration_sec": 464.101,
       "output_tail": [
         "PASS: philosophy_v31_omega_bridge (P-PHIL31-OMEGA-01, P-PHIL31-REALIZ-02, P-PHIL31-LAKATOS-03)",
         "PASS: lorentzian_causal_qg_limit P-LORENTZ-QG-07",
