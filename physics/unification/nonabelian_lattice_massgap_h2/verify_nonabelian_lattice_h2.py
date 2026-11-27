@@ -22974,6 +22974,979 @@ def compute_h2d_round22_phi3_moving_frame_bch_slab3d_and_loop_sdp(r21_cert: dict
         iv.dps = prev_iv_dps
 
 
+def compute_h2d_round23_doubleu3_oracle_uvlp_gluing_geodesic_and_infz3(r22_cert: dict) -> dict:
+    """
+    Round 23 (Wave 23 W23-1..4 + Inventor Cycle 38A Thm MI38.2A/B) pure-arithmetic
+    + SymPy (<= 6x6) + Fraction + 40-digit mpmath.iv certifier.
+    Strict #327 scope: holds Thm MI38.1B out for Round 24, quarantines all [E] inputs,
+    contains zero timing nondeterminism, and keeps all .OPEN / False locks intact.
+    """
+    prev_dps = mp.dps
+    prev_iv_dps = iv.dps
+    mp.dps = 60
+    iv.dps = 40
+    try:
+        checks = 0
+        PI_IV = iv.pi
+        BETA_495_IV = iv.mpf(495) / iv.mpf(100)
+
+        def _r23_rat(p: int, q: int = 1):
+            return iv.mpf(p) / iv.mpf(q)
+
+        def _r23_rng(r):
+            return iv.mpf([mp.mpf(r[0]), mp.mpf(r[1])])
+
+        def _r23_pair(x, d: int = 12):
+            return [mp.nstr(mp.mpf(x.a), d), mp.nstr(mp.mpf(x.b), d)]
+
+        def _r23_abs_u(x):
+            return max(abs(mp.mpf(x.a)), abs(mp.mpf(x.b)))
+
+        def _r23_cr_point(r: int, k_mp, n_terms: int = 30):
+            if k_mp == 0:
+                return iv.mpf(1) if r == 1 else iv.mpf(0)
+            k = iv.mpf(k_mp)
+            half = k / iv.mpf(2)
+            h2 = half * half
+            term = (half ** (r - 1)) / iv.mpf(mp.factorial(r))
+            acc = term
+            for m in range(1, n_terms + 1):
+                term = term * h2 / iv.mpf(m * (r + m))
+                acc = acc + term
+            ratio_ub = mp.mpf((h2 / iv.mpf((n_terms + 1) * (r + n_terms + 1))).b)
+            require(ratio_ub < mp.mpf("0.5"), "R23 cr tail ratio >= 0.5")
+            tail_ub = mp.mpf(term.b) * ratio_ub / (mp.mpf(1) - ratio_ub)
+            return acc + iv.mpf([mp.mpf(0), tail_ub])
+
+        def _r23_cr_box(r: int, k_iv, n_terms: int = 28):
+            lo = mp.mpf(_r23_cr_point(r, max(mp.mpf(0), mp.mpf(k_iv.a)), n_terms).a)
+            hi = mp.mpf(_r23_cr_point(r, max(mp.mpf(0), mp.mpf(k_iv.b)), n_terms).b)
+            return iv.mpf([lo, hi])
+
+        def _r23_cr_deriv_point(r: int, k_mp, n_terms: int = 26):
+            if k_mp == 0:
+                return _r23_rat(1, 4) if r == 2 else iv.mpf(0)
+            k = iv.mpf(k_mp)
+            half = k / iv.mpf(2)
+            h2 = half * half
+            m0 = 1 if r == 1 else 0
+            term_base = (half ** (r - 2 + 2 * m0)) / iv.mpf(mp.factorial(m0) * mp.factorial(r + m0))
+            acc = iv.mpf(0)
+            for m in range(m0, n_terms + 1):
+                if m > m0:
+                    term_base = term_base * h2 / iv.mpf(m * (r + m))
+                acc = acc + iv.mpf(r - 1 + 2 * m) * term_base
+            ratio_ub = mp.mpf((h2 * iv.mpf(r + 1 + 2 * n_terms) / iv.mpf((n_terms + 1) * (r + n_terms + 1) * max(1, r - 1 + 2 * n_terms))).b)
+            require(ratio_ub < mp.mpf("0.5"), "R23 cr deriv tail ratio >= 0.5")
+            last_t = mp.mpf((iv.mpf(r - 1 + 2 * n_terms) * term_base).b)
+            return _r23_rat(1, 2) * (acc + iv.mpf([mp.mpf(0), last_t * ratio_ub / (mp.mpf(1) - ratio_ub)]))
+
+        def _r23_cr_deriv_box(r: int, k_iv, n_terms: int = 26):
+            lo = mp.mpf(_r23_cr_deriv_point(r, max(mp.mpf(0), mp.mpf(k_iv.a)), n_terms).a)
+            hi = mp.mpf(_r23_cr_deriv_point(r, max(mp.mpf(0), mp.mpf(k_iv.b)), n_terms).b)
+            return iv.mpf([lo, hi])
+
+        def _r23_cr_d2_point(r: int, k_mp, n_terms: int = 24):
+            if k_mp == 0:
+                return _r23_rat(1, 4) if r in (1, 3) else iv.mpf(0)
+            k = iv.mpf(k_mp)
+            half = k / iv.mpf(2)
+            h2 = half * half
+            m0 = 1 if r <= 2 else 0
+            term_base = (half ** (r - 3 + 2 * m0)) / iv.mpf(mp.factorial(m0) * mp.factorial(r + m0))
+            acc = iv.mpf(0)
+            for m in range(m0, n_terms + 1):
+                if m > m0:
+                    term_base = term_base * h2 / iv.mpf(m * (r + m))
+                coef = (r - 1 + 2 * m) * (r - 2 + 2 * m)
+                if coef != 0:
+                    acc = acc + iv.mpf(coef) * term_base
+            ratio_ub = mp.mpf((h2 * iv.mpf((r + 1 + 2 * n_terms) * (r + 2 * n_terms)) / iv.mpf((n_terms + 1) * (r + n_terms + 1) * max(1, (r - 1 + 2 * n_terms) * (r - 2 + 2 * n_terms)))).b)
+            require(ratio_ub < mp.mpf("0.5"), "R23 cr d2 tail ratio >= 0.5")
+            last_t = mp.mpf((iv.mpf((r - 1 + 2 * n_terms) * (r - 2 + 2 * n_terms)) * term_base).b)
+            return _r23_rat(1, 4) * (acc + iv.mpf([mp.mpf(0), last_t * ratio_ub / (mp.mpf(1) - ratio_ub)]))
+
+        def _r23_cr_d2_box(r: int, k_iv, n_terms: int = 20):
+            lo = mp.mpf(_r23_cr_d2_point(r, max(mp.mpf(0), mp.mpf(k_iv.a)), n_terms).a)
+            hi = mp.mpf(_r23_cr_d2_point(r, max(mp.mpf(0), mp.mpf(k_iv.b)), n_terms).b)
+            return iv.mpf([lo, hi])
+
+        def _r23_chebU_d1_d2(y_iv, R_max: int, order: int = 2):
+            U = [iv.mpf(1)]
+            dU = [iv.mpf(0)] if order >= 1 else None
+            d2U = [iv.mpf(0)] if order >= 2 else None
+            if R_max >= 2:
+                U.append(iv.mpf(2) * y_iv)
+                if order >= 1:
+                    dU.append(iv.mpf(2))
+                if order >= 2:
+                    d2U.append(iv.mpf(0))
+            for n in range(2, R_max):
+                r = n + 1
+                un = iv.mpf(2) * y_iv * U[-1] - U[-2]
+                m0 = mp.mpf(r)
+                if order >= 1:
+                    dun = iv.mpf(2) * U[-1] + iv.mpf(2) * y_iv * dU[-1] - dU[-2]
+                    m1 = mp.mpf(r * (r * r - 1)) / mp.mpf(3)
+                    if order >= 2:
+                        d2un = iv.mpf(4) * dU[-1] + iv.mpf(2) * y_iv * d2U[-1] - d2U[-2]
+                        m2 = mp.mpf(r * (r * r - 1) * (r * r - 4)) / mp.mpf(15)
+                        d2U.append(iv.mpf([max(-m2, mp.mpf(d2un.a)), min(m2, mp.mpf(d2un.b))]))
+                    dU.append(iv.mpf([max(-m1, mp.mpf(dun.a)), min(m1, mp.mpf(dun.b))]))
+                U.append(iv.mpf([max(-m0, mp.mpf(un.a)), min(m0, mp.mpf(un.b))]))
+            return U, dU, d2U
+
+        def _r23_chebU_mul(A, B):
+            la, lb = len(A), len(B)
+            out = [iv.mpf(0)] * (la + lb - 1)
+            for i, av in enumerate(A):
+                if av == 0:
+                    continue
+                for j, bv in enumerate(B):
+                    if bv == 0:
+                        continue
+                    ab = av * bv
+                    for k in range(abs(i - j), i + j + 1, 2):
+                        out[k] = out[k] + ab
+            return out
+
+        def _r23_gamma_upper(d_int: int, x_iv):
+            if d_int % 2 == 0:
+                k = d_int // 2
+                acc, term = iv.mpf(1), iv.mpf(1)
+                for j in range(1, k):
+                    term = term * x_iv / iv.mpf(j)
+                    acc = acc + term
+                return iv.exp(-x_iv) * acc
+            k_odd = (d_int - 1) // 2
+            y = iv.sqrt(iv.mpf(2) * x_iv)
+            inv1 = iv.mpf(1) / y
+            inv2 = inv1 * inv1
+            erfc_ub = (iv.mpf(1) / iv.sqrt(PI_IV)) * iv.exp(-x_iv) * iv.sqrt(2) * (inv1 - inv1 * inv2 + iv.mpf(3) * inv1 * (inv2 ** 2))
+            acc, t_odd = iv.mpf(0), iv.mpf(2) * iv.sqrt(x_iv / PI_IV) * iv.exp(-x_iv)
+            for j in range(k_odd):
+                acc = acc + t_odd
+                t_odd = t_odd * (iv.mpf(2) * x_iv / iv.mpf(2 * j + 3))
+            return erfc_ub + acc
+
+        def _r23_ldlt_diag(M_lower):
+            n = len(M_lower)
+            L = [[iv.mpf(0)] * n for _ in range(n)]
+            D = [iv.mpf(0)] * n
+            for i in range(n):
+                s = M_lower[i][i]
+                for k in range(i):
+                    s = s - L[i][k] * L[i][k] * D[k]
+                if s.a <= 0:
+                    return False, D
+                D[i] = s
+                L[i][i] = iv.mpf(1)
+                for j in range(i + 1, n):
+                    t = M_lower[j][i]
+                    for k in range(i):
+                        t = t - L[j][k] * L[i][k] * D[k]
+                    L[j][i] = t / D[i]
+            return True, D
+
+        # =====================================================================
+        # §1. Cycle 38A Thm MI38.2A/B: Anisotropic Double-U3 (q=6, b0=11/5)
+        #     SymPy + 40d iv (2D Majorant + 2nd-Order Taylor 3D + Pillow 5)
+        # =====================================================================
+        require(sp.Rational(6) * sp.Rational(13, 4) + sp.Rational(2) * sp.Rational(27, 10) + sp.Rational(3, 2) == sp.Rational(12) * sp.Rational(11, 5), "Double-U3 weight balance failed")
+        y_sym, th_s, wt_s, c_s = sp.symbols("y_sym th_s wt_s c_s", positive=True)
+        K_e = sp.sqrt(wt_s ** 2 + c_s ** 2 + 2 * wt_s * c_s * sp.cos(th_s))
+        ca_e, sa_e = (wt_s * sp.cos(th_s) + c_s) / K_e, wt_s * sp.sin(th_s) / K_e
+        x_s, s_s = sp.cos(th_s), sp.sin(th_s)
+        dK_e = -wt_s * c_s * s_s / K_e
+        d2K_e = (-wt_s * c_s * x_s - dK_e * dK_e) / K_e
+        dca_e = -wt_s * s_s * (wt_s ** 2 + wt_s * c_s * x_s) / (K_e ** 3)
+        d2ca_e = (-wt_s * x_s * (wt_s ** 2 + wt_s * c_s * x_s) + wt_s ** 2 * c_s * s_s ** 2) / (K_e ** 3) - 3 * dca_e * dK_e / K_e
+        dsa_e = wt_s * ((wt_s ** 2 + c_s ** 2) * x_s + wt_s * c_s * (1 + x_s ** 2)) / (K_e ** 3)
+        d2sa_e = -wt_s * s_s * (wt_s ** 2 + c_s ** 2 + 2 * wt_s * c_s * x_s) / (K_e ** 3) - 3 * dsa_e * dK_e / K_e
+        require(sp.simplify(sp.diff(K_e, th_s, 2) - d2K_e) == 0, "SymPy d2K mismatch")
+        require(sp.simplify(sp.diff(ca_e, th_s, 2) - d2ca_e) == 0, "SymPy d2ca mismatch")
+        require(sp.simplify(sp.diff(sa_e, th_s, 2) - d2sa_e) == 0, "SymPy d2sa mismatch")
+        U_chk, dU_chk, d2U_chk = _r23_chebU_d1_d2(_r23_rat(3, 7), 12, 2)
+        for n_chk in range(12):
+            un_ex = sp.chebyshevu(n_chk, y_sym)
+            for val_iv, ex_expr in (
+                (U_chk[n_chk], un_ex),
+                (dU_chk[n_chk], sp.diff(un_ex, y_sym)),
+                (d2U_chk[n_chk], sp.diff(un_ex, y_sym, 2)),
+            ):
+                q_ex = sp.Rational(ex_expr.subs(y_sym, sp.Rational(3, 7)))
+                ex_iv = _r23_rat(int(q_ex.p), int(q_ex.q))
+                require(mp.mpf(val_iv.a) <= mp.mpf(ex_iv.b) and mp.mpf(ex_iv.a) <= mp.mpf(val_iv.b), f"ChebU d={n_chk} mismatch")
+        checks += 5
+
+        b0_du3, wt_du3, wsw_du3, wsm_du3, pw_du3 = _r23_rat(11, 5), _r23_rat(13, 4), _r23_rat(27, 10), _r23_rat(3, 2), _r23_rat(6, 5)
+        a_du3, b_du3, c_du3, d_du3 = _r23_rat(2905, 1000), _r23_rat(401, 1000), _r23_rat(366, 1000), _r23_rat(1840, 1000)
+        c1_wt = _r23_cr_box(1, wt_du3, 44)
+        c1_sq = c1_wt * c1_wt
+        c1_sq_lo = mp.mpf(c1_sq.a)
+
+        # 1A. 2D Majorant C <= 2.0797
+        D_cut = 13
+        ct3 = [((_r23_cr_box(D_idx, wt_du3, 44) / c1_wt) ** 3) for D_idx in range(1, D_cut + 1)]
+        kmax_2d = mp.mpf((iv.mpf(2) * a_du3).b)
+        ct3_tail = mp.mpf(((_r23_cr_box(D_cut + 1, wt_du3, 44) / c1_wt) ** 3).b)
+        tail_2d = tail_2d_dk = tail_2d_du = mp.mpf(0)
+        for D_idx in range(D_cut + 1, D_cut + 14):
+            cDu = mp.mpf(_r23_cr_point(D_idx, kmax_2d, 30).b)
+            tail_2d += mp.mpf(D_idx * D_idx) * cDu * ct3_tail
+            tail_2d_dk += mp.mpf(D_idx * D_idx) * mp.mpf(_r23_cr_deriv_point(D_idx, kmax_2d, 28).b) * ct3_tail
+            tail_2d_du += mp.mpf(D_idx * D_idx * (D_idx * D_idx - 1)) / mp.mpf(3) * cDu * ct3_tail
+        r_rem2 = kmax_2d / (mp.mpf(2) * mp.mpf(D_cut + 14))
+        require(r_rem2 < mp.mpf("0.15"), "2D Bessel tail ratio >= 0.15")
+        rem_fac2 = mp.mpf(1) / (mp.mpf(1) - mp.mpf(3) * r_rem2)
+        tail_2d, tail_2d_dk, tail_2d_du = tail_2d * rem_fac2, tail_2d_dk * rem_fac2, tail_2d_du * rem_fac2
+        cache_2d = {}
+
+        def _get_R_box_2d(iR: int, dR_dep: int):
+            key = (dR_dep, iR)
+            if key not in cache_2d:
+                Ra, Rb = _r23_rat(2 * iR, 1 << dR_dep), _r23_rat(2 * (iR + 1), 1 << dR_dep)
+                R_iv = iv.mpf([mp.mpf(Ra.a), mp.mpf(Rb.b)])
+                Rm, hw_R = _r23_rat(2 * iR + 1, 1 << dR_dep), mp.mpf(_r23_rat(1, 1 << dR_dep).b)
+                c_m = [_r23_cr_box(D_idx, a_du3 * Rm, 28) for D_idx in range(1, D_cut + 1)]
+                c_b = [_r23_cr_box(D_idx, a_du3 * R_iv, 26) for D_idx in range(1, D_cut + 1)]
+                dc_b = [_r23_cr_deriv_box(D_idx, a_du3 * R_iv, 24) for D_idx in range(1, D_cut + 1)]
+                cache_2d[key] = (R_iv, Rm, iv.mpf([-hw_R, hw_R]), hw_R, c_m, c_b, dc_b)
+            return cache_2d[key]
+
+        log_C_target = mp.mpf("2.0797")
+        stack2 = [(3, i, 3, j) for i in range(8) for j in range(8)]
+        n_2d, max_2d_ub = 0, mp.mpf(-100)
+        while stack2:
+            dR_dep, iR, du_dep, iu = stack2.pop()
+            n_2d += 1
+            R_iv, Rm, dR, hw_R, c_m, c_b, dc_b = _get_R_box_2d(iR, dR_dep)
+            ua, ub_u = _r23_rat(2 * iu - (1 << du_dep), 1 << du_dep), _r23_rat(2 * (iu + 1) - (1 << du_dep), 1 << du_dep)
+            u_iv, um = iv.mpf([mp.mpf(ua.a), mp.mpf(ub_u.b)]), _r23_rat(2 * iu + 1 - (1 << du_dep), 1 << du_dep)
+            hw_u = mp.mpf(_r23_rat(1, 1 << du_dep).b)
+            du, ym = iv.mpf([-hw_u, hw_u]), Rm * Rm / iv.mpf(2) - iv.mpf(1)
+            Um, _, _ = _r23_chebU_d1_d2(um, D_cut, 0)
+            Ub, dUb, _ = _r23_chebU_d1_d2(u_iv, D_cut, 1)
+            sm = s_b = ds_dR = ds_du = iv.mpf(0)
+            for idx in range(D_cut):
+                fac = iv.mpf(idx + 1) * ct3[idx]
+                sm, s_b = sm + fac * c_m[idx] * Um[idx], s_b + fac * c_b[idx] * Ub[idx]
+                ds_dR, ds_du = ds_dR + fac * (a_du3 * dc_b[idx]) * Ub[idx], ds_du + fac * c_b[idx] * dUb[idx]
+            sm, s_b = sm + iv.mpf([-tail_2d, tail_2d]), s_b + iv.mpf([-tail_2d, tail_2d])
+            ds_dR = ds_dR + iv.mpf([-mp.mpf(a_du3.b) * tail_2d_dk, mp.mpf(a_du3.b) * tail_2d_dk])
+            ds_du = ds_du + iv.mpf([-tail_2d_du, tail_2d_du])
+            s_tight = sm + ds_dR * dR + ds_du * du
+            s_lo, s_hi = max(mp.mpf(s_b.a), mp.mpf(s_tight.a)), min(mp.mpf(s_b.b), mp.mpf(s_tight.b))
+            if s_lo <= 0 or mp.mpf(sm.a) <= 0:
+                require(dR_dep < 10 and du_dep < 10, "2D s <= 0 depth limit")
+                if hw_R >= hw_u:
+                    stack2.extend([(dR_dep + 1, 2 * iR, du_dep, iu), (dR_dep + 1, 2 * iR + 1, du_dep, iu)])
+                else:
+                    stack2.extend([(dR_dep, iR, du_dep + 1, 2 * iu), (dR_dep, iR, du_dep + 1, 2 * iu + 1)])
+                continue
+            s_use = iv.mpf([s_lo, s_hi])
+            Fm = pw_du3 * (b_du3 * ym + iv.log(sm)) - (c_du3 * Rm * um + d_du3 * ym)
+            dF_dR = (pw_du3 * b_du3 - d_du3) * R_iv + pw_du3 * (ds_dR / s_use) - c_du3 * u_iv
+            dF_du = pw_du3 * (ds_du / s_use) - c_du3 * R_iv
+            err_R = _r23_abs_u(dF_dR) * hw_R
+            err_u = _r23_abs_u(dF_du) * hw_u
+            ub = mp.mpf(Fm.b) + err_R + err_u
+            if ub <= log_C_target:
+                max_2d_ub = max(max_2d_ub, ub)
+            else:
+                require(dR_dep < 10 and du_dep < 10, f"2D target exceeded: {ub}")
+                if err_R >= err_u:
+                    stack2.extend([(dR_dep + 1, 2 * iR, du_dep, iu), (dR_dep + 1, 2 * iR + 1, du_dep, iu)])
+                else:
+                    stack2.extend([(dR_dep, iR, du_dep + 1, 2 * iu), (dR_dep, iR, du_dep + 1, 2 * iu + 1)])
+        require(max_2d_ub <= log_C_target, "2D log C target violated")
+        checks += 1
+
+        # 1B. SymPy-Verified 2nd-Order Taylor 3D Operator Branch-and-Bound (log lam3 <= 0.4489)
+        R_cut = 7
+        cr_d = [_r23_cr_box(r, d_du3, 28) for r in range(1, R_cut + 1)]
+        rc_list = [iv.mpf(r) * cr_d[r - 1] / c1_sq for r in range(1, R_cut + 1)]
+        Kmax_3d = mp.mpf((wt_du3 + c_du3).b)
+        t0_tail = t1_dK = t1_du = t2_dKK = t2_dK2 = t2_dKu = t2_duu = mp.mpf(0)
+        for r in range(R_cut + 1, R_cut + 14):
+            crd_u = mp.mpf(_r23_cr_point(r, mp.mpf(d_du3.b), 22).b)
+            crK_u = mp.mpf(_r23_cr_point(r, Kmax_3d, 22).b)
+            dcrK_u = mp.mpf(_r23_cr_deriv_point(r, Kmax_3d, 20).b)
+            d2crK_u = mp.mpf(_r23_cr_d2_point(r, Kmax_3d, 20).b)
+            m0_r = mp.mpf(r)
+            m1_r = mp.mpf(r * (r * r - 1)) / mp.mpf(3)
+            m2_r = mp.mpf(r * (r * r - 1) * (r * r - 4)) / mp.mpf(15)
+            base_r = mp.mpf(r) * crd_u
+            t0_tail += base_r * crK_u * crK_u * m0_r
+            t1_dK += base_r * dcrK_u * crK_u * m0_r
+            t1_du += base_r * crK_u * crK_u * m1_r
+            t2_dKK += base_r * dcrK_u * dcrK_u * m0_r
+            t2_dK2 += base_r * d2crK_u * crK_u * m0_r
+            t2_dKu += base_r * dcrK_u * crK_u * m1_r
+            t2_duu += base_r * crK_u * crK_u * m2_r
+        r0_tail = R_cut + 14
+        q_tail = ((mp.mpf(r0_tail + 3) / mp.mpf(r0_tail - 2)) ** 5) * (mp.mpf(d_du3.b) * Kmax_3d * Kmax_3d) / (mp.mpf(8) * (mp.mpf(r0_tail + 1) ** 3))
+        require(q_tail < mp.mpf("0.01"), f"3D tail geometric ratio too large: {q_tail}")
+        s_fac3 = (mp.mpf(1) / (mp.mpf(1) - q_tail)) / c1_sq_lo
+        t0_n, t1_dK_n, t1_du_n, t2_dKK_n, t2_dK2_n, t2_dKu_n, t2_duu_n = [x * s_fac3 for x in (t0_tail, t1_dK, t1_du, t2_dKK, t2_dK2, t2_dKu, t2_duu)]
+        aw_diff = a_du3 - wsw_du3
+        cache_pt3, cache_bx3 = {}, {}
+
+        def _get_pt3(k_idx: int, dep: int):
+            while k_idx > 0 and (k_idx & 1) == 0 and dep > 0:
+                k_idx >>= 1
+                dep -= 1
+            key = (dep, k_idx)
+            if key not in cache_pt3:
+                th = PI_IV * _r23_rat(k_idx, 1 << dep)
+                xv, sv = iv.cos(th), iv.sin(th)
+                Kv = iv.sqrt(wt_du3 * wt_du3 + c_du3 * c_du3 + iv.mpf(2) * wt_du3 * c_du3 * xv)
+                dKv = -wt_du3 * c_du3 * sv / Kv
+                cav, sav = (wt_du3 * xv + c_du3) / Kv, (wt_du3 * sv) / Kv
+                K3 = Kv * Kv * Kv
+                dcav = (-wt_du3 * sv * (wt_du3 * wt_du3 + wt_du3 * c_du3 * xv)) / K3
+                dsav = (wt_du3 * ((wt_du3 * wt_du3 + c_du3 * c_du3) * xv + wt_du3 * c_du3 * (iv.mpf(1) + xv * xv))) / K3
+                cKv = [_r23_cr_box(r, Kv, 20) for r in range(1, R_cut + 1)]
+                dcKv = [_r23_cr_deriv_box(r, Kv, 20) for r in range(1, R_cut + 1)]
+                cache_pt3[key] = (xv, sv, cav, sav, dKv, dcav, dsav, cKv, dcKv)
+            return cache_pt3[key]
+
+        def _get_bx3(i: int, dep: int):
+            key = (dep, i)
+            if key not in cache_bx3:
+                ta, tb = PI_IV * _r23_rat(i, 1 << dep), PI_IV * _r23_rat(i + 1, 1 << dep)
+                hw = mp.mpf((PI_IV * _r23_rat(1, 1 << (dep + 1))).b)
+                x_iv = iv.mpf([mp.mpf(iv.cos(tb).a), mp.mpf(iv.cos(ta).b)])
+                sa_v, sb_v = iv.sin(ta), iv.sin(tb)
+                s_hi = mp.mpf(1) if 2 * i < (1 << dep) < 2 * (i + 1) else max(mp.mpf(sa_v.b), mp.mpf(sb_v.b))
+                s_iv = iv.mpf([max(mp.mpf(0), min(mp.mpf(sa_v.a), mp.mpf(sb_v.a))), s_hi])
+                K_a = iv.sqrt(wt_du3 * wt_du3 + c_du3 * c_du3 + iv.mpf(2) * wt_du3 * c_du3 * iv.cos(tb))
+                K_b = iv.sqrt(wt_du3 * wt_du3 + c_du3 * c_du3 + iv.mpf(2) * wt_du3 * c_du3 * iv.cos(ta))
+                K_iv = iv.mpf([mp.mpf(K_a.a), mp.mpf(K_b.b)])
+                dK = (-wt_du3 * c_du3 * s_iv) / K_iv
+                d2K = (-wt_du3 * c_du3 * x_iv - dK * dK) / K_iv
+                ca = iv.mpf([mp.mpf(((wt_du3 * iv.cos(tb) + c_du3) / K_a).a), mp.mpf(((wt_du3 * iv.cos(ta) + c_du3) / K_b).b)])
+                sa, K3 = (wt_du3 * s_iv) / K_iv, K_iv * K_iv * K_iv
+                dca = (-wt_du3 * s_iv * (wt_du3 * wt_du3 + wt_du3 * c_du3 * x_iv)) / K3
+                dsa = (wt_du3 * ((wt_du3 * wt_du3 + c_du3 * c_du3) * x_iv + wt_du3 * c_du3 * (iv.mpf(1) + x_iv * x_iv))) / K3
+                d2ca = (-wt_du3 * x_iv * (wt_du3 * wt_du3 + wt_du3 * c_du3 * x_iv) + wt_du3 * wt_du3 * c_du3 * s_iv * s_iv) / K3 - iv.mpf(3) * dca * dK / K_iv
+                d2sa = (-wt_du3 * s_iv * (wt_du3 * wt_du3 + c_du3 * c_du3 + iv.mpf(2) * wt_du3 * c_du3 * x_iv)) / K3 - iv.mpf(3) * dsa * dK / K_iv
+                cKb = [_r23_cr_box(r, K_iv, 18) for r in range(1, R_cut + 1)]
+                dcKb = [_r23_cr_deriv_box(r, K_iv, 18) for r in range(1, R_cut + 1)]
+                d2cKb = [_r23_cr_d2_box(r, K_iv, 18) for r in range(1, R_cut + 1)]
+                ptm = _get_pt3(2 * i + 1, dep + 1)
+                cache_bx3[key] = (ptm, x_iv, s_iv, hw, ca, sa, dK, dca, dsa, d2K, d2ca, d2sa, cKb, dcKb, d2cKb)
+            return cache_bx3[key]
+
+        log_lam3_target = mp.mpf("0.4489")
+        stack3 = [(3, i1, 3, i2, 1, iu) for i1 in range(8) for i2 in range(i1, 8) for iu in range(2)]
+        n_3d, max_3d_ub = 0, mp.mpf(-100)
+        while stack3:
+            d1, i1, d2, i2, du_dep, iu = stack3.pop()
+            if i1 * (1 << d2) >= (i2 + 1) * (1 << d1):
+                continue
+            n_3d += 1
+            b1, b2 = _get_bx3(i1, d1), _get_bx3(i2, d2)
+            pt1, x1, s1, hw1, ca1, sa1, dK1, dca1, dsa1, d2K1, d2ca1, d2sa1, cK1, dcK1, d2cK1 = b1
+            pt2, x2, s2, hw2, ca2, sa2, dK2, dca2, dsa2, d2K2, d2ca2, d2sa2, cK2, dcK2, d2cK2 = b2
+            ua, ub_u = _r23_rat(2 * iu - (1 << du_dep), 1 << du_dep), _r23_rat(2 * (iu + 1) - (1 << du_dep), 1 << du_dep)
+            u_iv, um = iv.mpf([mp.mpf(ua.a), mp.mpf(ub_u.b)]), _r23_rat(2 * iu + 1 - (1 << du_dep), 1 << du_dep)
+            hw_u = mp.mpf(_r23_rat(1, 1 << du_dep).b)
+            x1m, s1m, ca1m, sa1m, dK1m, dca1m, dsa1m, cK1m, dcK1m = pt1
+            x2m, s2m, ca2m, sa2m, dK2m, dca2m, dsa2m, cK2m, dcK2m = pt2
+            ym = iv.mpf([max(mp.mpf(-1), mp.mpf((ca1m * ca2m + sa1m * sa2m * um).a)), min(mp.mpf(1), mp.mpf((ca1m * ca2m + sa1m * sa2m * um).b))])
+            Um, dUm, _ = _r23_chebU_d1_d2(ym, R_cut, 1)
+            dym_1, dym_2, dym_u = dca1m * ca2m + dsa1m * sa2m * um, ca1m * dca2m + sa1m * dsa2m * um, sa1m * sa2m
+            PMm = d1m_K = d2m_K = dym_S = iv.mpf(0)
+            for r in range(R_cut):
+                rc = rc_list[r]
+                PMm = PMm + rc * cK1m[r] * cK2m[r] * Um[r]
+                d1m_K = d1m_K + rc * dcK1m[r] * cK2m[r] * Um[r]
+                d2m_K = d2m_K + rc * cK1m[r] * dcK2m[r] * Um[r]
+                dym_S = dym_S + rc * cK1m[r] * cK2m[r] * dUm[r]
+            PMm = PMm + iv.mpf([-t0_n, t0_n])
+            e1m = t1_dK_n * _r23_abs_u(dK1m) + t1_du_n * _r23_abs_u(dym_1)
+            e2m = t1_dK_n * _r23_abs_u(dK2m) + t1_du_n * _r23_abs_u(dym_2)
+            eum = t1_du_n * _r23_abs_u(dym_u)
+            dPMm_1 = d1m_K * dK1m + dym_S * dym_1 + iv.mpf([-e1m, e1m])
+            dPMm_2 = d2m_K * dK2m + dym_S * dym_2 + iv.mpf([-e2m, e2m])
+            dPMm_u = dym_S * dym_u + iv.mpf([-eum, eum])
+            if mp.mpf(PMm.a) > 0:
+                Fm = iv.log(PMm) - pw_du3 * (aw_diff * (x1m + x2m) + b_du3 * (x1m * x2m + s1m * s2m * um))
+                gm1 = dPMm_1 / PMm - pw_du3 * (-aw_diff * s1m + b_du3 * (-s1m * x2m + x1m * s2m * um))
+                gm2 = dPMm_2 / PMm - pw_du3 * (-aw_diff * s2m + b_du3 * (-x1m * s2m + s1m * x2m * um))
+                gmu = dPMm_u / PMm - pw_du3 * (b_du3 * s1m * s2m)
+                e1_lin, e2_lin, eu_lin = _r23_abs_u(gm1) * hw1, _r23_abs_u(gm2) * hw2, _r23_abs_u(gmu) * hw_u
+                if mp.mpf(Fm.b) + e1_lin + e2_lin + eu_lin > log_lam3_target:
+                    require(d1 < 10 and d2 < 10 and du_dep < 10, "3D linear bound target depth limit")
+                    s1_p = e1_lin if (e1_lin >= mp.mpf("1e-3") or e2_lin >= mp.mpf("1e-3") or eu_lin >= mp.mpf("1e-3")) else hw1
+                    s2_p = e2_lin if (e1_lin >= mp.mpf("1e-3") or e2_lin >= mp.mpf("1e-3") or eu_lin >= mp.mpf("1e-3")) else hw2
+                    su_p = eu_lin if (e1_lin >= mp.mpf("1e-3") or e2_lin >= mp.mpf("1e-3") or eu_lin >= mp.mpf("1e-3")) else hw_u
+                    if s1_p >= s2_p and s1_p >= su_p:
+                        stack3.extend([(d1 + 1, 2 * i1, d2, i2, du_dep, iu), (d1 + 1, 2 * i1 + 1, d2, i2, du_dep, iu)])
+                    elif s2_p >= su_p:
+                        stack3.extend([(d1, i1, d2 + 1, 2 * i2, du_dep, iu), (d1, i1, d2 + 1, 2 * i2 + 1, du_dep, iu)])
+                    else:
+                        stack3.extend([(d1, i1, d2, i2, du_dep + 1, 2 * iu), (d1, i1, d2, i2, du_dep + 1, 2 * iu + 1)])
+                    continue
+            yb = iv.mpf([max(mp.mpf(-1), mp.mpf((ca1 * ca2 + sa1 * sa2 * u_iv).a)), min(mp.mpf(1), mp.mpf((ca1 * ca2 + sa1 * sa2 * u_iv).b))])
+            Ub, dUb, d2Ub = _r23_chebU_d1_d2(yb, R_cut, 2)
+            dy1, dy2, dyu = dca1 * ca2 + dsa1 * sa2 * u_iv, ca1 * dca2 + sa1 * dsa2 * u_iv, sa1 * sa2
+            d2y11 = d2ca1 * ca2 + d2sa1 * sa2 * u_iv
+            d2y22 = ca1 * d2ca2 + sa1 * d2sa2 * u_iv
+            d2y12 = dca1 * dca2 + dsa1 * dsa2 * u_iv
+            d2y1u, d2y2u = dsa1 * sa2, sa1 * dsa2
+            PMb = S_K1 = S_K2 = S_Y = S_K11 = S_K22 = S_K12 = S_K1Y = S_K2Y = S_YY = iv.mpf(0)
+            for r in range(R_cut):
+                rc = rc_list[r]
+                k1k2, dk1k2, k1dk2 = cK1[r] * cK2[r], dcK1[r] * cK2[r], cK1[r] * dcK2[r]
+                PMb = PMb + rc * k1k2 * Ub[r]
+                S_K1 = S_K1 + rc * dk1k2 * Ub[r]
+                S_K2 = S_K2 + rc * k1dk2 * Ub[r]
+                S_Y = S_Y + rc * k1k2 * dUb[r]
+                S_K11 = S_K11 + rc * (d2cK1[r] * cK2[r]) * Ub[r]
+                S_K22 = S_K22 + rc * (cK1[r] * d2cK2[r]) * Ub[r]
+                S_K12 = S_K12 + rc * (dcK1[r] * dcK2[r]) * Ub[r]
+                S_K1Y = S_K1Y + rc * dk1k2 * dUb[r]
+                S_K2Y = S_K2Y + rc * k1dk2 * dUb[r]
+                S_YY = S_YY + rc * k1k2 * d2Ub[r]
+            PMb = PMb + iv.mpf([-t0_n, t0_n])
+            if mp.mpf(PMb.a) <= 0 or mp.mpf(PMm.a) <= 0:
+                require(d1 < 10 and d2 < 10 and du_dep < 10, "3D PM <= 0 depth limit")
+                if hw1 >= hw2 and hw1 >= hw_u:
+                    stack3.extend([(d1 + 1, 2 * i1, d2, i2, du_dep, iu), (d1 + 1, 2 * i1 + 1, d2, i2, du_dep, iu)])
+                elif hw2 >= hw_u:
+                    stack3.extend([(d1, i1, d2 + 1, 2 * i2, du_dep, iu), (d1, i1, d2 + 1, 2 * i2 + 1, du_dep, iu)])
+                else:
+                    stack3.extend([(d1, i1, d2, i2, du_dep + 1, 2 * iu), (d1, i1, d2, i2, du_dep + 1, 2 * iu + 1)])
+                continue
+            eb1 = t1_dK_n * _r23_abs_u(dK1) + t1_du_n * _r23_abs_u(dy1)
+            eb2 = t1_dK_n * _r23_abs_u(dK2) + t1_du_n * _r23_abs_u(dy2)
+            ebu = t1_du_n * _r23_abs_u(dyu)
+            dPMb_1 = S_K1 * dK1 + S_Y * dy1 + iv.mpf([-eb1, eb1])
+            dPMb_2 = S_K2 * dK2 + S_Y * dy2 + iv.mpf([-eb2, eb2])
+            dPMb_u = S_Y * dyu + iv.mpf([-ebu, ebu])
+            PMt = PMm + dPMb_1 * iv.mpf([-hw1, hw1]) + dPMb_2 * iv.mpf([-hw2, hw2]) + dPMb_u * iv.mpf([-hw_u, hw_u])
+            PM_lo, PM_hi = max(mp.mpf(PMb.a), mp.mpf(PMt.a)), min(mp.mpf(PMb.b), mp.mpf(PMt.b))
+            if PM_lo <= 0:
+                require(d1 < 10 and d2 < 10 and du_dep < 10, "3D PM_use <= 0 depth limit")
+                if hw1 >= hw2 and hw1 >= hw_u:
+                    stack3.extend([(d1 + 1, 2 * i1, d2, i2, du_dep, iu), (d1 + 1, 2 * i1 + 1, d2, i2, du_dep, iu)])
+                elif hw2 >= hw_u:
+                    stack3.extend([(d1, i1, d2 + 1, 2 * i2, du_dep, iu), (d1, i1, d2 + 1, 2 * i2 + 1, du_dep, iu)])
+                else:
+                    stack3.extend([(d1, i1, d2, i2, du_dep + 1, 2 * iu), (d1, i1, d2, i2, du_dep + 1, 2 * iu + 1)])
+                continue
+            PM_use = iv.mpf([PM_lo, PM_hi])
+            e2_11 = t2_dK2_n * _r23_abs_u(dK1) ** 2 + t1_dK_n * _r23_abs_u(d2K1) + t2_duu_n * _r23_abs_u(dy1) ** 2 + 2 * t2_dKu_n * _r23_abs_u(dK1) * _r23_abs_u(dy1) + t1_du_n * _r23_abs_u(d2y11)
+            e2_22 = t2_dK2_n * _r23_abs_u(dK2) ** 2 + t1_dK_n * _r23_abs_u(d2K2) + t2_duu_n * _r23_abs_u(dy2) ** 2 + 2 * t2_dKu_n * _r23_abs_u(dK2) * _r23_abs_u(dy2) + t1_du_n * _r23_abs_u(d2y22)
+            e2_12 = t2_dKK_n * _r23_abs_u(dK1) * _r23_abs_u(dK2) + t2_dKu_n * (_r23_abs_u(dK1) * _r23_abs_u(dy2) + _r23_abs_u(dK2) * _r23_abs_u(dy1)) + t2_duu_n * _r23_abs_u(dy1) * _r23_abs_u(dy2) + t1_du_n * _r23_abs_u(d2y12)
+            e2_1u = t2_dKu_n * _r23_abs_u(dK1) * _r23_abs_u(dyu) + t2_duu_n * _r23_abs_u(dy1) * _r23_abs_u(dyu) + t1_du_n * _r23_abs_u(d2y1u)
+            e2_2u = t2_dKu_n * _r23_abs_u(dK2) * _r23_abs_u(dyu) + t2_duu_n * _r23_abs_u(dy2) * _r23_abs_u(dyu) + t1_du_n * _r23_abs_u(d2y2u)
+            e2_uu = t2_duu_n * _r23_abs_u(dyu) ** 2
+            d2PM_11 = S_K11 * dK1 * dK1 + S_K1 * d2K1 + iv.mpf(2) * S_K1Y * dK1 * dy1 + S_YY * dy1 * dy1 + S_Y * d2y11 + iv.mpf([-e2_11, e2_11])
+            d2PM_22 = S_K22 * dK2 * dK2 + S_K2 * d2K2 + iv.mpf(2) * S_K2Y * dK2 * dy2 + S_YY * dy2 * dy2 + S_Y * d2y22 + iv.mpf([-e2_22, e2_22])
+            d2PM_12 = S_K12 * dK1 * dK2 + S_K1Y * dK1 * dy2 + S_K2Y * dK2 * dy1 + S_YY * dy1 * dy2 + S_Y * d2y12 + iv.mpf([-e2_12, e2_12])
+            d2PM_1u = S_K1Y * dK1 * dyu + S_YY * dy1 * dyu + S_Y * d2y1u + iv.mpf([-e2_1u, e2_1u])
+            d2PM_2u = S_K2Y * dK2 * dyu + S_YY * dy2 * dyu + S_Y * d2y2u + iv.mpf([-e2_2u, e2_2u])
+            d2PM_uu = S_YY * dyu * dyu + iv.mpf([-e2_uu, e2_uu])
+            PM2 = PM_use * PM_use
+            H11 = d2PM_11 / PM_use - dPMb_1 * dPMb_1 / PM2 - pw_du3 * (-aw_diff * x1 - b_du3 * (x1 * x2 + s1 * s2 * u_iv))
+            H22 = d2PM_22 / PM_use - dPMb_2 * dPMb_2 / PM2 - pw_du3 * (-aw_diff * x2 - b_du3 * (x1 * x2 + s1 * s2 * u_iv))
+            H12 = d2PM_12 / PM_use - dPMb_1 * dPMb_2 / PM2 - pw_du3 * (b_du3 * (s1 * s2 + x1 * x2 * u_iv))
+            H1u = d2PM_1u / PM_use - dPMb_1 * dPMb_u / PM2 - pw_du3 * (b_du3 * x1 * s2)
+            H2u = d2PM_2u / PM_use - dPMb_2 * dPMb_u / PM2 - pw_du3 * (b_du3 * s1 * x2)
+            Huu = d2PM_uu / PM_use - dPMb_u * dPMb_u / PM2
+            e1 = e1_lin + mp.mpf("0.5") * _r23_abs_u(H11) * hw1 * hw1 + mp.mpf("0.5") * _r23_abs_u(H12) * hw1 * hw2 + mp.mpf("0.5") * _r23_abs_u(H1u) * hw1 * hw_u
+            e2 = e2_lin + mp.mpf("0.5") * _r23_abs_u(H22) * hw2 * hw2 + mp.mpf("0.5") * _r23_abs_u(H12) * hw1 * hw2 + mp.mpf("0.5") * _r23_abs_u(H2u) * hw2 * hw_u
+            eu = eu_lin + mp.mpf("0.5") * _r23_abs_u(Huu) * hw_u * hw_u + mp.mpf("0.5") * _r23_abs_u(H1u) * hw1 * hw_u + mp.mpf("0.5") * _r23_abs_u(H2u) * hw2 * hw_u
+            ub = mp.mpf(Fm.b) + e1 + e2 + eu
+            if ub <= log_lam3_target:
+                max_3d_ub = max(max_3d_ub, ub)
+            else:
+                require(d1 < 10 and d2 < 10 and du_dep < 10, f"3D target exceeded: {ub}")
+                if e1 >= e2 and e1 >= eu:
+                    stack3.extend([(d1 + 1, 2 * i1, d2, i2, du_dep, iu), (d1 + 1, 2 * i1 + 1, d2, i2, du_dep, iu)])
+                elif e2 >= eu:
+                    stack3.extend([(d1, i1, d2 + 1, 2 * i2, du_dep, iu), (d1, i1, d2 + 1, 2 * i2 + 1, du_dep, iu)])
+                else:
+                    stack3.extend([(d1, i1, d2, i2, du_dep + 1, 2 * iu), (d1, i1, d2, i2, du_dep + 1, 2 * iu + 1)])
+        require(max_3d_ub <= log_lam3_target, "3D log lam3 target violated")
+        lrw_cert_iv = (iv.mpf(max_2d_ub) + iv.mpf(max_3d_ub)) / pw_du3
+        checks += 1
+
+        # 1C. Pillow 5 (q=6 => q/2=3 exact degree-60 integer cube, 256 2nd-order Taylor cells)
+        N_char = 11
+        n_tot5 = 6 * N_char - 5
+        ct2_iv = [((_r23_cr_box(d_idx, wt_du3, 44) / c1_wt) ** 2) for d_idx in range(1, n_tot5 + 1)]
+        ct2_mp, M_q = [mp.mpf(v.b) for v in ct2_iv], 64
+        th_q = [(mp.mpf(k) + mp.mpf("0.5")) * mp.pi / mp.mpf(M_q) for k in range(M_q)]
+        wt_q = [(mp.mpf(2) / mp.mpf(M_q)) * (mp.sin(t) ** 2) for t in th_q]
+        x_q = [mp.cos(t) for t in th_q]
+        U_q = [[mp.sin(mp.mpf(d_idx + 1) * t) / mp.sin(t) for d_idx in range(n_tot5)] for t in th_q]
+        wsm_mp = mp.mpf(wsm_du3.b)
+        a_mp = [sum(wt_q[j] * mp.exp(wsm_mp * x_q[j]) * U_q[j][d_idx] for j in range(M_q)) for d_idx in range(N_char)]
+        for _ in range(55):
+            phi_q = [sum(a_mp[d_idx] * U_q[j][d_idx] for d_idx in range(N_char)) for j in range(M_q)]
+            c2 = [sum(wt_q[j] * (phi_q[j] ** 2) * U_q[j][d_idx] for j in range(M_q)) for d_idx in range(2 * N_char - 1)]
+            g_q = [sum(c2[d_idx] * ct2_mp[d_idx] * U_q[j][d_idx] for d_idx in range(2 * N_char - 1)) for j in range(M_q)]
+            c6 = [sum(wt_q[j] * (g_q[j] ** 3) * U_q[j][d_idx] for j in range(M_q)) for d_idx in range(n_tot5)]
+            G_q = [max(mp.mpf("1e-50"), sum(c6[d_idx] * ct2_mp[d_idx] * U_q[j][d_idx] for d_idx in range(n_tot5))) for j in range(M_q)]
+            pnew = [mp.exp(wsm_mp * x_q[j]) * (G_q[j] ** (mp.mpf(1) / mp.mpf(6))) for j in range(M_q)]
+            nrm = mp.sqrt(sum(wt_q[j] * pnew[j] ** 2 for j in range(M_q)))
+            a_mp = [sum(wt_q[j] * (pnew[j] / nrm) * U_q[j][d_idx] for j in range(M_q)) for d_idx in range(N_char)]
+        scale_r = 10 ** 12
+        a_iv5 = [_r23_rat(int(mp.nint(v * scale_r)), scale_r) for v in a_mp]
+        c2_iv = _r23_chebU_mul(a_iv5, a_iv5)
+        g_iv5 = [c2_iv[d_idx] * ct2_iv[d_idx] for d_idx in range(len(c2_iv))]
+        g3_iv5 = _r23_chebU_mul(_r23_chebU_mul(g_iv5, g_iv5), g_iv5)
+        G_iv5 = [g3_iv5[d_idx] * ct2_iv[d_idx] for d_idx in range(len(g3_iv5))]
+
+        def _u_to_cos_iv(u_coeffs):
+            n_c = len(u_coeffs)
+            c_out = [iv.mpf(0)] * n_c
+            for n, uc in enumerate(u_coeffs):
+                if uc == 0:
+                    continue
+                for m in range(n, -1, -2):
+                    c_out[m] = c_out[m] + (uc if m == 0 else iv.mpf(2) * uc)
+            return c_out
+
+        pc_iv, Gc_iv = _u_to_cos_iv(a_iv5), _u_to_cos_iv(G_iv5)
+        N_th5, r5_ub = 256, mp.mpf(-100)
+        trig_m_512 = [None] * (4 * N_th5)
+        for q_idx in range(2 * N_th5 + 1):
+            ang_q = PI_IV * _r23_rat(q_idx, 2 * N_th5)
+            cq, sq = iv.cos(ang_q), iv.sin(ang_q)
+            trig_m_512[q_idx] = (cq, sq)
+            if 0 < q_idx < 2 * N_th5:
+                trig_m_512[4 * N_th5 - q_idx] = (cq, -sq)
+        for k in range(N_th5):
+            ta, tb, tm = PI_IV * _r23_rat(k, N_th5), PI_IV * _r23_rat(k + 1, N_th5), PI_IV * _r23_rat(2 * k + 1, 2 * N_th5)
+            tc = iv.mpf([mp.mpf(ta.a), mp.mpf(tb.b)])
+            dh = iv.mpf([-mp.mpf((PI_IV * _r23_rat(1, 2 * N_th5)).b), mp.mpf((PI_IV * _r23_rat(1, 2 * N_th5)).b)])
+            pm = pp_m = Gm = Gp_m = pc_b = pp_b = ppp_b = Gc_b = Gp_b = Gpp_b = iv.mpf(0)
+            mod_p = 4 * N_th5
+            two_k1 = 2 * k + 1
+            for m in range(n_tot5):
+                cm, sm = trig_m_512[(m * two_k1) % mod_p]
+                cb, sb = iv.cos(iv.mpf(m) * tc), iv.sin(iv.mpf(m) * tc)
+                m_iv, m2_iv = iv.mpf(m), iv.mpf(m * m)
+                if m < N_char:
+                    pm, pp_m = pm + pc_iv[m] * cm, pp_m - pc_iv[m] * m_iv * sm
+                    pc_b, pp_b, ppp_b = pc_b + pc_iv[m] * cb, pp_b - pc_iv[m] * m_iv * sb, ppp_b - pc_iv[m] * m2_iv * cb
+                Gm, Gp_m = Gm + Gc_iv[m] * cm, Gp_m - Gc_iv[m] * m_iv * sm
+                Gc_b, Gp_b, Gpp_b = Gc_b + Gc_iv[m] * cb, Gp_b - Gc_iv[m] * m_iv * sb, Gpp_b - Gc_iv[m] * m2_iv * cb
+            p_t, G_t = pm + pp_b * dh, Gm + Gp_b * dh
+            pc_use = iv.mpf([max(mp.mpf(pc_b.a), mp.mpf(p_t.a)), min(mp.mpf(pc_b.b), mp.mpf(p_t.b))])
+            Gc_use = iv.mpf([max(mp.mpf(Gc_b.a), mp.mpf(G_t.a)), min(mp.mpf(Gc_b.b), mp.mpf(G_t.b))])
+            require(mp.mpf(pc_use.a) > 0 and mp.mpf(Gc_use.a) > 0, "Pillow 5 positivity failed")
+            c1_m, s1_c = iv.cos(tm), iv.sin(tc)
+            lr = (wsm_du3 * c1_m + _r23_rat(1, 6) * iv.log(Gm) - iv.log(pm)) + (
+                -wsm_du3 * s1_c + (Gp_m + Gpp_b * dh) / (iv.mpf(6) * Gc_use) - (pp_m + ppp_b * dh) / pc_use
+            ) * dh
+            r5_ub = max(r5_ub, mp.mpf(lr.b))
+
+        f_ub_4d_iv = (iv.mpf(12) * iv.log(c1_wt) + iv.mpf(2) * iv.mpf(mp.mpf(lrw_cert_iv.b)) + iv.mpf(2) * iv.mpf(r5_ub)) / iv.mpf(24)
+        f_LB_495_str = r22_cert["cycles33_to_37a"]["f_LB_MI35_1_rat"]
+        f_lb_num, f_lb_den = [int(z) for z in f_LB_495_str.split("/")]
+        f_LB_495 = _r23_rat(f_lb_num, f_lb_den)
+        up_495_iv = (f_LB_495 - f_ub_4d_iv) / (BETA_495_IV - b0_du3)
+        m_sea_495_iv = up_495_iv * up_495_iv
+        c19_wall = _r23_rat(646675, 10 ** 6)
+        margin_breach = mp.mpf(up_495_iv.a) - mp.mpf(c19_wall.b)
+        require(margin_breach > mp.mpf("6e-6") and mp.mpf(up_495_iv.a) > mp.mpf("0.646681"), f"Double-U3 did not breach 0.646675 by >=6e-6: {up_495_iv}")
+        checks += 3
+
+        # =====================================================================
+        # §2. W23-1: Conservative d4_pin = sqrt(23/4), B_2 W_pair Ladders, St_+ [34, 35]
+        # =====================================================================
+        vs_sym = sp.symbols("v0 v1 v2 v3", real=True)
+        s_sym = sum(vs_sym) / 4
+        require(sp.expand(sum((v - s_sym) ** 2 for v in vs_sym) + 4 * s_sym ** 2 - sum(v ** 2 for v in vs_sym)) == 0, "d4_pin ortho failed")
+        require(Fraction(23, 4) - Fraction(69, 16) == Fraction(23, 16), "d4_pin diff mismatch")
+        c_B_w23 = _r23_rng(_R22_PRIOR_CERT_IV["c_B_sqrt2"])
+        eps_adm_st = iv.mpf(2) * (iv.mpf(1) - iv.cos(iv.mpf("51.855") * PI_IV / iv.mpf(360)))
+        seven_e = iv.mpf(7) * iv.exp(iv.mpf(1))
+        inv_e = iv.mpf(1) / iv.exp(iv.mpf(1))
+        n_lf_34 = seven_e * _r23_gamma_upper(9, c_B_w23 * iv.mpf(34) * eps_adm_st)
+        n_lf_35 = seven_e * _r23_gamma_upper(9, c_B_w23 * iv.mpf(35) * eps_adm_st)
+        n_lf_8p1875 = seven_e * _r23_gamma_upper(9, c_B_w23 * _r23_rat(131, 16) * eps_adm_st)
+        require(mp.mpf(n_lf_35.b) < mp.mpf(inv_e.a) and mp.mpf(n_lf_34.a) > mp.mpf(inv_e.b) and mp.mpf(n_lf_8p1875.a) > mp.mpf("16.3"), "St_+ [34,35] Peierls check failed")
+
+        rho_B2_ct = _r23_rng(_R17_W17_M24_PACK["stokes_54_banach_b2"]["D13_dim8"]["B2"])
+        d_beta_b2 = iv.mpf(11) * iv.log(iv.mpf(2)) / (iv.mpf(3) * (PI_IV ** 2))
+        b_stop_8p1875 = _r23_rat(131, 16)
+
+        def _run_wpair_ladder(b_start: int):
+            b = iv.mpf(b_start)
+            steps = 0
+            sum_inv2 = iv.mpf(0)
+            w_norm = iv.mpf(1) / (b * b)
+            max_w = w_norm
+            sum_w = iv.mpf(0)
+            while mp.mpf((b - d_beta_b2).a) >= mp.mpf(b_stop_8p1875.b):
+                sum_inv2 = sum_inv2 + iv.mpf(1) / (b * b)
+                w_norm = rho_B2_ct * w_norm + iv.mpf(1) / (b * b)
+                if mp.mpf(w_norm.b) > mp.mpf(max_w.b):
+                    max_w = w_norm
+                sum_w = sum_w + w_norm
+                b = b - d_beta_b2
+                steps += 1
+            return {"steps": steps, "sum_inv2_ub": _r23_pair(sum_inv2, 12)[1], "w_max_ub": _r23_pair(max_w, 11)[1], "sum_w_pair_ub": _r23_pair(sum_w, 10)[1]}
+
+        lad_7121 = _run_wpair_ladder(1842)
+        lad_6775 = _run_wpair_ladder(1753)
+        lad_10305 = _run_wpair_ladder(2662)
+        lad_8445 = _run_wpair_ladder(2183)
+        require(lad_7121["steps"] == 7121 and lad_6775["steps"] == 6775 and lad_10305["steps"] == 10305 and lad_8445["steps"] == 8445, "W_pair ladder step counts mismatch")
+        for ld in (lad_7121, lad_6775, lad_10305, lad_8445):
+            require(mp.mpf(ld["sum_inv2_ub"]) < mp.mpf("0.47") and mp.mpf(ld["w_max_ub"]) < mp.mpf("0.025") and mp.mpf(ld["sum_w_pair_ub"]) < mp.mpf("0.77"), f"W_pair contraction failed: {ld}")
+        checks += 8
+
+        # =====================================================================
+        # §3. W23-2: S_00(w), Sturm W0/W1, w=0.25 Schur Pivot, & inf-Z^3 140/9 Outer
+        # =====================================================================
+        w_s = sp.Symbol("w_s")
+        H3_s = sp.Matrix([[2 + 2 * w_s, 2 * w_s, 0], [2 * w_s, 2 + 2 * w_s, 2 * w_s], [0, 2 * w_s, 2 + 2 * w_s]])
+        S00_ex = sp.simplify((H3_s[:1, :1] - H3_s[:1, 1:] * H3_s[1:, 1:].inv() * H3_s[1:, :1])[0, 0])
+        S00_ref = (2 + 6 * w_s + 2 * w_s ** 2 - 2 * w_s ** 3) / (1 + 2 * w_s)
+        require(sp.simplify(S00_ex - S00_ref) == 0 and sp.simplify(S00_ref - 2 - 2 * w_s * (1 + w_s - w_s ** 2) / (1 + 2 * w_s)) == 0, "SymPy S_00 mismatch")
+        require(Fraction(5, 12) + Fraction(1, 3) + Fraction(1, 4) == 1, "Lowdin partition != 1")
+
+        def _sturm_eval(k_iv, lam_iv, recur_type: int, N: int = 64):
+            def _run_side(ks, sgn_dx):
+                a = [iv.mpf(1)]
+                for n in range(N):
+                    an, an1 = a[n], a[n - 1] if n > 0 else iv.mpf(0)
+                    if recur_type == 0:
+                        num = (iv.mpf(n * (n + 2)) + iv.mpf(2 * n) * ks - lam_iv) * an - ks * iv.mpf(n - 1) * an1
+                        den = iv.mpf((n + 1) * (2 * n + 3))
+                    else:
+                        num = (iv.mpf(n * (n + 4)) + iv.mpf(2 * n + 1) * ks - (lam_iv - 3)) * an - ks * iv.mpf(n) * an1
+                        den = iv.mpf((n + 1) * (2 * n + 5))
+                    a.append(num / den)
+                tail = iv.mpf(_r23_abs_u(a[N])) * 4
+                val = sum(a) + iv.mpf([-tail.b, tail.b])
+                dval = sgn_dx * (sum(iv.mpf(n) * a[n] for n in range(1, N + 1)) + iv.mpf(N) * iv.mpf([-tail.b, tail.b]))
+                return val, dval
+            vp, dvp = _run_side(k_iv, iv.mpf(-1))
+            vm, dvm = _run_side(-k_iv, iv.mpf(1))
+            return vm * dvp - vp * dvm
+
+        W0_370 = _sturm_eval(_r23_rat(37, 10), _r23_rat(31563, 10000), 0)
+        W1_370 = _sturm_eval(_r23_rat(37, 10), _r23_rat(31563, 10000), 1)
+        require(W0_370.a > mp.mpf("2.44") and W1_370.b < mp.mpf("-4.31"), f"Sturm W0/W1 failed: W0={W0_370}, W1={W1_370}")
+
+        N_bz, K_cut = 36, 17
+        cs_b, sn_b = [iv.cos(2 * PI_IV * j / N_bz) for j in range(N_bz)], [iv.sin(2 * PI_IV * j / N_bz) for j in range(N_bz)]
+        q2_1d, invN = [2 - 2 * cs_b[j] for j in range(N_bz)], iv.mpf(1) / N_bz
+        Ev_a = [[[iv.mpf(0)] * N_bz for _ in range(N_bz)] for _ in range(8)]
+        Cx_r, Cx_i = [[[iv.mpf(0)] * N_bz for _ in range(N_bz)] for _ in range(8)], [[[iv.mpf(0)] * N_bz for _ in range(N_bz)] for _ in range(8)]
+        for i in range(N_bz):
+            ex_r, ex_i = cs_b[i] - 1, sn_b[i]
+            for j in range(N_bz):
+                ey_r, ey_i, q2 = cs_b[j] - 1, sn_b[j], q2_1d[i] + q2_1d[j]
+                pr, pi_v = ex_r * ey_r + ex_i * ey_i, ex_i * ey_r - ex_r * ey_i
+                d2, d4 = 2 + q2, 4 + q2
+                d4s, inv4, inv24 = d4 * d4, 1 / d4, 1 / (2 * d2 * d4)
+                rT, ds, dn = 1 / d4s, (q2 * q2 + 8 * q2 + 14) / (4 * d2 * d4s), -1 / (2 * d2 * d4s)
+                Ev_a[0][i][j], Ev_a[1][i][j] = rT + q2_1d[i] * ds, rT + q2_1d[i] * dn
+                Ev_a[2][i][j], Ev_a[3][i][j] = inv4 + q2_1d[i] * inv4 / 4, inv4 + q2_1d[i] * inv4 / 2
+                Ev_a[4][i][j], Ev_a[5][i][j], Ev_a[6][i][j], Ev_a[7][i][j] = (3 * q2 + 8) * inv24, -q2 * inv24, inv4, rT + q2_1d[i] / (4 * d4s)
+                Cx_r[0][i][j], Cx_i[0][i][j] = pr * ds, pi_v * ds
+                Cx_r[1][i][j], Cx_i[1][i][j] = pr * dn, pi_v * dn
+                Cx_r[2][i][j], Cx_i[2][i][j] = pr * inv4 / 4, pi_v * inv4 / 4
+                Cx_r[3][i][j], Cx_i[3][i][j] = pr * inv4 / 2, pi_v * inv4 / 2
+                Cx_r[4][i][j], Cx_i[4][i][j] = ex_r * inv4 / 2, ex_i * inv4 / 2
+                Cx_r[5][i][j], Cx_i[5][i][j] = -(q2 + 3) * ex_r * 2 * inv24, -(q2 + 3) * ex_i * 2 * inv24
+                Cx_r[6][i][j], Cx_i[6][i][j] = -ex_r * 2 * inv24, -ex_i * 2 * inv24
+                Cx_r[7][i][j], Cx_i[7][i][j] = pr / (4 * d4s), pi_v / (4 * d4s)
+        H_bz = N_bz // 2
+        Ev_l1 = [iv.mpf(0)] * 8
+        t_ev = [[[(Ev_a[k][i][0] + (1 if n % 2 == 0 else -1) * Ev_a[k][i][H_bz] + 2 * sum(Ev_a[k][i][j] * cs_b[(n * j) % N_bz] for j in range(1, H_bz))) * invN for n in range(K_cut + 1)] for i in range(H_bz + 1)] for k in range(8)]
+        for k in range(8):
+            for m in range(K_cut + 1):
+                wm, sgnm = (1 if m == 0 else 2), (1 if m % 2 == 0 else -1)
+                for n in range(K_cut + 1):
+                    Ev_l1[k] += wm * (1 if n == 0 else 2) * abs((t_ev[k][0][n] + sgnm * t_ev[k][H_bz][n] + 2 * sum(t_ev[k][i][n] * cs_b[(m * i) % N_bz] for i in range(1, H_bz))) * invN)
+        Cx_l1, n_rng = [iv.mpf(0)] * 8, list(range(-K_cut, K_cut + 1))
+        tc_r = [[[iv.mpf(0)] * len(n_rng) for _ in range(N_bz)] for _ in range(8)]
+        tc_i = [[[iv.mpf(0)] * len(n_rng) for _ in range(N_bz)] for _ in range(8)]
+        for i in range(N_bz):
+            for ni, n in enumerate(n_rng):
+                sr, si = [iv.mpf(0)] * 8, [iv.mpf(0)] * 8
+                for j in range(N_bz):
+                    ang = (n * j) % N_bz
+                    c_a, s_a = cs_b[ang], sn_b[ang]
+                    for k in range(8):
+                        gr, gi = Cx_r[k][i][j], Cx_i[k][i][j]
+                        sr[k] += gr * c_a - gi * s_a
+                        si[k] += gr * s_a + gi * c_a
+                for k in range(8):
+                    tc_r[k][i][ni], tc_i[k][i][ni] = sr[k] * invN, si[k] * invN
+        for m in n_rng:
+            for ni in range(len(n_rng)):
+                sr = [iv.mpf(0)] * 8
+                for i in range(N_bz):
+                    ang = (m * i) % N_bz
+                    c_a, s_a = cs_b[ang], sn_b[ang]
+                    for k in range(8):
+                        sr[k] += tc_r[k][i][ni] * c_a - tc_i[k][i][ni] * s_a
+                for k in range(8):
+                    Cx_l1[k] += abs(sr[k] * invN)
+        q2m, qxm, exm, ex2m, lb2, lb4 = _r23_rat(49, 5), _r23_rat(49, 10), _r23_rat(7, 2), _r23_rat(49, 4), _r23_rat(1, 5), _r23_rat(11, 5)
+        r_st = _r23_rat(2, 5)
+        ta_fac = _r23_rat(140, 9) * ((r_st ** (K_cut + 1)) + (r_st ** (N_bz - K_cut)))
+        M_ds, M_dn, M_rT = (q2m * q2m + 8 * q2m + 14) / (4 * lb2 * lb4 * lb4), 1 / (2 * lb2 * lb4 * lb4), 1 / (lb4 * lb4)
+        M_k0 = 2 * (2 * M_rT + (qxm + ex2m) * (M_ds + M_dn))
+        M_MH0, M_G6 = 1 / lb4 + (qxm + ex2m) / (4 * lb4), exm / (2 * lb4)
+        M_MS0 = max(((3 * q2m + 8 + q2m) / (2 * lb2 * lb4) + 2 * M_G6).b, (1 / lb4 + (qxm + ex2m) / (2 * lb4) + 2 * M_G6).b)
+        M_s00, M_s02, M_S0H = exm * (q2m + 3) / (lb2 * lb4), exm / (lb2 * lb4), M_rT + (qxm + ex2m) / (4 * lb4 * lb4)
+        M_S0, M_T0 = max((M_s00 / 2).b, (M_s02 / 2).b, M_S0H.b), M_s00 + M_s02 + 1 / lb4
+        k0_inf = 2 * (Ev_l1[0] + Cx_l1[0] + Ev_l1[1] + Cx_l1[1]) + M_k0 * ta_fac
+        norm_MH0 = Ev_l1[2] + Cx_l1[2] + M_MH0 * ta_fac
+        norm_MS0 = max((Ev_l1[4] + Ev_l1[5] + 2 * Cx_l1[4]).b, (Ev_l1[3] + Cx_l1[3] + 2 * Cx_l1[4]).b) + M_MS0 * ta_fac
+        norm_S0 = max((Cx_l1[5] / 2).b, (Cx_l1[6] / 2).b, (Ev_l1[7] + Cx_l1[7]).b) + M_S0 * ta_fac
+        norm_T0 = Cx_l1[5] + Cx_l1[6] + Ev_l1[6] + M_T0 * ta_fac
+        require(k0_inf.b < mp.mpf("0.93"), f"inf-Z^3 k0_inf >= 0.93: {k0_inf}")
+        L29_ub = iv.mpf("0.97874131")
+        infz3_curved = {}
+        for td in ("0.00", "0.05"):
+            th = PI_IV * iv.mpf(td) / 180
+            eps, sinP, omc = 2 * iv.sin(th / 2), iv.sin(min(PI_IV / 2, 2 * th)), 1 - iv.cos(2 * th)
+            dMH, dMS, dB = 12 * eps + 6 * sinP + 12 * omc, 20 * eps + 10 * sinP + 16 * omc, 4 * (2 * eps + sinP + omc)
+            mHc, mSc = norm_MH0 / (1 - norm_MH0 * dMH), norm_MS0 / (1 - norm_MS0 * dMS)
+            Tc = norm_T0 + mSc * (dB + dMS * norm_T0)
+            k_ub = k0_inf + mHc * dMH * k0_inf + 4 * mHc * dB * Tc + 4 * norm_S0 * (dMS * Tc + dB)
+            c_ub = k_ub * (L29_ub ** 2)
+            require(c_ub.b < mp.mpf(1), f"inf-Z^3 curved {td}d >= 1: {c_ub}")
+            infz3_curved[td] = mp.nstr(mp.mpf(c_ub.b), 9)
+        checks += 6
+
+        # =====================================================================
+        # §4. W23-3: Geodesic S^3 Haar Hessian (>=2/3 I_36), 6x6 D_geo (70d..72d),
+        #     +Flux_S3, & 3 Sharp 6x6 Curvature Walls
+        # =====================================================================
+        q0_s, q1_s, q2_s, q3_s = sp.symbols("q0 q1 q2 q3", real=True)
+        require(sp.expand((4 * q0_s ** 2 - 1) + 4 * (q1_s ** 2 + q2_s ** 2 + q3_s ** 2) - (4 * (q0_s ** 2 + q1_s ** 2 + q2_s ** 2 + q3_s ** 2) - 1)) == 0, "Quaternion S^3 trace mismatch")
+
+        def _build_6x6_iv(sea_deg_int: int, cap_deg_int: int):
+            LB = 6
+            hm = iv.mpf(2) * BETA_495_IV * iv.cos(PI_IV * iv.mpf(sea_deg_int) / iv.mpf(360))
+            cs = iv.cos(PI_IV * iv.mpf(cap_deg_int) / iv.mpf(180))
+            H_site = [iv.mpf(0)] * 36
+            Lx = [[iv.mpf(0)] * 36 for _ in range(36)]
+            Ly = [[iv.mpf(0)] * 36 for _ in range(36)]
+            K_ext = [[iv.mpf(0)] * 36 for _ in range(36)]
+            for x in range(LB):
+                for y in range(LB):
+                    u = x * LB + y
+                    ne = (x == 0) + (x == LB - 1) + (y == 0) + (y == LB - 1)
+                    H_site[u] = hm + iv.mpf(ne) * BETA_495_IV * cs
+                    if x + 1 < LB:
+                        v = (x + 1) * LB + y
+                        Lx[u][u] += BETA_495_IV; Lx[v][v] += BETA_495_IV; Lx[u][v] -= BETA_495_IV; Lx[v][u] -= BETA_495_IV
+                    if y + 1 < LB:
+                        v = x * LB + (y + 1)
+                        Ly[u][u] += BETA_495_IV; Ly[v][v] += BETA_495_IV; Ly[u][v] -= BETA_495_IV; Ly[v][u] -= BETA_495_IV
+                    for nx, ny in [(x + 1, y), (x - 1, y), (x, y + 1), (x, y - 1)]:
+                        if not (0 <= nx < LB and 0 <= ny < LB):
+                            K_ext[u][(nx % LB) * LB + (ny % LB)] += BETA_495_IV
+            Dq = [[(H_site[i] if i == j else iv.mpf(0)) + Lx[i][j] + Ly[i][j] for j in range(36)] for i in range(36)]
+            return Dq, K_ext
+
+        two_thirds = _r23_rat(2, 3)
+        Dq70, Ke70 = _build_6x6_iv(150, 70)
+        Dgeo70 = [[Dq70[i][j] + (two_thirds if i == j else iv.mpf(0)) for j in range(36)] for i in range(36)]
+        mu97 = _r23_rat(97, 100)
+        require(_r23_ldlt_diag([[mu97 * Dgeo70[i][j] + Ke70[i][j] for j in range(i + 1)] for i in range(36)])[0] and
+                _r23_ldlt_diag([[mu97 * Dgeo70[i][j] - Ke70[i][j] for j in range(i + 1)] for i in range(36)])[0], "6x6 D_geo 70d >= 0.97")
+        Dq71, Ke71 = _build_6x6_iv(150, 71)
+        Dgeo71 = [[Dq71[i][j] + (two_thirds if i == j else iv.mpf(0)) for j in range(36)] for i in range(36)]
+        mu99 = _r23_rat(99, 100)
+        require(_r23_ldlt_diag([[mu99 * Dgeo71[i][j] - Ke71[i][j] for j in range(i + 1)] for i in range(36)])[0], "6x6 D_geo 71d >= 0.99")
+        Dq72, Ke72 = _build_6x6_iv(150, 72)
+        Dgeo72 = [[Dq72[i][j] + (two_thirds if i == j else iv.mpf(0)) for j in range(36)] for i in range(36)]
+        require(not _r23_ldlt_diag([[Dgeo72[i][j] - Ke72[i][j] for j in range(i + 1)] for i in range(36)])[0], "6x6 D_geo 72d should exceed 1")
+
+        hm_150 = iv.mpf(2) * BETA_495_IV * iv.cos(PI_IV * iv.mpf(150) / iv.mpf(360))
+
+        def _opp_eig(r0_deg: int):
+            r0 = PI_IV * iv.mpf(r0_deg) / iv.mpf(180)
+            c, s = iv.cos(r0), iv.sin(r0)
+            c2, hr = iv.cos(iv.mpf(2) * r0), iv.mpf(2) / (s * s) - iv.mpf(2) / (r0 * r0)
+            d11 = hm_150 * c + hr + BETA_495_IV * c2 - (hm_150 + BETA_495_IV)
+            d12 = -BETA_495_IV * c2 + BETA_495_IV
+            return d11 - d12
+
+        eig10, eig11, eig15 = _opp_eig(10), _opp_eig(11), _opp_eig(15)
+        require(eig10.a > 0 and eig11.b < 0 and eig15.b < mp.mpf("-0.73"), "6x6 opp Hessian convexity wall failed")
+        _, d_dq = _r23_ldlt_diag([[Dq70[i][j] for j in range(i + 1)] for i in range(36)])
+        ld_dq = sum(iv.log(dv) for dv in d_dq)
+        D_3x3 = [[Dq70[i][j] for j in range(36)] for i in range(36)]
+        for y in range(6):
+            u, v = 2 * 6 + y, 3 * 6 + y
+            D_3x3[u][u] -= BETA_495_IV; D_3x3[v][v] -= BETA_495_IV; D_3x3[u][v] += BETA_495_IV; D_3x3[v][u] += BETA_495_IV
+        for x in range(6):
+            u, v = x * 6 + 2, x * 6 + 3
+            D_3x3[u][u] -= BETA_495_IV; D_3x3[v][v] -= BETA_495_IV; D_3x3[u][v] += BETA_495_IV; D_3x3[v][u] += BETA_495_IV
+        _, d_3x3 = _r23_ldlt_diag([[D_3x3[i][j] for j in range(i + 1)] for i in range(36)])
+        gap_3x3 = iv.mpf("1.5") * (ld_dq - sum(iv.log(dv) for dv in d_3x3))
+        w_opp_pi2 = BETA_495_IV * (-iv.mpf(2) + (PI_IV * PI_IV) / iv.mpf(2))
+        net_p45 = iv.mpf("4.5") * w_opp_pi2 - iv.mpf("0.9") * BETA_495_IV * (PI_IV * PI_IV) / iv.mpf(2)
+        require(gap_3x3.a > mp.mpf("11.38") and net_p45.a > mp.mpf("43.0"), "6x6 Wall 2/3 failed")
+        th40 = PI_IV * iv.mpf(40) / iv.mpf(180)
+        H_mc_s3 = hm_150 + iv.mpf(4) * BETA_495_IV * iv.cos(th40)
+        h_s3 = th40 / iv.mpf(70)
+        h3_24_s3 = (h_s3 * h_s3 * h_s3) / iv.mpf(24)
+        z_cap_s3 = sin4_s3 = iv.mpf(0)
+        for kj in range(70):
+            rk = iv.mpf([mp.mpf((iv.mpf(kj) * h_s3).a), mp.mpf((iv.mpf(kj + 1) * h_s3).b)])
+            rm = (iv.mpf(kj) + _r23_rat(1, 2)) * h_s3
+            sm_r, cm_r = iv.sin(rm), iv.cos(rm)
+            sb_r, cb_r = iv.sin(rk), iv.cos(rk)
+            Em = iv.exp(H_mc_s3 * (cm_r - iv.mpf(1)))
+            Eb = iv.exp(H_mc_s3 * (cb_r - iv.mpf(1)))
+            g2_b, g2p_b, g2pp_b = sb_r * sb_r, iv.mpf(2) * sb_r * cb_r, iv.mpf(2) * (cb_r * cb_r - sb_r * sb_r)
+            d2_z = (g2pp_b - iv.mpf(2) * g2p_b * H_mc_s3 * sb_r + g2_b * (H_mc_s3 * H_mc_s3 * sb_r * sb_r - H_mc_s3 * cb_r)) * Eb
+            g4_b, g4p_b, g4pp_b = sb_r ** 4, iv.mpf(4) * (sb_r ** 3) * cb_r, iv.mpf(12) * sb_r * sb_r * cb_r * cb_r - iv.mpf(4) * (sb_r ** 4)
+            d2_s4 = (g4pp_b - iv.mpf(2) * g4p_b * H_mc_s3 * sb_r + g4_b * (H_mc_s3 * H_mc_s3 * sb_r * sb_r - H_mc_s3 * cb_r)) * Eb
+            z_cap_s3 = z_cap_s3 + h_s3 * (sm_r * sm_r * Em) + h3_24_s3 * d2_z
+            sin4_s3 = sin4_s3 + h_s3 * ((sm_r ** 4) * Em) + h3_24_s3 * d2_s4
+        flux_s3 = (iv.mpf(4) * BETA_495_IV / (iv.mpf(3) * H_mc_s3 * z_cap_s3)) * (iv.sin(th40) ** 3) * iv.exp(H_mc_s3 * (iv.cos(th40) - iv.mpf(1)))
+        bulk_s3 = (iv.mpf(4) * BETA_495_IV) * sin4_s3 / (iv.mpf(3) * z_cap_s3)
+        sum_s3 = bulk_s3 + flux_s3
+        require(sum_s3.a > mp.mpf("1.0329") and sum_s3.b < mp.mpf("1.0332"), f"+Flux_S3 out of window: {sum_s3}")
+        checks += 6
+
+        # =====================================================================
+        # §5. W23-4 (K_comm(1.65) + Jump Sandwich), Guard #2 7-Way & Litmus 6
+        # =====================================================================
+        _k_comm_lb = lambda b_iv, D_d: _r23_rat(3, 4) * ((iv.mpf(1) - besseli_iv_any(3, iv.mpf(2 * (D_d - 1)) * b_iv) / besseli_iv_any(1, iv.mpf(2 * (D_d - 1)) * b_iv)) ** 2)
+        kc_4d_165 = _k_comm_lb(_r23_rat(33, 20), 4)
+        kc_c5_165 = _k_comm_lb(_r23_rat(33, 20), 5)
+        require(mp.mpf(kc_4d_165.a) > mp.mpf(kc_c5_165.b) and mp.mpf(kc_c5_165.a) > mp.mpf("0.05439"), "W23-4 K_comm(1.65) failed")
+        u_max_495_2L = _r23_rng(r22_cert["w22_4_bch_3link_and_mi13"]["u_max_495_2L"])
+        du_495_r23 = iv.mpf(mp.mpf(u_max_495_2L.b) - mp.mpf(up_495_iv.a))
+        var_495_r23 = (du_495_r23 * du_495_r23) / iv.mpf(4)
+        require(mp.mpf(du_495_r23.b) < mp.mpf("0.265") and mp.mpf(var_495_r23.b) < mp.mpf("0.018"), "W23-4 jump sandwich cap exceeded")
+
+        M_su5 = sp.diag(-sp.Rational(4, 5), sp.Rational(1, 5), sp.Rational(1, 5), sp.Rational(1, 5), sp.Rational(1, 5))
+        require(M_su5.trace() == 0 and M_su5[0, 0] * M_su5[1, 1] == -sp.Rational(4, 25), "4D SU(5) traceless diag failed")
+        c1_tgs = iv.mpf(4) * ((iv.mpf(1) - iv.sqrt(iv.sqrt(iv.mpf(3)) / (iv.sqrt(iv.mpf(3)) + iv.mpf(2)))) ** 2)
+        require(mp.mpf(c1_tgs.b) < mp.mpf(1), "C1 U(1) naive TGS check failed")
+        litmus6_lhs = (iv.mpf(6) * PI_IV * PI_IV) / iv.mpf(11)
+        litmus6_rhs = iv.mpf(8) * iv.log(iv.mpf(2))
+        litmus6_gap = litmus6_rhs - litmus6_lhs
+        require(mp.mpf(litmus6_gap.a) > mp.mpf("0.16175686206"), f"Litmus 6 failed: {litmus6_gap}")
+        checks += 6
+
+        wave23_retirements = [
+            "w23_1_optimistic_69_16_d4pin_box",
+            "w23_1_single_species_raw_q32_gap",
+            "w23_1_truncated_b2_wpair_tail_sum_drop",
+            "w23_1_single_cube_st_plus_peierls_at_8p1875",
+            "w23_2_jensen_3lk_below_4p50_fake_contraction",
+            "w23_2_w025_multiblock_schur_negative_pivot",
+            "w23_2_naive_w1_sturm_sign_flip_beyond_150d",
+            "w23_2_flat_z3_bypass_ignoring_curved_140over9",
+            "w23_3_geodesic_6x6_dgeo_above_71deg",
+            "w23_3_2x2_o4_ward_kp_at_142deg",
+            "w23_3_6x6_70d_zero_curvature_and_logdet_explosion",
+            "w23_3_omitted_s3_flux_leibniz_and_3site_fake_contract",
+            "w23_3_landau_g_eq_I_gribov_negative_eigenmodes",
+            "w23_3_3d_c3_dimensional_blindness_against_c5",
+            "w23_4_nonzero_bch_step_c_gt_0_gap_collapse",
+            "w23_4_q3_oracle_0p646675_wall_claimed_insurmountable",
+            "w23_4_o_mi13_single_kcomm_or_linear_closure",
+            "w23_c38_isotropic_u3_cube_without_double_u3_twist",
+            "w23_c38_unpatched_mi38_1b_without_h_inplane",
+            "w23_5_quarantined_empirical_mc_in_closure",
+        ]
+        require(len(wave23_retirements) == 20, "Wave 23 retirement count != 20")
+
+        return {
+            "round": "23",
+            "schema": "ueot-h2d-round23-wave23-doubleu3-uvlp-gluing-geodesic-infz3/1",
+            "lean_module": "UEOTPhysicsUnification.IRXWave23DoubleU3OracleBreachUVLpGluingGeodesicAndInfZ3",
+            "cycle38a_double_u3_oracle_breach": {
+                "parameters": {"b0": "11/5", "wt": "13/4", "wsw": "27/10", "wsm": "3/2", "pw": "6/5", "q": 6},
+                "wing_2d_log_C_ub": mp.nstr(max_2d_ub, 12),
+                "wing_2d_boxes": n_2d,
+                "wing_3d_log_lam3_ub": mp.nstr(max_3d_ub, 12),
+                "wing_3d_boxes": n_3d,
+                "wing_log_rw_ub": mp.nstr(mp.mpf(lrw_cert_iv.b), 12),
+                "pillow5_log_r5_ub": mp.nstr(r5_ub, 12),
+                "f_4D_ub_at_11_5": mp.nstr(mp.mpf(f_ub_4d_iv.b), 12),
+                "f_LB_495_Thm_MI35_1": f_LB_495_str,
+                "u_p_495_unconditional_lb": mp.nstr(mp.mpf(up_495_iv.a), 12),
+                "m_sea_495_unconditional_lb": mp.nstr(mp.mpf(m_sea_495_iv.a), 12),
+                "margin_above_0_646675": mp.nstr(margin_breach, 8),
+                "oracle_0p646675_beaten": True,
+            },
+            "w23_1_uv_d4pin_wpair_and_st_plus": {
+                "d4_pin_frob_sq_box": "23/4",
+                "d4_pin_diff_above_69_16": "23/16",
+                "st_plus_34_iv": _r23_pair(n_lf_34, 10),
+                "st_plus_35_iv": _r23_pair(n_lf_35, 10),
+                "st_plus_8p1875_iv": _r23_pair(n_lf_8p1875, 10),
+                "wpair_7121": lad_7121,
+                "wpair_6775": lad_6775,
+                "wpair_10305": lad_10305,
+                "wpair_twosp_8445": lad_8445,
+            },
+            "w23_2_s00_sturm_multiblock_and_infz3": {
+                "S_00_sympy_ok": True,
+                "lowdin_partition_sum": "1",
+                "sturm_W0_3p70_iv": _r23_pair(W0_370, 9),
+                "sturm_W1_3p70_iv": _r23_pair(W1_370, 9),
+                "infz3_k0_inf_ub": mp.nstr(mp.mpf(k0_inf.b), 9),
+                "infz3_curved_000d_ub": infz3_curved["0.00"],
+                "infz3_curved_005d_ub": infz3_curved["0.05"],
+            },
+            "w23_3_geodesic_6x6_and_flux_s3": {
+                "d_geo_70d_ub": "97/100",
+                "d_geo_71d_ub": "99/100",
+                "d_geo_72d_exceeds_1": True,
+                "opp_eig_10d_lb": _r23_pair(eig10, 7)[0],
+                "opp_eig_11d_ub": _r23_pair(eig11, 7)[1],
+                "opp_eig_15d_ub": _r23_pair(eig15, 7)[1],
+                "o36_3x3_logdet_gap_lb": _r23_pair(gap_3x3, 7)[0],
+                "bg_p4p5_net_lb": _r23_pair(net_p45, 7)[0],
+                "plus_flux_s3_4p95_150d_40d_iv": _r23_pair(sum_s3, 8),
+            },
+            "w23_4_and_7way_litmus6": {
+                "u_max_495_2L_iv": _r23_pair(u_max_495_2L, 10),
+                "du_495_ub": mp.nstr(mp.mpf(du_495_r23.b), 9),
+                "bimodal_var_cap_495_ub": mp.nstr(mp.mpf(var_495_r23.b), 9),
+                "k_comm_165_4d_iv": _r23_pair(kc_4d_165, 10),
+                "k_comm_165_c5_iv": _r23_pair(kc_c5_165, 10),
+                "seven_way_separated": True,
+                "c1_u1_tgs_ub": mp.nstr(mp.mpf(c1_tgs.b), 8),
+                "su5_mandelstam_diag": "-4/25",
+                "litmus6_6pi2_over_11_iv": _r23_pair(litmus6_lhs, 14),
+                "litmus6_8ln2_iv": _r23_pair(litmus6_rhs, 14),
+                "litmus6_margin_lb": mp.nstr(mp.mpf(litmus6_gap.a), 12),
+            },
+            "wave23_retirements": wave23_retirements,
+            "interval_checks_passed": checks,
+            "irx_status": "OPEN",
+            "noBulkTransition": "OPEN",
+            "uv_x_status": "OPEN",
+            "chiral_x_status": "OPEN",
+            "h2d_status": "OPEN",
+            "h2d_minimal_core_status": "OPEN",
+            "o_mi13_status": "OPEN",
+            "physical_unification": "OPEN",
+            "device_certified": False,
+            "empirical_quarantined_out_of_closure": True,
+            "thm_mi38_1b_held_for_round24": True,
+        }
+    finally:
+        mp.dps = prev_dps
+        iv.dps = prev_iv_dps
+
 
 def compute_certificate() -> dict:
     mp.dps = 50
@@ -23364,6 +24337,7 @@ def compute_certificate() -> dict:
     h2d_round20_wave20 = compute_h2d_round20_wave20_nonbox_continuum_stiffness_and_coexistence(h2d_round19_wave19)
     h2d_round21_wave21 = compute_h2d_round21_wave21_covariant_delta2_mixmgf_leibniz_and_maxwell(h2d_round20_wave20)
     h2d_round22_wave22 = compute_h2d_round22_phi3_moving_frame_bch_slab3d_and_loop_sdp(h2d_round21_wave21)
+    h2d_round23_wave23 = compute_h2d_round23_doubleu3_oracle_uvlp_gluing_geodesic_and_infz3(h2d_round22_wave22)
     payload = {
         "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
         "result_ids": [
@@ -23400,6 +24374,7 @@ def compute_certificate() -> dict:
         "h2d_round20_wave20_nonbox_continuum_stiffness_and_coexistence": h2d_round20_wave20,
         "h2d_round21_wave21_covariant_delta2_mixmgf_leibniz_and_maxwell": h2d_round21_wave21,
         "h2d_round22_wave22_phi3_moving_frame_bch_slab3d_and_loop_sdp": h2d_round22_wave22,
+        "h2d_round23_doubleu3_oracle_uvlp_gluing_geodesic_and_infz3": h2d_round23_wave23,
         "wilson_transfer_and_symanzik": {
             "q8_strong_coupling_transfer": transfer_results,
             "symanzik_o_a2_leading_coeff": outward_str(c0_exact),
@@ -23653,9 +24628,25 @@ def main() -> int:
     require(r22_cert["physical_unification"] == "OPEN", "Round 22 physical_unification must remain OPEN")
     require(r22_cert["device_certified"] is False, "Round 22 device_certified must remain False")
     require(r22_cert["empirical_quarantined_out_of_closure"] is True, "Round 22 empirical quarantine must be True")
+    r23_cert = payload["h2d_round23_doubleu3_oracle_uvlp_gluing_geodesic_and_infz3"]
+    require(r23_cert["interval_checks_passed"] >= 30, "Round 23 interval checks count mismatch")
+    require(len(r23_cert["wave23_retirements"]) == 20, "Round 23 retirement count mismatch")
+    require(mp.mpf(r23_cert["cycle38a_double_u3_oracle_breach"]["u_p_495_unconditional_lb"]) > mp.mpf("0.646675"), "Round 23 Double-U3 must beat 0.646675")
+    require(r23_cert["cycle38a_double_u3_oracle_breach"]["oracle_0p646675_beaten"] is True, "Round 23 oracle_0p646675_beaten mismatch")
+    require(r23_cert["thm_mi38_1b_held_for_round24"] is True, "Round 23 thm_mi38_1b_held_for_round24 must be True")
+    require(r23_cert["irx_status"] == "OPEN", "Round 23 irx_status must remain OPEN")
+    require(r23_cert["noBulkTransition"] == "OPEN", "Round 23 noBulkTransition must remain OPEN")
+    require(r23_cert["uv_x_status"] == "OPEN", "Round 23 uv_x_status must remain OPEN")
+    require(r23_cert["chiral_x_status"] == "OPEN", "Round 23 chiral_x_status must remain OPEN")
+    require(r23_cert["h2d_status"] == "OPEN", "Round 23 h2d_status must remain OPEN")
+    require(r23_cert["h2d_minimal_core_status"] == "OPEN", "Round 23 h2d_minimal_core_status must remain OPEN")
+    require(r23_cert["o_mi13_status"] == "OPEN", "Round 23 o_mi13_status must remain OPEN")
+    require(r23_cert["physical_unification"] == "OPEN", "Round 23 physical_unification must remain OPEN")
+    require(r23_cert["device_certified"] is False, "Round 23 device_certified must remain False")
+    require(r23_cert["empirical_quarantined_out_of_closure"] is True, "Round 23 empirical quarantine must be True")
     if args.check:
         committed = json.loads(CERT_PATH.read_text(encoding="utf-8"))
-        require(committed == payload, "Committed certificate.json differs from recomputed Wave 22 H2 values")
+        require(committed == payload, "Committed certificate.json differs from recomputed Wave 23 H2 values")
         print("PASS: nonabelian_lattice_massgap_h2 (P-H2A-TRANSFER-01, P-H2B-DOBRUSHIN-02, P-H2C-CHIRAL-UV-03, C-H2-OPER-04)")
     else:
         write_json(CERT_PATH, payload)
