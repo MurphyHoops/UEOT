@@ -1,7 +1,7 @@
 # `ueot-physics-unification` — Pure-Kernel Lean 4 Formalization of UEOT Physics Unification Gates
 
 Toolchain: `leanprover/lean4:v4.33.1` (exact byte match to `formalization/ueot-core` and `formalization/ueot-qm`).  
-Kernel audit: **53 modules, 6006 constants, 2571 theorems, 2828 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
+Kernel audit: **54 modules, 6147 constants, 2614 theorems, 2901 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
 
 This package extends formal machine-checked coverage across all non-`PR #468` sectors of the UEOT Physics responsibility matrix (`PREMISES_AND_RESPONSIBILITIES.md` & `CORE_PHYSICS_CONTRACT.md`) without modifying any historical file in `formalization/ueot-core` or `formalization/ueot-qm`.
 
@@ -62,6 +62,7 @@ This package extends formal machine-checked coverage across all non-`PR #468` se
 | `UEOTPhysicsUnification.IRXWave19SmoothUVLandauZSchurPeelAndCorrelatedCoexistence` | `P-H2D-R19-W19-1-01..OPEN-07` | `w19_1_smooth_pou_hsm3_sos_wick_and_strang`, `w19_2_landau_gribov_cell_mfp_cbh_and_su5`, `w19_3_hodge_1overmu_and_c16_schur_peeling`, `w19_3_c15_s2_c17_o4_and_c18_redblack`, `w19_4_elitzur_sm_kcomm_sd_and_litmus6`, `w19_canonical_witness_margins`, `round19_irx_wave19_honest_open_lock` |
 | `UEOTPhysicsUnification.IRXWave20NonBoxUVContinuumCoarseStiffnessRelTiltAndMultiPlaq` | `P-H2D-R20-W20-1-01..OPEN-07` | `w20_1_nonbox_uv_bkar_nelson_qf_and_strang`, `w20_1_strang_b2_exact_matrix_o2_and_trace_o3`, `w20_2_continuum_peter_weyl_6d_stiffness_q2_and_gribov`, `w20_3_moving_cap_leibniz_ward_rb_and_frustrated_saddle`, `w20_4_riccati_4link_umax_kcomm_and_mi13_separation`, `cycles19_to_28_pure_math_synthesis_and_maxwell_wick`, `w20_canonical_witness_margins`, `round20_irx_wave20_honest_open_lock` |
 | `UEOTPhysicsUnification.IRXWave21CovariantDelta2MixMGFLebnizWardAndBeltMaxwell` | `P-H2D-R21-W21-1-01..OPEN-07` | `w21_1_covariant_delta2_pperp_sos_nelson_and_strang`, `w21_2_so3_pythagorean_all_lambda_mgf_gribov_and_cont6d`, `w21_3_q3a_s3_leibniz_o4_ward_48x48_and_rb_order`, `w21_4_cycles29_to_32_belt_maxwell_kcomm_and_infz2`, `w21_canonical_witness_margins`, `round21_irx_wave21_honest_open_lock` |
+| `UEOTPhysicsUnification.IRXWave22Phi3MovingFrame75dGluingBCHSlab3DAndLoopSDP` | `P-H2D-R22-W22-1-01..OPEN-07` | `w22_1_phi3_qanom_sm5_ch3_conserv_d4pin_and_coset_strang`, `w22_2_left_moving_frame_12d_75d_gluing_and_star_bridge`, `w22_3_s3_compression_q3a_rank3_nogo_and_landau_double_dipole_exit`, `w22_4_biinvariant_2sweep_bch_3link_e5_and_nonlinear_mi13`, `cycles33_to_37a_borromean_loop_sdp_so4_2site_slab3d_and_cheb4belt`, `w22_canonical_witness_margins`, `round22_irx_wave22_honest_open_lock` |
 
 ## Local Build & Exhaustive Kernel Audit
 
