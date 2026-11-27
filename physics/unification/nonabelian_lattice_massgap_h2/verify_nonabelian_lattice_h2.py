@@ -23948,6 +23948,1958 @@ def compute_h2d_round23_doubleu3_oracle_uvlp_gluing_geodesic_and_infz3(r22_cert:
         iv.dps = prev_iv_dps
 
 
+def compute_h2d_round24_final_wave24_archive(r23_cert: dict) -> dict:
+    """
+    Round 24 Final Wave-24 Archive (W24-1..4 + Inventor Cycle 39A/40A + W24-5 + Permanent Wave Freeze)
+    pure-arithmetic + SymPy (<= 6x6) + Fraction + 40-digit mpmath.iv + exact integer-interval certifier.
+    Certifies u_p(4.95) >= 0.647688590358, m_sea(4.95) >= 0.419500510080, S^3 Stein-IBP
+    beta_DS_4D >= 0.170772554 > 3*pi/64 > 1/9, B_{45}(S^3) <= 0.91746494 < 1 < 1.0144572 (Gauss),
+    7-Way + Litmus 6, permanent incremental wave freeze (NO Wave 25), and strict .OPEN / False locks.
+    """
+    from collections import defaultdict
+
+    prev_dps = mp.dps
+    prev_iv_dps = iv.dps
+    mp.dps = 55
+    iv.dps = 40
+    try:
+        checks = 0
+        PI_IV = iv.pi
+        BETA_IV = iv.mpf(495) / iv.mpf(100)
+        SCALE_II = 10 ** 22
+
+        def _r24_rat(p: int, q: int = 1):
+            return iv.mpf(p) / iv.mpf(q)
+
+        def _r24_frac(f: Fraction):
+            return iv.mpf(f.numerator) / iv.mpf(f.denominator)
+
+        def _r24_rng(r):
+            return iv.mpf([mp.mpf(r[0]), mp.mpf(r[1])])
+
+        def _r24_pair(x, d: int = 12):
+            return [mp.nstr(mp.mpf(x.a), d), mp.nstr(mp.mpf(x.b), d)]
+
+        def _r24_abs_u(x):
+            return max(abs(mp.mpf(x.a)), abs(mp.mpf(x.b)))
+
+        def _r24_sp_mat6(rows):
+            require(len(rows) <= 6 and all(len(r) <= 6 for r in rows), "SymPy matrix > 6x6")
+            return sp.Matrix(rows)
+
+        def _r24_odd_dfact(n: int) -> int:
+            res = 1
+            for k in range(1, 2 * n + 2, 2):
+                res *= k
+            return res
+
+        def _to_ii(x):
+            return (int(mp.floor(mp.mpf(x.a) * SCALE_II)), int(mp.ceil(mp.mpf(x.b) * SCALE_II)))
+
+        def _ii_to_iv(u):
+            return iv.mpf([mp.mpf(u[0]) / mp.mpf(SCALE_II), mp.mpf(u[1]) / mp.mpf(SCALE_II)])
+
+        def _ii_add(u, v):
+            return (u[0] + v[0], u[1] + v[1])
+
+        def _ii_sub(u, v):
+            return (u[0] - v[1], u[1] - v[0])
+
+        def _ii_neg(u):
+            return (-u[1], -u[0])
+
+        def _ii_mul(u, v):
+            a, b = u
+            c, d = v
+            p1, p2, p3, p4 = a * c, a * d, b * c, b * d
+            return (min(p1, p2, p3, p4) // SCALE_II, -((-max(p1, p2, p3, p4)) // SCALE_II))
+
+        def _ii_div(u, v):
+            a, b = u
+            c, d = v
+            require(c > 0 or d < 0, "R24 ii_div zero denominator")
+            ns = (a * SCALE_II, b * SCALE_II)
+            ds = (c, d)
+            return (min(n // den for n in ns for den in ds), max(-((-n) // den) for n in ns for den in ds))
+
+        def _ii_abs_ub(u) -> int:
+            return max(abs(u[0]), abs(u[1]))
+
+        def _ii_chebU_d1_d2(y_ii, R_max: int, order: int = 2):
+            one_i = (SCALE_II, SCALE_II)
+            zero_i = (0, 0)
+            two_y = (2 * y_ii[0], 2 * y_ii[1])
+            U = [one_i]
+            if R_max >= 2:
+                U.append(two_y)
+            for k in range(2, R_max):
+                U.append(_ii_sub(_ii_mul(two_y, U[k - 1]), U[k - 2]))
+            if order == 0:
+                return U, None, None
+            dU = [zero_i]
+            if R_max >= 2:
+                dU.append((2 * SCALE_II, 2 * SCALE_II))
+            for k in range(2, R_max):
+                u_prev = U[k - 1]
+                dU.append(_ii_sub(_ii_add((2 * u_prev[0], 2 * u_prev[1]), _ii_mul(two_y, dU[k - 1])), dU[k - 2]))
+            if order == 1:
+                return U, dU, None
+            d2U = [zero_i]
+            if R_max >= 2:
+                d2U.append(zero_i)
+            for k in range(2, R_max):
+                du_prev = dU[k - 1]
+                d2U.append(_ii_sub(_ii_add((4 * du_prev[0], 4 * du_prev[1]), _ii_mul(two_y, d2U[k - 1])), d2U[k - 2]))
+            return U, dU, d2U
+
+        def _r24_cr0_vec_pt(R_max: int, k_mp, n_terms: int = 26):
+            if k_mp == 0:
+                return [iv.mpf(1) if r == 1 else iv.mpf(0) for r in range(1, R_max + 1)]
+            k = iv.mpf(k_mp)
+            half = k / iv.mpf(2)
+            h2 = half * half
+            c0 = [iv.mpf(0)] * R_max
+            t1m = iv.mpf(1)
+            last_t1 = t1m
+            for m in range(n_terms + 1):
+                if m > 0:
+                    t1m = t1m * h2 / iv.mpf(m * (m + 1))
+                tr = t1m
+                for idx in range(R_max):
+                    if idx > 0:
+                        tr = tr * half / iv.mpf(idx + 1 + m)
+                    c0[idx] = c0[idx] + tr
+                if m == n_terms:
+                    last_t1 = t1m
+            for idx in range(R_max):
+                r = idx + 1
+                tr_last = last_t1
+                for j in range(2, r + 1):
+                    tr_last = tr_last * half / iv.mpf(j + n_terms)
+                r0 = mp.mpf((h2 / iv.mpf((n_terms + 1) * (r + n_terms + 1))).b)
+                require(r0 < mp.mpf("0.5"), "R24 cr0 tail >= 0.5")
+                c0[idx] = c0[idx] + iv.mpf([mp.mpf(0), mp.mpf(tr_last.b) * r0 / (mp.mpf(1) - r0)])
+            return c0
+
+        def _r24_cr0_vec_box(R_max: int, k_iv, n_terms: int = 26):
+            ka, kb = max(mp.mpf(0), mp.mpf(k_iv.a)), max(mp.mpf(0), mp.mpf(k_iv.b))
+            c0a = _r24_cr0_vec_pt(R_max, ka, n_terms)
+            if ka == kb:
+                return c0a
+            c0b = _r24_cr0_vec_pt(R_max, kb, n_terms)
+            return [iv.mpf([mp.mpf(c0a[i].a), mp.mpf(c0b[i].b)]) for i in range(R_max)]
+
+        def _r24_cr_vec012_pt(R_max: int, k_mp, n_terms: int = 20):
+            if k_mp == 0:
+                c0 = [iv.mpf(1) if r == 1 else iv.mpf(0) for r in range(1, R_max + 1)]
+                c1 = [_r24_rat(1, 4) if r == 2 else iv.mpf(0) for r in range(1, R_max + 1)]
+                c2 = [_r24_rat(1, 4) if r == 1 else (_r24_rat(1, 12) if r == 3 else iv.mpf(0)) for r in range(1, R_max + 1)]
+                return c0, c1, c2
+            k = iv.mpf(k_mp)
+            half = k / iv.mpf(2)
+            h2 = half * half
+            c0, c1, c2 = [iv.mpf(0)] * R_max, [iv.mpf(0)] * R_max, [iv.mpf(0)] * R_max
+            t1m = iv.mpf(1)
+            last_t1 = t1m
+            for m in range(n_terms + 1):
+                if m > 0:
+                    t1m = t1m * h2 / iv.mpf(m * (m + 1))
+                tr = t1m
+                for idx in range(R_max):
+                    r = idx + 1
+                    if idx > 0:
+                        tr = tr * half / iv.mpf(r + m)
+                    p1 = r - 1 + 2 * m
+                    p2 = p1 * (p1 - 1)
+                    c0[idx] = c0[idx] + tr
+                    if p1 != 0:
+                        c1[idx] = c1[idx] + iv.mpf(p1) * tr
+                    if p2 != 0:
+                        c2[idx] = c2[idx] + iv.mpf(p2) * tr
+                if m == n_terms:
+                    last_t1 = t1m
+            half_iv, qtr_iv = iv.mpf("0.5"), iv.mpf("0.25")
+            for idx in range(R_max):
+                r = idx + 1
+                tr_last = last_t1
+                for j in range(2, r + 1):
+                    tr_last = tr_last * half / iv.mpf(j + n_terms)
+                r0 = mp.mpf((h2 / iv.mpf((n_terms + 1) * (r + n_terms + 1))).b)
+                require(r0 < mp.mpf("0.5"), "R24 cr0 tail >= 0.5")
+                c0[idx] = c0[idx] + iv.mpf([mp.mpf(0), mp.mpf(tr_last.b) * r0 / (mp.mpf(1) - r0)])
+                p1_last = r - 1 + 2 * n_terms
+                r1 = mp.mpf((h2 * iv.mpf(p1_last + 2) / iv.mpf((n_terms + 1) * (r + n_terms + 1) * max(1, p1_last))).b)
+                require(r1 < mp.mpf("0.5"), "R24 cr1 tail >= 0.5")
+                t1_last = mp.mpf((iv.mpf(p1_last) * tr_last).b)
+                c1[idx] = (c1[idx] + iv.mpf([mp.mpf(0), t1_last * r1 / (mp.mpf(1) - r1)])) * half_iv / half
+                p2_last = p1_last * (p1_last - 1)
+                r2 = mp.mpf((h2 * iv.mpf((p1_last + 2) * (p1_last + 1)) / iv.mpf((n_terms + 1) * (r + n_terms + 1) * max(1, p2_last))).b)
+                require(r2 < mp.mpf("0.5"), "R24 cr2 tail >= 0.5")
+                t2_last = mp.mpf((iv.mpf(p2_last) * tr_last).b)
+                c2[idx] = (c2[idx] + iv.mpf([mp.mpf(0), t2_last * r2 / (mp.mpf(1) - r2)])) * qtr_iv / h2
+            return c0, c1, c2
+
+        def _r24_cr_vec012_box(R_max: int, k_iv, n_terms: int = 20):
+            ka, kb = max(mp.mpf(0), mp.mpf(k_iv.a)), max(mp.mpf(0), mp.mpf(k_iv.b))
+            c0a, c1a, c2a = _r24_cr_vec012_pt(R_max, ka, n_terms)
+            if ka == kb:
+                return c0a, c1a, c2a
+            c0b, c1b, c2b = _r24_cr_vec012_pt(R_max, kb, n_terms)
+            return (
+                [iv.mpf([mp.mpf(c0a[i].a), mp.mpf(c0b[i].b)]) for i in range(R_max)],
+                [iv.mpf([mp.mpf(c1a[i].a), mp.mpf(c1b[i].b)]) for i in range(R_max)],
+                [iv.mpf([mp.mpf(c2a[i].a), mp.mpf(c2b[i].b)]) for i in range(R_max)],
+            )
+
+        def _r24_cr_vec012_pt_ii(R_max: int, k_ii, n_terms: int = 20):
+            S = SCALE_II
+            if k_ii[1] == 0:
+                one_i, z_i = (S, S), (0, 0)
+                qtr_i, twf_i = (S // 4, -((-S) // 4)), (S // 12, -((-S) // 12))
+                return (
+                    [one_i if r == 1 else z_i for r in range(1, R_max + 1)],
+                    [qtr_i if r == 2 else z_i for r in range(1, R_max + 1)],
+                    [qtr_i if r == 1 else (twf_i if r == 3 else z_i) for r in range(1, R_max + 1)],
+                )
+            k_lo, k_hi = k_ii
+            require(k_lo > 0, "R24 cr ii k_lo <= 0")
+            ha, hb = k_lo // 2, -((-k_hi) // 2)
+            h2a, h2b = (ha * ha) // S, -((-(hb * hb)) // S)
+            k2_lo, k2_hi = (k_lo * k_lo) // S, -((-(k_hi * k_hi)) // S)
+            require(k2_lo > 0, "R24 cr ii k2_lo <= 0")
+            c0a, c0b = [0] * R_max, [0] * R_max
+            c1a, c1b = [0] * R_max, [0] * R_max
+            c2a, c2b = [0] * R_max, [0] * R_max
+            t1a, t1b = S, S
+            for m in range(n_terms + 1):
+                if m > 0:
+                    den_m = S * m * (m + 1)
+                    t1a = (t1a * h2a) // den_m
+                    t1b = -((-(t1b * h2b)) // den_m)
+                tra, trb = t1a, t1b
+                for idx in range(R_max):
+                    r = idx + 1
+                    if idx > 0:
+                        den_r = S * (r + m)
+                        tra = (tra * ha) // den_r
+                        trb = -((-(trb * hb)) // den_r)
+                    p1 = r - 1 + 2 * m
+                    p2 = p1 * (p1 - 1)
+                    c0a[idx] += tra
+                    c0b[idx] += trb
+                    if p1 != 0:
+                        c1a[idx] += p1 * tra
+                        c1b[idx] += p1 * trb
+                    if p2 != 0:
+                        c2a[idx] += p2 * tra
+                        c2b[idx] += p2 * trb
+            trlb = t1b
+            for idx in range(R_max):
+                r = idx + 1
+                if idx > 0:
+                    trlb = -((-(trlb * hb)) // (S * (r + n_terms)))
+                d0 = (n_terms + 1) * (r + n_terms + 1)
+                r0_den = S * d0
+                require(2 * h2b < r0_den, "R24 cr0 ii tail >= 0.5")
+                c0b[idx] += -((-(trlb * h2b)) // (r0_den - h2b))
+                p1_last = r - 1 + 2 * n_terms
+                r1_num, r1_den = h2b * (p1_last + 2), S * d0 * max(1, p1_last)
+                require(2 * r1_num < r1_den, "R24 cr1 ii tail >= 0.5")
+                c1b[idx] += -((-(p1_last * trlb * r1_num)) // (r1_den - r1_num))
+                c1a[idx] = (c1a[idx] * S) // k_hi
+                c1b[idx] = -((-(c1b[idx] * S)) // k_lo)
+                p2_last = p1_last * (p1_last - 1)
+                r2_num, r2_den = h2b * (p1_last + 2) * (p1_last + 1), S * d0 * max(1, p2_last)
+                require(2 * r2_num < r2_den, "R24 cr2 ii tail >= 0.5")
+                c2b[idx] += -((-(p2_last * trlb * r2_num)) // (r2_den - r2_num))
+                c2a[idx] = (c2a[idx] * S) // k2_hi
+                c2b[idx] = -((-(c2b[idx] * S)) // k2_lo)
+            return (
+                [(c0a[i], c0b[i]) for i in range(R_max)],
+                [(c1a[i], c1b[i]) for i in range(R_max)],
+                [(c2a[i], c2b[i]) for i in range(R_max)],
+            )
+
+        def _r24_cr_vec012_box_ii(R_max: int, k_iv, n_terms: int = 20):
+            ka, kb = max(mp.mpf(0), mp.mpf(k_iv.a)), max(mp.mpf(0), mp.mpf(k_iv.b))
+            ka_i = (int(mp.floor(ka * SCALE_II)), int(mp.ceil(ka * SCALE_II)))
+            c0a, c1a, c2a = _r24_cr_vec012_pt_ii(R_max, ka_i, n_terms)
+            if ka == kb:
+                return c0a, c1a, c2a
+            kb_i = (int(mp.floor(kb * SCALE_II)), int(mp.ceil(kb * SCALE_II)))
+            c0b, c1b, c2b = _r24_cr_vec012_pt_ii(R_max, kb_i, n_terms)
+            return (
+                [(c0a[i][0], c0b[i][1]) for i in range(R_max)],
+                [(c1a[i][0], c1b[i][1]) for i in range(R_max)],
+                [(c2a[i][0], c2b[i][1]) for i in range(R_max)],
+            )
+
+        def _r24_besseli(nu: int, x_iv, n_terms: int = 76):
+            half_x = x_iv / iv.mpf(2)
+            hx2 = half_x * half_x
+            term = (half_x ** nu) / iv.mpf(int(sp.factorial(nu)))
+            s = term
+            for k in range(1, n_terms):
+                term = term * hx2 / iv.mpf(k * (k + nu))
+                s = s + term
+            x_hi = mp.mpf(x_iv.b)
+            r_tail = (x_hi * x_hi) / (mp.mpf(4) * mp.mpf(n_terms) * mp.mpf(n_terms + nu))
+            require(r_tail < mp.mpf("0.2"), "R24 besseli tail >= 0.2")
+            tail_ub = mp.mpf(term.b) * r_tail / (mp.mpf(1) - r_tail)
+            return s + iv.mpf([mp.mpf(0), tail_ub])
+
+        def _r24_phi_su2(k_iv):
+            if mp.mpf(k_iv.a) > mp.mpf("0.5"):
+                return _r24_besseli(2, k_iv, 76) / _r24_besseli(1, k_iv, 76)
+            c0 = _r24_cr0_vec_box(2, k_iv, 20)
+            return c0[1] / c0[0]
+
+        def _r24_log_c1_su2(k_iv):
+            return iv.log((iv.mpf(2) * _r24_besseli(1, k_iv, 76)) / k_iv)
+
+        def _r24_gamma_upper(d_int: int, x_iv):
+            if d_int % 2 == 0:
+                k = d_int // 2
+                acc, term = iv.mpf(1), iv.mpf(1)
+                for j in range(1, k):
+                    term = term * x_iv / iv.mpf(j)
+                    acc = acc + term
+                return iv.exp(-x_iv) * acc
+            k_odd = (d_int - 1) // 2
+            y = iv.sqrt(iv.mpf(2) * x_iv)
+            inv1 = iv.mpf(1) / y
+            inv2 = inv1 * inv1
+            erfc_ub = (iv.mpf(1) / iv.sqrt(PI_IV)) * iv.exp(-x_iv) * iv.sqrt(2) * (inv1 - inv1 * inv2 + iv.mpf(3) * inv1 * (inv2 ** 2))
+            acc, t_odd = iv.mpf(0), iv.mpf(2) * iv.sqrt(x_iv / PI_IV) * iv.exp(-x_iv)
+            for j in range(k_odd):
+                acc = acc + t_odd
+                t_odd = t_odd * (iv.mpf(2) * x_iv / iv.mpf(2 * j + 3))
+            return erfc_ub + acc
+
+        # =====================================================================
+        # §1. W24-1: Schur-Woodbury 2+1, 4x4 Ring, 12-coord d4_med, B_2 Ladders
+        # =====================================================================
+        qsf, qsl, qll, mu_s = sp.symbols("qsf qsl qll mu_s")
+        M_sw = _r24_sp_mat6([[qsf, qsl], [qsl, qll]])
+        require(sp.simplify(M_sw.inv()[0, 0] - qll / (qsf * qll - qsl ** 2)) == 0, "R24 Schur-Woodbury mismatch")
+        R_4x4 = _r24_sp_mat6([[mu_s + 2, -1, 0, -1], [-1, mu_s + 2, -1, 0], [0, -1, mu_s + 2, -1], [-1, 0, -1, mu_s + 2]])
+        v_r4 = sp.Matrix([1, 0, -1, 0])
+        require(sp.simplify(R_4x4 * v_r4 - (mu_s + 2) * v_r4) == sp.zeros(4, 1), "R24 P-DDH-04 4x4 ring eig mismatch")
+        g_bg = sp.Symbol("g_bg")
+        d4_12 = [1, -1, -1, 1] * 3
+        require(sum(g_bg * c for c in d4_12) == 0, "R24 12-coord d4_med cancellation nonzero")
+        t1_s, t2_s = sp.symbols("t1_s t2_s", real=True)
+        require(sp.simplify(1 - (sp.cos(t1_s + t2_s) ** 2 + sp.sin(t1_s + t2_s) ** 2)) == 0, "R24 compact U4=U1*U2 nonzero")
+        b1999 = iv.mpf(1999)
+        ratio_1999 = (iv.mpf(2) * PI_IV * iv.sqrt(b1999)) / (iv.mpf(2) * iv.sqrt(iv.log(b1999)))
+        m15_num = 1
+        for k_od in range(1, 60, 2):
+            m15_num *= k_od
+        m15_fr = Fraction(m15_num, int(sp.factorial(15)))
+        nelson_blow = _r24_frac(m15_fr) * (ratio_1999 ** 30)
+        require(mp.mpf(nelson_blow.a) > mp.mpf("3.65e79"), "R24 Nelson blowup mismatch")
+
+        c_B_w24 = _r24_rng(_R22_PRIOR_CERT_IV["c_B_sqrt2"])
+        eps_adm_st = iv.mpf(2) * (iv.mpf(1) - iv.cos(iv.mpf("51.855") * PI_IV / iv.mpf(360)))
+        seven_e, inv_e = iv.mpf(7) * iv.exp(iv.mpf(1)), iv.mpf(1) / iv.exp(iv.mpf(1))
+        n_lf_34 = seven_e * _r24_gamma_upper(9, c_B_w24 * iv.mpf(34) * eps_adm_st)
+        n_lf_35 = seven_e * _r24_gamma_upper(9, c_B_w24 * iv.mpf(35) * eps_adm_st)
+        require(mp.mpf(n_lf_35.b) < mp.mpf(inv_e.a) and mp.mpf(n_lf_34.a) > mp.mpf(inv_e.b), "R24 St_+ [34,35] check")
+
+        rho_B2_ct = _r24_rng(_R17_W17_M24_PACK["stokes_54_banach_b2"]["D13_dim8"]["B2"])
+        d_beta_b2 = iv.mpf(11) * iv.log(iv.mpf(2)) / (iv.mpf(3) * (PI_IV ** 2))
+        b_stop_i = _to_ii(_r24_rat(131, 16))
+        rho_b2_i = _to_ii(rho_B2_ct)
+        dbeta_i = _to_ii(d_beta_b2)
+        one_i = (SCALE_II, SCALE_II)
+
+        def _r24_wpair_ladder_ii(b_start: int):
+            b_i = (b_start * SCALE_II, b_start * SCALE_II)
+            steps = 0
+            s_lo = s_hi = 0
+            w_i = _ii_div(one_i, _ii_mul(b_i, b_i))
+            max_w_hi = w_i[1]
+            while b_i[0] - dbeta_i[1] >= b_stop_i[1]:
+                inv_b2 = _ii_div(one_i, _ii_mul(b_i, b_i))
+                s_lo += inv_b2[0]
+                s_hi += inv_b2[1]
+                t_rw = _ii_mul(rho_b2_i, w_i)
+                w_i = (t_rw[0] + inv_b2[0], t_rw[1] + inv_b2[1])
+                if w_i[1] > max_w_hi:
+                    max_w_hi = w_i[1]
+                b_i = _ii_sub(b_i, dbeta_i)
+                steps += 1
+            return {
+                "steps": steps,
+                "sum_inv2_ub": mp.nstr(mp.mpf(s_hi) / mp.mpf(SCALE_II), 12),
+                "w_max_ub": mp.nstr(mp.mpf(max_w_hi) / mp.mpf(SCALE_II), 11),
+            }
+
+        lad_7730 = _r24_wpair_ladder_ii(1999)
+        lad_44443 = _r24_wpair_ladder_ii(11453)
+        require(lad_7730["steps"] == 7730 and lad_44443["steps"] == 44443, "R24 B2 ladder steps mismatch")
+        require(mp.mpf(lad_7730["sum_inv2_ub"]) < mp.mpf("0.46") and mp.mpf(lad_44443["sum_inv2_ub"]) < mp.mpf("0.46"), "R24 B2 sum_inv2 >= 0.46")
+        require(mp.mpf(lad_44443["w_max_ub"]) < mp.mpf("0.025"), "R24 B2 w_max >= 1/40")
+        checks += 6
+
+        # =====================================================================
+        # §2. W24-2 + C39A + C40A: M4, H6, 6x6 Comm, 4x4 h_y===0, & B_{45}(S^3)
+        # =====================================================================
+        M4_ok = _r24_sp_mat6([[1, -sp.Rational(5, 12), -sp.Rational(1, 3), -sp.Rational(1, 4)], [-sp.Rational(5, 12), 1, 0, 0], [-sp.Rational(1, 3), 0, 1, 0], [-sp.Rational(1, 4), 0, 0, 1]])
+        M4_bad = _r24_sp_mat6([[1, sp.Rational(1, 4), sp.Rational(1, 4), sp.Rational(1, 4)], [sp.Rational(1, 4), -sp.Rational(1, 4), 0, 0], [sp.Rational(1, 4), 0, 1, 0], [sp.Rational(1, 4), 0, 0, 1]])
+        require(M4_ok.det() > 0 and M4_bad.det() < 0, "R24 M4 SPD vs indefinite mismatch")
+        c0_s, s0_s, w1_s, w2_s, w3_s = sp.symbols("c0_s s0_s w1_s w2_s w3_s", real=True)
+        A_s_sp, B_s_sp = 16 + 8 * c0_s, 2 * s0_s
+        M6_3x3 = _r24_sp_mat6([[A_s_sp, 0, 0], [0, A_s_sp, B_s_sp], [0, -B_s_sp, A_s_sp]])
+        eta_3 = sp.Matrix([(A_s_sp ** 2 + B_s_sp ** 2) * w1_s / A_s_sp, A_s_sp * w2_s - B_s_sp * w3_s, B_s_sp * w2_s + A_s_sp * w3_s]) / (A_s_sp ** 2 + B_s_sp ** 2)
+        require(sp.simplify(M6_3x3 * eta_3 - sp.Matrix([w1_s, w2_s, w3_s])) == sp.zeros(3, 1), "R24 H6 3x3 eta_opt6 mismatch")
+        hol_60d = iv.mpf(2) * (iv.sin(PI_IV / iv.mpf(6)) ** 4)
+        require(_r24_abs_u(hol_60d - _r24_rat(1, 8)) < mp.mpf("1e-35"), "R24 60d -2*sin^4 != -1/8")
+
+        m_s, d1s, d1c, d2s, d2c = sp.symbols("m_s d1s d1c d2s d2c")
+        q2_s = d1s * d1c + d2s * d2c
+        A_S_4 = _r24_sp_mat6([[m_s + q2_s, -d1c, -d2c, 0], [-d1s, m_s + 2 + d2s * d2c, -d2c * d1s, d1s],
+                              [-d2s, -d1c * d2s, m_s + 2 + d1s * d1c, d2s], [0, d1c, d2c, m_s + q2_s]])
+        vec_sol_4 = sp.Matrix([-d1c * (m_s + 1 + q2_s) / ((m_s + q2_s) * (m_s + 2 + q2_s)), 1 / (m_s + 2 + q2_s), 0, -d1c / ((m_s + q2_s) * (m_s + 2 + q2_s))])
+        require(sp.simplify(A_S_4 * vec_sol_4 - sp.Matrix([-d1c, 1, 0, 0])) == sp.zeros(4, 1), "R24 C39A 4x4 zero-hy mismatch")
+
+        # 40d iv + ii Inf-Z^3 Outer B_{13} -> B_{45} (S^3 <= 0.91746494 < 1 < 1.0144572 Gauss):
+        k6_iv = iv.mpf(6) * BETA_IV
+        eta_s3_k6 = iv.sqrt(iv.mpf(1) - iv.mpf(2) * _r24_phi_su2(k6_iv) / k6_iv)
+        eta_s2_k6 = iv.sqrt(iv.mpf(1) - _r24_phi_su2(k6_iv) / k6_iv)
+        D_s3 = iv.mpf(6) / eta_s3_k6
+
+        def _r24_iv_solve(A, b):
+            n = len(b)
+            M = [[A[i][j] for j in range(n)] + [b[i]] for i in range(n)]
+            for col in range(n):
+                piv = max(range(col, n), key=lambda r: abs(mp.mpf(M[r][col].a) + mp.mpf(M[r][col].b)))
+                M[col], M[piv] = M[piv], M[col]
+                p_val = M[col][col]
+                require(mp.mpf(p_val.a) > 0 or mp.mpf(p_val.b) < 0, "R24 singular pivot")
+                for r in range(col + 1, n):
+                    fac = M[r][col] / p_val
+                    if mp.mpf(fac.a) == 0 and mp.mpf(fac.b) == 0:
+                        continue
+                    for c in range(col, n + 1):
+                        M[r][c] = M[r][c] - fac * M[col][c]
+            x = [iv.mpf(0)] * n
+            for r in range(n - 1, -1, -1):
+                s = M[r][n]
+                for c in range(r + 1, n):
+                    s = s - M[r][c] * x[c]
+                x[r] = s / M[r][r]
+            for i in range(n):
+                res_i = sum((A[i][j] * x[j] for j in range(n)), iv.mpf(0)) - b[i]
+                require(_r24_abs_u(res_i) < mp.mpf("1e-30"), "R24 linear solve residual")
+            return x
+
+        def _r24_cauchy_tails(m_iv, N=26, K_cut=12):
+            M_H = m_iv + iv.mpf(2)
+            m_lo, r_cs, c_geom = mp.mpf(m_iv.a), _r24_rat(2, 5), _r24_rat(140, 9)
+            sm_lo, sM_lo = iv.mpf(m_lo - mp.mpf(9) / mp.mpf(5)), iv.mpf(m_lo + mp.mpf(1) / mp.mpf(5))
+            d_m, d2_m, q2_m = _r24_rat(7, 2), _r24_rat(49, 4), _r24_rat(49, 5)
+            s0_cs = (iv.mpf(1) + r_cs) / (iv.mpf(1) - r_cs)
+            s1_cs = (iv.mpf(2) * (r_cs ** (N - K_cut))) / ((iv.mpf(1) - r_cs) * (iv.mpf(1) - (r_cs ** N)))
+            tot_ef = c_geom * (r_cs ** (K_cut + 1)) + (iv.mpf(2) * s0_cs * s1_cs + s1_cs * s1_cs)
+            M_v1_0 = (d_m * (m_iv + iv.mpf(1) + q2_m) / (sm_lo * sM_lo)) / M_H
+            M_v1_2 = (d_m / (sm_lo * sM_lo)) / M_H
+            M_hx_x = (iv.mpf(1) / sM_lo + d2_m / (sM_lo * sM_lo)) / M_H
+            M_hx_y = (d2_m / (sM_lo * sM_lo)) / M_H
+            err_v1 = iv.mpf(4) * (M_v1_0 + M_v1_2) * tot_ef
+            err_hx = iv.mpf(4) * (M_hx_x + M_hx_y) * tot_ef
+            c_tab = [iv.cos(iv.mpf(2) * PI_IV * _r24_rat(j, N)) for j in range(N)]
+            s_tab = [iv.sin(iv.mpf(2) * PI_IV * _r24_rat(j, N)) for j in range(N)]
+            c_ii = [_to_ii(c) for c in c_tab]
+            s_ii = [_to_ii(s) for s in s_tab]
+            invN_ii = _to_ii(_r24_rat(1, N))
+
+            def _l1_cplx_ii(gr_r, gr_i):
+                tr_lo, tr_hi = [[0] * N for _ in range(N)], [[0] * N for _ in range(N)]
+                ti_lo, ti_hi = [[0] * N for _ in range(N)], [[0] * N for _ in range(N)]
+                for i1 in range(N):
+                    gr_r1, gr_i1 = [_to_ii(v) for v in gr_r[i1]], [_to_ii(v) for v in gr_i[i1]]
+                    for n2 in range(N):
+                        sr0 = sr1 = si0 = si1 = 0
+                        for i2 in range(N):
+                            ang = (i2 * n2) % N
+                            cr, ci = c_ii[ang], s_ii[ang]
+                            a1, b1 = _ii_mul(gr_r1[i2], cr), _ii_mul(gr_i1[i2], ci)
+                            c1, d1 = _ii_mul(gr_r1[i2], ci), _ii_mul(gr_i1[i2], cr)
+                            sr0 += a1[0] - b1[1]
+                            sr1 += a1[1] - b1[0]
+                            si0 += c1[0] + d1[0]
+                            si1 += c1[1] + d1[1]
+                        rt, it = _ii_mul((sr0, sr1), invN_ii), _ii_mul((si0, si1), invN_ii)
+                        tr_lo[i1][n2], tr_hi[i1][n2] = rt
+                        ti_lo[i1][n2], ti_hi[i1][n2] = it
+                acc = 0
+                for n2_s in range(-K_cut, K_cut + 1):
+                    n2 = n2_s % N
+                    for n1_s in range(-K_cut, K_cut + 1):
+                        n1 = n1_s % N
+                        sr0 = sr1 = 0
+                        for i1 in range(N):
+                            ang = (i1 * n1) % N
+                            a1 = _ii_mul((tr_lo[i1][n2], tr_hi[i1][n2]), c_ii[ang])
+                            b1 = _ii_mul((ti_lo[i1][n2], ti_hi[i1][n2]), s_ii[ang])
+                            sr0 += a1[0] - b1[1]
+                            sr1 += a1[1] - b1[0]
+                        v = _ii_mul((sr0, sr1), invN_ii)
+                        acc += max(abs(v[0]), abs(v[1]))
+                return mp.mpf(acc) / mp.mpf(SCALE_II)
+
+            def _l1_even_ii(gr_r):
+                tr_lo, tr_hi = [[0] * N for _ in range(N)], [[0] * N for _ in range(N)]
+                for i1 in range(N):
+                    gr1 = [_to_ii(v) for v in gr_r[i1]]
+                    for n2 in range(N):
+                        s0 = s1 = 0
+                        for i2 in range(N):
+                            a1 = _ii_mul(gr1[i2], c_ii[(i2 * n2) % N])
+                            s0 += a1[0]
+                            s1 += a1[1]
+                        vt = _ii_mul((s0, s1), invN_ii)
+                        tr_lo[i1][n2], tr_hi[i1][n2] = vt
+                acc = 0
+                for n2_s in range(-K_cut, K_cut + 1):
+                    n2 = n2_s % N
+                    for n1_s in range(-K_cut, K_cut + 1):
+                        n1 = n1_s % N
+                        s0 = s1 = 0
+                        for i1 in range(N):
+                            a1 = _ii_mul((tr_lo[i1][n2], tr_hi[i1][n2]), c_ii[(i1 * n1) % N])
+                            s0 += a1[0]
+                            s1 += a1[1]
+                        v = _ii_mul((s0, s1), invN_ii)
+                        acc += max(abs(v[0]), abs(v[1]))
+                return mp.mpf(acc) / mp.mpf(SCALE_II)
+
+            v0r, v0i = [[iv.mpf(0)] * N for _ in range(N)], [[iv.mpf(0)] * N for _ in range(N)]
+            v2r, v2i = [[iv.mpf(0)] * N for _ in range(N)], [[iv.mpf(0)] * N for _ in range(N)]
+            hxr = [[iv.mpf(0)] * N for _ in range(N)]
+            hyr, hyi = [[iv.mpf(0)] * N for _ in range(N)], [[iv.mpf(0)] * N for _ in range(N)]
+            for i1 in range(N):
+                d1r, d1i, d1sq = c_tab[i1] - iv.mpf(1), s_tab[i1], iv.mpf(2) - iv.mpf(2) * c_tab[i1]
+                for i2 in range(N):
+                    d2r, d2i, d2sq = c_tab[i2] - iv.mpf(1), s_tab[i2], iv.mpf(2) - iv.mpf(2) * c_tab[i2]
+                    q2 = d1sq + d2sq
+                    dm, dM = m_iv + q2, M_H + q2
+                    s0, s2 = -(m_iv + iv.mpf(1) + q2) / (dm * dM * M_H), iv.mpf(1) / (dm * dM * M_H)
+                    v0r[i1][i2], v0i[i1][i2] = d1r * s0, d1i * s0
+                    v2r[i1][i2], v2i[i1][i2] = d1r * s2, d1i * s2
+                    hxr[i1][i2] = (iv.mpf(1) / dM - d2sq / (dM * dM)) / M_H
+                    sc_hy = iv.mpf(1) / (M_H * dM * dM)
+                    hyr[i1][i2], hyi[i1][i2] = (d1r * d2r + d1i * d2i) * sc_hy, (d1r * d2i - d1i * d2r) * sc_hy
+            return (
+                mp.mpf(4) * (_l1_cplx_ii(v0r, v0i) + _l1_cplx_ii(v2r, v2i)) + mp.mpf(err_v1.b),
+                mp.mpf(4) * (_l1_even_ii(hxr) + _l1_cplx_ii(hyr, hyi)) + mp.mpf(err_hx.b),
+            )
+
+        def _r24_precompute_p2(D_iv, N=34, R_k=17):
+            M_H = D_iv - iv.mpf(2)
+            r_cs, c_geom = _r24_rat(2, 5), _r24_rat(140, 9)
+            sM_lo = iv.mpf(mp.mpf(M_H.a) - mp.mpf(9) / mp.mpf(5))
+            s0_cs = (iv.mpf(1) + r_cs) / (iv.mpf(1) - r_cs)
+            c_tab = [iv.cos(iv.mpf(2) * PI_IV * _r24_rat(j, N)) for j in range(N)]
+            s_tab = [iv.sin(iv.mpf(2) * PI_IV * _r24_rat(j, N)) for j in range(N)]
+            kxx_g = [[iv.mpf(0)] * N for _ in range(N)]
+            kxy_r, kxy_i = [[iv.mpf(0)] * N for _ in range(N)], [[iv.mpf(0)] * N for _ in range(N)]
+            for i1 in range(N):
+                d1r, d1i, d1sq = c_tab[i1] - iv.mpf(1), s_tab[i1], iv.mpf(2) - iv.mpf(2) * c_tab[i1]
+                for i2 in range(N):
+                    d2r, d2i, d2sq = c_tab[i2] - iv.mpf(1), s_tab[i2], iv.mpf(2) - iv.mpf(2) * c_tab[i2]
+                    dM = M_H + d1sq + d2sq
+                    kxx_g[i1][i2] = (iv.mpf(1) - d2sq / dM) / M_H
+                    sc = iv.mpf(1) / (M_H * dM)
+                    kxy_r[i1][i2], kxy_i[i1][i2] = (d1r * d2r + d1i * d2i) * sc, (d1i * d2r - d1r * d2i) * sc
+            c_ii = [_to_ii(c) for c in c_tab]
+            s_ii = [_to_ii(s) for s in s_tab]
+            invN_ii = _to_ii(_r24_rat(1, N))
+            tr_xx = [[(0, 0)] * N for _ in range(N)]
+            tr_xyr = [[(0, 0)] * N for _ in range(N)]
+            tr_xyi = [[(0, 0)] * N for _ in range(N)]
+            for i1 in range(N):
+                kx1 = [_to_ii(v) for v in kxx_g[i1]]
+                xyr1, xyi1 = [_to_ii(v) for v in kxy_r[i1]], [_to_ii(v) for v in kxy_i[i1]]
+                for n2 in range(N):
+                    s0 = s1 = sr0 = sr1 = si0 = si1 = 0
+                    for i2 in range(N):
+                        ang = (i2 * n2) % N
+                        cr, ci = c_ii[ang], s_ii[ang]
+                        ax = _ii_mul(kx1[i2], cr)
+                        s0 += ax[0]
+                        s1 += ax[1]
+                        a1, b1 = _ii_mul(xyr1[i2], cr), _ii_mul(xyi1[i2], ci)
+                        c1, d1 = _ii_mul(xyr1[i2], ci), _ii_mul(xyi1[i2], cr)
+                        sr0 += a1[0] - b1[1]
+                        sr1 += a1[1] - b1[0]
+                        si0 += c1[0] + d1[0]
+                        si1 += c1[1] + d1[1]
+                    tr_xx[i1][n2] = _ii_mul((s0, s1), invN_ii)
+                    tr_xyr[i1][n2] = _ii_mul((sr0, sr1), invN_ii)
+                    tr_xyi[i1][n2] = _ii_mul((si0, si1), invN_ii)
+            Kxx_ii, Kxy_ii = {}, {}
+            for n1 in range(-R_k, R_k + 1):
+                m1 = n1 % N
+                for n2 in range(-R_k, R_k + 1):
+                    m2 = n2 % N
+                    sx0 = sx1 = sy0 = sy1 = 0
+                    for i1 in range(N):
+                        ang = (i1 * m1) % N
+                        cr, ci = c_ii[ang], s_ii[ang]
+                        ax = _ii_mul(tr_xx[i1][m2], cr)
+                        sx0 += ax[0]
+                        sx1 += ax[1]
+                        a1, b1 = _ii_mul(tr_xyr[i1][m2], cr), _ii_mul(tr_xyi[i1][m2], ci)
+                        sy0 += a1[0] - b1[1]
+                        sy1 += a1[1] - b1[0]
+                    Kxx_ii[(n1, n2)] = _ii_mul((sx0, sx1), invN_ii)
+                    Kxy_ii[(n1, n2)] = _ii_mul((sy0, sy1), invN_ii)
+            d2_m = _r24_rat(49, 4)
+            M_sum = mp.mpf((((iv.mpf(1) + d2_m / sM_lo) + (d2_m / sM_lo)) / M_H).b)
+            al_pt = mp.mpf(((iv.mpf(2) * s0_cs * (iv.mpf(2) * (r_cs ** (N - R_k)) / ((iv.mpf(1) - r_cs) * (iv.mpf(1) - r_cs ** N))))).b)
+            return Kxx_ii, Kxy_ii, M_sum, al_pt, c_geom, r_cs
+
+        def _r24_cert_outer_blk(D_iv, cv1, chx, cv3, tail_v1, tail_hx, p2_cache):
+            orbits, idx_map = [], {}
+
+            def _add_orb(ch, x, y):
+                if ch in (0, 3):
+                    if x > 0:
+                        x, sgn = 1 - x, -1
+                    else:
+                        sgn = 1
+                    y = abs(y)
+                else:
+                    x, y, sgn = abs(x), abs(y), 1
+                key = (ch, x, y)
+                if key not in idx_map:
+                    idx_map[key] = len(orbits)
+                    orbits.append(key)
+                return idx_map[key], sgn
+
+            for (x, y) in cv1:
+                _add_orb(0, x, y)
+            for (x, y) in chx:
+                _add_orb(1, x, y)
+            for (x, y) in cv3:
+                _add_orb(3, x, y)
+            n_orb = len(orbits)
+            A_o, b_o = [[iv.mpf(0)] * n_orb for _ in range(n_orb)], [iv.mpf(0)] * n_orb
+
+            def _get_o(ch, x, y):
+                if ch == 2:
+                    return None, 0
+                if ch in (0, 3):
+                    if x > 0:
+                        x, sgn = 1 - x, -1
+                    else:
+                        sgn = 1
+                    y = abs(y)
+                else:
+                    x, y, sgn = abs(x), abs(y), 1
+                k = (ch, x, y)
+                return (idx_map[k], sgn) if k in idx_map else (None, 0)
+
+            def _row_terms(ch, x, y):
+                if ch == 0:
+                    return [(0, x, y, D_iv), (0, x + 1, y, -iv.mpf(1)), (0, x - 1, y, -iv.mpf(1)), (0, x, y + 1, -iv.mpf(1)), (0, x, y - 1, -iv.mpf(1)), (1, x, y, iv.mpf(1)), (1, x - 1, y, -iv.mpf(1))]
+                if ch == 1:
+                    return [(1, x, y, D_iv), (1, x, y + 1, -iv.mpf(1)), (1, x, y - 1, -iv.mpf(1)), (0, x, y, iv.mpf(1)), (0, x + 1, y, -iv.mpf(1)), (3, x, y, -iv.mpf(1)), (3, x + 1, y, iv.mpf(1))]
+                if ch == 2:
+                    return [(0, x, y, iv.mpf(1)), (0, x, y + 1, -iv.mpf(1)), (3, x, y, -iv.mpf(1)), (3, x, y + 1, iv.mpf(1)), (1, x, y + 1, iv.mpf(1)), (1, x, y, -iv.mpf(1)), (1, x - 1, y + 1, -iv.mpf(1)), (1, x - 1, y, iv.mpf(1))]
+                return [(3, x, y, D_iv), (3, x + 1, y, -iv.mpf(1)), (3, x - 1, y, -iv.mpf(1)), (3, x, y + 1, -iv.mpf(1)), (3, x, y - 1, -iv.mpf(1)), (1, x, y, -iv.mpf(1)), (1, x - 1, y, iv.mpf(1))]
+
+            for i, (ch, x, y) in enumerate(orbits):
+                if (ch, x, y) in ((0, 0, 0), (1, 0, 0)):
+                    b_o[i] = iv.mpf(1)
+                for tc, tx, ty, coef in _row_terms(ch, x, y):
+                    j, sgn = _get_o(tc, tx, ty)
+                    if j is not None:
+                        A_o[i][j] = A_o[i][j] + coef * iv.mpf(sgn)
+            u_orb = _r24_iv_solve(A_o, b_o)
+
+            def _u_val(ch, x, y):
+                j, sgn = _get_o(ch, x, y)
+                return u_orb[j] * iv.mpf(sgn) if j is not None else iv.mpf(0)
+
+            fres_v1 = fres_hx = fres_hy = fres_v3 = mp.mpf(0)
+            f0x_s, f0y_s, f2x_s, f2y_s = {}, {}, {}, {}
+            for x in range(-4, 6):
+                for y in range(-4, 5):
+                    for ch in (0, 1, 2, 3):
+                        if _get_o(ch, x, y)[0] is None:
+                            val = sum((coef * _u_val(tc, tx, ty) for tc, tx, ty, coef in _row_terms(ch, x, y)), iv.mpf(0))
+                            av = _r24_abs_u(val)
+                            if av > 0:
+                                if ch == 0:
+                                    fres_v1 += av
+                                elif ch == 1:
+                                    fres_hx += av
+                                elif ch == 2:
+                                    fres_hy += av
+                                else:
+                                    fres_v3 += av
+                    v0x = _u_val(1, x, y) + _u_val(0, x, y) - _u_val(0, x + 1, y)
+                    v0y = _u_val(0, x, y) - _u_val(0, x, y + 1)
+                    v2x = _u_val(1, x, y) - _u_val(3, x, y) + _u_val(3, x + 1, y)
+                    v2y = -_u_val(3, x, y) + _u_val(3, x, y + 1)
+                    if _r24_abs_u(v0x) > 0:
+                        f0x_s[(x, y)] = (_to_ii(v0x), _r24_abs_u(v0x))
+                    if _r24_abs_u(v0y) > 0:
+                        f0y_s[(x, y)] = (_to_ii(v0y), _r24_abs_u(v0y))
+                    if _r24_abs_u(v2x) > 0:
+                        f2x_s[(x, y)] = (_to_ii(v2x), _r24_abs_u(v2x))
+                    if _r24_abs_u(v2y) > 0:
+                        f2y_s[(x, y)] = (_to_ii(v2y), _r24_abs_u(v2y))
+            Kxx, Kxy, M_sum, al_pt, c_geom, r_cs = p2_cache
+            R_out = 14
+
+            def _eval_P2_ii(fx_d, fy_d):
+                rx = ry = 0
+                fxi, fyi = list(fx_d.items()), list(fy_d.items())
+                for n1 in range(-R_out, R_out + 1):
+                    for n2 in range(-R_out, R_out + 1):
+                        vx0 = vx1 = vy0 = vy1 = 0
+                        for (s1, s2), (vi, _) in fxi:
+                            a1, b1 = _ii_mul(vi, Kxx[(n1 - s1, n2 - s2)]), _ii_mul(vi, Kxy[(s1 - n1, s2 - n2)])
+                            vx0 += a1[0]
+                            vx1 += a1[1]
+                            vy0 += b1[0]
+                            vy1 += b1[1]
+                        for (s1, s2), (vi, _) in fyi:
+                            a1, b1 = _ii_mul(vi, Kxy[(n1 - s1, n2 - s2)]), _ii_mul(vi, Kxx[(n2 - s2, n1 - s1)])
+                            vx0 += a1[0]
+                            vx1 += a1[1]
+                            vy0 += b1[0]
+                            vy1 += b1[1]
+                        rx += max(abs(vx0), abs(vx1))
+                        ry += max(abs(vy0), abs(vy1))
+                tail_e = mp.mpf(0)
+                al_m = al_pt * mp.mpf((2 * R_out + 1) ** 2)
+                for d_map in (fx_d, fy_d):
+                    for (s1, s2), (_, av) in d_map.items():
+                        dist = R_out + 1 - max(abs(s1), abs(s2))
+                        require(dist >= 4, "R24 outer source too near edge")
+                        tail_e += av * M_sum * (mp.mpf((c_geom * (r_cs ** dist)).b) + al_m)
+                return mp.mpf(rx + ry) / mp.mpf(SCALE_II) + tail_e
+
+            dir_tot = mp.mpf(2) * (_eval_P2_ii(f0x_s, f0y_s) + _eval_P2_ii(f2x_s, f2y_s))
+            return n_orb, dir_tot + (fres_v1 + fres_v3) * tail_v1 + (fres_hx + fres_hy) * tail_hx
+
+        tv1_s3, thx_s3 = _r24_cauchy_tails(D_s3 - iv.mpf(4))
+        tv1_g, thx_g = _r24_cauchy_tails(iv.mpf(2))
+        p2_s3, p2_g = _r24_precompute_p2(D_s3), _r24_precompute_p2(iv.mpf(6))
+        b45_cv1 = [(x, y) for x in (-2, -1, 0) for y in (0, 1, 2)]
+        b45_chx = [(x, y) for x in (0, 1) for y in (0, 1, 2)]
+        b45_cv3 = [(x, y) for x in (-1, 0) for y in (0, 1, 2)]
+        no_b13, b13_s3 = _r24_cert_outer_blk(D_s3, [(0, 0), (0, 1), (-1, 0)], [(0, 0), (0, 1)], [(0, 0)], tv1_s3, thx_s3, p2_s3)
+        no_b45, b45_s3 = _r24_cert_outer_blk(D_s3, b45_cv1, b45_chx, b45_cv3, tv1_s3, thx_s3, p2_s3)
+        _, b45_g = _r24_cert_outer_blk(iv.mpf(6), b45_cv1, b45_chx, b45_cv3, tv1_g, thx_g, p2_g)
+        b45_margin = b45_g - b45_s3
+        require(b45_s3 < mp.mpf("0.92") and b45_g > mp.mpf("1.0") and b45_margin > mp.mpf("0.09699"), "R24 B45 separation violated")
+        checks += 6
+
+        # =====================================================================
+        # §3. W24-3: S^3 d_perp=3 Compression, 6x6 M_FP, Friedrichs 2x2, Ward FP
+        # =====================================================================
+        t_comp = sp.Symbol("t_comp", real=True)
+        require(sp.simplify(1 - (1 - t_comp ** 2) / 2 - t_comp - ((1 - t_comp) ** 2) / 2) == 0, "R24 S^3 compression identity")
+        c_fp = sp.Symbol("c_fp")
+        M_FP_6 = _r24_sp_mat6([[c_fp - 1, 0, 0, 0, 0, 0], [0, c_fp - 1, 0, 0, 0, 0], [0, 0, c_fp + 1, 0, 0, 0],
+                               [0, 0, 0, c_fp + 1, 0, 0], [0, 0, 0, 0, 2 * c_fp, 0], [0, 0, 0, 0, 0, 0]])
+        require(sp.simplify(M_FP_6.trace() - 6 * c_fp) == 0 and M_FP_6.det() == 0, "R24 6x6 M_FP check")
+        k_ov = sp.Symbol("k_ov", positive=True)
+        require(sp.simplify(_r24_sp_mat6([[1, sp.sqrt(sp.Integer(16) / (16 + k_ov)) / 2], [sp.sqrt(sp.Integer(16) / (16 + k_ov)) / 2, 1]]).det()) > 0, "R24 Friedrichs overlap")
+
+        def _r24_dv_min_lb(kl_fr: Fraction):
+            kl_iv, lo, hi = _r24_frac(kl_fr), mp.mpf("1e-9"), mp.mpf("0.499999999")
+            for _ in range(90):
+                mid = (lo + hi) / 2
+                lo, hi = (mid, hi) if (mid / (1 - 2 * mid) + mp.log(1 - 2 * mid) / 2 - mp.mpf(kl_iv.a) < 0) else (lo, mid)
+            ta, tb = iv.mpf(lo - mp.mpf("1e-13")), iv.mpf(hi + mp.mpf("1e-13"))
+            require((ta / (1 - 2 * ta) + _r24_rat(1, 2) * iv.log(1 - 2 * ta) - kl_iv).b <= 0 <= (tb / (1 - 2 * tb) + _r24_rat(1, 2) * iv.log(1 - 2 * tb) - kl_iv).a, "R24 DV bracket")
+            return (-_r24_rat(1, 2) * iv.log(1 - 2 * ta) + kl_iv) / tb
+
+        dv_26e4 = _r24_dv_min_lb(Fraction(26, 100000))
+        dv_032 = _r24_dv_min_lb(Fraction(32, 1000))
+        dv_341 = _r24_dv_min_lb(Fraction(3411, 10000))
+        require(mp.mpf(dv_26e4.a) > mp.mpf("1.0325") and mp.mpf(dv_032.a) > mp.mpf("1.39") and mp.mpf(dv_341.a) > mp.mpf("2.65"), "R24 DV Gaussian no-go")
+        checks += 4
+
+        # =====================================================================
+        # §4. W24-4 + C40A: pack_4d_tg, Poly2 UB(2.20), CG-1/4 LB(4.95), Stein-IBP
+        # =====================================================================
+        L4 = 4
+        used_sp, used_tm, cnt_dirs = set(), set(), [0, 0, 0]
+        for t in range(L4):
+            for x1 in range(L4):
+                for x2 in range(L4):
+                    for x3 in range(L4):
+                        in_d = [((t + x2) % 2 == 0 and (t + x3) % 2 == 0), (x1 % 2 == 0 and (t + x3) % 2 == 1), (x1 % 2 == 1 and (t + x2) % 2 == 1)]
+                        for d in range(3):
+                            if in_d[d]:
+                                cnt_dirs[d] += 1
+                                ax = d + 1
+                                x_pt = (t, x1, x2, x3)
+                                for nu in range(4):
+                                    if nu == ax:
+                                        continue
+                                    pd = (ax, nu) if ax < nu else (nu, ax)
+                                    xm = list(x_pt)
+                                    xm[nu] = (xm[nu] - 1) % L4
+                                    for p in ((x_pt, pd), (tuple(xm), pd)):
+                                        if p[1][0] == 0:
+                                            require(p not in used_tm, "R24 temporal collision")
+                                            used_tm.add(p)
+                                        else:
+                                            require(p not in used_sp, "R24 spatial collision")
+                                            used_sp.add(p)
+        require(cnt_dirs == [64, 64, 64] and len(used_sp) == 768 and len(used_tm) == 384, "R24 pack_4d_tg count mismatch")
+        M_A_2 = _r24_sp_mat6([[sp.Rational(3, 4), 0], [0, sp.Rational(1, 4)]])
+        require((M_A_2[0, 0] + M_A_2[1, 1]) / 2 < sp.Rational(5, 8) and M_A_2.det() == sp.Rational(3, 16), "R24 2x2 non-conj mismatch")
+
+        # 4A. Poly2 Double-U3 UB(2.20) <= 0.7837965348981 (using integer-interval B&B):
+        wth, wtm, wtv, wsw, wsm, pw = _r24_rat(16, 5), _r24_rat(13, 4), _r24_rat(67, 20), _r24_rat(53, 20), _r24_rat(3, 2), _r24_rat(6, 5)
+        require(
+            2 * (sp.Rational(16, 5) + sp.Rational(13, 4) + sp.Rational(67, 20) + sp.Rational(53, 20)) + sp.Rational(3, 2)
+            == sp.Rational(12) * sp.Rational(11, 5),
+            "R24 Poly2 anchor sum",
+        )
+        a_iv, b_iv, c_iv, d_iv = _r24_rat(2868, 1000), _r24_rat(427, 1000), _r24_rat(375, 1000), _r24_rat(1869, 1000)
+        p12_iv, p22_iv, q2_iv, q22_iv = _r24_rat(-22, 1000), _r24_rat(-8, 1000), _r24_rat(19, 1000), _r24_rat(-91, 1000)
+        c1_wth = _r24_cr0_vec_box(1, wth, 32)[0]
+        c1_wtm = _r24_cr0_vec_box(1, wtm, 32)[0]
+        c1_wtv = _r24_cr0_vec_box(1, wtv, 32)[0]
+        c1_wth_sq = c1_wth * c1_wth
+
+        D_cut = 13
+        cw_m, cw_v = _r24_cr0_vec_box(D_cut + 1, wtm, 32), _r24_cr0_vec_box(D_cut + 1, wtv, 32)
+        ctp = [(cw_m[D - 1] / c1_wtm) * ((cw_v[D - 1] / c1_wtv) ** 2) for D in range(1, D_cut + 1)]
+        kmax_2d = mp.mpf((iv.mpf(2) * a_iv).b)
+        ctp_tail = mp.mpf(((cw_m[D_cut] / c1_wtm) * ((cw_v[D_cut] / c1_wtv) ** 2)).b)
+        c2_0, c2_1, c2_2 = _r24_cr_vec012_pt(D_cut + 13, kmax_2d, 24)
+        t_s0 = t_s1 = t_s2 = t_s0u = t_s1u = mp.mpf(0)
+        for D in range(D_cut + 1, D_cut + 14):
+            idx = D - 1
+            c0u, c1u, c2u = mp.mpf(c2_0[idx].b), mp.mpf(c2_1[idx].b), mp.mpf(c2_2[idx].b)
+            d2, du2 = mp.mpf(D * D), mp.mpf(D * D * (D * D - 1)) / mp.mpf(3)
+            t_s0 += d2 * c0u * ctp_tail
+            t_s1 += d2 * c1u * ctp_tail
+            t_s2 += d2 * c2u * ctp_tail
+            t_s0u += du2 * c0u * ctp_tail
+            t_s1u += du2 * c1u * ctp_tail
+        D_last = mp.mpf(D_cut + 14)
+        rf2 = mp.mpf(1) / (mp.mpf(1) - (kmax_2d / (mp.mpf(2) * D_last)) * ((D_last + 1) / (D_last - 2)) * ((D_last + 2) / (D_last - 1)))
+        t_s0, t_s1, t_s2, t_s0u, t_s1u = t_s0 * rf2, t_s1 * rf2, t_s2 * rf2, t_s0u * rf2, t_s1u * rf2
+
+        fac2_ii = [_to_ii(iv.mpf(idx + 1) * ctp[idx]) for idx in range(D_cut)]
+        ts0_i, ts1_i, ts2_i = int(mp.ceil(t_s0 * SCALE_II)), int(mp.ceil(t_s1 * SCALE_II)), int(mp.ceil(t_s2 * SCALE_II))
+        ts0u_i, ts1u_i = int(mp.ceil(t_s0u * SCALE_II)), int(mp.ceil(t_s1u * SCALE_II))
+        a_ii, b_ii, c_ii, d_ii = _to_ii(a_iv), _to_ii(b_iv), _to_ii(c_iv), _to_ii(d_iv)
+        pw_ii, p12_ii, p22_ii, q2_ii, q22_ii = _to_ii(pw), _to_ii(p12_iv), _to_ii(p22_iv), _to_ii(q2_iv), _to_ii(q22_iv)
+        pwbmd_ii = _ii_sub(_ii_mul(pw_ii, b_ii), d_ii)
+        three_half_i = _to_ii(_r24_rat(3, 2))
+        two_q22_i = (2 * q22_ii[0], 2 * q22_ii[1])
+        two_p22_i = (2 * p22_ii[0], 2 * p22_ii[1])
+
+        cache_2d, cache_u2 = {}, {}
+
+        def _get_R_box2(iR, dR_dep):
+            key = (dR_dep, iR)
+            if key not in cache_2d:
+                Ra, Rb = _r24_rat(2 * iR, 1 << dR_dep), _r24_rat(2 * (iR + 1), 1 << dR_dep)
+                R_iv = iv.mpf([mp.mpf(Ra.a), mp.mpf(Rb.b)])
+                Rm, hw_R = _r24_rat(2 * iR + 1, 1 << dR_dep), mp.mpf(_r24_rat(1, 1 << dR_dep).b)
+                cm0, cm1, _ = _r24_cr_vec012_box_ii(D_cut, a_iv * Rm, 20)
+                cb0, cb1, cb2 = _r24_cr_vec012_box_ii(D_cut, a_iv * R_iv, 18)
+                y_iv = iv.mpf([max(mp.mpf(-1), mp.mpf((R_iv * R_iv / 2 - 1).a)), min(mp.mpf(1), mp.mpf((R_iv * R_iv / 2 - 1).b))])
+                ym = Rm * Rm / 2 - 1
+                R_i, Rm_i, y_i, ym_i = _to_ii(R_iv), _to_ii(Rm), _to_ii(y_iv), _to_ii(ym)
+                Am_i = _ii_add(one_i, _ii_mul(p22_ii, _ii_mul(ym_i, ym_i)))
+                Ab_i = _ii_add(one_i, _ii_mul(p22_ii, _ii_mul(y_i, y_i)))
+                Bm_i = _ii_mul(p12_ii, _ii_mul(ym_i, Rm_i))
+                Bb_i = _ii_mul(p12_ii, _ii_mul(y_i, R_i))
+                dAb_i = _ii_mul(two_p22_i, _ii_mul(y_i, R_i))
+                dBb_i = _ii_add(_ii_mul(a_ii, Ab_i), _ii_mul(p12_ii, _ii_sub(_ii_mul(three_half_i, _ii_mul(R_i, R_i)), one_i)))
+                aBb_i = _ii_mul(a_ii, Bb_i)
+                Q2m_i = _ii_add(one_i, _ii_add(_ii_mul(q2_ii, ym_i), _ii_mul(q22_ii, _ii_mul(ym_i, ym_i))))
+                Q2b_i = _ii_add(one_i, _ii_add(_ii_mul(q2_ii, y_i), _ii_mul(q22_ii, _ii_mul(y_i, y_i))))
+                dQ2_ov = _ii_div(_ii_mul(_ii_add(q2_ii, _ii_mul(two_q22_i, y_i)), R_i), Q2b_i)
+                cR_i = _ii_mul(c_ii, R_i)
+                cache_2d[key] = (
+                    R_i, Rm_i, _to_ii(iv.mpf([-hw_R, hw_R])), hw_R, ym, Am_i, Ab_i, Bm_i, Bb_i,
+                    dAb_i, dBb_i, aBb_i, _ii_to_iv(Q2m_i), dQ2_ov, cR_i,
+                    [_ii_mul(fac2_ii[i], cm0[i]) for i in range(D_cut)],
+                    [_ii_mul(fac2_ii[i], cm1[i]) for i in range(D_cut)],
+                    [_ii_mul(fac2_ii[i], cb0[i]) for i in range(D_cut)],
+                    [_ii_mul(fac2_ii[i], cb1[i]) for i in range(D_cut)],
+                    [_ii_mul(fac2_ii[i], cb2[i]) for i in range(D_cut)],
+                )
+            return cache_2d[key]
+
+        def _get_u2(du_dep, iu):
+            key = (du_dep, iu)
+            if key not in cache_u2:
+                ua, ub_u = _r24_rat(2 * iu - (1 << du_dep), 1 << du_dep), _r24_rat(2 * (iu + 1) - (1 << du_dep), 1 << du_dep)
+                u_iv, um = iv.mpf([mp.mpf(ua.a), mp.mpf(ub_u.b)]), _r24_rat(2 * iu + 1 - (1 << du_dep), 1 << du_dep)
+                hw_u = mp.mpf(_r24_rat(1, 1 << du_dep).b)
+                ui, umi = _to_ii(u_iv), _to_ii(um)
+                Um_i, _, _ = _ii_chebU_d1_d2(umi, D_cut, 0)
+                Ub_i, dUb_i, _ = _ii_chebU_d1_d2(ui, D_cut, 1)
+                cache_u2[key] = (ui, umi, _to_ii(iv.mpf([-hw_u, hw_u])), hw_u, Um_i, Ub_i, dUb_i)
+            return cache_u2[key]
+
+        log_C_target = mp.mpf("2.0215")
+        stack2, n_2d, max_2d_ub = [(3, i, 3, j) for i in range(8) for j in range(8)], 0, mp.mpf(-100)
+        while stack2:
+            dR_dep, iR, du_dep, iu = stack2.pop()
+            n_2d += 1
+            R_i, Rm_i, dR_i, hw_R, ym, Am_i, Ab_i, Bm_i, Bb_i, dAb_i, dBb_i, aBb_i, Q2m_iv, dQ2_ov, cR_i, fcm0, fcm1, fcb0, fcb1, fcb2 = _get_R_box2(iR, dR_dep)
+            u_i, um_i, du_i, hw_u, Um_i, Ub_i, dUb_i = _get_u2(du_dep, iu)
+            sm0_0 = -ts0_i; sm0_1 = ts0_i; sm1_0 = -ts1_i; sm1_1 = ts1_i
+            sb0_0 = -ts0_i; sb0_1 = ts0_i; sb1_0 = -ts1_i; sb1_1 = ts1_i; sb2_0 = -ts2_i; sb2_1 = ts2_i
+            sb0u_0 = -ts0u_i; sb0u_1 = ts0u_i; sb1u_0 = -ts1u_i; sb1u_1 = ts1u_i
+            for idx in range(D_cut):
+                umv, ubv, dubv = Um_i[idx], Ub_i[idx], dUb_i[idx]
+                a, b = fcm0[idx]; c, d = umv; p1, p2, p3, p4 = a*c, a*d, b*c, b*d; sm0_0 += min(p1,p2,p3,p4)//SCALE_II; sm0_1 += -((-max(p1,p2,p3,p4))//SCALE_II)
+                a, b = fcm1[idx]; p1, p2, p3, p4 = a*c, a*d, b*c, b*d; sm1_0 += min(p1,p2,p3,p4)//SCALE_II; sm1_1 += -((-max(p1,p2,p3,p4))//SCALE_II)
+                a, b = fcb0[idx]; c, d = ubv; p1, p2, p3, p4 = a*c, a*d, b*c, b*d; sb0_0 += min(p1,p2,p3,p4)//SCALE_II; sb0_1 += -((-max(p1,p2,p3,p4))//SCALE_II)
+                a, b = fcb1[idx]; p1, p2, p3, p4 = a*c, a*d, b*c, b*d; sb1_0 += min(p1,p2,p3,p4)//SCALE_II; sb1_1 += -((-max(p1,p2,p3,p4))//SCALE_II)
+                a, b = fcb2[idx]; p1, p2, p3, p4 = a*c, a*d, b*c, b*d; sb2_0 += min(p1,p2,p3,p4)//SCALE_II; sb2_1 += -((-max(p1,p2,p3,p4))//SCALE_II)
+                a, b = fcb0[idx]; c, d = dubv; p1, p2, p3, p4 = a*c, a*d, b*c, b*d; sb0u_0 += min(p1,p2,p3,p4)//SCALE_II; sb0u_1 += -((-max(p1,p2,p3,p4))//SCALE_II)
+                a, b = fcb1[idx]; p1, p2, p3, p4 = a*c, a*d, b*c, b*d; sb1u_0 += min(p1,p2,p3,p4)//SCALE_II; sb1u_1 += -((-max(p1,p2,p3,p4))//SCALE_II)
+            Hm_i = _ii_add(_ii_mul(Am_i, (sm0_0, sm0_1)), _ii_mul(Bm_i, (sm1_0, sm1_1)))
+            Hb_i = _ii_add(_ii_mul(Ab_i, (sb0_0, sb0_1)), _ii_mul(Bb_i, (sb1_0, sb1_1)))
+            Hb_R_i = _ii_add(_ii_mul(dAb_i, (sb0_0, sb0_1)), _ii_add(_ii_mul(dBb_i, (sb1_0, sb1_1)), _ii_mul(aBb_i, (sb2_0, sb2_1))))
+            Hb_u_i = _ii_add(_ii_mul(Ab_i, (sb0u_0, sb0u_1)), _ii_mul(Bb_i, (sb1u_0, sb1u_1)))
+            Ht_i = _ii_add(Hm_i, _ii_add(_ii_mul(Hb_R_i, dR_i), _ii_mul(Hb_u_i, du_i)))
+            H_lo_i, H_hi_i = max(Hb_i[0], Ht_i[0]), min(Hb_i[1], Ht_i[1])
+            if H_lo_i <= 0 or Hm_i[0] <= 0:
+                require(dR_dep < 10 and du_dep < 10, "R24 2D Poly2 H <= 0")
+                stack2.extend([(dR_dep + 1, 2 * iR, du_dep, iu), (dR_dep + 1, 2 * iR + 1, du_dep, iu)] if hw_R >= hw_u else [(dR_dep, iR, du_dep + 1, 2 * iu), (dR_dep, iR, du_dep + 1, 2 * iu + 1)])
+                continue
+            H_use_i = (H_lo_i, H_hi_i)
+            dF_dR_i = _ii_sub(_ii_sub(_ii_add(_ii_mul(pwbmd_ii, R_i), _ii_mul(pw_ii, _ii_div(Hb_R_i, H_use_i))), _ii_mul(c_ii, u_i)), dQ2_ov)
+            dF_du_i = _ii_sub(_ii_mul(pw_ii, _ii_div(Hb_u_i, H_use_i)), cR_i)
+            err_R = (mp.mpf(_ii_abs_ub(dF_dR_i)) / mp.mpf(SCALE_II)) * hw_R
+            err_u = (mp.mpf(_ii_abs_ub(dF_du_i)) / mp.mpf(SCALE_II)) * hw_u
+            Fm = pw * (b_iv * ym + iv.log(_ii_to_iv(Hm_i))) - (_ii_to_iv(_ii_mul(c_ii, _ii_mul(Rm_i, um_i))) + d_iv * ym + iv.log(Q2m_iv))
+            ub = mp.mpf(Fm.b) + err_R + err_u
+            if ub <= log_C_target:
+                max_2d_ub = max(max_2d_ub, ub)
+            else:
+                require(dR_dep < 10 and du_dep < 10, "R24 2D Poly2 target exceeded")
+                stack2.extend([(dR_dep + 1, 2 * iR, du_dep, iu), (dR_dep + 1, 2 * iR + 1, du_dep, iu)] if err_R >= err_u else [(dR_dep, iR, du_dep + 1, 2 * iu), (dR_dep, iR, du_dep + 1, 2 * iu + 1)])
+
+        R_cut = 8
+        d0, d1, d2 = _r24_cr_vec012_box(R_cut, d_iv, 20)
+        cr_poly = [d0[i] + q2_iv * d1[i] + q22_iv * d2[i] for i in range(R_cut)]
+        Kmax_3d, d_ub, q2_abs, q22_abs = mp.mpf((wth + c_iv).b), mp.mpf(d_iv.b), _r24_abs_u(q2_iv), _r24_abs_u(q22_iv)
+        td0, td1, td2 = _r24_cr_vec012_pt(R_cut + 12, d_ub, 20)
+        tK0, tK1, tK2 = _r24_cr_vec012_pt(R_cut + 12, Kmax_3d, 20)
+        t0_tail = t1_dK = t1_du = t2_dKK = t2_dK2 = t2_dKu = t2_duu = mp.mpf(0)
+        for r in range(R_cut + 1, R_cut + 13):
+            idx = r - 1
+            crp_u = mp.mpf(td0[idx].b) + q2_abs * mp.mpf(td1[idx].b) + q22_abs * mp.mpf(td2[idx].b)
+            crK_u, dcrK_u, d2crK_u = mp.mpf(tK0[idx].b), mp.mpf(tK1[idx].b), mp.mpf(tK2[idx].b)
+            m0_r, m1_r, m2_r = mp.mpf(r), mp.mpf(r * (r * r - 1)) / mp.mpf(3), mp.mpf(r * (r * r - 1) * (r * r - 4)) / mp.mpf(15)
+            base_r = mp.mpf(r) * crp_u
+            t0_tail += base_r * crK_u * crK_u * m0_r
+            t1_dK += base_r * dcrK_u * crK_u * m0_r
+            t1_du += base_r * crK_u * crK_u * m1_r
+            t2_dKK += base_r * dcrK_u * dcrK_u * m0_r
+            t2_dK2 += base_r * d2crK_u * crK_u * m0_r
+            t2_dKu += base_r * dcrK_u * crK_u * m1_r
+            t2_duu += base_r * crK_u * crK_u * m2_r
+        rf3 = mp.mpf(1) / (mp.mpf(1) - (d_ub / (mp.mpf(2) * mp.mpf(R_cut + 13))) * mp.mpf("1.35"))
+        c1_sq_lo = mp.mpf(c1_wth_sq.a)
+        t0_n, t1_dK_n, t1_du_n, t2_dKK_n, t2_dK2_n, t2_dKu_n, t2_duu_n = [x * rf3 / c1_sq_lo for x in (t0_tail, t1_dK, t1_du, t2_dKK, t2_dK2, t2_dKu, t2_duu)]
+        rc_ii = [_to_ii(iv.mpf(r) * cr_poly[r - 1] / c1_wth_sq) for r in range(1, R_cut + 1)]
+        t0n_i, t1dK_i, t1du_i = int(mp.ceil(t0_n * SCALE_II)), int(mp.ceil(t1_dK_n * SCALE_II)), int(mp.ceil(t1_du_n * SCALE_II))
+        t2dKK_i, t2dK2_i = int(mp.ceil(t2_dKK_n * SCALE_II)), int(mp.ceil(t2_dK2_n * SCALE_II))
+        t2dKu_i, t2duu_i = int(mp.ceil(t2_dKu_n * SCALE_II)), int(mp.ceil(t2_duu_n * SCALE_II))
+        aw_i = _to_ii(a_iv - wsw)
+        cache_pt3, cache_bx3, cache_u3 = {}, {}, {}
+
+        def _get_pt3(k_idx, dep):
+            while k_idx > 0 and (k_idx & 1) == 0 and dep > 0:
+                k_idx >>= 1
+                dep -= 1
+            key = (dep, k_idx)
+            if key not in cache_pt3:
+                th = PI_IV * _r24_rat(k_idx, 1 << dep)
+                xv, sv = iv.cos(th), iv.sin(th)
+                Kv = iv.sqrt(wth * wth + c_iv * c_iv + iv.mpf(2) * wth * c_iv * xv)
+                dKv = (-wth * c_iv * sv) / Kv
+                ca, sa, K3 = (wth * xv + c_iv) / Kv, (wth * sv) / Kv, Kv * Kv * Kv
+                dca = (-wth * sv * (wth * wth + wth * c_iv * xv)) / K3
+                dsa = (wth * ((wth * wth + c_iv * c_iv) * xv + wth * c_iv * (iv.mpf(1) + xv * xv))) / K3
+                cKv, dcKv, _ = _r24_cr_vec012_box_ii(R_cut, Kv, 15)
+                cache_pt3[key] = (_to_ii(xv), _to_ii(sv), _to_ii(ca), _to_ii(sa), _to_ii(dKv), _to_ii(dca), _to_ii(dsa), cKv, dcKv)
+            return cache_pt3[key]
+
+        def _get_bx3(i, dep):
+            key = (dep, i)
+            if key not in cache_bx3:
+                ta, tb = PI_IV * _r24_rat(i, 1 << dep), PI_IV * _r24_rat(i + 1, 1 << dep)
+                hw = mp.mpf((PI_IV * _r24_rat(1, 1 << (dep + 1))).b)
+                x_iv = iv.mpf([mp.mpf(iv.cos(tb).a), mp.mpf(iv.cos(ta).b)])
+                sa_v, sb_v = iv.sin(ta), iv.sin(tb)
+                s_hi = mp.mpf(1) if 2 * i < (1 << dep) < 2 * (i + 1) else max(mp.mpf(sa_v.b), mp.mpf(sb_v.b))
+                s_iv = iv.mpf([max(mp.mpf(0), min(mp.mpf(sa_v.a), mp.mpf(sb_v.a))), s_hi])
+                K_a = iv.sqrt(wth * wth + c_iv * c_iv + iv.mpf(2) * wth * c_iv * iv.cos(tb))
+                K_b = iv.sqrt(wth * wth + c_iv * c_iv + iv.mpf(2) * wth * c_iv * iv.cos(ta))
+                K_iv = iv.mpf([mp.mpf(K_a.a), mp.mpf(K_b.b)])
+                dK = (-wth * c_iv * s_iv) / K_iv
+                d2K = (-wth * c_iv * x_iv - dK * dK) / K_iv
+                ca = iv.mpf([mp.mpf(((wth * iv.cos(tb) + c_iv) / K_a).a), mp.mpf(((wth * iv.cos(ta) + c_iv) / K_b).b)])
+                sa, K3 = (wth * s_iv) / K_iv, K_iv * K_iv * K_iv
+                dca = (-wth * s_iv * (wth * wth + wth * c_iv * x_iv)) / K3
+                dsa = (wth * ((wth * wth + c_iv * c_iv) * x_iv + wth * c_iv * (iv.mpf(1) + x_iv * x_iv))) / K3
+                d2ca = (-wth * x_iv * (wth * wth + wth * c_iv * x_iv) + wth * wth * c_iv * s_iv * s_iv) / K3 - iv.mpf(3) * dca * dK / K_iv
+                d2sa = (-wth * s_iv * (wth * wth + c_iv * c_iv + iv.mpf(2) * wth * c_iv * x_iv)) / K3 - iv.mpf(3) * dsa * dK / K_iv
+                cKb, dcKb, d2cKb = _r24_cr_vec012_box_ii(R_cut, K_iv, 15)
+                cache_bx3[key] = (
+                    _get_pt3(2 * i + 1, dep + 1), _to_ii(x_iv), _to_ii(s_iv), hw, _to_ii(iv.mpf([-hw, hw])),
+                    _to_ii(ca), _to_ii(sa), _to_ii(dK), _to_ii(dca), _to_ii(dsa),
+                    _to_ii(d2K), _to_ii(d2ca), _to_ii(d2sa),
+                    cKb, dcKb, d2cKb,
+                )
+            return cache_bx3[key]
+
+        def _get_u3(du_dep, iu):
+            key = (du_dep, iu)
+            if key not in cache_u3:
+                ua, ub_u = _r24_rat(2 * iu - (1 << du_dep), 1 << du_dep), _r24_rat(2 * (iu + 1) - (1 << du_dep), 1 << du_dep)
+                u_iv, um = iv.mpf([mp.mpf(ua.a), mp.mpf(ub_u.b)]), _r24_rat(2 * iu + 1 - (1 << du_dep), 1 << du_dep)
+                hw_u = mp.mpf(_r24_rat(1, 1 << du_dep).b)
+                cache_u3[key] = (_to_ii(u_iv), _to_ii(um), hw_u, _to_ii(iv.mpf([-hw_u, hw_u])))
+            return cache_u3[key]
+
+        log_lam3_target = mp.mpf("0.4310")
+        stack3 = [(3, i1, 3, i2, 1, iu) for i1 in range(8) for i2 in range(i1, 8) for iu in range(2)]
+        n_3d, max_3d_ub = 0, mp.mpf(-100)
+        half_mp, invS = mp.mpf("0.5"), mp.mpf(1) / mp.mpf(SCALE_II)
+        while stack3:
+            d1, i1, d2, i2, du_dep, iu = stack3.pop()
+            if i1 * (1 << d2) >= (i2 + 1) * (1 << d1):
+                continue
+            n_3d += 1
+            b1, b2 = _get_bx3(i1, d1), _get_bx3(i2, d2)
+            pt1, x1, s1, hw1, h1_i, ca1, sa1, dK1, dca1, dsa1, d2K1, d2ca1, d2sa1, cK1i, dcK1i, d2cK1i = b1
+            pt2, x2, s2, hw2, h2_i, ca2, sa2, dK2, dca2, dsa2, d2K2, d2ca2, d2sa2, cK2i, dcK2i, d2cK2i = b2
+            u_i, um_i, hw_u, hu_i = _get_u3(du_dep, iu)
+            x1m, s1m, ca1m, sa1m, dK1m, dca1m, dsa1m, cK1mi, dcK1mi = pt1
+            x2m, s2m, ca2m, sa2m, dK2m, dca2m, dsa2m, cK2mi, dcK2mi = pt2
+            ym_r = _ii_add(_ii_mul(ca1m, ca2m), _ii_mul(_ii_mul(sa1m, sa2m), um_i))
+            ym_i = (max(-SCALE_II, ym_r[0]), min(SCALE_II, ym_r[1]))
+            Um_i, dUm_i, _ = _ii_chebU_d1_d2(ym_i, R_cut, 1)
+            dym_1 = _ii_add(_ii_mul(dca1m, ca2m), _ii_mul(_ii_mul(dsa1m, sa2m), um_i))
+            dym_2 = _ii_add(_ii_mul(ca1m, dca2m), _ii_mul(_ii_mul(sa1m, dsa2m), um_i))
+            dym_u = _ii_mul(sa1m, sa2m)
+            pm0, pm1 = -t0n_i, t0n_i
+            d10 = d11 = d20 = d21 = dy0 = dy1 = 0
+            for r in range(R_cut):
+                rc = rc_ii[r]
+                rk12 = _ii_mul(rc, _ii_mul(cK1mi[r], cK2mi[r]))
+                t = _ii_mul(rk12, Um_i[r]); pm0 += t[0]; pm1 += t[1]
+                t = _ii_mul(rk12, dUm_i[r]); dy0 += t[0]; dy1 += t[1]
+                t = _ii_mul(_ii_mul(rc, _ii_mul(dcK1mi[r], cK2mi[r])), Um_i[r]); d10 += t[0]; d11 += t[1]
+                t = _ii_mul(_ii_mul(rc, _ii_mul(cK1mi[r], dcK2mi[r])), Um_i[r]); d20 += t[0]; d21 += t[1]
+            PMm_i = (pm0, pm1)
+            e1m_i = (t1dK_i * _ii_abs_ub(dK1m) + t1du_i * _ii_abs_ub(dym_1)) // SCALE_II + 1
+            e2m_i = (t1dK_i * _ii_abs_ub(dK2m) + t1du_i * _ii_abs_ub(dym_2)) // SCALE_II + 1
+            eum_i = (t1du_i * _ii_abs_ub(dym_u)) // SCALE_II + 1
+            t_1a = _ii_add(_ii_mul((d10, d11), dK1m), _ii_mul((dy0, dy1), dym_1)); dPMm_1 = (t_1a[0] - e1m_i, t_1a[1] + e1m_i)
+            t_2a = _ii_add(_ii_mul((d20, d21), dK2m), _ii_mul((dy0, dy1), dym_2)); dPMm_2 = (t_2a[0] - e2m_i, t_2a[1] + e2m_i)
+            t_ua = _ii_mul((dy0, dy1), dym_u); dPMm_u = (t_ua[0] - eum_i, t_ua[1] + eum_i)
+            z1m = _ii_add(x1m, x2m); s1s2m = _ii_mul(s1m, s2m); ym_v = _ii_add(_ii_mul(x1m, x2m), _ii_mul(s1s2m, um_i))
+            P3m_i = _ii_add(one_i, _ii_add(_ii_mul(p12_ii, _ii_mul(z1m, ym_v)), _ii_mul(p22_ii, _ii_mul(ym_v, ym_v))))
+            dy1m = _ii_sub(_ii_mul(_ii_mul(x1m, s2m), um_i), _ii_mul(s1m, x2m))
+            dy2m = _ii_sub(_ii_mul(_ii_mul(s1m, x2m), um_i), _ii_mul(x1m, s2m))
+            P3mz2 = _ii_add(_ii_mul(p12_ii, z1m), _ii_mul(two_p22_i, ym_v))
+            Fm = iv.log(_ii_to_iv(PMm_i)) - pw * (_ii_to_iv(_ii_add(_ii_mul(aw_i, z1m), _ii_mul(b_ii, ym_v))) + iv.log(_ii_to_iv(P3m_i)))
+            gm1_i = _ii_sub(_ii_div(dPMm_1, PMm_i), _ii_mul(pw_ii, _ii_add(_ii_sub(_ii_mul(b_ii, dy1m), _ii_mul(aw_i, s1m)), _ii_div(_ii_sub(_ii_mul(P3mz2, dy1m), _ii_mul(p12_ii, _ii_mul(s1m, ym_v))), P3m_i))))
+            gm2_i = _ii_sub(_ii_div(dPMm_2, PMm_i), _ii_mul(pw_ii, _ii_add(_ii_sub(_ii_mul(b_ii, dy2m), _ii_mul(aw_i, s2m)), _ii_div(_ii_sub(_ii_mul(P3mz2, dy2m), _ii_mul(p12_ii, _ii_mul(s2m, ym_v))), P3m_i))))
+            gmu_i = _ii_sub(_ii_div(dPMm_u, PMm_i), _ii_mul(pw_ii, _ii_add(_ii_mul(b_ii, s1s2m), _ii_div(_ii_mul(P3mz2, s1s2m), P3m_i))))
+            e1_lin = mp.mpf(_ii_abs_ub(gm1_i)) * invS * hw1
+            e2_lin = mp.mpf(_ii_abs_ub(gm2_i)) * invS * hw2
+            eu_lin = mp.mpf(_ii_abs_ub(gmu_i)) * invS * hw_u
+            if mp.mpf(Fm.b) + e1_lin + e2_lin + eu_lin > log_lam3_target + mp.mpf("0.015"):
+                require(d1 < 10 and d2 < 10 and du_dep < 10, "R24 3D Poly2 linear depth")
+                if e1_lin >= e2_lin and e1_lin >= eu_lin:
+                    stack3.extend([(d1 + 1, 2 * i1, d2, i2, du_dep, iu), (d1 + 1, 2 * i1 + 1, d2, i2, du_dep, iu)])
+                elif e2_lin >= eu_lin:
+                    stack3.extend([(d1, i1, d2 + 1, 2 * i2, du_dep, iu), (d1, i1, d2 + 1, 2 * i2 + 1, du_dep, iu)])
+                else:
+                    stack3.extend([(d1, i1, d2, i2, du_dep + 1, 2 * iu), (d1, i1, d2, i2, du_dep + 1, 2 * iu + 1)])
+                continue
+
+            yb_r = _ii_add(_ii_mul(ca1, ca2), _ii_mul(_ii_mul(sa1, sa2), u_i))
+            yb_i = (max(-SCALE_II, yb_r[0]), min(SCALE_II, yb_r[1]))
+            Ub_i, dUb_i, d2Ub_i = _ii_chebU_d1_d2(yb_i, R_cut, 2)
+            dy1 = _ii_add(_ii_mul(dca1, ca2), _ii_mul(_ii_mul(dsa1, sa2), u_i))
+            dy2 = _ii_add(_ii_mul(ca1, dca2), _ii_mul(_ii_mul(sa1, dsa2), u_i))
+            dyu = _ii_mul(sa1, sa2)
+            pb0, pb1 = -t0n_i, t0n_i
+            sk1_0 = sk1_1 = sk2_0 = sk2_1 = sy_0 = sy_1 = 0
+            rk1k2_list = []
+            for r in range(R_cut):
+                rc = rc_ii[r]
+                rk12 = _ii_mul(rc, _ii_mul(cK1i[r], cK2i[r]))
+                rk1k2_list.append(rk12)
+                t = _ii_mul(rk12, Ub_i[r]); pb0 += t[0]; pb1 += t[1]
+                t = _ii_mul(rk12, dUb_i[r]); sy_0 += t[0]; sy_1 += t[1]
+                t = _ii_mul(_ii_mul(rc, _ii_mul(dcK1i[r], cK2i[r])), Ub_i[r]); sk1_0 += t[0]; sk1_1 += t[1]
+                t = _ii_mul(_ii_mul(rc, _ii_mul(cK1i[r], dcK2i[r])), Ub_i[r]); sk2_0 += t[0]; sk2_1 += t[1]
+            eb1 = (t1dK_i * _ii_abs_ub(dK1) + t1du_i * _ii_abs_ub(dy1)) // SCALE_II + 1
+            eb2 = (t1dK_i * _ii_abs_ub(dK2) + t1du_i * _ii_abs_ub(dy2)) // SCALE_II + 1
+            ebu = (t1du_i * _ii_abs_ub(dyu)) // SCALE_II + 1
+            t1b = _ii_add(_ii_mul((sk1_0, sk1_1), dK1), _ii_mul((sy_0, sy_1), dy1)); dPMb_1 = (t1b[0] - eb1, t1b[1] + eb1)
+            t2b = _ii_add(_ii_mul((sk2_0, sk2_1), dK2), _ii_mul((sy_0, sy_1), dy2)); dPMb_2 = (t2b[0] - eb2, t2b[1] + eb2)
+            tub = _ii_mul((sy_0, sy_1), dyu); dPMb_u = (tub[0] - ebu, tub[1] + ebu)
+            PMt_i = _ii_add(PMm_i, _ii_add(_ii_mul(dPMb_1, h1_i), _ii_add(_ii_mul(dPMb_2, h2_i), _ii_mul(dPMb_u, hu_i))))
+            PM_lo, PM_hi = max(pb0, PMt_i[0]), min(pb1, PMt_i[1])
+            if PM_lo <= 0 or PMm_i[0] <= 0:
+                require(d1 < 10 and d2 < 10 and du_dep < 10, "R24 3D PM <= 0")
+                if hw1 >= hw2 and hw1 >= hw_u:
+                    stack3.extend([(d1 + 1, 2 * i1, d2, i2, du_dep, iu), (d1 + 1, 2 * i1 + 1, d2, i2, du_dep, iu)])
+                elif hw2 >= hw_u:
+                    stack3.extend([(d1, i1, d2 + 1, 2 * i2, du_dep, iu), (d1, i1, d2 + 1, 2 * i2 + 1, du_dep, iu)])
+                else:
+                    stack3.extend([(d1, i1, d2, i2, du_dep + 1, 2 * iu), (d1, i1, d2, i2, du_dep + 1, 2 * iu + 1)])
+                continue
+            PM_use_i = (PM_lo, PM_hi)
+            z1_b = _ii_add(x1, x2); s1s2_b = _ii_mul(s1, s2); yb_v = _ii_add(_ii_mul(x1, x2), _ii_mul(s1s2_b, u_i))
+            P3_b_i = _ii_add(one_i, _ii_add(_ii_mul(p12_ii, _ii_mul(z1_b, yb_v)), _ii_mul(p22_ii, _ii_mul(yb_v, yb_v))))
+            dy1_v = _ii_sub(_ii_mul(_ii_mul(x1, s2), u_i), _ii_mul(s1, x2))
+            dy2_v = _ii_sub(_ii_mul(_ii_mul(s1, x2), u_i), _ii_mul(x1, s2))
+            P3z2 = _ii_add(_ii_mul(p12_ii, z1_b), _ii_mul(two_p22_i, yb_v))
+            dP3_1 = _ii_sub(_ii_mul(P3z2, dy1_v), _ii_mul(p12_ii, _ii_mul(s1, yb_v)))
+            dP3_2 = _ii_sub(_ii_mul(P3z2, dy2_v), _ii_mul(p12_ii, _ii_mul(s2, yb_v)))
+            dP3_u = _ii_mul(P3z2, s1s2_b)
+            gb1_i = _ii_sub(_ii_div(dPMb_1, PM_use_i), _ii_mul(pw_ii, _ii_add(_ii_sub(_ii_mul(b_ii, dy1_v), _ii_mul(aw_i, s1)), _ii_div(dP3_1, P3_b_i))))
+            gb2_i = _ii_sub(_ii_div(dPMb_2, PM_use_i), _ii_mul(pw_ii, _ii_add(_ii_sub(_ii_mul(b_ii, dy2_v), _ii_mul(aw_i, s2)), _ii_div(dP3_2, P3_b_i))))
+            gbu_i = _ii_sub(_ii_div(dPMb_u, PM_use_i), _ii_mul(pw_ii, _ii_add(_ii_mul(b_ii, s1s2_b), _ii_div(dP3_u, P3_b_i))))
+            ub_1st = mp.mpf(Fm.b) + mp.mpf(_ii_abs_ub(gb1_i)) * invS * hw1 + mp.mpf(_ii_abs_ub(gb2_i)) * invS * hw2 + mp.mpf(_ii_abs_ub(gbu_i)) * invS * hw_u
+            if ub_1st <= log_lam3_target:
+                max_3d_ub = max(max_3d_ub, ub_1st)
+                continue
+
+            s11_0 = s11_1 = s22_0 = s22_1 = s12_0 = s12_1 = s1y_0 = s1y_1 = s2y_0 = s2y_1 = syy_0 = syy_1 = 0
+            for r in range(R_cut):
+                rc = rc_ii[r]; u0, du0 = Ub_i[r], dUb_i[r]
+                t = _ii_mul(_ii_mul(rc, _ii_mul(d2cK1i[r], cK2i[r])), u0); s11_0 += t[0]; s11_1 += t[1]
+                t = _ii_mul(_ii_mul(rc, _ii_mul(cK1i[r], d2cK2i[r])), u0); s22_0 += t[0]; s22_1 += t[1]
+                t = _ii_mul(_ii_mul(rc, _ii_mul(dcK1i[r], dcK2i[r])), u0); s12_0 += t[0]; s12_1 += t[1]
+                t = _ii_mul(_ii_mul(rc, _ii_mul(dcK1i[r], cK2i[r])), du0); s1y_0 += t[0]; s1y_1 += t[1]
+                t = _ii_mul(_ii_mul(rc, _ii_mul(cK1i[r], dcK2i[r])), du0); s2y_0 += t[0]; s2y_1 += t[1]
+                t = _ii_mul(rk1k2_list[r], d2Ub_i[r]); syy_0 += t[0]; syy_1 += t[1]
+            S11, S22, S12 = (s11_0, s11_1), (s22_0, s22_1), (s12_0, s12_1)
+            S1Y, S2Y, SYY = (s1y_0, s1y_1), (s2y_0, s2y_1), (syy_0, syy_1)
+            SK1, SK2, SY = (sk1_0, sk1_1), (sk2_0, sk2_1), (sy_0, sy_1)
+            d2y11 = _ii_add(_ii_mul(d2ca1, ca2), _ii_mul(_ii_mul(d2sa1, sa2), u_i))
+            d2y22 = _ii_add(_ii_mul(ca1, d2ca2), _ii_mul(_ii_mul(sa1, d2sa2), u_i))
+            d2y12 = _ii_add(_ii_mul(dca1, dca2), _ii_mul(_ii_mul(dsa1, dsa2), u_i))
+            d2y1u, d2y2u = _ii_mul(dsa1, sa2), _ii_mul(sa1, dsa2)
+            adK1, adK2, ady1, ady2, adyu = _ii_abs_ub(dK1), _ii_abs_ub(dK2), _ii_abs_ub(dy1), _ii_abs_ub(dy2), _ii_abs_ub(dyu)
+            e2_11 = (t2dK2_i * ((adK1 * adK1) // SCALE_II + 1) + t1dK_i * _ii_abs_ub(d2K1) + t2duu_i * ((ady1 * ady1) // SCALE_II + 1) + 2 * t2dKu_i * ((adK1 * ady1) // SCALE_II + 1) + t1du_i * _ii_abs_ub(d2y11)) // SCALE_II + 5
+            e2_22 = (t2dK2_i * ((adK2 * adK2) // SCALE_II + 1) + t1dK_i * _ii_abs_ub(d2K2) + t2duu_i * ((ady2 * ady2) // SCALE_II + 1) + 2 * t2dKu_i * ((adK2 * ady2) // SCALE_II + 1) + t1du_i * _ii_abs_ub(d2y22)) // SCALE_II + 5
+            e2_12 = (t2dKK_i * ((adK1 * adK2) // SCALE_II + 1) + t2dKu_i * ((adK1 * ady2 + adK2 * ady1) // SCALE_II + 2) + t2duu_i * ((ady1 * ady2) // SCALE_II + 1) + t1du_i * _ii_abs_ub(d2y12)) // SCALE_II + 5
+            e2_1u = (t2dKu_i * ((adK1 * adyu) // SCALE_II + 1) + t2duu_i * ((ady1 * adyu) // SCALE_II + 1) + t1du_i * _ii_abs_ub(d2y1u)) // SCALE_II + 3
+            e2_2u = (t2dKu_i * ((adK2 * adyu) // SCALE_II + 1) + t2duu_i * ((ady2 * adyu) // SCALE_II + 1) + t1du_i * _ii_abs_ub(d2y2u)) // SCALE_II + 3
+            e2_uu = (t2duu_i * ((adyu * adyu) // SCALE_II + 1)) // SCALE_II + 1
+            t = _ii_add(_ii_mul(S11, _ii_mul(dK1, dK1)), _ii_add(_ii_mul(SK1, d2K1), _ii_add(_ii_mul((2 * S1Y[0], 2 * S1Y[1]), _ii_mul(dK1, dy1)), _ii_add(_ii_mul(SYY, _ii_mul(dy1, dy1)), _ii_mul(SY, d2y11)))))
+            d2PM_11 = (t[0] - e2_11, t[1] + e2_11)
+            t = _ii_add(_ii_mul(S22, _ii_mul(dK2, dK2)), _ii_add(_ii_mul(SK2, d2K2), _ii_add(_ii_mul((2 * S2Y[0], 2 * S2Y[1]), _ii_mul(dK2, dy2)), _ii_add(_ii_mul(SYY, _ii_mul(dy2, dy2)), _ii_mul(SY, d2y22)))))
+            d2PM_22 = (t[0] - e2_22, t[1] + e2_22)
+            t = _ii_add(_ii_mul(S12, _ii_mul(dK1, dK2)), _ii_add(_ii_mul(S1Y, _ii_mul(dK1, dy2)), _ii_add(_ii_mul(S2Y, _ii_mul(dK2, dy1)), _ii_add(_ii_mul(SYY, _ii_mul(dy1, dy2)), _ii_mul(SY, d2y12)))))
+            d2PM_12 = (t[0] - e2_12, t[1] + e2_12)
+            t = _ii_add(_ii_mul(S1Y, _ii_mul(dK1, dyu)), _ii_add(_ii_mul(SYY, _ii_mul(dy1, dyu)), _ii_mul(SY, d2y1u)))
+            d2PM_1u = (t[0] - e2_1u, t[1] + e2_1u)
+            t = _ii_add(_ii_mul(S2Y, _ii_mul(dK2, dyu)), _ii_add(_ii_mul(SYY, _ii_mul(dy2, dyu)), _ii_mul(SY, d2y2u)))
+            d2PM_2u = (t[0] - e2_2u, t[1] + e2_2u)
+            t = _ii_mul(SYY, _ii_mul(dyu, dyu))
+            d2PM_uu = (t[0] - e2_uu, t[1] + e2_uu)
+            PM2_i, P3_2_i = _ii_mul(PM_use_i, PM_use_i), _ii_mul(P3_b_i, P3_b_i)
+            d2y11_v = _ii_neg(yb_v); d2y22_v = d2y11_v; d2y12_v = _ii_add(s1s2_b, _ii_mul(_ii_mul(x1, x2), u_i))
+            d2y1u_v, d2y2u_v = _ii_mul(x1, s2), _ii_mul(s1, x2)
+            d2P3_11 = _ii_add(_ii_sub(_ii_mul(P3z2, d2y11_v), _ii_mul(p12_ii, _ii_add(_ii_mul(x1, yb_v), _ii_mul((2 * s1[0], 2 * s1[1]), dy1_v)))), _ii_mul(two_p22_i, _ii_mul(dy1_v, dy1_v)))
+            d2P3_22 = _ii_add(_ii_sub(_ii_mul(P3z2, d2y22_v), _ii_mul(p12_ii, _ii_add(_ii_mul(x2, yb_v), _ii_mul((2 * s2[0], 2 * s2[1]), dy2_v)))), _ii_mul(two_p22_i, _ii_mul(dy2_v, dy2_v)))
+            d2P3_12 = _ii_add(_ii_sub(_ii_mul(P3z2, d2y12_v), _ii_mul(p12_ii, _ii_add(_ii_mul(s1, dy2_v), _ii_mul(s2, dy1_v)))), _ii_mul(two_p22_i, _ii_mul(dy1_v, dy2_v)))
+            d2P3_1u = _ii_add(_ii_sub(_ii_mul(P3z2, d2y1u_v), _ii_mul(p12_ii, _ii_mul(s1, s1s2_b))), _ii_mul(two_p22_i, _ii_mul(dy1_v, s1s2_b)))
+            d2P3_2u = _ii_add(_ii_sub(_ii_mul(P3z2, d2y2u_v), _ii_mul(p12_ii, _ii_mul(s2, s1s2_b))), _ii_mul(two_p22_i, _ii_mul(dy2_v, s1s2_b)))
+            d2P3_uu = _ii_mul(two_p22_i, _ii_mul(s1s2_b, s1s2_b))
+            H11 = _ii_sub(_ii_sub(_ii_div(d2PM_11, PM_use_i), _ii_div(_ii_mul(dPMb_1, dPMb_1), PM2_i)), _ii_mul(pw_ii, _ii_sub(_ii_add(_ii_sub(_ii_mul(b_ii, d2y11_v), _ii_mul(aw_i, x1)), _ii_div(d2P3_11, P3_b_i)), _ii_div(_ii_mul(dP3_1, dP3_1), P3_2_i))))
+            H22 = _ii_sub(_ii_sub(_ii_div(d2PM_22, PM_use_i), _ii_div(_ii_mul(dPMb_2, dPMb_2), PM2_i)), _ii_mul(pw_ii, _ii_sub(_ii_add(_ii_sub(_ii_mul(b_ii, d2y22_v), _ii_mul(aw_i, x2)), _ii_div(d2P3_22, P3_b_i)), _ii_div(_ii_mul(dP3_2, dP3_2), P3_2_i))))
+            H12 = _ii_sub(_ii_sub(_ii_div(d2PM_12, PM_use_i), _ii_div(_ii_mul(dPMb_1, dPMb_2), PM2_i)), _ii_mul(pw_ii, _ii_sub(_ii_add(_ii_mul(b_ii, d2y12_v), _ii_div(d2P3_12, P3_b_i)), _ii_div(_ii_mul(dP3_1, dP3_2), P3_2_i))))
+            H1u = _ii_sub(_ii_sub(_ii_div(d2PM_1u, PM_use_i), _ii_div(_ii_mul(dPMb_1, dPMb_u), PM2_i)), _ii_mul(pw_ii, _ii_sub(_ii_add(_ii_mul(b_ii, d2y1u_v), _ii_div(d2P3_1u, P3_b_i)), _ii_div(_ii_mul(dP3_1, dP3_u), P3_2_i))))
+            H2u = _ii_sub(_ii_sub(_ii_div(d2PM_2u, PM_use_i), _ii_div(_ii_mul(dPMb_2, dPMb_u), PM2_i)), _ii_mul(pw_ii, _ii_sub(_ii_add(_ii_mul(b_ii, d2y2u_v), _ii_div(d2P3_2u, P3_b_i)), _ii_div(_ii_mul(dP3_2, dP3_u), P3_2_i))))
+            Huu = _ii_sub(_ii_sub(_ii_div(d2PM_uu, PM_use_i), _ii_div(_ii_mul(dPMb_u, dPMb_u), PM2_i)), _ii_mul(pw_ii, _ii_sub(_ii_div(d2P3_uu, P3_b_i), _ii_div(_ii_mul(dP3_u, dP3_u), P3_2_i))))
+            e1 = e1_lin + half_mp * (mp.mpf(_ii_abs_ub(H11)) * invS * hw1 * hw1 + mp.mpf(_ii_abs_ub(H12)) * invS * hw1 * hw2 + mp.mpf(_ii_abs_ub(H1u)) * invS * hw1 * hw_u)
+            e2 = e2_lin + half_mp * (mp.mpf(_ii_abs_ub(H22)) * invS * hw2 * hw2 + mp.mpf(_ii_abs_ub(H12)) * invS * hw1 * hw2 + mp.mpf(_ii_abs_ub(H2u)) * invS * hw2 * hw_u)
+            eu = eu_lin + half_mp * (mp.mpf(_ii_abs_ub(Huu)) * invS * hw_u * hw_u + mp.mpf(_ii_abs_ub(H1u)) * invS * hw1 * hw_u + mp.mpf(_ii_abs_ub(H2u)) * invS * hw2 * hw_u)
+            ub = mp.mpf(Fm.b) + e1 + e2 + eu
+            if ub <= log_lam3_target:
+                max_3d_ub = max(max_3d_ub, ub)
+            else:
+                require(d1 < 10 and d2 < 10 and du_dep < 10, "R24 3D Poly2 target exceeded")
+                if e1 >= e2 and e1 >= eu:
+                    stack3.extend([(d1 + 1, 2 * i1, d2, i2, du_dep, iu), (d1 + 1, 2 * i1 + 1, d2, i2, du_dep, iu)])
+                elif e2 >= eu:
+                    stack3.extend([(d1, i1, d2 + 1, 2 * i2, du_dep, iu), (d1, i1, d2 + 1, 2 * i2 + 1, du_dep, iu)])
+                else:
+                    stack3.extend([(d1, i1, d2, i2, du_dep + 1, 2 * iu), (d1, i1, d2, i2, du_dep + 1, 2 * iu + 1)])
+
+        def _r24_chebU_mul(A, B):
+            n, m = len(A), len(B)
+            C = [iv.mpf(0)] * (n + m - 1)
+            for i in range(n):
+                for j in range(m):
+                    for s in range(abs(i - j), i + j + 1, 2):
+                        C[s] = C[s] + A[i] * B[j]
+            return C
+
+        def _r24_u_to_cos_iv(uc_list):
+            c_out = [iv.mpf(0)] * len(uc_list)
+            for n, uc in enumerate(uc_list):
+                if uc != 0:
+                    for m in range(n, -1, -2):
+                        c_out[m] = c_out[m] + (uc if m == 0 else iv.mpf(2) * uc)
+            return c_out
+
+        def _r24_eval_cos_cw_ii(pc_iv, Gc_iv, ws_iv, p_root: int, div_factor: int, N_th: int):
+            N_ch, n_tot = len(pc_iv), len(Gc_iv)
+            h_step = PI_IV / iv.mpf(N_th)
+            pc_ii, Gc_ii = [_to_ii(v) for v in pc_iv], [_to_ii(v) for v in Gc_iv]
+            dh_iv = iv.mpf([-mp.mpf((h_step / 2).b), mp.mpf((h_step / 2).b)])
+            M_per = 4 * N_th
+            c_grid = [_to_ii(iv.cos(PI_IV * _r24_rat(j, 2 * N_th))) for j in range(M_per)]
+            s_grid = [_to_ii(iv.sin(PI_IV * _r24_rat(j, 2 * N_th))) for j in range(M_per)]
+
+            def _cs_box(j_lo, j_hi):
+                ca, cb = c_grid[j_lo % M_per], c_grid[j_hi % M_per]
+                sa, sb = s_grid[j_lo % M_per], s_grid[j_hi % M_per]
+                c0, c1 = min(ca[0], cb[0]), max(ca[1], cb[1])
+                s0, s1 = min(sa[0], sb[0]), max(sa[1], sb[1])
+                for q in range((j_lo // N_th) + 1, (j_hi - 1) // N_th + 1):
+                    qm = q % 4
+                    if qm == 0:
+                        c1 = max(c1, SCALE_II)
+                    elif qm == 1:
+                        s1 = max(s1, SCALE_II)
+                    elif qm == 2:
+                        c0 = min(c0, -SCALE_II)
+                    else:
+                        s0 = min(s0, -SCALE_II)
+                return (c0, c1), (s0, s1)
+
+            max_lr = mp.mpf("-1e9")
+            for k in range(N_th):
+                tm = (iv.mpf(k) + _r24_rat(1, 2)) * h_step
+                cm1, sb1 = iv.cos(tm), iv.sin(iv.mpf([mp.mpf((iv.mpf(k) * h_step).a), mp.mpf((iv.mpf(k + 1) * h_step).b)]))
+                pm0 = pm1 = ppm0 = ppm1 = Gm0 = Gm1 = Gpm0 = Gpm1 = 0
+                pcb0 = pcb1 = ppb0 = ppb1 = pppb0 = pppb1 = Gcb0 = Gcb1 = Gpb0 = Gpb1 = Gppb0 = Gppb1 = 0
+                for m in range(n_tot):
+                    jm = (m * (2 * k + 1)) % M_per
+                    cmr, smr = c_grid[jm], s_grid[jm]
+                    cbr, sbr = _cs_box(2 * k * m, 2 * (k + 1) * m) if m > 0 else ((SCALE_II, SCALE_II), (0, 0))
+                    Gc_m, m2 = Gc_ii[m], m * m
+                    t1 = _ii_mul(Gc_m, cmr); Gm0 += t1[0]; Gm1 += t1[1]
+                    t2 = _ii_mul(Gc_m, smr); Gpm0 -= m * t2[1]; Gpm1 -= m * t2[0]
+                    t3 = _ii_mul(Gc_m, cbr); Gcb0 += t3[0]; Gcb1 += t3[1]; Gppb0 -= m2 * t3[1]; Gppb1 -= m2 * t3[0]
+                    t4 = _ii_mul(Gc_m, sbr); Gpb0 -= m * t4[1]; Gpb1 -= m * t4[0]
+                    if m < N_ch:
+                        pc_m = pc_ii[m]
+                        t1 = _ii_mul(pc_m, cmr); pm0 += t1[0]; pm1 += t1[1]
+                        t2 = _ii_mul(pc_m, smr); ppm0 -= m * t2[1]; ppm1 -= m * t2[0]
+                        t3 = _ii_mul(pc_m, cbr); pcb0 += t3[0]; pcb1 += t3[1]; pppb0 -= m2 * t3[1]; pppb1 -= m2 * t3[0]
+                        t4 = _ii_mul(pc_m, sbr); ppb0 -= m * t4[1]; ppb1 -= m * t4[0]
+                pm, pp_m = _ii_to_iv((pm0, pm1)), _ii_to_iv((ppm0, ppm1))
+                Gm, Gp_m = _ii_to_iv((Gm0, Gm1)), _ii_to_iv((Gpm0, Gpm1))
+                pc_b, pp_b, ppp_b = _ii_to_iv((pcb0, pcb1)), _ii_to_iv((ppb0, ppb1)), _ii_to_iv((pppb0, pppb1))
+                Gc_b, Gp_b, Gpp_b = _ii_to_iv((Gcb0, Gcb1)), _ii_to_iv((Gpb0, Gpb1)), _ii_to_iv((Gppb0, Gppb1))
+                pc_use = iv.mpf([max(mp.mpf(pc_b.a), mp.mpf((pm + pp_b * dh_iv).a)), min(mp.mpf(pc_b.b), mp.mpf((pm + pp_b * dh_iv).b))])
+                Gc_use = iv.mpf([max(mp.mpf(Gc_b.a), mp.mpf((Gm + Gp_b * dh_iv).a)), min(mp.mpf(Gc_b.b), mp.mpf((Gm + Gp_b * dh_iv).b))])
+                require(mp.mpf(pc_use.a) > 0 and mp.mpf(Gc_use.a) > 0, "R24 Pillow5 CW <= 0")
+                lr = (ws_iv * cm1 + _r24_rat(1, p_root) * iv.log(Gm) - iv.log(pm)) + (-ws_iv * sb1 + (Gp_m + Gpp_b * dh_iv) / (iv.mpf(p_root) * Gc_use) - (pp_m + ppp_b * dh_iv) / pc_use) * dh_iv
+                max_lr = max(max_lr, mp.mpf(lr.b))
+            return iv.mpf(max_lr) / iv.mpf(div_factor)
+
+        N_char5 = 11
+        n_tot5 = 6 * N_char5 - 5
+        ctm_vec = _r24_cr0_vec_box(2 * N_char5 - 1, wtm, 38)
+        cth_vec = _r24_cr0_vec_box(n_tot5, wth, 38)
+        ctm2_iv = [(ctm_vec[idx] / c1_wtm) ** 2 for idx in range(2 * N_char5 - 1)]
+        cth2_iv = [(cth_vec[idx] / c1_wth) ** 2 for idx in range(n_tot5)]
+        ctm2_mp, cth2_mp, M_q5 = [mp.mpf(v.b) for v in ctm2_iv], [mp.mpf(v.b) for v in cth2_iv], 64
+        th_q5 = [(mp.mpf(k) + mp.mpf("0.5")) * mp.pi / mp.mpf(M_q5) for k in range(M_q5)]
+        wt_q5, x_q5 = [(mp.mpf(2) / mp.mpf(M_q5)) * (mp.sin(t) ** 2) for t in th_q5], [mp.cos(t) for t in th_q5]
+        U_q5 = [[mp.sin(mp.mpf(d_idx + 1) * t) / mp.sin(t) for d_idx in range(n_tot5)] for t in th_q5]
+        wsm_mp = mp.mpf(wsm.b)
+        a_mp5 = [sum(wt_q5[j] * mp.exp(wsm_mp * x_q5[j]) * U_q5[j][d_idx] for j in range(M_q5)) for d_idx in range(N_char5)]
+        for _ in range(55):
+            phi_q = [sum(a_mp5[d_idx] * U_q5[j][d_idx] for d_idx in range(N_char5)) for j in range(M_q5)]
+            c2 = [sum(wt_q5[j] * (phi_q[j] ** 2) * U_q5[j][d_idx] for j in range(M_q5)) for d_idx in range(2 * N_char5 - 1)]
+            g_q = [sum(c2[d_idx] * ctm2_mp[d_idx] * U_q5[j][d_idx] for d_idx in range(2 * N_char5 - 1)) for j in range(M_q5)]
+            c6 = [sum(wt_q5[j] * (g_q[j] ** 3) * U_q5[j][d_idx] for j in range(M_q5)) for d_idx in range(n_tot5)]
+            G_q = [max(mp.mpf("1e-50"), sum(c6[d_idx] * cth2_mp[d_idx] * U_q5[j][d_idx] for d_idx in range(n_tot5))) for j in range(M_q5)]
+            pnew = [mp.exp(wsm_mp * x_q5[j]) * (G_q[j] ** (mp.mpf(1) / mp.mpf(6))) for j in range(M_q5)]
+            nrm = mp.sqrt(sum(wt_q5[j] * pnew[j] ** 2 for j in range(M_q5)))
+            a_mp5 = [sum(wt_q5[j] * (pnew[j] / nrm) * U_q5[j][d_idx] for j in range(M_q5)) for d_idx in range(N_char5)]
+        a_iv5 = [_r24_rat(int(mp.nint(v * (10 ** 12))), 10 ** 12) for v in a_mp5]
+        c2_iv5 = _r24_chebU_mul(a_iv5, a_iv5)
+        g_iv5 = [c2_iv5[d_idx] * ctm2_iv[d_idx] for d_idx in range(len(c2_iv5))]
+        g3_iv5 = _r24_chebU_mul(_r24_chebU_mul(g_iv5, g_iv5), g_iv5)
+        G_iv5 = [g3_iv5[d_idx] * cth2_iv[d_idx] for d_idx in range(len(g3_iv5))]
+        pc_c5, Gc_c5 = _r24_u_to_cos_iv(a_iv5), _r24_u_to_cos_iv(G_iv5)
+        r5_128 = _r24_eval_cos_cw_ii(pc_c5, Gc_c5, wsm, 6, 1, 128)
+        r5_256 = _r24_eval_cos_cw_ii(pc_c5, Gc_c5, wsm, 6, 1, 256)
+        require(abs(mp.mpf(r5_128.b) - mp.mpf(r5_256.b)) < mp.mpf("1e-3"), "R24 Pillow5 drift")
+        lrw_cert_iv = (iv.mpf(max_2d_ub) + iv.mpf(max_3d_ub)) / pw
+        f_ub_220_iv = (iv.mpf(4) * (iv.log(c1_wth) + iv.log(c1_wtm) + iv.log(c1_wtv)) + iv.mpf(2) * iv.mpf(mp.mpf(lrw_cert_iv.b)) + iv.mpf(2) * r5_256) / iv.mpf(24)
+        require(mp.mpf(f_ub_220_iv.b) <= mp.mpf("0.7837965348981"), "R24 Poly2 f_4D_UB(2.20) exceeded target")
+
+        # 128-state Z_2 CW sanity:
+        wt_z, ws_z = _r24_rat(325, 100), _r24_rat(265, 100)
+        ewp, ewm = iv.exp(wt_z), iv.exp(-wt_z)
+        diag_D = [iv.exp(ws_z / iv.mpf(2) * iv.mpf(sum(((1 if (s >> k) & 1 else -1) * (1 if (s >> ((k + 1) % 7)) & 1 else -1)) for k in range(7)))) for s in range(128)]
+        ewp_m, ewm_m, d_m = mp.mpf(ewp.mid), mp.mpf(ewm.mid), [mp.mpf(x.mid) for x in diag_D]
+        v_z = list(d_m)
+        for _ in range(18):
+            w_z = [v_z[s] * d_m[s] for s in range(128)]
+            for bit in range(7):
+                step = 1 << bit
+                w_z = [ewp_m * w_z[s] + ewm_m * w_z[s ^ step] for s in range(128)]
+            v_z = [w_z[s] * d_m[s] for s in range(128)]
+            mx = max(v_z)
+            v_z = [x / mx for x in v_z]
+        v_ziv = [_r24_rat(max(1, int(mp.nint(x * (10 ** 24)))), 10 ** 24) for x in v_z]
+        w_ziv = [v_ziv[s] * diag_D[s] for s in range(128)]
+        for bit in range(7):
+            step = 1 << bit
+            w_ziv = [ewp * w_ziv[s] + ewm * w_ziv[s ^ step] for s in range(128)]
+        rats_z = [(w_ziv[s] * diag_D[s]) / v_ziv[s] for s in range(128)]
+        lam128_lb, lam128_ub = min(mp.mpf(r.a) for r in rats_z), max(mp.mpf(r.b) for r in rats_z)
+        require(lam128_ub / lam128_lb - mp.mpf(1) < mp.mpf("1e-8"), "R24 Z2 128 CW gap")
+        checks += 4
+
+        # 4B. C40A Thm MI40.1B Infinite-Z^4 CG-1/4 Lift at M_s = 48 (exact48 via ii):
+        kap0, mL2, kapTs, mT2 = _r24_rat(445, 100), _r24_rat(135, 100), _r24_rat(369, 100), _r24_rat(199, 100)
+        at_iv, as_iv = _r24_rat(18, 100), _r24_rat(153, 1000)
+        four_k0, two_k0 = iv.mpf(4) * kap0, iv.mpf(2) * kap0
+        BL4 = mL2 * (mL2 + four_k0)
+        sqL = iv.sqrt(BL4)
+        I0L = iv.mpf(1) / sqL
+        rL = (mL2 + two_k0 - sqL) / two_k0
+        I1L, I2L = I0L * rL, I0L * (rL * rL)
+        IlnL = -iv.mpf(2) * iv.log((iv.sqrt(mL2) + iv.sqrt(mL2 + four_k0)) / iv.mpf(2))
+        Ec0L = iv.mpf(2) * at_iv * I1L + iv.mpf(4) * as_iv * I0L
+        Ecosc0L = at_iv * (I0L + I2L) + iv.mpf(4) * as_iv * I1L
+        Ec02L = iv.mpf(2) * at_iv * at_iv * (I0L + I2L) + iv.mpf(16) * at_iv * as_iv * I1L + iv.mpf(16) * as_iv * as_iv * I0L
+
+        def _eval_W_c40(W):
+            B = kapTs * W + mT2
+            B4 = B + four_k0
+            BB4 = B * B4
+            sq = iv.sqrt(BB4)
+            I0 = iv.mpf(1) / sq
+            I1 = ((B + two_k0) * I0 - iv.mpf(1)) / two_k0
+            I2 = ((B + two_k0) * I1) / kap0 - I0
+            Iln = -iv.mpf(2) * iv.log((iv.sqrt(B) + iv.sqrt(B4)) / iv.mpf(2))
+            Ec0 = iv.mpf(2) * at_iv * I1 + iv.mpf(4) * as_iv * I0
+            Ecosc0 = at_iv * (I0 + I2) + iv.mpf(4) * as_iv * I1
+            Ec02 = iv.mpf(2) * at_iv * at_iv * (I0 + I2) + iv.mpf(16) * at_iv * as_iv * I1 + iv.mpf(16) * as_iv * as_iv * I0
+            psiB = Ec0 - as_iv * W * I0
+            f_vals = (I0, I1, Iln, W * I0, Ec02 - iv.mpf(2) * as_iv * W * Ec0 + (as_iv * as_iv) * (W * W) * I0,
+                      Ecosc0 - as_iv * W * I1, psiB * (_r24_rat(2, 3) - W / iv.mpf(6)), psiB)
+            I0_1 = -kapTs * (B + two_k0) / (BB4 * sq)
+            I0_2 = (kapTs * kapTs) * (iv.mpf(2) * B * B + iv.mpf(8) * kap0 * B + iv.mpf(12) * kap0 * kap0) / (BB4 * BB4 * sq)
+            I1_1 = (kapTs * I0 + (B + two_k0) * I0_1) / two_k0
+            I1_2 = (iv.mpf(2) * kapTs * I0_1 + (B + two_k0) * I0_2) / two_k0
+            I2_1 = (kapTs * I1 + (B + two_k0) * I1_1) / kap0 - I0_1
+            I2_2 = (iv.mpf(2) * kapTs * I1_1 + (B + two_k0) * I1_2) / kap0 - I0_2
+            Iln_1, Iln_2 = -kapTs * I0, -kapTs * I0_1
+            Ec0_1, Ec0_2 = iv.mpf(2) * at_iv * I1_1 + iv.mpf(4) * as_iv * I0_1, iv.mpf(2) * at_iv * I1_2 + iv.mpf(4) * as_iv * I0_2
+            Ecosc0_1, Ecosc0_2 = at_iv * (I0_1 + I2_1) + iv.mpf(4) * as_iv * I1_1, at_iv * (I0_2 + I2_2) + iv.mpf(4) * as_iv * I1_2
+            Ec02_1 = iv.mpf(2) * at_iv * at_iv * (I0_1 + I2_1) + iv.mpf(16) * at_iv * as_iv * I1_1 + iv.mpf(16) * as_iv * as_iv * I0_1
+            Ec02_2 = iv.mpf(2) * at_iv * at_iv * (I0_2 + I2_2) + iv.mpf(16) * at_iv * as_iv * I1_2 + iv.mpf(16) * as_iv * as_iv * I0_2
+            WI0_1, WI0_2 = I0 + W * I0_1, iv.mpf(2) * I0_1 + W * I0_2
+            psiB_1, psiB_2 = Ec0_1 - as_iv * WI0_1, Ec0_2 - as_iv * WI0_2
+            f4_1 = Ec02_1 - iv.mpf(2) * as_iv * (Ec0 + W * Ec0_1) + (as_iv * as_iv) * (iv.mpf(2) * W * I0 + W * W * I0_1)
+            f4_2 = Ec02_2 - iv.mpf(2) * as_iv * (iv.mpf(2) * Ec0_1 + W * Ec0_2) + (as_iv * as_iv) * (iv.mpf(2) * I0 + iv.mpf(4) * W * I0_1 + W * W * I0_2)
+            f5_1, f5_2 = Ecosc0_1 - as_iv * (I1 + W * I1_1), Ecosc0_2 - as_iv * (iv.mpf(2) * I1_1 + W * I1_2)
+            lin_w = _r24_rat(2, 3) - W / iv.mpf(6)
+            return (f_vals, (I0_1, I1_1, Iln_1, WI0_1, f4_1, f5_1, psiB_1 * lin_w - psiB / iv.mpf(6), psiB_1),
+                    (I0_2, I1_2, Iln_2, WI0_2, f4_2, f5_2, psiB_2 * lin_w - psiB_1 / iv.mpf(3), psiB_2))
+
+        N_F_w, N_C_w = 480, 144
+        step_f_w, step_c_w = _r24_rat(12, N_F_w), _r24_rat(12, N_C_w)
+        f_pts_ii, d2_bins_ii = [], []
+        for k in range(N_F_w):
+            wm = _r24_rat(2 * k + 1, 2) * step_f_w
+            wb = iv.mpf([mp.mpf((k * step_f_w).a), mp.mpf(((k + 1) * step_f_w).b)])
+            f0, f1, _ = _eval_W_c40(wm)
+            _, _, f2b = _eval_W_c40(wb)
+            f_pts_ii.append((_to_ii(wm), [_to_ii(v) for v in f0], [_to_ii(v) for v in f1]))
+            d2_bins_ii.append([_to_ii(v) for v in f2b])
+        c_bins_w = [_eval_W_c40(iv.mpf([mp.mpf((k * step_c_w).a), mp.mpf(((k + 1) * step_c_w).b)])) for k in range(N_C_w)]
+        hull_w = {}
+        for b0 in range(N_C_w):
+            fc = [_to_ii(v) for v in c_bins_w[b0][0]]
+            d1c = [_to_ii(v) for v in c_bins_w[b0][1]]
+            d2c = [_to_ii(v) for v in c_bins_w[b0][2]]
+            hull_w[(b0, b0)] = (tuple(fc), tuple(d1c), tuple(d2c))
+            for b1 in range(b0 + 1, min(N_C_w, b0 + 20)):
+                fb, d1b, d2b = c_bins_w[b1]
+                for q in range(8):
+                    fbi, d1bi, d2bi = _to_ii(fb[q]), _to_ii(d1b[q]), _to_ii(d2b[q])
+                    fc[q] = (min(fc[q][0], fbi[0]), max(fc[q][1], fbi[1]))
+                    d1c[q] = (min(d1c[q][0], d1bi[0]), max(d1c[q][1], d1bi[1]))
+                    d2c[q] = (min(d2c[q][0], d2bi[0]), max(d2c[q][1], d2bi[1]))
+                hull_w[(b0, b1)] = (tuple(fc), tuple(d1c), tuple(d2c))
+
+        M_s = 48
+        h_48 = PI_IV / iv.mpf(M_s)
+        h2_24_b = mp.mpf(((h_48 * h_48) / iv.mpf(24)).b)
+        h2_48_ii = _to_ii(iv.mpf(h2_24_b))
+        w_node48 = [iv.mpf(4) * (iv.sin(PI_IV * _r24_rat(i, 2 * M_s)) ** 2) for i in range(M_s + 1)]
+        w_mid48 = [iv.mpf(4) * (iv.sin(PI_IV * _r24_rat(2 * i + 1, 4 * M_s)) ** 2) for i in range(M_s)]
+        w_node_ii, w_mid_ii = [_to_ii(w) for w in w_node48], [_to_ii(w) for w in w_mid48]
+        w_cell_ii = [(w_node_ii[i][0], w_node_ii[i + 1][1]) for i in range(M_s)]
+        s4_ii, c2_ii, s4_ub_i, c2_ub_i = [], [], [], []
+        for i in range(M_s):
+            kc = iv.mpf([mp.mpf((PI_IV * _r24_rat(i, M_s)).a), mp.mpf((PI_IV * _r24_rat(i + 1, M_s)).b)])
+            sc_k, cc_k = iv.sin(kc), iv.cos(kc)
+            s4i, c2i = _to_ii(iv.mpf(4) * (sc_k * sc_k)), _to_ii(iv.mpf(2) * cc_k)
+            s4_ii.append(s4i); c2_ii.append(c2i)
+            s4_ub_i.append(s4i[1]); c2_ub_i.append(_ii_abs_ub(c2i))
+
+        I0L_ii, Ec0L_ii = _to_ii(I0L), _to_ii(Ec0L)
+        acc_lo, acc_hi, err_W_i, glo_i, ghi_i = [0] * 7, [0] * 7, [0] * 7, [0, 0], [0, 0]
+        fstep_lo_i = _to_ii(step_f_w)[0]
+        fstep_hi_i = _to_ii(step_f_w)[1]
+        for i1 in range(M_s):
+            x1m, x1c, s1, c1, s1i, c1i = w_mid_ii[i1], w_cell_ii[i1], s4_ub_i[i1], c2_ub_i[i1], s4_ii[i1], c2_ii[i1]
+            s1a, s1b = s1i; c1a, c1b = c1i
+            for i2 in range(i1, M_s):
+                x2m, x2c, s2, c2, s2i, c2i = w_mid_ii[i2], w_cell_ii[i2], s4_ub_i[i2], c2_ub_i[i2], s4_ii[i2], c2_ii[i2]
+                s2a, s2b = s2i; c2a, c2b = c2i
+                for i3 in range(i2, M_s):
+                    x3m, x3c, s3, c3, s3i, c3i = w_mid_ii[i3], w_cell_ii[i3], s4_ub_i[i3], c2_ub_i[i3], s4_ii[i3], c2_ii[i3]
+                    s3a, s3b = s3i; c3a, c3b = c3i
+                    mult = 1 if (i1 == i2 == i3) else (3 if (i1 == i2 or i2 == i3) else 6)
+                    Wc = (x1c[0] + x2c[0] + x3c[0], x1c[1] + x2c[1] + x3c[1])
+                    b0 = max(0, min(N_C_w - 1, (Wc[0] * N_C_w) // (12 * SCALE_II)))
+                    b1 = max(0, min(N_C_w - 1, (Wc[1] * N_C_w) // (12 * SCALE_II)))
+                    fc, d1c, d2c = hull_w[(b0, b1)]
+                    for q in range(7):
+                        d1a, d1b = d1c[q]; d2a, d2b = d2c[q]
+                        p1, p2, p3, p4 = s1a*d2a, s1a*d2b, s1b*d2a, s1b*d2b
+                        q1, q2, q3, q4 = c1a*d1a, c1a*d1b, c1b*d1a, c1b*d1b
+                        u1 = max(abs(min(p1,p2,p3,p4)//SCALE_II + min(q1,q2,q3,q4)//SCALE_II), abs(-((-max(p1,p2,p3,p4))//SCALE_II) + -((-max(q1,q2,q3,q4))//SCALE_II)))
+                        p1, p2, p3, p4 = s2a*d2a, s2a*d2b, s2b*d2a, s2b*d2b
+                        q1, q2, q3, q4 = c2a*d1a, c2a*d1b, c2b*d1a, c2b*d1b
+                        u2 = max(abs(min(p1,p2,p3,p4)//SCALE_II + min(q1,q2,q3,q4)//SCALE_II), abs(-((-max(p1,p2,p3,p4))//SCALE_II) + -((-max(q1,q2,q3,q4))//SCALE_II)))
+                        p1, p2, p3, p4 = s3a*d2a, s3a*d2b, s3b*d2a, s3b*d2b
+                        q1, q2, q3, q4 = c3a*d1a, c3a*d1b, c3b*d1a, c3b*d1b
+                        u3 = max(abs(min(p1,p2,p3,p4)//SCALE_II + min(q1,q2,q3,q4)//SCALE_II), abs(-((-max(p1,p2,p3,p4))//SCALE_II) + -((-max(q1,q2,q3,q4))//SCALE_II)))
+                        err_W_i[q] += mult * (u1 + u2 + u3)
+                    if i1 == 0 and i2 == 0 and i3 == 0:
+                        fm000, _, _ = _eval_W_c40(w_mid48[0] * iv.mpf(3))
+                        for q in range(7):
+                            fi = _to_ii(fm000[q]); acc_lo[q] += fi[0]; acc_hi[q] += fi[1]
+                        g_top = w_node48[1] / iv.mpf(3)
+                        fc0, _, _ = _eval_W_c40(iv.mpf([mp.mpf(0), mp.mpf((w_node48[1] * iv.mpf(3)).b)]))
+                        for idx_g, (bL, vc) in enumerate(((I0L, fc0[0]), (Ec0L, fc0[7]))):
+                            pi = _to_ii(iv.mpf([mp.mpf(0), mp.mpf(g_top.b)]) * (bL - vc))
+                            glo_i[idx_g] += pi[0]; ghi_i[idx_g] += pi[1]
+                        continue
+                    Wm_lo, Wm_hi = x1m[0] + x2m[0] + x3m[0], x1m[1] + x2m[1] + x3m[1]
+                    kf0 = max(0, min(N_F_w - 1, (Wm_lo * N_F_w) // (12 * SCALE_II)))
+                    kf1 = max(0, min(N_F_w - 1, (Wm_hi * N_F_w) // (12 * SCALE_II)))
+                    if kf0 == kf1:
+                        w_ref, fm0, fm1 = f_pts_ii[kf0]
+                        d2_bin = d2_bins_ii[kf0]
+                        dw = (Wm_lo - w_ref[1], Wm_hi - w_ref[0])
+                        dw2_h = _ii_mul(dw, dw)
+                        dw2_h = (dw2_h[0] // 2, -((-dw2_h[1]) // 2))
+                        for q in range(7):
+                            t1, t2 = _ii_mul(fm1[q], dw), _ii_mul(d2_bin[q], dw2_h)
+                            acc_lo[q] += mult * (fm0[q][0] + t1[0] + t2[0])
+                            acc_hi[q] += mult * (fm0[q][1] + t1[1] + t2[1])
+                        t1_0, t2_0 = _ii_mul(fm1[0], dw), _ii_mul(d2_bin[0], dw2_h)
+                        f_0 = (fm0[0][0] + t1_0[0] + t2_0[0], fm0[0][1] + t1_0[1] + t2_0[1])
+                        t1_7, t2_7 = _ii_mul(fm1[7], dw), _ii_mul(d2_bin[7], dw2_h)
+                        f_7 = (fm0[7][0] + t1_7[0] + t2_7[0], fm0[7][1] + t1_7[1] + t2_7[1])
+                    else:
+                        fm_ex, _, _ = _eval_W_c40(w_mid48[i1] + w_mid48[i2] + w_mid48[i3])
+                        for q in range(7):
+                            fi = _to_ii(fm_ex[q]); acc_lo[q] += mult * fi[0]; acc_hi[q] += mult * fi[1]
+                        f_0, f_7 = _to_ii(fm_ex[0]), _to_ii(fm_ex[7])
+                    num_m = ((x1m[0]*x2m[0] + x2m[0]*x3m[0] + x3m[0]*x1m[0]) // SCALE_II, -((- (x1m[1]*x2m[1] + x2m[1]*x3m[1] + x3m[1]*x1m[1])) // SCALE_II))
+                    g3_m = _ii_div(num_m, (3 * Wm_lo, 3 * Wm_hi))
+                    w1a, w1b = w_node_ii[i1], w_node_ii[i1 + 1]; w2a, w2b = w_node_ii[i2], w_node_ii[i2 + 1]; w3a, w3b = w_node_ii[i3], w_node_ii[i3 + 1]
+                    g3_l = _ii_div(((w1a[0]*w2a[0] + w2a[0]*w3a[0] + w3a[0]*w1a[0]) // SCALE_II, -((- (w1a[1]*w2a[1] + w2a[1]*w3a[1] + w3a[1]*w1a[1])) // SCALE_II)), (3*(w1a[0]+w2a[0]+w3a[0]), 3*(w1a[1]+w2a[1]+w3a[1])))
+                    g3_u = _ii_div(((w1b[0]*w2b[0] + w2b[0]*w3b[0] + w3b[0]*w1b[0]) // SCALE_II, -((- (w1b[1]*w2b[1] + w2b[1]*w3b[1] + w3b[1]*w1b[1])) // SCALE_II)), (3*(w1b[0]+w2b[0]+w3b[0]), 3*(w1b[1]+w2b[1]+w3b[1])))
+                    g3_c = (g3_l[0], g3_u[1])
+                    Wc2 = _ii_mul(Wc, Wc); Wc3 = _ii_mul(Wc2, Wc); d3W2, d3W3 = (3 * Wc2[0], 3 * Wc2[1]), (3 * Wc3[0], 3 * Wc3[1])
+                    g1_l, g2_l = [], []
+                    for (xa, xb) in ((x2c, x3c), (x3c, x1c), (x1c, x2c)):
+                        xa2, xab, xb2 = _ii_mul(xa, xa), _ii_mul(xa, xb), _ii_mul(xb, xb)
+                        cj = (xa2[0] + xab[0] + xb2[0], xa2[1] + xab[1] + xb2[1])
+                        g1_l.append(_ii_div(cj, d3W2)); g2_l.append(_ii_div((-2 * cj[1], -2 * cj[0]), d3W3))
+                    for idx_g, (bL, fm_q, vc, v1c, v2c) in enumerate(((I0L_ii, f_0, fc[0], d1c[0], d2c[0]), (Ec0L_ii, f_7, fc[7], d1c[7], d2c[7]))):
+                        psi_m, psi_c, p1_c, p2_c = (bL[0] - fm_q[1], bL[1] - fm_q[0]), (bL[0] - vc[1], bL[1] - vc[0]), (-v1c[1], -v1c[0]), (-v2c[1], -v2c[0])
+                        d2_t = 0
+                        for j_idx, (xjs, xjc) in enumerate(((s1, c1), (s2, c2), (s3, c3))):
+                            g1, g2 = g1_l[j_idx], g2_l[j_idx]
+                            a1, b1t = _ii_mul(g1, psi_c), _ii_mul(g3_c, p1_c)
+                            Fx1 = (a1[0] + b1t[0], a1[1] + b1t[1])
+                            ca_, cb_, cc_ = _ii_mul(g2, psi_c), _ii_mul(g1, p1_c), _ii_mul(g3_c, p2_c)
+                            Fx2 = (ca_[0] + 2 * cb_[0] + cc_[0], ca_[1] + 2 * cb_[1] + cc_[1])
+                            d2_t += (xjs * _ii_abs_ub(Fx2) + xjc * _ii_abs_ub(Fx1)) // SCALE_II + 1
+                        rad = (h2_48_ii[1] * d2_t) // SCALE_II + 1
+                        fgm = _ii_mul(g3_m, psi_m)
+                        glo_i[idx_g] += mult * (fgm[0] - rad)
+                        ghi_i[idx_g] += mult * (fgm[1] + rad)
+
+        den3 = iv.mpf(M_s ** 3)
+
+        def _wrap_W48(q):
+            rad = (h2_24_b * (mp.mpf(err_W_i[q]) / mp.mpf(SCALE_II))) / mp.mpf(M_s ** 3)
+            b = iv.mpf([mp.mpf(acc_lo[q]) / mp.mpf(SCALE_II), mp.mpf(acc_hi[q]) / mp.mpf(SCALE_II)]) / den3
+            return iv.mpf([mp.mpf(b.a) - rad, mp.mpf(b.b) + rad])
+
+        E_I0T, E_I1T, E_IlnT, E_WI0T, E_FvB, E_FcBt, E_FcBbW = [_wrap_W48(q) for q in range(7)]
+        E_g3_I0 = iv.mpf([mp.mpf(glo_i[0]) / mp.mpf(SCALE_II), mp.mpf(ghi_i[0]) / mp.mpf(SCALE_II)]) / den3
+        E_g3_B = iv.mpf([mp.mpf(glo_i[1]) / mp.mpf(SCALE_II), mp.mpf(ghi_i[1]) / mp.mpf(SCALE_II)]) / den3
+
+        sig0 = (I0L + iv.mpf(2) * E_I0T) / iv.mpf(3)
+        c_t1 = (I1L + iv.mpf(2) * E_I1T) / iv.mpf(3)
+        d_12 = E_g3_I0 / iv.mpf(4)
+        c_s1 = sig0 - E_WI0T / iv.mpf(6) - iv.mpf(2) * d_12
+        vB = (Ec02L + iv.mpf(2) * E_FvB) / iv.mpf(3)
+        cov_B_t = (Ecosc0L + iv.mpf(2) * E_FcBt) / iv.mpf(3)
+        cov_B_a = E_g3_B / iv.mpf(4)
+        cov_B_b = Ec0L / iv.mpf(3) + E_FcBbW - E_g3_B / iv.mpf(2)
+        C4_T1 = [[vB, -cov_B_a, -cov_B_b, -cov_B_a], [-cov_B_a, sig0, -d_12, -c_s1], [-cov_B_b, -d_12, sig0, -d_12], [-cov_B_a, -c_s1, -d_12, sig0]]
+
+        def _wick3_dual_iv(C_mat, dC_mat, pairs, memo):
+            canon = tuple(sorted((min(u, v), max(u, v)) for u, v in pairs))
+            if not canon:
+                return iv.mpf(1), iv.mpf(0)
+            if canon in memo:
+                return memo[canon]
+            u, v = canon[0]
+            rest = canon[1:]
+            rv, rd = _wick3_dual_iv(C_mat, dC_mat, rest, memo)
+            tv, td = iv.mpf(3) * C_mat[u][v] * rv, iv.mpf(3) * (dC_mat[u][v] * rv + C_mat[u][v] * rd)
+            for k, (w, z) in enumerate(rest):
+                rem = rest[:k] + rest[k + 1:]
+                v1, d1 = _wick3_dual_iv(C_mat, dC_mat, ((min(v, z), max(v, z)),) + rem, memo)
+                tv, td = tv + C_mat[u][w] * v1, td + dC_mat[u][w] * v1 + C_mat[u][w] * d1
+                v2, d2 = _wick3_dual_iv(C_mat, dC_mat, ((min(v, w), max(v, w)),) + rem, memo)
+                tv, td = tv + C_mat[u][z] * v2, td + dC_mat[u][z] * v2 + C_mat[u][z] * d2
+            memo[canon] = (tv, td)
+            return tv, td
+
+        def _exact_2vec_mom(p, q, a_m, rho2_iv):
+            if q > p:
+                p, q = q, p
+            omr2 = iv.mpf(1) - rho2_iv
+            rp, op = [iv.mpf(1)], [iv.mpf(1)]
+            for _ in range(q):
+                rp.append(rp[-1] * rho2_iv)
+                op.append(op[-1] * omr2)
+            acc, qf = iv.mpf(0), int(sp.factorial(q))
+            for i1 in range(q + 1):
+                for i2 in range(q - i1 + 1):
+                    i3 = q - i1 - i2
+                    if i3 % 2 != 0:
+                        continue
+                    m = i3 // 2
+                    coeff = Fraction(qf, int(sp.factorial(i1) * sp.factorial(i2) * sp.factorial(i3))) * Fraction(int(sp.binomial(2 * m, m)), 4 ** m)
+                    p_f = _r24_odd_dfact(p + i1 + m) * _r24_odd_dfact(i2 + m) // _r24_odd_dfact(m)
+                    acc = acc + _r24_frac(coeff * p_f) * rp[i1 + m] * op[i2 + m]
+            return acc * (a_m ** (p + q))
+
+        def _eval_2link_o10(v0, v1, c01):
+            C2, Z2, memo, val = [[v0, c01], [c01, v1]], [[iv.mpf(0), iv.mpf(0)], [iv.mpf(0), iv.mpf(0)]], {}, iv.mpf(0)
+            cf_c = [_r24_frac(Fraction((-1) ** k, int(sp.factorial(2 * k)))) for k in range(6)]
+            cf_s = [_r24_frac(Fraction((-1) ** k, int(sp.factorial(2 * k + 1)))) for k in range(5)]
+            for p1 in range(6):
+                for p2 in range(6 - p1):
+                    val = val + cf_c[p1] * cf_c[p2] * _wick3_dual_iv(C2, Z2, [(0, 0)] * p1 + [(1, 1)] * p2, memo)[0]
+            for p1 in range(5):
+                for p2 in range(5 - p1):
+                    val = val - cf_s[p1] * cf_s[p2] * _wick3_dual_iv(C2, Z2, [(0, 1)] + [(0, 0)] * p1 + [(1, 1)] * p2, memo)[0]
+            a_m = iv.mpf(max(mp.mpf(v0.b), mp.mpf(v1.b)))
+            sc0, sc1 = iv.sqrt(v0 / a_m), iv.sqrt(v1 / a_m)
+            rho = c01 / iv.sqrt(v0 * v1)
+            rho2 = iv.mpf([mp.mpf(0), min(mp.mpf(1), mp.mpf((rho * rho).b))])
+
+            def _M2(e0, e1):
+                if e0 == 0 and e1 == 12:
+                    return iv.mpf(_r24_odd_dfact(6)) * (a_m ** 6) * (sc1 ** 12)
+                if e1 == 0 and e0 == 12:
+                    return iv.mpf(_r24_odd_dfact(6)) * (a_m ** 6) * (sc0 ** 12)
+                res = _exact_2vec_mom(e0 // 2, e1 // 2, a_m, rho2) if e0 % 2 == 0 else iv.sqrt(_exact_2vec_mom((e0 + 1) // 2, (e1 - 1) // 2, a_m, rho2) * _exact_2vec_mom((e0 - 1) // 2, (e1 + 1) // 2, a_m, rho2))
+                return res * (sc0 ** e0) * (sc1 ** e1)
+
+            c_abs, s_abs = [Fraction(1, int(sp.factorial(2 * k))) for k in range(6)], [Fraction(1, int(sp.factorial(2 * k + 1))) for k in range(5)]
+            rem = _r24_frac(Fraction(1, int(sp.factorial(12)))) * _M2(12, 0)
+            for p1 in range(6):
+                rem = rem + _r24_frac(c_abs[p1] * Fraction(1, int(sp.factorial(2 * (6 - p1))))) * _M2(2 * p1, 2 * (6 - p1))
+            rem = rem + _r24_frac(Fraction(1, int(sp.factorial(11)))) * _M2(11, 1)
+            for p1 in range(5):
+                rem = rem + _r24_frac(s_abs[p1] * Fraction(1, int(sp.factorial(2 * (5 - p1) + 1)))) * _M2(2 * p1 + 1, 2 * (5 - p1) + 1)
+            return val - iv.mpf(mp.mpf(rem.b)), rem
+
+        def _eval_4link_o10(C4):
+            cf_c = [Fraction((-1) ** k, int(sp.factorial(2 * k))) for k in range(6)]
+            cf_s = [Fraction((-1) ** k, int(sp.factorial(2 * k + 1))) for k in range(5)]
+            m4 = defaultdict(lambda: Fraction(0))
+
+            def _add4(ps, cf):
+                if cf != 0:
+                    m4[tuple(sorted((min(u, v), max(u, v)) for u, v in ps))] += cf
+
+            for p1 in range(6):
+                for p2 in range(6 - p1):
+                    for p3 in range(6 - p1 - p2):
+                        for p4 in range(6 - p1 - p2 - p3):
+                            _add4([(0, 0)] * p1 + [(1, 1)] * p2 + [(2, 2)] * p3 + [(3, 3)] * p4, cf_c[p1] * cf_c[p2] * cf_c[p3] * cf_c[p4])
+            for i in range(4):
+                for j in range(i + 1, 4):
+                    k, l = [m for m in range(4) if m not in (i, j)]
+                    for pi in range(5):
+                        for pj in range(5 - pi):
+                            for pk in range(5 - pi - pj):
+                                for pl in range(5 - pi - pj - pk):
+                                    _add4([(i, j)] + [(i, i)] * pi + [(j, j)] * pj + [(k, k)] * pk + [(l, l)] * pl, -cf_s[pi] * cf_s[pj] * cf_c[pk] * cf_c[pl])
+            for qps, sgn in [([(0, 1), (2, 3)], 1), ([(0, 2), (1, 3)], -1), ([(0, 3), (1, 2)], 1)]:
+                for p1 in range(4):
+                    for p2 in range(4 - p1):
+                        for p3 in range(4 - p1 - p2):
+                            for p4 in range(4 - p1 - p2 - p3):
+                                _add4(list(qps) + [(0, 0)] * p1 + [(1, 1)] * p2 + [(2, 2)] * p3 + [(3, 3)] * p4, sgn * cf_s[p1] * cf_s[p2] * cf_s[p3] * cf_s[p4])
+            C4_mid = [[iv.mpf((mp.mpf(C4[i][j].a) + mp.mpf(C4[i][j].b)) / mp.mpf(2)) for j in range(4)] for i in range(4)]
+            Z4, memo_m, val_mid = [[iv.mpf(0)] * 4 for _ in range(4)], {}, iv.mpf(0)
+            for ps, cf in m4.items():
+                if cf != 0:
+                    val_mid = val_mid + _r24_frac(cf) * _wick3_dual_iv(C4_mid, Z4, ps, memo_m)[0]
+            orbs_c4 = [([(0, 0)], C4[0][0]), ([(1, 1), (2, 2), (3, 3)], C4[1][1]), ([(0, 1), (1, 0), (0, 3), (3, 0)], C4[0][1]),
+                       ([(0, 2), (2, 0)], C4[0][2]), ([(1, 2), (2, 1), (2, 3), (3, 2)], C4[1][2]), ([(1, 3), (3, 1)], C4[1][3])]
+            mv_rad = mp.mpf(0)
+            for locs, cell in orbs_c4:
+                rad_k = (mp.mpf(cell.b) - mp.mpf(cell.a)) / mp.mpf(2)
+                if rad_k <= 0:
+                    continue
+                dC = [[iv.mpf(0)] * 4 for _ in range(4)]
+                for (ii, jj) in locs:
+                    dC[ii][jj] = iv.mpf(1)
+                memo_d, deriv_k = {}, iv.mpf(0)
+                for ps, cf in m4.items():
+                    if cf != 0:
+                        deriv_k = deriv_k + _r24_frac(cf) * _wick3_dual_iv(C4, dC, ps, memo_d)[1]
+                mv_rad += _r24_abs_u(deriv_k) * rad_k
+            val = iv.mpf([mp.mpf(val_mid.a) - mv_rad, mp.mpf(val_mid.b) + mv_rad])
+            a_m = iv.mpf(max(mp.mpf(C4[i][i].b) for i in range(4)))
+            sc = [iv.sqrt(C4[i][i] / a_m) for i in range(4)]
+            rho_max = mp.mpf(0)
+            for i in range(4):
+                for j in range(i + 1, 4):
+                    rho_max = max(rho_max, _r24_abs_u(C4[i][j] / iv.sqrt(C4[i][i] * C4[j][j])))
+            rho2 = iv.mpf([mp.mpf(0), min(mp.mpf(1), rho_max * rho_max)])
+            m2_cache, b4_cache = {}, {}
+
+            def _M2(p, q):
+                k2 = (max(p, q), min(p, q))
+                if k2 not in m2_cache:
+                    m2_cache[k2] = _exact_2vec_mom(k2[0], k2[1], a_m, rho2)
+                return m2_cache[k2]
+
+            def _B4(exps):
+                key = tuple(exps)
+                if key in b4_cache:
+                    return b4_cache[key]
+                sc_f = (sc[0] ** exps[0]) * (sc[1] ** exps[1]) * (sc[2] ** exps[2]) * (sc[3] ** exps[3])
+                nz = sorted([e for e in exps if e > 0], reverse=True)
+                if len(nz) == 1:
+                    res = iv.mpf(_r24_odd_dfact(6)) * (a_m ** 6)
+                elif len(nz) == 2:
+                    e1, e2 = nz
+                    res = _M2(e1 // 2, e2 // 2) if e1 % 2 == 0 else iv.sqrt(_M2((e1 + 1) // 2, (e2 - 1) // 2) * _M2((e1 - 1) // 2, (e2 + 1) // 2))
+                elif len(nz) == 3:
+                    e1, e2, e3 = nz
+                    res = iv.sqrt(_M2(e1, e3) * (iv.mpf(_r24_odd_dfact(e2)) * (a_m ** e2)))
+                else:
+                    e1, e2, e3, e4 = nz
+                    res = iv.sqrt(_M2(e1, e4) * _M2(e2, e3))
+                b4_cache[key] = res * sc_f
+                return b4_cache[key]
+
+            c_abs, s_abs = [Fraction(1, int(sp.factorial(2 * k))) for k in range(6)], [Fraction(1, int(sp.factorial(2 * k + 1))) for k in range(5)]
+            rem = _r24_frac(Fraction(1, int(sp.factorial(12)))) * _B4((12, 0, 0, 0))
+            for p1 in range(6):
+                rem = rem + _r24_frac(c_abs[p1] * Fraction(1, int(sp.factorial(2 * (6 - p1))))) * _B4((2 * p1, 2 * (6 - p1), 0, 0))
+                for p2 in range(6 - p1):
+                    rem = rem + _r24_frac(c_abs[p1] * c_abs[p2] * Fraction(1, int(sp.factorial(2 * (6 - p1 - p2))))) * _B4((2 * p1, 2 * p2, 2 * (6 - p1 - p2), 0))
+                    for p3 in range(6 - p1 - p2):
+                        rem = rem + _r24_frac(c_abs[p1] * c_abs[p2] * c_abs[p3] * Fraction(1, int(sp.factorial(2 * (6 - p1 - p2 - p3))))) * _B4((2 * p1, 2 * p2, 2 * p3, 2 * (6 - p1 - p2 - p3)))
+            for i in range(4):
+                for j in range(i + 1, 4):
+                    k, l = [m for m in range(4) if m not in (i, j)]
+
+                    def _mk(ei, ej, ek, el):
+                        arr = [0, 0, 0, 0]
+                        arr[i], arr[j], arr[k], arr[l] = ei, ej, ek, el
+                        return tuple(arr)
+
+                    rem = rem + _r24_frac(Fraction(1, int(sp.factorial(10)))) * _B4(_mk(1, 1, 10, 0))
+                    for pk in range(5):
+                        rem = rem + _r24_frac(c_abs[pk] * Fraction(1, int(sp.factorial(2 * (5 - pk))))) * _B4(_mk(1, 1, 2 * pk, 2 * (5 - pk)))
+                        for pl in range(5 - pk):
+                            rem = rem + _r24_frac(c_abs[pk] * c_abs[pl] * Fraction(1, int(sp.factorial(2 * (5 - pk - pl) + 1)))) * _B4(_mk(2 * (5 - pk - pl) + 1, 1, 2 * pk, 2 * pl))
+                            for pi_i in range(5 - pk - pl):
+                                rem = rem + _r24_frac(c_abs[pk] * c_abs[pl] * s_abs[pi_i] * Fraction(1, int(sp.factorial(2 * (5 - pk - pl - pi_i) + 1)))) * _B4(_mk(2 * pi_i + 1, 2 * (5 - pk - pl - pi_i) + 1, 2 * pk, 2 * pl))
+            rem = rem + _r24_frac(Fraction(1, int(sp.factorial(9)))) * _B4((9, 1, 1, 1))
+            for p1 in range(4):
+                rem = rem + _r24_frac(s_abs[p1] * Fraction(1, int(sp.factorial(2 * (4 - p1) + 1)))) * _B4((2 * p1 + 1, 2 * (4 - p1) + 1, 1, 1))
+                for p2 in range(4 - p1):
+                    rem = rem + _r24_frac(s_abs[p1] * s_abs[p2] * Fraction(1, int(sp.factorial(2 * (4 - p1 - p2) + 1)))) * _B4((2 * p1 + 1, 2 * p2 + 1, 2 * (4 - p1 - p2) + 1, 1))
+                    for p3 in range(4 - p1 - p2):
+                        rem = rem + _r24_frac(s_abs[p1] * s_abs[p2] * s_abs[p3] * Fraction(1, int(sp.factorial(2 * (4 - p1 - p2 - p3) + 1)))) * _B4((2 * p1 + 1, 2 * p2 + 1, 2 * p3 + 1, 2 * (4 - p1 - p2 - p3) + 1))
+            return val - iv.mpf(mp.mpf(rem.b)), rem
+
+        def _cert_haar_J(sigA_iv, N_J=80):
+            sig_hi = iv.mpf(sigA_iv.b)
+            s0_hi, r0 = sig_hi * sig_hi, _r24_rat(3, 2)
+            f_r0 = -iv.mpf(2) * iv.log(iv.sin(r0) / r0)
+            p8_r0 = (r0 ** 2) / iv.mpf(3) + (r0 ** 4) / iv.mpf(90) + iv.mpf(2) * (r0 ** 6) / iv.mpf(2835) + (r0 ** 8) / iv.mpf(18900)
+            C10 = (f_r0 - p8_r0) / (r0 ** 10)
+            J_body = s0_hi + (s0_hi ** 2) / iv.mpf(6) + _r24_rat(2, 27) * (s0_hi ** 3) + (s0_hi ** 4) / iv.mpf(20) + C10 * iv.mpf(10395) * (s0_hi ** 5)
+            eps_f = Fraction(1, 100000)
+            r_cut, c_pref = PI_IV * _r24_frac(Fraction(1) - eps_f), iv.sqrt(iv.mpf(2) / PI_IV)
+            dr, J_tail = (r_cut - r0) / iv.mpf(N_J), iv.mpf(0)
+            for j in range(N_J):
+                rl, rh = r0 + (r_cut - r0) * _r24_rat(j, N_J), r0 + (r_cut - r0) * _r24_rat(j + 1, N_J)
+                p_ub = c_pref * (rl * rl) / (sig_hi ** 3) * iv.exp(-(rl * rl) / (iv.mpf(2) * sig_hi * sig_hi))
+                J_tail = J_tail + p_ub * (-iv.mpf(2) * iv.log(iv.sin(rh) / rh)) * dr
+            p_rc = c_pref * (r_cut * r_cut) / (sig_hi ** 3) * iv.exp(-(r_cut * r_cut) / (iv.mpf(2) * sig_hi * sig_hi))
+            tail0 = p_rc * (iv.mpf(2) * PI_IV * iv.log(iv.mpf(2)) + (PI_IV / iv.mpf(2)) * iv.log(PI_IV))
+            exp_rate = (PI_IV * PI_IV) / (iv.mpf(2) * sig_hi * sig_hi)
+            tail_ge1 = iv.mpf(50) * PI_IV * c_pref * (PI_IV * PI_IV) / (sig_hi ** 3) * iv.exp(-exp_rate)
+            return J_body + J_tail + tail0 + tail_ge1 - iv.log(iv.mpf(1) - _r24_frac(eps_f))
+
+        ut_lb, _ = _eval_2link_o10(sig0, sig0, -c_t1)
+        t1_temp_lb, _ = _eval_2link_o10(vB, sig0, -cov_B_t)
+        t1_spat_lb, _ = _eval_4link_o10(C4_T1)
+        T1_lb = iv.mpf(2) * t1_temp_lb + iv.mpf(4) * t1_spat_lb
+        two_pi_e = iv.mpf(2) * PI_IV * iv.exp(iv.mpf(1))
+        h_p = _r24_rat(1, 4) * (iv.mpf(3) * iv.log(two_pi_e) + IlnL + iv.mpf(2) * E_IlnT)
+        a_m, b_m = iv.mpf(2) * kap0 + iv.mpf(4) * kapTs + mT2, mT2 - mL2
+        hc14_ub = _r24_rat(3, 2) * (iv.log(two_pi_e) - _r24_rat(2, 3) * iv.log(a_m) - _r24_rat(1, 3) * iv.log(a_m - b_m))
+        J1_lb = -iv.log(iv.mpf(2) * PI_IV * PI_IV) - _cert_haar_J(iv.sqrt(sig0), 80)
+        f_lb_495_iv = _r24_rat(1, 4) * BETA_IV * ut_lb + _r24_rat(1, 8) * _r24_log_c1_su2(BETA_IV * T1_lb) + h_p - _r24_rat(1, 8) * hc14_ub + _r24_rat(3, 8) * J1_lb
+
+        # C1/C3/C5 Guard (1b) controls:
+        v_sp_u1 = sum((C4_T1[i][j] for i in range(4) for j in range(4)), iv.mpf(0))
+        ut_u1 = iv.exp(-(sig0 - c_t1))
+        T1_u1 = iv.mpf(2) * iv.exp(-(vB + sig0 - iv.mpf(2) * cov_B_t) / iv.mpf(2)) + iv.mpf(4) * iv.exp(-v_sp_u1 / iv.mpf(2))
+        us_u1 = iv.exp(-(iv.mpf(2) * sig0 - iv.mpf(2) * c_s1 - iv.mpf(4) * d_12))
+        j1_u1 = -iv.log(iv.mpf(2) * PI_IV)
+        df_u1 = _r24_rat(1, 8) * iv.log(_r24_besseli(0, BETA_IV * T1_u1, 76)) - _r24_rat(1, 4) * BETA_IV * ut_u1 - _r24_rat(1, 2) * BETA_IV * us_u1 - _r24_rat(1, 8) * (hc14_ub / iv.mpf(3)) - _r24_rat(1, 8) * j1_u1
+        require(mp.mpf(df_u1.a) > 0, "R24 C1 U(1) CG14 gain <= 0")
+
+        def _cg_dimD(D_d, alp_iv):
+            phi_a, lc1_a = _r24_phi_su2(alp_iv), _r24_log_c1_su2(alp_iv)
+            kl_1 = alp_iv * phi_a - lc1_a
+            n_t, n_s, n_p = iv.mpf(D_d - 1), _r24_rat((D_d - 1) * (D_d - 2), 2), _r24_rat(D_d * (D_d - 1), 2)
+            f_b = (BETA_IV * (n_t * phi_a * phi_a + n_s * (phi_a ** 4)) - n_t * kl_1) / n_p
+            H_d = iv.mpf(2) * phi_a + iv.mpf(2 * (D_d - 2)) * (phi_a ** 3)
+            f_cg = f_b + (_r24_log_c1_su2(BETA_IV * H_d) - BETA_IV * (iv.mpf(2) * phi_a ** 2 + iv.mpf(2 * (D_d - 2)) * phi_a ** 4) + kl_1) / (iv.mpf(2) * n_p)
+            require(mp.mpf((f_cg - f_b).a) > 0, "R24 CG Dim D gain <= 0")
+            return f_cg - f_b
+
+        c3_cg_gain = _cg_dimD(3, iv.mpf(15))
+        c5_cg_gain = _cg_dimD(5, iv.mpf(32))
+
+        up_joint_iv = (f_lb_495_iv - f_ub_220_iv) / (BETA_IV - _r24_rat(11, 5))
+        msea_joint_iv = up_joint_iv * up_joint_iv
+        require(mp.mpf(f_lb_495_iv.a) >= mp.mpf("2.56494015839"), "R24 f_4D_LB(4.95) target unmet")
+        require(mp.mpf(up_joint_iv.a) >= mp.mpf("0.647688590358"), "R24 u_p(4.95) target unmet")
+        require(mp.mpf(msea_joint_iv.a) >= mp.mpf("0.419500510080"), "R24 m_sea(4.95) target unmet")
+
+        # 4C. S^3 Stein-IBP Dobrushin + 4.95 Sandwich + K_comm + C5 4^5->8^5 + 7-Way & Litmus 6:
+        N_k, N_th = 70, 64
+        dt = PI_IV / N_th
+        dt_2_b, dt3_24 = mp.mpf((dt / 2).b), (dt * dt * dt) / 24
+        t_m = [PI_IV * _r24_rat(2 * i + 1, 2 * N_th) for i in range(N_th)]
+        t_b = [iv.mpf([mp.mpf((PI_IV * _r24_rat(i, N_th)).a), mp.mpf((PI_IV * _r24_rat(i + 1, N_th)).b)]) for i in range(N_th)]
+        s_m, c_m, s_b, c_b = [iv.sin(t) for t in t_m], [iv.cos(t) for t in t_m], [iv.sin(t) for t in t_b], [iv.cos(t) for t in t_b]
+        s2_m, s2_b, c2_b = [s * s for s in s_m], [s * s for s in s_b], [x * x for x in c_b]
+        w_par_max = w_perp_max = mp.mpf(0)
+        for ik in range(N_k):
+            ka, kb = _r24_rat(ik, 50), _r24_rat(ik + 1, 50)
+            k_iv, k_m, hw_k = iv.mpf([mp.mpf(ka.a), mp.mpf(kb.b)]), (ka + kb) / 2, mp.mpf(((kb - ka) / 2).b)
+            g1_m, g1_iv = _r24_phi_su2(k_m), iv.mpf([mp.mpf(_r24_phi_su2(ka).a), mp.mpf(_r24_phi_su2(kb).b)])
+            Z_iv = (PI_IV / 2) * _r24_cr0_vec_box(1, k_iv, 20)[0]
+            pk_b, pk_m = [s2_b[i] * iv.exp(k_iv * c_b[i]) for i in range(N_th)], [s2_m[i] * iv.exp(k_m * c_m[i]) for i in range(N_th)]
+            ewp2 = sum((pk_b[i] * dt * (c2_b[i] / 27 + _r24_rat(2, 3) * (_r24_rat(1, 3) - (k_iv / 6) * s2_b[i] * c_b[i]) ** 2) for i in range(N_th)), iv.mpf(0)) / Z_iv
+            f2_ub = mp.mpf(((9 + 12 * k_m + 2 * k_m * k_m) * iv.exp(k_m)).b)
+            dI_err, ewpar2_num = f2_ub * mp.mpf(dt3_24.b), iv.mpf(0)
+            for half_rng, sg_h, cond_fn, tn_fn in [
+                (range(N_th // 2), 1, lambda ii: ii <= 2, lambda ii: PI_IV * _r24_rat(ii + 1, N_th)),
+                (range(N_th - 1, N_th // 2 - 1, -1), -1, lambda ii: ii >= N_th - 3, lambda ii: PI_IV - PI_IV * _r24_rat(ii, N_th)),
+            ]:
+                rc_iv, el = iv.mpf(0), mp.mpf(0)
+                for i in half_rng:
+                    cn = rc_iv + sg_h * pk_m[i] * (c_m[i] - g1_m) * dt + iv.mpf([-dI_err, dI_err])
+                    el_n = el + mp.mpf((pk_b[i] * dt).b) * mp.mpf(2) * hw_k
+                    if cond_fn(i):
+                        tn = tn_fn(i)
+                        eb = mp.mpf((iv.exp(k_iv * (1 - iv.cos(tn))) * (1 + g1_iv) * tn).b)
+                        ewpar2_num = ewpar2_num + pk_b[i] * eb * eb * dt
+                    else:
+                        cm_u = max(_r24_abs_u(rc_iv), _r24_abs_u(cn)) + _r24_abs_u(pk_b[i] * (c_b[i] - g1_m)) * dt_2_b + el_n
+                        ewpar2_num = ewpar2_num + iv.mpf(cm_u * cm_u) * dt / pk_b[i]
+                    rc_iv, el = cn, el_n
+            ewpar2 = ewpar2_num / Z_iv
+            w_perp_max, w_par_max = max(w_perp_max, mp.mpf(ewp2.b)), max(w_par_max, mp.mpf(ewpar2.b))
+        worst_stein = mp.sqrt(max(w_perp_max, w_par_max))
+        beta_ds_4d = iv.mpf(1) / (iv.mpf(18) * worst_stein)
+        beta_ds_c5_stein = iv.mpf(1) / (iv.mpf(24) * worst_stein)
+        beta_ds_c5_ub = iv.mpf(3) * PI_IV / iv.mpf(64)
+        beta_ds_u1 = _r24_rat(1, 9)
+        chi_unif_016 = (iv.mpf(12) * PI_IV) / (iv.mpf(1) - iv.mpf(18) * _r24_rat(16, 100) * worst_stein)
+        require(mp.mpf(beta_ds_4d.a) >= mp.mpf("0.170772553") and mp.mpf(beta_ds_4d.a) > mp.mpf(beta_ds_c5_ub.b) and mp.mpf(beta_ds_c5_ub.a) > mp.mpf(beta_ds_c5_stein.b) and mp.mpf(beta_ds_c5_stein.a) > mp.mpf(beta_ds_u1.b), "R24 Stein Dobrushin sep")
+
+        e2_hi = mp.mpf(36)
+        for _ in range(30):
+            E2_nxt = iv.mpf(6) * (iv.mpf(1) + iv.mpf(5) * (_r24_phi_su2(BETA_IV * iv.sqrt(iv.mpf(e2_hi))) ** 2))
+            e2_nxt_hi = mp.mpf(E2_nxt.b)
+            if abs(e2_hi - e2_nxt_hi) < mp.mpf("1e-24"):
+                e2_hi = e2_nxt_hi
+                break
+            e2_hi = e2_nxt_hi
+        E2_ub = iv.mpf(e2_hi)
+        u_max_495 = (iv.sqrt(E2_ub) * _r24_phi_su2(BETA_IV * iv.sqrt(E2_ub))) / iv.mpf(6)
+        du_495_ub = iv.mpf(mp.mpf(u_max_495.b) - mp.mpf(up_joint_iv.a))
+        require(mp.mpf(du_495_ub.b) < mp.mpf("0.2588705"), "R24 du_495 sandwich")
+
+        kc_4d_165 = _r24_rat(3, 4) * ((iv.mpf(1) - _r24_besseli(3, iv.mpf(6) * _r24_rat(33, 20), 62) / _r24_besseli(1, iv.mpf(6) * _r24_rat(33, 20), 62)) ** 2)
+        kc_c5_165 = _r24_rat(3, 4) * ((iv.mpf(1) - _r24_besseli(3, iv.mpf(8) * _r24_rat(33, 20), 62) / _r24_besseli(1, iv.mpf(8) * _r24_rat(33, 20), 62)) ** 2)
+        require(mp.mpf(kc_4d_165.a) > mp.mpf(kc_c5_165.b), "R24 K_comm")
+
+        M5_su5 = _r24_sp_mat6([[-sp.Rational(4, 5), 0, 0, 0, 0], [0, sp.Rational(1, 5), 0, 0, 0], [0, 0, sp.Rational(1, 5), 0, 0], [0, 0, 0, sp.Rational(1, 5), 0], [0, 0, 0, 0, sp.Rational(1, 5)]])
+        require(M5_su5.trace() == 0 and M5_su5[0, 0] * M5_su5[1, 1] == -sp.Rational(4, 25), "R24 SU5 5x5")
+        lit6_lhs, lit6_rhs = iv.mpf(6) * (PI_IV ** 2) / iv.mpf(11), iv.mpf(8) * iv.log(iv.mpf(2))
+        lit6_gap = lit6_rhs - lit6_lhs
+        require(mp.mpf(lit6_gap.a) > mp.mpf("0.16175"), "R24 Litmus 6")
+        checks += 10
+
+        wave24_retirements = [
+            "w24_1_schur_2plus1_q0_raw_unshifted_gap",
+            "w24_1_single_species_compact_nelson_blowup_e79",
+            "w24_1_naive_peierls_wall_before_669p29",
+            "w24_2_lowdin_negative_minus_quarter_m4",
+            "w24_2_curved_infz3_0p60d_and_axial_0p85d_breach",
+            "w24_2_13d_naive_slab_closure_gt_1",
+            "w24_2_h6_diagonal_5d_3d_regime_collapse",
+            "w24_3_u1_chordal_ku0_contraction",
+            "w24_3_1loop_ward_banach_72d_exceeds_1",
+            "w24_3_dv_gaussian_kl_nogo_wall",
+            "w24_3_landau_g_eq_I_negative_fmr_modes",
+            "w24_4_2x2_nonconjugation_diagonal_shortcut",
+            "w24_4_naive_o12_box_overwrap_without_c4_scaling",
+            "w24_4_linear_or_single_kcomm_o_mi13_closure",
+            "w24_c39_6x6_commutator_60d_negative_branch",
+            "w24_c40_gauss_b45_outer_exceeds_1",
+            "w24_c40_cg14_pointwise_beta_0p171_4p95_gap",
+            "w24_5_incremental_wave25_cadence_retired",
+            "w24_5_empirical_mc_bypass_of_0p171_to_4p95",
+            "w24_5_3d_c3_dimensional_blindness_against_c5",
+        ]
+        require(len(wave24_retirements) == 20, "R24 retirements != 20")
+
+        return {
+            "round": 24,
+            "wave_freeze_status": "PERMANENT_INCREMENTAL_WAVE_FREEZE_NO_WAVE_25",
+            "wave24_retired": True,
+            "wave25_authorized": False,
+            "pure_math_mw1_pivot": True,
+            "lean_module": "UEOTPhysicsUnification.IRXWave24FinalArchiveRecord0p6477SteinBetaDSAndPermanentWaveFreeze",
+            "w24_1_uv_q0_and_b2_ladders": {
+                "schur_2plus1_exact": True,
+                "d4_med_12coord_cancel": True,
+                "nelson_blowup_30_lb": mp.nstr(mp.mpf(nelson_blow.a), 8),
+                "ladder_1999_7730": lad_7730,
+                "ladder_11453_44443": lad_44443,
+            },
+            "w24_2_c39a_c40a_infz3": {
+                "m4_5_12_spd": True,
+                "h6_3x3_eta_opt6_exact": True,
+                "c39a_4x4_zero_hy_exact": True,
+                "b13_orbits": no_b13,
+                "b13_s3_ub": mp.nstr(b13_s3, 8),
+                "b45_orbits": no_b45,
+                "b45_s3_ub": mp.nstr(b45_s3, 8),
+                "b45_gauss_ub": mp.nstr(b45_g, 8),
+                "b45_s3_beats_gauss_margin": mp.nstr(b45_margin, 8),
+            },
+            "w24_3_ward_banach_and_fmr": {
+                "s3_compression_identity": True,
+                "dv_kl_2p6e4_lb": _r24_pair(dv_26e4, 8)[0],
+                "dv_kl_032_lb": _r24_pair(dv_032, 8)[0],
+                "dv_kl_3411_lb": _r24_pair(dv_341, 8)[0],
+            },
+            "w24_4_c40a_world_record_and_stein": {
+                "pack_4d_tg_counts": cnt_dirs,
+                "pack_4d_tg_spatial_plaqs": len(used_sp),
+                "pack_4d_tg_temporal_plaqs": len(used_tm),
+                "poly2_2d_boxes": n_2d,
+                "poly2_3d_boxes": n_3d,
+                "f_4D_UB_2p20_ceil": mp.nstr(mp.mpf(f_ub_220_iv.b), 13),
+                "f_4D_LB_4p95_floor": mp.nstr(mp.mpf(f_lb_495_iv.a), 12),
+                "u_p_495_unconditional_lb": mp.nstr(mp.mpf(up_joint_iv.a), 12),
+                "m_sea_495_unconditional_lb": mp.nstr(mp.mpf(msea_joint_iv.a), 12),
+                "u_max_495_2L_ub": mp.nstr(mp.mpf(u_max_495.b), 10),
+                "du_495_ub": mp.nstr(mp.mpf(du_495_ub.b), 10),
+                "c1_u1_cg14_gain_lb": mp.nstr(mp.mpf(df_u1.a), 8),
+                "c3_3d_cg_gain_lb": mp.nstr(mp.mpf(c3_cg_gain.a), 8),
+                "c5_5d_cg_gain_lb": mp.nstr(mp.mpf(c5_cg_gain.a), 8),
+                "stein_beta_DS_4D_lb": mp.nstr(mp.mpf(beta_ds_4d.a), 9),
+                "stein_beta_DS_C5_ub": mp.nstr(mp.mpf(beta_ds_c5_ub.b), 9),
+                "stein_beta_DS_C5_stein_lb": mp.nstr(mp.mpf(beta_ds_c5_stein.a), 9),
+                "stein_beta_DS_C1_exact": "1/9",
+                "stein_chi_bulk_0p16_ub": mp.nstr(mp.mpf(chi_unif_016.b), 9),
+                "k_comm_165_4d_lb": mp.nstr(mp.mpf(kc_4d_165.a), 9),
+                "k_comm_165_c5_lb": mp.nstr(mp.mpf(kc_c5_165.a), 9),
+                "su5_mandelstam_diag": "-4/25",
+                "litmus6_margin_lb": mp.nstr(mp.mpf(lit6_gap.a), 12),
+            },
+            "wave24_retirements": wave24_retirements,
+            "interval_checks_passed": checks,
+            "irx_status": "OPEN",
+            "noBulkTransition": "OPEN",
+            "uv_x_status": "OPEN",
+            "chiral_x_status": "OPEN",
+            "h2d_status": "OPEN",
+            "h2d_minimal_core_status": "OPEN",
+            "o_mi13_status": "OPEN",
+            "physical_unification": "OPEN",
+            "device_certified": False,
+            "empirical_quarantined_out_of_closure": True,
+        }
+    finally:
+        mp.dps = prev_dps
+        iv.dps = prev_iv_dps
+
+
 def compute_certificate() -> dict:
     mp.dps = 50
     iv.dps = 40
@@ -24338,6 +26290,7 @@ def compute_certificate() -> dict:
     h2d_round21_wave21 = compute_h2d_round21_wave21_covariant_delta2_mixmgf_leibniz_and_maxwell(h2d_round20_wave20)
     h2d_round22_wave22 = compute_h2d_round22_phi3_moving_frame_bch_slab3d_and_loop_sdp(h2d_round21_wave21)
     h2d_round23_wave23 = compute_h2d_round23_doubleu3_oracle_uvlp_gluing_geodesic_and_infz3(h2d_round22_wave22)
+    h2d_round24_wave24 = compute_h2d_round24_final_wave24_archive(h2d_round23_wave23)
     payload = {
         "schema": "ueot-physics-unification-nonabelian-lattice-massgap-h2/1",
         "result_ids": [
@@ -24375,6 +26328,7 @@ def compute_certificate() -> dict:
         "h2d_round21_wave21_covariant_delta2_mixmgf_leibniz_and_maxwell": h2d_round21_wave21,
         "h2d_round22_wave22_phi3_moving_frame_bch_slab3d_and_loop_sdp": h2d_round22_wave22,
         "h2d_round23_doubleu3_oracle_uvlp_gluing_geodesic_and_infz3": h2d_round23_wave23,
+        "h2d_round24_final_archive_0p6477_stein_betads_and_wave_freeze": h2d_round24_wave24,
         "wilson_transfer_and_symanzik": {
             "q8_strong_coupling_transfer": transfer_results,
             "symanzik_o_a2_leading_coeff": outward_str(c0_exact),
@@ -24644,9 +26598,30 @@ def main() -> int:
     require(r23_cert["physical_unification"] == "OPEN", "Round 23 physical_unification must remain OPEN")
     require(r23_cert["device_certified"] is False, "Round 23 device_certified must remain False")
     require(r23_cert["empirical_quarantined_out_of_closure"] is True, "Round 23 empirical quarantine must be True")
+    r24_cert = payload["h2d_round24_final_archive_0p6477_stein_betads_and_wave_freeze"]
+    w24_4 = r24_cert["w24_4_c40a_world_record_and_stein"]
+    require(r24_cert["round"] == 24, "Round 24 marker mismatch")
+    require(r24_cert["interval_checks_passed"] >= 25, "Round 24 interval checks count below floor")
+    require(len(r24_cert["wave24_retirements"]) == 20, "Round 24 retirement count must equal 20")
+    require(r24_cert["wave24_retired"] is True, "Round 24 must be retired")
+    require(r24_cert["wave25_authorized"] is False, "Wave 25 must not be authorized")
+    require(r24_cert["pure_math_mw1_pivot"] is True, "Pure-Math MW1 pivot must be True")
+    require(mp.mpf(w24_4["u_p_495_unconditional_lb"]) >= mp.mpf("0.647688590358"), "Round 24 joint u_p(4.95) floor drift")
+    require(mp.mpf(w24_4["m_sea_495_unconditional_lb"]) >= mp.mpf("0.419500510080"), "Round 24 joint m_sea(4.95) floor drift")
+    require(mp.mpf(w24_4["stein_beta_DS_4D_lb"]) > mp.mpf("0.17077255"), "Round 24 Stein beta_DS_4D floor drift")
+    require(r24_cert["irx_status"] == "OPEN", "Round 24 IR-X must remain OPEN")
+    require(r24_cert["noBulkTransition"] == "OPEN", "Round 24 noBulkTransition must remain OPEN")
+    require(r24_cert["uv_x_status"] == "OPEN", "Round 24 UV-X must remain OPEN")
+    require(r24_cert["chiral_x_status"] == "OPEN", "Round 24 CHIRAL-X must remain OPEN")
+    require(r24_cert["h2d_status"] == "OPEN", "Round 24 h2d_status must remain OPEN")
+    require(r24_cert["h2d_minimal_core_status"] == "OPEN", "Round 24 h2d_minimal_core_status must remain OPEN")
+    require(r24_cert["o_mi13_status"] == "OPEN", "Round 24 o_mi13_status must remain OPEN")
+    require(r24_cert["physical_unification"] == "OPEN", "Round 24 physical_unification must remain OPEN")
+    require(r24_cert["device_certified"] is False, "Round 24 device_certified must remain False")
+    require(r24_cert["empirical_quarantined_out_of_closure"] is True, "Round 24 empirical quarantine must be True")
     if args.check:
         committed = json.loads(CERT_PATH.read_text(encoding="utf-8"))
-        require(committed == payload, "Committed certificate.json differs from recomputed Wave 23 H2 values")
+        require(committed == payload, "Committed certificate.json differs from recomputed Wave 24 H2 values")
         print("PASS: nonabelian_lattice_massgap_h2 (P-H2A-TRANSFER-01, P-H2B-DOBRUSHIN-02, P-H2C-CHIRAL-UV-03, C-H2-OPER-04)")
     else:
         write_json(CERT_PATH, payload)

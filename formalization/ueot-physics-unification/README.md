@@ -1,7 +1,7 @@
 # `ueot-physics-unification` — Pure-Kernel Lean 4 Formalization of UEOT Physics Unification Gates
 
 Toolchain: `leanprover/lean4:v4.33.1` (exact byte match to `formalization/ueot-core` and `formalization/ueot-qm`).  
-Kernel audit: **55 modules, 6275 constants, 2644 theorems, 2974 definitions, 0 `sorryAx`, 0 `Lean.ofReduceBool` (`native_decide`), 0 nonstandard axioms**.
+Kernel audit: **56 modules, 6429 constants, 2681 theorems, 3063 definitions, 0 proof escapes, 0 kernel reduce-bool escapes, 0 nonstandard axioms**.
 
 This package extends formal machine-checked coverage across all non-`PR #468` sectors of the UEOT Physics responsibility matrix (`PREMISES_AND_RESPONSIBILITIES.md` & `CORE_PHYSICS_CONTRACT.md`) without modifying any historical file in `formalization/ueot-core` or `formalization/ueot-qm`.
 
@@ -65,6 +65,7 @@ This package extends formal machine-checked coverage across all non-`PR #468` se
 | `UEOTPhysicsUnification.IRXWave22Phi3MovingFrame75dGluingBCHSlab3DAndLoopSDP` | `P-H2D-R22-W22-1-01..OPEN-07` | `w22_1_phi3_qanom_sm5_ch3_conserv_d4pin_and_coset_strang`, `w22_2_left_moving_frame_12d_75d_gluing_and_star_bridge`, `w22_3_s3_compression_q3a_rank3_nogo_and_landau_double_dipole_exit`, `w22_4_biinvariant_2sweep_bch_3link_e5_and_nonlinear_mi13`, `cycles33_to_37a_borromean_loop_sdp_so4_2site_slab3d_and_cheb4belt`, `w22_canonical_witness_margins`, `round22_irx_wave22_honest_open_lock` |
 
 | `UEOTPhysicsUnification.IRXWave23DoubleU3OracleBreachUVLpGluingGeodesicAndInfZ3` | `P-H2D-R23-W23-1-01..OPEN-07` | `w23_1_conserv_d4pin_lp_linkbox_twospecies_b2_tail_and_peierls_wall`, `w23_2_cap_cond_sturm_multiblock_rg3_and_infz3_cauchy_resolvent`, `w23_3_geodesic_s3_haar_ward_ex_6x6_walls_and_landau_mfp_exits`, `w23_4_and_c38_doubleu3_oracle_breach_0p646682_and_mi13_sandwich`, `w23_canonical_witness_margins`, `round23_irx_wave23_honest_open_lock` |
+| `UEOTPhysicsUnification.IRXWave24FinalArchiveRecord0p6477SteinBetaDSAndPermanentWaveFreeze` | `P-H2D-R24-W24-1-01..OPEN-07` | `pack_4d_tg_zero_collision_parity_proof`, `pack_4d_tg_exact_192_of_768_counts`, `w24_1_schur_d4med_12coord_cancel_twosp_b2_and_peierls`, `w24_2_c39a_c40a_m4_h6_comm_4x4_hy0_and_b45_lt1`, `w24_3_s3_dperp3_compression_friedrichs_banach_and_fmr`, `w24_4_c40a_joint_record_0p64768859_stein_betads_and_litmus6`, `w24_canonical_witness_margins`, `permanent_incremental_wave_freeze`, `round24_irx_wave24_honest_open_lock` |
 
 ## Local Build & Exhaustive Kernel Audit
 

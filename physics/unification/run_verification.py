@@ -224,6 +224,7 @@ def main() -> int:
             "UEOTPhysicsUnification.IRXWave21CovariantDelta2MixMGFLebnizWardAndBeltMaxwell",
             "UEOTPhysicsUnification.IRXWave22Phi3MovingFrame75dGluingBCHSlab3DAndLoopSDP",
             "UEOTPhysicsUnification.IRXWave23DoubleU3OracleBreachUVLpGluingGeodesicAndInfZ3",
+            "UEOTPhysicsUnification.IRXWave24FinalArchiveRecord0p6477SteinBetaDSAndPermanentWaveFreeze",
         ],
         "physical_unification": "OPEN",
         "rendezvous_compatibility": {
